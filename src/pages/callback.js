@@ -1,9 +1,9 @@
 import React from 'react';
-import { navigateTo } from 'gatsby';
+import { push } from 'gatsby';
 import { handleAuthentication } from '../utils/auth';
 
 export default () => {
-  handleAuthentication(() => navigateTo('/'));
+  handleAuthentication(() => push('/'));
 
   return <p>Logging you in...</p>;
 };

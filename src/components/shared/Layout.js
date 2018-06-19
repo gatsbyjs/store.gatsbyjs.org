@@ -1,7 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import styled, { css } from 'react-emotion';
-import { navigateTo } from 'gatsby';
+import { push } from 'gatsby';
 import Footer from './Footer/Footer';
 import Header from './Header/Header';
 import StoreContext, { defaultStoreContext } from '../../context/StoreContext';
@@ -48,7 +48,7 @@ export default class Layout extends React.Component {
       },
       handleLogout: () => {
         this.setState({ user: defaultUserContext });
-        logout(() => navigateTo('/'));
+        logout(() => push('/'));
       }
     },
     store: {
