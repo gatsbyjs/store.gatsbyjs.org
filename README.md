@@ -1,30 +1,23 @@
-# gatsby-starter-default
+# Gatsby Store
 
-The default Gatsby starter.
+This is the Gatsby store, where we make swag, stickers, and other Gatsby goodies available to contributors and Gatsby enthusiasts. 💪💜
 
-For an overview of the project structure please refer to the [Gatsby documentation - Building with Components](https://www.gatsbyjs.org/docs/building-with-components/).
+## Technical Overview
 
-## Install
+This store is built with data from:
 
-Make sure that you have the Gatsby CLI program installed:
+- [Shopify](https://shopify.com)
+- The [Shopify JavaScript Buy SDK](https://shopify.github.io/js-buy-sdk/)
+- [Auth0](https://auth0.com/)
 
-```sh
-npm install --global gatsby-cli
-```
+We’re using [Gatsby V2](https://github.com/gatsbyjs/gatsby) and [Emotion](https://emotion.sh/) to get the data on screen.
 
-And run from your CLI:
+The store is statically rendered using the Shopify source plugin, and the maintainer dashboard is a dynamic app (e.g. client-only routes) protected by Auth0.
 
-```sh
-gatsby new gatsby-example-site
-```
+## Free Swag for Contributors
 
-Then you can run it by:
+If you're a contributor to Gatsby, that means you can get one free item from our store! Log in using your GitHub account and we'll give you a discount code good for a t-shirt or socks.
 
-```sh
-cd gatsby-example-site
-npm run develop
-```
+## Cheap Swag for All
 
-## Deploy
-
-[![Deploy to Netlify](https://www.netlify.com/img/deploy/button.svg)](https://app.netlify.com/start/deploy?repository=https://github.com/gatsbyjs/gatsby-starter-default)
+We sell our swag at pretty close to cost and we don’t charge shipping fees. Grab a t-shirt or socks and show everyone your favorite blazing fast framework!
