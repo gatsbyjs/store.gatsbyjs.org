@@ -3,7 +3,7 @@ import { push } from 'gatsby';
 import { handleAuthentication } from '../utils/auth';
 
 export default () => {
-  handleAuthentication(() => push('/'));
+  handleAuthentication(() => push('/account/dashboard'));
 
   return <p>Logging you in...</p>;
 };
