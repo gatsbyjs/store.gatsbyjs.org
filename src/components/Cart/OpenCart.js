@@ -3,6 +3,7 @@ import styled from 'react-emotion';
 import StoreContext from '../../context/StoreContext';
 import ItemList from './ItemList';
 import { colors, button, fonts } from '../../utils/styles';
+import { Text } from '../shared/Typography';
 
 const OpenCart = styled('div')`
   background: ${colors.lightest};
@@ -52,6 +53,12 @@ const CostTotal = styled('p')`
   margin: 0;
 `;
 
+const CurrencyText = styled(Text)`
+  color: ${colors.textLight};
+  font-size: 0.75rem;
+  text-align: center;
+`;
+
 export default () => (
   <StoreContext.Consumer>
     {({ client, checkout, isCartOpen, removeLineItem }) => {
@@ -77,6 +84,9 @@ export default () => (
               </CostTotal>
             </CostBlock>
             <Checkout href={checkout.webUrl}>Check Out</Checkout>
+            <CurrencyText>
+              <strong>NOTE:</strong> All prices are in USD
+            </CurrencyText>
           </OpenCart>
         )
       );
