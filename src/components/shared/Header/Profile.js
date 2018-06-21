@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'react-emotion';
+import { Link } from 'gatsby';
 import UserContext from '../../../context/UserContext';
 import { login } from '../../../utils/auth';
 import { colors, button, fonts } from '../../../utils/styles';
@@ -9,6 +10,11 @@ const Profile = styled('div')`
   justify-content: space-between;
   margin: 0;
   padding: 5px 8px;
+`;
+
+const AvatarLink = styled(Link)`
+  display: block;
+  text-decoration: none;
 `;
 
 const Avatar = styled('img')`
@@ -32,6 +38,11 @@ const Name = styled('strong')`
   display: block;
 `;
 
+const NameLink = styled(Link)`
+  color: inherit;
+  text-decoration: none;
+`;
+
 const Logout = styled('a')`
   ${button.default};
   margin-top: 5px;
@@ -48,9 +59,13 @@ export default () => (
       <Profile>
         {profile.name ? (
           <>
-            <Avatar src={profile.picture} alt={profile.name} />
+            <AvatarLink to="/account/dashboard">
+              <Avatar src={profile.picture} alt={profile.name} />
+            </AvatarLink>
             <UserInfo>
-              <Name>{profile.name}</Name>
+              <Name>
+                <NameLink to="/account/dashboard">{profile.name}</NameLink>
+              </Name>
               @{profile.nickname}
               <Logout
                 href="/"
