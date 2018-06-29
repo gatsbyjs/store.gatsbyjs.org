@@ -57,7 +57,6 @@ export default ({ issues }) => (
   <IssueList>
     {issues.map(issue => (
       <Issue key={issue.id}>
-        {console.log(issue)}
         <IssueLink href={issue.html_url}>{issue.title}</IssueLink>
         {issue.labels.map(label => (
           <Label href={label.url} key={`${issue.id}-${label.id}`}>
