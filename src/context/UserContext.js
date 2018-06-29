@@ -23,14 +23,19 @@ export const checkContributions = async username => {
   return contributions[username];
 };
 
-export const getDiscountCode = async (username, email) => {
+export const getDiscountCode = async ({
+  username,
+  email,
+  first_name,
+  subscribe
+}) => {
   const token = getAccessToken();
   const api = process.env.GATSBY_API;
 
   return await axios
     .post(
       `${api}/store/discount-code`,
-      { username, email },
+      { username, email, first_name, subscribe },
       { headers: { Authorization: `Bearer ${token}` } }
     )
     .catch(err => {
