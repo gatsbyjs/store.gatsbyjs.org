@@ -1,14 +1,9 @@
 import React from 'react';
 import styled from 'react-emotion';
 import UserContext from '../../context/UserContext';
+import Form from './Form';
 import { Heading, Lede, Text } from '../shared/Typography';
-import { button, colors } from '../../utils/styles';
-
-const Button = styled('button')`
-  ${button.default};
-  ${button.big};
-  ${button.purple};
-`;
+import { colors } from '../../utils/styles';
 
 const DiscountCodeBox = styled('div')`
   background-color: ${colors.brand}20;
@@ -26,7 +21,7 @@ const DiscountCode = styled('pre')`
   padding: 1rem;
 `;
 
-const Description = styled('p')`
+const Description = styled('div')`
   color: ${colors.darkest};
 
   p {
@@ -50,11 +45,7 @@ export default () => (
                 our appreciation, click the button below to get a discount code
                 good for one free item in the swag store.
               </Text>
-              <Button
-                onClick={handleGetDiscountCode(profile.nickname, profile.email)}
-              >
-                Claim Your Discount Code
-              </Button>
+              <Form profile={profile} onSubmit={handleGetDiscountCode} />
             </>
           ) : (
             <DiscountCodeBox>
