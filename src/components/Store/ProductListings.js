@@ -1,6 +1,6 @@
 import React from 'react';
 // import Client from 'shopify-buy';
-import { StaticQuery } from 'gatsby';
+import { graphql, StaticQuery } from 'gatsby';
 import styled from 'react-emotion';
 import ProductPreview from '../ProductPreview/ProductPreview';
 
