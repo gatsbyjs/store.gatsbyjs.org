@@ -33,10 +33,10 @@ export default class Layout extends React.Component {
   state = {
     user: {
       ...defaultUserContext,
-      handleGetDiscountCode: (username, email) => {
+      handleGetDiscountCode: userData => {
         return async event => {
           event.preventDefault();
-          const results = await getDiscountCode(username, email);
+          const results = await getDiscountCode(userData);
 
           this.setState(state => ({
             user: {
