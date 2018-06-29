@@ -20,4 +20,4 @@ If you're a contributor to Gatsby, that means you can get one free item from our
 
 ## Cheap Swag for All
 
-We sell our swag at pretty close to cost and we don’t charge shipping fees. Grab a t-shirt or socks and show everyone your favorite blazing fast framework!
+We sell our swag at pretty close to cost (we round for easy math) and we don’t charge shipping fees. Grab a t-shirt or socks and show everyone your favorite blazing fast framework!
