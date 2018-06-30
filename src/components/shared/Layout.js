@@ -54,6 +54,11 @@ export default class Layout extends React.Component {
     store: {
       ...defaultStoreContext,
       addVariantToCart: (variantId, quantity) => {
+        if (variantId === '' || !quantity) {
+          console.error('Both a size and quantity are required.');
+          return;
+        }
+
         this.setState(state => ({
           store: { ...state.store, isCartOpen: true }
         }));
@@ -77,7 +82,7 @@ export default class Layout extends React.Component {
           }));
         });
       },
-      updateQuantity: (lineItemID, quantity) => {},
+      // updateQuantity: (lineItemID, quantity) => {},
       toggleCart: () => {
         this.setState(state => ({
           store: { ...state.store, isCartOpen: !state.store.isCartOpen }
