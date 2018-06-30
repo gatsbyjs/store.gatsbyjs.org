@@ -68,7 +68,7 @@ const Button = styled('button')`
 export default class AddToCart extends Component {
   state = {
     variant: '',
-    quantity: 0
+    quantity: 1
   };
 
   handleChange = event => {
@@ -77,12 +77,17 @@ export default class AddToCart extends Component {
 
   handleSubmit = callback => event => {
     event.preventDefault();
-    if (this.state.value === '') {
+    if (this.state.variant === '') {
+      // TODO design a better way to show errors.
       alert('Please select a size first.');
       return;
     }
 
-    console.log(this.state);
+    if (this.state.quantity < 1) {
+      alert('Please choose a quantity of 1 or more.');
+      return;
+    }
+
     callback(this.state.variant, this.state.quantity);
   };
 
@@ -118,6 +123,8 @@ export default class AddToCart extends Component {
                 type="number"
                 id="quantity"
                 name="quantity"
+                min="1"
+                step="1"
                 onChange={this.handleChange}
                 value={this.state.quantity}
               />
