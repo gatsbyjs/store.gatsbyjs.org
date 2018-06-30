@@ -18,6 +18,8 @@ The store is statically rendered using the Shopify source plugin, and the mainta
 
 If you're a contributor to Gatsby, that means you can get one free item from our store! Log in using your GitHub account and we'll give you a discount code good for a t-shirt or socks.
 
+See [the docs for claiming contributor swag](https://next.gatsbyjs.org/docs/contributor-swag/) for additional details.
+
 ## Cheap Swag for All
 
 We sell our swag at pretty close to cost (we round for easy math) and we don’t charge shipping fees. Grab a t-shirt or socks and show everyone your favorite blazing fast framework!
