@@ -1,6 +1,11 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled, { keyframes } from 'react-emotion';
 import { button, colors, fonts } from '../../utils/styles';
+
+const loading = keyframes`
+  from { transform: scale(0.001); opacity: 1; }
+  to { transform: scale(1); opacity: 0; }
+`;
 
 const Form = styled('form')`
   display: flex;
@@ -8,10 +13,41 @@ const Form = styled('form')`
   justify-content: space-between;
   margin-bottom: 3rem;
   margin-top: 1rem;
+  position: relative;
+
+  &.submitting {
+    ::before {
+      animation: ${loading} 1s linear infinite;
+      border: 3px solid ${colors.lightest};
+      border-radius: 50%;
+      content: ' ';
+      display: block;
+      height: 5rem;
+      left: calc(50% - 2.5rem);
+      position: absolute;
+      top: calc(50% - 2.5rem);
+      width: 5rem;
+      z-index: 10;
+    }
+
+    ::after {
+      background-color: ${colors.textLight}80;
+      border-radius: 3px;
+      bottom: -0.5rem;
+      content: ' ';
+      cursor: default;
+      left: -1rem;
+      position: absolute;
+      right: -1rem;
+      top: -0.5rem;
+      z-index: 1;
+    }
+  }
 `;
 
 const Label = styled('label')`
   color: ${colors.textLight};
+  display: block;
   font-family: ${fonts.heading};
   margin-top: 1rem;
   width: 100%;
@@ -91,7 +127,11 @@ export default class ContributorForm extends React.Component {
 
   render() {
     return (
-      <Form method="post" onSubmit={this.props.onSubmit(this.state)}>
+      <Form
+        method="post"
+        className={this.props.isDiscountRequestActive && 'submitting'}
+        onSubmit={this.props.onSubmit(this.state)}
+      >
         <InputLabel>
           First Name
           <Input
@@ -99,6 +139,7 @@ export default class ContributorForm extends React.Component {
             name="first_name"
             value={this.state.first_name}
             onChange={this.onChange}
+            disabled={this.props.isDiscountRequestActive}
           />
         </InputLabel>
         <InputLabel>
@@ -108,6 +149,7 @@ export default class ContributorForm extends React.Component {
             name="email"
             value={this.state.email}
             onChange={this.onChange}
+            disabled={this.props.isDiscountRequestActive}
           />
         </InputLabel>
         <Label>
@@ -116,10 +158,13 @@ export default class ContributorForm extends React.Component {
             name="subscribe"
             checked={this.state.subscribe}
             onChange={this.onToggle}
+            disabled={this.props.isDiscountRequestActive}
           />
           Email me Gatsby updates and ideas for contributing.
         </Label>
-        <Button type="submit">Claim Your Discount Code</Button>
+        <Button type="submit" disabled={this.props.isDiscountRequestActive}>
+          Claim Your Discount Code
+        </Button>
         <PrivacyNotice>
           <strong>Privacy Notice:</strong> We will never contact you without
           your permission or share any of your personal information with third

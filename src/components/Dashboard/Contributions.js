@@ -1,16 +1,18 @@
 import React from 'react';
 import UserContext from '../../context/UserContext';
-import DiscountCode from './DiscountCode';
+import DiscountCode from '../DiscountCode/DiscountCode';
 import IssueList from './IssueList';
 import { Heading, Subheading, Lede, Text } from '../shared/Typography';
 
 export default () => (
   <UserContext.Consumer>
-    {({ contributions, profile }) =>
-      contributions.count > 0 ? (
+    {({ contributions, loading, profile }) =>
+      loading || contributions.count > 0 ? (
         <>
           <DiscountCode />
-          <Subheading>Your Most Recent Contribution</Subheading>
+          <Subheading className={loading && 'loading'}>
+            Your Most Recent Contribution
+          </Subheading>
           <IssueList issues={contributions.issues.slice(0, 1)} />
         </>
       ) : (
