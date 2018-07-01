@@ -35,15 +35,37 @@ export default class Layout extends React.Component {
       ...defaultUserContext,
       handleGetDiscountCode: userData => {
         return async event => {
-          event.preventDefault();
-          const results = await getDiscountCode(userData);
+          try {
+            event.preventDefault();
+            this.setState(state => ({
+              user: {
+                ...state.user,
+                isDiscountRequestActive: true
+              }
+            }));
 
-          this.setState(state => ({
-            user: {
-              ...state.user,
-              discount: results.data
-            }
-          }));
+            const results = await getDiscountCode(userData);
+
+            console.log(results);
+            this.setState(state => ({
+              user: {
+                ...state.user,
+                isDiscountRequestActive: false,
+                discount: results.data
+              }
+            }));
+          } catch (err) {
+            this.setState(state => ({
+              user: {
+                ...state.user,
+                isDiscountRequestActive: false,
+                discount: {
+                  error: err.message,
+                  discount_code: ''
+                }
+              }
+            }));
+          }
         };
       },
       handleLogout: () => {
@@ -95,7 +117,7 @@ export default class Layout extends React.Component {
     getUserInfo().then(profile => {
       checkContributions(profile.nickname).then(contributions => {
         this.setState(state => ({
-          user: { ...state.user, contributions, profile }
+          user: { ...state.user, contributions, profile, loading: false }
         }));
       });
     });
