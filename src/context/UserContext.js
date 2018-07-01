@@ -32,18 +32,15 @@ export const getDiscountCode = async ({
   const token = getAccessToken();
   const api = process.env.GATSBY_API;
 
-  return await axios
-    .post(
-      `${api}/store/discount-code`,
-      { username, email, first_name, subscribe },
-      { headers: { Authorization: `Bearer ${token}` } }
-    )
-    .catch(err => {
-      console.log(err);
-    });
+  return await axios.post(
+    `${api}/store/discount-code`,
+    { username, email, first_name, subscribe },
+    { headers: { Authorization: `Bearer ${token}` } }
+  );
 };
 
 export const defaultUserContext = {
+  loading: true,
   contributions: {
     count: 0,
     issues: []
