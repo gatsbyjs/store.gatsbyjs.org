@@ -55,6 +55,11 @@ export const button = {
     :hover {
       background: ${colors.brand}0c;
     }
+
+    &[disabled] {
+      background-color: ${colors.lightest};
+      cursor: not-allowed;
+    }
   `,
   big: css`
     font-size: 1.25rem;
@@ -72,6 +77,10 @@ export const button = {
     :focus,
     :hover {
       background-color: ${colors.brand};
+    }
+
+    &[disabled] {
+      background-color: ${colors.textLight};
     }
   `
 };
