@@ -46,7 +46,6 @@ export default class Layout extends React.Component {
 
             const results = await getDiscountCode(userData);
 
-            console.log(results);
             this.setState(state => ({
               user: {
                 ...state.user,
