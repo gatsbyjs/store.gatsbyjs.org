@@ -5,8 +5,8 @@ import { colors } from '../../utils/styles';
 
 const DiscountCodeBox = styled('div')`
   background-color: ${colors.brand}20;
-  border: 1px solid ${colors.brand};
-  border-radius: 0.5rem;
+  border: 1px solid ${colors.brand}40;
+  border-radius: 3px;
   color: ${colors.darkest};
   padding: 1.5rem 1rem 1rem;
   text-align: center;
@@ -14,6 +14,9 @@ const DiscountCodeBox = styled('div')`
 
 const DiscountCode = styled('pre')`
   background-color: ${colors.lightest};
+  border: 1px solid ${colors.brand}40;
+  border-radius: 3px;
+  box-shadow: inset 1px 1px 5px ${colors.textLight}40;
   font-size: 1.75rem;
   margin: 0.75rem 0 0;
   padding: 1rem;
