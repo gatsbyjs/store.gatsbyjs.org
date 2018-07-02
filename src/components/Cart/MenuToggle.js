@@ -9,6 +9,7 @@ const Button = styled('a')`
   ${button.big};
   display: flex;
   justify-content: space-between;
+  align-items: center;
   margin-left: 1rem;
   padding-left: 0.5rem;
   padding-right: 0.5rem;
@@ -29,7 +30,6 @@ const ButtonCount = styled('span')`
   padding: 0.25rem 0;
   position: relative;
   text-align: center;
-  top: 0.375rem;
   width: 2em;
 `;
 
