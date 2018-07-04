@@ -3,6 +3,7 @@ import styled, { injectGlobal, css } from 'react-emotion';
 import ReactModal from 'react-modal';
 import MdClose from 'react-icons/lib/md/close';
 import SizeChartTable from './SizeChartTable';
+import { Heading, Subheading } from '../shared/Typography';
 import { button, colors, fonts } from '../../utils/styles';
 
 injectGlobal`
@@ -69,11 +70,12 @@ injectGlobal`
   }
 `;
 
-const headline = css`
+const SubSubheading = styled('h4')`
   font-family: ${fonts.heading};
   font-weight: 500;
-  line-height: 1.1;
-  color: #000;
+  font-size: 1.2rem;
+  margin-bottom: 0;
+  color: #333;
 `;
 
 const ModalOpenButton = styled('button')`
@@ -151,32 +153,21 @@ export default class Modal extends React.Component {
           className="ReactModal__Modal"
           overlayClassName="ReactModal__Overlay"
         >
-          <h1
-            className={headline}
-            style={{
-              color: colors.brand,
-              fontWeight: 'bold',
-              margin: 0,
-              // make room for the close button
-              paddingRight: 60
-            }}
-          >
-            Care Instructions & Size Chart
-          </h1>
-          <h2 className={headline}>Care Instructions</h2>
-          <h3 className={headline}>Socks</h3>
+          <Heading>Care Instructions & Size Chart</Heading>
+          <Subheading>Care Instructions</Subheading>
+          <SubSubheading>Socks</SubSubheading>
           <p>
             Keep those socks comfy on your feet and looking bright by washing
             them in cold water with darker colors. Tumble dry on low so they
             don't shrink!
           </p>
-          <h3 className={headline}>T-Shirts</h3>
+          <SubSubheading>T-Shirts</SubSubheading>
           <p>
             Machine wash cold and tumble dry only. These shirts can’t take the
             heat (literally)! We want to make sure you’re happy with our shirts,
             but they require a little TLC.
           </p>
-          <h2 className={headline}>Size Chart</h2>
+          <Subheading>Size Chart</Subheading>
           <p>All measurements in inches (1 inch = 2.54 centimeters).</p>
           <SizeChartTable />
           <p>
