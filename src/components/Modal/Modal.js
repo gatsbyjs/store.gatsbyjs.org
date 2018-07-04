@@ -76,6 +76,17 @@ const headline = css`
   color: #000;
 `;
 
+const ModalOpenButton = styled('button')`
+  background: transparent;
+  border: 0;
+  border-bottom: 1px solid ${colors.brand};
+  color: ${colors.brand};
+  cursor: pointer;
+  font-size: 1rem;
+  margin-top: 1rem;
+  padding: 0;
+`;
+
 const ModalCloseButton = styled('button')`
   border: 0;
   color: ${colors.brand};
@@ -129,21 +140,9 @@ export default class Modal extends React.Component {
   render() {
     return (
       <>
-        <button
-          onClick={this.handleOpenModal}
-          style={{
-            cursor: 'pointer',
-            color: colors.brand,
-            border: 0,
-            background: 'transparent',
-            fontSize: '1rem',
-            padding: 0,
-            marginTop: '1rem',
-            borderBottom: `1px solid ${colors.brand}`
-          }}
-        >
+        <ModalOpenButton onClick={this.handleOpenModal}>
           Care Instructions & Size Chart
-        </button>
+        </ModalOpenButton>
         <ReactModal
           isOpen={this.state.showModal}
           contentLabel="Care Instructions & Size Chart Modal"
