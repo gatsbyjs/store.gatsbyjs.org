@@ -62,32 +62,32 @@ const SizeChartTable = () => (
         </tr>
         <Tr>
           <TdLeft>Unisex Body Length</TdLeft>
-          <Td>27.5 - 28</Td>
-          <Td>28.5 - 29</Td>
-          <Td>29.5 - 30</Td>
-          <Td>30.5 - 31</Td>
-          <Td>31.5 - 32</Td>
+          <Td>27.5–28</Td>
+          <Td>28.5–29</Td>
+          <Td>29.5–30</Td>
+          <Td>30.5–31</Td>
+          <Td>31.5–32</Td>
         </Tr>
         <Tr>
           <TdLeft>Unisex Chest</TdLeft>
-          <Td>36 - 36</Td>
-          <Td>39 - 41</Td>
-          <Td>42 - 44</Td>
-          <Td>45 - 48</Td>
-          <Td>49 - 52</Td>
+          <Td>36–36</Td>
+          <Td>39–41</Td>
+          <Td>42–44</Td>
+          <Td>45–48</Td>
+          <Td>49–52</Td>
         </Tr>
         <Tr>
           <TdLeft>Women Body Length</TdLeft>
-          <Td>25.375 - 26.5</Td>
-          <Td>26 - 27</Td>
+          <Td>25.375–26.5</Td>
+          <Td>26–27</Td>
           <Td>—</Td>
           <Td>—</Td>
           <Td>—</Td>
         </Tr>
         <Tr last>
           <TdLeft>Women Chest</TdLeft>
-          <Td>29.5 - 32.5</Td>
-          <Td>31.5 - 34.5</Td>
+          <Td>29.5–32.5</Td>
+          <Td>31.5–34.5</Td>
           <Td>—</Td>
           <Td>—</Td>
           <Td>—</Td>
