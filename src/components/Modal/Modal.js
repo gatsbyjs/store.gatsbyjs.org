@@ -97,7 +97,7 @@ const ModalCloseButton = styled('button')`
   right: 0;
   height: 40px;
   width: 40px;
-  background: rgb(224, 214, 235);
+  background: ${colors.brandBright};
   font-size: 1.125rem;
   border-bottom-left-radius: 2px;
 
