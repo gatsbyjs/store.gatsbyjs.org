@@ -153,7 +153,9 @@ export default class Modal extends React.Component {
           className="ReactModal__Modal"
           overlayClassName="ReactModal__Overlay"
         >
-          <Heading>Care Instructions & Size Chart</Heading>
+          <div style={{ paddingRight: 60 }}>
+            <Heading>Care Instructions & Size Chart</Heading>
+          </div>
           <Subheading>Care Instructions</Subheading>
           <SubSubheading>Socks</SubSubheading>
           <p>
