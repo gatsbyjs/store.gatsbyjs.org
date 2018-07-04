@@ -1,4 +1,4 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import styled, { injectGlobal, css } from 'react-emotion';
 import ReactModal from 'react-modal';
 import MdClose from 'react-icons/lib/md/close';
@@ -128,7 +128,7 @@ export default class Modal extends React.Component {
 
   render() {
     return (
-      <Fragment>
+      <>
         <button
           onClick={this.handleOpenModal}
           style={{
@@ -190,7 +190,7 @@ export default class Modal extends React.Component {
             <MdClose />
           </ModalCloseButton>
         </ReactModal>
-      </Fragment>
+      </>
     );
   }
 }
