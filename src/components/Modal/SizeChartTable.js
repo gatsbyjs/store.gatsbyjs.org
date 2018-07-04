@@ -5,8 +5,8 @@ import { colors } from '../../utils/styles';
 
 const ResponsiveTable = styled('div')`
   display: block;
-  width: 100%;
   overflow-x: auto;
+  width: 100%;
   -webkit-overflow-scrolling: touch;
   -ms-overflow-style: -ms-autohiding-scrollbar;
 `;
@@ -20,10 +20,10 @@ const Table = styled('table')`
 
 const ThBrand = styled('th')`
   background: ${colors.brand};
-  color: ${colors.lightest};
   border-left: 1px solid #9d7cbf;
-  -webkit-font-smoothing: antialiased;
+  color: ${colors.lightest};
   padding: 8px 0;
+  -webkit-font-smoothing: antialiased;
 `;
 
 const Tr = styled('tr')`
