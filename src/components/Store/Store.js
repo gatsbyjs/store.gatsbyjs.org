@@ -1,5 +1,6 @@
 import React from 'react';
 import ProductListings from './ProductListings';
+import Modal from '../Modal/Modal';
 import { Heading, Lede, Text } from '../shared/Typography';
 
 export default () => (
@@ -31,5 +32,6 @@ export default () => (
       store exists.
     </Text>
     <ProductListings />
+    <Modal />
   </>
 );
