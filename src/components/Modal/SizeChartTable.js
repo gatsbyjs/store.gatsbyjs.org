@@ -80,17 +80,17 @@ const SizeChartTable = () => (
           <TdLeft>Women Body Length</TdLeft>
           <Td>25.375 - 26.5</Td>
           <Td>26 - 27</Td>
-          <Td>-</Td>
-          <Td>-</Td>
-          <Td>-</Td>
+          <Td>—</Td>
+          <Td>—</Td>
+          <Td>—</Td>
         </Tr>
         <Tr last>
           <TdLeft>Women Chest</TdLeft>
           <Td>29.5 - 32.5</Td>
           <Td>31.5 - 34.5</Td>
-          <Td>-</Td>
-          <Td>-</Td>
-          <Td>-</Td>
+          <Td>—</Td>
+          <Td>—</Td>
+          <Td>—</Td>
         </Tr>
       </tbody>
     </Table>
