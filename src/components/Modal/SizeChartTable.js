@@ -38,6 +38,7 @@ const Tr = styled('tr')`
 const Td = styled('td')`
   border-left: 1px solid #f5f3f7;
   padding: 8px 4px;
+  text-align: center;
   vertical-align: top;
 `;
 
