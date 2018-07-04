@@ -18,6 +18,11 @@ const Table = styled('table')`
   width: 100%;
 `;
 
+const ThLeft = styled('th')`
+  textalign: left;
+  padding: 4px 8px 4px 0;
+`;
+
 const ThBrand = styled('th')`
   background: ${colors.brand};
   border-left: 1px solid #9d7cbf;
@@ -47,15 +52,7 @@ const SizeChartTable = () => (
     <Table>
       <tbody>
         <tr>
-          <th
-            class="sizechart_column_heading_grey"
-            style={{
-              textAlign: 'left',
-              padding: '4px 8px 4px 0'
-            }}
-          >
-            Style
-          </th>
+          <ThLeft>Style</ThLeft>
           <ThBrand>Sizes</ThBrand>
           <ThBrand>S</ThBrand>
           <ThBrand>M</ThBrand>
