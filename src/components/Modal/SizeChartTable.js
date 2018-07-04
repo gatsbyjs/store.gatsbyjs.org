@@ -11,6 +11,13 @@ const ResponsiveTable = styled('div')`
   -ms-overflow-style: -ms-autohiding-scrollbar;
 `;
 
+const Table = styled('table')`
+  border-collapse: collapse;
+  max-width: 100%;
+  min-width: 600px;
+  width: 100%;
+`;
+
 const ThBrand = styled('th')`
   background: ${colors.brand};
   color: ${colors.lightest};
@@ -37,14 +44,7 @@ const TdLeft = withProps({
 
 const SizeChartTable = () => (
   <ResponsiveTable>
-    <table
-      css={`
-        border-collapse: collapse;
-        width: 100%;
-        max-width: 100%;
-        min-width: 600px;
-      `}
-    >
+    <Table>
       <tbody>
         <tr>
           <th
@@ -96,7 +96,7 @@ const SizeChartTable = () => (
           <Td>-</Td>
         </Tr>
       </tbody>
-    </table>
+    </Table>
   </ResponsiveTable>
 );
 
