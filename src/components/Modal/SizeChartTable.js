@@ -54,7 +54,7 @@ const SizeChartTable = () => (
               padding: '4px 8px 4px 0'
             }}
           >
-            Gender
+            Style
           </th>
           <ThBrand>Sizes</ThBrand>
           <ThBrand>S</ThBrand>
