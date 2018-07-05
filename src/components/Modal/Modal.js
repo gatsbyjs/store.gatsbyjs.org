@@ -10,7 +10,7 @@ injectGlobal`
   .ReactModal__Overlay {
     background-color: ${colors.lightest};
     z-index: 10000;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     right: 0;
