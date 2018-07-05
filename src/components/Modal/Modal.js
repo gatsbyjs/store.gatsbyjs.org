@@ -18,6 +18,7 @@ injectGlobal`
     min-height: 100%;
     min-width: 100%;
     overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
 
     @media (min-width: 600px) {
       background-color: ${colors.lightest}95;
