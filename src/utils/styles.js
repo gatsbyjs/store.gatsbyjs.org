@@ -16,7 +16,8 @@ export const colors = {
   lightest: '#ffffff',
   darkest: '#4d4058',
   textLight: '#7e718a',
-  text: '#766889'
+  text: '#766889',
+  lilac: `#9D7CBF`
 };
 
 export const spacing = {
@@ -60,6 +61,58 @@ const defaultFontStack = [
 export const fonts = {
   body: defaultFontStack,
   heading: `Futura PT, ${defaultFontStack}`
+};
+
+export const dropdown = {
+  container: css`
+    background: ${colors.lightest};
+    border: 1px solid ${colors.brandBright};
+    border-radius: ${radius.default}px;
+    border-top-right-radius: 0;
+    box-shadow: 0 3px 8px ${colors.textLight}40;
+    box-sizing: border-box;
+    margin-top: ${spacing['2xs']}px;
+    padding: ${spacing.sm}px;
+    position: absolute;
+    right: ${spacing.sm + spacing.xs}px;
+    top: 100%;
+
+    &::before,
+    &::after {
+      content: ' ';
+      position: absolute;
+      width: 0;
+      height: 0;
+      border-style: solid;
+    }
+
+    &::before {
+      top: -12px;
+      right: -1px;
+      border-width: 0 0 12px 12px;
+      border-color: transparent transparent ${colors.brandBright} transparent;
+    }
+
+    &::after {
+      top: -10px;
+      right: 0;
+      border-width: 0 0 10px 10px;
+      border-color: transparent transparent ${colors.lightest} transparent;
+    }
+  `,
+  divider: css`
+    background: ${colors.brandLight};
+    height: 1px;
+    margin-left: -${spacing.sm}px;
+    margin-right: -${spacing.sm}px;
+  `,
+  item: css`
+    color: #000;
+    display: block;
+    font-size: 0.875rem;
+    padding-bottom: ${spacing.sm}px;
+    padding-top: ${spacing.sm}px;
+  `
 };
 
 export const button = {
