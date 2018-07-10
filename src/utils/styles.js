@@ -39,6 +39,11 @@ export const breakpoints = {
   hd: 1200
 };
 
+export const radius = {
+  default: '2px',
+  large: '4px'
+};
+
 const defaultFontStack = [
   '-apple-system',
   'BlinkMacSystemFont',

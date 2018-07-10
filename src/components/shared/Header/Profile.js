@@ -3,7 +3,7 @@ import styled from 'react-emotion';
 import { Link } from 'gatsby';
 import UserContext from '../../../context/UserContext';
 import { login } from '../../../utils/auth';
-import { colors, button, fonts } from '../../../utils/styles';
+import { colors, button, fonts, radius } from '../../../utils/styles';
 
 const Profile = styled('div')`
   display: flex;
@@ -18,12 +18,12 @@ const AvatarLink = styled(Link)`
 `;
 
 const Avatar = styled('img')`
-  border: 1px solid ${colors.brand}22;
-  border-radius: 3px;
+  border: 2px solid ${colors.brandBright};
+  border-radius: ${radius.default};
   box-sizing: border-box;
   display: block;
-  height: 60px;
-  width: 60px;
+  height: 32px;
+  width: 32px;
 `;
 
 const UserInfo = styled('div')`
