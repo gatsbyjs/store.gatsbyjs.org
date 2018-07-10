@@ -70,6 +70,11 @@ export default class Layout extends React.Component {
       handleLogout: () => {
         this.setState({ user: defaultUserContext });
         logout(() => push('/'));
+      },
+      toggleProfile: () => {
+        this.setState(state => ({
+          user: { ...state.user, isProfileOpen: !state.user.isProfileOpen }
+        }));
       }
     },
     store: {

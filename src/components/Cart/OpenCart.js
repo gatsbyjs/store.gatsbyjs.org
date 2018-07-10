@@ -2,20 +2,12 @@ import React from 'react';
 import styled from 'react-emotion';
 import StoreContext from '../../context/StoreContext';
 import ItemList from './ItemList';
-import { colors, button, fonts } from '../../utils/styles';
+import { colors, button, fonts, dropdown } from '../../utils/styles';
 import { Text } from '../shared/Typography';
 
 const OpenCart = styled('div')`
-  background: ${colors.lightest};
-  border-radius: 0.25rem;
-  border-top-right-radius: 0;
-  box-shadow: 0 3px 8px ${colors.textLight}40;
-  box-sizing: border-box;
-  padding: 1rem;
-  position: absolute;
-  right: 0;
-  top: 100%;
-  width: 300px;
+  ${dropdown.container};
+  width: 280px;
 `;
 
 const Heading = styled('h4')`

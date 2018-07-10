@@ -1,15 +1,19 @@
 import React from 'react';
-import styled, { css } from 'react-emotion';
+import styled from 'react-emotion';
 import { Link } from 'gatsby';
 import GithubIcon from 'react-icons/lib/go/mark-github';
+import ProfileToggle from './ProfileToggle';
+import OpenProfile from './OpenProfile';
 import UserContext from '../../../context/UserContext';
 import { login } from '../../../utils/auth';
 import { colors, button, fonts, radius, spacing } from '../../../utils/styles';
 
 const Profile = styled('div')`
+  align-items: center;
   display: flex;
   justify-content: space-between;
   margin: 0;
+  position: relative;
 `;
 
 const AvatarLink = styled(Link)`
@@ -22,8 +26,8 @@ const Avatar = styled('img')`
   border-radius: ${radius.default}px;
   box-sizing: border-box;
   display: block;
-  height: 32px;
-  width: 32px;
+  height: 36px;
+  width: 36px;
 `;
 
 const UserInfo = styled('div')`
@@ -34,18 +38,20 @@ const UserInfo = styled('div')`
 `;
 
 const Name = styled('strong')`
-  color: ${colors.darkest};
+  color: ${colors.brand};
   display: block;
+  font-size: 0.875rem;
+  margin-right: ${spacing.sm}px;
 `;
 
 const NameLink = styled(Link)`
   color: inherit;
+  position: relative;
   text-decoration: none;
-`;
 
-const Logout = styled('a')`
-  ${button.default};
-  margin-top: 5px;
+  &::focus {
+    z-index: 1;
+  }
 `;
 
 const Login = styled('a')`
@@ -53,35 +59,25 @@ const Login = styled('a')`
   ${button.small};
 `;
 
-const icon = css`
+const Icon = styled(GithubIcon)`
   font-size: 1rem;
   margin-right: ${spacing.xs}px;
 `;
 
 export default () => (
   <UserContext.Consumer>
-    {({ profile, handleLogout }) => (
+    {({ profile }) => (
       <Profile>
         {profile.name ? (
           <>
+            <Name>
+              <NameLink to="/account/dashboard"> @{profile.nickname}</NameLink>
+            </Name>
             <AvatarLink to="/account/dashboard">
               <Avatar src={profile.picture} alt={profile.name} />
             </AvatarLink>
-            <UserInfo>
-              <Name>
-                <NameLink to="/account/dashboard">{profile.name}</NameLink>
-              </Name>
-              @{profile.nickname}
-              <Logout
-                href="/"
-                onClick={event => {
-                  event.preventDefault();
-                  handleLogout();
-                }}
-              >
-                log out
-              </Logout>
-            </UserInfo>
+            <ProfileToggle />
+            <OpenProfile />
           </>
         ) : (
           <UserInfo>
@@ -92,7 +88,7 @@ export default () => (
                 login();
               }}
             >
-              <GithubIcon className={icon} />
+              <Icon />
               Log in with GitHub
             </Login>
           </UserInfo>

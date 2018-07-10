@@ -47,8 +47,10 @@ export const defaultUserContext = {
   },
   discount: false,
   profile: {},
+  isProfileOpen: false,
   handleGetDiscountCode: () => {},
-  handleLogout: () => {}
+  handleLogout: () => {},
+  toggleProfile: () => {}
 };
 
 export default React.createContext(defaultUserContext);
