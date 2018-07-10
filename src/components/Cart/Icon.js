@@ -4,8 +4,8 @@ import { colors } from '../../utils/styles';
 
 const iconStyles = css`
   display: inline-block;
-  height: 20px;
-  width: 20px;
+  height: 16px;
+  width: 16px;
 `;
 
 const iconStrokeStyles = css`

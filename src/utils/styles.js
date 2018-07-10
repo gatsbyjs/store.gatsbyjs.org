@@ -40,8 +40,8 @@ export const breakpoints = {
 };
 
 export const radius = {
-  default: '2px',
-  large: '4px'
+  default: 2,
+  large: 4
 };
 
 const defaultFontStack = [
@@ -65,18 +65,19 @@ export const fonts = {
 export const button = {
   default: css`
     background-color: ${colors.lightest};
-    border: 1px solid ${colors.brand}22;
-    border-radius: 3px;
+    border: 1px solid ${colors.brandBright};
+    border-radius: ${radius.default}px;
     box-sizing: border-box;
-    color: ${colors.textLight};
+    color: ${colors.brand};
     cursor: pointer;
     display: block;
-    font-family: ${fonts.heading};
+    font-family: ${fonts.body};
     margin: 0;
-    padding: 2px;
+    min-height: 2.25rem;
+    padding: ${spacing.xs}px ${spacing.sm}px;
     text-align: center;
     text-decoration: none;
-    transition: 200ms background linear;
+    transition: 200ms background linear, 100ms border-color linear;
 
     :focus,
     :hover {
@@ -88,7 +89,11 @@ export const button = {
       cursor: not-allowed;
     }
   `,
+  small: css`
+    font-size: 0.875rem;
+  `,
   big: css`
+    font-family: ${fonts.heading};
     font-size: 1.25rem;
     padding: 0.25em 0.625em;
   `,
@@ -108,6 +113,15 @@ export const button = {
 
     &[disabled] {
       background-color: ${colors.textLight};
+    }
+  `,
+  ghost: css`
+    border: 1px solid transparent;
+
+    :focus,
+    :hover {
+      background: ${colors.lightest};
+      border-color: ${colors.brandBright};
     }
   `
 };

@@ -2,34 +2,33 @@ import React from 'react';
 import styled from 'react-emotion';
 import StoreContext from '../../context/StoreContext';
 import Icon from './Icon';
-import { button, colors } from '../../utils/styles';
+import { button, colors, spacing } from '../../utils/styles';
 
 const Button = styled('a')`
   ${button.default};
-  ${button.big};
+  ${button.ghost};
+  ${button.small};
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-left: 1rem;
-  padding-left: 0.5rem;
-  padding-right: 0.5rem;
+  margin-left: ${spacing.sm}px;
   position: relative;
 `;
 
 const ButtonCount = styled('span')`
-  background: ${colors.brand};
+  background: ${colors.brandBright};
   border-radius: 50%;
   box-sizing: border-box;
-  color: ${colors.lightest};
+  color: ${colors.brand};
   display: inline-block;
   font-size: 0.5rem;
   font-weight: 900;
   height: 2em;
-  line-height: 1;
-  margin-left: 5px;
-  padding: 0.25rem 0;
+  line-height: 2em;
+  margin-left: ${spacing.xs}px;
   position: relative;
   text-align: center;
+  user-select: none;
   width: 2em;
 `;
 
