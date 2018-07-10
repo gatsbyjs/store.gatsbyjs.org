@@ -3,7 +3,7 @@ import styled, { css } from 'react-emotion';
 import MdArrowDropDown from 'react-icons/lib/md/arrow-drop-down';
 import MdArrowDropUp from 'react-icons/lib/md/arrow-drop-up';
 import UserContext from '../../../context/UserContext';
-import { button, spacing } from '../../../utils/styles';
+import { button } from '../../../utils/styles';
 
 const Button = styled('button')`
   ${button.default};

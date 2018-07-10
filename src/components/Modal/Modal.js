@@ -1,10 +1,10 @@
 import React from 'react';
-import styled, { injectGlobal, css } from 'react-emotion';
+import styled, { injectGlobal } from 'react-emotion';
 import ReactModal from 'react-modal';
 import MdClose from 'react-icons/lib/md/close';
 import SizeChartTable from './SizeChartTable';
 import { Heading, Subheading } from '../shared/Typography';
-import { button, colors, fonts } from '../../utils/styles';
+import { colors, fonts } from '../../utils/styles';
 
 injectGlobal`
   .ReactModal__Overlay {
