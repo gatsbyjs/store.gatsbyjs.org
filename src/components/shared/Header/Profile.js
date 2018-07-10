@@ -1,15 +1,15 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled, { css } from 'react-emotion';
 import { Link } from 'gatsby';
+import GithubIcon from 'react-icons/lib/go/mark-github';
 import UserContext from '../../../context/UserContext';
 import { login } from '../../../utils/auth';
-import { colors, button, fonts, radius } from '../../../utils/styles';
+import { colors, button, fonts, radius, spacing } from '../../../utils/styles';
 
 const Profile = styled('div')`
   display: flex;
   justify-content: space-between;
   margin: 0;
-  padding: 5px 8px;
 `;
 
 const AvatarLink = styled(Link)`
@@ -19,7 +19,7 @@ const AvatarLink = styled(Link)`
 
 const Avatar = styled('img')`
   border: 2px solid ${colors.brandBright};
-  border-radius: ${radius.default};
+  border-radius: ${radius.default}px;
   box-sizing: border-box;
   display: block;
   height: 32px;
@@ -30,7 +30,7 @@ const UserInfo = styled('div')`
   color: ${colors.textLight};
   font-family: ${fonts.heading};
   font-size: 0.75rem;
-  margin-left: 8px;
+  margin-left: ${spacing.sm}px;
 `;
 
 const Name = styled('strong')`
@@ -50,7 +50,12 @@ const Logout = styled('a')`
 
 const Login = styled('a')`
   ${button.default};
-  ${button.big};
+  ${button.small};
+`;
+
+const icon = css`
+  font-size: 1rem;
+  margin-right: ${spacing.xs}px;
 `;
 
 export default () => (
@@ -87,7 +92,8 @@ export default () => (
                 login();
               }}
             >
-              log in
+              <GithubIcon className={icon} />
+              Log in with GitHub
             </Login>
           </UserInfo>
         )}
