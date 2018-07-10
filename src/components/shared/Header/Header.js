@@ -4,19 +4,19 @@ import { Link } from 'gatsby';
 import Gatsby from './Gatsby';
 import Profile from './Profile';
 import Cart from '../../Cart/Cart';
-import { colors } from '../../../utils/styles';
+import { colors, spacing } from '../../../utils/styles';
 
 const Header = styled('header')`
   align-items: center;
-  background-color: ${colors.brandLight};
-  border-bottom: 2px solid ${colors.lightest};
-  box-shadow: 0 1px 2px ${colors.textLight}40;
+  background-color: ${colors.lightest};
+  border-bottom: 1px solid ${colors.brandLight};
   box-sizing: border-box;
   display: flex;
-  height: 90px;
+  height: 60px;
   justify-content: space-between;
   left: 0;
-  padding: 10px calc(50vw - 35ch);
+  padding-left: ${spacing.md}px;
+  padding-right: ${spacing.md}px;
   position: sticky;
   right: 0;
   top: 0;
@@ -25,23 +25,8 @@ const Header = styled('header')`
 
 const HomeLink = styled(Link)`
   display: block;
-  height: 50px;
-  width: 50px;
-`;
-
-const Banner = styled('div')`
-  font-family: 'Futura PT', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  margin: 0 auto 0 10px;
-`;
-
-const BannerLink = styled(Link)`
-  color: ${colors.darkest};
-  display: block;
-  font-size: 2rem;
-  font-weight: bold;
   line-height: 1;
-  text-decoration: none;
+  margin-right: auto;
 `;
 
 export default () => (
@@ -49,9 +34,6 @@ export default () => (
     <HomeLink to="/">
       <Gatsby />
     </HomeLink>
-    <Banner>
-      <BannerLink to="/">Gatsby Swag</BannerLink>
-    </Banner>
     <Profile />
     <Cart />
   </Header>
