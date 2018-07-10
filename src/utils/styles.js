@@ -19,6 +19,26 @@ export const colors = {
   text: '#766889'
 };
 
+export const spacing = {
+  '3xs': 2,
+  '2xs': 4,
+  xs: 8,
+  sm: 12,
+  md: 16,
+  lg: 24,
+  xl: 32,
+  '2xl': 40,
+  '3xl': 48
+};
+
+export const breakpoints = {
+  mobile: 400,
+  phablet: 550,
+  tablet: 750,
+  desktop: 1000,
+  hd: 1200
+};
+
 const defaultFontStack = [
   '-apple-system',
   'BlinkMacSystemFont',
