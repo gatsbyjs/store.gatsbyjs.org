@@ -44,31 +44,6 @@ const BannerLink = styled(Link)`
   text-decoration: none;
 `;
 
-const Nav = styled('nav')`
-  display: block;
-  font-size: 0.75rem;
-  letter-spacing: 0.2em;
-  margin-left: 0.25rem;
-  margin-top: 0.5rem;
-  text-transform: uppercase;
-`;
-
-const NavLink = styled(Link)`
-  border-bottom: 2px solid transparent;
-  color: ${colors.textLight};
-  display: inline-block;
-  margin: 0 1rem 0 0;
-  text-decoration: none;
-  transition: 250ms border-color linear;
-
-  &.active,
-  :active,
-  :focus,
-  :hover {
-    border-color: ${colors.brand};
-  }
-`;
-
 export default () => (
   <Header>
     <HomeLink to="/">
@@ -76,10 +51,6 @@ export default () => (
     </HomeLink>
     <Banner>
       <BannerLink to="/">Gatsby Swag</BannerLink>
-      <Nav>
-        <NavLink to="/">Swag Store</NavLink>
-        <NavLink to="/account/dashboard">Dashboard</NavLink>
-      </Nav>
     </Banner>
     <Profile />
     <Cart />
