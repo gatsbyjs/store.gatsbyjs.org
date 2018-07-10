@@ -3,14 +3,14 @@ import styled from 'react-emotion';
 import { colors } from '../../utils/styles';
 
 const IssueList = styled('ul')`
-  border-top: 1px solid ${colors.brandLight};
+  border-top: 1px solid ${colors.brandLighter};
   list-style: none;
   margin: 1rem 0 0;
   padding: 0;
 `;
 
 const Issue = styled('li')`
-  border-bottom: 1px solid ${colors.brandLight};
+  border-bottom: 1px solid ${colors.brandLighter};
   margin: 0;
   padding: 0.5rem 0;
 `;
@@ -27,12 +27,12 @@ const IssueLink = styled('a')`
   :active,
   :focus,
   :hover {
-    background-color: ${colors.brandLight};
+    background-color: ${colors.brandLighter};
   }
 `;
 
 const Label = styled('a')`
-  background-color: ${colors.brandLight};
+  background-color: ${colors.brandLighter};
   border: 1px solid ${colors.brand}20;
   border-radius: 1rem;
   box-sizing: border-box;

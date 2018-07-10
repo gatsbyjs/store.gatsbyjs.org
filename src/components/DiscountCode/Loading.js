@@ -4,7 +4,7 @@ import { Heading, Lede, Text } from '../shared/Typography';
 import { colors } from '../../utils/styles';
 
 const FormLoading = styled('div')`
-  background-color: ${colors.brandLight};
+  background-color: ${colors.brandLighter};
   border-radius: 3px;
   display: block;
   height: 200px;

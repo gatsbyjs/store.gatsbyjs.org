@@ -11,7 +11,8 @@ import { css } from 'react-emotion';
 export const colors = {
   brand: '#663399',
   brandBright: '#e0d6eb',
-  brandLight: '#fbf6ff',
+  brandLight: '#f5f3f7',
+  brandLighter: '#fbfafc',
   lightest: '#ffffff',
   darkest: '#4d4058',
   textLight: '#7e718a',
