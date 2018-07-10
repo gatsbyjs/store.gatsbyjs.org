@@ -26,9 +26,15 @@ const Heading = styled('h4')`
   margin: 0 0 ${spacing.sm}px;
 `;
 
+const LinkItem = ({ to, onClick, children }) => (
+  <Item to={to} onClick={onClick}>
+    {children}
+  </Item>
+);
+
 export default () => (
   <UserContext.Consumer>
-    {({ isProfileOpen, handleLogout, profile }) => {
+    {({ isProfileOpen, handleLogout, profile, hideProfile }) => {
       return (
         isProfileOpen && (
           <OpenProfile>
@@ -44,17 +50,19 @@ export default () => (
               </span>
             </Heading>
             <Divider />
-            <Item href="/account/dashboard">My Profile</Item>
+            <LinkItem onClick={hideProfile} to="/account/dashboard">
+              My Profile
+            </LinkItem>
             <Divider />
-            <Item
-              href="/"
+            <LinkItem
+              to="/"
               onClick={event => {
                 event.preventDefault();
                 handleLogout();
               }}
             >
               Log out
-            </Item>
+            </LinkItem>
           </OpenProfile>
         )
       );

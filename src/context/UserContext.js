@@ -50,7 +50,8 @@ export const defaultUserContext = {
   isProfileOpen: false,
   handleGetDiscountCode: () => {},
   handleLogout: () => {},
-  toggleProfile: () => {}
+  toggleProfile: () => {},
+  hideProfile: () => {}
 };
 
 export default React.createContext(defaultUserContext);

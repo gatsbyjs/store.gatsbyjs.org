@@ -75,6 +75,11 @@ export default class Layout extends React.Component {
         this.setState(state => ({
           user: { ...state.user, isProfileOpen: !state.user.isProfileOpen }
         }));
+      },
+      hideProfile: () => {
+        this.setState(state => ({
+          user: { ...state.user, isProfileOpen: false }
+        }));
       }
     },
     store: {
