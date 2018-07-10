@@ -23,17 +23,17 @@ const loadingBar = css`
     */
   background-image: linear-gradient(
     98deg,
-    ${colors.brandLight} 0%,
-    ${colors.brandLight} 62%,
+    ${colors.brandLighter} 0%,
+    ${colors.brandLighter} 62%,
     ${colors.brand}10 63%,
-    ${colors.brandLight} 64%,
+    ${colors.brandLighter} 64%,
     ${colors.brand}10 65%,
     ${colors.brand}10 66%,
-    ${colors.brandLight} 67%,
+    ${colors.brandLighter} 67%,
     ${colors.brand}10 68%,
     ${colors.brand}10 72%,
-    ${colors.brandLight} 90%,
-    ${colors.brandLight} 100%
+    ${colors.brandLighter} 90%,
+    ${colors.brandLighter} 100%
   );
   background-position-x: 0;
   background-size: 200%;
