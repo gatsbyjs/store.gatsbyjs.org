@@ -1,7 +1,6 @@
 import React from 'react';
 import styled, { keyframes, css } from 'react-emotion';
 import { button, colors, spacing, radius } from '../../utils/styles';
-import MdCheckBox from 'react-icons/lib/md/check-box';
 
 const loading = keyframes`
   from { transform: scale(0.001); opacity: 1; }
