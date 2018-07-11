@@ -17,7 +17,7 @@ export const colors = {
   darkest: '#4d4058',
   textLight: '#7e718a',
   text: '#766889',
-  lilac: `#9D7CBF`
+  lilac: `#9d7cbf`
 };
 
 export const spacing = {
