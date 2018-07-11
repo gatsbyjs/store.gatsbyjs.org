@@ -20,10 +20,8 @@ const Cta = styled('div')`
 
   @media (min-width: ${breakpoints.tablet}px) {
     margin-left: auto;
-    margin-right: 94px;
-  }
-
-  @media (min-width: ${breakpoints.mobile}px) {
+    margin-right: 70px;
+    max-width: 480px;
     padding-right: 60px;
   }
 `;
@@ -35,13 +33,13 @@ const ButlerContainer = styled('div')`
 `;
 
 const ButlerHandContainer = styled('div')`
-  left: 50%;
+  left: 65%;
   position: absolute;
   top: -${spacing.lg}px;
   transform: translate(-50%);
 
   @media (min-width: ${breakpoints.mobile}px) {
-    left: 65%;
+    left: 70%;
   }
 
   @media (min-width: ${breakpoints.tablet}px) {
