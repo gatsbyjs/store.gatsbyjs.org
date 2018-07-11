@@ -73,7 +73,8 @@ export default class Layout extends React.Component {
       },
       toggleProfile: () => {
         this.setState(state => ({
-          user: { ...state.user, isProfileOpen: !state.user.isProfileOpen }
+          user: { ...state.user, isProfileOpen: !state.user.isProfileOpen },
+          store: { ...state.store, isCartOpen: false }
         }));
       },
       hideProfile: () => {
@@ -116,7 +117,8 @@ export default class Layout extends React.Component {
       // updateQuantity: (lineItemID, quantity) => {},
       toggleCart: () => {
         this.setState(state => ({
-          store: { ...state.store, isCartOpen: !state.store.isCartOpen }
+          store: { ...state.store, isCartOpen: !state.store.isCartOpen },
+          user: { ...state.user, isProfileOpen: false }
         }));
       }
     }
