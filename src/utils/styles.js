@@ -16,6 +16,7 @@ export const colors = {
   lightest: '#ffffff',
   darkest: '#4d4058',
   textLight: '#7e718a',
+  textLighter: '#aaaaaa',
   text: '#333333',
   lilac: `#9d7cbf`
 };

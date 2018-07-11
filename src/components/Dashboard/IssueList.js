@@ -18,18 +18,26 @@ const Issue = styled('li')`
   }
 `;
 
+const IssueId = styled('span')`
+  color: ${colors.textLighter};
+  transition: 200ms color linear;
+`;
+
 const IssueLink = styled('a')`
   background-color: ${colors.lightest};
   color: ${colors.darkest};
   display: block;
   padding: ${spacing.xs}px 0 ${spacing.sm}px;
-  text-decoration: none;
-  transition: 200ms background-color linear;
+  transition: 200ms color linear;
 
   :active,
   :focus,
   :hover {
     color: ${colors.brand};
+
+    ${IssueId} {
+      color: ${colors.lilac};
+    }
   }
 `;
 
@@ -59,7 +67,9 @@ export default ({ issues }) => (
   <IssueList>
     {issues.map(issue => (
       <Issue key={issue.id}>
-        <IssueLink href={issue.html_url}>{issue.title}</IssueLink>
+        <IssueLink href={issue.html_url}>
+          {issue.title} <IssueId>#{issue.url.split('/').pop()}</IssueId>
+        </IssueLink>
         {issue.labels.map(label => (
           <Label href={label.url} key={`${issue.id}-${label.id}`}>
             {label.name}
