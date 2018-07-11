@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled, { css } from 'react-emotion';
 import { Link } from 'gatsby';
 import GithubIcon from 'react-icons/lib/go/mark-github';
 import ProfileToggle from './ProfileToggle';
@@ -89,7 +89,17 @@ export default () => (
               }}
             >
               <Icon />
-              Log in with GitHub
+              Log in{' '}
+              <span
+                className={css`
+                  display: none;
+                  @media (min-width: 400px) {
+                    display: inline;
+                  }
+                `}
+              >
+                with GitHub
+              </span>
             </Login>
           </UserInfo>
         )}
