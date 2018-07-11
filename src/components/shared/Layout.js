@@ -11,7 +11,7 @@ import UserContext, {
   getDiscountCode
 } from '../../context/UserContext';
 import { logout, getUserInfo } from '../../utils/auth';
-import { colors } from '../../utils/styles';
+import { colors, spacing } from '../../utils/styles';
 
 const bodyStyles = css`
   color: ${colors.text};
@@ -24,9 +24,8 @@ const bodyStyles = css`
 const Main = styled('main')`
   display: block;
   margin: 0 auto;
-  max-width: 58ch;
-  padding: 3rem 0 5rem;
-  width: 90vw;
+  max-width: 600px;
+  padding: ${spacing.xl}px ${spacing.sm}px ${spacing['3xl']}px;
 `;
 
 export default class Layout extends React.Component {
