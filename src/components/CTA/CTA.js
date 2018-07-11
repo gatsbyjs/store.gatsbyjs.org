@@ -5,6 +5,10 @@ import ButlerHand from './ButlerHand';
 import { colors, radius, spacing, breakpoints } from '../../utils/styles';
 
 const CtaContainer = styled('div')`
+  margin: ${spacing.xl}px ${spacing.lg}px;
+`;
+
+const Cta = styled('div')`
   background: ${colors.brandLighter};
   border: 1px solid ${colors.brandLight};
   border-radius: ${radius.default};
@@ -12,12 +16,14 @@ const CtaContainer = styled('div')`
   font-size: 0.875rem;
   position: relative;
   padding: ${spacing.md}px ${spacing.md}px ${spacing.md}px ${spacing.lg}px;
-  margin: ${spacing.xl}px ${spacing.lg}px;
   max-width: 640px;
 
-  @media (min-width: ${breakpoints.desktop}px) {
+  @media (min-width: ${breakpoints.tablet}px) {
     margin-left: auto;
     margin-right: 94px;
+  }
+
+  @media (min-width: ${breakpoints.mobile}px) {
     padding-right: 60px;
   }
 `;
@@ -58,14 +64,16 @@ const ButlerHandContainer = styled('div')`
 
 export default () => (
   <CtaContainer>
-    <ButlerContainer>
-      <Butler />
-    </ButlerContainer>
-    <strong>Already contributed to Gatsby?</strong> Claim your personal coupon
-    code and get <strong>free swag</strong> by logging in with your GitHub
-    account above!
-    <ButlerHandContainer>
-      <ButlerHand />
-    </ButlerHandContainer>
+    <Cta>
+      <ButlerContainer>
+        <Butler />
+      </ButlerContainer>
+      <strong>Already contributed to Gatsby?</strong> Claim your personal coupon
+      code and get <strong>free swag</strong> by logging in with your GitHub
+      account above!
+      <ButlerHandContainer>
+        <ButlerHand />
+      </ButlerHandContainer>
+    </Cta>
   </CtaContainer>
 );
