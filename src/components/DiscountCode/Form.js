@@ -1,16 +1,18 @@
 import React from 'react';
-import styled, { keyframes } from 'react-emotion';
-import {
-  button,
-  colors,
-  spacing,
-  radius,
-  breakpoints
-} from '../../utils/styles';
+import styled, { keyframes, css } from 'react-emotion';
+import { button, colors, spacing, radius } from '../../utils/styles';
+import MdCheckBox from 'react-icons/lib/md/check-box';
 
 const loading = keyframes`
   from { transform: scale(0.001); opacity: 1; }
   to { transform: scale(1); opacity: 0; }
+`;
+
+const inputFocusStyles = css`
+  border-color: ${colors.lilac};
+  box-shadow: 0 0 0 3px ${colors.brandBright};
+  outline: 0;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 `;
 
 const Form = styled('form')`
@@ -98,19 +100,70 @@ const Input = styled('input')`
   font-size: 1rem;
   margin-top: ${spacing.xs}px;
   padding: 0.5rem;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   width: 100%;
 
   :focus {
-    border-color: ${colors.lilac};
-    box-shadow: 0 0 0 3px ${colors.brandBright};
-    outline: 0;
+    ${inputFocusStyles};
   }
+`;
+
+const CheckboxContainer = styled('div')`
+  position: relative;
+  padding-left: 1.5rem;
 `;
 
 const Checkbox = styled('input')`
   display: inline-block;
   margin-right: 0.25rem;
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+
+  &:focus ~ ${CheckboxLabel}:before {
+    box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem ${colors.brandBright};
+    outline: 0;
+    outline-offset: 0px;
+  }
+
+  &:active ~ ${CheckboxLabel}:before {
+    color: ${colors.brand};
+    background-color: ${colors.brand};
+  }
+`;
+
+const CheckboxLabel = styled(Label)`
+  position: relative;
+
+  :before,
+  :after {
+    content: '';
+    display: block;
+    height: 1rem;
+    left: -1.5rem;
+    position: absolute;
+    top: 0;
+    transition: box-shadow 0.15s ease-in-out;
+    width: 1rem;
+  }
+
+  :before {
+    pointer-events: none;
+    user-select: none;
+    background-color: ${colors.brandBright};
+    border-radius: ${radius.default}px;
+  }
+
+  :after {
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+    border-radius: ${radius.default}px;
+  }
+
+  ${Checkbox}:checked ~ &:after {
+    background-color: ${colors.brand};
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E");
+  }
 `;
 
 const Button = styled('button')`
@@ -120,6 +173,10 @@ const Button = styled('button')`
   margin-top: ${spacing.lg}px;
   margin-bottom: ${spacing.md}px;
   flex: 2 100%;
+
+  :focus {
+    ${inputFocusStyles};
+  }
 `;
 
 const PrivacyNotice = styled('p')`
@@ -185,16 +242,19 @@ export default class ContributorForm extends React.Component {
             disabled={this.props.isDiscountRequestActive}
           />
         </InputLabel>
-        <Label>
+        <CheckboxContainer>
           <Checkbox
             type="checkbox"
             name="subscribe"
             checked={this.state.subscribe}
             onChange={this.onToggle}
             disabled={this.props.isDiscountRequestActive}
+            id="checkbox-newsletter"
           />
-          Email me Gatsby updates and ideas for contributing.
-        </Label>
+          <CheckboxLabel htmlFor="checkbox-newsletter">
+            Email me Gatsby updates and ideas for contributing.
+          </CheckboxLabel>
+        </CheckboxContainer>
         <Button type="submit" disabled={this.props.isDiscountRequestActive}>
           Claim Your Discount Code
         </Button>
