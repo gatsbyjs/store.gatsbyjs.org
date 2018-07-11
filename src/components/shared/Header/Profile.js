@@ -38,7 +38,7 @@ const UserInfo = styled('div')`
 `;
 
 const Name = styled('strong')`
-  color: ${colors.brand};
+  color: ${colors.brandDark};
   display: block;
   font-size: 0.875rem;
   margin-right: ${spacing.sm}px;
