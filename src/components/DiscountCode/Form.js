@@ -20,7 +20,7 @@ const Form = styled('form')`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
-  margin-bottom: 3rem;
+  margin-bottom: ${spacing.xl}px;
   margin-left: -${spacing.sm}px;
   margin-right: -${spacing.sm}px;
   margin-top: ${spacing.md}px;
@@ -32,6 +32,7 @@ const Form = styled('form')`
     border-radius: ${radius.default}px;
     margin-left: -${spacing.sm}px;
     margin-right: -${spacing.sm}px;
+    margin-top: ${spacing.xl}px;
     padding-left: ${spacing.sm}px;
     padding-right: ${spacing.sm}px;
   }
