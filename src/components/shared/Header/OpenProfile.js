@@ -34,38 +34,36 @@ const LinkItem = ({ to, onClick, children }) => (
 
 export default () => (
   <UserContext.Consumer>
-    {({ isProfileOpen, handleLogout, profile, hideProfile }) => {
-      return (
-        isProfileOpen && (
-          <OpenProfile>
-            <Heading>
-              Logged in as <strong>@{profile.nickname}</strong>
-              <br />
-              <span
-                className={css`
-                  color: ${colors.lilac};
-                `}
-              >
-                {profile.email}
-              </span>
-            </Heading>
-            <Divider />
-            <LinkItem onClick={hideProfile} to="/account/dashboard">
-              My Profile
-            </LinkItem>
-            <Divider />
-            <LinkItem
-              to="/"
-              onClick={event => {
-                event.preventDefault();
-                handleLogout();
-              }}
+    {({ isProfileOpen, handleLogout, profile, hideProfile }) =>
+      isProfileOpen && (
+        <OpenProfile>
+          <Heading>
+            Logged in as <strong>@{profile.nickname}</strong>
+            <br />
+            <span
+              className={css`
+                color: ${colors.lilac};
+              `}
             >
-              Log out
-            </LinkItem>
-          </OpenProfile>
-        )
-      );
-    }}
+              {profile.email}
+            </span>
+          </Heading>
+          <Divider />
+          <LinkItem onClick={hideProfile} to="/account/dashboard">
+            My Profile
+          </LinkItem>
+          <Divider />
+          <LinkItem
+            to="/"
+            onClick={event => {
+              event.preventDefault();
+              handleLogout();
+            }}
+          >
+            Log out
+          </LinkItem>
+        </OpenProfile>
+      )
+    }
   </UserContext.Consumer>
 );
