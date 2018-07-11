@@ -110,8 +110,14 @@ export const dropdown = {
     color: #000;
     display: block;
     font-size: 0.875rem;
-    padding-bottom: ${spacing.sm}px;
-    padding-top: ${spacing.sm}px;
+    margin-left: -${spacing.sm}px;
+    margin-right: -${spacing.sm}px;
+    padding: ${spacing.sm}px;
+
+    &:hover {
+      background-color: ${colors.brandLighter};
+      color: ${colors.brand};
+    }
   `
 };
 
