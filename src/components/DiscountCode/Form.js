@@ -1,6 +1,12 @@
 import React from 'react';
 import styled, { keyframes } from 'react-emotion';
-import { button, colors, spacing, radius } from '../../utils/styles';
+import {
+  button,
+  colors,
+  spacing,
+  radius,
+  breakpoints
+} from '../../utils/styles';
 
 const loading = keyframes`
   from { transform: scale(0.001); opacity: 1; }
@@ -9,8 +15,8 @@ const loading = keyframes`
 
 const Form = styled('form')`
   background: ${colors.brandLighter};
-  border: 1px solid ${colors.brandLight};
-  border-radius: ${radius.default}px;
+  border-bottom: 1px solid ${colors.brandBright};
+  border-top: 1px solid ${colors.brandBright};
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
@@ -20,6 +26,22 @@ const Form = styled('form')`
   margin-top: ${spacing.md}px;
   padding: ${spacing.sm}px;
   position: relative;
+
+  @media (min-width: ${600 + spacing.sm * 2}px) {
+    border: 1px solid ${colors.brandBright};
+    border-radius: ${radius.default}px;
+    margin-left: -${spacing.sm}px;
+    margin-right: -${spacing.sm}px;
+    padding-left: ${spacing.sm}px;
+    padding-right: ${spacing.sm}px;
+  }
+
+  @media (min-width: ${600 + spacing.lg * 4}px) {
+    margin-left: -${spacing.lg}px;
+    margin-right: -${spacing.lg}px;
+    padding-left: ${spacing.lg}px;
+    padding-right: ${spacing.lg}px;
+  }
 
   &.submitting {
     ::before {
@@ -54,13 +76,12 @@ const Form = styled('form')`
 const Label = styled('label')`
   color: ${colors.brand};
   display: block;
+  font-size: 0.875rem;
   margin-top: 1rem;
   width: 100%;
 `;
 
 const InputLabel = styled(Label)`
-  font-size: 0.875rem;
-
   @media (min-width: 600px) {
     flex: 1 calc(50% - 0.5rem);
     max-width: calc(50% - 0.5rem);
@@ -73,7 +94,7 @@ const Input = styled('input')`
   box-sizing: border-box;
   color: ${colors.text};
   display: block;
-  font-size: 16px;
+  font-size: 1rem;
   margin-top: ${spacing.xs}px;
   padding: 0.5rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
@@ -95,6 +116,8 @@ const Button = styled('button')`
   ${button.default};
   ${button.big};
   ${button.purple};
+  margin-top: ${spacing.lg}px;
+  margin-bottom: ${spacing.md}px;
   flex: 2 100%;
 `;
 
