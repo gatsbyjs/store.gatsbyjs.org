@@ -9,6 +9,7 @@ import { css } from 'react-emotion';
  *    border-color: ${colors.brand}40;
  */
 export const colors = {
+  brandDark: '#402060',
   brand: '#663399',
   brandBright: '#e0d6eb',
   brandLight: '#f5f3f7',
@@ -158,8 +159,8 @@ export const button = {
     padding: 0.25em 0.625em;
   `,
   purple: css`
-    background-color: ${colors.textLight};
-    border-color: ${colors.darkest};
+    background-color: ${colors.brand};
+    border-color: ${colors.lilac};
     color: ${colors.lightest};
     cursor: pointer;
     display: block;
@@ -168,7 +169,7 @@ export const button = {
 
     :focus,
     :hover {
-      background-color: ${colors.brand};
+      background-color: ${colors.brandDark};
     }
 
     &[disabled] {
