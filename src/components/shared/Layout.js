@@ -2,6 +2,7 @@ import React from 'react';
 import Helmet from 'react-helmet';
 import styled, { css } from 'react-emotion';
 import { push } from 'gatsby';
+import CTA from '../CTA/CTA';
 import Footer from './Footer/Footer';
 import Header from './Header/Header';
 import StoreContext, { defaultStoreContext } from '../../context/StoreContext';
@@ -183,6 +184,7 @@ export default class Layout extends React.Component {
         <UserContext.Provider value={this.state.user}>
           <StoreContext.Provider value={this.state.store}>
             <Header />
+            {!this.state.user.profile.name && <CTA />}
             <Main>{this.props.children}</Main>
             <Footer />
           </StoreContext.Provider>
