@@ -4,7 +4,7 @@ import StoreContext from '../../context/StoreContext';
 import Icon from './Icon';
 import { button, colors, spacing } from '../../utils/styles';
 
-const Button = styled('a')`
+const Button = styled('button')`
   ${button.default};
   ${button.ghost};
   ${button.small};
