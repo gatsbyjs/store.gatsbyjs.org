@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { keyframes } from 'react-emotion';
-import { button, colors, fonts } from '../../utils/styles';
+import { button, colors, spacing, radius } from '../../utils/styles';
 
 const loading = keyframes`
   from { transform: scale(0.001); opacity: 1; }
@@ -8,11 +8,17 @@ const loading = keyframes`
 `;
 
 const Form = styled('form')`
+  background: ${colors.brandLighter};
+  border: 1px solid ${colors.brandLight};
+  border-radius: ${radius.default}px;
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
   margin-bottom: 3rem;
-  margin-top: 1rem;
+  margin-left: -${spacing.sm}px;
+  margin-right: -${spacing.sm}px;
+  margin-top: ${spacing.md}px;
+  padding: ${spacing.sm}px;
   position: relative;
 
   &.submitting {
@@ -46,18 +52,14 @@ const Form = styled('form')`
 `;
 
 const Label = styled('label')`
-  color: ${colors.textLight};
+  color: ${colors.brand};
   display: block;
-  font-family: ${fonts.heading};
   margin-top: 1rem;
   width: 100%;
 `;
 
 const InputLabel = styled(Label)`
-  font-size: 0.75rem;
-  font-weight: bold;
-  letter-spacing: 0.2em;
-  text-transform: uppercase;
+  font-size: 0.875rem;
 
   @media (min-width: 600px) {
     flex: 1 calc(50% - 0.5rem);
@@ -66,14 +68,22 @@ const InputLabel = styled(Label)`
 `;
 
 const Input = styled('input')`
-  border: 1px solid ${colors.textLight};
+  border: 1px solid ${colors.brandBright};
   border-radius: 3px;
   box-sizing: border-box;
   color: ${colors.text};
   display: block;
   font-size: 16px;
+  margin-top: ${spacing.xs}px;
   padding: 0.5rem;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   width: 100%;
+
+  :focus {
+    border-color: ${colors.lilac};
+    box-shadow: 0 0 0 3px ${colors.brandBright};
+    outline: 0;
+  }
 `;
 
 const Checkbox = styled('input')`
@@ -89,9 +99,8 @@ const Button = styled('button')`
 `;
 
 const PrivacyNotice = styled('p')`
-  color: ${colors.textLight};
-  font-size: 0.875rem;
-  text-align: center;
+  color: ${colors.lilac};
+  font-size: 0.75rem;
 `;
 
 export default class ContributorForm extends React.Component {
