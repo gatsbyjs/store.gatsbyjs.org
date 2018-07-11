@@ -1,55 +1,57 @@
 import React from 'react';
 import styled from 'react-emotion';
-import { colors } from '../../utils/styles';
+import { colors, radius, spacing } from '../../utils/styles';
 
 const IssueList = styled('ul')`
-  border-top: 1px solid ${colors.brandLighter};
   list-style: none;
   margin: 1rem 0 0;
   padding: 0;
 `;
 
 const Issue = styled('li')`
-  border-bottom: 1px solid ${colors.brandLighter};
+  border-bottom: 1px solid ${colors.brandLight};
   margin: 0;
   padding: 0.5rem 0;
+
+  :last-child:not(:first-child) {
+    border-bottom: 0;
+  }
 `;
 
 const IssueLink = styled('a')`
   background-color: ${colors.lightest};
   color: ${colors.darkest};
   display: block;
-  margin: 0 -0.5rem;
-  padding: 0.5rem;
+  padding: ${spacing.xs}px 0 ${spacing.sm}px;
   text-decoration: none;
   transition: 200ms background-color linear;
 
   :active,
   :focus,
   :hover {
-    background-color: ${colors.brandLighter};
+    color: ${colors.brand};
   }
 `;
 
 const Label = styled('a')`
-  background-color: ${colors.brandLighter};
-  border: 1px solid ${colors.brand}20;
-  border-radius: 1rem;
+  background-color: ${colors.brandLight};
+  border: 1px solid ${colors.brandLight};
+  border-radius: ${radius.default}px;
   box-sizing: border-box;
   color: ${colors.textLight};
   display: inline-block;
   font-size: 0.75rem;
   line-height: 1;
-  margin: 0 0.5rem 0.5rem 0;
-  padding: 0.25rem 1rem;
+  margin: 0 ${spacing.xs}px ${spacing.xs}px 0;
+  padding: ${spacing['2xs']}px ${spacing.xs}px;
   text-decoration: none;
   transition: 200ms all linear;
 
   :active,
   :focus,
   :hover {
-    background-color: ${colors.brand};
-    color: ${colors.lightest};
+    border-color: ${colors.lilac};
+    color: ${colors.brand};
   }
 `;
 
