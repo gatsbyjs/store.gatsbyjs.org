@@ -9,7 +9,7 @@ import { css } from 'react-emotion';
  *    border-color: ${colors.brand}40;
  */
 export const colors = {
-  brandDark: '#402060',
+  brandDark: '#442266',
   brand: '#663399',
   brandBright: '#e0d6eb',
   brandLight: '#f5f3f7',
@@ -19,7 +19,8 @@ export const colors = {
   textLight: '#7e718a',
   textLighter: '#aaaaaa',
   text: '#333333',
-  lilac: `#9d7cbf`
+  lilac: `#9d7cbf`,
+  accent: `#ffb238`
 };
 
 export const spacing = {
@@ -102,6 +103,12 @@ export const dropdown = {
       border-color: transparent transparent ${colors.lightest} transparent;
     }
   `,
+  heading: css`
+    color: ${colors.brand};
+    font-size: 0.75rem;
+    font-weight: normal;
+    margin: 0 0 ${spacing.sm}px;
+  `,
   divider: css`
     background: ${colors.brandLight};
     height: 1px;
@@ -122,6 +129,55 @@ export const dropdown = {
     }
   `
 };
+
+export const visuallyHidden = css`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+`;
+
+export const input = css`
+  background-color: ${colors.lightest};
+  border: 1px solid ${colors.brandBright};
+  border-radius: ${radius.default}px;
+  box-sizing: border-box;
+  color: ${colors.text};
+  display: block;
+  font-size: 1rem;
+  padding: ${spacing.xs}px ${spacing.sm}px;
+`;
+
+export const inputSmall = css`
+  font-size: 0.75rem;
+  padding: ${spacing.xs}px;
+`;
+
+export const inputFocus = css`
+  border-color: ${colors.lilac};
+  box-shadow: 0 0 0 3px ${colors.brandBright};
+  outline: 0;
+  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+`;
+
+export const select = css`
+  appearance: none;
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23${colors.lilac.substr(
+    1
+  )}' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 0.5rem center;
+  background-size: 8px 10px;
+  padding-right: ${spacing.xl}px !important;
+`;
+
+export const selectSmall = css`
+  padding-right: ${spacing.xl}px !important;
+`;
 
 export const button = {
   default: css`

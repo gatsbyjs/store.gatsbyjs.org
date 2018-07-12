@@ -2,7 +2,7 @@ import React from 'react';
 import { Link } from 'gatsby';
 import styled, { css } from 'react-emotion';
 import UserContext from '../../../context/UserContext';
-import { colors, dropdown, spacing } from '../../../utils/styles';
+import { colors, dropdown } from '../../../utils/styles';
 
 const OpenProfile = styled('div')`
   ${dropdown.container};
@@ -20,10 +20,7 @@ const Item = styled(Link)`
 `;
 
 const Heading = styled('h4')`
-  color: ${colors.brand};
-  font-size: 0.75rem;
-  font-weight: normal;
-  margin: 0 0 ${spacing.sm}px;
+  ${dropdown.heading};
 `;
 
 const LinkItem = ({ to, onClick, children }) => (

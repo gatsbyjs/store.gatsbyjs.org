@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'react-emotion';
 import Image from 'gatsby-image';
-import { colors } from '../../utils/styles';
+import { colors, radius, spacing } from '../../utils/styles';
 
 const ImageBox = styled('div')`
   display: flex;
@@ -14,25 +14,34 @@ const ImageBox = styled('div')`
 
 const PreviewWrapper = styled('div')`
   display: flex;
+  margin-top: ${spacing.xs}px;
 `;
 
 const ImageLink = styled('a')`
   border: 2px solid transparent;
+  border-radius: ${radius.default}px;
   box-sizing: border-box;
   display: block;
-  flex: 1 58px;
-  max-width: 58px;
+  flex: 1 40px;
+  margin-right: ${spacing['3xs']}px;
+  max-width: 40px;
   text-decoration: none;
   transition: 200ms border-color linear;
 
+  img {
+    border-radius: 1px;
+  }
+
   &:focus,
   &:hover {
-    border-color: ${colors.brand}40;
+    background: ${colors.accent};
+    border-color: ${colors.accent};
   }
 `;
 
 const selectedImage = css`
-  border-color: ${colors.brand}22;
+  background: ${colors.accent};
+  border-color: ${colors.accent};
 `;
 
 export default class ProductImages extends React.Component {
