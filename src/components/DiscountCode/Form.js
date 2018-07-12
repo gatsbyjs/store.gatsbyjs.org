@@ -111,25 +111,6 @@ const CheckboxContainer = styled('div')`
   padding-left: 1.5rem;
 `;
 
-const Checkbox = styled('input')`
-  display: inline-block;
-  margin-right: 0.25rem;
-  opacity: 0;
-  position: absolute;
-  z-index: -1;
-
-  &:focus ~ ${CheckboxLabel}:before {
-    box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem ${colors.brandBright};
-    outline: 0;
-    outline-offset: 0px;
-  }
-
-  &:active ~ ${CheckboxLabel}:before {
-    color: ${colors.brand};
-    background-color: ${colors.brand};
-  }
-`;
-
 const CheckboxLabel = styled(Label)`
   position: relative;
 
@@ -158,8 +139,27 @@ const CheckboxLabel = styled(Label)`
     background-size: 50% 50%;
     border-radius: ${radius.default}px;
   }
+`;
 
-  ${Checkbox}:checked ~ &:after {
+const Checkbox = styled('input')`
+  display: inline-block;
+  margin-right: 0.25rem;
+  opacity: 0;
+  position: absolute;
+  z-index: -1;
+
+  &:focus ~ ${CheckboxLabel}:before {
+    box-shadow: 0 0 0 1px #fff, 0 0 0 0.2rem ${colors.brandBright};
+    outline: 0;
+    outline-offset: 0px;
+  }
+
+  &:active ~ ${CheckboxLabel}:before {
+    color: ${colors.brand};
+    background-color: ${colors.brand};
+  }
+
+  &:checked ~ ${CheckboxLabel}:after {
     background-color: ${colors.brand};
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23fff' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E");
   }
