@@ -14,6 +14,9 @@ import UserContext, {
 import { logout, getUserInfo } from '../../utils/auth';
 import { colors, spacing } from '../../utils/styles';
 
+// Import Futura PT typeface
+import '../../fonts/Webfonts/futurapt_demi_macroman/stylesheet.css';
+
 const bodyStyles = css`
   color: ${colors.text};
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
