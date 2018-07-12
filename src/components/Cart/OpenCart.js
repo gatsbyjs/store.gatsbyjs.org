@@ -19,6 +19,23 @@ const Divider = styled('div')`
   ${dropdown.divider};
 `;
 
+const AddedToCartMessage = styled('div')`
+  background: ${colors.brandLighter};
+  border-bottom: 1px solid ${colors.brandLight};
+  color: ${colors.brand};
+  font-size: 0.875rem;
+  margin: 0;
+  margin-left: -${spacing.sm}px;
+  margin-right: -${spacing.sm}px;
+  padding: ${spacing.sm}px;
+`;
+
+const AddedToCartProductInfo = styled('p')`
+  color: ${colors.lilac};
+  font-size: 0.75rem;
+  margin: 0;
+`;
+
 const Checkout = styled('a')`
   ${button.default};
   ${button.big};
@@ -65,9 +82,17 @@ export default () => (
           <OpenCart>
             <Heading>Your Cart</Heading>
             <Divider />
-
             {checkout.lineItems.length > 0 ? (
               <>
+                {/* <AddedToCartMessage>
+                  <strong>Excellent Choice!</strong>{' '}
+                  <span role="img" aria-label="sparkles">
+                    ✨
+                  </span>
+                  <AddedToCartProductInfo>
+                    Added 1x “Purple Logo Tee”:
+                  </AddedToCartProductInfo>
+                </AddedToCartMessage> */}
                 <ItemList
                   items={checkout.lineItems}
                   handleRemove={handleRemove}
@@ -83,7 +108,6 @@ export default () => (
                     Total Price: <PriceBox>${checkout.totalPrice}</PriceBox>
                   </CostTotal>
                 </CostBlock>
-
                 <Divider />
                 <Checkout href={checkout.webUrl}>Check Out</Checkout>
                 <CurrencyText>All prices in USD</CurrencyText>
