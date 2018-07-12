@@ -33,10 +33,10 @@ const Preview = styled('div')`
 `;
 
 const Name = styled('h3')`
-  color: ${colors.darkest};
+  color: ${colors.brandDark};
   font-family: ${fonts.heading};
   font-size: 1.5rem;
-  font-weight: 700;
+  font-weight: 500;
   margin: 1rem 0 0;
 
   @media (min-width: 650px) {
@@ -45,6 +45,8 @@ const Name = styled('h3')`
 `;
 
 const Description = styled('p')`
+  color: ${colors.lilac};
+  font-weight: 300;
   margin-top: 0.25rem;
 
   @media (min-width: 650px) {
@@ -54,10 +56,16 @@ const Description = styled('p')`
 `;
 
 const Price = styled('p')`
-  color: ${colors.darkest};
+  color: ${colors.lilac};
   font-family: ${fonts.heading};
-  font-weight: 700;
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-top: 0;
   margin-bottom: 0;
+
+  @media (min-width: 650px) {
+    font-size: 1.25rem;
+  }
 `;
 
 const removeCareInstructions = desc =>
@@ -67,8 +75,8 @@ export default ({ product }) => (
   <Preview>
     <ProductImages images={product.images} alt={product.title} />
     <Name>{product.title}</Name>
+    <Price>${product.variants[0].price}</Price>
     <Description>{removeCareInstructions(product.description)}</Description>
-    <Price>Price: ${product.variants[0].price}</Price>
     <AddToCart variants={product.variants} />
   </Preview>
 );

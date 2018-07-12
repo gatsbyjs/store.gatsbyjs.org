@@ -1,25 +1,28 @@
 import React from 'react';
 import styled from 'react-emotion';
-import { colors, fonts } from '../../utils/styles';
+import { colors, spacing, radius } from '../../utils/styles';
 
 const Item = styled('li')`
   align-items: center;
+  border-bottom: 1px solid ${colors.brandLight};
   display: flex;
   margin: 0;
-  padding: 0.5rem;
+  margin-left: -${spacing.sm}px;
+  margin-right: -${spacing.sm}px;
+  padding: ${spacing.sm}px;
 
   :nth-child(2n + 2) {
-    background-color: ${colors.brand}0a;
+    background-color: ${colors.brandLighter};
   }
 `;
 
 const Thumb = styled('img')`
-  border: 1px solid ${colors.textLight}bf;
+  border-radius: ${radius.default}px;
   box-sizing: border-box;
   display: inline-block;
-  height: 35px;
-  margin: 0 1rem 0 0;
-  width: 35px;
+  height: 40px;
+  margin: 0 ${spacing.sm}px 0 0;
+  width: 40px;
 `;
 
 const ItemInfo = styled('p')`
@@ -29,12 +32,11 @@ const ItemInfo = styled('p')`
 
 const Name = styled('strong')`
   display: block;
-  font-family: ${fonts.heading};
   font-size: 0.875rem;
 `;
 
 const MetaData = styled('em')`
-  color: ${colors.textLight};
+  color: ${colors.lilac};
   display: block;
   font-size: 0.75rem;
   font-style: normal;
@@ -46,9 +48,18 @@ const Quantity = styled('p')`
 `;
 
 const Remove = styled('a')`
-  color: ${colors.textLight};
-  font-family: ${fonts.heading};
+  border-radius: 50%;
+  color: ${colors.lilac};
+  height: 20px;
+  text-align: center;
   text-decoration: none;
+  transition: all 0.15s ease-in-out;
+  width: 20px;
+
+  :hover {
+    background: ${colors.brand};
+    color: ${colors.brandLighter};
+  }
 `;
 
 export default ({ item, handleRemove }) => (

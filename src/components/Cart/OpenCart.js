@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'react-emotion';
 import StoreContext from '../../context/StoreContext';
+import EmptyCart from './EmptyCart';
 import ItemList from './ItemList';
-import { colors, button, fonts, dropdown } from '../../utils/styles';
+import { colors, button, dropdown, spacing } from '../../utils/styles';
 import { Text } from '../shared/Typography';
 
 const OpenCart = styled('div')`
@@ -11,9 +12,11 @@ const OpenCart = styled('div')`
 `;
 
 const Heading = styled('h4')`
-  font-family: ${fonts.heading};
-  font-weight: normal;
-  margin: 0 0 0.25rem;
+  ${dropdown.heading};
+`;
+
+const Divider = styled('div')`
+  ${dropdown.divider};
 `;
 
 const Checkout = styled('a')`
@@ -23,10 +26,8 @@ const Checkout = styled('a')`
 `;
 
 const CostBlock = styled('div')`
-  color: ${colors.textLight};
-  font-family: ${fonts.heading};
   font-size: 0.875rem;
-  margin: 0.5rem 0 0;
+  margin: ${spacing.sm}px 0;
   text-align: right;
 `;
 
@@ -40,7 +41,7 @@ const CostDetails = styled('p')`
 `;
 
 const CostTotal = styled('p')`
-  color: ${colors.darkest};
+  color: ${colors.brand};
   font-weight: bold;
   margin: 0;
 `;
@@ -63,22 +64,33 @@ export default () => (
         isCartOpen && (
           <OpenCart>
             <Heading>Your Cart</Heading>
-            <ItemList items={checkout.lineItems} handleRemove={handleRemove} />
-            <CostBlock>
-              <CostDetails>
-                Subtotal: <PriceBox>${checkout.subtotalPrice}</PriceBox>
-              </CostDetails>
-              <CostDetails>
-                Taxes: <PriceBox>{checkout.totalTax}</PriceBox>
-              </CostDetails>
-              <CostTotal>
-                Total Price: <PriceBox>${checkout.totalPrice}</PriceBox>
-              </CostTotal>
-            </CostBlock>
-            <Checkout href={checkout.webUrl}>Check Out</Checkout>
-            <CurrencyText>
-              <strong>NOTE:</strong> All prices are in USD
-            </CurrencyText>
+            <Divider />
+
+            {checkout.lineItems.length > 0 ? (
+              <>
+                <ItemList
+                  items={checkout.lineItems}
+                  handleRemove={handleRemove}
+                />
+                <CostBlock>
+                  <CostDetails>
+                    Subtotal: <PriceBox>${checkout.subtotalPrice}</PriceBox>
+                  </CostDetails>
+                  <CostDetails>
+                    Taxes: <PriceBox>{checkout.totalTax}</PriceBox>
+                  </CostDetails>
+                  <CostTotal>
+                    Total Price: <PriceBox>${checkout.totalPrice}</PriceBox>
+                  </CostTotal>
+                </CostBlock>
+
+                <Divider />
+                <Checkout href={checkout.webUrl}>Check Out</Checkout>
+                <CurrencyText>All prices in USD</CurrencyText>
+              </>
+            ) : (
+              <EmptyCart />
+            )}
           </OpenCart>
         )
       );

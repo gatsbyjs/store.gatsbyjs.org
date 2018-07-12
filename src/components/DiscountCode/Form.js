@@ -1,17 +1,17 @@
 import React from 'react';
-import styled, { keyframes, css } from 'react-emotion';
-import { button, colors, spacing, radius } from '../../utils/styles';
+import styled, { keyframes } from 'react-emotion';
+import {
+  button,
+  colors,
+  spacing,
+  radius,
+  input,
+  inputFocus
+} from '../../utils/styles';
 
 const loading = keyframes`
   from { transform: scale(0.001); opacity: 1; }
   to { transform: scale(1); opacity: 0; }
-`;
-
-const inputFocusStyles = css`
-  border-color: ${colors.lilac};
-  box-shadow: 0 0 0 3px ${colors.brandBright};
-  outline: 0;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 `;
 
 const Form = styled('form')`
@@ -91,18 +91,12 @@ const InputLabel = styled(Label)`
 `;
 
 const Input = styled('input')`
-  border: 1px solid ${colors.brandBright};
-  border-radius: 3px;
-  box-sizing: border-box;
-  color: ${colors.text};
-  display: block;
-  font-size: 1rem;
+  ${input};
   margin-top: ${spacing.xs}px;
-  padding: 0.5rem;
   width: 100%;
 
   :focus {
-    ${inputFocusStyles};
+    ${inputFocus};
   }
 `;
 
@@ -174,7 +168,7 @@ const Button = styled('button')`
   flex: 2 100%;
 
   :focus {
-    ${inputFocusStyles};
+    ${inputFocus};
   }
 `;
 
