@@ -189,7 +189,7 @@ export default class Layout extends React.Component {
             <Header />
             {!this.state.user.profile.name && <CTA />}
             <Main>{this.props.children}</Main>
-            <Footer />
+            <Footer displayAbout={this.props.location.pathname === '/'} />
           </StoreContext.Provider>
         </UserContext.Provider>
       </>

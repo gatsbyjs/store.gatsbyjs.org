@@ -1,15 +1,34 @@
 import React from 'react';
 import styled from 'react-emotion';
+import About from './About';
+import metaball from './metaball.svg';
+import { colors, spacing } from '../../../utils/styles';
 
-const Footer = styled('footer')`
-  color: #7e718a;
-  font-size: 0.75rem;
-  padding: 5px calc(50vw - 35ch);
-  text-align: center;
+const FooterContainer = styled('footer')`
+  background: url(${metaball});
+  background-position: 50% 0;
+  background-repeat: no-repeat;
+  padding: ${spacing.sm}px;
 `;
 
-export default () => (
-  <Footer>
-    <p>TKTK GDPR disclosure, credits, source, any other legal info</p>
-  </Footer>
+const Footer = styled('div')`
+  max-width: 600px;
+  margin: 0 auto;
+`;
+
+const LegalInfo = styled('p')`
+  color: ${colors.lilac};
+  margin-top: ${spacing['2xl'] * 3}px;
+  margin-bottom: ${spacing['2xl'] * 2}px;
+`;
+
+export default ({ displayAbout }) => (
+  <FooterContainer>
+    <Footer>
+      {displayAbout && <About />}
+      <LegalInfo>
+        TKTK GDPR disclosure, credits, source, any other legal info
+      </LegalInfo>
+    </Footer>
+  </FooterContainer>
 );

@@ -4,8 +4,8 @@ import Layout from '../components/shared/Layout';
 import Dashboard from '../components/Dashboard/Dashboard';
 import PrivateRoute from '../components/shared/PrivateRoute';
 
-export default () => (
-  <Layout>
+export default ({ location }) => (
+  <Layout location={location}>
     <PrivateRoute path="/account/dashboard" component={Dashboard} />
     <Route
       exact
