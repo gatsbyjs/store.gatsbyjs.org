@@ -4,7 +4,7 @@ import ReactModal from 'react-modal';
 import MdClose from 'react-icons/lib/md/close';
 import SizeChartTable from './SizeChartTable';
 import { Heading, Subheading } from '../shared/Typography';
-import { colors, fonts, buttonAsLink } from '../../utils/styles';
+import { colors, fonts, button } from '../../utils/styles';
 
 injectGlobal`
   .ReactModal__Overlay {
@@ -80,7 +80,7 @@ const SubSubheading = styled('h4')`
 `;
 
 const ModalOpenButton = styled('button')`
-  ${buttonAsLink};
+  ${button.link};
   font-size: 1rem;
   margin-top: 1rem;
 `;
