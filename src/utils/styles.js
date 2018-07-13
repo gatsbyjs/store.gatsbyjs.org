@@ -269,3 +269,17 @@ export const buttonAsLink = css`
   padding: 0;
   font-size: 100%;
 `;
+
+export const pullHeadline = css`
+  font-family: ${fonts.heading};
+
+  @media (min-width: ${breakpoints.hd}px) {
+    position: absolute;
+    left: -240px;
+    top: 0;
+    width: 180px;
+    font-size: 3rem;
+    line-height: 1;
+    margin-top: 0;
+  }
+`;
