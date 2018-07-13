@@ -51,6 +51,7 @@ const Remove = styled('a')`
   border-radius: 50%;
   color: ${colors.lilac};
   height: 20px;
+  line-height: 1;
   text-align: center;
   text-decoration: none;
   transition: all 0.15s ease-in-out;
