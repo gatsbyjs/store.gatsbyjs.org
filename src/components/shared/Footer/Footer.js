@@ -18,6 +18,7 @@ const Footer = styled('div')`
 
 const LegalInfo = styled('p')`
   color: ${colors.lilac};
+  font-size: 0.875rem;
   margin-top: ${spacing['2xl'] * 3}px;
   margin-bottom: ${spacing['2xl'] * 2}px;
 `;
