@@ -75,6 +75,10 @@ export const Heading = styled('h2')`
   }
 `;
 
+export const HeadingInverted = styled(Heading)`
+  color: ${colors.lightest};
+`;
+
 export const Subheading = styled('h3')`
   color: ${colors.darkest};
   font-family: ${fonts.heading};
