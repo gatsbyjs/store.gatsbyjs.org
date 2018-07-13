@@ -61,9 +61,21 @@ const defaultFontStack = [
   'sans-serif'
 ].join();
 
+const monospaceFontStack = [
+  `Space Mono`,
+  `SFMono-Regular`,
+  `Menlo`,
+  `Monaco`,
+  `Consolas`,
+  `Liberation Mono`,
+  `Courier New`,
+  `monospace`
+].join();
+
 export const fonts = {
   body: defaultFontStack,
-  heading: `Futura PT, ${defaultFontStack}`
+  heading: `Futura PT, ${defaultFontStack}`,
+  monospace: monospaceFontStack
 };
 
 export const dropdown = {
