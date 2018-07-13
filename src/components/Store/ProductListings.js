@@ -5,8 +5,6 @@ import styled from 'react-emotion';
 import ProductPreview from '../ProductPreview/ProductPreview';
 
 const Previews = styled('div')`
-  margin-top: 2rem;
-
   @media (min-width: 480px) {
     align-items: flex-start;
     display: flex;
