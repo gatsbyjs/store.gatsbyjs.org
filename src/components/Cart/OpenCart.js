@@ -4,7 +4,13 @@ import StoreContext from '../../context/StoreContext';
 import EmptyCart from './EmptyCart';
 import AddedToCart from './AddedToCart';
 import ItemList from './ItemList';
-import { colors, button, dropdown, spacing } from '../../utils/styles';
+import {
+  colors,
+  button,
+  dropdown,
+  spacing,
+  buttonAsLink
+} from '../../utils/styles';
 import { Text } from '../shared/Typography';
 
 const OpenCart = styled('div')`
@@ -53,9 +59,30 @@ const CurrencyText = styled(Text)`
   text-align: center;
 `;
 
+const CloseCartButton = styled('button')`
+  ${buttonAsLink};
+  border-bottom: 0;
+  color: ${colors.lilac};
+  float: right;
+  height: 20px;
+  text-align: center;
+  width: 20px;
+  font-size: 1rem;
+`;
+
+const ContinueShopping = styled('p')`
+  color: ${colors.lilac};
+  font-size: 0.875rem;
+  text-align: center;
+`;
+
+const ContinueShoppingLink = styled('button')`
+  ${buttonAsLink};
+`;
+
 export default () => (
   <StoreContext.Consumer>
-    {({ client, checkout, isCartOpen, removeLineItem }) => {
+    {({ client, checkout, isCartOpen, removeLineItem, toggleCart }) => {
       const handleRemove = itemID => event => {
         event.preventDefault();
         removeLineItem(client, checkout.id, itemID);
@@ -64,7 +91,10 @@ export default () => (
       return (
         isCartOpen && (
           <OpenCart>
-            <Heading>Your Cart</Heading>
+            <Heading>
+              Your Cart{' '}
+              <CloseCartButton onClick={toggleCart}>&times;</CloseCartButton>
+            </Heading>
             <Divider />
             {checkout.lineItems.length > 0 ? (
               <>
@@ -86,6 +116,12 @@ export default () => (
                 </CostBlock>
                 <Divider />
                 <Checkout href={checkout.webUrl}>Check Out</Checkout>
+                <ContinueShopping>
+                  or{' '}
+                  <ContinueShoppingLink onClick={toggleCart}>
+                    continue shopping
+                  </ContinueShoppingLink>!
+                </ContinueShopping>
                 <CurrencyText>All prices in USD</CurrencyText>
               </>
             ) : (
