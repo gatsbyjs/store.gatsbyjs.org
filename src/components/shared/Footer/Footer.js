@@ -28,7 +28,14 @@ export default ({ displayAbout }) => (
     <Footer>
       {displayAbout && <About />}
       <LegalInfo>
-        TKTK GDPR disclosure, credits, source, any other legal info
+        Built with{' '}
+        <span role="img" aria-label="love">
+          💜
+        </span>{' '}
+        by the <a href="https://www.gatsbyjs.com">Gatsby Inkteam</a> ·{' '}
+        <a href="https://github.com/gatsbyjs/store.gatsbyjs.org">
+          See the source code on GitHub
+        </a>
       </LegalInfo>
     </Footer>
   </FooterContainer>
