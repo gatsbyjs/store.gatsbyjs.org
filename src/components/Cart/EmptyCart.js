@@ -100,7 +100,7 @@ export default () => (
         😔
       </span>
       <br />
-      Go cop some purple swag!
+      Turn that frown upside down with swag!
     </SadCartCopy>
   </SadCartContainer>
 );
