@@ -1,47 +1,94 @@
 import React from 'react';
 import styled from 'react-emotion';
-import { Heading } from '../shared/Typography';
-import { colors } from '../../utils/styles';
+import { HeadingInverted } from '../shared/Typography';
+import {
+  colors,
+  fonts,
+  radius,
+  spacing,
+  breakpoints
+} from '../../utils/styles';
+import ButlerHand from '../../components/CTA/ButlerHand';
 
 const DiscountCodeBox = styled('div')`
-  background-color: ${colors.brand}20;
-  border: 1px solid ${colors.brand}40;
-  border-radius: 3px;
-  color: ${colors.darkest};
+  background-color: ${colors.brand};
+  border: 1px solid ${colors.brandDark};
+  border-radius: ${radius.large}px;
   padding: 1.5rem 1rem 1rem;
   text-align: center;
 `;
 
 const DiscountCode = styled('pre')`
   background-color: ${colors.lightest};
-  border: 1px solid ${colors.brand}40;
+  border: 1px solid ${colors.lilac};
   border-radius: 3px;
   box-shadow: inset 1px 1px 5px ${colors.textLight}40;
-  font-size: 1.75rem;
-  margin: 0.75rem 0 0;
-  padding: 1rem;
+  color: ${colors.text};
+  font-family: ${fonts.monospace};
+  letter-spacing: 0.075rem;
+  line-height: 1;
+  margin: ${spacing.sm}px 0 0;
+  padding: ${spacing.sm}px;
+
+  strong {
+    font-weight: normal;
+  }
+
+  @media (min-width: ${breakpoints.phablet}px) {
+    font-size: 1.5rem;
+  }
+`;
+
+const DiscountCodeContainer = styled('div')`
+  position: relative;
 `;
 
 const Description = styled('div')`
-  color: ${colors.darkest};
+  color: ${colors.brandLight};
+`;
 
-  p {
-    margin: 0.5rem 0 0;
-  }
+const Note = styled('p')`
+  color: ${colors.brandBright};
+  display: block;
+  font-size: 0.75rem;
+  margin-left: auto !important;
+  margin-right: auto !important;
+  max-width: 400px;
+`;
+
+const ButlerHandContainer = styled('div')`
+  position: absolute;
+  left: -${spacing.sm - 1}px;
+  top: 16%;
+  transform: rotate(90deg);
+`;
+
+const ButlerHandContainerRight = styled(ButlerHandContainer)`
+  left: auto;
+  right: -${spacing.sm - 1}px;
+  transform: rotate(-90deg) scale(-1, 1);
 `;
 
 export default ({ discount_code }) => (
   <DiscountCodeBox>
-    <Heading>It’s time to claim your free Gatsby swag!</Heading>
-    <DiscountCode>
-      <strong>{discount_code}</strong>
-    </DiscountCode>
+    <HeadingInverted>It’s time to claim your free Gatsby swag!</HeadingInverted>
+    <DiscountCodeContainer>
+      <ButlerHandContainer>
+        <ButlerHand purple={colors.brandDark} />
+      </ButlerHandContainer>
+      <ButlerHandContainerRight>
+        <ButlerHand purple={colors.brandDark} />
+      </ButlerHandContainerRight>
+      <DiscountCode>
+        <strong>{discount_code}</strong>
+      </DiscountCode>
+    </DiscountCodeContainer>
     <Description>
       <p>Enter this discount code during checkout to receive your free swag!</p>
-      <p>
+      <Note>
         <strong>NOTE:</strong> This discount code is only valid if you check out
         using the email address you entered in the form.
-      </p>
+      </Note>
     </Description>
   </DiscountCodeBox>
 );
