@@ -242,3 +242,18 @@ export const button = {
     }
   `
 };
+
+export const link = css`
+  border-bottom: 1px solid ${colors.brand};
+  color: ${colors.brand};
+  text-decoration: none;
+`;
+
+export const buttonAsLink = css`
+  border: 0;
+  ${link};
+  background: transparent;
+  cursor: pointer;
+  padding: 0;
+  font-size: 100%;
+`;
