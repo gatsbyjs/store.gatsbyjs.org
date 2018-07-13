@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'react-emotion';
 import { Subheading, Text } from '../../shared/Typography';
-import { colors, fonts, breakpoints, link } from '../../../utils/styles';
+import { colors, breakpoints, link, pullHeadline } from '../../../utils/styles';
 
 const About = styled('div')`
   position: relative;
@@ -14,18 +14,8 @@ const Content = styled('div')`
 `;
 
 const Headline = styled('h1')`
+  ${pullHeadline};
   color: ${colors.brand};
-  font-family: ${fonts.heading};
-
-  @media (min-width: ${breakpoints.hd}px) {
-    position: absolute;
-    left: -240px;
-    top: 0;
-    width: 180px;
-    font-size: 3rem;
-    line-height: 1;
-    margin-top: 0;
-  }
 `;
 
 const Link = styled(`a`)`

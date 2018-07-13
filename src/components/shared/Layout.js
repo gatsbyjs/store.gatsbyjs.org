@@ -31,6 +31,7 @@ const Main = styled('main')`
   margin: 0 auto;
   max-width: 600px;
   padding: ${spacing.xl}px ${spacing.sm}px ${spacing['3xl']}px;
+  position: relative;
 `;
 
 export default class Layout extends React.Component {
