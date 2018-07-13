@@ -1,9 +1,8 @@
 import React from 'react';
-import { Heading, Lede, Text } from '../shared/Typography';
+import { Lede, Text } from '../shared/Typography';
 
 export default () => (
   <>
-    <Heading>Get Gatsby Swag</Heading>
     <Lede>
       <strong>
         <span role="img" aria-label="alert">
