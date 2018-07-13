@@ -75,7 +75,7 @@ export default ({ product }) => (
   <Preview>
     <ProductImages images={product.images} alt={product.title} />
     <Name>{product.title}</Name>
-    <Price>${product.variants[0].price}</Price>
+    <Price>USD ${product.variants[0].price}</Price>
     <Description>{removeCareInstructions(product.description)}</Description>
     <AddToCart variants={product.variants} />
   </Preview>
