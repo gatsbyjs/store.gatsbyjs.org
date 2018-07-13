@@ -5,10 +5,7 @@ import {
   button,
   visuallyHidden,
   input,
-  inputSmall,
-  inputFocus,
   select,
-  selectSmall,
   spacing
 } from '../../utils/styles';
 
@@ -31,28 +28,28 @@ const QuantityLabel = styled('label')`
 `;
 
 const inputStyles = css`
-  ${input};
+  ${input.default};
   margin-top: ${spacing.sm}px;
   width: 100%;
 
   :focus {
-    ${inputFocus};
+    ${input.focus};
   }
 
   @media (min-width: 650px) {
-    ${inputSmall};
+    ${input.small};
   }
 `;
 
 const Size = styled('select')`
   ${inputStyles};
-  ${select};
+  ${select.default};
 
   flex: 2 70%;
   max-width: 70%;
 
   @media (min-width: 650px) {
-    ${selectSmall};
+    ${select.small};
   }
 `;
 
