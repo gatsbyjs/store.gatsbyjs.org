@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'react-emotion';
 import StoreContext from '../../context/StoreContext';
 import EmptyCart from './EmptyCart';
-import AddedToCart from './AddedToCart';
+// import AddedToCart from './AddedToCart';
 import ItemList from './ItemList';
 import {
   colors,
@@ -98,7 +98,7 @@ export default () => (
             <Divider />
             {checkout.lineItems.length > 0 ? (
               <>
-                <AddedToCart />
+                {/* <AddedToCart /> */}
                 <ItemList
                   items={checkout.lineItems}
                   handleRemove={handleRemove}
