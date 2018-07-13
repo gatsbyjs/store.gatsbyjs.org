@@ -23,6 +23,7 @@ const bodyStyles = css`
     Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   font-size: 16px;
   margin: 0 auto;
+  line-height: 1.375;
 `;
 
 const Main = styled('main')`
