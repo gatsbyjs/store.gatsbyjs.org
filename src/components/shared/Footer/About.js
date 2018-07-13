@@ -29,7 +29,7 @@ export default () => (
       <Text>
         The money we charge for swag helps to cover production and shipping
         costs. In the unlikely event that Gatsby swag ends up turning a profit,
-        we'll reinvest that money into the open source community.
+        we’ll reinvest that money into the open source community.
       </Text>
       <Subheading>Got more Questions?</Subheading>
       <Text>
