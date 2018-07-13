@@ -4,13 +4,7 @@ import StoreContext from '../../context/StoreContext';
 import EmptyCart from './EmptyCart';
 // import AddedToCart from './AddedToCart';
 import ItemList from './ItemList';
-import {
-  colors,
-  button,
-  dropdown,
-  spacing,
-  buttonAsLink
-} from '../../utils/styles';
+import { colors, button, dropdown, spacing } from '../../utils/styles';
 import { Text } from '../shared/Typography';
 
 const OpenCart = styled('div')`
@@ -60,7 +54,7 @@ const CurrencyText = styled(Text)`
 `;
 
 const CloseCartButton = styled('button')`
-  ${buttonAsLink};
+  ${button.link};
   border-bottom: 0;
   color: ${colors.lilac};
   float: right;
@@ -77,7 +71,7 @@ const ContinueShopping = styled('p')`
 `;
 
 const ContinueShoppingLink = styled('button')`
-  ${buttonAsLink};
+  ${button.link};
 `;
 
 export default () => (
