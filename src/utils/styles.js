@@ -153,30 +153,31 @@ export const visuallyHidden = css`
   border: 0;
 `;
 
-export const input = css`
-  background-color: ${colors.lightest};
-  border: 1px solid ${colors.brandBright};
-  border-radius: ${radius.default}px;
-  box-sizing: border-box;
-  color: ${colors.text};
-  display: block;
-  font-size: 1rem;
-  padding: ${spacing.xs}px ${spacing.sm}px;
-`;
+export const input = {
+  default: css`
+    background-color: ${colors.lightest};
+    border: 1px solid ${colors.brandBright};
+    border-radius: ${radius.default}px;
+    box-sizing: border-box;
+    color: ${colors.text};
+    display: block;
+    font-size: 1rem;
+    padding: ${spacing.xs}px ${spacing.sm}px;
+  `,
+  small: css`
+    font-size: 0.75rem;
+    padding: ${spacing.xs}px;
+  `,
+  focus: css`
+    border-color: ${colors.lilac};
+    box-shadow: 0 0 0 3px ${colors.brandBright};
+    outline: 0;
+    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  `
+};
 
-export const inputSmall = css`
-  font-size: 0.75rem;
-  padding: ${spacing.xs}px;
-`;
-
-export const inputFocus = css`
-  border-color: ${colors.lilac};
-  box-shadow: 0 0 0 3px ${colors.brandBright};
-  outline: 0;
-  transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
-`;
-
-export const select = css`
+export const select = {
+  default: css`
   appearance: none;
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23${colors.lilac.substr(
     1
@@ -185,11 +186,11 @@ export const select = css`
   background-position: right 0.5rem center;
   background-size: 8px 10px;
   padding-right: ${spacing.xl}px !important;
-`;
-
-export const selectSmall = css`
-  padding-right: ${spacing.xl}px !important;
-`;
+`,
+  small: css`
+    padding-right: ${spacing.xl}px !important;
+  `
+};
 
 export const button = {
   default: css`

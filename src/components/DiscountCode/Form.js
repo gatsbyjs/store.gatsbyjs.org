@@ -1,13 +1,6 @@
 import React from 'react';
 import styled, { keyframes } from 'react-emotion';
-import {
-  button,
-  colors,
-  spacing,
-  radius,
-  input,
-  inputFocus
-} from '../../utils/styles';
+import { button, colors, spacing, radius, input } from '../../utils/styles';
 
 const loading = keyframes`
   from { transform: scale(0.001); opacity: 1; }
@@ -91,12 +84,12 @@ const InputLabel = styled(Label)`
 `;
 
 const Input = styled('input')`
-  ${input};
+  ${input.default};
   margin-top: ${spacing.xs}px;
   width: 100%;
 
   :focus {
-    ${inputFocus};
+    ${input.focus};
   }
 `;
 
@@ -168,7 +161,7 @@ const Button = styled('button')`
   flex: 2 100%;
 
   :focus {
-    ${inputFocus};
+    ${input.focus};
   }
 `;
 
