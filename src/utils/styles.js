@@ -192,6 +192,12 @@ export const select = {
   `
 };
 
+export const link = css`
+  border-bottom: 1px solid ${colors.brand};
+  color: ${colors.brand};
+  text-decoration: none;
+`;
+
 export const button = {
   default: css`
     background-color: ${colors.lightest};
@@ -263,12 +269,6 @@ export const button = {
     font-size: 100%;
   `
 };
-
-export const link = css`
-  border-bottom: 1px solid ${colors.brand};
-  color: ${colors.brand};
-  text-decoration: none;
-`;
 
 export const pullHeadline = css`
   font-family: ${fonts.heading};
