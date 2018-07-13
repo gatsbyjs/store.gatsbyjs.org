@@ -2,6 +2,7 @@ import React from 'react';
 import styled from 'react-emotion';
 import StoreContext from '../../context/StoreContext';
 import EmptyCart from './EmptyCart';
+import AddedToCart from './AddedToCart';
 import ItemList from './ItemList';
 import { colors, button, dropdown, spacing } from '../../utils/styles';
 import { Text } from '../shared/Typography';
@@ -17,23 +18,6 @@ const Heading = styled('h4')`
 
 const Divider = styled('div')`
   ${dropdown.divider};
-`;
-
-const AddedToCartMessage = styled('div')`
-  background: ${colors.brandLighter};
-  border-bottom: 1px solid ${colors.brandLight};
-  color: ${colors.brand};
-  font-size: 0.875rem;
-  margin: 0;
-  margin-left: -${spacing.sm}px;
-  margin-right: -${spacing.sm}px;
-  padding: ${spacing.sm}px;
-`;
-
-const AddedToCartProductInfo = styled('p')`
-  color: ${colors.lilac};
-  font-size: 0.75rem;
-  margin: 0;
 `;
 
 const Checkout = styled('a')`
@@ -84,15 +68,7 @@ export default () => (
             <Divider />
             {checkout.lineItems.length > 0 ? (
               <>
-                {/* <AddedToCartMessage>
-                  <strong>Excellent Choice!</strong>{' '}
-                  <span role="img" aria-label="sparkles">
-                    ✨
-                  </span>
-                  <AddedToCartProductInfo>
-                    Added 1x “Purple Logo Tee”:
-                  </AddedToCartProductInfo>
-                </AddedToCartMessage> */}
+                <AddedToCart />
                 <ItemList
                   items={checkout.lineItems}
                   handleRemove={handleRemove}
