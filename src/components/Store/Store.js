@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from 'react-emotion';
-import Disclaimer from './Disclaimer';
+import CallOut from './CallOut';
 import ProductListings from './ProductListings';
 import Modal from '../Modal/Modal';
 import { pullHeadline, breakpoints } from '../../utils/styles';
@@ -16,7 +16,7 @@ const Headline = styled('h1')`
 export default () => (
   <>
     <Headline>Get Gatsby Swag!</Headline>
-    <Disclaimer />
+    <CallOut />
     <ProductListings />
     <Modal />
   </>
