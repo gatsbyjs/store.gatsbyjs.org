@@ -13,6 +13,8 @@ const Profile = styled('div')`
   display: flex;
   justify-content: space-between;
   margin: 0;
+  margin-left: ${spacing.md}px;
+  min-width: 0;
   position: relative;
 `;
 
@@ -42,6 +44,9 @@ const Name = styled('strong')`
   display: block;
   font-size: 0.875rem;
   margin-right: ${spacing.sm}px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 `;
 
 const NameLink = styled(Link)`
