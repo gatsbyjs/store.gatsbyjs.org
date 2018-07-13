@@ -6,7 +6,7 @@ import { Heading } from '../shared/Typography';
 
 export default () => (
   <>
-    <Heading>Get Gatsby Swag</Heading>
+    <Heading>Get Gatsby Swag!</Heading>
     <Disclaimer />
     <ProductListings />
     <Modal />
