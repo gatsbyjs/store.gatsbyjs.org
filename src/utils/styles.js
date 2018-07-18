@@ -19,7 +19,7 @@ export const colors = {
   textLight: '#7e718a',
   textLighter: '#aaaaaa',
   text: '#333333',
-  lilac: `#9d7cbf`,
+  lilac: `#8c65b3`,
   accent: `#ffb238`
 };
 
