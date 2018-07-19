@@ -9,6 +9,7 @@ import { css } from 'react-emotion';
  *    border-color: ${colors.brand}40;
  */
 export const colors = {
+  brandDarker: '#221133',
   brandDark: '#442266',
   brand: '#663399',
   brandBright: '#e0d6eb',
