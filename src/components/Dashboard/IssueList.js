@@ -73,6 +73,15 @@ const Label = styled('a')`
   }
 `;
 
+const formatLabelUrl = url => {
+  const urlParts = url.split('/');
+  const organization = urlParts[4];
+  const repository = urlParts[5];
+  const label = urlParts.slice(-1)[0];
+
+  return `https://github.com/${organization}/${repository}/issues?q=is%3Aissue+is%3Aopen+label%3A%22${label}%22`;
+};
+
 export default ({ issues }) => (
   <IssueList>
     {issues.map(issue => (
@@ -82,7 +91,10 @@ export default ({ issues }) => (
           <IssueId>#{issue.url.split('/').pop()}</IssueId>
         </IssueLink>
         {issue.labels.map(label => (
-          <Label href={label.url} key={`${issue.id}-${label.id}`}>
+          <Label
+            href={formatLabelUrl(label.url)}
+            key={`${issue.id}-${label.id}`}
+          >
             {label.name}
           </Label>
         ))}
