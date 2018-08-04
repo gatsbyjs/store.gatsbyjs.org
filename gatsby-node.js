@@ -9,7 +9,7 @@ exports.onCreatePage = async ({ page, actions: { createPage } }) => {
    * Take a look at `src/pages/account.js` for more details.
    */
   if (page.path.match(/^\/account/)) {
-    page.matchPath = '/account/:path';
+    page.matchPath = '/account/*';
 
     createPage(page);
   }
@@ -29,10 +29,10 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
         rules: [
           {
             test: /auth0-js/,
-            use: loaders.null()
-          }
-        ]
-      }
+            use: loaders.null(),
+          },
+        ],
+      },
     });
   }
 };
