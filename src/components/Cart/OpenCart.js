@@ -114,7 +114,8 @@ export default () => (
                   or{' '}
                   <ContinueShoppingLink onClick={toggleCart}>
                     continue shopping
-                  </ContinueShoppingLink>!
+                  </ContinueShoppingLink>
+                  !
                 </ContinueShopping>
                 <CurrencyText>All prices in USD</CurrencyText>
               </>

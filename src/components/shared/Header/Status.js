@@ -1,11 +1,11 @@
 import React from 'react';
 import { Link } from 'gatsby';
-import { withRouter } from 'react-router-dom';
+import { navigate } from '@reach/router';
 import Auth from '../../../utils/auth';
 
 const auth = new Auth();
 
-export default withRouter(({ history }) => {
+export default () => {
   let details;
   if (!auth.isAuthenticated()) {
     details = (
@@ -22,7 +22,9 @@ export default withRouter(({ history }) => {
           href="/"
           onClick={event => {
             event.preventDefault();
-            auth.logout(() => history.push('/'));
+            auth.logout(() => {
+              navigate(`/`);
+            });
           }}
         >
           log out
@@ -32,4 +34,4 @@ export default withRouter(({ history }) => {
   }
 
   return <div>{details}</div>;
-});
+};
