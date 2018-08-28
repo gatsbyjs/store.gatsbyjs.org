@@ -34,7 +34,8 @@
     "serve": "gatsby serve",
     "develop": "gatsby develop",
     "format": "prettier --write 'src/**/*.js'",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "postinstall": "cd plugins/gatsby-source-shopify-storefront/ && yarn"
   },
   "devDependencies": {
     "prettier": "^1.12.0"
