@@ -10,7 +10,7 @@ const getIssues = async () => {
   if (!issues) {
     const response = await axios.get(
       'https://api.github.com/repos/gatsbyjs/gatsby/issues',
-      { params: { labels: '📍 status: help wanted' } }
+      { params: { labels: 'status: help wanted' } }
     );
 
     issues = response.data;
