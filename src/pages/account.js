@@ -6,7 +6,7 @@ import PrivateRoute from '../components/shared/PrivateRoute';
 
 export default ({ location }) => (
   <Layout location={location}>
-    <Redirect from="/account" to="/account/dashboard" />
+    <Redirect from="/account" to="/account/dashboard" noThrow />
     <PrivateRoute path="/account/dashboard" component={Dashboard} />
   </Layout>
 );
