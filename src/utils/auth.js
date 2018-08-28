@@ -1,6 +1,6 @@
 import auth0js from 'auth0-js';
 
-const isBrowser = typeof window !== 'undefined';
+export const isBrowser = typeof window !== 'undefined';
 
 // To speed things up, we’ll keep the profile stored unless the user logs out.
 // This prevents a flicker while the HTTP round-trip completes.
