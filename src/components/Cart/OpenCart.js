@@ -104,6 +104,9 @@ export default () => (
                   <CostDetails>
                     Taxes: <PriceBox>{checkout.totalTax}</PriceBox>
                   </CostDetails>
+                  <CostDetails>
+                    Shipping: <PriceBox>FREE</PriceBox>
+                  </CostDetails>
                   <CostTotal>
                     Total Price: <PriceBox>${checkout.totalPrice}</PriceBox>
                   </CostTotal>
@@ -117,7 +120,7 @@ export default () => (
                   </ContinueShoppingLink>
                   !
                 </ContinueShopping>
-                <CurrencyText>All prices in USD</CurrencyText>
+                <CurrencyText>All prices in USD. Free shipping worldwide.</CurrencyText>
               </>
             ) : (
               <EmptyCart />
