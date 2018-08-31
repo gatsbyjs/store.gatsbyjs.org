@@ -18,4 +18,14 @@ export const defaultStoreContext = {
   toggleCart: () => {}
 };
 
-export default React.createContext(defaultStoreContext);
+const StoreContext = React.createContext(defaultStoreContext);
+
+export const withStoreContext = (Component) => {
+  return (props) => (
+    <StoreContext.Consumer>
+      {context => <Component {...props} storeContext={context} />}
+    </StoreContext.Consumer>
+  )
+};
+
+export default StoreContext;
