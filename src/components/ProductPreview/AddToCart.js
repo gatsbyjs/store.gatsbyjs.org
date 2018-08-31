@@ -100,6 +100,7 @@ export default class AddToCart extends Component {
 
   render() {
     const { variants } = this.props;
+    const id = this.props.productId.substring(58, 64)
 
     return (
       <StoreContext.Consumer>
@@ -107,9 +108,9 @@ export default class AddToCart extends Component {
           <Form onSubmit={this.handleSubmit(addVariantToCart)}>
             {variants.length > 1 && (
               <>
-                <HiddenLabel htmlFor="variant">Choose a size:</HiddenLabel>
+                <HiddenLabel htmlFor={`variant_${id}`}>Choose a size:</HiddenLabel>
                 <Size
-                  id="variant"
+                  id={`variant_${id}`}
                   className={inputStyles}
                   value={this.state.variant}
                   name="variant"
@@ -128,11 +129,11 @@ export default class AddToCart extends Component {
               </>
             )}
             {variants.length <= 1 && (
-              <VisibleLabel htmlFor="quantity">Quantity:</VisibleLabel>
+              <VisibleLabel htmlFor={`quantity_${id}`}>Quantity:</VisibleLabel>
             )}
             <Quantity
               type="number"
-              id="quantity"
+              id={`quantity_${id}`}
               name="quantity"
               min="1"
               step="1"

@@ -77,6 +77,6 @@ export default ({ product }) => (
     <Name>{product.title}</Name>
     <Price>USD ${product.variants[0].price}</Price>
     <Description>{removeCareInstructions(product.description)}</Description>
-    <AddToCart variants={product.variants} />
+    <AddToCart productId={product.id} variants={product.variants} />
   </Preview>
 );
