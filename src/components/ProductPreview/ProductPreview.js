@@ -51,7 +51,7 @@ const Description = styled('p')`
 
   @media (min-width: 650px) {
     font-size: 0.875rem;
-    min-height: 110px;
+    min-height: 115px;
   }
 `;
 
