@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'react-emotion';
+import ProductImage from './ProductImage';
 import { colors, spacing, radius } from '../../utils/styles';
 
 const Item = styled('li')`
@@ -16,7 +17,7 @@ const Item = styled('li')`
   }
 `;
 
-const Thumb = styled('img')`
+const Thumb = styled(ProductImage)`
   border-radius: ${radius.default}px;
   box-sizing: border-box;
   display: inline-block;
@@ -65,7 +66,11 @@ const Remove = styled('a')`
 
 export default ({ item, handleRemove }) => (
   <Item>
-    <Thumb src={item.variant.image.src} alt={item.variant.image.altText} />
+    <Thumb
+      id={item.variant.image.id}
+      fallback={item.variant.image.src}
+      alt={item.variant.image.altText}
+    />
     <ItemInfo>
       <Name>{item.title}</Name>
       <MetaData>
