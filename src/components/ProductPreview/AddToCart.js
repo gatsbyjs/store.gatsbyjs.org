@@ -13,18 +13,20 @@ const Form = styled('form')`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-between;
+  align-items: center;
 `;
 
 const labelStyles = css`
   ${visuallyHidden};
 `;
 
-const SizeLabel = styled('label')`
+const HiddenLabel = styled('label')`
   ${labelStyles};
 `;
 
-const QuantityLabel = styled('label')`
-  ${labelStyles};
+const VisibleLabel = styled('label')`
+  margin-top: ${spacing.sm}px;
+  font-size: 0.75rem;
 `;
 
 const inputStyles = css`
@@ -67,10 +69,14 @@ const Button = styled('button')`
 `;
 
 export default class AddToCart extends Component {
-  state = {
-    variant: '',
-    quantity: 1
-  };
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      variant: props.variants.length === 1 ? props.variants[0].shopifyId : '',
+      quantity: 1
+    };
+  }
 
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
@@ -94,32 +100,40 @@ export default class AddToCart extends Component {
 
   render() {
     const { variants } = this.props;
+    const id = this.props.productId.substring(58, 64)
 
     return (
       <StoreContext.Consumer>
         {({ addVariantToCart }) => (
           <Form onSubmit={this.handleSubmit(addVariantToCart)}>
-            <SizeLabel htmlFor="variant">Choose a size:</SizeLabel>
-            <Size
-              id="variant"
-              className={inputStyles}
-              value={this.state.variant}
-              name="variant"
-              onChange={this.handleChange}
-            >
-              <option disabled value="">
-                Choose Size
-              </option>
-              {variants.map(variant => (
-                <option value={variant.shopifyId} key={variant.shopifyId}>
-                  {variant.title}
-                </option>
-              ))}
-            </Size>
-            <QuantityLabel htmlFor="quantity">Quantity:</QuantityLabel>
+            {variants.length > 1 && (
+              <>
+                <HiddenLabel htmlFor={`variant_${id}`}>Choose a size:</HiddenLabel>
+                <Size
+                  id={`variant_${id}`}
+                  className={inputStyles}
+                  value={this.state.variant}
+                  name="variant"
+                  onChange={this.handleChange}
+                >
+                  <option disabled value="">
+                    Choose Size
+                  </option>
+                  {variants.map(variant => (
+                    <option value={variant.shopifyId} key={variant.shopifyId}>
+                      {variant.title}
+                    </option>
+                  ))}
+                </Size>
+                <HiddenLabel htmlFor="quantity">Quantity:</HiddenLabel>
+              </>
+            )}
+            {variants.length <= 1 && (
+              <VisibleLabel htmlFor={`quantity_${id}`}>Quantity:</VisibleLabel>
+            )}
             <Quantity
               type="number"
-              id="quantity"
+              id={`quantity_${id}`}
               name="quantity"
               min="1"
               step="1"

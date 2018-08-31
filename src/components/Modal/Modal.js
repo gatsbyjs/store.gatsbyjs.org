@@ -4,7 +4,7 @@ import ReactModal from 'react-modal';
 import MdClose from 'react-icons/lib/md/close';
 import SizeChartTable from './SizeChartTable';
 import { Heading, Subheading } from '../shared/Typography';
-import { colors, fonts, button } from '../../utils/styles';
+import { colors, fonts, button, spacing } from '../../utils/styles';
 
 injectGlobal`
   .ReactModal__Overlay {
@@ -58,13 +58,13 @@ injectGlobal`
       right: 40px;
     }
   }
-  
+
   .ReactModal__Content--after-open {
     opacity: 1;
     transition: all 150ms;
     transform: translate(0,0);
   }
-  
+
   .ReactModal__Content--before-close {
     opacity: 0;
     transform: translate(0,-25%);
@@ -110,15 +110,56 @@ const ModalCloseButton = styled('button')`
   }
 `;
 
+const UnitWrapper = styled('div')`
+  float: right;
+  display: flex;
+  align-items: center;
+  font-size: 0.75rem;
+  margin: ${-1 * spacing.lg}px 0 ${spacing.md}px 0;
+`
+
+const UnitOption = styled('div')`
+  padding: 0.2em 0.5em;
+  margin-right: 0.5em;
+  background: ${props => props.active && colors.brand};
+  color: ${props => props.active && colors.lightest};
+  cursor: pointer;
+  border-radius: 1em;
+
+  &:hover {
+    background: ${props => !props.active && colors.brandLight }
+  }
+`
+
+const UnitsLabel = styled('div')`
+  margin-right: 1em;
+`
+
+const UnitSelector = ({ setUnits, unit }) => {
+  const handleClick = (event) => {
+    setUnits(event.target.getAttribute('value'))
+  }
+
+  return(
+    <UnitWrapper>
+      <UnitsLabel>Units:</UnitsLabel>
+      <UnitOption value="in" active={unit === "in"} onClick={handleClick}>in</UnitOption>
+      <UnitOption value="cm" active={unit === "cm"} onClick={handleClick}>cm</UnitOption>
+    </UnitWrapper>
+  )
+}
+
 export default class Modal extends React.Component {
   constructor() {
     super();
     this.state = {
-      showModal: false
+      showModal: false,
+      units: "in",
     };
 
     this.handleOpenModal = this.handleOpenModal.bind(this);
     this.handleCloseModal = this.handleCloseModal.bind(this);
+    this.changeUnits = this.changeUnits.bind(this);
   }
 
   componentDidMount() {
@@ -133,6 +174,10 @@ export default class Modal extends React.Component {
   handleCloseModal() {
     document.querySelector(`html`).style.overflowY = `auto`;
     this.setState({ showModal: false });
+  }
+
+  changeUnits(units) {
+    this.setState({ units })
   }
 
   render() {
@@ -166,8 +211,9 @@ export default class Modal extends React.Component {
             but they require a little TLC.
           </p>
           <Subheading>Size Chart</Subheading>
-          <p>All measurements in inches (1 inch = 2.54 centimeters).</p>
-          <SizeChartTable />
+
+          <UnitSelector unit={this.state.units} setUnits={this.changeUnits} />
+          <SizeChartTable unit={this.state.units} />
           <p>
             <strong style={{ color: colors.brand }}>
               Don't see your size?
