@@ -1,6 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: 'Gatsby Store'
+    siteUrl: 'https://store.gatsbyjs.org',
+    title: 'Gatsby Store',
+    description: 'Get Gatsby Swag!',
   },
   plugins: [
     'gatsby-transformer-sharp',

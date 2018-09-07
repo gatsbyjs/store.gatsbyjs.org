@@ -1,10 +1,10 @@
 import React from 'react';
-import Helmet from 'react-helmet';
-import styled, { css } from 'react-emotion';
+import styled from 'react-emotion';
 import { push } from 'gatsby';
 import CTA from '../CTA/CTA';
 import Footer from './Footer/Footer';
 import Header from './Header/Header';
+import SiteMetadata from './SiteMetadata';
 import StoreContext, { defaultStoreContext } from '../../context/StoreContext';
 import UserContext, {
   checkContributions,
@@ -12,19 +12,10 @@ import UserContext, {
   getDiscountCode
 } from '../../context/UserContext';
 import { logout, getUserInfo } from '../../utils/auth';
-import { colors, spacing } from '../../utils/styles';
+import { spacing } from '../../utils/styles';
 
 // Import Futura PT typeface
 import '../../fonts/futura-pt/Webfonts/futurapt_demi_macroman/stylesheet.css';
-
-const bodyStyles = css`
-  color: ${colors.text};
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 16px;
-  margin: 0 auto;
-  line-height: 1.375;
-`;
 
 const Main = styled('main')`
   display: block;
@@ -178,35 +169,7 @@ export default class Layout extends React.Component {
   render() {
     return (
       <>
-        <Helmet
-          lang="en"
-          title={this.props.title || ''}
-          defaultTitle="Gatsby Store"
-          titleTemplate="%s · Gatsby Store"
-        >
-          <link
-            rel="apple-touch-icon"
-            sizes="180x180"
-            href="/apple-touch-icon.png"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="32x32"
-            href="/favicon-32x32.png"
-          />
-          <link
-            rel="icon"
-            type="image/png"
-            sizes="16x16"
-            href="/favicon-16x16.png"
-          />
-          <link rel="manifest" href="/manifest.json" />
-          <link rel="mask-icon" href="/safari-pinned-tab.svg" color="#663399" />
-          <meta name="msapplication-TileColor" content="#663399" />
-          <meta name="theme-color" content="#663399" />
-          <body className={bodyStyles} />
-        </Helmet>
+        <SiteMetadata />
         <UserContext.Provider value={this.state.user}>
           <StoreContext.Provider value={this.state.store}>
             <Header />
