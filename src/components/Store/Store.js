@@ -25,9 +25,6 @@ export default () => (
     <ProductListings />
     <ProductDetailsLink
       to="/product-details"
-      style={{
-        textDecoration: 'none'
-      }}
     >
       Product Details & Size Chart
     </ProductDetailsLink>
