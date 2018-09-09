@@ -3,7 +3,7 @@ import styled from 'react-emotion';
 import Link from 'gatsby-link';
 // import CallOut from './CallOut';
 import ProductListings from './ProductListings';
-import { pullHeadline, breakpoints, colors, link } from '../../utils/styles';
+import { pullHeadline, breakpoints, link } from '../../utils/styles';
 
 const Headline = styled('h1')`
   ${pullHeadline};
