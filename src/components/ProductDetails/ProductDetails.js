@@ -90,9 +90,9 @@ export default class ProductDetails extends React.Component {
         <SizeChartTable unit={this.state.units} />
         <p>
           <strong style={{ color: colors.brand }}>
-            Don't see your size?
+            Don’t see your size?
           </strong>{' '}
-          Send us an email team@gatsbyjs.com and we'll see if we can help!
+          Send us an email team@gatsbyjs.com and we’ll see if we can help!
         </p>
         <LargerSubheading>T-Shirt Materials & Fit</LargerSubheading>
         <p>
@@ -120,7 +120,7 @@ export default class ProductDetails extends React.Component {
         <p>
           Keep those socks comfy on your feet and looking bright by washing
           them in cold water with darker colors. Tumble dry on low so they
-          don't shrink!
+          don’t shrink!
         </p>
         <SubSubheading>T-Shirts</SubSubheading>
         <p>
