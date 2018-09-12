@@ -1,9 +1,9 @@
 import React from 'react';
 import styled from 'react-emotion';
+import { Link } from 'gatsby';
 // import CallOut from './CallOut';
 import ProductListings from './ProductListings';
-import Modal from '../Modal/Modal';
-import { pullHeadline, breakpoints } from '../../utils/styles';
+import { pullHeadline, breakpoints, link } from '../../utils/styles';
 
 const Headline = styled('h1')`
   ${pullHeadline};
@@ -13,11 +13,20 @@ const Headline = styled('h1')`
   }
 `;
 
+const ProductDetailsLink = styled(Link)`
+  ${link};
+  text-decoration: none;
+`
+
 export default () => (
   <>
     <Headline>Get Gatsby Swag!</Headline>
     {/* <CallOut /> */}
     <ProductListings />
-    <Modal />
+    <ProductDetailsLink
+      to="/product-details"
+    >
+      Product Details & Size Chart
+    </ProductDetailsLink>
   </>
 );
