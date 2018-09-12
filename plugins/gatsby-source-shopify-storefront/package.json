@@ -16,14 +16,14 @@
   "author": "Jeff Pamer <jeff@mediumdivision.com>",
   "license": "MIT",
   "dependencies": {
-    "babel-runtime": "^6.26.0",
+    "@babel/runtime": "^7.0.0",
     "gatsby-node-helpers": "^0.3.0",
     "gatsby-source-filesystem": "next",
     "graphql-client": "^2.0.0"
   },
   "devDependencies": {
-    "@babel/cli": "^7.0.0-beta.47",
-    "@babel/core": "^7.0.0-beta.47",
+    "@babel/cli": "^7.0.0",
+    "@babel/core": "^7.0.0",
     "cross-env": "^5.0.5"
   },
   "scripts": {
