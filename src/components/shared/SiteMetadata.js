@@ -71,8 +71,15 @@ export default () => (
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en" />
         <meta property="og:title" content={title} />
+        <meta property="og:site_name" content={title} />
         <meta property="og:description" content={description} />
 
+        <meta property="og:image" content={`${siteUrl}/android-chrome-512x512.png`} />
+        <meta property="og:image:alt" content="Gatsby Store Logo" />
+        <meta property="og:image:width" content="512" />
+        <meta property="og:image:height" content="512" />
+
+        <meta name="twitter:card" content="summary" />
         <meta name="twitter:site" content="@gatsbyjs" />
       </Helmet>
     )}
