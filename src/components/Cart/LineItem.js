@@ -64,7 +64,7 @@ const Remove = styled('a')`
   }
 `;
 
-export default ({ item, handleRemove }) => (
+export default ({ item, handleRemove, updateQuantity }) => (
   <Item>
     <Thumb
       id={item.variant.image.id}
@@ -77,7 +77,8 @@ export default ({ item, handleRemove }) => (
         {item.variant.title}, ${item.variant.price}
       </MetaData>
     </ItemInfo>
-    <Quantity>{item.quantity}</Quantity>
+    {/* TODO: replace by same inputs as frontpage */}
+    <input type="number" value={item.quantity} onChange={updateQuantity} style={{width: '40px'}}/>
     <Remove
       href="#remove"
       title="Remove this item from your cart."
