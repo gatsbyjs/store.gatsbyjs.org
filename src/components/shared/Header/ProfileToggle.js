@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'react-emotion';
-import MdArrowDropDown from 'react-icons/lib/md/arrow-drop-down';
-import MdArrowDropUp from 'react-icons/lib/md/arrow-drop-up';
+import { MdArrowDropDown } from 'react-icons/md';
+import { MdArrowDropUp } from 'react-icons/md';
 import UserContext from '../../../context/UserContext';
 import { button } from '../../../utils/styles';
 

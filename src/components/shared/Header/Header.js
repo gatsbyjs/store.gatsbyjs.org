@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'react-emotion';
 import { Link } from 'gatsby';
+import { IconContext } from 'react-icons';
 import Gatsby from './Gatsby';
 import Profile from './Profile';
 import Cart from '../../Cart/Cart';
@@ -32,10 +33,12 @@ const HomeLink = styled(Link)`
 
 export default () => (
   <Header>
-    <HomeLink to="/">
-      <Gatsby />
-    </HomeLink>
-    <Profile />
-    <Cart />
+    <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}>
+      <HomeLink to="/">
+        <Gatsby />
+      </HomeLink>
+      <Profile />
+      <Cart />
+    </IconContext.Provider>
   </Header>
 );

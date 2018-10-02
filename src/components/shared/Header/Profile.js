@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'react-emotion';
 import { Link } from 'gatsby';
-import GithubIcon from 'react-icons/lib/go/mark-github';
+import { GoMarkGithub } from 'react-icons/go';
 import ProfileToggle from './ProfileToggle';
 import OpenProfile from './OpenProfile';
 import UserContext from '../../../context/UserContext';
@@ -64,7 +64,7 @@ const Login = styled('a')`
   ${button.small};
 `;
 
-const Icon = styled(GithubIcon)`
+const Icon = styled(GoMarkGithub)`
   font-size: 1rem;
   margin-right: ${spacing.xs}px;
 `;
