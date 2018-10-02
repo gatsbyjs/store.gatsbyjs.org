@@ -81,6 +81,11 @@ export default () => (
         event.preventDefault();
         removeLineItem(client, checkout.id, itemID);
       };
+      const handleQuantityChange = (id, quantity) => event => {
+        console.log('updatequantity');
+
+        // logic to update cart
+      };
 
       return (
         isCartOpen && (
@@ -96,6 +101,7 @@ export default () => (
                 <ItemList
                   items={checkout.lineItems}
                   handleRemove={handleRemove}
+                  updateQuantity={handleQuantityChange}
                 />
                 <CostBlock>
                   <CostDetails>
