@@ -110,8 +110,9 @@ export default class Layout extends React.Component {
           }));
         });
       },
-      updateLineItem: (client, checkoutID, variantId, quantity) => {
-        const lineItemsToUpdate = [{ variantId, quantity: parseInt(quantity, 10) }];
+      updateLineItem: (client, checkoutID, lineItemID, quantity) => {
+        const lineItemsToUpdate = [{ id: lineItemID, quantity: parseInt(quantity, 10) }];
+
         client.checkout
           .updateLineItems(checkoutID, lineItemsToUpdate)
           .then(res => {
