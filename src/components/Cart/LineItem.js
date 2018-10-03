@@ -1,7 +1,7 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled, { css } from 'react-emotion';
 import ProductImage from './ProductImage';
-import { colors, spacing, radius } from '../../utils/styles';
+import { colors, spacing, radius, input } from '../../utils/styles';
 
 const Item = styled('li')`
   align-items: center;
@@ -43,9 +43,29 @@ const MetaData = styled('em')`
   font-style: normal;
 `;
 
-const Quantity = styled('p')`
-  font-size: 0.875rem;
-  margin: 0 1rem;
+// const Quantity = styled('p')`
+//   font-size: 0.875rem;
+//   margin: 0 1rem;
+// `;
+const inputStyles = css`
+  ${input.default};
+  margin-top: ${spacing.sm}px;
+  width: 100%;
+
+  :focus {
+    ${input.focus};
+  }
+
+  @media (min-width: 650px) {
+    ${input.small};
+  }
+`;
+
+const Quantity = styled('input')`
+  ${inputStyles};
+
+  flex: 1 calc(30% - ${spacing.xs}px);
+  max-width: calc(30% - ${spacing.xs}px);
 `;
 
 const Remove = styled('a')`
@@ -77,8 +97,14 @@ export default ({ item, handleRemove, updateQuantity }) => (
         {item.variant.title}, ${item.variant.price}
       </MetaData>
     </ItemInfo>
-    {/* TODO: replace by same inputs as frontpage */}
-    <input type="number" value={item.quantity} onChange={updateQuantity} style={{width: '40px'}}/>
+    <Quantity
+      type="number"
+      name="quantity"
+      min="1"
+      step="1"
+      onChange={() => updateQuantity(item.variant.id, 'test')}
+      value={item.quantity}
+    />
     <Remove
       href="#remove"
       title="Remove this item from your cart."
