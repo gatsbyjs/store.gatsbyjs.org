@@ -81,11 +81,8 @@ export default () => (
         event.preventDefault();
         removeLineItem(client, checkout.id, itemID);
       };
-      const handleQuantityChange = (variantID, quantity) => {
-        updateLineItem(client, checkout.id, variantID, quantity)
-        // .../node_modules/shopify-buy/index.js:3591 Uncaught (in promise) Error: [{"field":null,"message":"could not find line item with id "}]
-        // at eval (.../node_modules/shopify-buy/index.js:3591)
-        // instead of passing in variantID pass in lineItemID? docs are confusing
+      const handleQuantityChange = (lineItemID, quantity) => {
+        updateLineItem(client, checkout.id, lineItemID, quantity)
       };
 
       return (

@@ -43,10 +43,6 @@ const MetaData = styled('em')`
   font-style: normal;
 `;
 
-// const Quantity = styled('p')`
-//   font-size: 0.875rem;
-//   margin: 0 1rem;
-// `;
 const inputStyles = css`
   ${input.default};
   margin-top: ${spacing.sm}px;
@@ -102,7 +98,7 @@ export default ({ item, handleRemove, updateQuantity }) => (
       name="quantity"
       min="1"
       step="1"
-      onChange={event => updateQuantity(item.variant.id, event.target.value)}
+      onChange={event => updateQuantity(item.id, event.target.value)}
       defaultValue={item.quantity}
     />
     <Remove
