@@ -1,7 +1,7 @@
 import React from 'react';
 import styled, { css } from 'react-emotion';
 import ProductImage from './ProductImage';
-import { colors, spacing, radius, input } from '../../utils/styles';
+import { colors, spacing, radius, input, visuallyHidden } from '../../utils/styles';
 
 const Item = styled('li')`
   align-items: center;
@@ -57,11 +57,19 @@ const inputStyles = css`
   }
 `;
 
+const labelStyles = css`
+  ${visuallyHidden};
+`;
+
+const HiddenLabel = styled('label')`
+  ${labelStyles}
+`;
+
 const Quantity = styled('input')`
   ${inputStyles};
-
-  flex: 1 calc(30% - ${spacing.xs}px);
-  max-width: calc(30% - ${spacing.xs}px);
+  margin-top: 0;
+  margin-right: ${spacing.xs}px;
+  max-width: calc(20% - ${spacing.xs}px);
 `;
 
 const Remove = styled('a')`
@@ -93,7 +101,9 @@ export default ({ item, handleRemove, updateQuantity }) => (
         {item.variant.title}, ${item.variant.price}
       </MetaData>
     </ItemInfo>
+    <HiddenLabel htmlFor={`quantity_${item.id.substring(58, 64)}`}>Quantity:</HiddenLabel>
     <Quantity
+      id={`quantity_${item.id.substring(58, 64)}`}
       type="number"
       name="quantity"
       min="1"
