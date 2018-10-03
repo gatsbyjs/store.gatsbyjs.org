@@ -76,15 +76,17 @@ const ContinueShoppingLink = styled('button')`
 
 export default () => (
   <StoreContext.Consumer>
-    {({ client, checkout, isCartOpen, removeLineItem, toggleCart }) => {
+    {({ client, checkout, isCartOpen, removeLineItem, upateLineItem, toggleCart }) => {
       const handleRemove = itemID => event => {
         event.preventDefault();
         removeLineItem(client, checkout.id, itemID);
       };
-      const handleQuantityChange = (id, quantity) => event => {
-        console.log('updatequantity');
+      const handleQuantityChange = (variantId, quantity) => {
+        console.log({variantId});
+        console.log({quantity});
 
         // logic to update cart
+        updateLineItem(client, checkout.id, variantId, quantity)
       };
 
       return (

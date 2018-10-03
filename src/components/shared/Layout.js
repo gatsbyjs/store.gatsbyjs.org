@@ -110,7 +110,16 @@ export default class Layout extends React.Component {
           }));
         });
       },
-      // updateQuantity: (lineItemID, quantity) => {},
+      updateLineItem: (client, checkoutID, variantId, quantity) => {
+        const lineItemsToUpdate = [{ variantId, quantity: parseInt(quantity, 10) }];
+        client.checkout
+          .updateLineItems(checkoutID, lineItemsToUpdate)
+          .then(res => {
+            this.setState(state => ({
+              store: { ...state.store, checkout: res }
+            }));
+          });
+      },
       toggleCart: () => {
         this.setState(state => ({
           store: { ...state.store, isCartOpen: !state.store.isCartOpen },
