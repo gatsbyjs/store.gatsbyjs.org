@@ -102,8 +102,8 @@ export default ({ item, handleRemove, updateQuantity }) => (
       name="quantity"
       min="1"
       step="1"
-      onChange={() => updateQuantity(item.variant.id, 'test')}
-      value={item.quantity}
+      onChange={event => updateQuantity(item.variant.id, event.target.value)}
+      defaultValue={item.quantity}
     />
     <Remove
       href="#remove"

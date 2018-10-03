@@ -7,7 +7,6 @@ const ItemList = styled('ul')`
   margin: 0;
   padding: 0;
 `;
- 
 
 export default ({ items, handleRemove, updateQuantity }) => (
   <ItemList>

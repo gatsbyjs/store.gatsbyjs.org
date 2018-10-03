@@ -76,17 +76,16 @@ const ContinueShoppingLink = styled('button')`
 
 export default () => (
   <StoreContext.Consumer>
-    {({ client, checkout, isCartOpen, removeLineItem, upateLineItem, toggleCart }) => {
+    {({ client, checkout, isCartOpen, removeLineItem, updateLineItem, toggleCart }) => {
       const handleRemove = itemID => event => {
         event.preventDefault();
         removeLineItem(client, checkout.id, itemID);
       };
-      const handleQuantityChange = (variantId, quantity) => {
-        console.log({variantId});
-        console.log({quantity});
-
-        // logic to update cart
-        updateLineItem(client, checkout.id, variantId, quantity)
+      const handleQuantityChange = (variantID, quantity) => {
+        updateLineItem(client, checkout.id, variantID, quantity)
+        // .../node_modules/shopify-buy/index.js:3591 Uncaught (in promise) Error: [{"field":null,"message":"could not find line item with id "}]
+        // at eval (.../node_modules/shopify-buy/index.js:3591)
+        // instead of passing in variantID pass in lineItemID? docs are confusing
       };
 
       return (
