@@ -29,7 +29,7 @@ commands:
       - checkout
       - <<: *restore_node_modules
       - <<: *install_node_modules
-      - run: yarn "<< parameters.test_path >>"
+      - run: yarn "<< parameters.command >>"
 
 jobs:
   lint:
