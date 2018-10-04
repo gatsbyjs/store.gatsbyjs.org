@@ -45,7 +45,6 @@ const MetaData = styled('em')`
 
 const inputStyles = css`
   ${input.default};
-  margin-top: ${spacing.sm}px;
   width: 100%;
 
   :focus {
@@ -67,7 +66,6 @@ const HiddenLabel = styled('label')`
 
 const Quantity = styled('input')`
   ${inputStyles};
-  margin-top: 0;
   margin-right: ${spacing.xs}px;
   max-width: calc(20% - ${spacing.xs}px);
 `;
