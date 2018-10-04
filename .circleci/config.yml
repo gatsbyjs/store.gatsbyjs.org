@@ -1,0 +1,52 @@
+version: 2.1
+aliases:
+  node10: &node10
+    docker:
+      - image: circleci/node:10
+  restore_node_modules: &restore_node_modules
+    restore_cache:
+      name: Restore node_modules cache
+      keys:
+        - node-modules-{{ checksum "yarn.lock" }}
+  install_node_modules: &install_node_modules
+    run:
+      name: Install node modules
+      command: |
+        yarn
+  persist_node_modules: &persist_node_modules
+    save_cache:
+      name: Save node modules cache
+      key: node-modules-{{ checksum "yarn.lock" }}
+      paths:
+        - node_modules
+
+commands:
+  run_command:
+    parameters:
+      command:
+        type: string
+    steps:
+      - checkout
+      - <<: *restore_node_modules
+      - <<: *install_node_modules
+      - run: yarn "<< parameters.command >>"
+
+jobs:
+  lint:
+    <<: *node10
+    steps:
+      - run_command:
+          command: "lint"
+
+  test:
+    <<: *node10
+    steps:
+      - run_command:
+          command: "test"
+
+workflows:
+  version: 2
+  lint-test:
+    jobs:
+      - lint
+      - test
