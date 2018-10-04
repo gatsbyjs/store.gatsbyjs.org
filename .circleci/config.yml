@@ -29,7 +29,6 @@ commands:
       - checkout
       - <<: *restore_node_modules
       - <<: *install_node_modules
-      - <<: *attach_to_bootstrap
       - run: yarn "<< parameters.test_path >>"
 
 jobs:
