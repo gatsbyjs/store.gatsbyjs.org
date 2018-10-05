@@ -26,12 +26,12 @@ export default () => (
               title
               description
               productType
-              variants: childrenShopifyProductVariant {
+              variants {
                 shopifyId
                 title
                 price
               }
-              images: childrenShopifyProductImage {
+              images {
                 id
                 localFile {
                   childImageSharp {
