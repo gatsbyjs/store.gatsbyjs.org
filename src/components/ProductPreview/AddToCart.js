@@ -140,7 +140,7 @@ export default class AddToCart extends Component {
               onChange={this.handleChange}
               value={this.state.quantity}
             />
-            <Button type="submit">Add to Cart</Button>
+            <Button type="submit" disabled={(variants.length <= 1 && !variants.availableForSale)}>Add to Cart</Button>
           </Form>
         )}
       </StoreContext.Consumer>
