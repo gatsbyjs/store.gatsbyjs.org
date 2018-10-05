@@ -2,14 +2,14 @@ module.exports = {
   siteMetadata: {
     siteUrl: 'https://store.gatsbyjs.org',
     title: 'Gatsby Store',
-    description: 'Get Gatsby Swag!',
+    description: 'Get Gatsby Swag!'
   },
   plugins: [
     'gatsby-transformer-sharp',
     {
-      resolve: 'gatsby-source-shopify-storefront',
+      resolve: 'gatsby-source-shopify2',
       options: {
-        siteName: 'gatsby-swag',
+        shopName: 'gatsby-swag',
         accessToken: '9aa73c089d34741f36edbe4d7314373a'
       }
     },

@@ -10,6 +10,10 @@ const ImageBox = styled('div')`
     flex: 5 100%;
     width: 100%;
   }
+
+  .gatsby-image-wrapper {
+    width: 100%;
+  }
 `;
 
 const PreviewWrapper = styled('div')`

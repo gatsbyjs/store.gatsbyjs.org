@@ -8,35 +8,31 @@ const ProductImage = ({
   fallback,
   ...imageProps
 }) => {
-  // Shopify's JavaScript Buy SDK returns the ID alone, while the Gatsby
-  // source plugin prepends the ID with the GraphQL type
-  const formattedImageId = `Shopify__ProductImage__${imageId}`
-
-  const image = shopifyImages.find(({ node: { id } }) => id === formattedImageId)
+  const image = shopifyImages.find(({ id }) => id === imageId);
 
   if (image) {
-    imageProps.fluid = image.node.localFile.childImageSharp.fluid
+    imageProps.fluid = image.localFile.childImageSharp.fluid;
   } else {
-    imageProps.src = fallback
+    imageProps.src = fallback;
   }
 
-  return(
-    <Image {...imageProps} />
-  )
-}
+  return <Image {...imageProps} />;
+};
 
-export default (props) => (
+export default props => (
   <StaticQuery
     query={graphql`
-      query ImageListings {
-        images: allShopifyProductImage {
+      {
+        allShopifyProduct {
           edges {
             node {
-              id
-              localFile {
-                childImageSharp {
-                  fluid {
-                    ...GatsbyImageSharpFluid_withWebp
+              images {
+                id
+                localFile {
+                  childImageSharp {
+                    fluid {
+                      ...GatsbyImageSharpFluid_withWebp
+                    }
                   }
                 }
               }
@@ -45,8 +41,12 @@ export default (props) => (
         }
       }
     `}
-    render={({ images }) => (
-      <ProductImage shopifyImages={images.edges} {...props} />
-    )}
+    render={({ allShopifyProduct }) => {
+      const images = allShopifyProduct.edges
+        .map(({ node }) => node.images)
+        .flat();
+
+      return <ProductImage shopifyImages={images} {...props} />;
+    }}
   />
 );
