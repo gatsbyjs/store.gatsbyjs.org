@@ -120,7 +120,7 @@ export default class AddToCart extends Component {
                     Choose Size
                   </option>
                   {variants.map(variant => (
-                    <option value={variant.shopifyId} key={variant.shopifyId}>
+                    <option disabled={!variant.availableForSale} value={variant.shopifyId} key={variant.shopifyId}>
                       {variant.title}
                     </option>
                   ))}
