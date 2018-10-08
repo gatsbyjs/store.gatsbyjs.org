@@ -100,13 +100,21 @@ export default class AddToCart extends Component {
 
   render() {
     const { variants } = this.props;
-    const id = this.props.productId.substring(58, 64)
+    const id = this.props.productId.substring(58, 64);
+    const hasVariants = variants.length > 1;
+
+    /*
+     * For products without variants, we disable the whole Add to Cart button
+     * and change the text. This flag prevents us from duplicating the logic in
+     * multiple places.
+     */
+    const isOutOfStock = !hasVariants && !variants[0].availableForSale;
 
     return (
       <StoreContext.Consumer>
         {({ addVariantToCart }) => (
           <Form onSubmit={this.handleSubmit(addVariantToCart)}>
-            {variants.length > 1 && (
+            {hasVariants && (
               <>
                 <HiddenLabel htmlFor={`variant_${id}`}>Choose a size:</HiddenLabel>
                 <Size
@@ -120,7 +128,7 @@ export default class AddToCart extends Component {
                     Choose Size
                   </option>
                   {variants.map(variant => (
-                    <option value={variant.shopifyId} key={variant.shopifyId}>
+                    <option disabled={!variant.availableForSale} value={variant.shopifyId} key={variant.shopifyId}>
                       {variant.title}
                     </option>
                   ))}
@@ -128,7 +136,7 @@ export default class AddToCart extends Component {
                 <HiddenLabel htmlFor="quantity">Quantity:</HiddenLabel>
               </>
             )}
-            {variants.length <= 1 && (
+            {!hasVariants && (
               <VisibleLabel htmlFor={`quantity_${id}`}>Quantity:</VisibleLabel>
             )}
             <Quantity
@@ -140,7 +148,9 @@ export default class AddToCart extends Component {
               onChange={this.handleChange}
               value={this.state.quantity}
             />
-            <Button type="submit">Add to Cart</Button>
+            <Button type="submit" disabled={isOutOfStock}>
+              {isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
+            </Button>
           </Form>
         )}
       </StoreContext.Consumer>

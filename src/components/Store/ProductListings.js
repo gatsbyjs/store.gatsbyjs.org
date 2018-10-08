@@ -30,6 +30,7 @@ export default () => (
                 shopifyId
                 title
                 price
+                availableForSale
               }
               images {
                 id
