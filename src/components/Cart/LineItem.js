@@ -97,12 +97,12 @@ class LineItem extends React.Component {
     quantity: this.props.item.quantity || 0,
     isLoaded: true
   };
-  inputChangeHandler(event, id) {
+  inputChangeHandler(event) {
     const target = event.target;
     const value = target.value;
 
     this.setState({ quantity: value, isLoaded: false });
-    this.props.updateQuantity(id, value).then(()=>this.setState({isLoaded: true}));
+    this.props.updateQuantity(value).then(()=>this.setState({isLoaded: true}));
   }
   render() {
     const { item, handleRemove } = this.props;
@@ -128,7 +128,7 @@ class LineItem extends React.Component {
           name="quantity"
           min="1"
           step="1"
-          onChange={(event) => this.inputChangeHandler(event, item.id)}
+          onChange={(event) => this.inputChangeHandler(event)}
           defaultValue={this.state.quantity}
         />
         <Remove
