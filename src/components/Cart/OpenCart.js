@@ -96,6 +96,9 @@ class OpenCartComp extends React.Component {
           };
           const handleQuantityChange = lineItemID => quantity => {
             this.setState({ isLoading: true });
+            if (!quantity) {
+              return
+            }
             return updateLineItem(
               client,
               checkout.id,
@@ -104,57 +107,50 @@ class OpenCartComp extends React.Component {
             ).then(() => this.setState({ isLoading: false }));
           };
 
-          return (
-            isCartOpen && (
-              <OpenCart>
+          return isCartOpen && <OpenCart>
                 <Heading>
-                  Your Cart{' '}
-                  <CloseCartButton onClick={toggleCart}>
+                  Your Cart <CloseCartButton onClick={toggleCart}>
                     &times;
                   </CloseCartButton>
                 </Heading>
                 <Divider />
-                {checkout.lineItems.length > 0 ? (
-                  <>
+                {checkout.lineItems.length > 0 ? <>
                     {/* <AddedToCart /> */}
-                    <ItemList
-                      items={checkout.lineItems}
-                      handleRemove={handleRemove}
-                      updateQuantity={handleQuantityChange}
-                    />
+                    <ItemList items={checkout.lineItems} handleRemove={handleRemove} updateQuantity={handleQuantityChange} />
                     <CostBlock isLoading={this.state.isLoading}>
                       <CostDetails>
-                        Subtotal: <PriceBox>${checkout.subtotalPrice}</PriceBox>
+                        Subtotal: <PriceBox>
+                          ${checkout.subtotalPrice}
+                        </PriceBox>
                       </CostDetails>
                       <CostDetails>
-                        Taxes: <PriceBox>{checkout.totalTax}</PriceBox>
+                        Taxes: <PriceBox>
+                          {checkout.totalTax}
+                        </PriceBox>
                       </CostDetails>
                       <CostDetails>
                         Shipping: <PriceBox>FREE</PriceBox>
                       </CostDetails>
                       <CostTotal>
-                        Total Price: <PriceBox>${checkout.totalPrice}</PriceBox>
+                        Total Price: <PriceBox>
+                          ${checkout.totalPrice}
+                        </PriceBox>
                       </CostTotal>
                     </CostBlock>
                     <Divider />
-                    <Checkout href={checkout.webUrl}>Check Out</Checkout>
+                    <Checkout href={checkout.webUrl}>
+                      Check Out
+                    </Checkout>
                     <ContinueShopping>
-                      or{' '}
-                      <ContinueShoppingLink onClick={toggleCart}>
+                      or <ContinueShoppingLink onClick={toggleCart}>
                         continue shopping
-                      </ContinueShoppingLink>
-                      !
+                      </ContinueShoppingLink>!
                     </ContinueShopping>
                     <CurrencyText>
                       All prices in USD. Free shipping worldwide.
                     </CurrencyText>
-                  </>
-                ) : (
-                  <EmptyCart />
-                )}
-              </OpenCart>
-            )
-          );
+                  </> : <EmptyCart />}
+              </OpenCart>;
         }}
       </StoreContext.Consumer>
     );
