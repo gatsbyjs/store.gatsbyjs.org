@@ -94,15 +94,14 @@ const Remove = styled('a')`
 
 class LineItem extends React.Component {
   state = {
-    quantity: this.props.item.quantity || 0,
-    isLoaded: true
-  };
+    quantity: this.props.item.quantity || 0
+  }
   inputChangeHandler(event) {
-    const target = event.target;
-    const value = target.value;
+    const target = event.target
+    const value = target.value
 
-    this.setState({ quantity: value, isLoaded: false });
-    this.props.updateQuantity(value).then(()=>this.setState({isLoaded: true}));
+    this.setState({ quantity: value })
+    this.props.updateQuantity(value)
   }
   render() {
     const { item, handleRemove } = this.props;
