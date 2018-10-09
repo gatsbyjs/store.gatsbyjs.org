@@ -94,15 +94,18 @@ const Remove = styled('a')`
 
 class LineItem extends React.Component {
   state = {
-    quantity: this.props.item.quantity || 0
-  }
-  inputChangeHandler(event) {
-    const target = event.target
-    const value = target.value
+    quantity: this.props.item.quantity || 1
+  };
 
-    this.setState({ quantity: value })
-    this.props.updateQuantity(value)
-  }
+  inputChangeHandler = event => {
+    const target = event.target;
+    const value = target.value;
+
+    this.setState({ quantity: value }, () => {
+      this.props.updateQuantity(this.state.quantity);
+    });
+  };
+
   render() {
     const { item, handleRemove } = this.props;
     return (
@@ -127,8 +130,8 @@ class LineItem extends React.Component {
           name="quantity"
           min="1"
           step="1"
-          onChange={(event) => this.inputChangeHandler(event)}
-          defaultValue={this.state.quantity}
+          onChange={event => this.inputChangeHandler(event)}
+          value={this.state.quantity}
         />
         <Remove
           href="#remove"

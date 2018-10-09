@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'react-emotion';
+import _ from 'lodash';
 import StoreContext from '../../context/StoreContext';
 import EmptyCart from './EmptyCart';
 // import AddedToCart from './AddedToCart';
@@ -31,6 +32,7 @@ const CostBlock = styled('div')`
   margin: ${spacing.sm}px 0;
   text-align: right;
   background: ${props => (props.isLoading ? colors.brandBright : 'inherit')};
+  transition: background-color 0.5s ease;
 `;
 
 const PriceBox = styled('span')`
@@ -79,6 +81,7 @@ class OpenCartComp extends React.Component {
   state = {
     isLoading: false
   };
+
   render() {
     return (
       <StoreContext.Consumer>
@@ -94,63 +97,71 @@ class OpenCartComp extends React.Component {
             event.preventDefault();
             removeLineItem(client, checkout.id, itemID);
           };
-          const handleQuantityChange = lineItemID => quantity => {
-            this.setState({ isLoading: true });
-            if (!quantity) {
-              return
-            }
-            return updateLineItem(
-              client,
-              checkout.id,
-              lineItemID,
-              quantity
-            ).then(() => this.setState({ isLoading: false }));
-          };
+          const handleQuantityChange = lineItemID =>
+            _.debounce(quantity => {
+              this.setState({ isLoading: true });
+              if (!quantity) {
+                return;
+              }
+              return updateLineItem(
+                client,
+                checkout.id,
+                lineItemID,
+                quantity
+              ).then(() => this.setState({ isLoading: false }));
+            }, 500);
 
-          return isCartOpen && <OpenCart>
+          return (
+            isCartOpen && (
+              <OpenCart>
                 <Heading>
-                  Your Cart <CloseCartButton onClick={toggleCart}>
+                  Your Cart{' '}
+                  <CloseCartButton onClick={toggleCart}>
                     &times;
                   </CloseCartButton>
                 </Heading>
                 <Divider />
-                {checkout.lineItems.length > 0 ? <>
+                {checkout.lineItems.length > 0 ? (
+                  <>
                     {/* <AddedToCart /> */}
-                    <ItemList items={checkout.lineItems} handleRemove={handleRemove} updateQuantity={handleQuantityChange} />
+                    <ItemList
+                      items={checkout.lineItems}
+                      handleRemove={handleRemove}
+                      updateQuantity={handleQuantityChange}
+                    />
                     <CostBlock isLoading={this.state.isLoading}>
                       <CostDetails>
-                        Subtotal: <PriceBox>
-                          ${checkout.subtotalPrice}
-                        </PriceBox>
+                        Subtotal: <PriceBox>${checkout.subtotalPrice}</PriceBox>
                       </CostDetails>
                       <CostDetails>
-                        Taxes: <PriceBox>
-                          {checkout.totalTax}
-                        </PriceBox>
+                        Taxes: <PriceBox>{checkout.totalTax}</PriceBox>
                       </CostDetails>
                       <CostDetails>
                         Shipping: <PriceBox>FREE</PriceBox>
                       </CostDetails>
                       <CostTotal>
-                        Total Price: <PriceBox>
-                          ${checkout.totalPrice}
-                        </PriceBox>
+                        Total Price: <PriceBox>${checkout.totalPrice}</PriceBox>
                       </CostTotal>
                     </CostBlock>
                     <Divider />
-                    <Checkout href={checkout.webUrl}>
-                      Check Out
-                    </Checkout>
+                    <Checkout href={checkout.webUrl}>Check Out</Checkout>
                     <ContinueShopping>
-                      or <ContinueShoppingLink onClick={toggleCart}>
+                      or{' '}
+                      <ContinueShoppingLink onClick={toggleCart}>
                         continue shopping
-                      </ContinueShoppingLink>!
+                      </ContinueShoppingLink>
+                      !
                     </ContinueShopping>
                     <CurrencyText>
                       All prices in USD. Free shipping worldwide.
                     </CurrencyText>
-                  </> : <EmptyCart />}
-              </OpenCart>;
+                  </>
+                ) : (
+                  <EmptyCart />
+                )}
+              </OpenCart>
+            )
+          );
         }}
       </StoreContext.Consumer>
     );
