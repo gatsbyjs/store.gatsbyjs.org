@@ -113,7 +113,7 @@ export default class Layout extends React.Component {
       updateLineItem: (client, checkoutID, lineItemID, quantity) => {
         const lineItemsToUpdate = [{ id: lineItemID, quantity: parseInt(quantity, 10) }];
 
-        client.checkout
+        return client.checkout
           .updateLineItems(checkoutID, lineItemsToUpdate)
           .then(res => {
             this.setState(state => ({

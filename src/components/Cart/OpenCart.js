@@ -82,7 +82,7 @@ export default () => (
         removeLineItem(client, checkout.id, itemID);
       };
       const handleQuantityChange = (lineItemID, quantity) => {
-        updateLineItem(client, checkout.id, lineItemID, quantity)
+        return updateLineItem(client, checkout.id, lineItemID, quantity)
       };
 
       return (

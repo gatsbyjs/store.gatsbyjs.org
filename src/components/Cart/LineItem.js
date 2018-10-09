@@ -1,7 +1,13 @@
 import React from 'react';
 import styled, { css } from 'react-emotion';
 import ProductImage from './ProductImage';
-import { colors, spacing, radius, input, visuallyHidden } from '../../utils/styles';
+import {
+  colors,
+  spacing,
+  radius,
+  input,
+  visuallyHidden
+} from '../../utils/styles';
 
 const Item = styled('li')`
   align-items: center;
@@ -61,7 +67,7 @@ const labelStyles = css`
 `;
 
 const HiddenLabel = styled('label')`
-  ${labelStyles}
+  ${labelStyles};
 `;
 
 const Quantity = styled('input')`
@@ -86,35 +92,55 @@ const Remove = styled('a')`
   }
 `;
 
-export default ({ item, handleRemove, updateQuantity }) => (
-  <Item>
-    <Thumb
-      id={item.variant.image.id}
-      fallback={item.variant.image.src}
-      alt={item.variant.image.altText}
-    />
-    <ItemInfo>
-      <Name>{item.title}</Name>
-      <MetaData>
-        {item.variant.title}, ${item.variant.price}
-      </MetaData>
-    </ItemInfo>
-    <HiddenLabel htmlFor={`quantity_${item.id.substring(58, 64)}`}>Quantity:</HiddenLabel>
-    <Quantity
-      id={`quantity_${item.id.substring(58, 64)}`}
-      type="number"
-      name="quantity"
-      min="1"
-      step="1"
-      onChange={event => updateQuantity(item.id, event.target.value)}
-      defaultValue={item.quantity}
-    />
-    <Remove
-      href="#remove"
-      title="Remove this item from your cart."
-      onClick={handleRemove}
-    >
-      &times;
-    </Remove>
-  </Item>
-);
+class LineItem extends React.Component {
+  state = {
+    quantity: this.props.item.quantity || 0,
+    isLoaded: true
+  };
+  inputChangeHandler(event, id) {
+    const target = event.target;
+    const value = target.value;
+
+    this.setState({ quantity: value, isLoaded: false });
+    this.props.updateQuantity(id, value).then(()=>this.setState({isLoaded: true}));
+  }
+  render() {
+    const { item, handleRemove } = this.props;
+    return (
+      <Item>
+        <Thumb
+          id={item.variant.image.id}
+          fallback={item.variant.image.src}
+          alt={item.variant.image.altText}
+        />
+        <ItemInfo>
+          <Name>{item.title}</Name>
+          <MetaData>
+            {item.variant.title}, ${item.variant.price}
+          </MetaData>
+        </ItemInfo>
+        <HiddenLabel htmlFor={`quantity_${item.id.substring(58, 64)}`}>
+          Quantity:
+        </HiddenLabel>
+        <Quantity
+          id={`quantity_${item.id.substring(58, 64)}`}
+          type="number"
+          name="quantity"
+          min="1"
+          step="1"
+          onChange={(event) => this.inputChangeHandler(event, item.id)}
+          defaultValue={this.state.quantity}
+        />
+        <Remove
+          href="#remove"
+          title="Remove this item from your cart."
+          onClick={handleRemove}
+        >
+          &times;
+        </Remove>
+      </Item>
+    );
+  }
+}
+
+export default LineItem;
