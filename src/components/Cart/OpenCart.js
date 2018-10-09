@@ -81,7 +81,7 @@ export default () => (
         event.preventDefault();
         removeLineItem(client, checkout.id, itemID);
       };
-      const handleQuantityChange = (lineItemID, quantity) => {
+      const handleQuantityChange = lineItemID => quantity => {
         return updateLineItem(client, checkout.id, lineItemID, quantity)
       };
 

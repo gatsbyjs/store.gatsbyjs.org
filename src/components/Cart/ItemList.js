@@ -15,7 +15,7 @@ export default ({ items, handleRemove, updateQuantity }) => (
         key={item.id}
         item={item}
         handleRemove={handleRemove(item.id)}
-        updateQuantity={updateQuantity}
+        updateQuantity={updateQuantity(item.id)}
       />
     ))}
   </ItemList>
