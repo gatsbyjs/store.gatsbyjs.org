@@ -30,6 +30,7 @@ const CostBlock = styled('div')`
   font-size: 0.875rem;
   margin: ${spacing.sm}px 0;
   text-align: right;
+  background: ${props => (props.isLoading ? colors.brandBright : 'inherit')};
 `;
 
 const PriceBox = styled('span')`
@@ -74,64 +75,90 @@ const ContinueShoppingLink = styled('button')`
   ${button.link};
 `;
 
-export default () => (
-  <StoreContext.Consumer>
-    {({ client, checkout, isCartOpen, removeLineItem, updateLineItem, toggleCart }) => {
-      const handleRemove = itemID => event => {
-        event.preventDefault();
-        removeLineItem(client, checkout.id, itemID);
-      };
-      const handleQuantityChange = lineItemID => quantity => {
-        return updateLineItem(client, checkout.id, lineItemID, quantity)
-      };
+class OpenCartComp extends React.Component {
+  state = {
+    isLoading: false
+  };
+  render() {
+    return (
+      <StoreContext.Consumer>
+        {({
+          client,
+          checkout,
+          isCartOpen,
+          removeLineItem,
+          updateLineItem,
+          toggleCart
+        }) => {
+          const handleRemove = itemID => event => {
+            event.preventDefault();
+            removeLineItem(client, checkout.id, itemID);
+          };
+          const handleQuantityChange = lineItemID => quantity => {
+            this.setState({ isLoading: true });
+            return updateLineItem(
+              client,
+              checkout.id,
+              lineItemID,
+              quantity
+            ).then(() => this.setState({ isLoading: false }));
+          };
 
-      return (
-        isCartOpen && (
-          <OpenCart>
-            <Heading>
-              Your Cart{' '}
-              <CloseCartButton onClick={toggleCart}>&times;</CloseCartButton>
-            </Heading>
-            <Divider />
-            {checkout.lineItems.length > 0 ? (
-              <>
-                {/* <AddedToCart /> */}
-                <ItemList
-                  items={checkout.lineItems}
-                  handleRemove={handleRemove}
-                  updateQuantity={handleQuantityChange}
-                />
-                <CostBlock>
-                  <CostDetails>
-                    Subtotal: <PriceBox>${checkout.subtotalPrice}</PriceBox>
-                  </CostDetails>
-                  <CostDetails>
-                    Taxes: <PriceBox>{checkout.totalTax}</PriceBox>
-                  </CostDetails>
-                  <CostDetails>
-                    Shipping: <PriceBox>FREE</PriceBox>
-                  </CostDetails>
-                  <CostTotal>
-                    Total Price: <PriceBox>${checkout.totalPrice}</PriceBox>
-                  </CostTotal>
-                </CostBlock>
+          return (
+            isCartOpen && (
+              <OpenCart>
+                <Heading>
+                  Your Cart{' '}
+                  <CloseCartButton onClick={toggleCart}>
+                    &times;
+                  </CloseCartButton>
+                </Heading>
                 <Divider />
-                <Checkout href={checkout.webUrl}>Check Out</Checkout>
-                <ContinueShopping>
-                  or{' '}
-                  <ContinueShoppingLink onClick={toggleCart}>
-                    continue shopping
-                  </ContinueShoppingLink>
-                  !
-                </ContinueShopping>
-                <CurrencyText>All prices in USD. Free shipping worldwide.</CurrencyText>
-              </>
-            ) : (
-              <EmptyCart />
-            )}
-          </OpenCart>
-        )
-      );
-    }}
-  </StoreContext.Consumer>
-);
+                {checkout.lineItems.length > 0 ? (
+                  <>
+                    {/* <AddedToCart /> */}
+                    <ItemList
+                      items={checkout.lineItems}
+                      handleRemove={handleRemove}
+                      updateQuantity={handleQuantityChange}
+                    />
+                    <CostBlock isLoading={this.state.isLoading}>
+                      <CostDetails>
+                        Subtotal: <PriceBox>${checkout.subtotalPrice}</PriceBox>
+                      </CostDetails>
+                      <CostDetails>
+                        Taxes: <PriceBox>{checkout.totalTax}</PriceBox>
+                      </CostDetails>
+                      <CostDetails>
+                        Shipping: <PriceBox>FREE</PriceBox>
+                      </CostDetails>
+                      <CostTotal>
+                        Total Price: <PriceBox>${checkout.totalPrice}</PriceBox>
+                      </CostTotal>
+                    </CostBlock>
+                    <Divider />
+                    <Checkout href={checkout.webUrl}>Check Out</Checkout>
+                    <ContinueShopping>
+                      or{' '}
+                      <ContinueShoppingLink onClick={toggleCart}>
+                        continue shopping
+                      </ContinueShoppingLink>
+                      !
+                    </ContinueShopping>
+                    <CurrencyText>
+                      All prices in USD. Free shipping worldwide.
+                    </CurrencyText>
+                  </>
+                ) : (
+                  <EmptyCart />
+                )}
+              </OpenCart>
+            )
+          );
+        }}
+      </StoreContext.Consumer>
+    );
+  }
+}
+
+export default OpenCartComp;
