@@ -103,7 +103,6 @@ class LineItem extends React.Component {
     const value = target.value;
 
     this.setState({ quantity: value }, () => {
-      console.log('test');
       this.props.setCartLoading(true);
       this.debouncedUpdateQuantity(this.state.quantity);
     });
@@ -113,6 +112,10 @@ class LineItem extends React.Component {
     quantity => this.props.updateQuantity(quantity),
     500
   );
+
+  componentWillUnmount() {
+    this.props.setCartLoading(false);
+  }
 
   render() {
     const { item, handleRemove } = this.props;

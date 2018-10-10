@@ -111,7 +111,9 @@ export default class Layout extends React.Component {
         });
       },
       updateLineItem: (client, checkoutID, lineItemID, quantity) => {
-        const lineItemsToUpdate = [{ id: lineItemID, quantity: parseInt(quantity, 10) }];
+        const lineItemsToUpdate = [
+          { id: lineItemID, quantity: parseInt(quantity, 10) }
+        ];
 
         return client.checkout
           .updateLineItems(checkoutID, lineItemsToUpdate)
@@ -185,7 +187,12 @@ export default class Layout extends React.Component {
             <Header />
             {!this.state.user.profile.name && <CTA />}
             <Main>{this.props.children}</Main>
-            <Footer displayAbout={this.props.location.pathname === '/' || this.props.location.pathname === '/product-details'} />
+            <Footer
+              displayAbout={
+                this.props.location.pathname === '/' ||
+                this.props.location.pathname === '/product-details'
+              }
+            />
           </StoreContext.Provider>
         </UserContext.Provider>
       </>
