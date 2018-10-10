@@ -1,5 +1,6 @@
 import React from 'react';
 import styled, { css } from 'react-emotion';
+import _ from 'lodash';
 import ProductImage from './ProductImage';
 import {
   colors,
@@ -102,9 +103,16 @@ class LineItem extends React.Component {
     const value = target.value;
 
     this.setState({ quantity: value }, () => {
-      this.props.updateQuantity(this.state.quantity);
+      console.log('test');
+      this.props.setCartLoading(true);
+      this.debouncedUpdateQuantity(this.state.quantity);
     });
   };
+
+  debouncedUpdateQuantity = _.debounce(
+    quantity => this.props.updateQuantity(quantity),
+    500
+  );
 
   render() {
     const { item, handleRemove } = this.props;
