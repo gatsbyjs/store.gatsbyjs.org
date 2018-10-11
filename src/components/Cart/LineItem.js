@@ -102,10 +102,9 @@ class LineItem extends React.Component {
     const target = event.target;
     const value = target.value;
 
-    this.setState({ quantity: value }, () => {
-      this.props.setCartLoading(true);
-      this.debouncedUpdateQuantity(this.state.quantity);
-    });
+    this.setState({ quantity: value });
+    this.props.setCartLoading(true);
+    this.debouncedUpdateQuantity(value);
   };
 
   debouncedUpdateQuantity = _.debounce(
@@ -113,12 +112,17 @@ class LineItem extends React.Component {
     500
   );
 
+  removeHandler = event => {
+    this.props.setCartLoading(true);
+    this.props.handleRemove(event);
+  };
+
   componentWillUnmount() {
     this.props.setCartLoading(false);
   }
 
   render() {
-    const { item, handleRemove } = this.props;
+    const { item } = this.props;
     return (
       <Item>
         <Thumb
@@ -147,7 +151,7 @@ class LineItem extends React.Component {
         <Remove
           href="#remove"
           title="Remove this item from your cart."
-          onClick={handleRemove}
+          onClick={this.removeHandler}
         >
           &times;
         </Remove>

@@ -104,11 +104,13 @@ export default class Layout extends React.Component {
           });
       },
       removeLineItem: (client, checkoutID, lineItemID) => {
-        client.checkout.removeLineItems(checkoutID, [lineItemID]).then(res => {
-          this.setState(state => ({
-            store: { ...state.store, checkout: res }
-          }));
-        });
+        return client.checkout
+          .removeLineItems(checkoutID, [lineItemID])
+          .then(res => {
+            this.setState(state => ({
+              store: { ...state.store, checkout: res }
+            }));
+          });
       },
       updateLineItem: (client, checkoutID, lineItemID, quantity) => {
         const lineItemsToUpdate = [
