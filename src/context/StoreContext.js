@@ -14,7 +14,7 @@ export const defaultStoreContext = {
   shop: {},
   addVariantToCart: () => {},
   removeLineItem: () => {},
-  updateQuantity: () => {},
+  updateLineItem: () => {},
   toggleCart: () => {}
 };
 

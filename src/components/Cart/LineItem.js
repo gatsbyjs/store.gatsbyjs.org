@@ -1,7 +1,14 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled, { css } from 'react-emotion';
+import _ from 'lodash';
 import ProductImage from './ProductImage';
-import { colors, spacing, radius } from '../../utils/styles';
+import {
+  colors,
+  spacing,
+  radius,
+  input,
+  visuallyHidden
+} from '../../utils/styles';
 
 const Item = styled('li')`
   align-items: center;
@@ -43,9 +50,31 @@ const MetaData = styled('em')`
   font-style: normal;
 `;
 
-const Quantity = styled('p')`
-  font-size: 0.875rem;
-  margin: 0 1rem;
+const inputStyles = css`
+  ${input.default};
+  width: 100%;
+
+  :focus {
+    ${input.focus};
+  }
+
+  @media (min-width: 650px) {
+    ${input.small};
+  }
+`;
+
+const labelStyles = css`
+  ${visuallyHidden};
+`;
+
+const HiddenLabel = styled('label')`
+  ${labelStyles};
+`;
+
+const Quantity = styled('input')`
+  ${inputStyles};
+  margin-right: ${spacing.xs}px;
+  max-width: calc(20% - ${spacing.xs}px);
 `;
 
 const Remove = styled('a')`
@@ -64,26 +93,71 @@ const Remove = styled('a')`
   }
 `;
 
-export default ({ item, handleRemove }) => (
-  <Item>
-    <Thumb
-      id={item.variant.image.id}
-      fallback={item.variant.image.src}
-      alt={item.variant.image.altText}
-    />
-    <ItemInfo>
-      <Name>{item.title}</Name>
-      <MetaData>
-        {item.variant.title}, ${item.variant.price}
-      </MetaData>
-    </ItemInfo>
-    <Quantity>{item.quantity}</Quantity>
-    <Remove
-      href="#remove"
-      title="Remove this item from your cart."
-      onClick={handleRemove}
-    >
-      &times;
-    </Remove>
-  </Item>
-);
+class LineItem extends React.Component {
+  state = {
+    quantity: this.props.item.quantity || 1
+  };
+
+  inputChangeHandler = event => {
+    const target = event.target;
+    const value = target.value;
+
+    this.setState({ quantity: value });
+    this.props.setCartLoading(true);
+    this.debouncedUpdateQuantity(value);
+  };
+
+  debouncedUpdateQuantity = _.debounce(
+    quantity => this.props.updateQuantity(quantity),
+    500
+  );
+
+  removeHandler = event => {
+    this.props.setCartLoading(true);
+    this.props.handleRemove(event);
+  };
+
+  componentWillUnmount() {
+    this.props.setCartLoading(false);
+  }
+
+  render() {
+    const { item } = this.props;
+    return (
+      <Item>
+        <Thumb
+          id={item.variant.image.id}
+          fallback={item.variant.image.src}
+          alt={item.variant.image.altText}
+        />
+        <ItemInfo>
+          <Name>{item.title}</Name>
+          <MetaData>
+            {item.variant.title}, ${item.variant.price}
+          </MetaData>
+        </ItemInfo>
+        <HiddenLabel htmlFor={`quantity_${item.id.substring(58, 64)}`}>
+          Quantity:
+        </HiddenLabel>
+        <Quantity
+          id={`quantity_${item.id.substring(58, 64)}`}
+          type="number"
+          name="quantity"
+          min="1"
+          step="1"
+          onChange={event => this.inputChangeHandler(event)}
+          value={this.state.quantity}
+        />
+        <Remove
+          href="#remove"
+          title="Remove this item from your cart."
+          onClick={this.removeHandler}
+        >
+          &times;
+        </Remove>
+      </Item>
+    );
+  }
+}
+
+export default LineItem;

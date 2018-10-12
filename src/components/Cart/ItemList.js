@@ -8,13 +8,15 @@ const ItemList = styled('ul')`
   padding: 0;
 `;
 
-export default ({ items, handleRemove }) => (
+export default ({ items, handleRemove, updateQuantity, setCartLoading }) => (
   <ItemList>
     {items.map(item => (
       <LineItem
         key={item.id}
         item={item}
         handleRemove={handleRemove(item.id)}
+        updateQuantity={updateQuantity(item.id)}
+        setCartLoading={setCartLoading}
       />
     ))}
   </ItemList>

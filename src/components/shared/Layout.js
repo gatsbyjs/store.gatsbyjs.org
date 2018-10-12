@@ -104,13 +104,27 @@ export default class Layout extends React.Component {
           });
       },
       removeLineItem: (client, checkoutID, lineItemID) => {
-        client.checkout.removeLineItems(checkoutID, [lineItemID]).then(res => {
-          this.setState(state => ({
-            store: { ...state.store, checkout: res }
-          }));
-        });
+        return client.checkout
+          .removeLineItems(checkoutID, [lineItemID])
+          .then(res => {
+            this.setState(state => ({
+              store: { ...state.store, checkout: res }
+            }));
+          });
       },
-      // updateQuantity: (lineItemID, quantity) => {},
+      updateLineItem: (client, checkoutID, lineItemID, quantity) => {
+        const lineItemsToUpdate = [
+          { id: lineItemID, quantity: parseInt(quantity, 10) }
+        ];
+
+        return client.checkout
+          .updateLineItems(checkoutID, lineItemsToUpdate)
+          .then(res => {
+            this.setState(state => ({
+              store: { ...state.store, checkout: res }
+            }));
+          });
+      },
       toggleCart: () => {
         this.setState(state => ({
           store: { ...state.store, isCartOpen: !state.store.isCartOpen },
@@ -175,7 +189,12 @@ export default class Layout extends React.Component {
             <Header />
             {!this.state.user.profile.name && <CTA />}
             <Main>{this.props.children}</Main>
-            <Footer displayAbout={this.props.location.pathname === '/' || this.props.location.pathname === '/product-details'} />
+            <Footer
+              displayAbout={
+                this.props.location.pathname === '/' ||
+                this.props.location.pathname === '/product-details'
+              }
+            />
           </StoreContext.Provider>
         </UserContext.Provider>
       </>
