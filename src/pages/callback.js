@@ -2,6 +2,7 @@ import React from 'react';
 import { push } from 'gatsby';
 import styled from 'react-emotion';
 import { handleAuthentication } from '../utils/auth';
+import { colors, fonts } from '../utils/styles';
 
 const Container = styled.div`
   display: flex;
@@ -14,8 +15,8 @@ const Container = styled.div`
 `;
 
 const Message = styled.h1`
-  font-family: 'Futura PT', -apple-system, BlinkMacSystemFont, 'Segoe UI',
-    Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: ${colors.darkest};
+  font-family: ${fonts.heading};
 `;
 
 export default () => {
