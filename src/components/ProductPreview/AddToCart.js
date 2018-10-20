@@ -133,7 +133,7 @@ export default class AddToCart extends Component {
                     </option>
                   ))}
                 </Size>
-                <HiddenLabel htmlFor="quantity">Quantity:</HiddenLabel>
+                <HiddenLabel htmlFor={`quantity_${id}`}>Quantity:</HiddenLabel>
               </>
             )}
             {!hasVariants && (
