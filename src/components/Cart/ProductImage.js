@@ -44,7 +44,7 @@ export default props => (
     render={({ allShopifyProduct }) => {
       const images = allShopifyProduct.edges
         .map(({ node }) => node.images)
-        .flat();
+        .reduce((acc, val) => acc.concat(val), []);
 
       return <ProductImage shopifyImages={images} {...props} />;
     }}
