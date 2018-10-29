@@ -27,8 +27,11 @@ export default class OpenIssues extends React.Component {
   componentDidMount() {
     getIssues().then(issues => {
       const unclaimedIssues = issues.filter(
-        issue => !issue.labels.map(label => label.name).includes('Hacktoberfest - Claimed')
-      )
+        issue =>
+          !issue.labels
+            .map(label => label.name)
+            .includes('Hacktoberfest - Claimed')
+      );
       this.setState({ issues: unclaimedIssues });
     });
   }
