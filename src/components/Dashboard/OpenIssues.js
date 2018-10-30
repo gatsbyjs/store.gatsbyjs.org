@@ -1,49 +1,48 @@
 import React from 'react';
-// import styled from 'react-emotion';
-import axios from 'axios';
-import { Subheading } from '../shared/Typography';
-import IssueList from './IssueList';
+import gql from 'graphql-tag';
+import { Query } from 'react-apollo';
+import { Subheading, Text } from '../shared/Typography';
+import IssueList, { GitHubIssueFragment } from './IssueList';
 
-// To avoid overloading the GitHub API, let’s only load issues once per session.
-let issues = false;
-const getIssues = async () => {
-  if (!issues) {
-    const response = await axios.get(
-      'https://api.github.com/repos/gatsbyjs/gatsby/issues',
-      { params: { labels: 'status: help wanted' } }
-    );
-
-    issues = response.data;
+const GITHUB_LABEL = 'status: help wanted';
+const GET_OPEN_ISSUES = gql`
+  query($label: String!) {
+    openIssues(label: $label) {
+      totalIssues
+      issues {
+        ...GitHubIssueFragment
+      }
+    }
   }
+  ${GitHubIssueFragment}
+`;
 
-  return issues;
-};
+const filterClaimedIssues = issue =>
+  !issue.labels.map(label => label.name).includes('Hacktoberfest - Claimed');
 
-export default class OpenIssues extends React.Component {
-  state = {
-    issues: false
-  };
+export default () => (
+  <Query query={GET_OPEN_ISSUES} variables={{ label: GITHUB_LABEL }}>
+    {({ data, loading, error }) => {
+      if (loading) return <p>Loading...</p>;
+      if (error) return <p>Error!</p>;
 
-  componentDidMount() {
-    getIssues().then(issues => {
-      const unclaimedIssues = issues.filter(
-        issue =>
-          !issue.labels
-            .map(label => label.name)
-            .includes('Hacktoberfest - Claimed')
+      const issues = data.openIssues.issues
+        .filter(filterClaimedIssues)
+        .slice(0, 5);
+
+      return (
+        <React.Fragment>
+          <Subheading>Issues We Could Use Your Help With</Subheading>
+          <IssueList issues={issues} />
+          <Text>
+            <a
+              href={`https://github.com/search?o=desc&q=org%3Agatsbyjs+type%3Aissue+label%3A%22${GITHUB_LABEL}%22+is%3Aopen&s=updated&type=Issues`}
+            >
+              See more issues tagged with “{GITHUB_LABEL}”
+            </a>
+          </Text>
+        </React.Fragment>
       );
-      this.setState({ issues: unclaimedIssues });
-    });
-  }
-
-  render() {
-    return !issues ? (
-      <p>Loading...</p>
-    ) : (
-      <>
-        <Subheading>Issues We Could Use Your Help With</Subheading>
-        <IssueList issues={this.state.issues.slice(0, 3)} />
-      </>
-    );
-  }
-}
+    }}
+  </Query>
+);

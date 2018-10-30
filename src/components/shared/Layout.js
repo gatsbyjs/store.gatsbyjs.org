@@ -1,21 +1,20 @@
 import React from 'react';
 import styled from 'react-emotion';
 import { push } from 'gatsby';
+import { GitHubIssueFragment } from '../Dashboard/IssueList';
 import CTA from '../CTA/CTA';
 import Footer from './Footer/Footer';
 import Header from './Header/Header';
 import SiteMetadata from './SiteMetadata';
+import { client } from '../../context/ApolloContext';
 import StoreContext, { defaultStoreContext } from '../../context/StoreContext';
-import UserContext, {
-  checkContributions,
-  defaultUserContext,
-  getDiscountCode
-} from '../../context/UserContext';
+import UserContext, { defaultUserContext } from '../../context/UserContext';
 import { logout, getUserInfo } from '../../utils/auth';
 import { spacing } from '../../utils/styles';
 
 // Import Futura PT typeface
 import '../../fonts/futura-pt/Webfonts/futurapt_demi_macroman/stylesheet.css';
+import gql from 'graphql-tag';
 
 const Main = styled('main')`
   display: block;
@@ -29,40 +28,6 @@ export default class Layout extends React.Component {
   state = {
     user: {
       ...defaultUserContext,
-      handleGetDiscountCode: userData => {
-        return async event => {
-          try {
-            event.preventDefault();
-            this.setState(state => ({
-              user: {
-                ...state.user,
-                isDiscountRequestActive: true
-              }
-            }));
-
-            const results = await getDiscountCode(userData);
-
-            this.setState(state => ({
-              user: {
-                ...state.user,
-                isDiscountRequestActive: false,
-                discount: results.data
-              }
-            }));
-          } catch (err) {
-            this.setState(state => ({
-              user: {
-                ...state.user,
-                isDiscountRequestActive: false,
-                discount: {
-                  error: err.message,
-                  discount_code: ''
-                }
-              }
-            }));
-          }
-        };
-      },
       handleLogout: () => {
         this.setState({ user: defaultUserContext });
         logout(() => push('/'));
@@ -135,12 +100,34 @@ export default class Layout extends React.Component {
   };
 
   componentDidMount() {
-    getUserInfo().then(profile => {
-      checkContributions(profile.nickname).then(contributions => {
-        this.setState(state => ({
-          user: { ...state.user, contributions, profile, loading: false }
-        }));
+    // TODO look at refactoring this. It feels unnecessarily complex right now.
+    getUserInfo().then(async profile => {
+      const { data } = await client.query({
+        query: gql`
+          query($user: String!) {
+            contributorInformation(githubUsername: $user) {
+              totalContributions
+              pullRequests {
+                ...GitHubIssueFragment
+              }
+            }
+          }
+          ${GitHubIssueFragment}
+        `,
+        variables: { user: profile.nickname }
       });
+
+      this.setState(state => ({
+        user: {
+          ...state.user,
+          loading: false,
+          contributions: {
+            count: data.contributorInformation.totalContributions,
+            issues: data.contributorInformation.pullRequests
+          },
+          profile
+        }
+      }));
     });
 
     // Check for an existing cart.
