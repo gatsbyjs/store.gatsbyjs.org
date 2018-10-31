@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'react-emotion';
 import { colors, radius, spacing } from '../../utils/styles';
+import gql from 'graphql-tag';
 
 const IssueList = styled('ul')`
   list-style: none;
@@ -82,18 +83,31 @@ const formatLabelUrl = url => {
   return `https://github.com/${organization}/${repository}/issues?q=is%3Aissue+is%3Aopen+label%3A%22${label}%22`;
 };
 
+export const GitHubIssueFragment = gql`
+  fragment GitHubIssueFragment on GitHubIssue {
+    id
+    title
+    url
+    number
+    labels {
+      name
+      url
+    }
+  }
+`;
+
 export default ({ issues }) => (
   <IssueList>
     {issues.map(issue => (
       <Issue key={issue.id}>
-        <IssueLink href={issue.html_url}>
+        <IssueLink href={issue.url}>
           <IssueTitle>{issue.title}</IssueTitle>{' '}
           <IssueId>#{issue.url.split('/').pop()}</IssueId>
         </IssueLink>
         {issue.labels.map(label => (
           <Label
             href={formatLabelUrl(label.url)}
-            key={`${issue.id}-${label.id}`}
+            key={`${issue.id}-${label.url}`}
           >
             {label.name}
           </Label>

@@ -1,21 +1,20 @@
 import React from 'react';
 import styled from 'react-emotion';
 import { push } from 'gatsby';
+import { GitHubIssueFragment } from '../Dashboard/IssueList';
 import CTA from '../CTA/CTA';
 import Footer from './Footer/Footer';
 import Header from './Header/Header';
 import SiteMetadata from './SiteMetadata';
+import { client } from '../../context/ApolloContext';
 import StoreContext, { defaultStoreContext } from '../../context/StoreContext';
-import UserContext, {
-  checkContributions,
-  defaultUserContext,
-  getDiscountCode
-} from '../../context/UserContext';
+import UserContext, { defaultUserContext } from '../../context/UserContext';
 import { logout, getUserInfo } from '../../utils/auth';
 import { spacing } from '../../utils/styles';
 
 // Import Futura PT typeface
 import '../../fonts/futura-pt/Webfonts/futurapt_demi_macroman/stylesheet.css';
+import gql from 'graphql-tag';
 
 const Main = styled('main')`
   display: block;
@@ -29,40 +28,6 @@ export default class Layout extends React.Component {
   state = {
     user: {
       ...defaultUserContext,
-      handleGetDiscountCode: userData => {
-        return async event => {
-          try {
-            event.preventDefault();
-            this.setState(state => ({
-              user: {
-                ...state.user,
-                isDiscountRequestActive: true
-              }
-            }));
-
-            const results = await getDiscountCode(userData);
-
-            this.setState(state => ({
-              user: {
-                ...state.user,
-                isDiscountRequestActive: false,
-                discount: results.data
-              }
-            }));
-          } catch (err) {
-            this.setState(state => ({
-              user: {
-                ...state.user,
-                isDiscountRequestActive: false,
-                discount: {
-                  error: err.message,
-                  discount_code: ''
-                }
-              }
-            }));
-          }
-        };
-      },
       handleLogout: () => {
         this.setState({ user: defaultUserContext });
         logout(() => push('/'));
@@ -134,15 +99,7 @@ export default class Layout extends React.Component {
     }
   };
 
-  componentDidMount() {
-    getUserInfo().then(profile => {
-      checkContributions(profile.nickname).then(contributions => {
-        this.setState(state => ({
-          user: { ...state.user, contributions, profile, loading: false }
-        }));
-      });
-    });
-
+  async initializeCheckout() {
     // Check for an existing cart.
     const isBrowser = typeof window !== 'undefined';
     const existingCheckoutID = isBrowser
@@ -166,18 +123,72 @@ export default class Layout extends React.Component {
     const fetchCheckout = id => this.state.store.client.checkout.fetch(id);
 
     if (existingCheckoutID) {
-      fetchCheckout(existingCheckoutID).then(checkout => {
-        // Make sure this cart hasn’t already been purchased.
-        if (!checkout.completedAt) {
-          setCheckoutInState(checkout);
-          return;
-        }
+      const checkout = await fetchCheckout(existingCheckoutID);
 
-        createNewCheckout().then(setCheckoutInState);
-      });
-    } else {
-      createNewCheckout().then(setCheckoutInState);
+      // Make sure this cart hasn’t already been purchased.
+      if (!checkout.completedAt) {
+        setCheckoutInState(checkout);
+        return;
+      }
     }
+
+    const newCheckout = await createNewCheckout();
+    setCheckoutInState(newCheckout);
+  }
+
+  async loadContributions(nickname = false) {
+    if (!nickname) {
+      this.setState(state => ({
+        user: {
+          ...state.user,
+          contributions: { count: 0, issues: [] }
+        }
+      }));
+    }
+
+    const { data } = await client.query({
+      query: gql`
+        query($user: String!) {
+          contributorInformation(githubUsername: $user) {
+            totalContributions
+            pullRequests {
+              ...GitHubIssueFragment
+            }
+          }
+        }
+        ${GitHubIssueFragment}
+      `,
+      variables: { user: nickname }
+    });
+
+    this.setState(state => ({
+      user: {
+        ...state.user,
+        contributions: {
+          count: data.contributorInformation.totalContributions,
+          issues: data.contributorInformation.pullRequests
+        }
+      }
+    }));
+  }
+
+  async componentDidMount() {
+    // Make sure we have a Shopify checkout created for cart management.
+    this.initializeCheckout();
+
+    // Load the user info from Auth0.
+    const profile = await getUserInfo();
+
+    // If logged in, load the user’s contributions from GitHub.
+    this.loadContributions(profile.nickname);
+
+    this.setState(state => ({
+      user: {
+        ...state.user,
+        loading: false,
+        profile
+      }
+    }));
   }
 
   render() {
