@@ -24,7 +24,7 @@ export default () => (
   <Query query={GET_OPEN_ISSUES} variables={{ label: GITHUB_LABEL }}>
     {({ data, loading, error }) => {
       if (loading) return <p>Loading...</p>;
-      if (error) return <p>Error!</p>;
+      if (error) return <p>Error: {error.message}</p>;
 
       const issues = data.openIssues.issues
         .filter(filterClaimedIssues)
