@@ -99,36 +99,35 @@ export default class Layout extends React.Component {
     }
   };
 
-  componentDidMount() {
+  async componentDidMount() {
     // TODO look at refactoring this. It feels unnecessarily complex right now.
-    getUserInfo().then(async profile => {
-      const { data } = await client.query({
-        query: gql`
-          query($user: String!) {
-            contributorInformation(githubUsername: $user) {
-              totalContributions
-              pullRequests {
-                ...GitHubIssueFragment
-              }
+    const profile = await getUserInfo();
+    const { data } = await client.query({
+      query: gql`
+        query($user: String!) {
+          contributorInformation(githubUsername: $user) {
+            totalContributions
+            pullRequests {
+              ...GitHubIssueFragment
             }
           }
-          ${GitHubIssueFragment}
-        `,
-        variables: { user: profile.nickname }
-      });
-
-      this.setState(state => ({
-        user: {
-          ...state.user,
-          loading: false,
-          contributions: {
-            count: data.contributorInformation.totalContributions,
-            issues: data.contributorInformation.pullRequests
-          },
-          profile
         }
-      }));
+        ${GitHubIssueFragment}
+      `,
+      variables: { user: profile.nickname }
     });
+
+    this.setState(state => ({
+      user: {
+        ...state.user,
+        loading: false,
+        contributions: {
+          count: data.contributorInformation.totalContributions,
+          issues: data.contributorInformation.pullRequests
+        },
+        profile
+      }
+    }));
 
     // Check for an existing cart.
     const isBrowser = typeof window !== 'undefined';
