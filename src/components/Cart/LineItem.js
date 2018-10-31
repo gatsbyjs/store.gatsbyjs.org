@@ -1,6 +1,5 @@
 import React from 'react';
 import styled, { css } from 'react-emotion';
-import _ from 'lodash';
 import ProductImage from './ProductImage';
 import {
   colors,
@@ -93,6 +92,22 @@ const Remove = styled('a')`
   }
 `;
 
+// Add our own debounce utility so we don’t need to load a lib.
+const debounce = (delay, fn) => {
+  let timeout;
+
+  return function(...args) {
+    if (timeout) {
+      clearTimeout(timeout);
+    }
+
+    timeout = setTimeout(() => {
+      fn(...args);
+      timeout = null;
+    }, delay);
+  };
+};
+
 class LineItem extends React.Component {
   state = {
     quantity: this.props.item.quantity || 1
@@ -107,9 +122,8 @@ class LineItem extends React.Component {
     this.debouncedUpdateQuantity(value);
   };
 
-  debouncedUpdateQuantity = _.debounce(
-    quantity => this.props.updateQuantity(quantity),
-    500
+  debouncedUpdateQuantity = debounce(500, quantity =>
+    this.props.updateQuantity(quantity)
   );
 
   removeHandler = event => {
