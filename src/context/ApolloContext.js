@@ -6,7 +6,7 @@ export const isBrowser = typeof window !== 'undefined';
 export const client = isBrowser
   ? new ApolloClient({
       uri: `${process.env.GATSBY_API}/graphql`,
-      request: async operation => {
+      request: operation => {
         operation.setContext({
           headers: {
             authorization: `Bearer ${getAccessToken()}`
