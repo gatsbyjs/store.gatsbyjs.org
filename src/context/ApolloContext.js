@@ -15,7 +15,3 @@ export const client = isBrowser
       }
     })
   : {};
-
-export default {
-  client
-};
