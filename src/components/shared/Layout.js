@@ -99,36 +99,7 @@ export default class Layout extends React.Component {
     }
   };
 
-  async componentDidMount() {
-    // TODO look at refactoring this. It feels unnecessarily complex right now.
-    const profile = await getUserInfo();
-    const { data } = await client.query({
-      query: gql`
-        query($user: String!) {
-          contributorInformation(githubUsername: $user) {
-            totalContributions
-            pullRequests {
-              ...GitHubIssueFragment
-            }
-          }
-        }
-        ${GitHubIssueFragment}
-      `,
-      variables: { user: profile.nickname }
-    });
-
-    this.setState(state => ({
-      user: {
-        ...state.user,
-        loading: false,
-        contributions: {
-          count: data.contributorInformation.totalContributions,
-          issues: data.contributorInformation.pullRequests
-        },
-        profile
-      }
-    }));
-
+  async initializeCheckout() {
     // Check for an existing cart.
     const isBrowser = typeof window !== 'undefined';
     const existingCheckoutID = isBrowser
@@ -152,18 +123,72 @@ export default class Layout extends React.Component {
     const fetchCheckout = id => this.state.store.client.checkout.fetch(id);
 
     if (existingCheckoutID) {
-      fetchCheckout(existingCheckoutID).then(checkout => {
-        // Make sure this cart hasn’t already been purchased.
-        if (!checkout.completedAt) {
-          setCheckoutInState(checkout);
-          return;
-        }
+      const checkout = await fetchCheckout(existingCheckoutID);
 
-        createNewCheckout().then(setCheckoutInState);
-      });
-    } else {
-      createNewCheckout().then(setCheckoutInState);
+      // Make sure this cart hasn’t already been purchased.
+      if (!checkout.completedAt) {
+        setCheckoutInState(checkout);
+        return;
+      }
     }
+
+    const newCheckout = await createNewCheckout();
+    setCheckoutInState(newCheckout);
+  }
+
+  async loadContributions(nickname = false) {
+    if (!nickname) {
+      this.setState(state => ({
+        user: {
+          ...state.user,
+          contributions: { count: 0, issues: [] }
+        }
+      }));
+    }
+
+    const { data } = await client.query({
+      query: gql`
+        query($user: String!) {
+          contributorInformation(githubUsername: $user) {
+            totalContributions
+            pullRequests {
+              ...GitHubIssueFragment
+            }
+          }
+        }
+        ${GitHubIssueFragment}
+      `,
+      variables: { user: nickname }
+    });
+
+    this.setState(state => ({
+      user: {
+        ...state.user,
+        contributions: {
+          count: data.contributorInformation.totalContributions,
+          issues: data.contributorInformation.pullRequests
+        }
+      }
+    }));
+  }
+
+  async componentDidMount() {
+    // Make sure we have a Shopify checkout created for cart management.
+    this.initializeCheckout();
+
+    // Load the user info from Auth0.
+    const profile = await getUserInfo();
+
+    // If logged in, load the user’s contributions from GitHub.
+    this.loadContributions(profile.nickname);
+
+    this.setState(state => ({
+      user: {
+        ...state.user,
+        loading: false,
+        profile
+      }
+    }));
   }
 
   render() {
