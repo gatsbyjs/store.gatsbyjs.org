@@ -58,7 +58,7 @@ We sell our swag at pretty close to cost (we round for easy math) and we don’t
 
   &nbsp; <!-- leave this here to avoid smashing the text against the summary -->
 
-  International shipments can take up to 6 weeks to be delivered. 😱 Tracking updates may not always show up in real time on your tracking link. If you still have not received your order at the end of 6 weeks, please let us know and we'll see how we can help!
+  International shipments can take up to 6 weeks to be delivered. 😱 Tracking updates may not always show up in real time on your tracking link. If you still have not received your order at the end of 6 weeks, please let us know by sending an email to team@gatsbyjs.com, and we'll see how we can help!
 </details>
 
 
