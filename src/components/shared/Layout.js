@@ -199,7 +199,7 @@ export default class Layout extends React.Component {
         <UserContext.Provider value={this.state.user}>
           <StoreContext.Provider value={this.state.store}>
             <Header />
-            {!user.profile.name && <CTA />}
+            {!this.state.user.profile.name && <CTA />}
             <Main>{children}</Main>
             <Footer
               displayAbout={
