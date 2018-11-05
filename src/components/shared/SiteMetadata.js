@@ -28,19 +28,15 @@ export default () => (
     `}
     render={({
       site: {
-        siteMetadata: {
-          siteUrl,
-          title,
-          description,
-        },
-      },
+        siteMetadata: { siteUrl, title, description }
+      }
     }) => (
-      <Helmet
-        defaultTitle={title}
-        titleTemplate={`%s · ${title}`}
-      >
+      <Helmet defaultTitle={title} titleTemplate={`%s · ${title}`}>
         <html lang="en" />
         <body className={bodyStyles} />
+
+        <link rel="preconnect" href="https://gatsby-swag.myshopify.com" />
+        <link rel="preconnect" href="https://api.gatsbyjs.org" />
 
         <link rel="canonical" href={siteUrl} />
         <link
@@ -74,7 +70,10 @@ export default () => (
         <meta property="og:site_name" content={title} />
         <meta property="og:description" content={description} />
 
-        <meta property="og:image" content={`${siteUrl}/android-chrome-512x512.png`} />
+        <meta
+          property="og:image"
+          content={`${siteUrl}/android-chrome-512x512.png`}
+        />
         <meta property="og:image:alt" content="Gatsby Store Logo" />
         <meta property="og:image:width" content="512" />
         <meta property="og:image:height" content="512" />
@@ -84,4 +83,4 @@ export default () => (
       </Helmet>
     )}
   />
-)
+);
