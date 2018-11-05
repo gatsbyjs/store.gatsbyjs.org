@@ -1,8 +1,8 @@
 import React from 'react';
 import styled from 'react-emotion';
 import SizeChartTable from './SizeChartTable';
-import { Heading, Subheading, UnorderedList } from '../shared/Typography';
-import { colors, fonts, button, spacing, pullHeadline, breakpoints } from '../../utils/styles';
+import { Subheading, UnorderedList } from '../shared/Typography';
+import { colors, fonts, spacing, pullHeadline, breakpoints } from '../../utils/styles';
 
 const Headline = styled('h1')`
   ${pullHeadline};
@@ -82,12 +82,14 @@ export default class ProductDetails extends React.Component {
   }
 
   render() {
+    const { units } = this.state;
+
     return (
       <>
         <Headline>Product Details</Headline>
         <LargerSubheading>Size Chart</LargerSubheading>
-        <UnitSelector unit={this.state.units} setUnits={this.changeUnits} />
-        <SizeChartTable unit={this.state.units} />
+        <UnitSelector unit={units} setUnits={this.changeUnits} />
+        <SizeChartTable unit={units} />
         <p>
           <strong style={{ color: colors.brand }}>
             Don’t see your size?

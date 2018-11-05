@@ -192,6 +192,7 @@ export default class Layout extends React.Component {
   }
 
   render() {
+    const { children, location } = this.props;
     return (
       <>
         <SiteMetadata />
@@ -199,11 +200,11 @@ export default class Layout extends React.Component {
           <StoreContext.Provider value={this.state.store}>
             <Header />
             {!this.state.user.profile.name && <CTA />}
-            <Main>{this.props.children}</Main>
+            <Main>{children}</Main>
             <Footer
               displayAbout={
-                this.props.location.pathname === '/' ||
-                this.props.location.pathname === '/product-details'
+                location.pathname === '/' ||
+                location.pathname === '/product-details'
               }
             />
           </StoreContext.Provider>

@@ -30,7 +30,7 @@ export default () => (
             If you have questions, ask on any issue (you can tag{' '}
             <a href="https://github.com/jlengstorf">@jlengstorf</a> if you’d
             like) or hit us up{' '}
-            <a href="https://twitter.com">on Twitter at @gatsbyjs</a>.
+            <a href="https://twitter.com/gatsbyjs">on Twitter at @gatsbyjs</a>.
           </Text>
           <Text>
             Check the list below for issues that we could use help with.

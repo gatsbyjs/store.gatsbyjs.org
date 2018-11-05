@@ -202,11 +202,13 @@ export default class ContributorForm extends React.Component {
   }
 
   render() {
+    const { isDiscountRequestActive, onSubmit } = this.props;
+
     return (
       <Form
         method="post"
-        className={this.props.isDiscountRequestActive && 'submitting'}
-        onSubmit={this.props.onSubmit(this.state)}
+        className={isDiscountRequestActive && 'submitting'}
+        onSubmit={onSubmit(this.state)}
       >
         <InputLabel>
           First Name
@@ -215,7 +217,7 @@ export default class ContributorForm extends React.Component {
             name="first_name"
             value={this.state.first_name}
             onChange={this.onChange}
-            disabled={this.props.isDiscountRequestActive}
+            disabled={isDiscountRequestActive}
           />
         </InputLabel>
         <InputLabel>
@@ -225,7 +227,7 @@ export default class ContributorForm extends React.Component {
             name="email"
             value={this.state.email}
             onChange={this.onChange}
-            disabled={this.props.isDiscountRequestActive}
+            disabled={isDiscountRequestActive}
           />
         </InputLabel>
         <CheckboxContainer>
@@ -234,14 +236,14 @@ export default class ContributorForm extends React.Component {
             name="subscribe"
             checked={this.state.subscribe}
             onChange={this.onToggle}
-            disabled={this.props.isDiscountRequestActive}
+            disabled={isDiscountRequestActive}
             id="checkbox-newsletter"
           />
           <CheckboxLabel htmlFor="checkbox-newsletter">
             Email me Gatsby updates and ideas for contributing.
           </CheckboxLabel>
         </CheckboxContainer>
-        <Button type="submit" disabled={this.props.isDiscountRequestActive}>
+        <Button type="submit" disabled={isDiscountRequestActive}>
           Claim Your Discount Code
         </Button>
         <PrivacyNotice>
