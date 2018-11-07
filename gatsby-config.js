@@ -14,6 +14,19 @@ module.exports = {
       }
     },
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-emotion'
+    'gatsby-plugin-emotion',
+    {
+      resolve: 'gatsby-plugin-manifest',
+      options: {
+        name: 'Gatsby Store',
+        short_name: 'Gatsby Store',
+        start_url: '/',
+        background_color: '#ffffff',
+        theme_color: '#663399',
+        display: 'minimal-ui',
+        icon: 'static/android-chrome-512x512.png'
+      }
+    },
+    'gatsby-plugin-offline'
   ]
 };
