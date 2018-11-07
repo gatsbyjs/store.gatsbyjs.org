@@ -21,7 +21,7 @@ module.exports = {
         name: 'Gatsby Store',
         short_name: 'Gatsby Store',
         start_url: '/',
-        background_color: '#663399',
+        background_color: '#ffffff',
         theme_color: '#663399',
         display: 'minimal-ui',
         icon: 'static/android-chrome-512x512.png'
