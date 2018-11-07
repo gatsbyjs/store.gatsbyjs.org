@@ -167,7 +167,8 @@ export default class Layout extends React.Component {
         contributions: {
           count: data.contributorInformation.totalContributions,
           issues: data.contributorInformation.pullRequests
-        }
+        },
+        loading: false
       }
     }));
   }
@@ -185,7 +186,6 @@ export default class Layout extends React.Component {
     this.setState(state => ({
       user: {
         ...state.user,
-        loading: false,
         profile
       }
     }));
