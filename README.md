@@ -29,43 +29,53 @@ We sell our swag at pretty close to cost (we round for easy math) and we don’t
 <details>
   <summary><strong>Why does it say I'm not eligible when I enter the discount code?</strong></summary>
 
-  &nbsp; <!-- leave this here to avoid smashing the text against the summary -->
+&nbsp; <!-- leave this here to avoid smashing the text against the summary -->
 
-  Try opening the store in an incognito window and then proceed to check out. When checking out, make sure you're using the same email that's listed on your GitHub account.
+Try opening the store in an incognito window and then proceed to check out. When checking out, make sure you're using the same email that's listed on your GitHub account.
+
 </details>
-
 
 <details>
   <summary><strong>Why can't I get the store to authenticate?</strong></summary>
 
-  &nbsp; <!-- leave this here to avoid smashing the text against the summary -->
+&nbsp; <!-- leave this here to avoid smashing the text against the summary -->
 
-  We _think_ this is a local storage issue, and it only seems to happen in Safari-based browsers. This includes all iOS browsers. Please see [this issue](https://github.com/gatsbyjs/store.gatsbyjs.org/issues/106) for details (or to help us fix it).
+We _think_ this is a local storage issue, and it only seems to happen in Safari-based browsers. This includes all iOS browsers. Please see [this issue](https://github.com/gatsbyjs/store.gatsbyjs.org/issues/106) for details (or to help us fix it).
+
 </details>
-
 
 <details>
   <summary><strong>Why won't my credit card work?</strong></summary>
 
-  &nbsp; <!-- leave this here to avoid smashing the text against the summary -->
+&nbsp; <!-- leave this here to avoid smashing the text against the summary -->
 
-  Please make sure the card isn't frozen or otherwise blocked by your financial institution. If it's not that, please send us an email to team@gatsbyjs.com if you're unable to pay with your credit card.
+Please make sure the card isn't frozen or otherwise blocked by your financial institution. If it's not that, please send us an email to team@gatsbyjs.com if you're unable to pay with your credit card.
+
 </details>
-
 
 <details>
   <summary><strong>I've been waiting for my package, but it hasn't arrived yet.</strong></summary>
 
-  &nbsp; <!-- leave this here to avoid smashing the text against the summary -->
+&nbsp; <!-- leave this here to avoid smashing the text against the summary -->
 
-  International shipments can take up to 6 weeks to be delivered. 😱 Tracking updates may not always show up in real time on your tracking link. If you still have not received your order at the end of 6 weeks, please let us know by sending an email to team@gatsbyjs.com, and we'll see how we can help!
+International shipments can take up to 6 weeks to be delivered. 😱 Tracking updates may not always show up in real time on your tracking link. If you still have not received your order at the end of 6 weeks, please let us know by sending an email to team@gatsbyjs.com, and we'll see how we can help!
+
 </details>
-
 
 <details>
   <summary><strong>I wanted to order something but it's out. How long will it take before it's back in stock?</strong></summary>
 
-  &nbsp; <!-- leave this here to avoid smashing the text against the summary -->
+&nbsp; <!-- leave this here to avoid smashing the text against the summary -->
 
-  Some of the swag has been selling like hotcakes (only less tasty and a providing a bit more coverage). Once an item is out, it takes us about 3 weeks for it to get back in stock. 
+Some of the swag has been selling like hotcakes (only less tasty and a providing a bit more coverage). Once an item is out, it takes us about 3 weeks for it to get back in stock.
+
+</details>
+
+<details>
+  <summary><strong>The delivery service is telling me I need to pay additional fees to get my order. I thought Gatsby covered shipping costs. What gives?</strong></summary>
+
+&nbsp; <!-- leave this here to avoid smashing the text against the summary -->
+
+On some international orders, customs will add additional taxes, duties, and other fees. This is unpredictable, and we have no way of knowing if or when it will happen, or how much it will be. If this happens to you, there is, unfortunately, nothing else Gatsby can do. You are responsible for paying any additional fees imposed as part of the customs process. Thanks for your understanding!
+
 </details>
