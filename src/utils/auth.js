@@ -93,6 +93,7 @@ export const getUserInfo = () => {
     // If the user has already logged in, don’t bother fetching again.
     if (profile) {
       resolve(profile);
+      return;
     }
 
     const accessToken = getAccessToken();
