@@ -146,6 +146,8 @@ class OpenCartComp extends React.Component {
                       </CostDetails>
                       <CostDetails>
                         Shipping: <PriceBox>FREE</PriceBox>
+                        International shipments can take six weeks or more to be delivered. 😱 Tracking updates may not always show up in real time on your tracking link. If you still have not received your order at the end of six weeks, please let us know by sending an email to team@gatsbyjs.com, and we will see how we can help
+              
                       </CostDetails>
                       <CostTotal>
                         Total Price: <PriceBox>${checkout.totalPrice}</PriceBox>
