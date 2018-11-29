@@ -36,7 +36,7 @@ export default () => (
         International shipments can take 6 weeks or more to be delivered.
         Tracking updates may not always show up in real time on your tracking link.
         If you still have not received your order at the end of 6 weeks, please let us know
-        by sending an email to <Link href="mailto:team@gatsbyjs.com">team@gatsbyjs.com</Link> and we'll see how we can help!
+        by sending an email to <Link href="mailto:team@gatsbyjs.com">team@gatsbyjs.com</Link> and we will see how we can help!
       </Text>
       <Subheading>Got more Questions?</Subheading>
       <Text>
