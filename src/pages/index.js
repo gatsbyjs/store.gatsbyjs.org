@@ -1,11 +1,7 @@
 import React from 'react';
-import Layout from '../components/shared/Layout';
-import Store from '../components/Store/Store';
+import Layout from '../components/Layout';
+import ProductListing from '../components/ProductListing';
 
-const IndexPage = ({ pageContext, location }) => (
-  <Layout location={location}>
-    <Store />
-  </Layout>
-);
+const IndexPage = ({ location }) => <ProductListing />;
 
 export default IndexPage;

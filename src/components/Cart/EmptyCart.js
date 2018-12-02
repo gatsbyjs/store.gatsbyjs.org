@@ -2,19 +2,18 @@ import React from 'react';
 import styled from 'react-emotion';
 import { colors, spacing } from '../../utils/styles';
 
-const SadCartContainer = styled('div')`
-  padding: ${spacing.lg}px;
-  text-align: center;
-
-  svg {
-    margin: 0 auto;
-    transform: translateX(-8px);
-  }
+const EmptyCartRoot = styled('div')`
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+  justify-content: center;
 `;
 
 const SadCartCopy = styled('p')`
   color: ${colors.lilac};
-  font-size: 0.875rem;
+  margin-top: ${spacing.lg}px;
+  text-align: center;
 `;
 
 const SadCart = () => (
@@ -91,8 +90,8 @@ const SadCart = () => (
   </svg>
 );
 
-export default () => (
-  <SadCartContainer>
+const EmptyCart = () => (
+  <EmptyCartRoot>
     <SadCart />
     <SadCartCopy>
       Your Cart is sad{' '}
@@ -100,7 +99,10 @@ export default () => (
         😔
       </span>
       <br />
-      Turn that frown upside down with swag!
+      Turn that frown upside down <br />
+      with swag!
     </SadCartCopy>
-  </SadCartContainer>
+  </EmptyCartRoot>
 );
+
+export default EmptyCart;

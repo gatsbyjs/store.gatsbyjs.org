@@ -1,16 +1,15 @@
 import React from 'react';
-import { push } from 'gatsby';
+import { navigate } from 'gatsby';
 import styled from 'react-emotion';
 import { handleAuthentication } from '../utils/auth';
 import { colors, fonts } from '../utils/styles';
 
 const Container = styled.div`
+  align-items: center;
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
-
   height: 100vh;
+  justify-content: center;
   overflow: none;
 `;
 
@@ -20,7 +19,7 @@ const Message = styled.h1`
 `;
 
 export default () => {
-  handleAuthentication(() => push('/account/dashboard'));
+  handleAuthentication(() => navigate('/'));
 
   return (
     <Container>

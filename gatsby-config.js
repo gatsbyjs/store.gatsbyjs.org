@@ -9,6 +9,12 @@ module.exports = {
     description: 'Get Gatsby Swag!'
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/components/Layout/`)
+      }
+    },
     'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-source-shopify2',

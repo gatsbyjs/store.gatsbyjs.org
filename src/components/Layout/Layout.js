@@ -1,0 +1,394 @@
+import React from 'react';
+import styled, { injectGlobal } from 'react-emotion';
+import { push } from 'gatsby';
+import { GitHubIssueFragment } from '../Dashboard/IssueList';
+
+import { client } from '../../context/ApolloContext';
+import StoreContext, { defaultStoreContext } from '../../context/StoreContext';
+import UserContext, { defaultUserContext } from '../../context/UserContext';
+import InterfaceContext, {
+  defaultInterfaceContext
+} from '../../context/InterfaceContext';
+
+import Header from './Header';
+import ContributorArea from '../ContributorArea';
+import PageContent from './PageContent';
+import Cart from '../Cart';
+import SiteMetadata from '../shared/SiteMetadata';
+
+import { logout, getUserInfo } from '../../utils/auth';
+import { breakpoints, dimensions, spacing } from '../../utils/styles';
+
+// Import Futura PT typeface
+import '../../fonts/futura-pt/Webfonts/futurapt_demi_macroman/stylesheet.css';
+import gql from 'graphql-tag';
+
+injectGlobal`
+    html {
+      box-sizing: border-box;
+    }
+
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+
+    body {
+      -webkit-tap-highlight-color: rgba(0,0,0,.05)
+    }
+`;
+
+const Main = styled('main')`
+  display: block;
+  margin: 0 auto;
+  max-width: 600px;
+  padding: ${spacing.xl}px ${spacing.sm}px ${spacing['3xl']}px;
+  position: relative;
+`;
+
+const Viewport = styled(`div`)`
+  overflow-x: hidden;
+  width: 100%;
+`;
+
+export default class Layout extends React.Component {
+  desktopMediaQuery;
+
+  state = {
+    interface: {
+      ...defaultInterfaceContext,
+      toggleCart: () => {
+        this.setState(state => ({
+          interface: {
+            ...state.interface,
+            cartStatus:
+              this.state.interface.cartStatus === 'open' ? 'closed' : 'open'
+          }
+        }));
+      },
+      toggleProductImagesBrowser: img => {
+        this.setState(state => ({
+          interface: {
+            ...state.interface,
+            productImagesBrowserStatus: img ? 'open' : 'closed',
+            productImageFeatured: img
+              ? img
+              : state.interface.productImageFeatured
+          }
+        }));
+      },
+      featureProductImage: img => {
+        this.setState(state => ({
+          interface: {
+            ...state.interface,
+            productImageFeatured: img
+          }
+        }));
+      },
+      toggleContributorArea: () => {
+        this.setState(state => ({
+          interface: {
+            ...state.interface,
+            contributorAreaStatus: this.toggleContributorAreaStatus()
+          }
+        }));
+      }
+    },
+    user: {
+      ...defaultUserContext,
+      handleLogout: () => {
+        this.setState({
+          user: {
+            ...defaultUserContext,
+            loading: false
+          }
+        });
+        logout(() => push('/'));
+      },
+      updateContributor: data => {
+        this.setState(state => ({
+          user: {
+            ...state.user,
+            contributor: data,
+            loading: false
+          }
+        }));
+      }
+    },
+    store: {
+      ...defaultStoreContext,
+      addVariantToCart: (variantId, quantity) => {
+        if (variantId === '' || !quantity) {
+          console.error('Both a size and quantity are required.');
+          return;
+        }
+
+        this.setState(state => ({
+          store: {
+            ...state.store,
+            adding: true
+          }
+        }));
+
+        const { checkout, client } = this.state.store;
+        const checkoutId = checkout.id;
+        const lineItemsToUpdate = [
+          { variantId, quantity: parseInt(quantity, 10) }
+        ];
+
+        return client.checkout
+          .addLineItems(checkoutId, lineItemsToUpdate)
+          .then(checkout => {
+            this.setState(state => ({
+              store: {
+                ...state.store,
+                checkout,
+                adding: false
+              }
+            }));
+          });
+      },
+      removeLineItem: (client, checkoutID, lineItemID) => {
+        return client.checkout
+          .removeLineItems(checkoutID, [lineItemID])
+          .then(res => {
+            this.setState(state => ({
+              store: {
+                ...state.store,
+                checkout: res
+              }
+            }));
+          });
+      },
+      updateLineItem: (client, checkoutID, lineItemID, quantity) => {
+        const lineItemsToUpdate = [
+          { id: lineItemID, quantity: parseInt(quantity, 10) }
+        ];
+
+        return client.checkout
+          .updateLineItems(checkoutID, lineItemsToUpdate)
+          .then(res => {
+            this.setState(state => ({
+              store: {
+                ...state.store,
+                checkout: res
+              }
+            }));
+          });
+      }
+    }
+  };
+
+  async initializeCheckout() {
+    // Check for an existing cart.
+    const isBrowser = typeof window !== 'undefined';
+    const existingCheckoutID = isBrowser
+      ? localStorage.getItem('shopify_checkout_id')
+      : null;
+
+    const setCheckoutInState = checkout => {
+      if (isBrowser) {
+        localStorage.setItem('shopify_checkout_id', checkout.id);
+      }
+
+      this.setState(state => ({
+        store: {
+          ...state.store,
+          checkout
+        }
+      }));
+    };
+
+    const createNewCheckout = () => this.state.store.client.checkout.create();
+    const fetchCheckout = id => this.state.store.client.checkout.fetch(id);
+
+    if (existingCheckoutID) {
+      const checkout = await fetchCheckout(existingCheckoutID);
+
+      // Make sure this cart hasn’t already been purchased.
+      if (!checkout.completedAt) {
+        setCheckoutInState(checkout);
+        return;
+      }
+    }
+
+    const newCheckout = await createNewCheckout();
+    setCheckoutInState(newCheckout);
+  }
+
+  async loadContributor(nickname) {
+    try {
+      const { data } = await client.mutate({
+        mutation: gql`
+          mutation($user: String!) {
+            updateContributorTags(githubUsername: $user) {
+              email
+              github {
+                username
+                contributionCount
+                pullRequests {
+                  id
+                }
+              }
+              shopify {
+                id
+                codes {
+                  code
+                  used
+                }
+              }
+            }
+          }
+        `,
+        variables: { user: nickname }
+      });
+
+      this.setState(state => ({
+        user: {
+          ...state.user,
+          contributor: data.updateContributorTags,
+          loading: false
+        }
+      }));
+    } catch (error) {
+      this.setState(state => ({
+        user: {
+          ...state.user,
+          error: error.toString(),
+          loading: false
+        }
+      }));
+    }
+  }
+
+  componentDidMount() {
+    // Observe viewport switching from mobile to desktop and vice versa
+    const mediaQueryToMatch = `(min-width: ${breakpoints.desktop}px)`;
+
+    this.desktopMediaQuery = window.matchMedia(mediaQueryToMatch);
+    this.desktopMediaQuery.addListener(this.updateViewPortState);
+
+    this.setState(state => ({
+      interface: {
+        ...state.interface,
+        isDesktopViewport: this.desktopMediaQuery.matches
+      }
+    }));
+
+    // Make sure we have a Shopify checkout created for cart management.
+    this.initializeCheckout();
+
+    // Mounting Layout on 'callback' page triggers user 'loading' flag
+    if (this.props.location.pathname === '/callback/') {
+      this.setState(state => ({
+        user: { ...state.user, loading: true }
+      }));
+    }
+
+    // Make sure to set user.profile when a visitor reloads the app
+    if (this.props.location.pathname !== '/callback/') {
+      this.setUserProfile();
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    // Set user.profile after redirection from '/callback/' to '/'
+    if (
+      prevProps.location.pathname !== this.props.location.pathname &&
+      prevProps.location.pathname === '/callback/'
+    ) {
+      this.setUserProfile();
+    }
+  }
+
+  setUserProfile = async () => {
+    // Load the user info from Auth0.
+    const profile = await getUserInfo();
+
+    // If logged in set user.profile
+    if (profile.nickname) {
+      this.setState(state => ({
+        user: {
+          ...state.user,
+          profile,
+          loading: true
+        }
+      }));
+
+      // and load the contributor data
+      this.loadContributor(profile.nickname);
+    }
+  };
+
+  componentWillUnmount() {
+    this.desktopMediaQuery.removeListener(this.updateViewPortState);
+  }
+
+  updateViewPortState = e => {
+    this.setState(state => ({
+      interface: {
+        ...state.interface,
+        isDesktopViewport: this.desktopMediaQuery.matches
+      }
+    }));
+  };
+
+  toggleContributorAreaStatus = () => {
+    if (this.state.interface.contributorAreaStatus === 'initial') {
+      return this.state.interface.isDesktopViewport ? 'closed' : 'open';
+    } else {
+      return this.state.interface.contributorAreaStatus === 'closed'
+        ? 'open'
+        : 'closed';
+    }
+  };
+
+  render() {
+    const { children, location, newDesign = true } = this.props;
+
+    return (
+      <>
+        <SiteMetadata />
+        <UserContext.Provider value={this.state.user}>
+          <StoreContext.Provider value={this.state.store}>
+            <InterfaceContext.Provider value={this.state.interface}>
+              <InterfaceContext.Consumer>
+                {({
+                  isDesktopViewport,
+                  cartStatus,
+                  toggleCart,
+                  contributorAreaStatus,
+                  toggleContributorArea
+                }) => (
+                  <>
+                    <Header />
+                    <Viewport>
+                      <ContributorArea
+                        location={location}
+                        status={contributorAreaStatus}
+                        toggle={toggleContributorArea}
+                        isDesktopViewport={isDesktopViewport}
+                      />
+
+                      <PageContent
+                        cartStatus={cartStatus}
+                        contributorAreaStatus={contributorAreaStatus}
+                      >
+                        {children}
+                      </PageContent>
+
+                      <Cart
+                        status={cartStatus}
+                        toggle={toggleCart}
+                        contributorAreaStatus={contributorAreaStatus}
+                      />
+                    </Viewport>
+                  </>
+                )}
+              </InterfaceContext.Consumer>
+            </InterfaceContext.Provider>
+          </StoreContext.Provider>
+        </UserContext.Provider>
+      </>
+    );
+  }
+}
