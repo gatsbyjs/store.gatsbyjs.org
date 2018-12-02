@@ -5,7 +5,7 @@ import styled from 'react-emotion';
 import { fonts, spacing, colors } from '../../utils/styles';
 
 const ProductSpecsRoot = styled(`div`)`
-  padding: 0 ${spacing.lg}px;
+  padding: 0 ${spacing.md}px;
 `;
 
 const Name = styled(`h1`)`
@@ -13,6 +13,8 @@ const Name = styled(`h1`)`
   font-family: ${fonts.heading};
   font-size: 1.8rem;
   font-weight: 500;
+  margin: 0;
+  margin-top: 1rem;
 `;
 
 const Description = styled(`p`)`

@@ -10,17 +10,19 @@ import BackLink from '../shared/BackLink';
 import { breakpoints, colors, fonts, spacing } from '../../utils/styles';
 
 const ProductPageRoot = styled('div')`
+  padding-bottom: 100px;
+
   @media (min-width: ${breakpoints.desktop}px) {
     align-items: center;
     display: flex;
     height: 100vh;
     justify-content: center;
     width: 100%;
+    transform: translateY(-20px);
   }
 `;
 
 const Details = styled(`div`)`
-  background: red;
   position: relative;
 
   @media (min-width: ${breakpoints.desktop}px) {
@@ -55,7 +57,7 @@ class ProductPage extends Component {
   render() {
     const {
       product,
-      product: { images }
+      product: { id, images, variants }
     } = this.props;
 
     const { desktopViewport } = this.state;
@@ -70,7 +72,7 @@ class ProductPage extends Component {
         <Details>
           <BackLink to="/">Back to Product List</BackLink>
           <ProductSpecs product={product} />
-          <ProductForm product={product} />
+          <ProductForm id={id} variants={variants} />
         </Details>
       </ProductPageRoot>
     );

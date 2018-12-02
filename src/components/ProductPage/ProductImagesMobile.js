@@ -10,7 +10,7 @@ import { radius, fonts, spacing, colors } from '../../utils/styles';
 
 const ProductImagesMobileRoot = styled(`div`)`
   overflow-x: scroll;
-  padding: ${spacing.lg}px;
+  padding: ${spacing.md}px;
   padding-bottom: 10px;
   width: 100%;
   -webkit-overflow-scrolling: touch;
@@ -22,7 +22,7 @@ const ProductImagesMobileContent = styled(`div`)`
   ${StyledImage} {
     flex-shrink: 0;
     width: 75vw;
-    margin-right: ${spacing.lg}px;
+    margin-right: ${spacing.md}px;
   }
 `;
 
