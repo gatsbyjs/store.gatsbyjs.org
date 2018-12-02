@@ -1,4 +1,32 @@
-exports.onCreatePage = async ({ page, actions: { createPage } }) => {
+const path = require('path');
+
+exports.createPages = async ({ graphql, actions: { createPage } }) => {
+  const pages = await graphql(`
+    {
+      allShopifyProduct {
+        edges {
+          node {
+            id
+            handle
+          }
+        }
+      }
+    }
+  `);
+
+  pages.data.allShopifyProduct.edges.forEach(edge => {
+    createPage({
+      path: `/${edge.node.handle}`,
+      component: path.resolve('./src/templates/ProductPageTemplate.js'),
+      context: {
+        id: edge.node.id,
+        handle: edge.node.handle
+      }
+    });
+  });
+};
+
+exports.onCreatePage = async ({ page, actions: { createPage }, graphql }) => {
   /*
    * The dashboard (which lives under `/account`) is a client-only route. That
    * means that we don’t want to build it server-side because it depends on data
@@ -29,10 +57,10 @@ exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
         rules: [
           {
             test: /auth0-js/,
-            use: loaders.null(),
-          },
-        ],
-      },
+            use: loaders.null()
+          }
+        ]
+      }
     });
   }
 };

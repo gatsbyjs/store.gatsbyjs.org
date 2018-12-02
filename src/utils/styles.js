@@ -1,4 +1,14 @@
-import { css } from 'react-emotion';
+import { css, injectGlobal } from 'react-emotion';
+
+injectGlobal`
+    html {
+      box-sizing: border-box;
+    }
+
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+`;
 
 /*
  * NOTE: use a six-character hex code for all colors to allow alpha channel

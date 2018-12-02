@@ -192,21 +192,31 @@ export default class Layout extends React.Component {
   }
 
   render() {
-    const { children, location } = this.props;
+    const { children, location, ver2 = false } = this.props;
     return (
       <>
         <SiteMetadata />
         <UserContext.Provider value={this.state.user}>
           <StoreContext.Provider value={this.state.store}>
-            <Header />
-            {!this.state.user.profile.name && <CTA />}
-            <Main>{children}</Main>
-            <Footer
-              displayAbout={
-                location.pathname === '/' ||
-                location.pathname === '/product-details'
-              }
-            />
+            {!ver2 && (
+              <>
+                <Header />
+                {!this.state.user.profile.name && <CTA />}
+                <Main>{children}</Main>
+                <Footer
+                  displayAbout={
+                    location.pathname === '/' ||
+                    location.pathname === '/product-details'
+                  }
+                />
+              </>
+            )}
+
+            {ver2 && (
+              <>
+                <div>{children}</div>
+              </>
+            )}
           </StoreContext.Provider>
         </UserContext.Provider>
       </>
