@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
+import { Link } from 'gatsby';
+
+import { MdInfoOutline } from 'react-icons/md';
 
 import { Fieldset, Input, Label, Select, Submit } from '../shared/FormElements';
 import { PrimaryButton } from '../shared/Buttons';
@@ -12,8 +15,8 @@ import StoreContext from '../../context/StoreContext';
 const Form = styled(`form`)`
   padding: ${spacing['2xl']}px ${spacing.md}px 0;
   display: flex;
+  justify-content: center;
   flex-wrap: wrap;
-  justify-content: space-between;
 `;
 
 const QtyFieldset = styled(Fieldset)`
@@ -32,6 +35,15 @@ const QtyFieldset = styled(Fieldset)`
 
 const SizeFieldset = styled(Fieldset)`
   flex-basis: calc(80% - ${spacing.md}px);
+
+  ${Label} {
+    justify-content: space-between;
+  }
+`;
+
+const CareLink = styled(Link)`
+  margin-top: ${spacing.xl}px;
+  float: right;
 `;
 
 class ProductForm extends Component {
@@ -91,7 +103,13 @@ class ProductForm extends Component {
               />
             </QtyFieldset>
             <SizeFieldset>
-              <Label>Size</Label>
+              <Label>
+                Size{' '}
+                <Link to="/product-details">
+                  <MdInfoOutline />
+                  <span>Size Chart</span>
+                </Link>
+              </Label>
               <Select
                 id={`variant_${id}`}
                 value={this.state.variant}
@@ -115,6 +133,9 @@ class ProductForm extends Component {
             <Submit type="submit" disabled={isOutOfStock}>
               {isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
             </Submit>
+            <CareLink to="/product-details">
+              <MdInfoOutline /> <span>Care instructions</span>
+            </CareLink>
           </Form>
         )}
       </StoreContext.Consumer>

@@ -45,6 +45,7 @@ export const Fieldset = styled(`fieldset`)`
 `;
 
 export const Label = styled(`label`)`
+  display: flex;
   color: ${colors.textLight};
   font-size: 1rem;
   padding: ${spacing.xs}px;

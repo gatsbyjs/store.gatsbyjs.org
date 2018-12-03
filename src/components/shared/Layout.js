@@ -9,6 +9,9 @@ import SiteMetadata from './SiteMetadata';
 import { client } from '../../context/ApolloContext';
 import StoreContext, { defaultStoreContext } from '../../context/StoreContext';
 import UserContext, { defaultUserContext } from '../../context/UserContext';
+import InterfaceContext, {
+  defaultInterfaceContext
+} from '../../context/InterfaceContext';
 import { logout, getUserInfo } from '../../utils/auth';
 import { spacing } from '../../utils/styles';
 
@@ -26,21 +29,44 @@ const Main = styled('main')`
 
 export default class Layout extends React.Component {
   state = {
+    interface: {
+      ...defaultInterfaceContext,
+      toggleProductImagesBrowser: () => {
+        this.setState(state => ({
+          interface: {
+            ...state.interface,
+            productImagesBrowserIsActive: !state.interface
+              .productImagesBrowserIsActive
+          }
+        }));
+      }
+    },
     user: {
       ...defaultUserContext,
       handleLogout: () => {
-        this.setState({ user: defaultUserContext });
+        this.setState({
+          user: defaultUserContext
+        });
         logout(() => push('/'));
       },
       toggleProfile: () => {
         this.setState(state => ({
-          user: { ...state.user, isProfileOpen: !state.user.isProfileOpen },
-          store: { ...state.store, isCartOpen: false }
+          user: {
+            ...state.user,
+            isProfileOpen: !state.user.isProfileOpen
+          },
+          store: {
+            ...state.store,
+            isCartOpen: false
+          }
         }));
       },
       hideProfile: () => {
         this.setState(state => ({
-          user: { ...state.user, isProfileOpen: false }
+          user: {
+            ...state.user,
+            isProfileOpen: false
+          }
         }));
       }
     },
@@ -53,7 +79,10 @@ export default class Layout extends React.Component {
         }
 
         this.setState(state => ({
-          store: { ...state.store, isCartOpen: true }
+          store: {
+            ...state.store,
+            isCartOpen: true
+          }
         }));
 
         const { checkout, client } = this.state.store;
@@ -65,7 +94,9 @@ export default class Layout extends React.Component {
         return client.checkout
           .addLineItems(checkoutId, lineItemsToUpdate)
           .then(checkout => {
-            this.setState(state => ({ store: { ...state.store, checkout } }));
+            this.setState(state => ({
+              store: { ...state.store, checkout }
+            }));
           });
       },
       removeLineItem: (client, checkoutID, lineItemID) => {
@@ -73,7 +104,10 @@ export default class Layout extends React.Component {
           .removeLineItems(checkoutID, [lineItemID])
           .then(res => {
             this.setState(state => ({
-              store: { ...state.store, checkout: res }
+              store: {
+                ...state.store,
+                checkout: res
+              }
             }));
           });
       },
@@ -86,14 +120,23 @@ export default class Layout extends React.Component {
           .updateLineItems(checkoutID, lineItemsToUpdate)
           .then(res => {
             this.setState(state => ({
-              store: { ...state.store, checkout: res }
+              store: {
+                ...state.store,
+                checkout: res
+              }
             }));
           });
       },
       toggleCart: () => {
         this.setState(state => ({
-          store: { ...state.store, isCartOpen: !state.store.isCartOpen },
-          user: { ...state.user, isProfileOpen: false }
+          store: {
+            ...state.store,
+            isCartOpen: !state.store.isCartOpen
+          },
+          user: {
+            ...state.user,
+            isProfileOpen: false
+          }
         }));
       }
     }
@@ -198,25 +241,28 @@ export default class Layout extends React.Component {
         <SiteMetadata />
         <UserContext.Provider value={this.state.user}>
           <StoreContext.Provider value={this.state.store}>
-            {!ver2 && (
-              <>
-                <Header />
-                {!this.state.user.profile.name && <CTA />}
-                <Main>{children}</Main>
-                <Footer
-                  displayAbout={
-                    location.pathname === '/' ||
-                    location.pathname === '/product-details'
-                  }
-                />
-              </>
-            )}
+            <InterfaceContext.Provider value={this.state.interface}>
+              {!ver2 && (
+                <>
+                  <Header />
+                  {!this.state.user.profile.name && <CTA />}
+                  <Main>{children}</Main>
+                  <Footer
+                    displayAbout={
+                      location.pathname === '/' ||
+                      location.pathname === '/product-details'
+                    }
+                  />
+                </>
+              )}
 
-            {ver2 && (
-              <>
-                <div>{children}</div>
-              </>
-            )}
+              {ver2 && (
+                <>
+                  <Header />
+                  <div>{children}</div>
+                </>
+              )}
+            </InterfaceContext.Provider>
           </StoreContext.Provider>
         </UserContext.Provider>
       </>
