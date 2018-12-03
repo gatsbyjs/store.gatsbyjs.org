@@ -51,6 +51,7 @@ const BackLinkRoot = styled(`div`)`
 
     ${ButtonLink} {
       display: inline-flex;
+      width: auto;
     }
   }
 `;
@@ -67,10 +68,7 @@ const BackLink = props => {
       )}
       {callback && (
         <Button onClick={callback}>
-          <span>
-            <MdArrowBack />
-            {children}
-          </span>
+          <span>{children}</span>
         </Button>
       )}
     </BackLinkRoot>

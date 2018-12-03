@@ -235,14 +235,14 @@ export default class Layout extends React.Component {
   }
 
   render() {
-    const { children, location, ver2 = false } = this.props;
+    const { children, location, newDesign = false } = this.props;
     return (
       <>
         <SiteMetadata />
         <UserContext.Provider value={this.state.user}>
           <StoreContext.Provider value={this.state.store}>
             <InterfaceContext.Provider value={this.state.interface}>
-              {!ver2 && (
+              {!newDesign && (
                 <>
                   <Header />
                   {!this.state.user.profile.name && <CTA />}
@@ -256,9 +256,9 @@ export default class Layout extends React.Component {
                 </>
               )}
 
-              {ver2 && (
+              {newDesign && (
                 <>
-                  <Header />
+                  <Header newDesign={true} />
                   <div>{children}</div>
                 </>
               )}

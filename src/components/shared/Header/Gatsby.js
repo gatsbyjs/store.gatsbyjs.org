@@ -67,10 +67,10 @@ const Product = () => (
   </svg>
 );
 
-export default () => (
+export default ({ newDesign }) => (
   <div className={svg}>
     <Monogram />
-    <Logotype />
+    <Logotype newDesign={newDesign} />
     <Product />
   </div>
 );

@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 
 import ProductImagesMobile from './ProductImagesMobile';
+import ProductImagesDesktop from './ProductImagesDesktop';
 import ProductSpecs from './ProductSpecs';
 import ProductForm from './ProductForm';
 import BackLink from '../shared/BackLink';
@@ -16,10 +17,16 @@ const ProductPageRoot = styled('div')`
   @media (min-width: ${breakpoints.desktop}px) {
     align-items: center;
     display: flex;
-    height: 100vh;
+    min-height: calc(100vh - 60px);
+    padding: ${spacing.xl}px;
     justify-content: center;
     width: 100%;
-    transform: translateY(-20px);
+  }
+`;
+
+const Container = styled(`div`)`
+  @media (min-width: ${breakpoints.desktop}px) {
+    display: flex;
   }
 `;
 
@@ -70,16 +77,18 @@ class ProductPage extends Component {
     return (
       <>
         <ProductPageRoot>
-          {!desktopViewport ? (
-            <ProductImagesMobile images={images} />
-          ) : (
-            <div>image</div>
-          )}
-          <Details>
-            <BackToProductList to="/">Back to Product List</BackToProductList>
-            <ProductSpecs product={product} />
-            <ProductForm id={id} variants={variants} />
-          </Details>
+          <Container>
+            {!desktopViewport ? (
+              <ProductImagesMobile images={images} />
+            ) : (
+              <ProductImagesDesktop images={images} />
+            )}
+            <Details>
+              <BackToProductList to="/">Back to Product List</BackToProductList>
+              <ProductSpecs product={product} />
+              <ProductForm id={id} variants={variants} />
+            </Details>
+          </Container>
         </ProductPageRoot>
 
         <ProductImagesBrowser images={images} />

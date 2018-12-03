@@ -5,82 +5,28 @@ import styled from 'react-emotion';
 import { MdCameraAlt } from 'react-icons/md';
 
 import ProductImage, { StyledImage } from './ProductImage';
+import ProductThumbnails from './ProductThumbnails';
 
 import { radius, fonts, spacing, colors } from '../../utils/styles';
 
-const ProductImagesMobileRoot = styled(`div`)`
-  overflow-x: scroll;
-  padding: ${spacing.lg}px;
-  padding-bottom: 10px;
-  width: 100%;
-  -webkit-overflow-scrolling: touch;
+const ProductImagesDesktopRoot = styled(`div`)`
+  width: 440px;
+  margin-right: ${spacing.lg}px;
 `;
 
-const ProductImagesMobileContent = styled(`div`)`
-  display: inline-flex;
+const ProductImagesDesktop = ({ images }) => {
+  const image = images[0];
 
-  ${StyledImage} {
-    flex-shrink: 0;
-    width: 75vw;
-    margin-right: ${spacing.lg}px;
-  }
-`;
+  return (
+    <ProductImagesDesktopRoot>
+      <ProductImage image={image} />
+      <ProductThumbnails images={images} />
+    </ProductImagesDesktopRoot>
+  );
+};
 
-const Incentive = styled(`div`)`
-  border-radius: ${radius.large}px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
-  display: flex;
-  flex-direction: column;
-  flex-shrink: 0;
-  justify-content: center;
-  padding: ${spacing.xl}px;
-  width: 250px;
-
-  h3 {
-    font-family: ${fonts.heading};
-    font-size: 1.2rem;
-    line-height: 1.2;
-    margin: 0 0 0.5em;
-
-    svg {
-      fill: ${colors.brand};
-      height: 1.15em;
-      margin-right: ${spacing['2xs']}px;
-      vertical-align: top;
-      width: 1.15em;
-    }
-  }
-
-  p {
-    font-size: 1rem;
-    line-height: 1.4;
-    margin: 0;
-  }
-`;
-
-const ProductImagesMobile = ({ images }) => (
-  <ProductImagesMobileRoot>
-    <ProductImagesMobileContent>
-      {images.map((image, idx) => (
-        <ProductImage key={idx} image={image} />
-      ))}
-
-      <Incentive>
-        <h3>
-          <MdCameraAlt />
-          Would you like to see a photo of your pet here?
-        </h3>
-        <p>
-          Contrary to popular belief, Lorem Ipsum is not simply random text. It
-          has roots in a piece of classical Latin.
-        </p>
-      </Incentive>
-    </ProductImagesMobileContent>
-  </ProductImagesMobileRoot>
-);
-
-ProductImagesMobile.propTypes = {
+ProductImagesDesktop.propTypes = {
   images: PropTypes.array.isRequired
 };
 
-export default ProductImagesMobile;
+export default ProductImagesDesktop;

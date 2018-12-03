@@ -7,11 +7,15 @@ import { MdZoomIn } from 'react-icons/md';
 
 import InterfaceContext from '../../context/InterfaceContext';
 
-import { colors, radius, spacing } from '../../utils/styles';
+import { breakpoints, colors, radius, spacing } from '../../utils/styles';
 
 const ProductImageRoot = styled(`div`)`
   position: relative;
   display: block;
+
+  @media (min-width: ${breakpoints.desktop}px) {
+    cursor: pointer;
+  }
 `;
 
 const Helper = styled(`span`)`
@@ -28,22 +32,34 @@ const Helper = styled(`span`)`
     height: 24px;
     width: 24px;
   }
+
+  @media (min-width: ${breakpoints.desktop}px) {
+    background: rgba(255, 255, 255, 0.5);
+    border-radius: ${radius.large}px;
+    bottom: auto;
+    left: 50%;
+    opacity: 0;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    transition: opacity 0.5s;
+
+    svg {
+      height: 40px;
+      width: 40px;
+    }
+
+    ${ProductImageRoot}:hover & {
+      opacity: 1;
+    }
+  }
 `;
 
 export const StyledImage = styled(Image)`
   border-radius: ${radius.large}px;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
 `;
 
 class ProductImage extends Component {
-  handleClick = callback => event => {
-    console.log('handleClick');
-
-    event.preventDefault();
-
-    console.log(callback);
-  };
-
   render() {
     const {
       image: {

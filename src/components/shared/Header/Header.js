@@ -31,13 +31,13 @@ const HomeLink = styled(Link)`
   margin-right: auto;
 `;
 
-export default () => (
+export default ({ newDesign = false }) => (
   <Header>
     <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}>
       <HomeLink to="/">
-        <Gatsby />
+        <Gatsby newDesign={newDesign} />
       </HomeLink>
-      <Profile />
+      {!newDesign && <Profile />}
       <Cart />
     </IconContext.Provider>
   </Header>

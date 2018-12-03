@@ -8,7 +8,7 @@ const ProductPageTemplate = props => {
   const { shopifyProduct: product } = props.data;
 
   return (
-    <Layout ver2={true}>
+    <Layout newDesign={true}>
       <ProductPage product={product} />
     </Layout>
   );

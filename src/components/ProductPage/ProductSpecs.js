@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 
-import { fonts, spacing, colors } from '../../utils/styles';
+import { breakpoints, colors, fonts, spacing } from '../../utils/styles';
 
 const ProductSpecsRoot = styled(`div`)`
   padding: 0 ${spacing.md}px;
@@ -15,6 +15,10 @@ const Name = styled(`h1`)`
   font-weight: 500;
   margin: 0;
   margin-top: 1rem;
+
+  @media (min-width: ${breakpoints.desktop}px) {
+    margin-top: ${spacing['2xl']}px;
+  }
 `;
 
 const Description = styled(`p`)`
