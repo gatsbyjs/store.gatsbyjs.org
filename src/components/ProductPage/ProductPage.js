@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 
+import InterfaceContext from '../../context/InterfaceContext';
 import ProductImagesMobile from './ProductImagesMobile';
 import ProductImagesDesktop from './ProductImagesDesktop';
 import ProductSpecs from './ProductSpecs';
@@ -13,6 +14,7 @@ import { breakpoints, colors, fonts, spacing } from '../../utils/styles';
 
 const ProductPageRoot = styled('div')`
   padding-bottom: calc(${spacing['3xl']}px * 2);
+  position: ${props => (props.isFixed ? 'fixed' : 'static')};
 
   @media (min-width: ${breakpoints.desktop}px) {
     align-items: center;
@@ -75,24 +77,39 @@ class ProductPage extends Component {
     const { desktopViewport, imageBrowserIsActive } = this.state;
 
     return (
-      <>
-        <ProductPageRoot>
-          <Container>
-            {!desktopViewport ? (
-              <ProductImagesMobile images={images} />
-            ) : (
-              <ProductImagesDesktop images={images} />
-            )}
-            <Details>
-              <BackToProductList to="/">Back to Product List</BackToProductList>
-              <ProductSpecs product={product} />
-              <ProductForm id={id} variants={variants} />
-            </Details>
-          </Container>
-        </ProductPageRoot>
+      <InterfaceContext.Consumer>
+        {({
+          productImagesBrowserOpen,
+          productImageFeatured,
+          toggleProductImagesBrowser
+        }) => (
+          <>
+            <ProductPageRoot isFixed={productImagesBrowserOpen}>
+              <Container>
+                {!desktopViewport ? (
+                  <ProductImagesMobile images={images} />
+                ) : (
+                  <ProductImagesDesktop images={images} />
+                )}
+                <Details>
+                  <BackToProductList to="/">
+                    Back to Product List
+                  </BackToProductList>
+                  <ProductSpecs product={product} />
+                  <ProductForm id={id} variants={variants} />
+                </Details>
+              </Container>
+            </ProductPageRoot>
 
-        <ProductImagesBrowser images={images} />
-      </>
+            <ProductImagesBrowser
+              images={images}
+              productImagesBrowserOpen={productImagesBrowserOpen}
+              productImageFeatured={productImageFeatured}
+              toggleProductImagesBrowser={toggleProductImagesBrowser}
+            />
+          </>
+        )}
+      </InterfaceContext.Consumer>
     );
   }
 }

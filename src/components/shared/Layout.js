@@ -31,12 +31,22 @@ export default class Layout extends React.Component {
   state = {
     interface: {
       ...defaultInterfaceContext,
-      toggleProductImagesBrowser: () => {
+      toggleProductImagesBrowser: img => {
         this.setState(state => ({
           interface: {
             ...state.interface,
-            productImagesBrowserIsActive: !state.interface
-              .productImagesBrowserIsActive
+            productImagesBrowserOpen: img ? true : false,
+            productImageFeatured: img
+              ? img
+              : state.interface.productImageFeatured
+          }
+        }));
+      },
+      featureProductImage: img => {
+        this.setState(state => ({
+          interface: {
+            ...state.interface,
+            productImageFeatured: img
           }
         }));
       }

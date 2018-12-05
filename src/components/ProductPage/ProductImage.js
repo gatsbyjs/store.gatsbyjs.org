@@ -60,6 +60,10 @@ export const StyledImage = styled(Image)`
 `;
 
 class ProductImage extends Component {
+  handleClick = callback => event => {
+    callback(this.props.image);
+  };
+
   render() {
     const {
       image: {
@@ -72,7 +76,9 @@ class ProductImage extends Component {
     return (
       <InterfaceContext.Consumer>
         {({ toggleProductImagesBrowser }) => (
-          <ProductImageRoot onClick={toggleProductImagesBrowser}>
+          <ProductImageRoot
+            onClick={this.handleClick(toggleProductImagesBrowser)}
+          >
             <StyledImage fluid={fluid} alt="" />
             <Helper>
               <MdZoomIn />
