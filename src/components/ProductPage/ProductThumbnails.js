@@ -65,7 +65,7 @@ class ProductThumbnails extends Component {
 
     return (
       <InterfaceContext.Consumer>
-        {({ toggleProductImagesBrowser }) => (
+        {({ featureProductImage }) => (
           <ProductThumbnailsRoot className={className}>
             <ProductThumbnailsContent>
               {images.map((image, idx) => {
@@ -79,10 +79,7 @@ class ProductThumbnails extends Component {
                 return (
                   <Thumbnail
                     key={id}
-                    onClick={this.handleClick(
-                      image,
-                      toggleProductImagesBrowser
-                    )}
+                    onClick={this.handleClick(image, featureProductImage)}
                   >
                     <Image fluid={fluid} />
                   </Thumbnail>

@@ -4,6 +4,7 @@ import styled from 'react-emotion';
 
 import { MdCameraAlt } from 'react-icons/md';
 
+import InterfaceContext from '../../context/InterfaceContext';
 import ProductImage, { StyledImage } from './ProductImage';
 import ProductThumbnails from './ProductThumbnails';
 
@@ -18,10 +19,16 @@ const ProductImagesDesktop = ({ images }) => {
   const image = images[0];
 
   return (
-    <ProductImagesDesktopRoot>
-      <ProductImage image={image} />
-      <ProductThumbnails images={images} />
-    </ProductImagesDesktopRoot>
+    <InterfaceContext.Consumer>
+      {({ productImageFeatured }) => (
+        <ProductImagesDesktopRoot>
+          <ProductImage
+            image={productImageFeatured ? productImageFeatured : image}
+          />
+          <ProductThumbnails images={images} />
+        </ProductImagesDesktopRoot>
+      )}
+    </InterfaceContext.Consumer>
   );
 };
 
