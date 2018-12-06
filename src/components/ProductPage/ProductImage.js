@@ -1,17 +1,30 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Image from 'gatsby-image';
-import styled from 'react-emotion';
+import styled, { keyframes } from 'react-emotion';
 
 import { MdZoomIn } from 'react-icons/md';
 
-import InterfaceContext from '../../context/InterfaceContext';
-
 import { breakpoints, colors, radius, spacing } from '../../utils/styles';
+
+const IMAGE_CHANGE_ANIM_DURATION = 350;
+
+const change = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
 
 const ProductImageRoot = styled(`div`)`
   position: relative;
   display: block;
+
+  &.change {
+    animation: ${change} ${IMAGE_CHANGE_ANIM_DURATION}ms ease-out forwards;
+  }
 
   @media (min-width: ${breakpoints.desktop}px) {
     cursor: pointer;
@@ -60,6 +73,19 @@ export const StyledImage = styled(Image)`
 `;
 
 class ProductImage extends Component {
+  imageRoot;
+
+  componentDidUpdate = prevProps => {
+    if (prevProps.image.id !== this.props.image.id) {
+      this.imageRoot.classList.add('change');
+
+      setTimeout(
+        () => this.imageRoot.classList.remove('change'),
+        IMAGE_CHANGE_ANIM_DURATION
+      );
+    }
+  };
+
   handleClick = callback => event => {
     callback(this.props.image);
   };
@@ -70,28 +96,29 @@ class ProductImage extends Component {
         localFile: {
           childImageSharp: { fluid }
         }
-      }
+      },
+      toggleImagesBrowser
     } = this.props;
 
     return (
-      <InterfaceContext.Consumer>
-        {({ toggleProductImagesBrowser }) => (
-          <ProductImageRoot
-            onClick={this.handleClick(toggleProductImagesBrowser)}
-          >
-            <StyledImage fluid={fluid} alt="" />
-            <Helper>
-              <MdZoomIn />
-            </Helper>
-          </ProductImageRoot>
-        )}
-      </InterfaceContext.Consumer>
+      <ProductImageRoot
+        onClick={this.handleClick(toggleImagesBrowser)}
+        innerRef={div => {
+          this.imageRoot = div;
+        }}
+      >
+        <StyledImage fluid={fluid} alt="" />
+        <Helper>
+          <MdZoomIn />
+        </Helper>
+      </ProductImageRoot>
     );
   }
 }
 
 ProductImage.propTypes = {
-  image: PropTypes.object.isRequired
+  image: PropTypes.object.isRequired,
+  toggleImagesBrowser: PropTypes.func
 };
 
 export default ProductImage;

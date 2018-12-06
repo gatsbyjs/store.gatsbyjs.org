@@ -17,6 +17,7 @@ import { breakpoints, colors, spacing } from '../../utils/styles';
 
 const ACTIONS_WIDTH_DESKTOP = '200px';
 const ACTIONS_HEIGHT_MOBILE = '80px';
+const IMAGE_CHANGE_ANIM_DURATION = 350;
 
 const entry = keyframes`
   0% {
@@ -30,7 +31,10 @@ const entry = keyframes`
 `;
 
 const ProductImagesBrowserRoot = styled(`div`)`
-  animation: ${props => (props.isOpen ? `${entry} .5s ease-out forwards` : '')};
+  animation: ${props =>
+    props.isOpen
+      ? `${entry} ${IMAGE_CHANGE_ANIM_DURATION}ms ease-out forwards`
+      : ''};
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
   background: white;
   display: flex;
@@ -51,12 +55,25 @@ const ProductImagesBrowserRoot = styled(`div`)`
   }
 `;
 
+const change = keyframes`
+  0% {
+    opacity: .5;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
 const ZoomContainer = styled(`div`)`
   border-bottom: 1px solid ${colors.brandLight};
   flex-shrink: 0;
   overflow-x: scroll;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+
+  &.change {
+    animation: ${change} 0.4s ease-out forwards;
+  }
 
   @media (min-width: ${breakpoints.desktop}px) {
     border-bottom: none;
@@ -146,6 +163,14 @@ class ProductImagesBrowser extends Component {
       prevProps.productImagesBrowserOpen !== this.props.productImagesBrowserOpen
     ) {
       this.centerZoomImage();
+
+      console.log(this.zoomContainer);
+
+      this.zoomContainer.classList.add('change');
+      setTimeout(
+        () => this.zoomContainer.classList.remove('change'),
+        IMAGE_CHANGE_ANIM_DURATION
+      );
     }
   };
 

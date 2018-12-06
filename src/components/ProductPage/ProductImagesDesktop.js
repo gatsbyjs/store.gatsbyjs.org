@@ -20,10 +20,11 @@ const ProductImagesDesktop = ({ images }) => {
 
   return (
     <InterfaceContext.Consumer>
-      {({ productImageFeatured }) => (
+      {({ productImageFeatured, toggleProductImagesBrowser }) => (
         <ProductImagesDesktopRoot>
           <ProductImage
             image={productImageFeatured ? productImageFeatured : image}
+            toggleImagesBrowser={toggleProductImagesBrowser}
           />
           <ProductThumbnails images={images} />
         </ProductImagesDesktopRoot>
