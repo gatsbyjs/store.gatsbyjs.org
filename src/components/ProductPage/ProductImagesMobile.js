@@ -6,14 +6,25 @@ import { MdCameraAlt } from 'react-icons/md';
 
 import ProductImage, { StyledImage } from './ProductImage';
 
-import { radius, fonts, spacing, colors } from '../../utils/styles';
+import {
+  breakpoints,
+  colors,
+  fonts,
+  radius,
+  spacing
+} from '../../utils/styles';
 
 const ProductImagesMobileRoot = styled(`div`)`
   overflow-x: scroll;
   padding: ${spacing.md}px;
-  padding-bottom: 10px;
+  padding-bottom: ${spacing.xs}px;
   width: 100%;
   -webkit-overflow-scrolling: touch;
+
+  @media (min-width: ${breakpoints.tablet}px) {
+    padding: ${spacing.xl}px;
+    padding-bottom: ${spacing.lg}px;
+  }
 `;
 
 const ProductImagesMobileContent = styled(`div`)`
@@ -23,6 +34,10 @@ const ProductImagesMobileContent = styled(`div`)`
     flex-shrink: 0;
     width: 75vw;
     margin-right: ${spacing.md}px;
+
+    @media (min-width: ${breakpoints.tablet}px) {
+      margin-right: ${spacing.xl}px;
+    }
   }
 `;
 

@@ -18,6 +18,10 @@ const Form = styled(`form`)`
   justify-content: center;
   flex-wrap: wrap;
 
+  @media (min-width: ${breakpoints.tablet}px) {
+    padding: ${spacing['2xl']}px ${spacing.xl}px 0;
+  }
+
   @media (min-width: ${breakpoints.desktop}px) {
     justify-content: flex-start;
   }

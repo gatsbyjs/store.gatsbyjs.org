@@ -1,43 +1,82 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Image from 'gatsby-image';
-import styled from 'react-emotion';
+import styled, { keyframes } from 'react-emotion';
 
 import { MdClose } from 'react-icons/md';
 
 import InterfaceContext from '../../context/InterfaceContext';
 import BackLink from '../shared/BackLink';
-import ProductThumbnails from './ProductThumbnails';
+import ProductThumbnails, {
+  ProductThumbnailsContent,
+  Thumbnail
+} from './ProductThumbnails';
 import { Button } from '../shared/Buttons';
 
-import { colors, spacing } from '../../utils/styles';
+import { breakpoints, colors, spacing } from '../../utils/styles';
+
+const ACTIONS_WIDTH_DESKTOP = '200px';
+const ACTIONS_HEIGHT_MOBILE = '80px';
+
+const entry = keyframes`
+  0% {
+    left: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    left: 0;
+    transform: scale(1);
+  }
+`;
 
 const ProductImagesBrowserRoot = styled(`div`)`
+  animation: ${props => (props.isOpen ? `${entry} .5s ease-out forwards` : '')};
+  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
   background: white;
   display: flex;
   flex-direction: column;
   height: calc(var(--vh) * 100);
   justify-content: stretch;
-  left: ${props => (props.isOpen ? '0' : '100%')};
+  left: 100%;
   position: fixed;
   top: 0;
+  transform: scale(0.8);
+  transform-origin: center center;
   width: 100%;
   z-index: 10000;
+
+  @media (min-width: ${breakpoints.desktop}px) {
+    flex-direction: row-reverse;
+    height: 100vh;
+  }
 `;
 
 const ZoomContainer = styled(`div`)`
-  background: blue;
   border-bottom: 1px solid ${colors.brandLight};
-
   flex-shrink: 0;
   overflow-x: scroll;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+
+  @media (min-width: ${breakpoints.desktop}px) {
+    border-bottom: none;
+    border-left: 1px solid ${colors.brandLight};
+    display: flex;
+    justify-content: center;
+    overflow-x: hidden;
+    overflow-y: auto;
+    width: calc(100% - ${ACTIONS_WIDTH_DESKTOP});
+  }
 `;
 
 const ZoomImage = styled(Image)`
   height: calc((var(--vh) * 100) - 80px);
   width: calc((var(--vh) * 100) - 80px);
+
+  @media (min-width: ${breakpoints.desktop}px) {
+    height: 100vh;
+    width: 100vh;
+  }
 `;
 
 const Actions = styled(`div`)`
@@ -45,42 +84,76 @@ const Actions = styled(`div`)`
   height: 100%;
   align-items: center;
   padding-left: ${spacing.md}px;
+
+  @media (min-width: ${breakpoints.desktop}px) {
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: ${ACTIONS_WIDTH_DESKTOP};
+    padding-left: 0;
+    padding-top: ${spacing.xl}px;
+  }
 `;
 
 const CloseButton = styled(Button)`
   height: 44px;
 `;
 
+const ProductThumbnailsRestyled = styled(ProductThumbnails)`
+  @media (min-width: ${breakpoints.desktop}px) {
+    ${ProductThumbnailsContent} {
+      align-items: center;
+      flex-direction: column;
+    }
+
+    ${Thumbnail} {
+      height: 80px;
+      margin-right: 0;
+      margin-bottom: ${spacing.md}px;
+      width: 80px;
+    }
+  }
+`;
+
 class ProductImagesBrowser extends Component {
   zoomContainer;
   zoomImage;
-  myRef = React.createRef();
+
+  state = {
+    zoomContainerWidth: null,
+    zoomImageWidth: null
+  };
 
   componentDidMount = () => {
-    // First we get the viewport height and we multiple it by 1% to get a value for a vh unit
-    let vh = window.innerHeight * 0.01;
-    // Then we set the value in the --vh custom property to the root of the document
+    let vh = document.documentElement.clientHeight * 0.01;
     document.documentElement.style.setProperty('--vh', `${vh}px`);
 
     window.addEventListener('resize', () => {
-      // We execute the same script as before
-      let vh = window.innerHeight * 0.01;
+      let vh = document.documentElement.clientHeight * 0.01;
+
       document.documentElement.style.setProperty('--vh', `${vh}px`);
+    });
+
+    this.setState({
+      zoomContainerWidth: this.zoomContainer.offsetWidth,
+      zoomImageWidth: this.zoomImage.imageRef.current.offsetWidth
     });
   };
 
   componentDidUpdate = prevProps => {
-    if (prevProps.productImageFeatured !== this.props.productImageFeatured) {
-      const zoomContainerWidth = this.zoomContainer.offsetWidth;
-      const zoomImageWidth = this.zoomImage.imageRef.current.offsetWidth;
-      const widthToScroll = (zoomImageWidth - zoomContainerWidth) / 2;
-      console.log(widthToScroll);
-
-      this.zoomContainer.scroll({
-        left: widthToScroll,
-        behavior: 'smooth'
-      });
+    if (
+      prevProps.productImageFeatured !== this.props.productImageFeatured ||
+      prevProps.productImagesBrowserOpen !== this.props.productImagesBrowserOpen
+    ) {
+      this.centerZoomImage();
     }
+  };
+
+  centerZoomImage = () => {
+    const offsetToScroll =
+      (this.state.zoomImageWidth - this.state.zoomContainerWidth) / 2;
+
+    this.zoomContainer.scroll({ left: offsetToScroll });
   };
 
   handleClose = callback => event => {
@@ -127,7 +200,7 @@ class ProductImagesBrowser extends Component {
               Close
             </span>
           </CloseButton>
-          <ProductThumbnails images={images} />
+          <ProductThumbnailsRestyled images={images} />
         </Actions>
       </ProductImagesBrowserRoot>
     );

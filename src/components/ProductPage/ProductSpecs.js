@@ -6,6 +6,10 @@ import { breakpoints, colors, fonts, spacing } from '../../utils/styles';
 
 const ProductSpecsRoot = styled(`div`)`
   padding: 0 ${spacing.md}px;
+
+  @media (min-width: ${breakpoints.tablet}px) {
+    padding: ${spacing.md}px ${spacing.xl}px;
+  }
 `;
 
 const Name = styled(`h1`)`

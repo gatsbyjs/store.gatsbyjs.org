@@ -25,7 +25,7 @@ const ProductThumbnailsRoot = styled(`div`)`
   }
 `;
 
-const ProductThumbnailsContent = styled(`div`)`
+export const ProductThumbnailsContent = styled(`div`)`
   display: inline-flex;
   height: 100%;
   padding-left: ${spacing.md}px;
@@ -37,7 +37,7 @@ const ProductThumbnailsContent = styled(`div`)`
   }
 `;
 
-const Thumbnail = styled(`div`)`
+export const Thumbnail = styled(`div`)`
   border: 1px solid ${colors.brandBright};
   border-radius: ${radius.default}px;
   height: 44px;
@@ -61,12 +61,12 @@ class ProductThumbnails extends Component {
   };
 
   render() {
-    const { images } = this.props;
+    const { images, className = '' } = this.props;
 
     return (
       <InterfaceContext.Consumer>
         {({ toggleProductImagesBrowser }) => (
-          <ProductThumbnailsRoot>
+          <ProductThumbnailsRoot className={className}>
             <ProductThumbnailsContent>
               {images.map((image, idx) => {
                 const {
@@ -97,7 +97,8 @@ class ProductThumbnails extends Component {
 }
 
 ProductThumbnails.propTypes = {
-  images: PropTypes.array.isRequired
+  images: PropTypes.array.isRequired,
+  className: PropTypes.string
 };
 
 export default ProductThumbnails;

@@ -14,7 +14,7 @@ import { breakpoints, colors, fonts, spacing } from '../../utils/styles';
 
 const ProductPageRoot = styled('div')`
   padding-bottom: calc(${spacing['3xl']}px * 2);
-  position: ${props => (props.isFixed ? 'fixed' : 'static')};
+  display: ${props => (props.isFixed ? 'none' : 'block')};
 
   @media (min-width: ${breakpoints.desktop}px) {
     align-items: center;
