@@ -5,13 +5,22 @@ import styled from 'react-emotion';
 import { MdCameraAlt } from 'react-icons/md';
 
 import ProductImage, { StyledImage } from './ProductImage';
-import ProductThumbnails from './ProductThumbnails';
+import ProductThumbnails, { Thumbnail } from './ProductThumbnails';
 
 import { radius, fonts, spacing, colors } from '../../utils/styles';
+
+const THUMBNAIL_SIZE = '54px';
 
 const ProductImagesDesktopRoot = styled(`div`)`
   width: 440px;
   margin-right: ${spacing.lg}px;
+`;
+
+const Thumbnails = styled(ProductThumbnails)`
+  ${Thumbnail} {
+    height: ${THUMBNAIL_SIZE};
+    width: ${THUMBNAIL_SIZE};
+  }
 `;
 
 const ProductImagesDesktop = ({ images, imageFeatured, imageOnClick }) => {
@@ -23,7 +32,7 @@ const ProductImagesDesktop = ({ images, imageFeatured, imageOnClick }) => {
         image={imageFeatured ? imageFeatured : image}
         onClick={imageOnClick}
       />
-      <ProductThumbnails images={images} />
+      <Thumbnails images={images} />
     </ProductImagesDesktopRoot>
   );
 };

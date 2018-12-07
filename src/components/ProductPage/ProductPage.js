@@ -14,11 +14,12 @@ import { breakpoints, colors, fonts, spacing } from '../../utils/styles';
 
 const ProductPageRoot = styled('div')`
   padding-bottom: calc(${spacing['3xl']}px * 2);
-  display: ${props => (props.isCovered ? 'fixed' : 'block')};
+  position: ${props => (props.isCovered ? 'fixed' : 'static')};
 
   @media (min-width: ${breakpoints.desktop}px) {
     align-items: center;
-    display: ${props => (props.isCovered ? 'fixed' : 'flex')};
+    position: ${props => (props.isCovered ? 'fixed' : 'static')};
+    display: flex;
     min-height: calc(100vh - 60px);
     padding: ${spacing.xl}px;
     justify-content: center;

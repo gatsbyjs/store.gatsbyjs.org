@@ -46,7 +46,7 @@ const BackLinkRoot = styled(`div`)`
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
-    padding: 0 ${spacing.md}px;
+    padding: 0 ${spacing.xl}px;
     position: relative;
 
     ${ButtonLink} {

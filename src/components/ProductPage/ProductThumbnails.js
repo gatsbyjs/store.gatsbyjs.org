@@ -13,8 +13,10 @@ import {
   spacing
 } from '../../utils/styles';
 
+const THUMBNAIL_SIZE = '44px';
+
 const ProductThumbnailsRoot = styled(`div`)`
-  height: 44px;
+  height: ${THUMBNAIL_SIZE};
   overflow-x: scroll;
   width: 100%;
   -webkit-overflow-scrolling: touch;
@@ -40,18 +42,13 @@ export const ProductThumbnailsContent = styled(`div`)`
 export const Thumbnail = styled(`div`)`
   border: 1px solid ${colors.brandBright};
   border-radius: ${radius.default}px;
-  height: 44px;
+  height: ${THUMBNAIL_SIZE};
   margin-right: ${spacing.md}px;
-  width: 44px;
+  width: ${THUMBNAIL_SIZE};
 
   @media (min-width: ${breakpoints.desktop}px) {
     cursor: pointer;
     margin-right: ${spacing.md}px;
-    width: 50px;
-
-    :last-child {
-      margin-right: 0;
-    }
   }
 `;
 

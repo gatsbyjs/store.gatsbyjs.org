@@ -129,9 +129,7 @@ const Actions = styled(`div`)`
   }
 `;
 
-const CloseButton = styled(Button)`
-  height: 44px;
-`;
+const CloseButton = styled(Button)``;
 
 const ProductThumbnailsRestyled = styled(ProductThumbnails)`
   @media (min-width: ${breakpoints.desktop}px) {
@@ -141,10 +139,10 @@ const ProductThumbnailsRestyled = styled(ProductThumbnails)`
     }
 
     ${Thumbnail} {
-      height: 80px;
+      height: 70px;
       margin-right: 0;
       margin-bottom: ${spacing.md}px;
-      width: 80px;
+      width: 70px;
     }
   }
 `;

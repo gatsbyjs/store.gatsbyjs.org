@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import { Link } from 'gatsby';
 
-import { radius, colors, fonts } from '../../utils/styles';
+import { colors, fonts, radius, spacing } from '../../utils/styles';
 
 export const Button = styled(`button`)`
   align-items: center;
@@ -23,6 +23,12 @@ export const Button = styled(`button`)`
     align-items: center;
     display: flex;
     justify-content: center;
+  }
+
+  svg {
+    width: 1.5rem;
+    height: 1.5rem;
+    transform: translateX(-${spacing['3xs']}px);
   }
 `;
 
