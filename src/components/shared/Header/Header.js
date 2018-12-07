@@ -5,6 +5,8 @@ import { IconContext } from 'react-icons';
 import Gatsby from './Gatsby';
 import Profile from './Profile';
 import Cart from '../../Cart/Cart';
+import InterfaceContext from '../../../context/InterfaceContext';
+
 import { colors, spacing } from '../../../utils/styles';
 
 const Header = styled('header')`
@@ -34,9 +36,13 @@ const HomeLink = styled(Link)`
 export default ({ newDesign = false }) => (
   <Header>
     <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}>
-      <HomeLink to="/">
-        <Gatsby newDesign={newDesign} />
-      </HomeLink>
+      <InterfaceContext.Consumer>
+        {({ productImagesBrowserIsOpen }) => (
+          <HomeLink to="/" tabIndex={productImagesBrowserIsOpen ? '-1' : '0'}>
+            <Gatsby newDesign={newDesign} />
+          </HomeLink>
+        )}
+      </InterfaceContext.Consumer>
       {!newDesign && <Profile />}
       <Cart />
     </IconContext.Provider>

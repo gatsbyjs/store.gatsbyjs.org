@@ -14,11 +14,11 @@ import { breakpoints, colors, fonts, spacing } from '../../utils/styles';
 
 const ProductPageRoot = styled('div')`
   padding-bottom: calc(${spacing['3xl']}px * 2);
-  display: ${props => (props.isFixed ? 'none' : 'block')};
+  display: ${props => (props.isCovered ? 'fixed' : 'block')};
 
   @media (min-width: ${breakpoints.desktop}px) {
     align-items: center;
-    display: flex;
+    display: ${props => (props.isCovered ? 'fixed' : 'flex')};
     min-height: calc(100vh - 60px);
     padding: ${spacing.xl}px;
     justify-content: center;
@@ -79,17 +79,24 @@ class ProductPage extends Component {
     return (
       <InterfaceContext.Consumer>
         {({
-          productImagesBrowserOpen,
+          productImagesBrowserIsOpen,
           productImageFeatured,
           toggleProductImagesBrowser
         }) => (
           <>
-            <ProductPageRoot isFixed={productImagesBrowserOpen}>
+            <ProductPageRoot isCovered={productImagesBrowserIsOpen}>
               <Container>
                 {!desktopViewport ? (
-                  <ProductImagesMobile images={images} />
+                  <ProductImagesMobile
+                    images={images}
+                    imageOnClick={toggleProductImagesBrowser}
+                  />
                 ) : (
-                  <ProductImagesDesktop images={images} />
+                  <ProductImagesDesktop
+                    images={images}
+                    imageOnClick={toggleProductImagesBrowser}
+                    imageFeatured={productImageFeatured}
+                  />
                 )}
                 <Details>
                   <BackToProductList to="/">
@@ -103,9 +110,9 @@ class ProductPage extends Component {
 
             <ProductImagesBrowser
               images={images}
-              productImagesBrowserOpen={productImagesBrowserOpen}
-              productImageFeatured={productImageFeatured}
-              toggleProductImagesBrowser={toggleProductImagesBrowser}
+              isOpen={productImagesBrowserIsOpen}
+              imageFeatured={productImageFeatured}
+              toggle={toggleProductImagesBrowser}
             />
           </>
         )}

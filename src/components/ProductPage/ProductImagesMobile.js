@@ -73,11 +73,11 @@ const Incentive = styled(`div`)`
   }
 `;
 
-const ProductImagesMobile = ({ images }) => (
+const ProductImagesMobile = ({ images, imageOnClick }) => (
   <ProductImagesMobileRoot>
     <ProductImagesMobileContent>
       {images.map((image, idx) => (
-        <ProductImage key={idx} image={image} />
+        <ProductImage key={idx} image={image} onClick={imageOnClick} />
       ))}
 
       <Incentive>
@@ -95,7 +95,8 @@ const ProductImagesMobile = ({ images }) => (
 );
 
 ProductImagesMobile.propTypes = {
-  images: PropTypes.array.isRequired
+  images: PropTypes.array.isRequired,
+  imageOnClick: PropTypes.func
 };
 
 export default ProductImagesMobile;

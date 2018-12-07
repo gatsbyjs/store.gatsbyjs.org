@@ -5,6 +5,8 @@ import styled, { keyframes } from 'react-emotion';
 
 import { MdZoomIn } from 'react-icons/md';
 
+import InterfaceContext from '../../context/InterfaceContext';
+
 import { breakpoints, colors, radius, spacing } from '../../utils/styles';
 
 const IMAGE_CHANGE_ANIM_DURATION = 350;
@@ -18,7 +20,7 @@ const change = keyframes`
   }
 `;
 
-const ProductImageRoot = styled(`div`)`
+const ProductImageLink = styled(`div`)`
   position: relative;
   display: block;
 
@@ -61,7 +63,7 @@ const Helper = styled(`span`)`
       width: 40px;
     }
 
-    ${ProductImageRoot}:hover & {
+    ${ProductImageLink}:hover & {
       opacity: 1;
     }
   }
@@ -97,28 +99,31 @@ class ProductImage extends Component {
           childImageSharp: { fluid }
         }
       },
-      toggleImagesBrowser
+      onClick,
+      imageFeatured = null
     } = this.props;
 
     return (
-      <ProductImageRoot
-        onClick={this.handleClick(toggleImagesBrowser)}
+      <ProductImageLink
         innerRef={div => {
           this.imageRoot = div;
         }}
+        onClick={this.handleClick(onClick)}
+        role="button"
       >
-        <StyledImage fluid={fluid} alt="" />
+        <StyledImage fluid={imageFeatured ? featuredFluid : fluid} alt="" />
         <Helper>
           <MdZoomIn />
         </Helper>
-      </ProductImageRoot>
+      </ProductImageLink>
     );
   }
 }
 
 ProductImage.propTypes = {
   image: PropTypes.object.isRequired,
-  toggleImagesBrowser: PropTypes.func
+  onClick: PropTypes.func,
+  imageFeatured: PropTypes.object
 };
 
 export default ProductImage;

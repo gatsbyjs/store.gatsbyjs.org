@@ -35,7 +35,7 @@ export default class Layout extends React.Component {
         this.setState(state => ({
           interface: {
             ...state.interface,
-            productImagesBrowserOpen: img ? true : false,
+            productImagesBrowserIsOpen: img ? true : false,
             productImageFeatured: img
               ? img
               : state.interface.productImageFeatured

@@ -4,7 +4,6 @@ import styled from 'react-emotion';
 
 import { MdCameraAlt } from 'react-icons/md';
 
-import InterfaceContext from '../../context/InterfaceContext';
 import ProductImage, { StyledImage } from './ProductImage';
 import ProductThumbnails from './ProductThumbnails';
 
@@ -15,26 +14,24 @@ const ProductImagesDesktopRoot = styled(`div`)`
   margin-right: ${spacing.lg}px;
 `;
 
-const ProductImagesDesktop = ({ images }) => {
+const ProductImagesDesktop = ({ images, imageFeatured, imageOnClick }) => {
   const image = images[0];
 
   return (
-    <InterfaceContext.Consumer>
-      {({ productImageFeatured, toggleProductImagesBrowser }) => (
-        <ProductImagesDesktopRoot>
-          <ProductImage
-            image={productImageFeatured ? productImageFeatured : image}
-            toggleImagesBrowser={toggleProductImagesBrowser}
-          />
-          <ProductThumbnails images={images} />
-        </ProductImagesDesktopRoot>
-      )}
-    </InterfaceContext.Consumer>
+    <ProductImagesDesktopRoot>
+      <ProductImage
+        image={imageFeatured ? imageFeatured : image}
+        onClick={imageOnClick}
+      />
+      <ProductThumbnails images={images} />
+    </ProductImagesDesktopRoot>
   );
 };
 
 ProductImagesDesktop.propTypes = {
-  images: PropTypes.array.isRequired
+  images: PropTypes.array.isRequired,
+  imageOnClick: PropTypes.func,
+  imageFeatured: PropTypes.object
 };
 
 export default ProductImagesDesktop;

@@ -18,6 +18,7 @@ import { breakpoints, colors, spacing } from '../../utils/styles';
 const ACTIONS_WIDTH_DESKTOP = '200px';
 const ACTIONS_HEIGHT_MOBILE = '80px';
 const IMAGE_CHANGE_ANIM_DURATION = 350;
+const BROWSER_TOGGLE_ANIM_DURATION = 500;
 
 const entry = keyframes`
   0% {
@@ -27,6 +28,21 @@ const entry = keyframes`
   100% {
     left: 0;
     transform: scale(1);
+  }
+`;
+
+const exit = keyframes`
+  0% {
+    left: 0;
+    transform: scale(1);
+  }
+  99% {
+    left: 0;
+    transform: scale(0.8);
+  }
+  100% {
+    left: 100%;
+    transform: scale(0.8);
   }
 `;
 
@@ -46,7 +62,7 @@ const ProductImagesBrowserRoot = styled(`div`)`
   top: 0;
   transform: scale(0.8);
   transform-origin: center center;
-  width: 100%;
+  width: 100vw;
   z-index: 10000;
 
   @media (min-width: ${breakpoints.desktop}px) {
@@ -70,6 +86,7 @@ const ZoomContainer = styled(`div`)`
   overflow-x: scroll;
   overflow-y: scroll;
   -webkit-overflow-scrolling: touch;
+  width: 100%;
 
   &.change {
     animation: ${change} 0.4s ease-out forwards;
@@ -159,12 +176,11 @@ class ProductImagesBrowser extends Component {
 
   componentDidUpdate = prevProps => {
     if (
-      prevProps.productImageFeatured !== this.props.productImageFeatured ||
-      prevProps.productImagesBrowserOpen !== this.props.productImagesBrowserOpen
+      prevProps.imageFeatured !== this.props.imageFeatured ||
+      prevProps.isOpen !== this.props.isOpen
     ) {
       this.centerZoomImage();
-
-      console.log(this.zoomContainer);
+      console.log('componentDidUpdate');
 
       this.zoomContainer.classList.add('change');
       setTimeout(
@@ -175,6 +191,7 @@ class ProductImagesBrowser extends Component {
   };
 
   centerZoomImage = () => {
+    console.log('centerZoomImage');
     const offsetToScroll =
       (this.state.zoomImageWidth - this.state.zoomContainerWidth) / 2;
 
@@ -186,25 +203,23 @@ class ProductImagesBrowser extends Component {
   };
 
   render() {
-    const {
-      images,
-      productImagesBrowserOpen,
-      productImageFeatured,
-      toggleProductImagesBrowser
-    } = this.props;
+    const { images, isOpen, imageFeatured, toggle } = this.props;
 
-    const featuredImage = productImageFeatured
-      ? productImageFeatured
-      : images[0];
+    const image = imageFeatured ? imageFeatured : images[0];
 
     const {
       localFile: {
         childImageSharp: { fluid }
       }
-    } = featuredImage;
+    } = image;
 
     return (
-      <ProductImagesBrowserRoot isOpen={productImagesBrowserOpen}>
+      <ProductImagesBrowserRoot
+        isOpen={isOpen}
+        role="dialog"
+        aria-labelledby="Product's picture browser"
+        aria-describedby="Browse pictures presenting "
+      >
         <ZoomContainer
           innerRef={continer => {
             this.zoomContainer = continer;
@@ -219,7 +234,7 @@ class ProductImagesBrowser extends Component {
         </ZoomContainer>
 
         <Actions>
-          <CloseButton onClick={this.handleClose(toggleProductImagesBrowser)}>
+          <CloseButton onClick={this.handleClose(toggle)}>
             <span>
               <MdClose />
               Close
@@ -234,9 +249,9 @@ class ProductImagesBrowser extends Component {
 
 ProductImagesBrowser.propTypes = {
   images: PropTypes.array.isRequired,
-  toggleProductImagesBrowser: PropTypes.func,
-  productImagesBrowserOpen: PropTypes.bool,
-  productImageFeatured: PropTypes.object
+  toggle: PropTypes.func,
+  isOpen: PropTypes.bool,
+  imageFeatured: PropTypes.object
 };
 
 export default ProductImagesBrowser;

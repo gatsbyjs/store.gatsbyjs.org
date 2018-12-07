@@ -1,7 +1,10 @@
 import React from 'react';
 import styled from 'react-emotion';
+
+import InterfaceContext from '../../context/InterfaceContext';
 import StoreContext from '../../context/StoreContext';
 import Icon from './Icon';
+
 import { button, colors, spacing } from '../../utils/styles';
 
 const Button = styled('button')`
@@ -35,12 +38,22 @@ const ButtonCount = styled('span')`
 export default () => (
   <StoreContext.Consumer>
     {({ checkout, toggleCart }) => (
-      <Button onClick={toggleCart}>
-        <Icon />
-        <ButtonCount>
-          {checkout.lineItems.reduce((total, item) => total + item.quantity, 0)}
-        </ButtonCount>
-      </Button>
+      <InterfaceContext.Consumer>
+        {({ productImagesBrowserIsOpen }) => (
+          <Button
+            onClick={toggleCart}
+            tabIndex={productImagesBrowserIsOpen ? '-1' : '0'}
+          >
+            <Icon />
+            <ButtonCount>
+              {checkout.lineItems.reduce(
+                (total, item) => total + item.quantity,
+                0
+              )}
+            </ButtonCount>
+          </Button>
+        )}
+      </InterfaceContext.Consumer>
     )}
   </StoreContext.Consumer>
 );
