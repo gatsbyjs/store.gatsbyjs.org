@@ -1,14 +1,21 @@
 import React from 'react';
 import { graphql } from 'gatsby';
+import Helmet from 'react-helmet';
 
 import Layout from '../components/shared/Layout';
 import ProductPage from '../components/ProductPage';
 
 const ProductPageTemplate = props => {
-  const { shopifyProduct: product } = props.data;
+  const {
+    shopifyProduct: product,
+    shopifyProduct: { title }
+  } = props.data;
 
   return (
     <Layout newDesign={true}>
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
       <ProductPage product={product} />
     </Layout>
   );
