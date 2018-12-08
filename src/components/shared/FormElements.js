@@ -36,22 +36,23 @@ export const Select = styled(Input.withComponent('select'))`
 `;
 
 export const Fieldset = styled(`fieldset`)`
+  border: none;
   display: flex;
   flex-direction: column;
-  padding: 0;
-  margin: 0;
-  border: none;
   flex-grow: 1;
+  margin: 0;
+  padding: 0;
 `;
 
 export const Label = styled(`label`)`
-  display: flex;
   color: ${colors.textLight};
+  display: flex;
   font-size: 1rem;
   padding: ${spacing.xs}px;
 `;
 
 export const Submit = styled(PrimaryButton.withComponent('button'))`
-  width: 100%;
+  font-size: 1.25rem;
   margin-top: ${spacing.md}px;
+  width: 100%;
 `;

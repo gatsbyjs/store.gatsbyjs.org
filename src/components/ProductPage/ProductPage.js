@@ -30,6 +30,7 @@ const ProductPageRoot = styled('div')`
 const Container = styled(`div`)`
   @media (min-width: ${breakpoints.desktop}px) {
     display: flex;
+    align-items: flex-start;
   }
 `;
 
@@ -37,7 +38,11 @@ const Details = styled(`div`)`
   position: relative;
 
   @media (min-width: ${breakpoints.desktop}px) {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
     max-width: 400px;
+    min-height: 495px;
   }
 `;
 

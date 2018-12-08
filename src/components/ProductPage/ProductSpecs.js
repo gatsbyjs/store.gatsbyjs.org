@@ -8,7 +8,7 @@ const ProductSpecsRoot = styled(`div`)`
   padding: 0 ${spacing.md}px;
 
   @media (min-width: ${breakpoints.tablet}px) {
-    padding: ${spacing.md}px ${spacing.xl}px;
+    padding: ${spacing['2xl']}px ${spacing.xl}px 0;
   }
 `;
 
@@ -18,11 +18,6 @@ const Name = styled(`h1`)`
   font-size: 1.8rem;
   font-weight: 500;
   margin: 0;
-  margin-top: 1rem;
-
-  @media (min-width: ${breakpoints.desktop}px) {
-    margin-top: ${spacing['2xl']}px;
-  }
 `;
 
 const Description = styled(`p`)`

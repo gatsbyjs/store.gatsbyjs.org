@@ -54,6 +54,13 @@ const CareLink = styled(Link)`
   float: right;
 `;
 
+const RestyledSubmit = styled(Submit)`
+  align-self: flex-end;
+  flex-grow: 1;
+  height: ${props => (props.fullWidth ? 'auto' : '')};
+  width: ${props => (props.fullWidth ? '100%' : 'auto')};
+`;
+
 class ProductForm extends Component {
   state = {
     variant:
@@ -110,37 +117,43 @@ class ProductForm extends Component {
                 value={this.state.quantity}
               />
             </QtyFieldset>
-            <SizeFieldset>
-              <Label>
-                Size{' '}
-                <Link to="/product-details">
-                  <MdInfoOutline />
-                  <span>Size Chart</span>
-                </Link>
-              </Label>
-              <Select
-                id={`variant_${id}`}
-                value={this.state.variant}
-                name="variant"
-                onChange={this.handleChange}
-              >
-                <option disabled value="">
-                  Choose Size
-                </option>
-                {variants.map(variant => (
-                  <option
-                    disabled={!variant.availableForSale}
-                    value={variant.shopifyId}
-                    key={variant.shopifyId}
-                  >
-                    {variant.title}
+            {hasVariants && (
+              <SizeFieldset>
+                <Label>
+                  Size{' '}
+                  <Link to="/product-details">
+                    <MdInfoOutline />
+                    <span>Size Chart</span>
+                  </Link>
+                </Label>
+                <Select
+                  id={`variant_${id}`}
+                  value={this.state.variant}
+                  name="variant"
+                  onChange={this.handleChange}
+                >
+                  <option disabled value="">
+                    Choose Size
                   </option>
-                ))}
-              </Select>
-            </SizeFieldset>
-            <Submit type="submit" disabled={isOutOfStock}>
+                  {variants.map(variant => (
+                    <option
+                      disabled={!variant.availableForSale}
+                      value={variant.shopifyId}
+                      key={variant.shopifyId}
+                    >
+                      {variant.title}
+                    </option>
+                  ))}
+                </Select>
+              </SizeFieldset>
+            )}
+            <RestyledSubmit
+              type="submit"
+              disabled={isOutOfStock}
+              fullWidth={hasVariants}
+            >
               {isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
-            </Submit>
+            </RestyledSubmit>
             <CareLink to="/product-details">
               <MdInfoOutline /> <span>Care instructions</span>
             </CareLink>
