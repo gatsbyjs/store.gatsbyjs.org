@@ -85,12 +85,14 @@ class ProductPage extends Component {
     return (
       <InterfaceContext.Consumer>
         {({
-          productImagesBrowserIsOpen,
+          productImagesBrowserPosition,
           productImageFeatured,
           toggleProductImagesBrowser
         }) => (
           <>
-            <ProductPageRoot isCovered={productImagesBrowserIsOpen}>
+            <ProductPageRoot
+              isCovered={productImagesBrowserPosition === 'open'}
+            >
               <Container>
                 {!desktopViewport ? (
                   <ProductImagesMobile
@@ -116,7 +118,7 @@ class ProductPage extends Component {
 
             <ProductImagesBrowser
               images={images}
-              isOpen={productImagesBrowserIsOpen}
+              position={productImagesBrowserPosition}
               imageFeatured={productImageFeatured}
               toggle={toggleProductImagesBrowser}
             />

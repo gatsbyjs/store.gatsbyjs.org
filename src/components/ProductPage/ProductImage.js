@@ -9,7 +9,7 @@ import InterfaceContext from '../../context/InterfaceContext';
 
 import { breakpoints, colors, radius, spacing } from '../../utils/styles';
 
-const IMAGE_CHANGE_ANIM_DURATION = 350;
+export const IMAGE_CHANGE_ANIM_DURATION = 250;
 
 const change = keyframes`
   0% {

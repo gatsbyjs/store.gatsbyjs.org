@@ -31,7 +31,8 @@ export const colors = {
   textLighter: '#aaaaaa',
   text: '#333333',
   lilac: `#8c65b3`,
-  accent: `#ffb238`
+  accent: `#ffb238`,
+  error: `#ec1818`
 };
 
 export const spacing = {
