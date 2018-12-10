@@ -33,7 +33,7 @@ const Price = styled(`div`)`
   letter-spacing: -0.02em;
 
   span {
-    color: ${colors.textLighter};
+    color: ${colors.textLight};
   }
 `;
 

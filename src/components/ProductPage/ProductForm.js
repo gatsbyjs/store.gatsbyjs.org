@@ -187,10 +187,10 @@ class ProductForm extends Component {
               </ErrorMsgs>
             </Errors>
             <QtyFieldset>
-              <Label>Qty.</Label>
+              <Label for="quantity">Qty.</Label>
               <Input
                 type="number"
-                id={`quantity_${id}`}
+                id="quantity"
                 name="quantity"
                 min="1"
                 step="1"
@@ -200,7 +200,7 @@ class ProductForm extends Component {
             </QtyFieldset>
             {hasVariants && (
               <SizeFieldset>
-                <Label>
+                <Label for="variant">
                   Size{' '}
                   <Link to="/product-details">
                     <MdInfoOutline />
@@ -208,7 +208,7 @@ class ProductForm extends Component {
                   </Link>
                 </Label>
                 <Select
-                  id={`variant_${id}`}
+                  id="variant"
                   value={this.state.variant}
                   name="variant"
                   onChange={this.handleChange}

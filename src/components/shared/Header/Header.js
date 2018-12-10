@@ -38,7 +38,7 @@ export default ({ newDesign = false }) => (
     {({ productImagesBrowserStatus }) => (
       <Header isCovered={productImagesBrowserStatus === 'open'}>
         <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}>
-          <HomeLink to="/">
+          <HomeLink to="/" aria-label="Home page">
             <Gatsby newDesign={newDesign} />
           </HomeLink>
           {!newDesign && <Profile />}
