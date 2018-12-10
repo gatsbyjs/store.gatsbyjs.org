@@ -285,12 +285,7 @@ class ProductImagesBrowser extends Component {
     const { imageBoxHeight, superZoom } = this.state;
 
     return (
-      <ProductImagesBrowserRoot
-        role="dialog"
-        aria-labelledby="Product's picture browser"
-        aria-describedby="Browse pictures presenting"
-        className={position}
-      >
+      <ProductImagesBrowserRoot role="dialog" className={position}>
         <Actions>
           <CloseButton
             onClick={this.close(toggle)}
