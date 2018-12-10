@@ -14,7 +14,7 @@ const Header = styled('header')`
   background-color: ${colors.lightest};
   border-bottom: 1px solid ${colors.brandLight};
   box-sizing: border-box;
-  display: flex;
+  display: ${props => (props.isCovered ? 'none' : 'flex')};
   height: 60px;
   justify-content: space-between;
   left: 0;
@@ -34,17 +34,17 @@ const HomeLink = styled(Link)`
 `;
 
 export default ({ newDesign = false }) => (
-  <Header>
-    <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}>
-      <InterfaceContext.Consumer>
-        {({ productImagesBrowserIsOpen }) => (
-          <HomeLink to="/" tabIndex={productImagesBrowserIsOpen ? '-1' : '0'}>
+  <InterfaceContext.Consumer>
+    {({ productImagesBrowserStatus }) => (
+      <Header isCovered={productImagesBrowserStatus === 'open'}>
+        <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}>
+          <HomeLink to="/">
             <Gatsby newDesign={newDesign} />
           </HomeLink>
-        )}
-      </InterfaceContext.Consumer>
-      {!newDesign && <Profile />}
-      <Cart />
-    </IconContext.Provider>
-  </Header>
+          {!newDesign && <Profile />}
+          <Cart />
+        </IconContext.Provider>
+      </Header>
+    )}
+  </InterfaceContext.Consumer>
 );

@@ -29,16 +29,16 @@ const ProductImageLink = styled(`a`)`
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
-    cursor: pointer;
+    cursor: zoom-in;
   }
 `;
 
-const Helper = styled(`span`)`
+const ZoomHelper = styled(`span`)`
   background: rgba(255, 255, 255, 0.5);
-  border-radius: 0 ${radius.large}px 0;
-  bottom: 0;
+  border-radius: ${radius.large}px;
+  top: ${spacing['xs']}px;
   display: flex;
-  left: 0;
+  left: ${spacing['xs']}px;
   padding: ${spacing['xs']}px;
   position: absolute;
 
@@ -49,23 +49,7 @@ const Helper = styled(`span`)`
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
-    background: rgba(255, 255, 255, 0.5);
-    border-radius: ${radius.large}px;
-    bottom: auto;
-    left: 50%;
-    opacity: 0;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    transition: opacity 0.5s;
-
-    svg {
-      height: 40px;
-      width: 40px;
-    }
-
-    ${ProductImageLink}:hover & {
-      opacity: 1;
-    }
+    display: none;
   }
 `;
 
@@ -114,9 +98,9 @@ class ProductImage extends Component {
         onClick={this.handleClick(onClick)}
       >
         <StyledImage fluid={imageFeatured ? featuredFluid : fluid} alt="" />
-        <Helper>
+        <ZoomHelper>
           <MdZoomIn />
-        </Helper>
+        </ZoomHelper>
       </ProductImageLink>
     );
   }

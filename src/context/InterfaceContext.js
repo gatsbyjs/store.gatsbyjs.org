@@ -1,7 +1,7 @@
 import React from 'react';
 
 export const defaultInterfaceContext = {
-  productImagesBrowserPosition: 'initial',
+  productImagesBrowserStatus: 'initial',
   productImageFeatured: null,
   toggleProductImagesBrowser: () => {},
   featureProductImage: () => {}

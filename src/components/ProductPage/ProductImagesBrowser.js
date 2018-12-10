@@ -4,7 +4,7 @@ import Image from 'gatsby-image';
 import styled, { keyframes } from 'react-emotion';
 import debounce from 'lodash.debounce';
 
-import { MdClose } from 'react-icons/md';
+import { MdClose, MdZoomIn, MdZoomOut } from 'react-icons/md';
 
 import InterfaceContext from '../../context/InterfaceContext';
 import BackLink from '../shared/BackLink';
@@ -14,7 +14,7 @@ import ProductThumbnails, {
 } from './ProductThumbnails';
 import { Button } from '../shared/Buttons';
 
-import { breakpoints, colors, spacing } from '../../utils/styles';
+import { breakpoints, colors, radius, spacing } from '../../utils/styles';
 
 const ACTIONS_WIDTH_DESKTOP = '200px';
 const ACTIONS_HEIGHT_MOBILE = '80px';
@@ -53,10 +53,11 @@ const ProductImagesBrowserRoot = styled(`div`)`
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
   background: white;
   display: flex;
-  flex-direction: column;
+  flex-direction: column-reverse;
   bottom: 0;
   justify-content: stretch;
   left: 100%;
+  opacity: 1;
   position: fixed;
   top: 0;
   transform: scale(0.8);
@@ -74,7 +75,7 @@ const ProductImagesBrowserRoot = styled(`div`)`
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
-    flex-direction: row-reverse;
+    flex-direction: row;
     height: 100vh;
   }
 `;
@@ -88,7 +89,7 @@ const change = keyframes`
   }
 `;
 
-const ZoomContainer = styled(`div`)`
+const ZoomArea = styled(`div`)`
   border-bottom: 1px solid ${colors.brandLight};
   flex-shrink: 0;
   flex-grow: 1;
@@ -114,7 +115,7 @@ const ZoomContainer = styled(`div`)`
   }
 `;
 
-const ZoomImage = styled(`a`)`
+const ImageBox = styled(`a`)`
   display: block;
   height: 100%;
   width: 100%;
@@ -131,12 +132,32 @@ const ZoomImage = styled(`a`)`
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
-    cursor: pointer;
+    cursor: ${props => (props.superZoom ? 'zoom-out' : 'zoom-in')};
     width: ${props => (props.superZoom ? '100%' : 'auto')};
 
     .gatsby-image-wrapper {
       width: ${props => (props.superZoom ? '100%' : '100vh')};
     }
+  }
+`;
+
+const ZoomHelper = styled(`span`)`
+  background: rgba(255, 255, 255, 0.5);
+  border-radius: ${radius.large}px;
+  top: ${spacing['xs']}px;
+  display: flex;
+  left: ${spacing['xs']}px;
+  padding: ${spacing['xs']}px;
+  position: absolute;
+
+  svg {
+    fill: ${colors.brand};
+    height: 24px;
+    width: 24px;
+  }
+
+  @media (min-width: ${breakpoints.desktop}px) {
+    display: none;
   }
 `;
 
@@ -176,12 +197,13 @@ const ProductThumbnailsRestyled = styled(ProductThumbnails)`
 `;
 
 class ProductImagesBrowser extends Component {
-  zoomContainer;
-  zoomImage;
+  zoomArea;
+  imageBox;
+  closeButton;
 
   state = {
-    zoomContainerWidth: null,
-    zoomImageHeight: null,
+    zoomAreaWidth: null,
+    imageBoxHeight: null,
     superZoom: false
   };
 
@@ -192,15 +214,23 @@ class ProductImagesBrowser extends Component {
     window.addEventListener('resize', debounce(this.measureImage, 250));
   };
 
+  componentWillUnmount = () => {
+    window.removeEventListener('resize', debounce(this.measureImage, 250));
+  };
+
   componentDidUpdate = prevProps => {
-    if (
-      prevProps.position !== this.props.position &&
-      this.props.position === 'open' &&
-      this.state.superZoom
-    ) {
-      this.setState({
-        superZoom: false
-      });
+    if (prevProps.position !== this.props.position) {
+      if (this.props.position === 'open') {
+        if (this.state.superZoom) {
+          this.setState({
+            superZoom: false
+          });
+        }
+
+        if (this.props.desktopViewport) {
+          this.closeButton.focus();
+        }
+      }
     }
 
     if (
@@ -209,28 +239,28 @@ class ProductImagesBrowser extends Component {
     ) {
       this.centerImage();
 
-      this.zoomContainer.classList.add('change');
+      this.zoomArea.classList.add('change');
       setTimeout(
-        () => this.zoomContainer.classList.remove('change'),
+        () => this.zoomArea.classList.remove('change'),
         IMAGE_CHANGE_ANIM_DURATION
       );
     }
   };
 
   measureImage = () => {
-    if (this.zoomContainer && this.zoomImage) {
+    if (this.zoomArea && this.imageBox) {
       this.setState({
-        zoomContainerWidth: this.zoomContainer.offsetWidth,
-        zoomImageHeight: this.zoomImage.offsetHeight
+        zoomAreaWidth: this.zoomArea.offsetWidth,
+        imageBoxHeight: this.imageBox.offsetHeight
       });
     }
   };
 
   centerImage = () => {
     const offsetToScroll =
-      (this.state.zoomImageHeight - this.state.zoomContainerWidth) / 2;
+      (this.state.imageBoxHeight - this.state.zoomAreaWidth) / 2;
 
-    this.zoomContainer.scroll({ left: offsetToScroll });
+    this.zoomArea.scroll({ left: offsetToScroll });
   };
 
   close = callback => event => {
@@ -252,7 +282,7 @@ class ProductImagesBrowser extends Component {
       }
     } = image;
 
-    const { zoomImageHeight, superZoom } = this.state;
+    const { imageBoxHeight, superZoom } = this.state;
 
     return (
       <ProductImagesBrowserRoot
@@ -261,26 +291,13 @@ class ProductImagesBrowser extends Component {
         aria-describedby="Browse pictures presenting"
         className={position}
       >
-        <ZoomContainer
-          innerRef={container => {
-            this.zoomContainer = container;
-          }}
-        >
-          <ZoomImage
-            onClick={this.toggleZoomRatio}
-            href={fluid.src}
-            superZoom={superZoom}
-            width={zoomImageHeight}
-            innerRef={image => {
-              this.zoomImage = image;
+        <Actions>
+          <CloseButton
+            onClick={this.close(toggle)}
+            innerRef={button => {
+              this.closeButton = button;
             }}
           >
-            <Image fluid={fluid} />
-          </ZoomImage>
-        </ZoomContainer>
-
-        <Actions>
-          <CloseButton onClick={this.close(toggle)}>
             <span>
               <MdClose />
               Close
@@ -288,6 +305,25 @@ class ProductImagesBrowser extends Component {
           </CloseButton>
           <ProductThumbnailsRestyled images={images} />
         </Actions>
+
+        <ZoomArea
+          innerRef={container => {
+            this.zoomArea = container;
+          }}
+        >
+          <ImageBox
+            onClick={this.toggleZoomRatio}
+            href={fluid.src}
+            superZoom={superZoom}
+            width={imageBoxHeight}
+            innerRef={image => {
+              this.imageBox = image;
+            }}
+          >
+            <Image fluid={fluid} />
+          </ImageBox>
+          <ZoomHelper>{superZoom ? <MdZoomOut /> : <MdZoomIn />}</ZoomHelper>
+        </ZoomArea>
       </ProductImagesBrowserRoot>
     );
   }
@@ -297,6 +333,7 @@ ProductImagesBrowser.propTypes = {
   images: PropTypes.array.isRequired,
   position: PropTypes.string.isRequired,
   toggle: PropTypes.func.isRequired,
+  desktopViewport: PropTypes.bool.isRequired,
   imageFeatured: PropTypes.object
 };
 

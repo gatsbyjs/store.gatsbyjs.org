@@ -18,8 +18,7 @@ const ProductPageRoot = styled('div')`
 
   @media (min-width: ${breakpoints.desktop}px) {
     align-items: center;
-    position: ${props => (props.isCovered ? 'fixed' : 'static')};
-    display: flex;
+    display: ${props => (props.isCovered ? 'none' : 'flex')};
     min-height: calc(100vh - 60px);
     padding: ${spacing.xl}px;
     justify-content: center;
@@ -85,14 +84,12 @@ class ProductPage extends Component {
     return (
       <InterfaceContext.Consumer>
         {({
-          productImagesBrowserPosition,
+          productImagesBrowserStatus,
           productImageFeatured,
           toggleProductImagesBrowser
         }) => (
           <>
-            <ProductPageRoot
-              isCovered={productImagesBrowserPosition === 'open'}
-            >
+            <ProductPageRoot isCovered={productImagesBrowserStatus === 'open'}>
               <Container>
                 {!desktopViewport ? (
                   <ProductImagesMobile
@@ -118,9 +115,10 @@ class ProductPage extends Component {
 
             <ProductImagesBrowser
               images={images}
-              position={productImagesBrowserPosition}
+              position={productImagesBrowserStatus}
               imageFeatured={productImageFeatured}
               toggle={toggleProductImagesBrowser}
+              desktopViewport={desktopViewport}
             />
           </>
         )}

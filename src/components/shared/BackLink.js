@@ -60,28 +60,18 @@ const BackLink = props => {
   const { children, className, to, callback } = props;
 
   return (
-    <InterfaceContext.Consumer>
-      {({ productImagesBrowserIsOpen }) => (
-        <BackLinkRoot className={className}>
-          {to && (
-            <ButtonLink
-              to={to}
-              tabIndex={productImagesBrowserIsOpen ? '-1' : '0'}
-            >
-              <MdArrowBack /> {children}
-            </ButtonLink>
-          )}
-          {callback && (
-            <Button
-              onClick={callback}
-              tabIndex={productImagesBrowserIsOpen ? '-1' : '0'}
-            >
-              <span>{children}</span>
-            </Button>
-          )}
-        </BackLinkRoot>
+    <BackLinkRoot className={className}>
+      {to && (
+        <ButtonLink to={to}>
+          <MdArrowBack /> {children}
+        </ButtonLink>
       )}
-    </InterfaceContext.Consumer>
+      {callback && (
+        <Button onClick={callback}>
+          <span>{children}</span>
+        </Button>
+      )}
+    </BackLinkRoot>
   );
 };
 
