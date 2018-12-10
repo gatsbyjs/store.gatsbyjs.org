@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled, { injectGlobal } from 'react-emotion';
 import { push } from 'gatsby';
 import { GitHubIssueFragment } from '../Dashboard/IssueList';
 import CTA from '../CTA/CTA';
@@ -18,6 +18,20 @@ import { spacing } from '../../utils/styles';
 // Import Futura PT typeface
 import '../../fonts/futura-pt/Webfonts/futurapt_demi_macroman/stylesheet.css';
 import gql from 'graphql-tag';
+
+injectGlobal`
+    html {
+      box-sizing: border-box;
+    }
+
+    *, *:before, *:after {
+      box-sizing: inherit;
+    }
+
+    body {
+      -webkit-tap-highlight-color: rgba(0,0,0,.05)
+    }
+`;
 
 const Main = styled('main')`
   display: block;

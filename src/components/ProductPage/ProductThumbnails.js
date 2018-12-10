@@ -39,7 +39,7 @@ export const ProductThumbnailsContent = styled(`div`)`
   }
 `;
 
-export const Thumbnail = styled(`div`)`
+export const Thumbnail = styled(`a`)`
   border: 1px solid ${colors.brandBright};
   border-radius: ${radius.default}px;
   height: ${THUMBNAIL_SIZE};
@@ -54,6 +54,8 @@ export const Thumbnail = styled(`div`)`
 
 class ProductThumbnails extends Component {
   handleClick = (image, callback) => event => {
+    event.preventDefault();
+
     callback(image);
   };
 
@@ -77,6 +79,7 @@ class ProductThumbnails extends Component {
                   <Thumbnail
                     key={id}
                     onClick={this.handleClick(image, featureProductImage)}
+                    href={fluid.src}
                   >
                     <Image fluid={fluid} />
                   </Thumbnail>

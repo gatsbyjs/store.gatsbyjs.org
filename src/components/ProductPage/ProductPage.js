@@ -42,7 +42,7 @@ const Details = styled(`div`)`
     flex-direction: column;
     justify-content: space-between;
     max-width: 400px;
-    min-height: 495px;
+    min-height: 490px;
   }
 `;
 

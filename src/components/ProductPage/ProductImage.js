@@ -20,7 +20,7 @@ const change = keyframes`
   }
 `;
 
-const ProductImageLink = styled(`div`)`
+const ProductImageLink = styled(`a`)`
   position: relative;
   display: block;
 
@@ -89,6 +89,8 @@ class ProductImage extends Component {
   };
 
   handleClick = callback => event => {
+    event.preventDefault();
+
     callback(this.props.image);
   };
 
@@ -108,8 +110,8 @@ class ProductImage extends Component {
         innerRef={div => {
           this.imageRoot = div;
         }}
+        href={fluid.src}
         onClick={this.handleClick(onClick)}
-        role="button"
       >
         <StyledImage fluid={imageFeatured ? featuredFluid : fluid} alt="" />
         <Helper>

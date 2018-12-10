@@ -40,12 +40,12 @@ const exit = keyframes`
   99% {
     left: 0;
     opacity: 0;
-    transform: scale(0.8);
+    transform:  scale(0.8);
   }
   100% {
     left: 100%;
     opacity: 0;
-    transform: scale(0.8);
+    transform:scale(0.8);
   }
 `;
 
@@ -62,6 +62,7 @@ const ProductImagesBrowserRoot = styled(`div`)`
   transform: scale(0.8);
   transform-origin: center center;
   width: 100vw;
+  will-change: auto;
   z-index: 10000;
 
   &.open {
@@ -113,13 +114,29 @@ const ZoomContainer = styled(`div`)`
   }
 `;
 
-const ZoomImage = styled(Image)`
+const ZoomImage = styled(`a`)`
+  display: block;
   height: 100%;
-  width: ${props => props.width}px;
+  width: 100%;
+
+  .gatsby-image-wrapper {
+    height: auto;
+    width: ${props => (props.superZoom ? props.width * 2 : props.width)}px;
+  }
+
+  @media (orientation: landscape) {
+    .gatsby-image-wrapper {
+      width: ${props => (props.superZoom ? '200' : '100')}%;
+    }
+  }
 
   @media (min-width: ${breakpoints.desktop}px) {
-    height: 100vh;
-    width: 100vh;
+    cursor: pointer;
+    width: ${props => (props.superZoom ? '100%' : 'auto')};
+
+    .gatsby-image-wrapper {
+      width: ${props => (props.superZoom ? '100%' : '100vh')};
+    }
   }
 `;
 
@@ -164,22 +181,33 @@ class ProductImagesBrowser extends Component {
 
   state = {
     zoomContainerWidth: null,
-    zoomImageHeight: null
+    zoomImageHeight: null,
+    superZoom: false
   };
 
   componentDidMount = () => {
     this.measureImage();
-    this.centerZoomImage();
+    this.centerImage();
 
     window.addEventListener('resize', debounce(this.measureImage, 250));
   };
 
   componentDidUpdate = prevProps => {
     if (
+      prevProps.position !== this.props.position &&
+      this.props.position === 'open' &&
+      this.state.superZoom
+    ) {
+      this.setState({
+        superZoom: false
+      });
+    }
+
+    if (
       prevProps.imageFeatured !== this.props.imageFeatured ||
       prevProps.position !== this.props.position
     ) {
-      this.centerZoomImage();
+      this.centerImage();
 
       this.zoomContainer.classList.add('change');
       setTimeout(
@@ -193,20 +221,26 @@ class ProductImagesBrowser extends Component {
     if (this.zoomContainer && this.zoomImage) {
       this.setState({
         zoomContainerWidth: this.zoomContainer.offsetWidth,
-        zoomImageHeight: this.zoomImage.imageRef.current.offsetHeight
+        zoomImageHeight: this.zoomImage.offsetHeight
       });
     }
   };
 
-  centerZoomImage = () => {
+  centerImage = () => {
     const offsetToScroll =
       (this.state.zoomImageHeight - this.state.zoomContainerWidth) / 2;
 
     this.zoomContainer.scroll({ left: offsetToScroll });
   };
 
-  handleClose = callback => event => {
+  close = callback => event => {
     callback();
+  };
+
+  toggleZoomRatio = event => {
+    event.preventDefault();
+
+    this.setState(state => ({ superZoom: !state.superZoom }));
   };
 
   render() {
@@ -218,7 +252,7 @@ class ProductImagesBrowser extends Component {
       }
     } = image;
 
-    const { zoomImageHeight } = this.state;
+    const { zoomImageHeight, superZoom } = this.state;
 
     return (
       <ProductImagesBrowserRoot
@@ -228,21 +262,25 @@ class ProductImagesBrowser extends Component {
         className={position}
       >
         <ZoomContainer
-          innerRef={continer => {
-            this.zoomContainer = continer;
+          innerRef={container => {
+            this.zoomContainer = container;
           }}
         >
           <ZoomImage
-            fluid={fluid}
+            onClick={this.toggleZoomRatio}
+            href={fluid.src}
+            superZoom={superZoom}
+            width={zoomImageHeight}
             innerRef={image => {
               this.zoomImage = image;
             }}
-            width={zoomImageHeight}
-          />
+          >
+            <Image fluid={fluid} />
+          </ZoomImage>
         </ZoomContainer>
 
         <Actions>
-          <CloseButton onClick={this.handleClose(toggle)}>
+          <CloseButton onClick={this.close(toggle)}>
             <span>
               <MdClose />
               Close

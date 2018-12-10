@@ -89,7 +89,7 @@ const SizeFieldset = styled(Fieldset)`
 `;
 
 const CareLink = styled(Link)`
-  margin-top: ${spacing.xl}px;
+  margin-top: ${spacing.lg}px;
   float: right;
 `;
 
@@ -109,6 +109,8 @@ class ProductForm extends Component {
   };
 
   handleChange = event => {
+    event.preventDefault();
+
     if (event.target.value) {
       const errors = this.state.errors;
 
@@ -138,7 +140,7 @@ class ProductForm extends Component {
       });
     }
 
-    if (this.state.variant === '') {
+    if (this.state.variant === '' || this.state.variant === '.') {
       errors.push({
         field: 'variant',
         msg: 'Please select a <b>size</b>.'
@@ -170,7 +172,7 @@ class ProductForm extends Component {
     return (
       <StoreContext.Consumer>
         {({ addVariantToCart }) => (
-          <Form onSubmit={this.handleSubmit(addVariantToCart)}>
+          <Form onSubmit={this.handleSubmit(addVariantToCart)} noValidate>
             <Errors show={errors.length}>
               <ErrorSign>
                 <MdErrorOutline />
