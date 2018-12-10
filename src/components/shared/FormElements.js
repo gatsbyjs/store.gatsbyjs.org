@@ -17,10 +17,9 @@ export const Input = styled(`input`)`
   width: 100%;
 
   :focus {
-    border-color: ${colors.lilac};
-    box-shadow: 0 0 0 3px ${colors.brandBright};
+    box-shadow: 0 0 0 3px ${colors.accent};
     outline: 0;
-    transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+    transition: box-shadow 0.15s ease-in-out;
   }
 `;
 

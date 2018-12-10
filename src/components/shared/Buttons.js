@@ -19,6 +19,12 @@ export const Button = styled(`button`)`
   text-decoration: none;
   transition: 200ms background linear, 100ms border-color linear;
 
+  :focus {
+    box-shadow: 0 0 0 3px ${colors.accent};
+    outline: 0;
+    transition: box-shadow 0.15s ease-in-out;
+  }
+
   span {
     align-items: center;
     display: flex;

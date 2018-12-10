@@ -53,7 +53,7 @@ class ProductPage extends Component {
   desktopMediaQuery;
 
   state = {
-    desktopViewport: false
+    isDesktopViewport: false
   };
 
   componentDidMount = () => {
@@ -62,7 +62,7 @@ class ProductPage extends Component {
     this.desktopMediaQuery = window.matchMedia(mediaQueryToMatch);
     this.desktopMediaQuery.addListener(this.updateViewPortState);
 
-    this.setState({ desktopViewport: this.desktopMediaQuery.matches });
+    this.setState({ isDesktopViewport: this.desktopMediaQuery.matches });
   };
 
   componentWillUnmount = () => {
@@ -70,7 +70,7 @@ class ProductPage extends Component {
   };
 
   updateViewPortState = e => {
-    this.setState({ desktopViewport: this.desktopMediaQuery.matches });
+    this.setState({ isDesktopViewport: this.desktopMediaQuery.matches });
   };
 
   render() {
@@ -79,7 +79,7 @@ class ProductPage extends Component {
       product: { id, images, variants }
     } = this.props;
 
-    const { desktopViewport, imageBrowserIsActive } = this.state;
+    const { isDesktopViewport, imageBrowserIsActive } = this.state;
 
     return (
       <InterfaceContext.Consumer>
@@ -91,7 +91,7 @@ class ProductPage extends Component {
           <>
             <ProductPageRoot isCovered={productImagesBrowserStatus === 'open'}>
               <Container>
-                {!desktopViewport ? (
+                {!isDesktopViewport ? (
                   <ProductImagesMobile
                     images={images}
                     imageOnClick={toggleProductImagesBrowser}
@@ -118,7 +118,7 @@ class ProductPage extends Component {
               position={productImagesBrowserStatus}
               imageFeatured={productImageFeatured}
               toggle={toggleProductImagesBrowser}
-              desktopViewport={desktopViewport}
+              isDesktopViewport={isDesktopViewport}
             />
           </>
         )}

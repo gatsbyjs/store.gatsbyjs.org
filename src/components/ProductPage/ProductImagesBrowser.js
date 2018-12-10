@@ -63,7 +63,7 @@ const ProductImagesBrowserRoot = styled(`div`)`
   transform: scale(0.8);
   transform-origin: center center;
   width: 100vw;
-  will-change: auto;
+  will-change: opacity, transform, left;
   z-index: 10000;
 
   &.open {
@@ -148,12 +148,12 @@ const ZoomHelper = styled(`span`)`
   display: flex;
   left: ${spacing['xs']}px;
   padding: ${spacing['xs']}px;
-  position: absolute;
+  position: fixed;
 
   svg {
     fill: ${colors.brand};
-    height: 24px;
-    width: 24px;
+    height: 34px;
+    width: 34px;
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
@@ -227,7 +227,7 @@ class ProductImagesBrowser extends Component {
           });
         }
 
-        if (this.props.desktopViewport) {
+        if (this.props.isDesktopViewport) {
           this.closeButton.focus();
         }
       }
@@ -322,8 +322,8 @@ class ProductImagesBrowser extends Component {
           >
             <Image fluid={fluid} />
           </ImageBox>
-          <ZoomHelper>{superZoom ? <MdZoomOut /> : <MdZoomIn />}</ZoomHelper>
         </ZoomArea>
+        <ZoomHelper>{superZoom ? <MdZoomOut /> : <MdZoomIn />}</ZoomHelper>
       </ProductImagesBrowserRoot>
     );
   }
@@ -333,7 +333,7 @@ ProductImagesBrowser.propTypes = {
   images: PropTypes.array.isRequired,
   position: PropTypes.string.isRequired,
   toggle: PropTypes.func.isRequired,
-  desktopViewport: PropTypes.bool.isRequired,
+  isDesktopViewport: PropTypes.bool.isRequired,
   imageFeatured: PropTypes.object
 };
 
