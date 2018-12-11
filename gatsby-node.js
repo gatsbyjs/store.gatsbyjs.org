@@ -16,7 +16,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
 
   pages.data.allShopifyProduct.edges.forEach(edge => {
     createPage({
-      path: `/${edge.node.handle}`,
+      path: `/product/${edge.node.handle}`,
       component: path.resolve('./src/templates/ProductPageTemplate.js'),
       context: {
         id: edge.node.id,
@@ -33,7 +33,7 @@ exports.onCreatePage = async ({ page, actions: { createPage }, graphql }) => {
    * that we won’t have until a user logs in. By using `matchPath`, we’re able
    * to specify the entire `/account` path as a client-only section, which means
    * Gatsby will skip any `/account/*` pages during the build step.
-   * 
+   *
    * Take a look at `src/pages/account.js` for more details.
    */
   if (page.path.match(/^\/account/)) {
