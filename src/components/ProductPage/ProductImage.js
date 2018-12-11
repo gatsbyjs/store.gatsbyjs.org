@@ -59,14 +59,14 @@ export const StyledImage = styled(Image)`
 `;
 
 class ProductImage extends Component {
-  imageRoot;
+  imageLink;
 
   componentDidUpdate = prevProps => {
     if (prevProps.image.id !== this.props.image.id) {
-      this.imageRoot.classList.add('change');
+      this.imageLink.classList.add('change');
 
       setTimeout(
-        () => this.imageRoot.classList.remove('change'),
+        () => this.imageLink.classList.remove('change'),
         IMAGE_CHANGE_ANIM_DURATION
       );
     }
@@ -91,8 +91,8 @@ class ProductImage extends Component {
 
     return (
       <ProductImageLink
-        innerRef={div => {
-          this.imageRoot = div;
+        innerRef={el => {
+          this.imageLink = el;
         }}
         href={fluid.src}
         onClick={this.handleClick(onClick)}
