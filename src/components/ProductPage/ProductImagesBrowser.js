@@ -260,7 +260,7 @@ class ProductImagesBrowser extends Component {
     const offsetToScroll =
       (this.state.imageBoxHeight - this.state.zoomAreaWidth) / 2;
 
-    this.zoomArea.scroll({ left: offsetToScroll });
+    this.zoomArea.scrollLeft = offsetToScroll;
   };
 
   close = callback => event => {
