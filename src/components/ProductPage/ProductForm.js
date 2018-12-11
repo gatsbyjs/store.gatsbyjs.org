@@ -187,7 +187,7 @@ class ProductForm extends Component {
               </ErrorMsgs>
             </Errors>
             <QtyFieldset>
-              <Label for="quantity">Qty.</Label>
+              <Label htmlFor="quantity">Qty.</Label>
               <Input
                 type="number"
                 id="quantity"
@@ -200,7 +200,7 @@ class ProductForm extends Component {
             </QtyFieldset>
             {hasVariants && (
               <SizeFieldset>
-                <Label for="variant">
+                <Label htmlFor="variant">
                   Size{' '}
                   <Link to="/product-details">
                     <MdInfoOutline />
