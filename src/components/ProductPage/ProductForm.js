@@ -93,7 +93,7 @@ const CareLink = styled(Link)`
   float: right;
 `;
 
-const RestyledSubmit = styled(Submit)`
+const AddToCartButton = styled(Submit)`
   align-self: flex-end;
   flex-grow: 1;
   height: ${props => (props.fullWidth ? 'auto' : '')};
@@ -228,13 +228,13 @@ class ProductForm extends Component {
                 </Select>
               </SizeFieldset>
             )}
-            <RestyledSubmit
+            <AddToCartButton
               type="submit"
               disabled={isOutOfStock}
               fullWidth={hasVariants}
             >
               {isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
-            </RestyledSubmit>
+            </AddToCartButton>
             <CareLink to="/product-details">
               <MdInfoOutline /> <span>Care instructions</span>
             </CareLink>

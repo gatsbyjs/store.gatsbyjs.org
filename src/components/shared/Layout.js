@@ -282,8 +282,8 @@ export default class Layout extends React.Component {
 
               {newDesign && (
                 <>
-                  <Header newDesign={true} />
-                  <div>{children}</div>
+                  <Header />
+                  <main>{children}</main>
                 </>
               )}
             </InterfaceContext.Provider>

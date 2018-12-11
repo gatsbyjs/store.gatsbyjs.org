@@ -33,15 +33,15 @@ const HomeLink = styled(Link)`
   margin-right: auto;
 `;
 
-export default ({ newDesign = false }) => (
+export default () => (
   <InterfaceContext.Consumer>
     {({ productImagesBrowserStatus }) => (
       <Header isCovered={productImagesBrowserStatus === 'open'}>
         <IconContext.Provider value={{ style: { verticalAlign: 'middle' } }}>
           <HomeLink to="/" aria-label="Home page">
-            <Gatsby newDesign={newDesign} />
+            <Gatsby />
           </HomeLink>
-          {!newDesign && <Profile />}
+          <Profile />
           <Cart />
         </IconContext.Provider>
       </Header>
