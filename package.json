@@ -18,7 +18,6 @@
     "gatsby-plugin-sharp": "^2.0.6",
     "gatsby-source-shopify2": "^2.0.6",
     "gatsby-transformer-sharp": "^2.1.3",
-    "lodash.debounce": "^4.0.8",
     "react": "^16.4.2",
     "react-apollo": "^2.2.4",
     "react-dom": "^16.4.2",

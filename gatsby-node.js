@@ -26,7 +26,7 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
   });
 };
 
-exports.onCreatePage = async ({ page, actions: { createPage }, graphql }) => {
+exports.onCreatePage = async ({ page, actions: { createPage } }) => {
   /*
    * The dashboard (which lives under `/account`) is a client-only route. That
    * means that we don’t want to build it server-side because it depends on data

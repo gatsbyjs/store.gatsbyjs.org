@@ -9,6 +9,8 @@ import {
   visuallyHidden
 } from '../../utils/styles';
 
+import { debounce } from '../../utils/helpers';
+
 const Item = styled('li')`
   align-items: center;
   border-bottom: 1px solid ${colors.brandLight};
@@ -91,22 +93,6 @@ const Remove = styled('a')`
     color: ${colors.brandLighter};
   }
 `;
-
-// Add our own debounce utility so we don’t need to load a lib.
-const debounce = (delay, fn) => {
-  let timeout;
-
-  return function(...args) {
-    if (timeout) {
-      clearTimeout(timeout);
-    }
-
-    timeout = setTimeout(() => {
-      fn(...args);
-      timeout = null;
-    }, delay);
-  };
-};
 
 class LineItem extends React.Component {
   state = {

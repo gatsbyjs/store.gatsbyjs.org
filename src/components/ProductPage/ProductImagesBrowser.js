@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Image from 'gatsby-image';
 import styled, { keyframes } from 'react-emotion';
-import debounce from 'lodash.debounce';
+import { debounce } from '../../utils/helpers';
 
 import { MdClose, MdZoomIn, MdZoomOut } from 'react-icons/md';
 
@@ -211,11 +211,11 @@ class ProductImagesBrowser extends Component {
     this.measureImage();
     this.centerImage();
 
-    window.addEventListener('resize', debounce(this.measureImage, 250));
+    window.addEventListener('resize', debounce(250, this.measureImage));
   };
 
   componentWillUnmount = () => {
-    window.removeEventListener('resize', debounce(this.measureImage, 250));
+    window.removeEventListener('resize', debounce(250, this.measureImage));
   };
 
   componentDidUpdate = prevProps => {
