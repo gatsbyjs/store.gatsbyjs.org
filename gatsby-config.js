@@ -10,7 +10,7 @@ module.exports = {
       resolve: 'gatsby-source-shopify2',
       options: {
         shopName: 'gatsby-swag',
-        accessToken: '9aa73c089d34741f36edbe4d7314373a'
+        accessToken: process.env.SHOPIFY_ACCESS_TOKEN
       }
     },
     'gatsby-plugin-react-helmet',
