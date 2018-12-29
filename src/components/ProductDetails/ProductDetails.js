@@ -139,6 +139,13 @@ export default class ProductDetails extends React.Component {
           heat (literally)! We want to make sure you’re happy with our shirts,
           but they require a little TLC.
         </p>
+        <SubSubheading>Trucker Hat</SubSubheading>
+        <p>
+          Don’t put these hats into the laundry.
+          Dryers are too hot, and the tumbling isn’t
+          good for the shape.
+          Better to just avoid the laundry machines altogether.
+        </p>
         <SubSubheading>Water Bottles</SubSubheading>
         <p>
           Do not put in microwave, freezer, or dishwasher. Hand wash with hot
