@@ -71,7 +71,7 @@ const ContentForContributorWithNoAccount = props => {
               return (
                 <>
                   <Heading>
-                    You're the best <strong>@{profile.nickname}</strong>!
+                    You’re the best <strong>@{profile.nickname}</strong>!
                   </Heading>
                   <Lede>
                     You’ve made{' '}

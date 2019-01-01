@@ -63,7 +63,7 @@ const ContentForGuest = props => {
       <SectionHeading>For Existing Contributors</SectionHeading>
 
       <Heading>
-        Get Gatsby Swag for <strong>!FREE!</strong>
+        Get Gatsby Swag for <strong>FREE!</strong>
       </Heading>
       <Text>
         Already contributed to Gatsby? Claim your personal coupon code and get

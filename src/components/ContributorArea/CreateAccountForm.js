@@ -57,28 +57,21 @@ const CheckboxLabel = styled(BaseLabel)`
 
   :before,
   :after {
-    content: '';
-    display: block;
-    height: 1.3rem;
-    left: -2rem;
-    position: absolute;
-    top: 0;
-    transition: box-shadow 0.15s ease-in-out;
-    width: 1.3rem;
-  }
-
-  :before {
     background-color: ${colors.lightest};
-    border-radius: ${radius.default}px;
-    pointer-events: none;
-    user-select: none;
-  }
-
-  :after {
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 50% 50%;
     border-radius: ${radius.default}px;
+    content: '';
+    display: block;
+    height: 1.3rem;
+    left: -2rem;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    transition: box-shadow 0.15s ease-in-out;
+    user-select: none;
+    width: 1.3rem;
   }
 `;
 

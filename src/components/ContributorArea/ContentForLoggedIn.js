@@ -6,7 +6,6 @@ import gql from 'graphql-tag';
 
 import { GoMarkGithub } from 'react-icons/go';
 
-import UserContext from '../../context/UserContext';
 import ContentForNotContributor from './ContentForNotContributor';
 import ContentForContributorWithNoAccount from './ContentForContributorWithNoAccount';
 import ContentForContributor from './ContentForContributor';
@@ -25,7 +24,7 @@ import {
   dimensions
 } from '../../utils/styles';
 
-const ContentFor = ({ error, loading, contributor }) => {
+const ContentFor = ({ contributor, error, handleLogout, loading, profile }) => {
   const { shopify, github } = contributor;
 
   if (error) {
@@ -39,25 +38,40 @@ const ContentFor = ({ error, loading, contributor }) => {
       return <ContentForContributorWithNoAccount />;
     }
   } else {
-    return <ContentForNotContributor />;
+    return <ContentForNotContributor profile={profile} />;
   }
 };
 
-const ContentForLoggedIn = props => {
-  return (
-    <UserContext.Consumer>
-      {({ error, loading, contributor }) => (
-        <>
-          <LogoutBar />
-          <ContentFor
-            contributor={contributor}
-            error={error}
-            loading={loading}
-          />
-        </>
-      )}
-    </UserContext.Consumer>
-  );
+const ContentForLoggedIn = ({
+  contributor,
+  error,
+  handleLogout,
+  loading,
+  profile
+}) => (
+  <>
+    <LogoutBar
+      error={error}
+      handleLogout={handleLogout}
+      loading={loading}
+      profile={profile}
+    />
+    <ContentFor
+      error={error}
+      contributor={contributor}
+      handleLogout={handleLogout}
+      loading={loading}
+      profile={profile}
+    />
+  </>
+);
+
+ContentForLoggedIn.propTypes = {
+  contributor: PropTypes.object,
+  error: PropTypes.any,
+  handleLogout: PropTypes.func,
+  loading: PropTypes.bool,
+  profile: PropTypes.object
 };
 
 export default ContentForLoggedIn;

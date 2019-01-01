@@ -71,7 +71,7 @@ const Caption = styled(`div`)`
   }
 `;
 
-const Incentive = styled(`div`)`
+const UserPhotoHint = styled(`div`)`
   background: rgba(68, 34, 102, 0.9);
   border-radius: 0 0 ${radius.large}px ${radius.large}px;
   cursor: pointer;
@@ -110,7 +110,7 @@ class CommunityCaption extends Component {
 
     this.setState(state => ({
       minimized: !state.minimized,
-      incentiveExpanded: false
+      hintExpanded: false
     }));
   };
 
@@ -118,14 +118,12 @@ class CommunityCaption extends Component {
     e.preventDefault();
     e.stopPropagation();
 
-    this.setState(state => ({
-      incentiveExpanded: !state.incentiveExpanded
-    }));
+    this.setState(state => ({ hintExpanded: !state.hintExpanded }));
   };
 
   render() {
     const { caption, superZoom } = this.props;
-    const { minimized, incentiveExpanded } = this.state;
+    const { minimized, hintExpanded } = this.state;
 
     return (
       <CommunityCaptionRoot
@@ -139,9 +137,9 @@ class CommunityCaption extends Component {
             <p dangerouslySetInnerHTML={{ __html: caption }} />
           )}
         </Caption>
-        <Incentive
+        <UserPhotoHint
           onClick={this.toggleIncentive}
-          className={incentiveExpanded ? 'expanded' : ''}
+          className={hintExpanded ? 'expanded' : ''}
         >
           <span>Would you like to see a photo of your pet here?</span>{' '}
           <strong>Read more...</strong>
@@ -149,7 +147,7 @@ class CommunityCaption extends Component {
             Contrary to popular belief, Lorem Ipsum is not simply random text.
             It has roots in a piece of classical Latin.
           </span>
-        </Incentive>
+        </UserPhotoHint>
         <Toggle onClick={this.toggle}>
           {minimized ? <MdKeyboardArrowUp /> : <MdClose />}
         </Toggle>

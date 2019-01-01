@@ -51,9 +51,22 @@ const ContentContainer = props => {
   return (
     <ContentContainerRoot>
       <UserContext.Consumer>
-        {({ loading, profile: { nickname } }) =>
+        {({
+          contributor,
+          error,
+          handleLogout,
+          loading,
+          profile,
+          profile: { nickname }
+        }) =>
           nickname || loading ? (
-            <ContentForLoggedIn />
+            <ContentForLoggedIn
+              contributor={contributor}
+              error={error}
+              handleLogout={handleLogout}
+              loading={loading}
+              profile={profile}
+            />
           ) : (
             <ContentForNotLoggedIn />
           )
