@@ -296,6 +296,12 @@ export default class Layout extends React.Component {
       prevProps.location.pathname !== this.props.location.pathname &&
       prevProps.location.pathname === '/callback/'
     ) {
+      this.setState(state => ({
+        interface: {
+          ...state.interface,
+          contributorAreaStatus: 'open'
+        }
+      }));
       this.setUserProfile();
     }
   }
