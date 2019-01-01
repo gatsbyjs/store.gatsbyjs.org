@@ -10,7 +10,7 @@ const EmptyCartRoot = styled('div')`
   justify-content: center;
 `;
 
-const SadCartCopy = styled('p')`
+const SadCartCopy = styled('div')`
   color: ${colors.lilac};
   margin-top: ${spacing.lg}px;
   max-width: 200px;
