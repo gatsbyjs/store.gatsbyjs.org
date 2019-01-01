@@ -63,10 +63,8 @@ const Title = styled(`h2`)`
 
   .open & {
     margin-left: calc(${dimensions.headerHeight} + ${spacing.md}px);
-  }
 
-  @media (min-width: ${breakpoints.desktop}px) {
-    .open & {
+    @media (min-width: ${breakpoints.desktop}px) {
       margin-left: ${spacing.md}px;
     }
   }
