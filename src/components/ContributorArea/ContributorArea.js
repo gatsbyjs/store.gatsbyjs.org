@@ -152,6 +152,7 @@ class ContributorArea extends Component {
           areaStatus={status}
           isDesktopViewport={isDesktopViewport}
           onClick={toggle}
+          location={location}
         />
       </>
     );

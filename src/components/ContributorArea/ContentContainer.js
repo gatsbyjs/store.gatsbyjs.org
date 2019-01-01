@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled, { keyframes } from 'react-emotion';
 
 import UserContext from '../../context/UserContext';
-
 import { Button } from '../shared/Buttons';
 import ContentForNotLoggedIn from './ContentForNotLoggedIn';
 import ContentForLoggedIn from './ContentForLoggedIn';

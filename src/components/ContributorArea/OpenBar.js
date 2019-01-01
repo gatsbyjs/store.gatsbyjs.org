@@ -4,6 +4,7 @@ import styled, { keyframes } from 'react-emotion';
 
 import { MdArrowBack } from 'react-icons/md';
 
+import UserContext from '../../context/UserContext';
 import Butler from '../../assets/Butler';
 import ButlerHand from '../../assets/ButlerHand';
 
@@ -186,19 +187,69 @@ const Label = styled(`span`)`
   }
 `;
 
+const ContentFor = ({ contributor }) => {
+  let codes = [];
+  let numberOfValidCodes = 0;
+  let numberOfUsedCodes = 0;
+
+  const { shopify } = contributor;
+
+  if (shopify) {
+    codes = shopify.codes;
+    numberOfValidCodes = codes.filter(code => code.used === false).length;
+    numberOfUsedCodes = codes.length - numberOfValidCodes;
+  }
+
+  if (numberOfValidCodes) {
+    return <span>Remember your swag code!</span>;
+  } else if (numberOfUsedCodes === 2) {
+    return <span>Thank you!</span>;
+  } else {
+    return (
+      <span>
+        Get Gatsby Swag for <strong>FREE</strong>
+      </span>
+    );
+  }
+};
+
 class OpenBar extends Component {
   state = {
     classNames: 'closed'
   };
 
   componentDidUpdate(prevProps) {
+    // initail action after isDesktopViewport is set
     if (
       this.props.isDesktopViewport !== prevProps.isDesktopViewport &&
       prevProps.isDesktopViewport === null
     ) {
-      this.setState({
-        classNames: this.props.isDesktopViewport ? 'closed' : 'open'
-      });
+      if (this.props.isDesktopViewport) {
+        this.setState({
+          classNames: 'closed'
+        });
+      } else {
+        this.setState({
+          classNames: /\/product\//.test(this.props.location.pathname)
+            ? 'closed'
+            : 'open'
+        });
+      }
+    }
+
+    // hide bar on product pages on mobile
+    if (this.props.location.pathname !== prevProps.location.pathname) {
+      if (!this.props.isDesktopViewport) {
+        if (/\/product\//.test(this.props.location.pathname)) {
+          this.setState({
+            classNames: 'closed'
+          });
+        } else {
+          if (this.state.classNames === 'closed') {
+            this.setState({ classNames: 'open' });
+          }
+        }
+      }
     }
 
     if (prevProps.areaStatus !== this.props.areaStatus) {
@@ -229,39 +280,40 @@ class OpenBar extends Component {
     const { classNames } = this.state;
 
     return (
-      <OpenBarRoot
-        onClick={onClick}
-        className2={this.revertStatus(areaStatus)}
-        className={classNames}
-      >
-        <Content>
-          <Section>
-            <ButlerBox>
-              <Butler />
-            </ButlerBox>
-            <Title>
-              <span>
-                Get Gatsby Swag for <strong>FREE</strong>
-              </span>
-            </Title>
-            <ButlerHandBox>
-              <ButlerHand />
-            </ButlerHandBox>
-          </Section>
-          <Section>
-            <Label>
-              <span>Open Sidebar</span>
-            </Label>
-          </Section>
-        </Content>
-      </OpenBarRoot>
+      <UserContext.Consumer>
+        {({ contributor }) => {
+          return (
+            <OpenBarRoot onClick={onClick} className={classNames}>
+              <Content>
+                <Section>
+                  <ButlerBox>
+                    <Butler />
+                  </ButlerBox>
+                  <Title>
+                    <ContentFor contributor={contributor} />
+                  </Title>
+                  <ButlerHandBox>
+                    <ButlerHand />
+                  </ButlerHandBox>
+                </Section>
+                <Section>
+                  <Label>
+                    <span>Open Sidebar</span>
+                  </Label>
+                </Section>
+              </Content>
+            </OpenBarRoot>
+          );
+        }}
+      </UserContext.Consumer>
     );
   }
 }
 
 OpenBar.propTypes = {
-  onClick: PropTypes.func.isRequired,
   areaStatus: PropTypes.string.isRequired,
+  location: PropTypes.object.isRequired,
+  onClick: PropTypes.func.isRequired,
   isDesktopViewport: PropTypes.bool
 };
 
