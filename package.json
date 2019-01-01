@@ -14,7 +14,7 @@
     "gatsby-plugin-emotion": "^2.0.5",
     "gatsby-plugin-layout": "^1.0.10",
     "gatsby-plugin-manifest": "^2.0.7",
-    "gatsby-plugin-offline": "^2.0.11",
+    "gatsby-plugin-offline": "^2.0.20",
     "gatsby-plugin-react-helmet": "^3.0.0",
     "gatsby-plugin-sharp": "^2.0.6",
     "gatsby-source-shopify2": "^2.0.6",
