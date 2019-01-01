@@ -23,41 +23,29 @@ const {
 } = dimensions;
 
 const PageContentRoot = styled(`main`)`
+  opacity: 1;
   padding-left: 0;
- 
+  transform: translateX(0);
   transition: 0.75s;
   width: 100%;
+  will-change: all;
 
   &.covered {
+    opacity: 0;
     position: fixed;
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
     padding-bottom: ${spacing.md}px;
-    transform: ${props =>
-      props.cartStatus === 'open' ? 'translateX(-400px)' : 'translateX(0)'};
-    width: 100%;
+    padding-left: ${desktopMaxWidth};
+    transform: translateX(0);
 
-    &.covered {
-      position: static;
+    &.wide {
+      padding-left: ${desktopMinWidth};
     }
 
-  
-    /* stylelint-disable */
-     /* position: ${props =>
-       props.cartStatus === 'open' ? 'fixed' : 'static'}; */
-    
-      /* stylelint-enable */
-  
-    filter: ${props => (props.cartStatus === 'open' ? 'blur(1px)' : '')};
-
-    padding-left: ${props =>
-      props.contributorAreaStatus === 'closed'
-        ? desktopMinWidth
-        : desktopMaxWidth};
-
-    .covered {
-      position: static;
+    &.moved {
+      transform: translateX(-400px);
     }
   }
 
@@ -85,17 +73,17 @@ const Footer = styled(`footer`)`
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    padding: 0 ${spacing.xl}px;
     min-height: 30px;
+    padding: 0 ${spacing.xl}px;
   }
 `;
 
 const Row = styled(`span`)`
+  display: inline-block;
   flex-shrink: 0;
+  line-height: 1.3;
   padding-bottom: ${spacing['2xs']}px;
   text-align: center;
-  display: inline-block;
-  line-height: 1.3;
 
   @media (min-width: ${breakpoints.desktop}px) {
     padding-bottom: 0;
@@ -125,50 +113,82 @@ const Overlay = styled(`div`)`
   }
 `;
 
-const PageContent = ({ children, cartStatus, contributorAreaStatus }) => {
-  return (
-    <PageContentRoot
-      cartStatus={cartStatus}
-      contributorAreaStatus={contributorAreaStatus}
-      className={
-        cartStatus === 'open' || contributorAreaStatus === 'open'
-          ? 'covered'
-          : ''
+class PageContent extends Component {
+  state = {
+    className: ''
+  };
+
+  componentDidUpdate(prevProps) {
+    const contributorAreaStatusChanged =
+      prevProps.contributorAreaStatus !== this.props.contributorAreaStatus;
+    const cartStatusChanged = prevProps.cartStatus !== this.props.cartStatus;
+
+    if (this.props.isDesktopViewport) {
+      if (contributorAreaStatusChanged) {
+        this.setState({
+          className: this.props.contributorAreaStatus === 'closed' ? 'wide' : ''
+        });
       }
-    >
-      {children}
-      {cartStatus === 'open' && <Overlay />}
-      <Footer>
-        <Row>
-          <b>Got questions?&nbsp;</b>
-        </Row>
-        <Row>
-          Talk to us on Twitter{' '}
-          <a href="https://twitter.com/gatsby">@gatsbyjs</a>
-        </Row>
-        <Row>
-          &nbsp;or send an email to{' '}
-          <a href="mailto:team@gatsbyjs.com">team@gatsbyjs.com</a>
-        </Row>
-        <Spacer>•</Spacer>
-        <Row>
-          Built with 💜 by the{' '}
-          <a href="https://www.gatsbyjs.com/">Gatsby Inkteam</a>
-        </Row>
-        <Spacer>•</Spacer>
-        <Row>
-          See the source code on{' '}
-          <a href="https://github.com/gatsbyjs/store.gatsbyjs.org">GitHub</a>
-        </Row>
-      </Footer>
-    </PageContentRoot>
-  );
-};
+
+      if (cartStatusChanged) {
+        this.setState({
+          className: this.props.cartStatus === 'open' ? 'moved' : ''
+        });
+      }
+    } else {
+      if (contributorAreaStatusChanged || cartStatusChanged) {
+        this.setState({
+          className:
+            this.props.contributorAreaStatus === 'open' ||
+            this.props.cartStatus === 'open'
+              ? 'covered'
+              : ''
+        });
+      }
+    }
+  }
+
+  render() {
+    const { children, cartStatus, contributorAreaStatus } = this.props;
+    const { className } = this.state;
+
+    return (
+      <PageContentRoot className={className}>
+        {children}
+        {cartStatus === 'open' && <Overlay />}
+        <Footer>
+          <Row>
+            <b>Got questions?&nbsp;</b>
+          </Row>
+          <Row>
+            Talk to us on Twitter{' '}
+            <a href="https://twitter.com/gatsby">@gatsbyjs</a>
+          </Row>
+          <Row>
+            &nbsp;or send an email to{' '}
+            <a href="mailto:team@gatsbyjs.com">team@gatsbyjs.com</a>
+          </Row>
+          <Spacer>•</Spacer>
+          <Row>
+            Built with 💜 by the{' '}
+            <a href="https://www.gatsbyjs.com/">Gatsby Inkteam</a>
+          </Row>
+          <Spacer>•</Spacer>
+          <Row>
+            See the source code on{' '}
+            <a href="https://github.com/gatsbyjs/store.gatsbyjs.org">GitHub</a>
+          </Row>
+        </Footer>
+      </PageContentRoot>
+    );
+  }
+}
 
 PageContent.propTypes = {
-  children: PropTypes.node.isRequired,
   cartStatus: PropTypes.string.isRequired,
-  contributorAreaStatus: PropTypes.string.isRequired
+  children: PropTypes.node.isRequired,
+  contributorAreaStatus: PropTypes.string.isRequired,
+  isDesktopViewport: PropTypes.bool
 };
 
 export default PageContent;

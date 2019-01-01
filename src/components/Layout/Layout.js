@@ -60,6 +60,10 @@ export default class Layout extends React.Component {
         this.setState(state => ({
           interface: {
             ...state.interface,
+            contributorAreaStatus:
+              state.interface.isDesktopViewport === false
+                ? 'closed'
+                : state.interface.contributorAreaStatus,
             cartStatus:
               this.state.interface.cartStatus === 'open' ? 'closed' : 'open'
           }
@@ -378,6 +382,7 @@ export default class Layout extends React.Component {
                       <PageContent
                         cartStatus={cartStatus}
                         contributorAreaStatus={contributorAreaStatus}
+                        isDesktopViewport={isDesktopViewport}
                       >
                         {children}
                       </PageContent>

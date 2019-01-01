@@ -123,8 +123,8 @@ const ZoomArea = styled(`div`)`
 const ImageBox = styled(`a`)`
   display: block;
   height: 100%;
-  width: 100%;
   position: relative;
+  width: 100%;
 
   .gatsby-image-wrapper {
     height: auto;

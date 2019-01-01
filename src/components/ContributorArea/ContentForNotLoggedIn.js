@@ -21,35 +21,26 @@ import {
 
 const ContentForGuestRoot = styled(`div`)`
   animation: ${animations.simpleEntry};
+  position: relative;
 `;
 
-const delayedEntry = keyframes`
-  from {
-    opacity: 0;
-    transform: scale(0.5);
-  }
-  to {
-    opacity: 1;
-    transform:  scale(1.5, 1.5);
-  }
+const FirstHeading = styled(Heading)`
+  padding-right: ${spacing.lg}px;
 `;
 
 const ButtlerBox = styled(`div`)`
-  animation: ${delayedEntry} 0.25s 0.75s ease forwards;
-  display: none;
-  opacity: 0;
+  display: block;
   position: absolute;
-  right: -10px;
-  top: 30px;
-  transform: scale(0.5);
+  right: -30px;
+  top: 20px;
   transition: 0.2s;
 
-  .closed & {
-    display: none;
+  svg {
+    transform: scale(-2, 2);
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
-    display: block;
+    right: -40px;
   }
 `;
 
@@ -61,10 +52,9 @@ const ContentForGuest = props => {
   return (
     <ContentForGuestRoot>
       <SectionHeading>For Existing Contributors</SectionHeading>
-
-      <Heading>
+      <FirstHeading>
         Get Gatsby Swag for <strong>FREE!</strong>
-      </Heading>
+      </FirstHeading>
       <Text>
         Already contributed to Gatsby? Claim your personal coupon code and get
         free swag by logging in with your GitHub account!

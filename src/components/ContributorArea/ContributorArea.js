@@ -39,6 +39,7 @@ const ContributorAreaRoot = styled(`aside`)`
   transform: translateX(-100%);
   transition: 0.75s ease;
   width: 100%;
+  will-change: all;
   z-index: 100;
 
   &.opening {
@@ -95,7 +96,7 @@ const ContributorAreaRoot = styled(`aside`)`
 
 class ContributorArea extends Component {
   state = {
-    classNames: 'closed',
+    className: 'closed',
     issuesVisible: false
   };
 
@@ -105,7 +106,7 @@ class ContributorArea extends Component {
       prevProps.isDesktopViewport === null
     ) {
       this.setState({
-        classNames: this.props.isDesktopViewport ? 'open' : 'closed'
+        className: this.props.isDesktopViewport ? 'open' : 'closed'
       });
     }
 
@@ -113,17 +114,17 @@ class ContributorArea extends Component {
       if (this.props.status === 'open') {
         // before we start opening the component we first have to unhide it
         this.setState({
-          classNames: `${this.state.classNames} unhide`
+          className: `${this.state.className} unhide`
         });
-        setTimeout(() => this.setState({ classNames: 'opening' }), 0);
-        setTimeout(() => this.setState({ classNames: 'open' }), 750);
+        setTimeout(() => this.setState({ className: 'opening' }), 0);
+        setTimeout(() => this.setState({ className: 'open' }), 750);
       }
 
       if (this.props.status === 'closed') {
         this.setState({
-          classNames: 'closing'
+          className: 'closing'
         });
-        setTimeout(() => this.setState({ classNames: 'closed' }), 750);
+        setTimeout(() => this.setState({ className: 'closed' }), 750);
       }
     }
   }
@@ -134,11 +135,11 @@ class ContributorArea extends Component {
 
   render() {
     const { location, status, toggle, isDesktopViewport } = this.props;
-    const { classNames, issuesVisible } = this.state;
+    const { className, issuesVisible } = this.state;
 
     return (
       <>
-        <ContributorAreaRoot className={classNames}>
+        <ContributorAreaRoot className={className}>
           <ContentContainer />
         </ContributorAreaRoot>
 

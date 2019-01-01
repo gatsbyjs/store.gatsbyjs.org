@@ -31,6 +31,7 @@ const CartRoot = styled(`div`)`
   transform: translateX(100%);
   transition: transform 0.75s;
   width: 100%;
+  will-change: all;
   z-index: 1000;
 
   &.open {
