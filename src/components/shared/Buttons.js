@@ -17,7 +17,7 @@ export const ButtonBase = styled(`button`)`
   font-family: ${fonts.heading};
   font-size: 1.1rem;
   padding: 0.5em 0.75rem;
-  transition: 200ms background linear, 100ms border-color linear;
+  transition: 0.5s;
 
   :focus {
     box-shadow: 0 0 0 3px ${colors.accent};
@@ -30,6 +30,12 @@ export const ButtonBase = styled(`button`)`
     margin-left: ${props => (props.iconOnLeft ? 0 : '0.5em')};
     margin-right: ${props => (props.iconOnLeft ? '0.5em' : 0)};
     width: 1.1em;
+  }
+
+  @media (hover: hover) {
+    &:hover {
+      box-shadow: 0 0 0 1px ${colors.accent};
+    }
   }
 `;
 
