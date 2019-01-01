@@ -65,9 +65,11 @@ const Preview = styled(`div`)`
     transition: all ${TRANSITION_DURATION};
   }
 
-  ${ProductListingItemLink}:hover & {
-    .gatsby-image-wrapper {
-      transform: scale(1.1);
+  @media (hover: hover) {
+    ${ProductListingItemLink}:hover & {
+      .gatsby-image-wrapper {
+        transform: scale(1.1);
+      }
     }
   }
 `;
@@ -127,7 +129,7 @@ const PriceRow = styled(`div`)`
   align-items: flex-end;
   display: flex;
   justify-content: space-between;
-  margin-top: ${spacing.lg}px;
+  margin-top: ${spacing.xs}px;
 `;
 
 const Price = styled(`div`)`
