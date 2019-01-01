@@ -83,7 +83,6 @@ const CodeEligibility = styled(`div`)`
   overflow: hidden;
   position: absolute;
   right: ${spacing.lg}px;
-  z-index: 1000;
 
   span {
     align-items: center;
