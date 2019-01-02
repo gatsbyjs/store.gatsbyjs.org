@@ -2,7 +2,12 @@ import React, { Component } from 'react';
 import styled, { keyframes } from 'react-emotion';
 import PropTypes from 'prop-types';
 
-import { MdClose, MdShoppingCart } from 'react-icons/md';
+import {
+  MdClose,
+  MdShoppingCart,
+  MdArrowBack,
+  MdArrowForward
+} from 'react-icons/md';
 
 import StoreContext from '../../context/StoreContext';
 import InterfaceContext from '../../context/InterfaceContext';
@@ -242,6 +247,12 @@ const CheckOut = styled(PrimaryButton)`
   width: 100%;
 `;
 
+const BackLink = styled(Button)`
+  font-size: 1.25rem;
+  margin-bottom: ${spacing.sm}px;
+  width: 100%;
+`;
+
 class Cart extends Component {
   render() {
     const { status, toggle } = this.props;
@@ -319,7 +330,13 @@ class Cart extends Component {
                     </Total>
                   </Costs>
 
-                  <CheckOut href={checkout.webUrl}>Check out</CheckOut>
+                  <CheckOut href={checkout.webUrl}>
+                    Check out <MdArrowForward />
+                  </CheckOut>
+                  <BackLink onClick={toggle}>
+                    <MdArrowBack />
+                    Back to shopping
+                  </BackLink>
 
                   <FreeBonus />
                   <ShippingInfo />
