@@ -9,14 +9,13 @@ import ProductImagesMobile from './ProductImagesMobile';
 import ProductImagesDesktop from './ProductImagesDesktop';
 import ProductSpecs from './ProductSpecs';
 import ProductForm from './ProductForm';
-import BackLink from '../shared/BackLink';
+import BackLink from './BackLink';
 import ProductImagesBrowser from './ProductImagesBrowser';
 
 import { breakpoints, colors, fonts, spacing } from '../../utils/styles';
 
 const ProductPageRoot = styled('div')`
   padding-bottom: ${spacing.md}px;
-  position: ${props => (props.isCovered ? 'fixed' : 'static')};
 
   @media (min-width: ${breakpoints.desktop}px) {
     align-items: center;
@@ -46,10 +45,6 @@ const Details = styled(`div`)`
     max-width: 400px;
     min-height: 490px;
   }
-`;
-
-const BackToProductList = styled(BackLink)`
-  position: fixed;
 `;
 
 class ProductPage extends Component {
@@ -107,7 +102,7 @@ class ProductPage extends Component {
                   />
                 )}
                 <Details>
-                  <BackToProductList>Back to Product List</BackToProductList>
+                  <BackLink>Back to Product List</BackLink>
                   <ProductSpecs product={product} />
                   <ProductForm id={id} variants={variants} />
                 </Details>

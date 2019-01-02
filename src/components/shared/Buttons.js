@@ -16,6 +16,7 @@ export const ButtonBase = styled(`button`)`
   display: inline-flex;
   font-family: ${fonts.heading};
   font-size: 1.1rem;
+  justify-content: center;
   padding: 0.5em 0.75rem;
   transition: 0.5s;
 
