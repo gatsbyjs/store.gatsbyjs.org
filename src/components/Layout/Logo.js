@@ -12,8 +12,6 @@ const monogram = css`
   margin-right: 10px;
 `;
 
-const logotype = css``;
-
 const Monogram = () => (
   <svg
     viewBox="0 0 28 28"
@@ -38,7 +36,6 @@ const Logotype = () => (
     viewBox="0 0 70 28"
     className={css`
       ${svg};
-      ${logotype};
     `}
   >
     <g transform="translate(0 5)">

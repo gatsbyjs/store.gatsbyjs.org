@@ -64,8 +64,8 @@ const ButtlerBox = styled(`div`)`
   position: absolute;
   right: -10px;
   top: 35px;
-  transition: 0.2s;
   transform: scale(0.5);
+  transition: 0.2s;
 
   svg {
     transform: scale(-1.8, 1.8);

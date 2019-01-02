@@ -34,9 +34,9 @@ const ProductListingItemLink = styled(Link)`
   transition: all ${TRANSITION_DURATION};
 
   @media (min-width: ${breakpoints.tablet}px) {
-    max-width: 500px;
     margin-left: auto;
     margin-right: auto;
+    max-width: 500px;
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
