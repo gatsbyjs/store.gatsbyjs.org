@@ -17,12 +17,12 @@ const FooterRoot = styled('footer')`
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
-    align-items: flex-end;
+    align-items: center;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    min-height: 30px;
-    padding: 0 ${spacing.xl}px;
+    min-height: 50px;
+    padding: 0 ${spacing.xl}px 10px;
   }
 `;
 

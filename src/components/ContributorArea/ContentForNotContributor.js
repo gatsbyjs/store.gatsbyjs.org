@@ -4,7 +4,6 @@ import styled, { keyframes } from 'react-emotion';
 
 import { GoMarkGithub } from 'react-icons/go';
 
-import Butler from '../../assets/Butler';
 import { login } from '../../utils/auth';
 import { Button as BaseButton } from '../shared/Buttons';
 import OpenIssues from './OpenIssues';
@@ -29,18 +28,6 @@ import {
 
 const ContentForNotContributorRoot = styled(`div`)`
   animation: ${animations.simpleEntry};
-`;
-
-const ButtlerBox = styled(`div`)`
-  position: absolute;
-  right: -12px;
-  top: 30px;
-  transform: scale(1.5, 1.5);
-  transition: 0.2s;
-
-  .closed & {
-    display: none;
-  }
 `;
 
 const Button = styled(BaseButton)`

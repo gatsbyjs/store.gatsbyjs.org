@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 
 import ContributorArea from '../ContributorArea';
-import Footer from './Foooter';
+import Footer from './Footer';
 
 import {
   breakpoints,
@@ -40,7 +40,6 @@ const PageContentRoot = styled(`main`)`
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
-    padding-bottom: ${spacing.md}px;
     padding-left: ${desktopMaxWidth};
     transform: translateX(0);
 

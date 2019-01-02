@@ -17,8 +17,8 @@ const ProductPageRoot = styled('div')`
   @media (min-width: ${breakpoints.desktop}px) {
     align-items: center;
     display: flex;
-    ${'' /* display: ${props => (props.isCovered ? 'none' : 'flex')}; */} justify-content: center;
-    min-height: calc(100vh - 120px);
+    justify-content: center;
+    min-height: calc(100vh - 110px);
     padding: ${spacing.xl}px;
     width: 100%;
   }

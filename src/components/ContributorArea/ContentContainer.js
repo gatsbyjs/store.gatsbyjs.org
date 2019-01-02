@@ -57,7 +57,7 @@ const entry = keyframes`
    }
  `;
 
-const ButtlerBox = styled(`div`)`
+const ButlerBox = styled(`div`)`
   animation: ${entry} 0.25s ease forwards;
   display: none;
   opacity: 0;
@@ -99,9 +99,9 @@ const ContentContainer = props => {
           ) : (
             <>
               <ContentForNotLoggedIn />
-              <ButtlerBox>
+              <ButlerBox>
                 <Butler />
-              </ButtlerBox>
+              </ButlerBox>
             </>
           )
         }
