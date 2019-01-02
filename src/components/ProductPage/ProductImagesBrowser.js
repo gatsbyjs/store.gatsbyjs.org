@@ -8,7 +8,6 @@ import { MdClose, MdZoomIn, MdZoomOut } from 'react-icons/md';
 
 import InterfaceContext from '../../context/InterfaceContext';
 import CommunityCaption from './CommunityCaption';
-import BackLink from '../shared/BackLink';
 import ProductThumbnails, {
   ProductThumbnailsContent,
   Thumbnail

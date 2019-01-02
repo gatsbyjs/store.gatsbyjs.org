@@ -101,4 +101,10 @@ export const PrimaryButton = styled(Button)`
   display: flex;
   font-size: 1.25rem;
   justify-content: center;
+
+  @media (hover: hover) {
+    &:hover {
+      background: ${colors.brandDark};
+    }
+  }
 `;
