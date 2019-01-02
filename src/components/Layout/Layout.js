@@ -13,6 +13,7 @@ import InterfaceContext, {
 import Header from './Header';
 import ContributorArea from '../ContributorArea';
 import PageContent from './PageContent';
+import ProductImagesBrowser from '../ProductPage/ProductImagesBrowser';
 import Cart from '../Cart';
 import SiteMetadata from '../shared/SiteMetadata';
 
@@ -85,6 +86,15 @@ export default class Layout extends React.Component {
           interface: {
             ...state.interface,
             productImageFeatured: img
+          }
+        }));
+      },
+      setCurrentProductImages: images => {
+        this.setState(state => ({
+          interface: {
+            ...state.interface,
+            currentProductImages: images,
+            productImageFeatured: null
           }
         }));
       },
@@ -271,12 +281,7 @@ export default class Layout extends React.Component {
     this.desktopMediaQuery = window.matchMedia(mediaQueryToMatch);
     this.desktopMediaQuery.addListener(this.updateViewPortState);
 
-    this.setState(state => ({
-      interface: {
-        ...state.interface,
-        isDesktopViewport: this.desktopMediaQuery.matches
-      }
-    }));
+    this.updateViewPortState();
 
     // Make sure we have a Shopify checkout created for cart management.
     this.initializeCheckout();
@@ -309,6 +314,19 @@ export default class Layout extends React.Component {
       this.setUserProfile();
     }
   }
+
+  componentWillUnmount = () => {
+    this.desktopMediaQuery.removeListener(this.updateViewPortState);
+  };
+
+  updateViewPortState = e => {
+    this.setState(state => ({
+      interface: {
+        ...state.interface,
+        isDesktopViewport: this.desktopMediaQuery.matches
+      }
+    }));
+  };
 
   setUserProfile = async () => {
     // Load the user info from Auth0.
@@ -367,7 +385,12 @@ export default class Layout extends React.Component {
                   cartStatus,
                   toggleCart,
                   contributorAreaStatus,
-                  toggleContributorArea
+                  toggleContributorArea,
+                  productImagesBrowserStatus,
+                  currentProductImages,
+                  featureProductImage,
+                  productImageFeatured,
+                  toggleProductImagesBrowser
                 }) => (
                   <>
                     <Header />
@@ -387,6 +410,17 @@ export default class Layout extends React.Component {
                       >
                         {children}
                       </PageContent>
+
+                      {currentProductImages.length && (
+                        <ProductImagesBrowser
+                          featureProductImage={featureProductImage}
+                          images={currentProductImages}
+                          position={productImagesBrowserStatus}
+                          imageFeatured={productImageFeatured}
+                          toggle={toggleProductImagesBrowser}
+                          isDesktopViewport={isDesktopViewport}
+                        />
+                      )}
 
                       <Cart
                         status={cartStatus}

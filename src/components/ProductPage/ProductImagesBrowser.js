@@ -75,7 +75,7 @@ const ProductImagesBrowserRoot = styled(`div`)`
   }
 
   &.closed {
-    ${'' /* animation: ${exit} 200ms ease-out forwards; */};
+    animation: ${exit} 200ms ease-out forwards;
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
@@ -187,7 +187,7 @@ const CloseButton = styled(Button)`
   position: relative;
 `;
 
-const ProductThumbnailsRestyled = styled(ProductThumbnails)`
+const ActionsThumbnails = styled(ProductThumbnails)`
   @media (min-width: ${breakpoints.desktop}px) {
     ${ProductThumbnailsContent} {
       align-items: center;
@@ -232,10 +232,6 @@ class ProductImagesBrowser extends Component {
           this.setState({
             superZoom: false
           });
-        }
-
-        if (this.props.isDesktopViewport) {
-          //this.closeButton.focus();
         }
       }
     }
@@ -283,6 +279,7 @@ class ProductImagesBrowser extends Component {
   render() {
     const { images, position, imageFeatured, toggle } = this.props;
     const image = imageFeatured ? imageFeatured : images[0];
+
     const {
       altText,
       localFile: {
@@ -299,7 +296,7 @@ class ProductImagesBrowser extends Component {
             <MdClose />
             Close
           </CloseButton>
-          <ProductThumbnailsRestyled images={images} />
+          <ActionsThumbnails images={images} />
         </Actions>
 
         <ZoomArea
@@ -318,7 +315,9 @@ class ProductImagesBrowser extends Component {
           >
             <Image fluid={fluid} />
           </ImageBox>
-          <CommunityCaption caption={altText} superZoom={superZoom} />
+          {altText && (
+            <CommunityCaption caption={altText} superZoom={superZoom} />
+          )}
         </ZoomArea>
         <ZoomHelper>{superZoom ? <MdZoomOut /> : <MdZoomIn />}</ZoomHelper>
       </ProductImagesBrowserRoot>
@@ -330,8 +329,8 @@ ProductImagesBrowser.propTypes = {
   images: PropTypes.array.isRequired,
   position: PropTypes.string.isRequired,
   toggle: PropTypes.func.isRequired,
-  isDesktopViewport: PropTypes.bool.isRequired,
-  imageFeatured: PropTypes.object
+  imageFeatured: PropTypes.object,
+  isDesktopViewport: PropTypes.bool
 };
 
 export default ProductImagesBrowser;

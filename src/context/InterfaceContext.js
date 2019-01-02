@@ -6,6 +6,8 @@ export const defaultInterfaceContext = {
   toggleCart: () => {},
   productImageFeatured: null,
   featureProductImage: () => {},
+  currentProductImages: [],
+  setCurrentProductImages: () => {},
   productImagesBrowserStatus: 'initial',
   toggleProductImagesBrowser: () => {},
   contributorAreaStatus: 'initial',

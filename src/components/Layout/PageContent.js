@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 
-import InterfaceContext from '../../context/InterfaceContext';
 import ContributorArea from '../ContributorArea';
 import Footer from './Foooter';
 

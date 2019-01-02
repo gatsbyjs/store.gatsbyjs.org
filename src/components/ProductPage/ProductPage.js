@@ -3,14 +3,11 @@ import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 
-import InterfaceContext from '../../context/InterfaceContext';
-import Portal from '../Layout/Portal';
 import ProductImagesMobile from './ProductImagesMobile';
 import ProductImagesDesktop from './ProductImagesDesktop';
 import ProductSpecs from './ProductSpecs';
 import ProductForm from './ProductForm';
 import BackLink from './BackLink';
-import ProductImagesBrowser from './ProductImagesBrowser';
 
 import { breakpoints, colors, fonts, spacing } from '../../utils/styles';
 
@@ -19,8 +16,8 @@ const ProductPageRoot = styled('div')`
 
   @media (min-width: ${breakpoints.desktop}px) {
     align-items: center;
-    display: ${props => (props.isCovered ? 'none' : 'flex')};
-    justify-content: center;
+    display: flex;
+    ${'' /* display: ${props => (props.isCovered ? 'none' : 'flex')}; */} justify-content: center;
     min-height: calc(100vh - 120px);
     padding: ${spacing.xl}px;
     width: 100%;
@@ -48,28 +45,10 @@ const Details = styled(`div`)`
 `;
 
 class ProductPage extends Component {
-  desktopMediaQuery;
-
-  state = {
-    isDesktopViewport: false
-  };
-
-  componentDidMount = () => {
-    const mediaQueryToMatch = `(min-width: ${breakpoints.desktop}px)`;
-
-    this.desktopMediaQuery = window.matchMedia(mediaQueryToMatch);
-    this.desktopMediaQuery.addListener(this.updateViewPortState);
-
-    this.setState({ isDesktopViewport: this.desktopMediaQuery.matches });
-  };
-
-  componentWillUnmount = () => {
-    this.desktopMediaQuery.removeListener(this.updateViewPortState);
-  };
-
-  updateViewPortState = e => {
-    this.setState({ isDesktopViewport: this.desktopMediaQuery.matches });
-  };
+  componentDidMount() {
+    const images = this.props.product.images;
+    this.props.setCurrentProductImages(images);
+  }
 
   render() {
     const {
@@ -77,56 +56,46 @@ class ProductPage extends Component {
       product: { id, images, variants }
     } = this.props;
 
-    const { isDesktopViewport, imageBrowserIsActive } = this.state;
+    const {
+      isDesktopViewport,
+      productImagesBrowserStatus,
+      productImageFeatured,
+      toggleProductImagesBrowser
+    } = this.props;
 
     return (
-      <InterfaceContext.Consumer>
-        {({
-          productImagesBrowserStatus,
-          productImageFeatured,
-          toggleProductImagesBrowser
-        }) => (
-          <>
-            <ProductPageRoot isCovered={productImagesBrowserStatus === 'open'}>
-              <Container>
-                {!isDesktopViewport ? (
-                  <ProductImagesMobile
-                    images={images}
-                    imageOnClick={toggleProductImagesBrowser}
-                  />
-                ) : (
-                  <ProductImagesDesktop
-                    images={images}
-                    imageOnClick={toggleProductImagesBrowser}
-                    imageFeatured={productImageFeatured}
-                  />
-                )}
-                <Details>
-                  <BackLink>Back to Product List</BackLink>
-                  <ProductSpecs product={product} />
-                  <ProductForm id={id} variants={variants} />
-                </Details>
-              </Container>
-            </ProductPageRoot>
-
-            <Portal>
-              <ProductImagesBrowser
-                images={images}
-                position={productImagesBrowserStatus}
-                imageFeatured={productImageFeatured}
-                toggle={toggleProductImagesBrowser}
-                isDesktopViewport={isDesktopViewport}
-              />
-            </Portal>
-          </>
-        )}
-      </InterfaceContext.Consumer>
+      <ProductPageRoot>
+        <Container>
+          {!isDesktopViewport ? (
+            <ProductImagesMobile
+              images={images}
+              imageOnClick={toggleProductImagesBrowser}
+            />
+          ) : (
+            <ProductImagesDesktop
+              images={images}
+              imageOnClick={toggleProductImagesBrowser}
+              imageFeatured={productImageFeatured}
+            />
+          )}
+          <Details>
+            <BackLink>Back to Product List</BackLink>
+            <ProductSpecs product={product} />
+            <ProductForm id={id} variants={variants} />
+          </Details>
+        </Container>
+      </ProductPageRoot>
     );
   }
 }
 
 ProductPage.propTypes = {
-  product: PropTypes.object.isRequired
+  product: PropTypes.object.isRequired,
+  productImagesBrowserStatus: PropTypes.string.isRequired,
+  toggleProductImagesBrowser: PropTypes.func.isRequired,
+  setCurrentProductImages: PropTypes.func.isRequired,
+  productImageFeatured: PropTypes.object,
+  isDesktopViewport: PropTypes.bool
 };
 
 export default ProductPage;

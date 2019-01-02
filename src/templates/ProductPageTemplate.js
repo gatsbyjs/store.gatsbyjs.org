@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
 
-import Layout from '../components/Layout';
+import InterfaceContext from '../context/InterfaceContext';
 import ProductPage from '../components/ProductPage';
 
 const ProductPageTemplate = props => {
@@ -12,12 +12,29 @@ const ProductPageTemplate = props => {
   } = props.data;
 
   return (
-    <>
-      <Helmet>
-        <title>{title}</title>
-      </Helmet>
-      <ProductPage product={product} />
-    </>
+    <InterfaceContext.Consumer>
+      {({
+        isDesktopViewport,
+        productImagesBrowserStatus,
+        productImageFeatured,
+        toggleProductImagesBrowser,
+        setCurrentProductImages
+      }) => (
+        <>
+          <Helmet>
+            <title>{title}</title>
+          </Helmet>
+          <ProductPage
+            product={product}
+            isDesktopViewport={isDesktopViewport}
+            productImagesBrowserStatus={productImagesBrowserStatus}
+            productImageFeatured={productImageFeatured}
+            toggleProductImagesBrowser={toggleProductImagesBrowser}
+            setCurrentProductImages={setCurrentProductImages}
+          />
+        </>
+      )}
+    </InterfaceContext.Consumer>
   );
 };
 
