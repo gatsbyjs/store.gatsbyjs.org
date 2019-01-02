@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import styled, { keyframes } from 'react-emotion';
 
 import UserContext from '../../context/UserContext';
+import Butler from '../../assets/Butler';
 import { Button } from '../shared/Buttons';
 import ContentForNotLoggedIn from './ContentForNotLoggedIn';
 import ContentForLoggedIn from './ContentForLoggedIn';
@@ -45,6 +46,35 @@ const ContentContainerRoot = styled(`div`)`
     }
   }
 `;
+const entry = keyframes`
+   from {
+     opacity: 0;
+     transform: scale(0.5);
+   }
+   to {
+     opacity: 1;
+     transform:  scale(1);
+   }
+ `;
+
+const ButtlerBox = styled(`div`)`
+  animation: ${entry} 0.25s ease forwards;
+  display: none;
+  opacity: 0;
+  position: absolute;
+  right: -10px;
+  top: 35px;
+  transition: 0.2s;
+  transform: scale(0.5);
+
+  svg {
+    transform: scale(-1.8, 1.8);
+  }
+
+  .open & {
+    display: block;
+  }
+`;
 
 const ContentContainer = props => {
   return (
@@ -67,7 +97,12 @@ const ContentContainer = props => {
               profile={profile}
             />
           ) : (
-            <ContentForNotLoggedIn />
+            <>
+              <ContentForNotLoggedIn />
+              <ButtlerBox>
+                <Butler />
+              </ButtlerBox>
+            </>
           )
         }
       </UserContext.Consumer>

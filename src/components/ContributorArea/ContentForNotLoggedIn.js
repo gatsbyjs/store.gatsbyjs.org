@@ -4,7 +4,6 @@ import styled, { keyframes } from 'react-emotion';
 
 import { GoMarkGithub } from 'react-icons/go';
 
-import Butler from '../../assets/Butler';
 import { login } from '../../utils/auth';
 import { Button as BaseButton } from '../shared/Buttons';
 import { Heading, SectionHeading, SubHeading, Text } from './AreaTypography';
@@ -26,22 +25,6 @@ const ContentForGuestRoot = styled(`div`)`
 
 const FirstHeading = styled(Heading)`
   padding-right: ${spacing.lg}px;
-`;
-
-const ButtlerBox = styled(`div`)`
-  display: block;
-  position: absolute;
-  right: -30px;
-  top: 20px;
-  transition: 0.2s;
-
-  svg {
-    transform: scale(-2, 2);
-  }
-
-  @media (min-width: ${breakpoints.desktop}px) {
-    right: -40px;
-  }
 `;
 
 const Button = styled(BaseButton)`
@@ -76,10 +59,6 @@ const ContentForGuest = props => {
       >
         Explore Open Issues
       </Button>
-
-      <ButtlerBox>
-        <Butler />
-      </ButtlerBox>
     </ContentForGuestRoot>
   );
 };
