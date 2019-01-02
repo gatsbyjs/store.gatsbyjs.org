@@ -52,6 +52,7 @@ const PageContentRoot = styled(`main`)`
     &.moved {
       position: fixed;
       transform: translateX(-400px);
+      filter: blur(1px);
     }
   }
 
