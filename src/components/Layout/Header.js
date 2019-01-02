@@ -30,12 +30,12 @@ const HomeLink = styled(Link)`
   margin-right: auto;
 `;
 
-const Header = ({ newDesign = false }) => (
+const Header = () => (
   <InterfaceContext.Consumer>
     {({ productImagesBrowserStatus }) => (
       <HeaderRoot isCovered={productImagesBrowserStatus === 'open'}>
         <HomeLink to="/" aria-label="Home page">
-          <Logo newDesign={newDesign} />
+          <Logo />
         </HomeLink>
       </HeaderRoot>
     )}
