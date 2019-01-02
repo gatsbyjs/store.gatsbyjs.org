@@ -112,6 +112,13 @@ const simpleEntry = keyframes`
   }
 `;
 
+const deadSimpleEntry = keyframes`
+  from {
+    opacity: .25;
+  }
+`;
+
 export const animations = {
-  simpleEntry: `${simpleEntry} .75s ease forwards`
+  simpleEntry: `${simpleEntry} .75s ease forwards`,
+  deadSimpleEntry: `${deadSimpleEntry} .5s ease forwards`
 };

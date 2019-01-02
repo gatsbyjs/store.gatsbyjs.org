@@ -11,7 +11,8 @@ import {
   fonts,
   radius,
   spacing,
-  dimensions
+  dimensions,
+  animations
 } from '../../utils/styles';
 
 const {
@@ -25,7 +26,6 @@ const {
 const PageContentRoot = styled(`main`)`
   opacity: 1;
   padding-left: 0;
-  transform: translateX(0);
   transition: 0.75s;
   width: 100%;
   will-change: all;
@@ -33,6 +33,10 @@ const PageContentRoot = styled(`main`)`
   &.covered {
     opacity: 0;
     position: fixed;
+  }
+
+  &.entry {
+    animation: ${animations.deadSimpleEntry};
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
@@ -125,15 +129,33 @@ class PageContent extends Component {
 
     if (this.props.isDesktopViewport) {
       if (contributorAreaStatusChanged) {
-        this.setState({
-          className: this.props.contributorAreaStatus === 'closed' ? 'wide' : ''
-        });
+        if (this.props.contributorAreaStatus === 'closed') {
+          this.setState(state => ({
+            className:
+              this.props.cartStatus !== 'open'
+                ? state.className + ' wide'
+                : state.className
+          }));
+        } else {
+          this.setState(state => ({
+            className:
+              state.className !== 'open'
+                ? state.className.replace(' wide', '')
+                : state.className
+          }));
+        }
       }
 
       if (cartStatusChanged) {
-        this.setState({
-          className: this.props.cartStatus === 'open' ? 'moved' : ''
-        });
+        if (this.props.cartStatus === 'open') {
+          this.setState(state => ({
+            className: state.className + ' moved'
+          }));
+        } else {
+          this.setState(state => ({
+            className: state.className.replace(' moved', '')
+          }));
+        }
       }
     } else {
       if (contributorAreaStatusChanged || cartStatusChanged) {
@@ -145,6 +167,16 @@ class PageContent extends Component {
               : ''
         });
       }
+    }
+
+    if (prevProps.location.pathname !== this.props.location.pathname) {
+      this.setState(state => ({ className: state.className + ' entry' }));
+
+      setTimeout(() => {
+        this.setState(state => ({
+          className: state.className.replace('entry', '')
+        }));
+      }, 500);
     }
   }
 
@@ -188,6 +220,7 @@ PageContent.propTypes = {
   cartStatus: PropTypes.string.isRequired,
   children: PropTypes.node.isRequired,
   contributorAreaStatus: PropTypes.string.isRequired,
+  location: PropTypes.object.isRequired,
   isDesktopViewport: PropTypes.bool
 };
 

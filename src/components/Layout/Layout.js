@@ -383,6 +383,7 @@ export default class Layout extends React.Component {
                         cartStatus={cartStatus}
                         contributorAreaStatus={contributorAreaStatus}
                         isDesktopViewport={isDesktopViewport}
+                        location={location}
                       >
                         {children}
                       </PageContent>
