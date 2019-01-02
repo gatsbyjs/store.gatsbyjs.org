@@ -4,6 +4,7 @@ import styled from 'react-emotion';
 
 import InterfaceContext from '../../context/InterfaceContext';
 import ContributorArea from '../ContributorArea';
+import Footer from './Foooter';
 
 import {
   breakpoints,
@@ -49,6 +50,7 @@ const PageContentRoot = styled(`main`)`
     }
 
     &.moved {
+      position: fixed;
       transform: translateX(-400px);
     }
   }
@@ -56,50 +58,6 @@ const PageContentRoot = styled(`main`)`
   @media (min-width: ${breakpoints.hd}px) {
     padding-left: ${props =>
       props.contributorAreaStatus === 'closed' ? desktopMinWidth : hdMaxWidth};
-  }
-`;
-
-const Footer = styled(`footer`)`
-  align-items: center;
-  color: ${colors.textMild};
-  display: flex;
-  flex-direction: column;
-  font-size: 0.85rem;
-  padding: ${spacing.md}px;
-  padding-bottom: calc(${spacing.xl}px + 50px);
-
-  a {
-    color: ${colors.brand};
-  }
-
-  @media (min-width: ${breakpoints.desktop}px) {
-    align-items: flex-end;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    min-height: 30px;
-    padding: 0 ${spacing.xl}px;
-  }
-`;
-
-const Row = styled(`span`)`
-  display: inline-block;
-  flex-shrink: 0;
-  line-height: 1.3;
-  padding-bottom: ${spacing['2xs']}px;
-  text-align: center;
-
-  @media (min-width: ${breakpoints.desktop}px) {
-    padding-bottom: 0;
-  }
-`;
-
-const Spacer = styled(`span`)`
-  display: none;
-
-  @media (min-width: ${breakpoints.desktop}px) {
-    display: inline-block;
-    padding: 0 ${spacing.sm}px;
   }
 `;
 
@@ -188,29 +146,7 @@ class PageContent extends Component {
       <PageContentRoot className={className}>
         {children}
         {cartStatus === 'open' && <Overlay />}
-        <Footer>
-          <Row>
-            <b>Got questions?&nbsp;</b>
-          </Row>
-          <Row>
-            Talk to us on Twitter{' '}
-            <a href="https://twitter.com/gatsby">@gatsbyjs</a>
-          </Row>
-          <Row>
-            &nbsp;or send an email to{' '}
-            <a href="mailto:team@gatsbyjs.com">team@gatsbyjs.com</a>
-          </Row>
-          <Spacer>•</Spacer>
-          <Row>
-            Built with 💜 by the{' '}
-            <a href="https://www.gatsbyjs.com/">Gatsby Inkteam</a>
-          </Row>
-          <Spacer>•</Spacer>
-          <Row>
-            See the source code on{' '}
-            <a href="https://github.com/gatsbyjs/store.gatsbyjs.org">GitHub</a>
-          </Row>
-        </Footer>
+        <Footer />
       </PageContentRoot>
     );
   }
