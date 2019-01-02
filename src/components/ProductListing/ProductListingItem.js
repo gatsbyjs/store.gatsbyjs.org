@@ -33,6 +33,12 @@ const ProductListingItemLink = styled(Link)`
   text-decoration: none;
   transition: all ${TRANSITION_DURATION};
 
+  @media (min-width: ${breakpoints.tablet}px) {
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
   @media (min-width: ${breakpoints.desktop}px) {
     flex-basis: 300px;
     justify-content: center;
