@@ -84,7 +84,7 @@ export default () => (
                           You're the best, @{profile.nickname}!
                         </Heading>
                         <Lede className={loading && 'loading'}>
-                          You’ve made {info.totalContributions} contributions to
+                          You’ve made {info.totalContributions} contribution{(info.totalContributions !== 1) && 's'} to
                           Gatsby. 💪💜
                         </Lede>
                         <Text className={loading && 'loading'}>
