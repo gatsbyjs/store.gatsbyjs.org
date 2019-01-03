@@ -48,9 +48,9 @@ const PageContentRoot = styled(`main`)`
     }
 
     &.moved {
+      filter: blur(1px);
       position: fixed;
       transform: translateX(-400px);
-      filter: blur(1px);
     }
 
     &.covered {

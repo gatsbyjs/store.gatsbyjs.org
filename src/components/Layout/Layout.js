@@ -62,7 +62,8 @@ export default class Layout extends React.Component {
           interface: {
             ...state.interface,
             contributorAreaStatus:
-              state.interface.isDesktopViewport === false
+              state.interface.isDesktopViewport === false &&
+              state.interface.contributorAreaStatus === 'open'
                 ? 'closed'
                 : state.interface.contributorAreaStatus,
             cartStatus:

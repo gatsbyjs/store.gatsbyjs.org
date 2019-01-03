@@ -47,6 +47,10 @@ const OpenBarRoot = styled(`button`)`
     transform: translateY(150%);
   }
 
+  &.hidden {
+    display: none;
+  }
+
   @media (min-width: ${breakpoints.desktop}px) {
     height: calc(100vh - 60px);
     top: ${dimensions.headerHeight};
@@ -69,6 +73,9 @@ const OpenBarRoot = styled(`button`)`
 
     &.covered {
       display: none;
+    }
+    &.hidden {
+      display: block;
     }
   }
 `;
@@ -273,16 +280,16 @@ class OpenBar extends Component {
     }
 
     // hide bar on product pages on mobile
-    if (this.props.location.pathname !== prevProps.location.pathname) {
-      if (!this.props.isDesktopViewport) {
+    if (!this.props.isDesktopViewport) {
+      if (this.props.location.pathname !== prevProps.location.pathname) {
         if (/\/product\//.test(this.props.location.pathname)) {
-          this.setState({
-            className: ' closed'
-          });
+          this.setState(state => ({
+            className: state.className + ' hidden'
+          }));
         } else {
-          if (this.state.className === 'closed') {
-            this.setState({ className: 'open' });
-          }
+          this.setState(state => ({
+            className: 'open'
+          }));
         }
       }
     }

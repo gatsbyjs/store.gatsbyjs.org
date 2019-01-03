@@ -29,7 +29,7 @@ import {
 
 const CartRoot = styled(`div`)`
   background: ${colors.lightest};
-  height: 100vh;
+  bottom: 0;
   position: fixed;
   right: 0;
   top: -1px;
@@ -81,9 +81,11 @@ const Title = styled(`h2`)`
 `;
 
 const Content = styled(`div`)`
-  height: calc(100vh - ${dimensions.headerHeight});
+  bottom: 0;
   overflow-y: auto;
   padding: ${spacing.lg}px;
+  position: absolute;
+  top: ${dimensions.headerHeight};
   width: 100%;
 
   @media (min-width: ${breakpoints.desktop}px) {
