@@ -52,6 +52,10 @@ const PageContentRoot = styled(`main`)`
       transform: translateX(-400px);
       filter: blur(1px);
     }
+
+    &.covered {
+      display: none;
+    }
   }
 
   @media (min-width: ${breakpoints.hd}px) {
@@ -80,16 +84,33 @@ class PageContent extends Component {
   };
 
   componentDidUpdate(prevProps) {
+    const imageBrowserStatusChanged =
+      this.props.productImagesBrowserStatus !==
+      prevProps.productImagesBrowserStatus;
     const contributorAreaStatusChanged =
       prevProps.contributorAreaStatus !== this.props.contributorAreaStatus;
     const cartStatusChanged = prevProps.cartStatus !== this.props.cartStatus;
 
     if (this.props.isDesktopViewport) {
+      if (imageBrowserStatusChanged) {
+        if (this.props.productImagesBrowserStatus === 'open') {
+          setTimeout(() => {
+            this.setState(state => ({
+              className: state.className + ' covered'
+            }));
+          }, 500);
+        } else {
+          this.setState(state => ({
+            className: state.className.replace(' covered', '')
+          }));
+        }
+      }
+
       if (contributorAreaStatusChanged) {
         if (this.props.contributorAreaStatus === 'closed') {
           this.setState(state => ({
             className:
-              this.props.cartStatus !== 'open'
+              this.props.contributorAreaStatus !== 'open'
                 ? state.className + ' wide'
                 : state.className
           }));
@@ -97,7 +118,7 @@ class PageContent extends Component {
           this.setState(state => ({
             className:
               state.className !== 'open'
-                ? state.className.replace(' wide', '')
+                ? state.className.replace('wide', '')
                 : state.className
           }));
         }
@@ -110,7 +131,7 @@ class PageContent extends Component {
           }));
         } else {
           this.setState(state => ({
-            className: state.className.replace(' moved', '')
+            className: state.className.replace('moved', '')
           }));
         }
       }
@@ -156,6 +177,7 @@ PageContent.propTypes = {
   children: PropTypes.node.isRequired,
   contributorAreaStatus: PropTypes.string.isRequired,
   location: PropTypes.object.isRequired,
+  productImagesBrowserStatus: PropTypes.string.isRequired,
   isDesktopViewport: PropTypes.bool
 };
 

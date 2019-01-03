@@ -80,6 +80,10 @@ const ContributorAreaRoot = styled(`aside`)`
         display: flex;
       }
     }
+
+    &.covered {
+      display: none;
+    }
   }
 
   @media (min-width: ${breakpoints.hd}px) {
@@ -101,30 +105,71 @@ class ContributorArea extends Component {
   };
 
   componentDidUpdate(prevProps) {
-    if (
-      this.props.isDesktopViewport !== prevProps.isDesktopViewport &&
-      prevProps.isDesktopViewport === null
-    ) {
+    const isDesktopViewportChanged =
+      this.props.isDesktopViewport !== prevProps.isDesktopViewport;
+    const componentStatusChanged = prevProps.status !== this.props.status;
+    const imageBrowserStatusChanged =
+      this.props.productImagesBrowserStatus !==
+      prevProps.productImagesBrowserStatus;
+
+    // set inital status of the component after isDesktopViewport is set for the first time (value changes from null to true/false)
+    if (isDesktopViewportChanged && prevProps.isDesktopViewport === null) {
       this.setState({
         className: this.props.isDesktopViewport ? 'open' : 'closed'
       });
     }
 
-    if (prevProps.status !== this.props.status) {
+    // apply transitions after changes of the component's status, trigerred by user (toggleContributorArea)
+    if (componentStatusChanged) {
       if (this.props.status === 'open') {
         // before we start opening the component we first have to unhide it
         this.setState({
           className: `${this.state.className} unhide`
         });
-        setTimeout(() => this.setState({ className: 'opening' }), 0);
-        setTimeout(() => this.setState({ className: 'open' }), 750);
+        setTimeout(
+          () =>
+            this.setState({
+              className: 'opening'
+            }),
+          0
+        );
+        setTimeout(
+          () =>
+            this.setState({
+              className: 'open'
+            }),
+          750
+        );
       }
 
       if (this.props.status === 'closed') {
         this.setState({
           className: 'closing'
         });
-        setTimeout(() => this.setState({ className: 'closed' }), 750);
+        setTimeout(
+          () =>
+            this.setState({
+              className: 'closed'
+            }),
+          750
+        );
+      }
+    }
+
+    // for desktop viewport, hide all content when ProductImagesBrowser is open
+    if (this.props.isDesktopViewport) {
+      if (imageBrowserStatusChanged) {
+        if (this.props.productImagesBrowserStatus === 'open') {
+          setTimeout(() => {
+            this.setState(state => ({
+              className: state.className + ' covered'
+            }));
+          }, 500);
+        } else {
+          this.setState(state => ({
+            className: state.className.replace('covered', '')
+          }));
+        }
       }
     }
   }
@@ -134,7 +179,13 @@ class ContributorArea extends Component {
   };
 
   render() {
-    const { location, status, toggle, isDesktopViewport } = this.props;
+    const {
+      location,
+      status,
+      toggle,
+      isDesktopViewport,
+      productImagesBrowserStatus
+    } = this.props;
     const { className, issuesVisible } = this.state;
 
     return (
@@ -144,9 +195,10 @@ class ContributorArea extends Component {
         </ContributorAreaRoot>
 
         <CloseBar
-          status={status}
+          areaStatus={status}
           onClick={toggle}
           isDesktopViewport={isDesktopViewport}
+          productImagesBrowserStatus={productImagesBrowserStatus}
         />
 
         <OpenBar
@@ -154,6 +206,7 @@ class ContributorArea extends Component {
           isDesktopViewport={isDesktopViewport}
           onClick={toggle}
           location={location}
+          productImagesBrowserStatus={productImagesBrowserStatus}
         />
       </>
     );
@@ -164,7 +217,8 @@ ContributorArea.propTypes = {
   status: PropTypes.string.isRequired,
   location: PropTypes.object.isRequired,
   toggle: PropTypes.func.isRequired,
-  isDesktopViewport: PropTypes.bool
+  isDesktopViewport: PropTypes.bool,
+  productImagesBrowserStatus: PropTypes.string
 };
 
 export default ContributorArea;

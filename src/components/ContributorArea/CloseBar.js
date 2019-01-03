@@ -84,6 +84,10 @@ const CloseBarRoot = styled(`button`)`
         display: block;
       }
     }
+
+    &.covered {
+      display: none;
+    }
   }
 
   @media (min-width: ${breakpoints.hd}px) {
@@ -100,45 +104,61 @@ const CloseBarRoot = styled(`button`)`
 
 class CloseBar extends Component {
   state = {
-    classNames: 'closed'
+    className: 'closed'
   };
 
   componentDidUpdate(prevProps) {
-    // to-do: refactor it's the same code as in ContributorArea
-    if (
-      this.props.isDesktopViewport !== prevProps.isDesktopViewport &&
-      prevProps.isDesktopViewport === null
-    ) {
+    // most of code below is similar to ContributorArea, take a look for comments
+
+    const isDesktopViewportChanged =
+      this.props.isDesktopViewport !== prevProps.isDesktopViewport;
+    const areaStatusChanged = prevProps.areaStatus !== this.props.areaStatus;
+    const imageBrowserStatusChanged =
+      this.props.productImagesBrowserStatus !==
+      prevProps.productImagesBrowserStatus;
+
+    if (isDesktopViewportChanged && prevProps.isDesktopViewport === null) {
       this.setState({
-        classNames: this.props.isDesktopViewport ? 'open' : 'closed'
+        className: this.props.isDesktopViewport ? 'open' : 'closed'
       });
     }
 
-    if (prevProps.status !== this.props.status) {
-      if (this.props.status === 'open') {
-        // before we start opening the component we first have to unhide it
-        this.setState({
-          classNames: `${this.state.classNames} unhide`
-        });
-        setTimeout(() => this.setState({ classNames: 'opening' }), 0);
-        setTimeout(() => this.setState({ classNames: 'open' }), 500);
+    if (areaStatusChanged) {
+      if (this.props.areaStatus === 'open') {
+        this.setState({ className: `${this.state.className} unhide` });
+        setTimeout(() => this.setState({ className: 'opening' }), 0);
+        setTimeout(() => this.setState({ className: 'open' }), 500);
       }
 
-      if (this.props.status === 'closed') {
-        this.setState({
-          classNames: 'closing'
-        });
-        setTimeout(() => this.setState({ classNames: 'closed' }), 500);
+      if (this.props.areaStatus === 'closed') {
+        this.setState({ className: 'closing' });
+        setTimeout(() => this.setState({ className: 'closed' }), 500);
+      }
+    }
+
+    if (this.props.isDesktopViewport) {
+      if (imageBrowserStatusChanged) {
+        if (this.props.productImagesBrowserStatus === 'open') {
+          setTimeout(() => {
+            this.setState(state => ({
+              className: state.className + ' covered'
+            }));
+          }, 500);
+        } else {
+          this.setState(state => ({
+            className: state.className.replace('covered', '')
+          }));
+        }
       }
     }
   }
 
   render() {
     const { status, onClick, isDesktopViewport } = this.props;
-    const { classNames } = this.state;
+    const { className } = this.state;
 
     return (
-      <CloseBarRoot className={classNames} onClick={onClick}>
+      <CloseBarRoot className={className} onClick={onClick}>
         {isDesktopViewport ? `Close sidebar` : `Continue shopping`}
         {isDesktopViewport ? <MdClose /> : <MdArrowForward />}
       </CloseBarRoot>
@@ -148,8 +168,9 @@ class CloseBar extends Component {
 
 CloseBar.propTypes = {
   onClick: PropTypes.func.isRequired,
-  status: PropTypes.string.isRequired,
-  isDesktopViewport: PropTypes.bool
+  areaStatus: PropTypes.string.isRequired,
+  isDesktopViewport: PropTypes.bool,
+  productImagesBrowserStatus: PropTypes.string
 };
 
 export default CloseBar;

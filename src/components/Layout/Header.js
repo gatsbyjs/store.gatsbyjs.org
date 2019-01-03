@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import { Link } from 'gatsby';
 import Logo from './Logo';
 import InterfaceContext from '../../context/InterfaceContext';
 
-import { colors, dimensions, spacing } from '../../utils/styles';
+import { breakpoints, colors, dimensions, spacing } from '../../utils/styles';
 
 const HeaderRoot = styled('header')`
   align-items: center;
@@ -21,6 +22,12 @@ const HeaderRoot = styled('header')`
   right: 0;
   top: 0;
   z-index: 1000;
+
+  @media (min-width: ${breakpoints.desktop}px) {
+    &.covered {
+      display: none;
+    }
+  }
 `;
 
 const HomeLink = styled(Link)`
@@ -30,16 +37,49 @@ const HomeLink = styled(Link)`
   margin-right: auto;
 `;
 
-const Header = () => (
-  <InterfaceContext.Consumer>
-    {({ productImagesBrowserStatus }) => (
-      <HeaderRoot isCovered={productImagesBrowserStatus === 'open'}>
+class Header extends Component {
+  state = {
+    className: ''
+  };
+
+  componentDidUpdate(prevProps) {
+    if (this.props.isDesktopViewport) {
+      const imageBrowserStatusChanged =
+        this.props.productImagesBrowserStatus !==
+        prevProps.productImagesBrowserStatus;
+
+      if (imageBrowserStatusChanged) {
+        if (this.props.productImagesBrowserStatus === 'open') {
+          setTimeout(() => {
+            this.setState({
+              className: 'covered'
+            });
+          }, 500);
+        } else {
+          this.setState({
+            className: ''
+          });
+        }
+      }
+    }
+  }
+
+  render() {
+    const { className } = this.state;
+
+    return (
+      <HeaderRoot className={className}>
         <HomeLink to="/" aria-label="Home page">
           <Logo />
         </HomeLink>
       </HeaderRoot>
-    )}
-  </InterfaceContext.Consumer>
-);
+    );
+  }
+}
+
+Header.propTypes = {
+  productImagesBrowserStatus: PropTypes.string.isRequired,
+  isDesktopViewport: PropTypes.bool
+};
 
 export default Header;

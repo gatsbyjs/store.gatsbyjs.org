@@ -66,6 +66,10 @@ const OpenBarRoot = styled(`button`)`
       display: none;
       transform: translateY(0);
     }
+
+    &.covered {
+      display: none;
+    }
   }
 `;
 
@@ -215,25 +219,56 @@ const ContentFor = ({ contributor }) => {
 
 class OpenBar extends Component {
   state = {
-    classNames: 'closed'
+    className: 'closed'
   };
 
   componentDidUpdate(prevProps) {
-    // initail action after isDesktopViewport is set
-    if (
-      this.props.isDesktopViewport !== prevProps.isDesktopViewport &&
-      prevProps.isDesktopViewport === null
-    ) {
+    // most of code below is similar to ContributorArea, take a look for comments
+
+    const isDesktopViewportChanged =
+      this.props.isDesktopViewport !== prevProps.isDesktopViewport;
+    const areaStatusChanged = prevProps.areaStatus !== this.props.areaStatus;
+    const imageBrowserStatusChanged =
+      this.props.productImagesBrowserStatus !==
+      prevProps.productImagesBrowserStatus;
+
+    if (isDesktopViewportChanged && prevProps.isDesktopViewport === null) {
       if (this.props.isDesktopViewport) {
-        this.setState({
-          classNames: 'closed'
-        });
+        this.setState({ className: 'closed' });
       } else {
         this.setState({
-          classNames: /\/product\//.test(this.props.location.pathname)
+          className: /\/product\//.test(this.props.location.pathname)
             ? 'closed'
             : 'open'
         });
+      }
+    }
+
+    if (areaStatusChanged) {
+      if (this.revertStatus(this.props.areaStatus) === 'open') {
+        this.setState({ className: 'opening' });
+        setTimeout(() => this.setState({ className: 'open' }), 500);
+      }
+
+      if (this.revertStatus(this.props.areaStatus) === 'closed') {
+        this.setState({ className: 'closing' });
+        setTimeout(() => this.setState({ className: 'closed' }), 500);
+      }
+    }
+
+    if (this.props.isDesktopViewport) {
+      if (imageBrowserStatusChanged) {
+        if (this.props.productImagesBrowserStatus === 'open') {
+          setTimeout(() => {
+            this.setState(state => ({
+              className: state.className + ' covered'
+            }));
+          }, 500);
+        } else {
+          this.setState(state => ({
+            className: state.className.replace('covered', '')
+          }));
+        }
       }
     }
 
@@ -242,25 +277,13 @@ class OpenBar extends Component {
       if (!this.props.isDesktopViewport) {
         if (/\/product\//.test(this.props.location.pathname)) {
           this.setState({
-            classNames: 'closed'
+            className: ' closed'
           });
         } else {
-          if (this.state.classNames === 'closed') {
-            this.setState({ classNames: 'open' });
+          if (this.state.className === 'closed') {
+            this.setState({ className: 'open' });
           }
         }
-      }
-    }
-
-    if (prevProps.areaStatus !== this.props.areaStatus) {
-      if (this.revertStatus(this.props.areaStatus) === 'open') {
-        this.setState({ classNames: 'opening' });
-        setTimeout(() => this.setState({ classNames: 'open' }), 500);
-      }
-
-      if (this.revertStatus(this.props.areaStatus) === 'closed') {
-        this.setState({ classNames: 'closing' });
-        setTimeout(() => this.setState({ classNames: 'closed' }), 500);
       }
     }
   }
@@ -277,13 +300,13 @@ class OpenBar extends Component {
 
   render() {
     const { onClick, areaStatus } = this.props;
-    const { classNames } = this.state;
+    const { className } = this.state;
 
     return (
       <UserContext.Consumer>
         {({ contributor }) => {
           return (
-            <OpenBarRoot onClick={onClick} className={classNames}>
+            <OpenBarRoot onClick={onClick} className={className}>
               <Content>
                 <Section>
                   <ButlerBox>
@@ -314,7 +337,8 @@ OpenBar.propTypes = {
   areaStatus: PropTypes.string.isRequired,
   location: PropTypes.object.isRequired,
   onClick: PropTypes.func.isRequired,
-  isDesktopViewport: PropTypes.bool
+  isDesktopViewport: PropTypes.bool,
+  productImagesBrowserStatus: PropTypes.string
 };
 
 export default OpenBar;

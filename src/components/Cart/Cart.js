@@ -36,7 +36,7 @@ const CartRoot = styled(`div`)`
   transform: translateX(100%);
   transition: transform 0.75s;
   width: 100%;
-  will-change: all;
+  will-change: transform;
   z-index: 1000;
 
   &.open {
@@ -48,6 +48,10 @@ const CartRoot = styled(`div`)`
 
   @media (min-width: ${breakpoints.desktop}px) {
     width: ${dimensions.cartWidthDesktop};
+
+    &.covered {
+      display: none;
+    }
   }
 `;
 
@@ -254,8 +258,43 @@ const BackLink = styled(Button)`
 `;
 
 class Cart extends Component {
+  state = {
+    className: 'closed'
+  };
+
+  componentDidUpdate(prevProps) {
+    const componentStatusChanged = prevProps.status !== this.props.status;
+    const imageBrowserStatusChanged =
+      this.props.productImagesBrowserStatus !==
+      prevProps.productImagesBrowserStatus;
+
+    if (componentStatusChanged) {
+      this.setState({
+        className: this.props.status
+      });
+    }
+
+    if (this.props.isDesktopViewport) {
+      if (imageBrowserStatusChanged) {
+        if (this.props.productImagesBrowserStatus === 'open') {
+          console.log('asdfasdfasdfadsfasdfads');
+          setTimeout(() => {
+            this.setState(state => ({
+              className: state.className + ' covered'
+            }));
+          }, 500);
+        } else {
+          this.setState(state => ({
+            className: state.className.replace('covered', '')
+          }));
+        }
+      }
+    }
+  }
+
   render() {
     const { status, toggle } = this.props;
+    const { className } = this.state;
 
     return (
       <StoreContext.Consumer>
@@ -281,7 +320,7 @@ class Cart extends Component {
           );
 
           return (
-            <CartRoot className={status}>
+            <CartRoot className={className}>
               <Heading>
                 <CartToggle onClick={toggle}>
                   {status === 'open' ? (
@@ -355,7 +394,9 @@ class Cart extends Component {
 Cart.propTypes = {
   status: PropTypes.string.isRequired,
   toggle: PropTypes.func.isRequired,
-  contributorAreaStatus: PropTypes.string.isRequired
+  contributorAreaStatus: PropTypes.string.isRequired,
+  isDesktopViewport: PropTypes.bool,
+  productImagesBrowserStatus: PropTypes.string
 };
 
 export default Cart;
