@@ -1,55 +1,61 @@
 import React from 'react';
 import styled from 'react-emotion';
 import SizeChartTable from './SizeChartTable';
-import { Subheading, UnorderedList } from '../shared/Typography';
+import {
+  Heading as BaseHeading,
+  Text,
+  TextContainer,
+  UnorderedList
+} from '../shared/Typography';
 import {
   colors,
   fonts,
   spacing,
   pullHeadline,
-  breakpoints
+  breakpoints,
+  dimensions
 } from '../../utils/styles';
 
-const Headline = styled('h1')`
-  ${pullHeadline};
-
-  @media (min-width: ${breakpoints.hd}px) {
-    padding-top: 32px;
-    margin-top: 1.5rem;
-  }
+const Heading = styled(BaseHeading)`
+  margin-bottom: -${spacing.sm}px;
 `;
 
-const LargerSubheading = styled(Subheading)`
-  font-size: 1.4rem;
+const Section = styled(`section`)`
+  padding-top: calc(${dimensions.headerHeight} + ${spacing.sm}px);
 `;
 
-const SubSubheading = styled('h4')`
-  font-family: ${fonts.heading};
-  font-weight: 500;
+const SectionHeading = styled(Heading.withComponent(`h2`))`
+  font-size: 1.8rem;
+  letter-spacing: -0.01em;
+  margin-bottom: ${spacing.sm}px;
+`;
+
+const SubHeading = styled(Heading.withComponent(`h3`))`
+  color: ${colors.text};
   font-size: 1.2rem;
-  margin-bottom: 0;
-  color: #333;
+  margin: ${spacing.lg}px 0 ${spacing.xs}px;
 `;
 
-const NestedUnorderedList = styled('ul')`
+const NestedUnorderedList = styled(UnorderedList)`
   list-style-type: disc;
+  margin-top: 0;
 `;
 
 const UnitWrapper = styled('div')`
-  float: right;
-  display: flex;
   align-items: center;
+  display: flex;
+  float: right;
   font-size: 0.75rem;
   margin: ${-1 * spacing.lg}px 0 ${spacing.md}px 0;
 `;
 
 const UnitOption = styled('div')`
-  padding: 0.2em 0.5em;
-  margin-right: 0.5em;
   background: ${props => props.active && colors.brand};
+  border-radius: 1em;
   color: ${props => props.active && colors.lightest};
   cursor: pointer;
-  border-radius: 1em;
+  margin-right: 0.5em;
+  padding: 0.2em 0.5em;
 
   &:hover {
     background: ${props => !props.active && colors.brandLight};
@@ -78,7 +84,7 @@ const UnitSelector = ({ setUnits, unit }) => {
   );
 };
 
-export default class ProductDetails extends React.Component {
+class ProductDetails extends React.Component {
   constructor() {
     super();
     this.state = {
@@ -95,57 +101,62 @@ export default class ProductDetails extends React.Component {
     const { units } = this.state;
 
     return (
-      <>
-        <Headline>Product Details</Headline>
-        <LargerSubheading>Size Chart</LargerSubheading>
-        <UnitSelector unit={units} setUnits={this.changeUnits} />
-        <SizeChartTable unit={units} />
-        <p>
-          <strong style={{ color: colors.brand }}>Don’t see your size?</strong>{' '}
-          Send us an email team@gatsbyjs.com and we’ll see if we can help!
-        </p>
-        <LargerSubheading>T-Shirt Materials & Fit</LargerSubheading>
-        <p>
-          To help you find the right size and fit, here are some additional
-          details about our t-shirts.
-        </p>
-        <SubSubheading>Dark Deploy Tee</SubSubheading>
-        <UnorderedList>
-          <li>Material: 50% polyester, 25% cotton, 25% rayon</li>
-          <li>Fit:</li>
-          <NestedUnorderedList>
-            <li>Unisex sizes: regular/retail fit</li>
-            <li>Women’s sizes: semi-relaxed fit</li>
-          </NestedUnorderedList>
-        </UnorderedList>
-        <SubSubheading>Purple Logo Tee</SubSubheading>
-        <UnorderedList>
-          <li>Material: 100% cotton</li>
-          <li>Fit:</li>
-          <NestedUnorderedList>
-            <li>All sizes: regular/retail fit</li>
-          </NestedUnorderedList>
-        </UnorderedList>
-        <LargerSubheading>Care Instructions</LargerSubheading>
-        <SubSubheading>Socks</SubSubheading>
-        <p>
-          Keep those socks comfy on your feet and looking bright by washing them
-          in cold water with darker colors. Tumble dry on low so they don’t
-          shrink!
-        </p>
-        <SubSubheading>T-Shirts and Hoodies</SubSubheading>
-        <p>
-          Machine wash cold and tumble dry only. These shirts can’t take the
-          heat (literally)! We want to make sure you’re happy with our shirts,
-          but they require a little TLC.
-        </p>
-        <SubSubheading>Water Bottles</SubSubheading>
-        <p>
-          Do not put in microwave, freezer, or dishwasher. Hand wash with hot
-          soapy water. Leave cap off and allow to air dry. Do not use cleaners
-          containing bleach or chlorine.
-        </p>
-      </>
+      <TextContainer>
+        <Heading>Product Details</Heading>
+        <Section id="size-chart">
+          <SectionHeading>Size Chart</SectionHeading>
+          <UnitSelector unit={units} setUnits={this.changeUnits} />
+          <SizeChartTable unit={units} />
+          <p>
+            <strong style={{ color: colors.brand }}>
+              Don’t see your size?
+            </strong>{' '}
+            Send us an email team@gatsbyjs.com and we’ll see if we can help!
+          </p>
+        </Section>
+        <Section id="materials-fit">
+          <SectionHeading>T-Shirt Materials & Fit</SectionHeading>
+          <p>
+            To help you find the right size and fit, here are some additional
+            details about our t-shirts.
+          </p>
+          <SubHeading>Dark Deploy Tee</SubHeading>
+          <UnorderedList>
+            <li>Material: 50% polyester, 25% cotton, 25% rayon</li>
+            <li>Fit:</li>
+            <NestedUnorderedList>
+              <li>Unisex sizes: regular/retail fit</li>
+              <li>Women’s sizes: semi-relaxed fit</li>
+            </NestedUnorderedList>
+          </UnorderedList>
+          <SubHeading>Purple Logo Tee</SubHeading>
+          <UnorderedList>
+            <li>Material: 100% cotton</li>
+            <li>Fit:</li>
+            <NestedUnorderedList>
+              <li>All sizes: regular/retail fit</li>
+            </NestedUnorderedList>
+          </UnorderedList>
+        </Section>
+
+        <Section id="care-instructions">
+          <SectionHeading>Care Instructions</SectionHeading>
+          <SubHeading>Socks</SubHeading>
+          <p>
+            Keep those socks comfy on your feet and looking bright by washing
+            them in cold water with darker colors. Tumble dry on low so they
+            don’t shrink!
+          </p>
+          <SubHeading>T-Shirts</SubHeading>
+          <p>
+            Machine wash cold and tumble dry only. These shirts can’t take the
+            heat (literally)! We want to make sure you’re happy with our shirts,
+            but they require a little TLC.
+          </p>
+        </Section>
+      </TextContainer>
     );
   }
 }
+
+export default ProductDetails;
