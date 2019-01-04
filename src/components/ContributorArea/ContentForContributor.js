@@ -107,9 +107,9 @@ const ContentForContributor = props => {
               <CodeBadgeBox key={code.code}>
                 <CodeBadge>
                   <Name code={code.code}>
-                    {`LEVEL ${badgeThemes[code.code].level} SWAG CODE`}
+                    {`Level ${badgeThemes[code.code].level} Swag Code`}
                   </Name>
-                  {!code.used ? (
+                  {code.code === `HOLYBUCKETS` ? (
                     <Code>{code.code}</Code>
                   ) : (
                     <Used>Claimed! 🎉</Used>
