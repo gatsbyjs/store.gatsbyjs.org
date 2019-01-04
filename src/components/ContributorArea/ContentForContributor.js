@@ -109,7 +109,7 @@ const ContentForContributor = props => {
                   <Name code={code.code}>
                     {`Level ${badgeThemes[code.code].level} Swag Code`}
                   </Name>
-                  {code.code === `HOLYBUCKETS` ? (
+                  {!code.used ? (
                     <Code>{code.code}</Code>
                   ) : (
                     <Used>Claimed! 🎉</Used>
