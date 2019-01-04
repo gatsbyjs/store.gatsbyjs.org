@@ -10,6 +10,7 @@ import { Heading, SectionHeading, SubHeading, Text } from './AreaTypography';
 import {
   breakpoints,
   colors,
+  badgeThemes,
   fonts,
   radius,
   spacing,
@@ -36,9 +37,11 @@ const CodeBadge = styled(`div`)`
 
 const Name = styled(`span`)`
   background: ${props =>
-    props.code === 'LEVEL2' ? colors.lemon : colors.brand};
+    badgeThemes[props.code]
+      ? badgeThemes[props.code].backgroundTheme
+      : colors.brand};
   color: ${props =>
-    props.code === 'LEVEL2' ? colors.brandDark : colors.lemon};
+    badgeThemes[props.code] ? badgeThemes[props.code].textTheme : colors.brand};
   font-size: 1.1rem;
   padding: ${spacing.xs}px;
 `;
@@ -52,9 +55,10 @@ const Code = styled(`span`)`
 
 const Used = styled(`span`)`
   align-items: center;
-  background: rgba(0, 0, 0, 0.25);
+  background: ${colors.brandDarker};
   color: ${colors.brandBright};
   display: flex;
+  font-size: 1.1rem;
   justify-content: center;
   padding: ${spacing.xs}px;
 
@@ -85,32 +89,30 @@ const ContentForContributor = props => {
         let text;
 
         if (numberOfCodes > 1) {
-          text = `Enter these discount codes during checkouts to receive your
-                free swags!`;
+          text = `Use these discount codes during checkout to claim some free swag!`;
         } else if (numberOfCodes == 1) {
-          text = `Enter this discount code during checkout to receive your
-                free swag!`;
+          text = `Enter this discount code during checkout to claim your free swag!`;
         } else {
-          text = `You already used all your codes.`;
+          text = `Looks like you've claimed your swag! Thanks again, and keep being awesome.`;
         }
 
         return (
           <ContentForContributorRoot>
             <Heading>Here you go!</Heading>
+            <Text>
+              Thanks for going the extra mile to help build Gatsby! 💪
+            </Text>
             <Text>{text}</Text>
             {codes.map(code => (
               <CodeBadgeBox key={code.code}>
                 <CodeBadge>
                   <Name code={code.code}>
-                    Swag code LEVEL
-                    {code.code === `LEVEL2` ? `2` : `1`}
+                    {`Level ${badgeThemes[code.code].level} Swag Code`}
                   </Name>
-                  {!code.used ? (
+                  {code.code === `HOLYBUCKETS` ? (
                     <Code>{code.code}</Code>
                   ) : (
-                    <Used>
-                      Already used <MdDoNotDisturbAlt />
-                    </Used>
+                    <Used>Claimed! 🎉</Used>
                   )}
                 </CodeBadge>
                 {/* {!code.used && (

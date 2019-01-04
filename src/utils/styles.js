@@ -27,6 +27,19 @@ export const colors = {
   lemon: `#ffdf37`
 };
 
+export const badgeThemes = {
+  BUILDWITHGATSBY: {
+    level: 1,
+    backgroundTheme: colors.brand,
+    textTheme: colors.lemon
+  },
+  HOLYBUCKETS: {
+    level: 2,
+    backgroundTheme: colors.lemon,
+    textTheme: colors.brandDark
+  }
+};
+
 export const spacing = {
   '3xs': 2,
   '2xs': 4,
