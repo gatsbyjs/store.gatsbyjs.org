@@ -85,7 +85,6 @@ const ProgressBarContainer = `
 `;
 
 const ProgressIndicator = `
-  animation: ${animations.progressBarAnimate};
   border: 0;
   width: 100%;
   border-radius: 1rem 0 0 1rem;
