@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled, { keyframes } from 'react-emotion';
 
-import { MdDoNotDisturbAlt } from 'react-icons/md';
+import { MdLock } from 'react-icons/md';
 
 import UserContext from '../../context/UserContext';
 import { Heading, SectionHeading, SubHeading, Text } from './AreaTypography';
@@ -76,18 +76,82 @@ const Tip = styled(`p`)`
   padding-top: ${spacing.xs}px;
 `;
 
+const ProgressBarContainer = `
+  border: 0;
+  width: 100%;
+  border-radius: 1rem;
+  background-color: ${colors.brandDarker};
+  height: 1.6rem;
+`;
+
+const ProgressIndicator = `
+  border: 0;
+  width: 100%;
+  border-radius: 1rem 0 0 1rem;
+  background-color: ${colors.lemon};
+  transition: width 1s;
+  background-image: linear-gradient(
+    45deg,
+    rgba(0, 0, 0, 0.1) 25%,
+    transparent 25%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.1) 75%,
+    transparent 75%,
+    transparent,
+    rgba(0, 0, 0, 0.1) 50%,
+    rgba(0, 0, 0, 0.1) 75%,
+    transparent 75%,
+    transparent
+  );
+`;
+
+const ProgressBar = styled(`progress`)`
+  ${ProgressBarContainer}
+
+  ::-webkit-progress-bar {
+    ${ProgressBarContainer}
+  }
+
+  ::-webkit-progress-value {
+    ${ProgressIndicator}
+  }
+
+  ::-ms-fill {
+    ${ProgressIndicator}
+  }
+  ::-moz-progress-bar {
+    ${ProgressIndicator}
+  }
+  ::-webkit-progress-value {
+    ${ProgressIndicator}
+  }
+`;
+
+const LockIcon = styled(MdLock)`
+  font-size: 2rem;
+  padding-top: 0.4rem;
+`;
+
 const ContentForContributor = props => {
   return (
     <UserContext.Consumer>
       {({ contributor }) => {
         const {
-          shopify: { codes }
+          shopify: { codes },
+          github: { contributionCount }
         } = contributor;
 
+        const showLevelTwoIncentive =
+          contributionCount >= 1 && contributionCount < 5;
+        let contributionsToGo, percentToGo;
+        if (showLevelTwoIncentive) {
+          contributionsToGo = 5 - contributionCount;
+          percentToGo = ((5 - contributionsToGo) / 5) * 100;
+        }
+
         const numberOfCodes = codes.filter(code => code.used === false).length;
-
         let text;
-
         if (numberOfCodes > 1) {
           text = `Use these discount codes during checkout to claim some free swag!`;
         } else if (numberOfCodes == 1) {
@@ -100,7 +164,9 @@ const ContentForContributor = props => {
           <ContentForContributorRoot>
             <Heading>Here you go!</Heading>
             <Text>
-              Thanks for going the extra mile to help build Gatsby! 💪
+              Thanks for going the extra mile to help build Gatsby! 💪 You have
+              made <strong>{contributionCount}</strong>{' '}
+              {`contribution${contributionCount > 1 ? `s` : ``}`}!
             </Text>
             <Text>{text}</Text>
             {codes.map(code => (
@@ -123,6 +189,23 @@ const ContentForContributor = props => {
                 )} */}
               </CodeBadgeBox>
             ))}
+            {/* Show progress bar when Level 1 is earned, but Level 2 is not */}
+            {showLevelTwoIncentive && (
+              <>
+                <CodeBadgeBox key={`HOLYBUCKETS`}>
+                  <CodeBadge>
+                    <Name code={`HOLYBUCKETS`}>{`Level 2 Swag Code`}</Name>
+                    <Code>
+                      <LockIcon />
+                    </Code>
+                  </CodeBadge>
+                </CodeBadgeBox>
+                <ProgressBar value={percentToGo} max="100" />
+                <Text>{`Make ${contributionsToGo} more contribution${
+                  contributionsToGo > 1 ? `s` : ``
+                } to earn level 2 swag!`}</Text>
+              </>
+            )}
           </ContentForContributorRoot>
         );
       }}
