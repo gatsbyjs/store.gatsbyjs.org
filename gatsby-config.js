@@ -17,7 +17,7 @@ module.exports = {
     },
     'gatsby-transformer-sharp',
     {
-      resolve: 'gatsby-source-shopify2',
+      resolve: 'gatsby-source-shopify',
       options: {
         shopName: 'gatsby-swag',
         accessToken: process.env.SHOPIFY_ACCESS_TOKEN
