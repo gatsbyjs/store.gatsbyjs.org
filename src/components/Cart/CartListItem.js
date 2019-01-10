@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled, { css } from 'react-emotion';
 
 import { MdClose } from 'react-icons/md';
@@ -92,64 +92,60 @@ const debounce = (delay, fn) => {
   };
 };
 
-class CartListItem extends React.Component {
-  state = {
-    quantity: this.props.item.quantity || 1
-  };
+export default ({
+  item,
+  setCartLoading,
+  updateQuantity,
+  handleRemove,
+  isCartLoading
+}) => {
+  const [quantity, setQuantity] = useState(1);
 
-  inputChangeHandler = event => {
+  if (item.quantity !== quantity && !isCartLoading) {
+    setQuantity(item.quantity);
+  }
+
+  const handleInputChange = event => {
     const target = event.target;
-    const value = target.value;
+    const value = Number(target.value);
+    const updateQuantityDebounced = debounce(500, val => updateQuantity(val));
 
-    this.setState({ quantity: value });
-    this.props.setCartLoading(true);
-    this.debouncedUpdateQuantity(value);
+    setCartLoading(true);
+    setQuantity(value);
+    updateQuantityDebounced(value);
   };
 
-  debouncedUpdateQuantity = debounce(500, quantity =>
-    this.props.updateQuantity(quantity)
+  const handleRemoveItem = event => {
+    setCartLoading(true);
+    handleRemove(event);
+  };
+
+  return (
+    <CartListItemRoot>
+      <Thumbail
+        id={item.variant.image.id}
+        fallback={item.variant.image.src}
+        alt={item.variant.image.altText}
+      />
+      <Info>
+        <Name>{item.title}</Name>
+        <Meta>
+          {item.variant.title}, ${item.variant.price}
+        </Meta>
+      </Info>
+      <Quantity
+        aria-label="Quantity"
+        id={`quantity_${item.id.substring(58, 64)}`}
+        type="number"
+        name="quantity"
+        min="1"
+        step="1"
+        onChange={event => handleInputChange(event)}
+        value={quantity}
+      />
+      <Remove onClick={handleRemoveItem}>
+        <MdClose />
+      </Remove>
+    </CartListItemRoot>
   );
-
-  removeHandler = event => {
-    this.props.setCartLoading(true);
-    this.props.handleRemove(event);
-  };
-
-  componentWillUnmount() {
-    this.props.setCartLoading(false);
-  }
-
-  render() {
-    const { item } = this.props;
-    return (
-      <CartListItemRoot>
-        <Thumbail
-          id={item.variant.image.id}
-          fallback={item.variant.image.src}
-          alt={item.variant.image.altText}
-        />
-        <Info>
-          <Name>{item.title}</Name>
-          <Meta>
-            {item.variant.title}, ${item.variant.price}
-          </Meta>
-        </Info>
-        <Quantity
-          aria-label="Quantity"
-          id={`quantiQuantityty_${item.id.substring(58, 64)}`}
-          type="number"
-          name="quantity"
-          min="1"
-          step="1"
-          onChange={event => this.inputChangeHandler(event)}
-          value={this.state.quantity}
-        />
-        <Remove onClick={this.removeHandler}>
-          <MdClose />
-        </Remove>
-      </CartListItemRoot>
-    );
-  }
-}
-
-export default CartListItem;
+};
