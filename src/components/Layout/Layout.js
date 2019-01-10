@@ -403,6 +403,14 @@ export default class Layout extends React.Component {
                       productImagesBrowserStatus={productImagesBrowserStatus}
                     />
                     <Viewport>
+                      <Cart
+                        isDesktopViewport={isDesktopViewport}
+                        status={cartStatus}
+                        toggle={toggleCart}
+                        contributorAreaStatus={contributorAreaStatus}
+                        productImagesBrowserStatus={productImagesBrowserStatus}
+                      />
+
                       <ContributorArea
                         location={location}
                         status={contributorAreaStatus}
@@ -431,14 +439,6 @@ export default class Layout extends React.Component {
                           isDesktopViewport={isDesktopViewport}
                         />
                       )}
-
-                      <Cart
-                        isDesktopViewport={isDesktopViewport}
-                        status={cartStatus}
-                        toggle={toggleCart}
-                        contributorAreaStatus={contributorAreaStatus}
-                        productImagesBrowserStatus={productImagesBrowserStatus}
-                      />
                     </Viewport>
                   </>
                 )}
