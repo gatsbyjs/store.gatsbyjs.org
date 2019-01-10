@@ -76,7 +76,11 @@ export default ({
   handleRemove,
   isCartLoading
 }) => {
-  const [quantity, setQuantity] = useState(item.quantity);
+  const [quantity, setQuantity] = useState(1);
+
+  if (item.quantity !== quantity && !isCartLoading) {
+    setQuantity(item.quantity);
+  }
 
   const handleInputChange = event => {
     if (isCartLoading) {
