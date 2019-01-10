@@ -330,7 +330,6 @@ class Cart extends Component {
           };
 
           const handleQuantityChange = lineItemID => async quantity => {
-            console.log({ lineItemID, quantity });
             if (!quantity) {
               return;
             }
