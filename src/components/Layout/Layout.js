@@ -217,12 +217,16 @@ export default class Layout extends React.Component {
     const fetchCheckout = id => this.state.store.client.checkout.fetch(id);
 
     if (existingCheckoutID) {
-      const checkout = await fetchCheckout(existingCheckoutID);
+      try {
+        const checkout = await fetchCheckout(existingCheckoutID);
 
-      // Make sure this cart hasn’t already been purchased.
-      if (!checkout.completedAt) {
-        setCheckoutInState(checkout);
-        return;
+        // Make sure this cart hasn’t already been purchased.
+        if (!checkout.completedAt) {
+          setCheckoutInState(checkout);
+          return;
+        }
+      } catch (e) {
+        localStorage.setItem('shopify_checkout_id', null);
       }
     }
 
