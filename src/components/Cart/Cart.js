@@ -349,7 +349,10 @@ class Cart extends Component {
               }`}
             >
               <Heading>
-                <CartToggle onClick={toggle}>
+                <CartToggle
+                  aria-label={`Shopping cart with ${itemsInCart} items`}
+                  onClick={toggle}
+                >
                   {status === 'open' ? (
                     <MdClose />
                   ) : (
