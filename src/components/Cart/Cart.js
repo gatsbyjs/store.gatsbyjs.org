@@ -42,8 +42,29 @@ const CartRoot = styled(`div`)`
   &.open {
     transform: translateX(0%);
   }
+
   &.closed {
     transform: translateX(100%);
+  }
+
+  ::after {
+    background-color: ${colors.lightest};
+    bottom: 0;
+    content: '';
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: all 250ms;
+  }
+
+  &.loading {
+    ::after {
+      opacity: 0.9;
+      pointer-events: all;
+    }
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
@@ -261,7 +282,8 @@ const BackLink = styled(Button)`
 
 class Cart extends Component {
   state = {
-    className: 'closed'
+    className: 'closed',
+    isLoading: false
   };
 
   componentDidUpdate(prevProps) {
@@ -279,7 +301,6 @@ class Cart extends Component {
     if (this.props.isDesktopViewport) {
       if (imageBrowserStatusChanged) {
         if (this.props.productImagesBrowserStatus === 'open') {
-          console.log('asdfasdfasdfadsfasdfads');
           setTimeout(() => {
             this.setState(state => ({
               className: state.className + ' covered'
@@ -322,7 +343,11 @@ class Cart extends Component {
           );
 
           return (
-            <CartRoot className={className}>
+            <CartRoot
+              className={`${className} ${
+                this.state.isLoading ? 'loading' : ''
+              }`}
+            >
               <Heading>
                 <CartToggle onClick={toggle}>
                   {status === 'open' ? (
@@ -352,6 +377,7 @@ class Cart extends Component {
                     handleRemove={handleRemove}
                     updateQuantity={handleQuantityChange}
                     setCartLoading={setCartLoading}
+                    isCartLoading={this.state.isLoading}
                   />
 
                   <Costs>

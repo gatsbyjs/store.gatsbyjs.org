@@ -1,5 +1,5 @@
-import React from 'react';
-import styled, { css } from 'react-emotion';
+import React, { useState } from 'react';
+import styled from 'react-emotion';
 
 import { MdClose } from 'react-icons/md';
 
@@ -7,14 +7,7 @@ import CartThumbail from './CartThumbail';
 import { Input } from '../shared/FormElements';
 import { Button } from '../shared/Buttons';
 
-import {
-  breakpoints,
-  colors,
-  spacing,
-  radius,
-  input,
-  visuallyHidden
-} from '../../utils/styles';
+import { breakpoints, colors, spacing } from '../../utils/styles';
 
 const CartListItemRoot = styled('li')`
   align-items: center;
@@ -76,80 +69,63 @@ const Remove = styled(Button)`
   }
 `;
 
-// Add our own debounce utility so we don’t need to load a lib.
-const debounce = (delay, fn) => {
-  let timeout;
+export default ({
+  item,
+  setCartLoading,
+  updateQuantity,
+  handleRemove,
+  isCartLoading
+}) => {
+  const [quantity, setQuantity] = useState(1);
 
-  return function(...args) {
-    if (timeout) {
-      clearTimeout(timeout);
+  if (item.quantity !== quantity && !isCartLoading) {
+    setQuantity(item.quantity);
+  }
+
+  const handleInputChange = event => {
+    if (isCartLoading) {
+      return;
     }
 
-    timeout = setTimeout(() => {
-      fn(...args);
-      timeout = null;
-    }, delay);
-  };
-};
-
-class CartListItem extends React.Component {
-  state = {
-    quantity: this.props.item.quantity || 1
-  };
-
-  inputChangeHandler = event => {
     const target = event.target;
-    const value = target.value;
+    const value = Number(target.value);
 
-    this.setState({ quantity: value });
-    this.props.setCartLoading(true);
-    this.debouncedUpdateQuantity(value);
+    setCartLoading(true);
+    setQuantity(value);
+    updateQuantity(value);
   };
 
-  debouncedUpdateQuantity = debounce(500, quantity =>
-    this.props.updateQuantity(quantity)
+  const handleRemoveItem = event => {
+    setCartLoading(true);
+    handleRemove(event);
+  };
+
+  return (
+    <CartListItemRoot>
+      <Thumbail
+        id={item.variant.image.id}
+        fallback={item.variant.image.src}
+        alt={item.variant.image.altText}
+      />
+      <Info>
+        <Name>{item.title}</Name>
+        <Meta>
+          {item.variant.title}, ${item.variant.price}
+        </Meta>
+      </Info>
+      <Quantity
+        aria-label="Quantity"
+        id={`quantity_${item.id.substring(58, 64)}`}
+        type="number"
+        name="quantity"
+        min="1"
+        step="1"
+        onChange={event => handleInputChange(event)}
+        value={quantity}
+      />
+      <Remove onClick={handleRemoveItem}>
+        <MdClose />
+      </Remove>
+    </CartListItemRoot>
   );
-
-  removeHandler = event => {
-    this.props.setCartLoading(true);
-    this.props.handleRemove(event);
-  };
-
-  componentWillUnmount() {
-    this.props.setCartLoading(false);
-  }
-
-  render() {
-    const { item } = this.props;
-    return (
-      <CartListItemRoot>
-        <Thumbail
-          id={item.variant.image.id}
-          fallback={item.variant.image.src}
-          alt={item.variant.image.altText}
-        />
-        <Info>
-          <Name>{item.title}</Name>
-          <Meta>
-            {item.variant.title}, ${item.variant.price}
-          </Meta>
-        </Info>
-        <Quantity
-          aria-label="Quantity"
-          id={`quantiQuantityty_${item.id.substring(58, 64)}`}
-          type="number"
-          name="quantity"
-          min="1"
-          step="1"
-          onChange={event => this.inputChangeHandler(event)}
-          value={this.state.quantity}
-        />
-        <Remove onClick={this.removeHandler}>
-          <MdClose />
-        </Remove>
-      </CartListItemRoot>
-    );
-  }
-}
-
-export default CartListItem;
+};

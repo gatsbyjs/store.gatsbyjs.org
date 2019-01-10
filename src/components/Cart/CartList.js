@@ -30,7 +30,13 @@ const Headers = styled(`div`)`
   }
 `;
 
-const CartList = ({ items, handleRemove, updateQuantity, setCartLoading }) => (
+const CartList = ({
+  items,
+  handleRemove,
+  updateQuantity,
+  setCartLoading,
+  isCartLoading
+}) => (
   <>
     <Headers>
       <span>Product</span>
@@ -45,6 +51,7 @@ const CartList = ({ items, handleRemove, updateQuantity, setCartLoading }) => (
           handleRemove={handleRemove(item.id)}
           updateQuantity={updateQuantity(item.id)}
           setCartLoading={setCartLoading}
+          isCartLoading={isCartLoading}
         />
       ))}
     </CartListRoot>
