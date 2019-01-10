@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled, { css } from 'react-emotion';
+import styled from 'react-emotion';
 
 import { MdClose } from 'react-icons/md';
 
@@ -7,14 +7,7 @@ import CartThumbail from './CartThumbail';
 import { Input } from '../shared/FormElements';
 import { Button } from '../shared/Buttons';
 
-import {
-  breakpoints,
-  colors,
-  spacing,
-  radius,
-  input,
-  visuallyHidden
-} from '../../utils/styles';
+import { breakpoints, colors, spacing } from '../../utils/styles';
 
 const CartListItemRoot = styled('li')`
   align-items: center;
@@ -76,22 +69,6 @@ const Remove = styled(Button)`
   }
 `;
 
-// Add our own debounce utility so we don’t need to load a lib.
-const debounce = (delay, fn) => {
-  let timeout;
-
-  return function(...args) {
-    if (timeout) {
-      clearTimeout(timeout);
-    }
-
-    timeout = setTimeout(() => {
-      fn(...args);
-      timeout = null;
-    }, delay);
-  };
-};
-
 export default ({
   item,
   setCartLoading,
@@ -99,20 +76,19 @@ export default ({
   handleRemove,
   isCartLoading
 }) => {
-  const [quantity, setQuantity] = useState(1);
-
-  if (item.quantity !== quantity && !isCartLoading) {
-    setQuantity(item.quantity);
-  }
+  const [quantity, setQuantity] = useState(item.quantity);
 
   const handleInputChange = event => {
+    if (isCartLoading) {
+      return;
+    }
+
     const target = event.target;
     const value = Number(target.value);
-    const updateQuantityDebounced = debounce(500, val => updateQuantity(val));
 
     setCartLoading(true);
     setQuantity(value);
-    updateQuantityDebounced(value);
+    updateQuantity(value);
   };
 
   const handleRemoveItem = event => {
