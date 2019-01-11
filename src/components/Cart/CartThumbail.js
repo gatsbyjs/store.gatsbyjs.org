@@ -3,7 +3,7 @@ import { graphql, StaticQuery } from 'gatsby';
 import styled from 'react-emotion';
 import Image from 'gatsby-image';
 
-import { colors, spacing, radius } from '../../utils/styles';
+import { colors, radius } from '../../utils/styles';
 
 const CartThumbailRoot = styled(Image)`
   border: 1px solid ${colors.brandLight};

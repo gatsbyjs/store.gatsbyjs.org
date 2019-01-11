@@ -3,18 +3,10 @@ import styled from 'react-emotion';
 import SizeChartTable from './SizeChartTable';
 import {
   Heading as BaseHeading,
-  Text,
   TextContainer,
   UnorderedList
 } from '../shared/Typography';
-import {
-  colors,
-  fonts,
-  spacing,
-  pullHeadline,
-  breakpoints,
-  dimensions
-} from '../../utils/styles';
+import { colors, spacing, dimensions } from '../../utils/styles';
 
 const Heading = styled(BaseHeading)`
   margin-bottom: -${spacing.sm}px;

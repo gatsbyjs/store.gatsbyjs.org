@@ -3,13 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import { Link as GatsbyLink } from 'gatsby';
 
-import {
-  breakpoints,
-  colors,
-  fonts,
-  radius,
-  spacing
-} from '../../utils/styles';
+import { colors, radius, spacing } from '../../utils/styles';
 
 const LinkRoot = styled(GatsbyLink)`
   align-items: center;
@@ -51,7 +45,7 @@ const LinkRoot = styled(GatsbyLink)`
 `;
 
 const Link = props => {
-  const { children, className = '', inline = false } = props;
+  const { children } = props;
 
   return <LinkRoot {...props}>{children}</LinkRoot>;
 };

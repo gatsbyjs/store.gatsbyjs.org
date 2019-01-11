@@ -2,17 +2,15 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Image from 'gatsby-image';
 import styled, { keyframes } from 'react-emotion';
-import { debounce } from '../../utils/helpers';
-
 import { MdClose, MdZoomIn, MdZoomOut } from 'react-icons/md';
 
-import InterfaceContext from '../../context/InterfaceContext';
 import CommunityCaption from './CommunityCaption';
 import ProductThumbnails, {
   ProductThumbnailsContent,
   Thumbnail
 } from './ProductThumbnails';
 import { Button } from '../shared/Buttons';
+import { debounce } from '../../utils/helpers';
 
 import {
   breakpoints,

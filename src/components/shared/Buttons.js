@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import { Link } from 'gatsby';
 
-import { colors, fonts, radius, spacing } from '../../utils/styles';
+import { colors, fonts, radius } from '../../utils/styles';
 
 export const ButtonBase = styled(`button`)`
   align-items: center;

@@ -1,12 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { graphql, StaticQuery } from 'gatsby';
-import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 
 import ProductListingHeader from './ProductListingHeader';
 import ProductListingItem from './ProductListingItem';
 
-import { breakpoints, colors, fonts, spacing } from '../../utils/styles';
+import { breakpoints, spacing } from '../../utils/styles';
 
 const ProductListingContainer = styled(`div`)`
   display: flex;
@@ -21,7 +20,7 @@ const ProductListingContainer = styled(`div`)`
   }
 `;
 
-const ProductListing = props => (
+const ProductListing = () => (
   <StaticQuery
     query={graphql`
       query ProductListingQuery {
@@ -68,7 +67,5 @@ const ProductListing = props => (
     )}
   />
 );
-
-ProductListing.propTypes = {};
 
 export default ProductListing;

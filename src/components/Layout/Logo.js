@@ -1,7 +1,7 @@
 import React from 'react';
 import { css } from 'react-emotion';
 
-import { colors, breakpoints } from '../../utils/styles';
+import { colors } from '../../utils/styles';
 
 const svg = css`
   display: inline-block;

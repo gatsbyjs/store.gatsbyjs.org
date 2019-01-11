@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'react-emotion';
 
-import { breakpoints, colors, dimensions, spacing } from '../../utils/styles';
+import { breakpoints, colors, spacing } from '../../utils/styles';
 
 const FooterRoot = styled('footer')`
   align-items: center;

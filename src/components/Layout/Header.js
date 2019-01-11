@@ -3,7 +3,6 @@ import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 import { Link } from 'gatsby';
 import Logo from './Logo';
-import InterfaceContext from '../../context/InterfaceContext';
 
 import { breakpoints, colors, dimensions, spacing } from '../../utils/styles';
 

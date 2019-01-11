@@ -1,11 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
-import { Link } from 'gatsby';
-
 import { MdArrowBack } from 'react-icons/md';
 
-import InterfaceContext from '../../context/InterfaceContext';
 import { Button } from '../shared/Buttons';
 
 import { breakpoints, colors, fonts, spacing } from '../../utils/styles';
@@ -45,17 +42,13 @@ const BackToListing = styled(Button)`
   }
 `;
 
-const BackLink = props => {
-  const { children, className, to, callback } = props;
-
-  return (
-    <BackLinkRoot className={className}>
-      <BackToListing to="/">
-        <MdArrowBack /> {children}
-      </BackToListing>
-    </BackLinkRoot>
-  );
-};
+const BackLink = ({ children, className }) => (
+  <BackLinkRoot className={className}>
+    <BackToListing to="/">
+      <MdArrowBack /> {children}
+    </BackToListing>
+  </BackLinkRoot>
+);
 
 BackLink.propTypes = {
   children: PropTypes.node.isRequired,

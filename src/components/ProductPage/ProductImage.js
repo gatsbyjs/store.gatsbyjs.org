@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Image from 'gatsby-image';
 import styled, { keyframes } from 'react-emotion';
-
 import { MdZoomIn } from 'react-icons/md';
-
-import InterfaceContext from '../../context/InterfaceContext';
 
 import { breakpoints, colors, radius, spacing } from '../../utils/styles';
 

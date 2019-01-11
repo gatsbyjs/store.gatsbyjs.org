@@ -4,7 +4,6 @@ import styled, { keyframes } from 'react-emotion';
 import { MdKeyboardArrowDown, MdInfo } from 'react-icons/md';
 
 import { colors, radius, spacing, defaultFontStack } from '../../utils/styles';
-import gift from '../../assets/gift.png';
 
 const ShippingInfoRoot = styled(`div`)`
   background: #f5f5f5;
@@ -73,7 +72,7 @@ class ShippingInfo extends Component {
     detailsVisible: false
   };
 
-  toggle = e => {
+  toggle = () => {
     this.setState({ detailsVisible: !this.state.detailsVisible });
   };
 

@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 
@@ -9,7 +8,7 @@ import ProductSpecs from './ProductSpecs';
 import ProductForm from './ProductForm';
 import BackLink from './BackLink';
 
-import { breakpoints, colors, fonts, spacing } from '../../utils/styles';
+import { breakpoints, spacing } from '../../utils/styles';
 
 const ProductPageRoot = styled('div')`
   padding-bottom: ${spacing.md}px;
@@ -58,7 +57,6 @@ class ProductPage extends Component {
 
     const {
       isDesktopViewport,
-      productImagesBrowserStatus,
       productImageFeatured,
       toggleProductImagesBrowser
     } = this.props;

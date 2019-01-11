@@ -2,7 +2,7 @@ import React from 'react';
 import styled, { keyframes } from 'react-emotion';
 
 import Butler from '../../assets/Butler';
-import { colors, spacing, animations } from '../../utils/styles';
+import { animations } from '../../utils/styles';
 
 const LoadingRoot = styled(`div`)`
   align-items: center;
@@ -47,15 +47,13 @@ const ButlerBox = styled(`span`)`
   }
 `;
 
-const Loading = () => {
-  return (
-    <LoadingRoot>
-      <ButlerBox>
-        <Butler />
-      </ButlerBox>
-      Loading...
-    </LoadingRoot>
-  );
-};
+const Loading = () => (
+  <LoadingRoot>
+    <ButlerBox>
+      <Butler />
+    </ButlerBox>
+    Loading...
+  </LoadingRoot>
+);
 
 export default Loading;

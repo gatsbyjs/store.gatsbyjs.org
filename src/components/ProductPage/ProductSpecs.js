@@ -45,7 +45,6 @@ const ProductSpecs = props => {
     product: {
       title,
       description,
-      variants,
       variants: [variant]
     }
   } = props;

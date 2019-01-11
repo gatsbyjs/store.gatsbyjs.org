@@ -2,12 +2,10 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 
-import { MdCameraAlt } from 'react-icons/md';
-
-import ProductImage, { StyledImage } from './ProductImage';
+import ProductImage from './ProductImage';
 import ProductThumbnails, { Thumbnail } from './ProductThumbnails';
 
-import { radius, fonts, spacing, colors } from '../../utils/styles';
+import { spacing } from '../../utils/styles';
 
 const THUMBNAIL_SIZE = '54px';
 

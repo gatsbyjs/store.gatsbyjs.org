@@ -10,15 +10,8 @@ import {
 } from 'react-icons/md';
 
 import { Fieldset, Input, Label, Select, Submit } from '../shared/FormElements';
-import { PrimaryButton } from '../shared/Buttons';
 
-import {
-  breakpoints,
-  colors,
-  fonts,
-  spacing,
-  radius
-} from '../../utils/styles';
+import { breakpoints, colors, spacing, radius } from '../../utils/styles';
 
 import StoreContext from '../../context/StoreContext';
 import Link from '../shared/Link';
@@ -166,10 +159,9 @@ class ProductForm extends Component {
   };
 
   render() {
-    const { id: rawId, variants } = this.props;
+    const { variants } = this.props;
     const { errors } = this.state;
 
-    const id = rawId.substring(58, 64);
     const hasVariants = variants.length > 1;
 
     /*

@@ -1,7 +1,6 @@
 import React from 'react';
 import styled, { injectGlobal } from 'react-emotion';
 import { push } from 'gatsby';
-import { GitHubIssueFragment } from '../Dashboard/IssueList';
 
 import { client } from '../../context/ApolloContext';
 import StoreContext, { defaultStoreContext } from '../../context/StoreContext';
@@ -18,7 +17,7 @@ import Cart from '../Cart';
 import SiteMetadata from '../shared/SiteMetadata';
 
 import { logout, getUserInfo } from '../../utils/auth';
-import { breakpoints, dimensions, spacing } from '../../utils/styles';
+import { breakpoints, spacing } from '../../utils/styles';
 
 // Import Futura PT typeface
 import '../../fonts/futura-pt/Webfonts/futurapt_demi_macroman/stylesheet.css';
@@ -36,14 +35,6 @@ injectGlobal`
     body {
       -webkit-tap-highlight-color: rgba(0,0,0,.05)
     }
-`;
-
-const Main = styled('main')`
-  display: block;
-  margin: 0 auto;
-  max-width: 600px;
-  padding: ${spacing.xl}px ${spacing.sm}px ${spacing['3xl']}px;
-  position: relative;
 `;
 
 const Viewport = styled(`div`)`
@@ -376,7 +367,7 @@ export default class Layout extends React.Component {
   };
 
   render() {
-    const { children, location, newDesign = true } = this.props;
+    const { children, location } = this.props;
 
     return (
       <>

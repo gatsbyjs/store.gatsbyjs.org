@@ -1,29 +1,14 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled, { keyframes } from 'react-emotion';
-
-import { Button } from '../shared/Buttons';
+import styled from 'react-emotion';
 
 import CloseBar from './CloseBar';
 import OpenBar from './OpenBar';
-import { Heading, SectionHeading, SubHeading, Text } from './AreaTypography';
 import ContentContainer from './ContentContainer';
-
-import {
-  breakpoints,
-  colors,
-  fonts,
-  radius,
-  spacing,
-  dimensions
-} from '../../utils/styles';
+import { breakpoints, colors, dimensions } from '../../utils/styles';
 
 const {
-  contributorAreaWidth: {
-    openDesktop: desktopMaxWidth,
-    openHd: hdMaxWidth,
-    closed: desktopMinWidth
-  }
+  contributorAreaWidth: { openDesktop: desktopMaxWidth, openHd: hdMaxWidth }
 } = dimensions;
 
 const ContributorAreaRoot = styled(`aside`)`
@@ -186,7 +171,7 @@ class ContributorArea extends Component {
       isDesktopViewport,
       productImagesBrowserStatus
     } = this.props;
-    const { className, issuesVisible } = this.state;
+    const { className } = this.state;
 
     return (
       <>
