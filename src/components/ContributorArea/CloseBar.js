@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled, { keyframes } from 'react-emotion';
+import styled from 'react-emotion';
 
 import { MdArrowForward, MdClose } from 'react-icons/md';
 
@@ -8,18 +8,12 @@ import {
   breakpoints,
   colors,
   fonts,
-  radius,
   spacing,
-  dimensions,
-  durations
+  dimensions
 } from '../../utils/styles';
 
 const {
-  contributorAreaWidth: {
-    openDesktop: desktopMaxWidth,
-    openHd: hdMaxWidth,
-    closed: desktopMinWidth
-  },
+  contributorAreaWidth: { openDesktop: desktopMaxWidth, openHd: hdMaxWidth },
   contributorAreaBarHeight: height
 } = dimensions;
 
@@ -154,7 +148,7 @@ class CloseBar extends Component {
   }
 
   render() {
-    const { status, onClick, isDesktopViewport } = this.props;
+    const { onClick, isDesktopViewport } = this.props;
     const { className } = this.state;
 
     return (

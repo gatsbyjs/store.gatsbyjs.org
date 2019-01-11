@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'react-emotion';
 
-import { isAuthenticated, login } from '../utils/auth';
+import { isAuthenticated } from '../utils/auth';
 import {
   TextContainer,
   Text as BaseText
@@ -13,8 +13,6 @@ const Text = styled(BaseText)`
 
 export default () => {
   if (!isAuthenticated()) {
-    // login();
-
     return (
       <TextContainer>
         <Text>Redirecting you to the login screen...</Text>

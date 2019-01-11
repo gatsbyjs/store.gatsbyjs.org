@@ -1,10 +1,8 @@
-import React from 'react';
-import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 
 import { PrimaryButton } from './Buttons';
 
-import { colors, fonts, radius, spacing } from '../../utils/styles';
+import { colors, radius, spacing } from '../../utils/styles';
 
 export const Input = styled(`input`)`
   background-color: ${colors.lightest};

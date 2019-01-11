@@ -1,7 +1,6 @@
 import React from 'react';
 import styled, { keyframes } from 'react-emotion';
 import PropTypes from 'prop-types';
-
 import { MdArrowForward } from 'react-icons/md';
 
 import { colors, radius, spacing } from '../../utils/styles';
@@ -56,38 +55,7 @@ const Link = styled('a')`
   }
 `;
 
-/*
-const Label = styled('a')`
-  border: 1px solid ${colors.brand};
-  border-radius: ${radius.default}px;
-  color: ${colors.brandLight};
-  display: inline-block;
-  font-size: 0.9rem;
-  line-height: 1;
-  margin: 0 ${spacing.xs}px ${spacing.xs}px 0;
-  padding: ${spacing.xs}px;
-  text-decoration: none;
-  transition: 0.5s;
-
-  @media (hover: hover) {
-    :hover {
-      border: 1px solid ${colors.brandBright};
-      color: ${colors.lightest};
-    }
-  }
-`;
-*/
-
-const formatLabelUrl = url => {
-  const urlParts = url.split('/');
-  const organization = urlParts[4];
-  const repository = urlParts[5];
-  const label = urlParts.slice(-1)[0];
-
-  return `https://github.com/${organization}/${repository}/issues?q=is%3Aissue+is%3Aopen+label%3A%22${label}%22`;
-};
-
-const OpenIssuesList = ({ issues, isDesktopViewport }) => (
+const OpenIssuesList = ({ issues }) => (
   <OpenIssuesListRoot>
     {issues.map(issue => (
       <Issue key={issue.id}>
@@ -95,11 +63,6 @@ const OpenIssuesList = ({ issues, isDesktopViewport }) => (
           <MdArrowForward />
           {issue.title} <span>#{issue.url.split('/').pop()}</span>
         </Link>
-        {/* {issue.labels.map(({ url, name }) => (
-          <Label href={formatLabelUrl(url)} key={`${issue.id}-${name}`}>
-            {name}
-          </Label>
-        ))} */}
       </Issue>
     ))}
   </OpenIssuesListRoot>

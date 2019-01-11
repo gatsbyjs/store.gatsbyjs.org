@@ -2,13 +2,11 @@ import React from 'react';
 import gql from 'graphql-tag';
 import styled from 'react-emotion';
 import { Query } from 'react-apollo';
-
 import { GoMarkGithub } from 'react-icons/go';
 
 import { Subheading, Text } from './AreaTypography';
 import OpenIssuesList from './OpenIssuesList';
 import { Button as BaseButton } from '../shared/Buttons';
-
 import { spacing } from '../../utils/styles';
 
 const OpenIssuesRoot = styled(`div`)`

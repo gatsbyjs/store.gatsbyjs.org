@@ -1,13 +1,6 @@
 import styled from 'react-emotion';
 
-import {
-  breakpoints,
-  colors,
-  fonts,
-  radius,
-  spacing,
-  dimensions
-} from '../../utils/styles';
+import { colors, fonts, spacing } from '../../utils/styles';
 
 export const SectionHeading = styled(`h3`)`
   color: ${colors.lightest};

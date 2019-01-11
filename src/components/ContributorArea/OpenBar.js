@@ -2,21 +2,10 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled, { keyframes } from 'react-emotion';
 
-import { MdArrowBack } from 'react-icons/md';
-
 import UserContext from '../../context/UserContext';
 import Butler from '../../assets/Butler';
 import ButlerHand from '../../assets/ButlerHand';
-
-import {
-  breakpoints,
-  colors,
-  fonts,
-  radius,
-  spacing,
-  dimensions,
-  durations
-} from '../../utils/styles';
+import { breakpoints, colors, fonts, dimensions } from '../../utils/styles';
 
 const OpenBarRoot = styled(`button`)`
   align-items: center;

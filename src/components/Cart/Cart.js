@@ -10,7 +10,6 @@ import {
 } from 'react-icons/md';
 
 import StoreContext from '../../context/StoreContext';
-import InterfaceContext from '../../context/InterfaceContext';
 import CartList from './CartList';
 import CartIndicator from './CartIndicator';
 import EmptyCart from './EmptyCart';
@@ -22,7 +21,6 @@ import {
   breakpoints,
   colors,
   fonts,
-  radius,
   spacing,
   dimensions
 } from '../../utils/styles';

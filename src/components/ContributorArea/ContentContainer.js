@@ -1,21 +1,12 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import styled, { keyframes } from 'react-emotion';
 
 import UserContext from '../../context/UserContext';
 import Butler from '../../assets/Butler';
-import { Button } from '../shared/Buttons';
 import ContentForNotLoggedIn from './ContentForNotLoggedIn';
 import ContentForLoggedIn from './ContentForLoggedIn';
 
-import {
-  breakpoints,
-  colors,
-  fonts,
-  radius,
-  spacing,
-  dimensions
-} from '../../utils/styles';
+import { breakpoints, colors, spacing, dimensions } from '../../utils/styles';
 
 const ContentContainerRoot = styled(`div`)`
   -webkit-overflow-scrolling: touch;
@@ -76,38 +67,36 @@ const ButlerBox = styled(`div`)`
   }
 `;
 
-const ContentContainer = props => {
-  return (
-    <ContentContainerRoot>
-      <UserContext.Consumer>
-        {({
-          contributor,
-          error,
-          handleLogout,
-          loading,
-          profile,
-          profile: { nickname }
-        }) =>
-          nickname || loading ? (
-            <ContentForLoggedIn
-              contributor={contributor}
-              error={error}
-              handleLogout={handleLogout}
-              loading={loading}
-              profile={profile}
-            />
-          ) : (
-            <>
-              <ContentForNotLoggedIn />
-              <ButlerBox>
-                <Butler />
-              </ButlerBox>
-            </>
-          )
-        }
-      </UserContext.Consumer>
-    </ContentContainerRoot>
-  );
-};
+const ContentContainer = () => (
+  <ContentContainerRoot>
+    <UserContext.Consumer>
+      {({
+        contributor,
+        error,
+        handleLogout,
+        loading,
+        profile,
+        profile: { nickname }
+      }) =>
+        nickname || loading ? (
+          <ContentForLoggedIn
+            contributor={contributor}
+            error={error}
+            handleLogout={handleLogout}
+            loading={loading}
+            profile={profile}
+          />
+        ) : (
+          <>
+            <ContentForNotLoggedIn />
+            <ButlerBox>
+              <Butler />
+            </ButlerBox>
+          </>
+        )
+      }
+    </UserContext.Consumer>
+  </ContentContainerRoot>
+);
 
 export default ContentContainer;

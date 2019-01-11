@@ -5,13 +5,7 @@ import Image from 'gatsby-image';
 
 import InterfaceContext from '../../context/InterfaceContext';
 
-import {
-  breakpoints,
-  colors,
-  fonts,
-  radius,
-  spacing
-} from '../../utils/styles';
+import { breakpoints, colors, radius, spacing } from '../../utils/styles';
 
 const THUMBNAIL_SIZE = '44px';
 

@@ -2,10 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 
-import { MdSentimentSatisfied } from 'react-icons/md';
-
 import { colors, dimensions, radius, spacing } from '../../utils/styles';
-import gift from '../../assets/gift.png';
 
 const CartIndicatorRoot = styled(`div`)`
   background: ${colors.lemon};
@@ -26,7 +23,7 @@ class CartIndicator extends Component {
     message: ''
   };
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(prevProps) {
     if (prevProps.adding !== this.props.adding) {
       if (this.props.adding) {
         this.setState({

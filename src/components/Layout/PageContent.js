@@ -2,18 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 
-import ContributorArea from '../ContributorArea';
 import Footer from './Footer';
-
-import {
-  breakpoints,
-  colors,
-  fonts,
-  radius,
-  spacing,
-  dimensions,
-  animations
-} from '../../utils/styles';
+import { breakpoints, dimensions, animations } from '../../utils/styles';
 
 const {
   contributorAreaWidth: {
@@ -163,7 +153,7 @@ class PageContent extends Component {
   }
 
   render() {
-    const { children, cartStatus, contributorAreaStatus } = this.props;
+    const { children, cartStatus } = this.props;
     const { className } = this.state;
 
     return (

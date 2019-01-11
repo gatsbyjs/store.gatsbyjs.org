@@ -1,15 +1,5 @@
 import React from 'react';
-import styled from 'react-emotion';
 import { Heading, Text, TextContainer } from '../components/shared/Typography';
-
-import {
-  colors,
-  fonts,
-  spacing,
-  pullHeadline,
-  breakpoints,
-  dimensions
-} from '../utils/styles';
 
 const NotFoundPage = () => (
   <TextContainer>

@@ -1,6 +1,6 @@
-import styled, { keyframes, css } from 'react-emotion';
+import styled from 'react-emotion';
 
-import { breakpoints, colors, fonts, spacing } from '../../utils/styles';
+import { breakpoints, colors, spacing } from '../../utils/styles';
 
 export const TextContainer = styled(`div`)`
   margin: 0;

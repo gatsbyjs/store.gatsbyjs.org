@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import styled from 'react-emotion';
 
@@ -30,8 +30,8 @@ const Logout = styled(Button)`
   padding: ${spacing.xs}px ${spacing.sm}px;
 `;
 
-const LogoutBar = ({ error, loading, profile, handleLogout }) => {
-  return !loading && !error ? (
+const LogoutBar = ({ error, loading, profile, handleLogout }) =>
+  !loading && !error ? (
     <LogoutBarRoot>
       <Info>
         Logged in as <b>@{profile.nickname}</b>
@@ -41,7 +41,6 @@ const LogoutBar = ({ error, loading, profile, handleLogout }) => {
       </Logout>
     </LogoutBarRoot>
   ) : null;
-};
 
 LogoutBar.propTypes = {
   error: PropTypes.any.isRequired,

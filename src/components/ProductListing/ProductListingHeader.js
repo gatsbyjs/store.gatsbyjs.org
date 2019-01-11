@@ -1,18 +1,7 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
+import React from 'react';
 import styled from 'react-emotion';
-import Image from 'gatsby-image';
-import Link from '../shared/Link';
 
-import {
-  breakpoints,
-  colors,
-  fonts,
-  radius,
-  spacing
-} from '../../utils/styles';
-
-import { CONTRIBUTOR_AREA_WIDTH } from '../ContributorArea';
+import { breakpoints, colors, fonts, spacing } from '../../utils/styles';
 
 const ProductListingHeaderRoot = styled(`header`)`
   display: flex;
@@ -50,22 +39,15 @@ const Intro = styled(`p`)`
   }
 `;
 
-const ProductListingHeader = props => {
-  return (
-    <ProductListingHeaderRoot>
-      <Title>Get Gatsby Swag!</Title>
-      <Intro>
-        The money we charge for swag helps to cover production and shipping
-        costs. In the unlikely event that Gatsby swag ends up turning a profit,
-        we’ll reinvest that money into the open source community.{' '}
-        {/* <Link to="/">
-          <span>Read more +</span>
-        </Link> */}
-      </Intro>
-    </ProductListingHeaderRoot>
-  );
-};
-
-ProductListingHeader.propTypes = {};
+const ProductListingHeader = () => (
+  <ProductListingHeaderRoot>
+    <Title>Get Gatsby Swag!</Title>
+    <Intro>
+      The money we charge for swag helps to cover production and shipping costs.
+      In the unlikely event that Gatsby swag ends up turning a profit, we’ll
+      reinvest that money into the open source community.
+    </Intro>
+  </ProductListingHeaderRoot>
+);
 
 export default ProductListingHeader;
