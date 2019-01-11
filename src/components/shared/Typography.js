@@ -7,7 +7,8 @@ export const TextContainer = styled(`div`)`
   margin-left: auto;
   margin-right: auto;
   max-width: 800px;
-  padding: ${spacing.xl}px;
+  padding: ${spacing.md}px;
+  width: 100%;
 
   @media (min-width: ${breakpoints.desktop}px) {
     padding-bottom: 100px;
