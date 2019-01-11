@@ -1,30 +1,10 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import styled, { keyframes } from 'react-emotion';
-
-import { GoMarkGithub } from 'react-icons/go';
-
-import { login } from '../../utils/auth';
+import styled from 'react-emotion';
 import { Button as BaseButton } from '../shared/Buttons';
 import OpenIssues from './OpenIssues';
-import LogoutBar from './LogoutBar';
-import {
-  Heading,
-  Lede,
-  SectionHeading,
-  SubHeading,
-  Text
-} from './AreaTypography';
-
-import {
-  breakpoints,
-  colors,
-  fonts,
-  radius,
-  spacing,
-  dimensions,
-  animations
-} from '../../utils/styles';
+import { Heading, Lede, Text } from './AreaTypography';
+import { spacing, animations } from '../../utils/styles';
 
 const ContentForNotContributorRoot = styled(`div`)`
   animation: ${animations.simpleEntry};
