@@ -54,7 +54,7 @@ const Footer = () => (
       <b>Got questions?&nbsp;</b>
     </Row>
     <Row>
-      Talk to us on Twitter <a href="https://twitter.com/gatsby">@gatsbyjs</a>
+      Talk to us on Twitter <a href="https://twitter.com/gatsbyjs">@gatsbyjs</a>
     </Row>
     <Row>
       &nbsp;or send an email to{' '}
