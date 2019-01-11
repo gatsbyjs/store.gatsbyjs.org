@@ -1,6 +1,9 @@
 const path = require('path');
 
-exports.createPages = async ({ graphql, actions: { createPage } }) => {
+exports.createPages = async ({
+  graphql,
+  actions: { createPage, createRedirect }
+}) => {
   const pages = await graphql(`
     {
       allShopifyProduct {
@@ -23,6 +26,35 @@ exports.createPages = async ({ graphql, actions: { createPage } }) => {
         handle: edge.node.handle
       }
     });
+  });
+
+  // Redirects for old product slugs.
+  [
+    {
+      oldSlug: 'purple-logo-tee-w-natural-process-print',
+      newSlug: 'vintage-purple-tee'
+    },
+    {
+      oldSlug: 'copy-of-gatsby-full-zip-sweatshirt-horizontal-logo',
+      newSlug: 'all-purple-everything-hoodie'
+    },
+    {
+      oldSlug: 'gatsby-full-zip-sweatshirt',
+      newSlug: 'all-purple-everything-hoodie-vertical'
+    },
+    { oldSlug: 'black-socks', newSlug: 'space-socks' },
+    { oldSlug: 'dark-deploy-t-shirt', newSlug: 'dark-deploy-tee' },
+    { oldSlug: 'gatsby-trucker-hat', newSlug: 'monogram-trucker-hat' },
+    { oldSlug: 'gatsby-water-bottle', newSlug: '12oz-travel-mug' },
+    { oldSlug: 'purple-gatsby-hat', newSlug: 'blazig-purple-hat' }
+  ].map(({ oldSlug, newSlug }) => {
+    const config = {
+      toPath: `/product/${newSlug}`,
+      isPermanent: true,
+      redirectInBrowser: true
+    };
+    createRedirect({ fromPath: `/product/${oldSlug}`, ...config });
+    createRedirect({ fromPath: `/product/${oldSlug}/`, ...config });
   });
 };
 
