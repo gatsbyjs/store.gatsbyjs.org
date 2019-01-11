@@ -96,6 +96,10 @@ const UserPhotoHint = styled(`div`)`
       display: none;
     }
   }
+
+  a {
+    color: inherit;
+  }
 `;
 
 class CommunityCaption extends Component {
@@ -115,10 +119,12 @@ class CommunityCaption extends Component {
   };
 
   toggleIncentive = e => {
-    e.preventDefault();
-    e.stopPropagation();
+    if (!e.target.href) {
+      e.preventDefault();
+      e.stopPropagation();
 
-    this.setState(state => ({ hintExpanded: !state.hintExpanded }));
+      this.setState(state => ({ hintExpanded: !state.hintExpanded }));
+    }
   };
 
   render() {
@@ -141,11 +147,14 @@ class CommunityCaption extends Component {
           onClick={this.toggleIncentive}
           className={hintExpanded ? 'expanded' : ''}
         >
-          <span>Would you like to see a photo of your pet here?</span>{' '}
+          <span>We want to see your Gatsby swag photos!</span>{' '}
           <strong>Read more...</strong>
           <span>
-            Contrary to popular belief, Lorem Ipsum is not simply random text.
-            It has roots in a piece of classical Latin.
+            Upload your photos to{' '}
+            <a href="https://github.com/gatsbyjs/store.gatsbyjs.org/issues/143">
+              the official photo sharing issue
+            </a>{' '}
+            and it may be featured in the store!
           </span>
         </UserPhotoHint>
         <Toggle onClick={this.toggle}>
