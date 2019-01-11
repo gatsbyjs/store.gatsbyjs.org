@@ -83,11 +83,14 @@ const ProductImagesMobile = ({ images, imageOnClick }) => (
       <Incentive>
         <h3>
           <MdCameraAlt />
-          Would you like to see a photo of your pet here?
+          We want to see your Gatsby swag photos!
         </h3>
         <p>
-          Contrary to popular belief, Lorem Ipsum is not simply random text. It
-          has roots in a piece of classical Latin.
+          Upload your photos to{' '}
+          <a href="https://github.com/gatsbyjs/store.gatsbyjs.org/issues/143">
+            the official photo sharing issue
+          </a>{' '}
+          and it may be featured in the store!
         </p>
       </Incentive>
     </ProductImagesMobileContent>
