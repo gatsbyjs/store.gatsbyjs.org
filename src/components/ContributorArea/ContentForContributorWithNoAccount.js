@@ -1,33 +1,14 @@
 import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
-import styled, { keyframes } from 'react-emotion';
-
-import { GoMarkGithub } from 'react-icons/go';
+import styled from 'react-emotion';
 
 import UserContext from '../../context/UserContext';
 import Loading from './Loading';
 import Error from './Error';
 import CreateAccountForm from './CreateAccountForm';
-
-import {
-  Heading,
-  Lede,
-  SectionHeading,
-  SubHeading,
-  Text
-} from './AreaTypography';
-
-import {
-  animations,
-  breakpoints,
-  colors,
-  fonts,
-  radius,
-  spacing,
-  dimensions
-} from '../../utils/styles';
+import { Heading, Lede, Text } from './AreaTypography';
+import { animations } from '../../utils/styles';
 
 const CREATE_CONTRIBUTOR = gql`
   mutation($input: CreateContributorInput!) {

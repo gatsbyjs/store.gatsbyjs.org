@@ -1,5 +1,5 @@
 import React from 'react';
-import styled, { keyframes } from 'react-emotion';
+import styled from 'react-emotion';
 
 import { PrimaryButton } from '../shared/Buttons';
 import {
@@ -7,13 +7,7 @@ import {
   Input as BaseInput,
   Label as BaseLabel
 } from '../shared/FormElements';
-import {
-  breakpoints,
-  colors,
-  spacing,
-  radius,
-  input
-} from '../../utils/styles';
+import { breakpoints, colors, spacing, radius } from '../../utils/styles';
 
 const CreateAccountFormRoot = styled('form')`
   display: flex;
@@ -162,7 +156,7 @@ class CreateAccountForm extends React.Component {
           />
         </Fieldset>
 
-        <CheckboxContainer>
+        <CheckboxContainer onClick={this.onToggle}>
           <Checkbox
             type="checkbox"
             name="subscribe"
