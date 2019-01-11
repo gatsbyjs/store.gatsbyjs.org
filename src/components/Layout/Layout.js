@@ -429,7 +429,7 @@ export default class Layout extends React.Component {
                         {children}
                       </PageContent>
 
-                      {currentProductImages.length && (
+                      {currentProductImages.length > 0 && (
                         <ProductImagesBrowser
                           featureProductImage={featureProductImage}
                           images={currentProductImages}
