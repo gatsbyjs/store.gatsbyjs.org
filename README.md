@@ -1,6 +1,17 @@
-# Gatsby Store
+<p align="center">
+  <a href="https://gatsbyjs.org">
+    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
+  </a>
+</p>
+<h1 align="center">
+  Gatsby Swag Store
+</h1>
 
 This is the Gatsby store, where we make swag, stickers, and other Gatsby goodies available to contributors and Gatsby enthusiasts. 💪💜
+
+<p align="center">
+  <img alt="Gatsby socks with Dora for scale." src="https://store.gatsbyjs.org/instagram-doraforscale.jpg" />
+</p>
 
 See it live: [store.gatsbyjs.org](https://store.gatsbyjs.org)
 
