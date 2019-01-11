@@ -1,14 +1,24 @@
 import React from 'react';
-import { push } from 'gatsby';
+import styled from 'react-emotion';
+
 import { isAuthenticated, login } from '../utils/auth';
+import {
+  TextContainer,
+  Text as BaseText
+} from '../components/shared/Typography';
+
+const Text = styled(BaseText)`
+  text-align: center;
+`;
 
 export default () => {
   if (!isAuthenticated()) {
-    login();
+    // login();
 
-    return <p>Redirecting you to the login screen...</p>;
+    return (
+      <TextContainer>
+        <Text>Redirecting you to the login screen...</Text>
+      </TextContainer>
+    );
   }
-
-  push('/account/dashboard');
-  return <p>Redirecting you to the dashboard...</p>;
 };

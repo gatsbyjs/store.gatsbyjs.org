@@ -9,13 +9,13 @@ const client = Client.buildClient({
 export const defaultStoreContext = {
   client,
   isCartOpen: false,
+  adding: false,
   checkout: { lineItems: [] },
   products: [],
   shop: {},
   addVariantToCart: () => {},
   removeLineItem: () => {},
-  updateLineItem: () => {},
-  toggleCart: () => {}
+  updateLineItem: () => {}
 };
 
 const StoreContext = React.createContext(defaultStoreContext);

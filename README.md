@@ -2,6 +2,8 @@
 
 This is the Gatsby store, where we make swag, stickers, and other Gatsby goodies available to contributors and Gatsby enthusiasts. 💪💜
 
+See it live: [store.gatsbyjs.org](https://store.gatsbyjs.org)
+
 ## Technical Overview
 
 This store is built with data from:

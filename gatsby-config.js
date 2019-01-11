@@ -9,9 +9,15 @@ module.exports = {
     description: 'Get Gatsby Swag!'
   },
   plugins: [
+    {
+      resolve: `gatsby-plugin-layout`,
+      options: {
+        component: require.resolve(`./src/components/Layout/`)
+      }
+    },
     'gatsby-transformer-sharp',
     {
-      resolve: 'gatsby-source-shopify2',
+      resolve: 'gatsby-source-shopify',
       options: {
         shopName: 'gatsby-swag',
         accessToken: process.env.SHOPIFY_ACCESS_TOKEN
@@ -31,6 +37,13 @@ module.exports = {
         icon: 'static/android-chrome-512x512.png'
       }
     },
-    'gatsby-plugin-offline'
+    'gatsby-plugin-offline',
+    {
+      resolve: 'gatsby-plugin-google-analytics',
+      options: {
+        trackingId: 'UA-93349937-6',
+        respectDNT: true
+      }
+    }
   ]
 };
