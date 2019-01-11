@@ -253,7 +253,7 @@ const ProductListingItem = props => {
                     <span>free with </span>
                     <span>
                       Code Swag Level
-                      {freeWith === 'LEVEL2' ? '2' : '1'}
+                      {freeWith === 'HOLYBUCKETS' ? '2' : '1'}
                     </span>
                   </CodeEligibility>
                 )}
