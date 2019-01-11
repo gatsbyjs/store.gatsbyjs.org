@@ -11,6 +11,7 @@ This is the Gatsby store, where we make swag, stickers, and other Gatsby goodies
 
 <p align="center">
   <img alt="Gatsby socks with Dora for scale." src="https://store.gatsbyjs.org/instagram-doraforscale.jpg" />
+  Photo credit: <a href="https://instagram.com/doraforscale">doraforscale</a>
 </p>
 
 See it live: [store.gatsbyjs.org](https://store.gatsbyjs.org)
