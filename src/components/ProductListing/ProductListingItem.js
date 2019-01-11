@@ -235,7 +235,7 @@ const ProductListingItem = props => {
   } = firstImage;
 
   const freeWith =
-    price >= 20 ? 'LEVEL2' : price >= 10 ? 'BUILDWITHGATSBY' : null;
+    price >= 20 ? 'HOLYBUCKETS' : price >= 10 ? 'BUILDWITHGATSBY' : null;
 
   return (
     <UserContext.Consumer>
