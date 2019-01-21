@@ -322,9 +322,10 @@ class Cart extends Component {
         {({ client, checkout, removeLineItem, updateLineItem, adding }) => {
           const setCartLoading = bool => this.setState({ isLoading: bool });
 
-          const handleRemove = itemID => event => {
+          const handleRemove = itemID => async event => {
             event.preventDefault();
-            removeLineItem(client, checkout.id, itemID);
+            await removeLineItem(client, checkout.id, itemID);
+            setCartLoading(false);
           };
 
           const handleQuantityChange = lineItemID => async quantity => {
