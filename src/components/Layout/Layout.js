@@ -1,6 +1,6 @@
 import React from 'react';
 import styled, { injectGlobal } from 'react-emotion';
-import { push } from 'gatsby';
+import { navigate } from 'gatsby';
 
 import { client } from '../../context/ApolloContext';
 import StoreContext, { defaultStoreContext } from '../../context/StoreContext';
@@ -108,7 +108,7 @@ export default class Layout extends React.Component {
             loading: false
           }
         });
-        logout(() => push('/'));
+        logout(() => navigate('/'));
       },
       updateContributor: data => {
         this.setState(state => ({

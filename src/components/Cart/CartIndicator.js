@@ -38,7 +38,7 @@ class CartIndicator extends Component {
               ? `${num} new items have been added to the cart`
               : `${num} new item has been added to the cart`;
 
-          this.setState({ message: message });
+          this.setState({ message });
 
           setTimeout(
             () => this.setState({ visible: false, message: '' }),
