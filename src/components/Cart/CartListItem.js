@@ -78,7 +78,7 @@ export default ({
 }) => {
   const [quantity, setQuantity] = useState(1);
 
-  if (item.quantity !== quantity && !isCartLoading) {
+  if (item.quantity !== quantity && quantity !== '' && !isCartLoading) {
     setQuantity(item.quantity);
   }
 
@@ -87,12 +87,34 @@ export default ({
       return;
     }
 
-    const target = event.target;
-    const value = Number(target.value);
+    const value = event.target.value;
 
+    // Make sure the quantity is always at least 1.
+    const safeValue = Math.max(Number(value), 0);
+
+    // No need to update if the value hasn’t updated.
+    if (value === quantity) {
+      return;
+    }
+
+    // If the field is empty, update the state but don’t do anything else.
+    if (value === '') {
+      setQuantity(value);
+      return;
+    }
+
+    // Otherwise, trigger the loading state and set the quantity in state.
     setCartLoading(true);
-    setQuantity(value);
-    updateQuantity(value);
+    setQuantity(safeValue);
+
+    // If the quantity is set to 0, remove the item.
+    if (safeValue === 0) {
+      handleRemove(event);
+      return;
+    }
+
+    // If we get here, update the quantity.
+    updateQuantity(safeValue);
   };
 
   const handleRemoveItem = event => {
@@ -121,6 +143,7 @@ export default ({
         min="1"
         step="1"
         onChange={event => handleInputChange(event)}
+        onBlur={() => setQuantity(item.quantity)}
         value={quantity}
       />
       <Remove onClick={handleRemoveItem}>
