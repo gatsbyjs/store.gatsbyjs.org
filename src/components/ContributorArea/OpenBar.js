@@ -124,7 +124,7 @@ const ButlerHandBox = styled(`span`)`
   @media (min-width: ${breakpoints.desktop}px) {
     align-items: center;
     display: flex;
-    height: 80px;
+    height: 60px;
     justify-content: center;
     left: auto;
     position: relative;
