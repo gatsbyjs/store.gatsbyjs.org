@@ -43,7 +43,7 @@ const ContentForGuest = () => (
 
     <Button
       inverse
-      href="https://github.com/search?o=desc&q=org%3Agatsbyjs+type%3Aissue+label%3A%22status:%20help%20wanted%22+is%3Aopen&s=updated&type=Issues"
+      href="https://github.com/search?o=desc&q=org%3Agatsbyjs+type%3Aissue+label%3A%22help%20wanted%22+is%3Aopen&s=updated&type=Issues"
     >
       Explore Open Issues
     </Button>
