@@ -120,9 +120,6 @@ const ProgressBar = styled(`progress`)`
   ::-moz-progress-bar {
     ${ProgressIndicator}
   }
-  ::-webkit-progress-value {
-    ${ProgressIndicator}
-  }
 `;
 
 const LockIcon = styled(MdLock)`
