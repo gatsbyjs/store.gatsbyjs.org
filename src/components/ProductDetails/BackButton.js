@@ -24,9 +24,7 @@ const BackLinkRoot = styled(`div`)`
   );
   bottom: 0;
   left: 0;
-  padding: ${spacing.md}px;
-  padding-top: ${spacing.xl}px;
-  padding-left: 0px;
+  padding: ${spacing.xl}px ${spacing.md}px ${spacing.md}px 0;
   position: sticky;
   top: 40px;
   width: 100%;
