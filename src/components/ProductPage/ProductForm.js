@@ -239,11 +239,11 @@ class ProductForm extends Component {
               {isOutOfStock ? <MdSentimentDissatisfied /> : <MdShoppingCart />}
             </AddToCartButton>
             <InfoLinks>
-              <Link to="/product-details#materials-fit">
-                <span>Materials & Fit</span>
+              <Link to="/product-details?fromProduct#materials-fit">
+                <span>Materials &amp; Fit</span>
               </Link>
               &nbsp; • &nbsp;
-              <Link to="/product-details#care-instructions">
+              <Link to="/product-details?fromProduct#care-instructions">
                 <span>Care instructions</span>
               </Link>
             </InfoLinks>
