@@ -9,7 +9,7 @@
     "prettier/flowtype",
     "prettier/react"
   ],
-  "plugins": ["flowtype", "react"],
+  "plugins": ["flowtype", "react", "emotion"],
   "parserOptions": {
     "ecmaVersion": 2016,
     "sourceType": "module",
@@ -56,7 +56,11 @@
       {
         "ignore": ["children"]
       }
-    ]
+    ],
+    "emotion/jsx-import": "error",
+    "emotion/no-vanilla": "error",
+    "emotion/import-from-emotion": "error",
+    "emotion/styled-import": "error"
   },
   "overrides": [
     {
