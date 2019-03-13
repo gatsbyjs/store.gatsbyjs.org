@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from '@emotion/styled';
-import { keyframes } from 'emotion';
+import { keyframes } from '@emotion/core';
 import PropTypes from 'prop-types';
 
 import {
@@ -301,14 +301,18 @@ class Cart extends Component {
       if (imageBrowserStatusChanged) {
         if (this.props.productImagesBrowserStatus === `open`) {
           setTimeout(() => {
-            this.setState(state => {return {
-              className: state.className + ` covered`,
-            };});
+            this.setState(state => {
+              return {
+                className: state.className + ` covered`,
+              };
+            });
           }, 500);
         } else {
-          this.setState(state => {return {
-            className: state.className.replace(`covered`, ``),
-          };});
+          this.setState(state => {
+            return {
+              className: state.className.replace(`covered`, ``),
+            };
+          });
         }
       }
     }
@@ -385,7 +389,8 @@ class Cart extends Component {
 
                   <Costs>
                     <Cost>
-                      <span>Subtotal:</span>{` `}
+                      <span>Subtotal:</span>
+                      {` `}
                       <strong>USD ${checkout.subtotalPrice}</strong>
                     </Cost>
                     <Cost>

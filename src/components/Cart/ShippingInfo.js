@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import styled from '@emotion/styled';
-import { keyframes } from 'emotion';
+import { keyframes } from '@emotion/core';
 
 import { MdKeyboardArrowDown, MdInfo } from 'react-icons/md';
 

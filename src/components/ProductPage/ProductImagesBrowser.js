@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Image from 'gatsby-image';
 import styled from '@emotion/styled';
-import { keyframes } from 'emotion';
+import { keyframes } from '@emotion/core';
 import { MdClose, MdZoomIn, MdZoomOut } from 'react-icons/md';
 
 import CommunityCaption from './CommunityCaption';
@@ -272,7 +272,9 @@ class ProductImagesBrowser extends Component {
   toggleZoomRatio = event => {
     event.preventDefault();
 
-    this.setState(state => {return { superZoom: !state.superZoom };});
+    this.setState(state => {
+      return { superZoom: !state.superZoom };
+    });
   };
 
   render() {

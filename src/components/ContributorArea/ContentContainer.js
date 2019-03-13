@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { keyframes } from 'emotion';
+import { keyframes } from '@emotion/core';
 
 import UserContext from '../../context/UserContext';
 import Butler from '../../assets/Butler';

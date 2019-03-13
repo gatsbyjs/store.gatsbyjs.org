@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Image from 'gatsby-image';
 import styled from '@emotion/styled';
-import { keyframes } from 'emotion';
+import { keyframes } from '@emotion/core';
 import { MdZoomIn } from 'react-icons/md';
 
 import { breakpoints, colors, radius, spacing } from '../../utils/styles';
