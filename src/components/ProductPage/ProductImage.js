@@ -34,10 +34,10 @@ const ZoomHelper = styled(`span`)`
   background: rgba(255, 255, 255, 0.5);
   border-radius: ${radius.large}px;
   display: flex;
-  left: ${spacing['xs']}px;
-  padding: ${spacing['xs']}px;
+  left: ${spacing[`xs`]}px;
+  padding: ${spacing[`xs`]}px;
   position: absolute;
-  top: ${spacing['xs']}px;
+  top: ${spacing[`xs`]}px;
 
   svg {
     fill: ${colors.brand};
@@ -60,10 +60,10 @@ class ProductImage extends Component {
 
   componentDidUpdate = prevProps => {
     if (prevProps.image.id !== this.props.image.id) {
-      this.imageLink.classList.add('change');
+      this.imageLink.classList.add(`change`);
 
       setTimeout(
-        () => this.imageLink.classList.remove('change'),
+        () => this.imageLink.classList.remove(`change`),
         IMAGE_CHANGE_ANIM_DURATION
       );
     }
@@ -79,11 +79,11 @@ class ProductImage extends Component {
     const {
       image: {
         localFile: {
-          childImageSharp: { fluid }
-        }
+          childImageSharp: { fluid },
+        },
       },
       onClick,
-      imageFeatured = null
+      imageFeatured = null,
     } = this.props;
 
     return (
@@ -94,7 +94,7 @@ class ProductImage extends Component {
         href={fluid.src}
         onClick={this.handleClick(onClick)}
       >
-        <StyledImage fluid={imageFeatured ? featuredFluid : fluid} alt="" />
+        <StyledImage fluid={imageFeatured ? null : fluid} alt="" />
         <ZoomHelper>
           <MdZoomIn />
         </ZoomHelper>
@@ -106,7 +106,7 @@ class ProductImage extends Component {
 ProductImage.propTypes = {
   image: PropTypes.object.isRequired,
   onClick: PropTypes.func,
-  imageFeatured: PropTypes.object
+  imageFeatured: PropTypes.object,
 };
 
 export default ProductImage;
