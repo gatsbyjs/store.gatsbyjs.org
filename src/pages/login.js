@@ -4,14 +4,14 @@ import styled from 'react-emotion';
 import { isAuthenticated } from '../utils/auth';
 import {
   TextContainer,
-  Text as BaseText
+  Text as BaseText,
 } from '../components/shared/Typography';
 
 const Text = styled(BaseText)`
   text-align: center;
 `;
 
-export default () => {
+const login = () => {
   if (!isAuthenticated()) {
     return (
       <TextContainer>
@@ -19,4 +19,7 @@ export default () => {
       </TextContainer>
     );
   }
+  return null;
 };
+
+export default login;
