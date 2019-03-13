@@ -3,13 +3,11 @@
   "extends": [
     "google",
     "eslint:recommended",
-    "plugin:flowtype/recommended",
     "plugin:react/recommended",
     "prettier",
-    "prettier/flowtype",
     "prettier/react"
   ],
-  "plugins": ["flowtype", "react"],
+  "plugins": ["react", "emotion"],
   "parserOptions": {
     "ecmaVersion": 2016,
     "sourceType": "module",
@@ -62,7 +60,11 @@
       {
         "ignore": ["children"]
       }
-    ]
+    ],
+    "emotion/jsx-import": "error",
+    "emotion/no-vanilla": "error",
+    "emotion/import-from-emotion": "error",
+    "emotion/styled-import": "error"
   },
   "overrides": [
     {
