@@ -29,7 +29,7 @@ const FreeBonusRoot = styled(`div`)`
 
 const SmileIcon = styled(MdSentimentSatisfied)`
   color: ${colors.lilac};
-  margin-right: ${spacing['2xs']}px;
+  margin-right: ${spacing[`2xs`]}px;
   vertical-align: middle;
 `;
 

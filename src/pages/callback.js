@@ -18,8 +18,8 @@ const Message = styled.h1`
   font-family: ${fonts.heading};
 `;
 
-export default () => {
-  handleAuthentication(() => navigate('/'));
+const callback = () => {
+  handleAuthentication(() => navigate(`/`));
 
   return (
     <Container>
@@ -27,3 +27,5 @@ export default () => {
     </Container>
   );
 };
+
+export default callback;

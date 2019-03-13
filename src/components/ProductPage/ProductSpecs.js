@@ -8,7 +8,7 @@ const ProductSpecsRoot = styled(`div`)`
   padding: 0 ${spacing.md}px;
 
   @media (min-width: ${breakpoints.tablet}px) {
-    padding: ${spacing['2xl']}px ${spacing.xl}px 0;
+    padding: ${spacing[`2xl`]}px ${spacing.xl}px 0;
   }
 `;
 
@@ -45,8 +45,8 @@ const ProductSpecs = props => {
     product: {
       title,
       description,
-      variants: [variant]
-    }
+      variants: [variant],
+    },
   } = props;
 
   const { price } = variant;
@@ -63,7 +63,7 @@ const ProductSpecs = props => {
 };
 
 ProductSpecs.propTypes = {
-  product: PropTypes.object.isRequired
+  product: PropTypes.object.isRequired,
 };
 
 export default ProductSpecs;

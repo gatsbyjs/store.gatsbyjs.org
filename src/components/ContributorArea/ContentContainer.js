@@ -76,7 +76,7 @@ const ContentContainer = () => (
         handleLogout,
         loading,
         profile,
-        profile: { nickname }
+        profile: { nickname },
       }) =>
         nickname || loading ? (
           <ContentForLoggedIn

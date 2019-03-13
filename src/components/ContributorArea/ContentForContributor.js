@@ -12,7 +12,7 @@ import {
   fonts,
   radius,
   spacing,
-  animations
+  animations,
 } from '../../utils/styles';
 
 const ContentForContributorRoot = styled(`div`)`
@@ -47,7 +47,7 @@ const Code = styled(`span`)`
   background: ${colors.lightest};
   color: ${colors.brand};
   font-size: 1.5rem;
-  padding: ${spacing['2xs']}px;
+  padding: ${spacing[`2xs`]}px;
 `;
 
 const Used = styled(`span`)`
@@ -64,14 +64,14 @@ const Used = styled(`span`)`
     margin-left: ${spacing.xs}px;
   }
 `;
-
-const Tip = styled(`p`)`
-  color: ${colors.brandBright};
-  font-size: 0.85rem;
-  line-height: 1.2;
-  margin: 0;
-  padding-top: ${spacing.xs}px;
-`;
+//reference line 177
+// const Tip = styled(`p`)`
+//   color: ${colors.brandBright};
+//   font-size: 0.85rem;
+//   line-height: 1.2;
+//   margin: 0;
+//   padding-top: ${spacing.xs}px;
+// `;
 
 const ProgressBarContainer = `
   border: 0;
@@ -132,7 +132,7 @@ const ContentForContributor = () => (
     {({ contributor }) => {
       const {
         shopify: { codes },
-        github: { contributionCount }
+        github: { contributionCount },
       } = contributor;
 
       const showLevelTwoIncentive =
@@ -158,7 +158,8 @@ const ContentForContributor = () => (
           <Heading>Here you go!</Heading>
           <Text>
             Thanks for going the extra mile to help build Gatsby! 💪 You have
-            made <strong>{contributionCount}</strong>{' '}
+            made <strong>{contributionCount}</strong>
+            {` `}
             {`contribution${contributionCount > 1 ? `s` : ``}`}!
           </Text>
           <Text>{text}</Text>

@@ -6,7 +6,7 @@ import {
   MdClose,
   MdShoppingCart,
   MdArrowBack,
-  MdArrowForward
+  MdArrowForward,
 } from 'react-icons/md';
 
 import StoreContext from '../../context/StoreContext';
@@ -22,7 +22,7 @@ import {
   colors,
   fonts,
   spacing,
-  dimensions
+  dimensions,
 } from '../../utils/styles';
 
 const CartRoot = styled(`div`)`
@@ -150,7 +150,7 @@ const ItemsInCart = styled(`div`)`
   }
 `;
 
-const Costs = styled('div')`
+const Costs = styled(`div`)`
   display: flex;
   flex-direction: column;
   margin-top: ${spacing.sm}px;
@@ -158,7 +158,7 @@ const Costs = styled('div')`
 
 const Cost = styled(`div`)`
   display: flex;
-  padding: 0 ${spacing.xs}px ${spacing['2xs']}px;
+  padding: 0 ${spacing.xs}px ${spacing[`2xs`]}px;
 
   :last-child {
     padding-bottom: 0;
@@ -260,8 +260,8 @@ const CartToggle = styled(Button)`
   ${ItemsNumber} {
     animation: ${numberEntry} 0.5s ease forwards;
     position: absolute;
-    right: ${spacing['3xs']}px;
-    top: ${spacing['3xs']}px;
+    right: ${spacing[`3xs`]}px;
+    top: ${spacing[`3xs`]}px;
     transform: scale(0.6);
   }
 `;
@@ -280,8 +280,8 @@ const BackLink = styled(Button)`
 
 class Cart extends Component {
   state = {
-    className: 'closed',
-    isLoading: false
+    className: `closed`,
+    isLoading: false,
   };
 
   componentDidUpdate(prevProps) {
@@ -292,22 +292,22 @@ class Cart extends Component {
 
     if (componentStatusChanged) {
       this.setState({
-        className: this.props.status
+        className: this.props.status,
       });
     }
 
     if (this.props.isDesktopViewport) {
       if (imageBrowserStatusChanged) {
-        if (this.props.productImagesBrowserStatus === 'open') {
+        if (this.props.productImagesBrowserStatus === `open`) {
           setTimeout(() => {
-            this.setState(state => ({
-              className: state.className + ' covered'
-            }));
+            this.setState(state => {return {
+              className: state.className + ` covered`,
+            };});
           }, 500);
         } else {
-          this.setState(state => ({
-            className: state.className.replace('covered', '')
-          }));
+          this.setState(state => {return {
+            className: state.className.replace(`covered`, ``),
+          };});
         }
       }
     }
@@ -344,7 +344,7 @@ class Cart extends Component {
           return (
             <CartRoot
               className={`${className} ${
-                this.state.isLoading ? 'loading' : ''
+                this.state.isLoading ? `loading` : ``
               }`}
             >
               <Heading>
@@ -352,7 +352,7 @@ class Cart extends Component {
                   aria-label={`Shopping cart with ${itemsInCart} items`}
                   onClick={toggle}
                 >
-                  {status === 'open' ? (
+                  {status === `open` ? (
                     <MdClose />
                   ) : (
                     <>
@@ -384,7 +384,7 @@ class Cart extends Component {
 
                   <Costs>
                     <Cost>
-                      <span>Subtotal:</span>{' '}
+                      <span>Subtotal:</span>{` `}
                       <strong>USD ${checkout.subtotalPrice}</strong>
                     </Cost>
                     <Cost>
@@ -426,7 +426,7 @@ Cart.propTypes = {
   toggle: PropTypes.func.isRequired,
   contributorAreaStatus: PropTypes.string.isRequired,
   isDesktopViewport: PropTypes.bool,
-  productImagesBrowserStatus: PropTypes.string
+  productImagesBrowserStatus: PropTypes.string,
 };
 
 export default Cart;

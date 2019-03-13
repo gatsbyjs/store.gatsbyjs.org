@@ -8,7 +8,7 @@ const CartIndicatorRoot = styled(`div`)`
   background: ${colors.lemon};
   border-radius: ${radius.default}px;
   color: ${colors.brand};
-  display: ${props => (props.visible ? 'flex' : 'none')};
+  display: ${props => (props.visible ? `flex` : `none`)};
   justify-content: center;
   left: 0;
   padding: ${spacing.xs}px ${spacing.sm}px;
@@ -20,7 +20,7 @@ const CartIndicatorRoot = styled(`div`)`
 class CartIndicator extends Component {
   state = {
     visible: false,
-    message: ''
+    message: ``,
   };
 
   componentDidUpdate(prevProps) {
@@ -28,7 +28,7 @@ class CartIndicator extends Component {
       if (this.props.adding) {
         this.setState({
           visible: true,
-          message: 'updating cart ...'
+          message: `updating cart ...`,
         });
       } else {
         if (this.props.itemsInCart > prevProps.itemsInCart) {
@@ -41,7 +41,7 @@ class CartIndicator extends Component {
           this.setState({ message });
 
           setTimeout(
-            () => this.setState({ visible: false, message: '' }),
+            () => this.setState({ visible: false, message: `` }),
             3000
           );
         }
@@ -58,7 +58,7 @@ class CartIndicator extends Component {
 
 CartIndicator.propTypes = {
   itemsInCart: PropTypes.number.isRequired,
-  adding: PropTypes.bool.isRequired
+  adding: PropTypes.bool.isRequired,
 };
 
 export default CartIndicator;

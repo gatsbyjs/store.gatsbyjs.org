@@ -46,7 +46,7 @@ LogoutBar.propTypes = {
   error: PropTypes.any.isRequired,
   handleLogout: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
-  profile: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired,
 };
 
 export default LogoutBar;

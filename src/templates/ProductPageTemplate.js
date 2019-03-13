@@ -1,7 +1,7 @@
 import React from 'react';
 import { graphql } from 'gatsby';
 import Helmet from 'react-helmet';
-
+import PropTypes from 'prop-types';
 import InterfaceContext from '../context/InterfaceContext';
 import ProductPage from '../components/ProductPage';
 
@@ -12,7 +12,7 @@ const ProductPageTemplate = props => {
   const {
     site,
     shopifyProduct: product,
-    shopifyProduct: { title, description: fullDescription, handle }
+    shopifyProduct: { title, description: fullDescription, handle },
   } = props.data;
 
   const description = removeCareInstructions(fullDescription);
@@ -25,7 +25,7 @@ const ProductPageTemplate = props => {
         productImagesBrowserStatus,
         productImageFeatured,
         toggleProductImagesBrowser,
-        setCurrentProductImages
+        setCurrentProductImages,
       }) => (
         <>
           <Helmet>
@@ -105,3 +105,7 @@ export const query = graphql`
     }
   }
 `;
+
+ProductPageTemplate.propTypes = {
+  data: PropTypes.object,
+};

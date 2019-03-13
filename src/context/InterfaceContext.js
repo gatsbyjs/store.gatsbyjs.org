@@ -2,16 +2,16 @@ import React from 'react';
 
 export const defaultInterfaceContext = {
   isDesktopViewport: null,
-  cartStatus: 'initial',
+  cartStatus: `initial`,
   toggleCart: () => {},
   productImageFeatured: null,
   featureProductImage: () => {},
   currentProductImages: [],
   setCurrentProductImages: () => {},
-  productImagesBrowserStatus: 'initial',
+  productImagesBrowserStatus: `initial`,
   toggleProductImagesBrowser: () => {},
-  contributorAreaStatus: 'initial',
-  toggleContributorArea: () => {}
+  contributorAreaStatus: `initial`,
+  toggleContributorArea: () => {},
 };
 
 export default React.createContext(defaultInterfaceContext);

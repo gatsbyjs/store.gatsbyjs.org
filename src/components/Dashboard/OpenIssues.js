@@ -4,7 +4,7 @@ import { Query } from 'react-apollo';
 import { Subheading, Text } from '../shared/Typography';
 import IssueList, { GitHubIssueFragment } from './IssueList';
 
-const GITHUB_LABEL = 'status: help wanted';
+const GITHUB_LABEL = `status: help wanted`;
 const GET_OPEN_ISSUES = gql`
   query($label: String!) {
     openIssues(label: $label) {
@@ -18,8 +18,9 @@ const GET_OPEN_ISSUES = gql`
 `;
 
 const filterClaimedIssues = issue =>
-  !issue.labels.map(label => label.name).includes('Hacktoberfest - Claimed');
+  !issue.labels.map(label => label.name).includes(`Hacktoberfest - Claimed`);
 
+// eslint-disable-next-line react/display-name
 export default () => (
   <Query query={GET_OPEN_ISSUES} variables={{ label: GITHUB_LABEL }}>
     {({ data, loading, error }) => {

@@ -1,7 +1,7 @@
 import React from 'react';
 import { colors } from '../utils/styles';
 
-export default () => (
+const Butler = () => (
   <svg width="34" height="48" viewBox="0 0 34 48" fill="none">
     <path
       fillRule="evenodd"
@@ -162,3 +162,5 @@ export default () => (
     />
   </svg>
 );
+
+export default Butler;

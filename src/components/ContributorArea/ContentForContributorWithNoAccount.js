@@ -54,8 +54,8 @@ const ContentForContributorWithNoAccount = () => (
                   You’re the best <strong>@{profile.nickname}</strong>!
                 </Heading>
                 <Lede>
-                  You’ve made{' '}
-                  <strong>{contributor.github.contributionCount}</strong>{' '}
+                  You’ve made{` `}
+                  <strong>{contributor.github.contributionCount}</strong>{` `}
                   contributions to Gatsby. 💪💜
                 </Lede>
                 <Text>
@@ -72,9 +72,9 @@ const ContentForContributorWithNoAccount = () => (
                           githubUsername: userData.username,
                           email: userData.email,
                           firstName: userData.first_name,
-                          acceptsMarketing: userData.subscribe
-                        }
-                      }
+                          acceptsMarketing: userData.subscribe,
+                        },
+                      },
                     });
                   }}
                 />

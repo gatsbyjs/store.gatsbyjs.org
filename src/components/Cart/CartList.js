@@ -1,10 +1,10 @@
 import React from 'react';
 import styled from 'react-emotion';
 import CartListItem from './CartListItem';
-
+import PropTypes from 'prop-types';
 import { colors, spacing } from '../../utils/styles';
 
-const CartListRoot = styled('ul')`
+const CartListRoot = styled(`ul`)`
   list-style: none;
   margin: 0;
   padding: 0;
@@ -35,7 +35,7 @@ const CartList = ({
   handleRemove,
   updateQuantity,
   setCartLoading,
-  isCartLoading
+  isCartLoading,
 }) => (
   <>
     <Headers>
@@ -58,4 +58,11 @@ const CartList = ({
   </>
 );
 
+CartList.propTypes = {
+  handleRemove: PropTypes.func,
+  items: PropTypes.array,
+  updateQuantity: PropTypes.func,
+  setCartLoading: PropTypes.func,
+  isCartLoading: PropTypes.bool,
+};
 export default CartList;

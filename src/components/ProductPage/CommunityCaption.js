@@ -9,7 +9,7 @@ import {
   dimensions,
   colors,
   radius,
-  spacing
+  spacing,
 } from '../../utils/styles';
 
 const CommunityCaptionRoot = styled(`div`)`
@@ -19,7 +19,7 @@ const CommunityCaptionRoot = styled(`div`)`
   );
   color: ${colors.lightest};
   cursor: default;
-  display: ${props => (props.superZoom ? 'none' : 'block')};
+  display: ${props => (props.superZoom ? `none` : `block`)};
   left: ${spacing.md}px;
   position: fixed;
   right: ${spacing.md}px;
@@ -105,17 +105,17 @@ const UserPhotoHint = styled(`div`)`
 class CommunityCaption extends Component {
   state = {
     minimized: false,
-    incentiveExpanded: false
+    incentiveExpanded: false,
   };
 
   toggle = e => {
     e.preventDefault();
     e.stopPropagation();
 
-    this.setState(state => ({
+    this.setState(state => {return {
       minimized: !state.minimized,
-      hintExpanded: false
-    }));
+      hintExpanded: false,
+    };});
   };
 
   toggleIncentive = e => {
@@ -123,7 +123,7 @@ class CommunityCaption extends Component {
       e.preventDefault();
       e.stopPropagation();
 
-      this.setState(state => ({ hintExpanded: !state.hintExpanded }));
+      this.setState(state => {return { hintExpanded: !state.hintExpanded };});
     }
   };
 
@@ -134,7 +134,7 @@ class CommunityCaption extends Component {
     return (
       <CommunityCaptionRoot
         superZoom={superZoom}
-        className={minimized ? 'minimized' : ''}
+        className={minimized ? `minimized` : ``}
       >
         <Caption>
           {minimized ? (
@@ -145,15 +145,15 @@ class CommunityCaption extends Component {
         </Caption>
         <UserPhotoHint
           onClick={this.toggleIncentive}
-          className={hintExpanded ? 'expanded' : ''}
+          className={hintExpanded ? `expanded` : ``}
         >
-          <span>We want to see your Gatsby swag photos!</span>{' '}
+          <span>We want to see your Gatsby swag photos!</span>{` `}
           <strong>Read more...</strong>
           <span>
-            Upload your photos to{' '}
+            Upload your photos to{` `}
             <a href="https://github.com/gatsbyjs/store.gatsbyjs.org/issues/143">
               the official photo sharing issue
-            </a>{' '}
+            </a>{` `}
             and it may be featured in the store!
           </span>
         </UserPhotoHint>
@@ -167,7 +167,7 @@ class CommunityCaption extends Component {
 
 CommunityCaption.propTypes = {
   caption: PropTypes.string.isRequired,
-  superZoom: PropTypes.bool.isRequired
+  superZoom: PropTypes.bool.isRequired,
 };
 
 export default CommunityCaption;

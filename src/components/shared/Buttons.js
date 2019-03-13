@@ -28,8 +28,8 @@ export const ButtonBase = styled(`button`)`
 
   svg {
     height: 1.1em;
-    margin-left: ${props => (props.iconOnLeft ? 0 : '0.5em')};
-    margin-right: ${props => (props.iconOnLeft ? '0.5em' : 0)};
+    margin-left: ${props => (props.iconOnLeft ? 0 : `0.5em`)};
+    margin-right: ${props => (props.iconOnLeft ? `0.5em` : 0)};
     width: 1.1em;
   }
 
@@ -51,10 +51,10 @@ const ButtonAsInternalLink = ButtonAsExternalLink.withComponent(
 
 export class Button extends Component {
   render() {
-    const { children, to, href, ref, inverse = false, ...rest } = this.props;
+    const { children, to, href, inverse = false, ...rest } = this.props;
 
     // automtic recognition of icon placement, works properly only for [text + <Icon>] childrens
-    const iconOnLeft = typeof children[0] !== 'string';
+    const iconOnLeft = typeof children[0] !== `string`;
 
     if (to) {
       return (
@@ -92,7 +92,7 @@ Button.propTypes = {
   children: PropTypes.node.isRequired,
   inverse: PropTypes.bool,
   to: PropTypes.string,
-  href: PropTypes.string
+  href: PropTypes.string,
 };
 
 export const PrimaryButton = styled(Button)`

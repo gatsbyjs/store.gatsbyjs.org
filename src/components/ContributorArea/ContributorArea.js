@@ -8,7 +8,7 @@ import ContentContainer from './ContentContainer';
 import { breakpoints, colors, dimensions } from '../../utils/styles';
 
 const {
-  contributorAreaWidth: { openDesktop: desktopMaxWidth, openHd: hdMaxWidth }
+  contributorAreaWidth: { openDesktop: desktopMaxWidth, openHd: hdMaxWidth },
 } = dimensions;
 
 const ContributorAreaRoot = styled(`aside`)`
@@ -85,8 +85,8 @@ const ContributorAreaRoot = styled(`aside`)`
 
 class ContributorArea extends Component {
   state = {
-    className: 'closed',
-    issuesVisible: false
+    className: `closed`,
+    issuesVisible: false,
   };
 
   componentDidUpdate(prevProps) {
@@ -100,41 +100,41 @@ class ContributorArea extends Component {
     // set inital status of the component after isDesktopViewport is set for the first time (value changes from null to true/false)
     if (isDesktopViewportChanged && prevProps.isDesktopViewport === null) {
       this.setState({
-        className: this.props.isDesktopViewport ? 'open' : 'closed'
+        className: this.props.isDesktopViewport ? `open` : `closed`,
       });
     }
 
     // apply transitions after changes of the component's status, trigerred by user (toggleContributorArea)
     if (componentStatusChanged) {
-      if (this.props.status === 'open') {
+      if (this.props.status === `open`) {
         // before we start opening the component we first have to unhide it
         this.setState({
-          className: `${this.state.className} unhide`
+          className: `${this.state.className} unhide`,
         });
         setTimeout(
           () =>
             this.setState({
-              className: 'opening'
+              className: `opening`,
             }),
           0
         );
         setTimeout(
           () =>
             this.setState({
-              className: 'open'
+              className: `open`,
             }),
           750
         );
       }
 
-      if (this.props.status === 'closed') {
+      if (this.props.status === `closed`) {
         this.setState({
-          className: 'closing'
+          className: `closing`,
         });
         setTimeout(
           () =>
             this.setState({
-              className: 'closed'
+              className: `closed`,
             }),
           750
         );
@@ -144,16 +144,16 @@ class ContributorArea extends Component {
     // for desktop viewport, hide all content when ProductImagesBrowser is open
     if (this.props.isDesktopViewport) {
       if (imageBrowserStatusChanged) {
-        if (this.props.productImagesBrowserStatus === 'open') {
+        if (this.props.productImagesBrowserStatus === `open`) {
           setTimeout(() => {
-            this.setState(state => ({
-              className: state.className + ' covered'
-            }));
+            this.setState(state => {return {
+              className: state.className + ` covered`,
+            };});
           }, 500);
         } else {
-          this.setState(state => ({
-            className: state.className.replace('covered', '')
-          }));
+          this.setState(state => {return {
+            className: state.className.replace(`covered`, ``),
+          };});
         }
       }
     }
@@ -169,7 +169,7 @@ class ContributorArea extends Component {
       status,
       toggle,
       isDesktopViewport,
-      productImagesBrowserStatus
+      productImagesBrowserStatus,
     } = this.props;
     const { className } = this.state;
 
@@ -203,7 +203,7 @@ ContributorArea.propTypes = {
   location: PropTypes.object.isRequired,
   toggle: PropTypes.func.isRequired,
   isDesktopViewport: PropTypes.bool,
-  productImagesBrowserStatus: PropTypes.string
+  productImagesBrowserStatus: PropTypes.string,
 };
 
 export default ContributorArea;

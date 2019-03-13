@@ -10,7 +10,7 @@ import {
   colors,
   fonts,
   radius,
-  spacing
+  spacing,
 } from '../../utils/styles';
 
 const ProductImagesMobileRoot = styled(`div`)`
@@ -59,7 +59,7 @@ const Incentive = styled(`div`)`
     svg {
       fill: ${colors.brand};
       height: 1.15em;
-      margin-right: ${spacing['2xs']}px;
+      margin-right: ${spacing[`2xs`]}px;
       vertical-align: top;
       width: 1.15em;
     }
@@ -85,10 +85,10 @@ const ProductImagesMobile = ({ images, imageOnClick }) => (
           We want to see your Gatsby swag photos!
         </h3>
         <p>
-          Upload your photos to{' '}
+          Upload your photos to{` `}
           <a href="https://github.com/gatsbyjs/store.gatsbyjs.org/issues/143">
             the official photo sharing issue
-          </a>{' '}
+          </a>{` `}
           and it may be featured in the store!
         </p>
       </Incentive>
@@ -98,7 +98,7 @@ const ProductImagesMobile = ({ images, imageOnClick }) => (
 
 ProductImagesMobile.propTypes = {
   images: PropTypes.array.isRequired,
-  imageOnClick: PropTypes.func
+  imageOnClick: PropTypes.func,
 };
 
 export default ProductImagesMobile;

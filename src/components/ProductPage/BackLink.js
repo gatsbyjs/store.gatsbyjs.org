@@ -5,7 +5,7 @@ import { MdArrowBack } from 'react-icons/md';
 
 import { Button } from '../shared/Buttons';
 
-import { breakpoints, colors, fonts, spacing } from '../../utils/styles';
+import { breakpoints, spacing } from '../../utils/styles';
 
 const BackLinkRoot = styled(`div`)`
   background: linear-gradient(
@@ -52,7 +52,7 @@ const BackLink = ({ children, className }) => (
 
 BackLink.propTypes = {
   children: PropTypes.node.isRequired,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default BackLink;

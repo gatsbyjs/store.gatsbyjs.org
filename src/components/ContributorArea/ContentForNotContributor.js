@@ -16,19 +16,19 @@ const Button = styled(BaseButton)`
 
 class ContentForNotContributor extends Component {
   state = {
-    issuesVisible: false
+    issuesVisible: false,
   };
 
   showIssuesList = () => {
     this.setState({
-      issuesVisible: true
+      issuesVisible: true,
     });
   };
 
   render() {
     const { issuesVisible } = this.state;
     const {
-      profile: { nickname }
+      profile: { nickname },
     } = this.props;
 
     return (
@@ -42,9 +42,9 @@ class ContentForNotContributor extends Component {
           come back here to claim free swag.
         </Text>
         <Text>
-          If you have questions, ask on any issue (you can tag{' '}
+          If you have questions, ask on any issue (you can tag{` `}
           <a href="https://github.com/jlengstorf">@jlengstorf</a> if you’d like)
-          or hit us up{' '}
+          or hit us up{` `}
           <a href="https://twitter.com/gatsbyjs">on Twitter at @gatsbyjs</a>.
         </Text>
 
@@ -66,7 +66,7 @@ class ContentForNotContributor extends Component {
 }
 
 ContentForNotContributor.propTypes = {
-  profile: PropTypes.object.isRequired
+  profile: PropTypes.object.isRequired,
 };
 
 export default ContentForNotContributor;

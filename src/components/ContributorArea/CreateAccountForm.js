@@ -1,15 +1,15 @@
 import React from 'react';
 import styled from 'react-emotion';
-
+import PropTypes from 'prop-types';
 import { PrimaryButton } from '../shared/Buttons';
 import {
   Fieldset as BaseFieldset,
   Input as BaseInput,
-  Label as BaseLabel
+  Label as BaseLabel,
 } from '../shared/FormElements';
 import { breakpoints, colors, spacing, radius } from '../../utils/styles';
 
-const CreateAccountFormRoot = styled('form')`
+const CreateAccountFormRoot = styled(`form`)`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -69,7 +69,7 @@ const CheckboxLabel = styled(BaseLabel)`
   }
 `;
 
-const Checkbox = styled('input')`
+const Checkbox = styled(`input`)`
   display: inline-block;
   margin-right: 0.25rem;
   opacity: 0;
@@ -96,7 +96,7 @@ const Submit = styled(PrimaryButton)`
   width: 100%;
 `;
 
-const PrivacyNotice = styled('p')`
+const PrivacyNotice = styled(`p`)`
   color: ${colors.brandBright};
   font-size: 0.75rem;
 `;
@@ -109,9 +109,9 @@ class CreateAccountForm extends React.Component {
 
     this.state = {
       subscribe: true,
-      first_name: name.split(' ')[0],
+      first_name: name.split(` `)[0],
       username: nickname,
-      email
+      email,
     };
   }
 
@@ -119,14 +119,16 @@ class CreateAccountForm extends React.Component {
     event.preventDefault();
 
     this.setState({
-      [event.target.name]: event.target.value
+      [event.target.name]: event.target.value,
     });
   };
 
   onToggle = () => {
-    this.setState(state => ({
-      subscribe: !state.subscribe
-    }));
+    this.setState(state => {
+      return {
+        subscribe: !state.subscribe,
+      };
+    });
   };
 
   render() {
@@ -178,5 +180,10 @@ class CreateAccountForm extends React.Component {
     );
   }
 }
+
+CreateAccountForm.propTypes = {
+  onSubmit: PropTypes.func,
+  profile: PropTypes.any,
+};
 
 export default CreateAccountForm;

@@ -21,7 +21,7 @@ export const Input = styled(`input`)`
   }
 `;
 
-export const Select = styled(Input.withComponent('select'))`
+export const Select = styled(Input.withComponent(`select`))`
   appearance: none;
   /* stylelint-disable */
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23${colors.lilac.substr(

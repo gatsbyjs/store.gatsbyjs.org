@@ -58,10 +58,12 @@ const Product = () => (
   </svg>
 );
 
-export default () => (
+const Logo = () => (
   <div className={svg}>
     <Monogram />
     <Logotype />
     <Product />
   </div>
 );
+
+export default Logo;

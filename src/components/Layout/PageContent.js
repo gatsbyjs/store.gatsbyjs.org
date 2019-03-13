@@ -9,8 +9,8 @@ const {
   contributorAreaWidth: {
     openDesktop: desktopMaxWidth,
     openHd: hdMaxWidth,
-    closedDesktop: desktopMinWidth
-  }
+    closedDesktop: desktopMinWidth,
+  },
 } = dimensions;
 
 const PageContentRoot = styled(`main`)`
@@ -54,7 +54,7 @@ const PageContentRoot = styled(`main`)`
 
   @media (min-width: ${breakpoints.hd}px) {
     padding-left: ${props =>
-      props.contributorAreaStatus === 'closed' ? desktopMinWidth : hdMaxWidth};
+      props.contributorAreaStatus === `closed` ? desktopMinWidth : hdMaxWidth};
   }
 `;
 
@@ -74,7 +74,7 @@ const Overlay = styled(`div`)`
 
 class PageContent extends Component {
   state = {
-    className: ''
+    className: ``,
   };
 
   componentDidUpdate(prevProps) {
@@ -87,67 +87,67 @@ class PageContent extends Component {
 
     if (this.props.isDesktopViewport) {
       if (imageBrowserStatusChanged) {
-        if (this.props.productImagesBrowserStatus === 'open') {
+        if (this.props.productImagesBrowserStatus === `open`) {
           setTimeout(() => {
-            this.setState(state => ({
-              className: state.className + ' covered'
-            }));
+            this.setState(state => {return {
+              className: state.className + ` covered`,
+            };});
           }, 500);
         } else {
-          this.setState(state => ({
-            className: state.className.replace(' covered', '')
-          }));
+          this.setState(state => {return {
+            className: state.className.replace(` covered`, ``),
+          };});
         }
       }
 
       if (contributorAreaStatusChanged) {
-        if (this.props.contributorAreaStatus === 'closed') {
-          this.setState(state => ({
+        if (this.props.contributorAreaStatus === `closed`) {
+          this.setState(state => {return {
             className:
-              this.props.contributorAreaStatus !== 'open'
-                ? state.className + ' wide'
-                : state.className
-          }));
+              this.props.contributorAreaStatus !== `open`
+                ? state.className + ` wide`
+                : state.className,
+          };});
         } else {
-          this.setState(state => ({
+          this.setState(state => {return {
             className:
-              state.className !== 'open'
-                ? state.className.replace('wide', '')
-                : state.className
-          }));
+              state.className !== `open`
+                ? state.className.replace(`wide`, ``)
+                : state.className,
+          };});
         }
       }
 
       if (cartStatusChanged) {
-        if (this.props.cartStatus === 'open') {
-          this.setState(state => ({
-            className: state.className + ' moved'
-          }));
+        if (this.props.cartStatus === `open`) {
+          this.setState(state => {return {
+            className: state.className + ` moved`,
+          };});
         } else {
-          this.setState(state => ({
-            className: state.className.replace('moved', '')
-          }));
+          this.setState(state => {return {
+            className: state.className.replace(`moved`, ``),
+          };});
         }
       }
     } else {
       if (contributorAreaStatusChanged || cartStatusChanged) {
         this.setState({
           className:
-            this.props.contributorAreaStatus === 'open' ||
-            this.props.cartStatus === 'open'
-              ? 'covered'
-              : ''
+            this.props.contributorAreaStatus === `open` ||
+            this.props.cartStatus === `open`
+              ? `covered`
+              : ``,
         });
       }
     }
 
     if (prevProps.location.pathname !== this.props.location.pathname) {
-      this.setState(state => ({ className: state.className + ' entry' }));
+      this.setState(state => {return { className: state.className + ` entry` };});
 
       setTimeout(() => {
-        this.setState(state => ({
-          className: state.className.replace('entry', '')
-        }));
+        this.setState(state => {return {
+          className: state.className.replace(`entry`, ``),
+        };});
       }, 500);
     }
   }
@@ -159,7 +159,7 @@ class PageContent extends Component {
     return (
       <PageContentRoot className={className}>
         {children}
-        {cartStatus === 'open' && <Overlay />}
+        {cartStatus === `open` && <Overlay />}
         <Footer />
       </PageContentRoot>
     );
@@ -172,7 +172,7 @@ PageContent.propTypes = {
   contributorAreaStatus: PropTypes.string.isRequired,
   location: PropTypes.object.isRequired,
   productImagesBrowserStatus: PropTypes.string.isRequired,
-  isDesktopViewport: PropTypes.bool
+  isDesktopViewport: PropTypes.bool,
 };
 
 export default PageContent;

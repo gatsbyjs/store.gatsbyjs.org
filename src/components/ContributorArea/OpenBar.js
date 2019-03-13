@@ -215,7 +215,7 @@ const ContentFor = ({ contributor }) => {
 
 class OpenBar extends Component {
   state = {
-    className: 'closed'
+    className: `closed`,
   };
 
   componentDidUpdate(prevProps) {
@@ -230,40 +230,44 @@ class OpenBar extends Component {
 
     if (isDesktopViewportChanged && prevProps.isDesktopViewport === null) {
       if (this.props.isDesktopViewport) {
-        this.setState({ className: 'closed' });
+        this.setState({ className: `closed` });
       } else {
         this.setState({
           className: /\/product\//.test(this.props.location.pathname)
-            ? 'closed'
-            : 'open'
+            ? `closed`
+            : `open`,
         });
       }
     }
 
     if (areaStatusChanged) {
-      if (this.revertStatus(this.props.areaStatus) === 'open') {
-        this.setState({ className: 'opening' });
-        setTimeout(() => this.setState({ className: 'open' }), 500);
+      if (this.revertStatus(this.props.areaStatus) === `open`) {
+        this.setState({ className: `opening` });
+        setTimeout(() => this.setState({ className: `open` }), 500);
       }
 
-      if (this.revertStatus(this.props.areaStatus) === 'closed') {
-        this.setState({ className: 'closing' });
-        setTimeout(() => this.setState({ className: 'closed' }), 500);
+      if (this.revertStatus(this.props.areaStatus) === `closed`) {
+        this.setState({ className: `closing` });
+        setTimeout(() => this.setState({ className: `closed` }), 500);
       }
     }
 
     if (this.props.isDesktopViewport) {
       if (imageBrowserStatusChanged) {
-        if (this.props.productImagesBrowserStatus === 'open') {
+        if (this.props.productImagesBrowserStatus === `open`) {
           setTimeout(() => {
-            this.setState(state => ({
-              className: state.className + ' covered'
-            }));
+            this.setState(state => {
+              return {
+                className: state.className + ` covered`,
+              };
+            });
           }, 500);
         } else {
-          this.setState(state => ({
-            className: state.className.replace('covered', '')
-          }));
+          this.setState(state => {
+            return {
+              className: state.className.replace(`covered`, ``),
+            };
+          });
         }
       }
     }
@@ -272,58 +276,60 @@ class OpenBar extends Component {
     if (!this.props.isDesktopViewport) {
       if (this.props.location.pathname !== prevProps.location.pathname) {
         if (/\/product\//.test(this.props.location.pathname)) {
-          this.setState(state => ({
-            className: state.className + ' hidden'
-          }));
+          this.setState(state => {
+            return {
+              className: state.className + ` hidden`,
+            };
+          });
         } else {
-          this.setState(state => ({
-            className: 'open'
-          }));
+          this.setState(state => {
+            return {
+              className: `open`,
+            };
+          });
         }
       }
     }
   }
 
   revertStatus = status => {
-    if (status === 'open') {
-      return 'closed';
-    } else if (status === 'closed') {
-      return 'open';
+    if (status === `open`) {
+      return `closed`;
+    } else if (status === `closed`) {
+      return `open`;
     } else {
       return status;
     }
   };
 
   render() {
-    const { onClick, areaStatus } = this.props;
+    const { onClick } = this.props;
     const { className } = this.state;
 
     return (
       <UserContext.Consumer>
-        {({ contributor }) => {
-          return (
-            <OpenBarRoot onClick={onClick} className={className}>
-              <Content>
-                <Section>
-                  <ButlerBox>
-                    <Butler />
-                  </ButlerBox>
-                  <Title>
-                    <ContentFor contributor={contributor} />
-                  </Title>
-                  <ButlerHandBox>
-                    <ButlerHand />
-                  </ButlerHandBox>
-                </Section>
-                <Section>
-                  <Label>
-                    <span>Open Sidebar</span>
-                  </Label>
-                </Section>
-              </Content>
-            </OpenBarRoot>
-          );
-        }}
+        {({ contributor }) => (
+          <OpenBarRoot onClick={onClick} className={className}>
+            <Content>
+              <Section>
+                <ButlerBox>
+                  <Butler />
+                </ButlerBox>
+                <Title>
+                  <ContentFor contributor={contributor} />
+                </Title>
+                <ButlerHandBox>
+                  <ButlerHand />
+                </ButlerHandBox>
+              </Section>
+              <Section>
+                <Label>
+                  <span>Open Sidebar</span>
+                </Label>
+              </Section>
+            </Content>
+          </OpenBarRoot>
+        )}
       </UserContext.Consumer>
     );
   }
@@ -334,7 +340,7 @@ OpenBar.propTypes = {
   location: PropTypes.object.isRequired,
   onClick: PropTypes.func.isRequired,
   isDesktopViewport: PropTypes.bool,
-  productImagesBrowserStatus: PropTypes.string
+  productImagesBrowserStatus: PropTypes.string,
 };
 
 export default OpenBar;

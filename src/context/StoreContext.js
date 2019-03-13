@@ -2,8 +2,8 @@ import React from 'react';
 import Client from 'shopify-buy';
 
 const client = Client.buildClient({
-  domain: 'gatsby-swag.myshopify.com',
-  storefrontAccessToken: process.env.SHOPIFY_ACCESS_TOKEN
+  domain: `gatsby-swag.myshopify.com`,
+  storefrontAccessToken: process.env.SHOPIFY_ACCESS_TOKEN,
 });
 
 export const defaultStoreContext = {
@@ -15,17 +15,16 @@ export const defaultStoreContext = {
   shop: {},
   addVariantToCart: () => {},
   removeLineItem: () => {},
-  updateLineItem: () => {}
+  updateLineItem: () => {},
 };
 
 const StoreContext = React.createContext(defaultStoreContext);
 
-export const withStoreContext = Component => {
-  return props => (
+export const withStoreContext = Component =>
+  // eslint-disable-next-line react/display-name
+  props => (
     <StoreContext.Consumer>
       {context => <Component {...props} storeContext={context} />}
     </StoreContext.Consumer>
   );
-};
-
 export default StoreContext;

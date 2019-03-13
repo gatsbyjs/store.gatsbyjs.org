@@ -16,7 +16,7 @@ const ProductListingContainer = styled(`div`)`
   @media (min-width: ${breakpoints.desktop}px) {
     flex-direction: row;
     flex-wrap: wrap;
-    padding: ${spacing['2xl']}px;
+    padding: ${spacing[`2xl`]}px;
   }
 `;
 

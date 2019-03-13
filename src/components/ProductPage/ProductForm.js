@@ -6,7 +6,7 @@ import {
   MdInfoOutline,
   MdErrorOutline,
   MdShoppingCart,
-  MdSentimentDissatisfied
+  MdSentimentDissatisfied,
 } from 'react-icons/md';
 
 import { Fieldset, Input, Label, Select, Submit } from '../shared/FormElements';
@@ -20,10 +20,10 @@ const Form = styled(`form`)`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: ${spacing['2xl']}px ${spacing.md}px 0;
+  padding: ${spacing[`2xl`]}px ${spacing.md}px 0;
 
   @media (min-width: ${breakpoints.tablet}px) {
-    padding: ${spacing['2xl']}px ${spacing.xl}px 0;
+    padding: ${spacing[`2xl`]}px ${spacing.xl}px 0;
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
@@ -32,7 +32,7 @@ const Form = styled(`form`)`
 `;
 
 const Errors = styled(`div`)`
-  display: ${props => (props.show ? 'flex' : 'none')};
+  display: ${props => (props.show ? `flex` : `none`)};
   flex-direction: row;
   margin-bottom: ${spacing.xs}px;
   width: 100%;
@@ -99,16 +99,16 @@ const InfoLinks = styled(`div`)`
 const AddToCartButton = styled(Submit)`
   align-self: flex-end;
   flex-grow: 1;
-  height: ${props => (props.fullWidth ? 'auto' : '')};
-  width: ${props => (props.fullWidth ? '100%' : 'auto')};
+  height: ${props => (props.fullWidth ? `auto` : ``)};
+  width: ${props => (props.fullWidth ? `100%` : `auto`)};
 `;
 
 class ProductForm extends Component {
   state = {
     variant:
-      this.props.variants.length === 1 ? this.props.variants[0].shopifyId : '',
+      this.props.variants.length === 1 ? this.props.variants[0].shopifyId : ``,
     quantity: 1,
-    errors: []
+    errors: [],
   };
 
   handleChange = event => {
@@ -138,15 +138,15 @@ class ProductForm extends Component {
 
     if (this.state.quantity < 1) {
       errors.push({
-        field: 'quantity',
-        msg: 'Choose a <b>quantity</b> of 1 or more.'
+        field: `quantity`,
+        msg: `Choose a <b>quantity</b> of 1 or more.`,
       });
     }
 
-    if (this.state.variant === '' || this.state.variant === '.') {
+    if (this.state.variant === `` || this.state.variant === `.`) {
       errors.push({
-        field: 'variant',
-        msg: 'Please select a <b>size</b>.'
+        field: `variant`,
+        msg: `Please select a <b>size</b>.`,
       });
     }
 
@@ -203,7 +203,7 @@ class ProductForm extends Component {
             {hasVariants && (
               <SizeFieldset>
                 <Label htmlFor="variant">
-                  Size{' '}
+                  Size{` `}
                   <Link to="/product-details">
                     <MdInfoOutline />
                     <span>Size Chart</span>
@@ -235,7 +235,7 @@ class ProductForm extends Component {
               disabled={isOutOfStock}
               fullWidth={hasVariants}
             >
-              {isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
+              {isOutOfStock ? `Out of Stock` : `Add to Cart`}
               {isOutOfStock ? <MdSentimentDissatisfied /> : <MdShoppingCart />}
             </AddToCartButton>
             <InfoLinks>
@@ -256,7 +256,7 @@ class ProductForm extends Component {
 
 ProductForm.propTypes = {
   id: PropTypes.string.isRequired,
-  variants: PropTypes.array.isRequired
+  variants: PropTypes.array.isRequired,
 };
 
 export default ProductForm;

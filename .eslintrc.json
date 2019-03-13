@@ -26,6 +26,12 @@
   "globals": {
     "spyOn": true
   },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "detect"
+    }
+  },
   "rules": {
     "no-console": "off",
     "no-inner-declarations": "off",
@@ -39,7 +45,7 @@
       { "requireReturnForObjectLiteral": true }
     ],
     "jsx-quotes": ["error", "prefer-double"],
-    "semi": ["error", "never"],
+    "semi": ["error", "always"],
     "object-curly-spacing": ["error", "always"],
     "comma-dangle": [
       "error",

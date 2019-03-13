@@ -3,10 +3,12 @@ import Helmet from 'react-helmet';
 import Contributions from './Contributions';
 import OpenIssues from './OpenIssues';
 
-export default () => (
+const Dashboard = () => (
   <>
     <Helmet title="Maintainer Dashboard" />
     <Contributions />
     <OpenIssues />
   </>
 );
+
+export default Dashboard;

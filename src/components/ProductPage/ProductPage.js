@@ -10,7 +10,7 @@ import BackLink from './BackLink';
 
 import { breakpoints, spacing } from '../../utils/styles';
 
-const ProductPageRoot = styled('div')`
+const ProductPageRoot = styled(`div`)`
   padding-bottom: ${spacing.md}px;
 
   @media (min-width: ${breakpoints.desktop}px) {
@@ -52,13 +52,13 @@ class ProductPage extends Component {
   render() {
     const {
       product,
-      product: { id, images, variants }
+      product: { id, images, variants },
     } = this.props;
 
     const {
       isDesktopViewport,
       productImageFeatured,
-      toggleProductImagesBrowser
+      toggleProductImagesBrowser,
     } = this.props;
 
     return (
@@ -93,7 +93,7 @@ ProductPage.propTypes = {
   toggleProductImagesBrowser: PropTypes.func.isRequired,
   setCurrentProductImages: PropTypes.func.isRequired,
   productImageFeatured: PropTypes.object,
-  isDesktopViewport: PropTypes.bool
+  isDesktopViewport: PropTypes.bool,
 };
 
 export default ProductPage;

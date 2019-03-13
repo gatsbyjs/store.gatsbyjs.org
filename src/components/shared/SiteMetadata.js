@@ -13,6 +13,7 @@ const bodyStyles = css`
   margin: 0 auto;
 `;
 
+// eslint-disable-next-line react/display-name
 export default () => (
   <StaticQuery
     query={graphql`
@@ -28,8 +29,8 @@ export default () => (
     `}
     render={({
       site: {
-        siteMetadata: { siteUrl, title, description }
-      }
+        siteMetadata: { siteUrl, title, description },
+      },
     }) => (
       <Helmet defaultTitle={title} titleTemplate={`%s · ${title}`}>
         <html lang="en" />

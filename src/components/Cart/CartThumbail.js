@@ -2,7 +2,7 @@ import React from 'react';
 import { graphql, StaticQuery } from 'gatsby';
 import styled from 'react-emotion';
 import Image from 'gatsby-image';
-
+import PropTypes from 'prop-types';
 import { colors, radius } from '../../utils/styles';
 
 const CartThumbailRoot = styled(Image)`
@@ -29,6 +29,7 @@ const CartThumbail = ({
   return <CartThumbailRoot {...imageProps} />;
 };
 
+// eslint-disable-next-line react/display-name
 export default props => (
   <StaticQuery
     query={graphql`
@@ -60,3 +61,9 @@ export default props => (
     }}
   />
 );
+
+CartThumbail.propTypes = {
+  shopifyImages: PropTypes.array,
+  id: PropTypes.string,
+  fallback: PropTypes.string,
+};

@@ -1,12 +1,12 @@
 import React from 'react';
 import styled, { injectGlobal } from 'react-emotion';
 import { navigate } from 'gatsby';
-
+import PropTypes from 'prop-types';
 import { client } from '../../context/ApolloContext';
 import StoreContext, { defaultStoreContext } from '../../context/StoreContext';
 import UserContext, { defaultUserContext } from '../../context/UserContext';
 import InterfaceContext, {
-  defaultInterfaceContext
+  defaultInterfaceContext,
 } from '../../context/InterfaceContext';
 
 import Header from './Header';
@@ -17,7 +17,7 @@ import Cart from '../Cart';
 import SiteMetadata from '../shared/SiteMetadata';
 
 import { logout, getUserInfo } from '../../utils/auth';
-import { breakpoints, spacing } from '../../utils/styles';
+import { breakpoints } from '../../utils/styles';
 
 // Import Futura PT typeface
 import '../../fonts/futura-pt/Webfonts/futurapt_demi_macroman/stylesheet.css';
@@ -49,55 +49,65 @@ export default class Layout extends React.Component {
     interface: {
       ...defaultInterfaceContext,
       toggleCart: () => {
-        this.setState(state => ({
-          interface: {
-            ...state.interface,
-            contributorAreaStatus:
-              state.interface.isDesktopViewport === false &&
-              state.interface.contributorAreaStatus === 'open'
-                ? 'closed'
-                : state.interface.contributorAreaStatus,
-            cartStatus:
-              this.state.interface.cartStatus === 'open' ? 'closed' : 'open'
-          }
-        }));
+        this.setState(state => {
+          return {
+            interface: {
+              ...state.interface,
+              contributorAreaStatus:
+                state.interface.isDesktopViewport === false &&
+                state.interface.contributorAreaStatus === `open`
+                  ? `closed`
+                  : state.interface.contributorAreaStatus,
+              cartStatus:
+                this.state.interface.cartStatus === `open` ? `closed` : `open`,
+            },
+          };
+        });
       },
       toggleProductImagesBrowser: img => {
-        this.setState(state => ({
-          interface: {
-            ...state.interface,
-            productImagesBrowserStatus: img ? 'open' : 'closed',
-            productImageFeatured: img
-              ? img
-              : state.interface.productImageFeatured
-          }
-        }));
+        this.setState(state => {
+          return {
+            interface: {
+              ...state.interface,
+              productImagesBrowserStatus: img ? `open` : `closed`,
+              productImageFeatured: img
+                ? img
+                : state.interface.productImageFeatured,
+            },
+          };
+        });
       },
       featureProductImage: img => {
-        this.setState(state => ({
-          interface: {
-            ...state.interface,
-            productImageFeatured: img
-          }
-        }));
+        this.setState(state => {
+          return {
+            interface: {
+              ...state.interface,
+              productImageFeatured: img,
+            },
+          };
+        });
       },
       setCurrentProductImages: images => {
-        this.setState(state => ({
-          interface: {
-            ...state.interface,
-            currentProductImages: images,
-            productImageFeatured: null
-          }
-        }));
+        this.setState(state => {
+          return {
+            interface: {
+              ...state.interface,
+              currentProductImages: images,
+              productImageFeatured: null,
+            },
+          };
+        });
       },
       toggleContributorArea: () => {
-        this.setState(state => ({
-          interface: {
-            ...state.interface,
-            contributorAreaStatus: this.toggleContributorAreaStatus()
-          }
-        }));
-      }
+        this.setState(state => {
+          return {
+            interface: {
+              ...state.interface,
+              contributorAreaStatus: this.toggleContributorAreaStatus(),
+            },
+          };
+        });
+      },
     },
     user: {
       ...defaultUserContext,
@@ -105,103 +115,113 @@ export default class Layout extends React.Component {
         this.setState({
           user: {
             ...defaultUserContext,
-            loading: false
-          }
+            loading: false,
+          },
         });
-        logout(() => navigate('/'));
+        logout(() => navigate(`/`));
       },
       updateContributor: data => {
-        this.setState(state => ({
-          user: {
-            ...state.user,
-            contributor: data,
-            loading: false
-          }
-        }));
-      }
+        this.setState(state => {
+          return {
+            user: {
+              ...state.user,
+              contributor: data,
+              loading: false,
+            },
+          };
+        });
+      },
     },
     store: {
       ...defaultStoreContext,
       addVariantToCart: (variantId, quantity) => {
-        if (variantId === '' || !quantity) {
-          console.error('Both a size and quantity are required.');
+        if (variantId === `` || !quantity) {
+          console.error(`Both a size and quantity are required.`);
           return;
         }
 
-        this.setState(state => ({
-          store: {
-            ...state.store,
-            adding: true
-          }
-        }));
+        this.setState(state => {
+          return {
+            store: {
+              ...state.store,
+              adding: true,
+            },
+          };
+        });
 
         const { checkout, client } = this.state.store;
         const checkoutId = checkout.id;
         const lineItemsToUpdate = [
-          { variantId, quantity: parseInt(quantity, 10) }
+          { variantId, quantity: parseInt(quantity, 10) },
         ];
 
+        // eslint-disable-next-line consistent-return
         return client.checkout
           .addLineItems(checkoutId, lineItemsToUpdate)
           .then(checkout => {
-            this.setState(state => ({
-              store: {
-                ...state.store,
-                checkout,
-                adding: false
-              }
-            }));
+            this.setState(state => {
+              return {
+                store: {
+                  ...state.store,
+                  checkout,
+                  adding: false,
+                },
+              };
+            });
           });
       },
-      removeLineItem: (client, checkoutID, lineItemID) => {
-        return client.checkout
-          .removeLineItems(checkoutID, [lineItemID])
-          .then(res => {
-            this.setState(state => ({
+      removeLineItem: (client, checkoutID, lineItemID) =>
+        client.checkout.removeLineItems(checkoutID, [lineItemID]).then(res => {
+          this.setState(state => {
+            return {
               store: {
                 ...state.store,
-                checkout: res
-              }
-            }));
+                checkout: res,
+              },
+            };
           });
-      },
+        }),
       updateLineItem: (client, checkoutID, lineItemID, quantity) => {
         const lineItemsToUpdate = [
-          { id: lineItemID, quantity: parseInt(quantity, 10) }
+          { id: lineItemID, quantity: parseInt(quantity, 10) },
         ];
 
         return client.checkout
           .updateLineItems(checkoutID, lineItemsToUpdate)
           .then(res => {
-            this.setState(state => ({
-              store: {
-                ...state.store,
-                checkout: res
-              }
-            }));
+            this.setState(state => {
+              return {
+                store: {
+                  ...state.store,
+                  checkout: res,
+                },
+              };
+            });
           });
-      }
-    }
+      },
+    },
   };
 
   async initializeCheckout() {
     // Check for an existing cart.
-    const isBrowser = typeof window !== 'undefined';
+    const isBrowser = typeof window !== `undefined`;
     const existingCheckoutID = isBrowser
-      ? localStorage.getItem('shopify_checkout_id')
+      ? localStorage.getItem(`shopify_checkout_id`)
       : null;
 
     const setCheckoutInState = checkout => {
       if (isBrowser) {
-        localStorage.setItem('shopify_checkout_id', checkout.id);
+        localStorage.setItem(`shopify_checkout_id`, checkout.id);
       }
 
-      this.setState(state => ({
-        store: {
-          ...state.store,
-          checkout
-        }
-      }));
+      this.setState(state => {
+        return {
+          store: {
+            ...state.store,
+            checkout,
+          },
+        };
+      });
     };
 
     const createNewCheckout = () => this.state.store.client.checkout.create();
@@ -217,7 +237,7 @@ export default class Layout extends React.Component {
           return;
         }
       } catch (e) {
-        localStorage.setItem('shopify_checkout_id', null);
+        localStorage.setItem(`shopify_checkout_id`, null);
       }
     }
 
@@ -249,28 +269,33 @@ export default class Layout extends React.Component {
             }
           }
         `,
-        variables: { user: nickname }
+        variables: { user: nickname },
       });
 
-      this.setState(state => ({
-        user: {
-          ...state.user,
-          contributor: data.updateContributorTags,
-          loading: false
-        }
-      }));
+      this.setState(state => {
+        return {
+          user: {
+            ...state.user,
+            contributor: data.updateContributorTags,
+            loading: false,
+          },
+        };
+      });
     } catch (error) {
-      this.setState(state => ({
-        user: {
-          ...state.user,
-          error: error.toString(),
-          loading: false
-        }
-      }));
+      this.setState(state => {
+        return {
+          user: {
+            ...state.user,
+            error: error.toString(),
+            loading: false,
+          },
+        };
+      });
     }
   }
 
   componentDidMount() {
+    const { pathname } = this.props.location;
     // Observe viewport switching from mobile to desktop and vice versa
     const mediaQueryToMatch = `(min-width: ${breakpoints.desktop}px)`;
 
@@ -283,14 +308,16 @@ export default class Layout extends React.Component {
     this.initializeCheckout();
 
     // Mounting Layout on 'callback' page triggers user 'loading' flag
-    if (this.props.location.pathname === '/callback/') {
-      this.setState(state => ({
-        user: { ...state.user, loading: true }
-      }));
+    if (pathname === `/callback/`) {
+      this.setState(state => {
+        return {
+          user: { ...state.user, loading: true },
+        };
+      });
     }
 
     // Make sure to set user.profile when a visitor reloads the app
-    if (this.props.location.pathname !== '/callback/') {
+    if (pathname !== `/callback/`) {
       this.setUserProfile();
     }
   }
@@ -299,14 +326,16 @@ export default class Layout extends React.Component {
     // Set user.profile after redirection from '/callback/' to '/'
     if (
       prevProps.location.pathname !== this.props.location.pathname &&
-      prevProps.location.pathname === '/callback/'
+      prevProps.location.pathname === `/callback/`
     ) {
-      this.setState(state => ({
-        interface: {
-          ...state.interface,
-          contributorAreaStatus: 'open'
-        }
-      }));
+      this.setState(state => {
+        return {
+          interface: {
+            ...state.interface,
+            contributorAreaStatus: `open`,
+          },
+        };
+      });
       this.setUserProfile();
     }
   }
@@ -316,12 +345,14 @@ export default class Layout extends React.Component {
   };
 
   updateViewPortState = e => {
-    this.setState(state => ({
-      interface: {
-        ...state.interface,
-        isDesktopViewport: this.desktopMediaQuery.matches
-      }
-    }));
+    this.setState(state => {
+      return {
+        interface: {
+          ...state.interface,
+          isDesktopViewport: this.desktopMediaQuery.matches,
+        },
+      };
+    });
   };
 
   setUserProfile = async () => {
@@ -330,13 +361,15 @@ export default class Layout extends React.Component {
 
     // If logged in set user.profile
     if (profile.nickname) {
-      this.setState(state => ({
-        user: {
-          ...state.user,
-          profile,
-          loading: true
-        }
-      }));
+      this.setState(state => {
+        return {
+          user: {
+            ...state.user,
+            profile,
+            loading: true,
+          },
+        };
+      });
 
       // and load the contributor data
       this.loadContributor(profile.nickname);
@@ -348,21 +381,23 @@ export default class Layout extends React.Component {
   }
 
   updateViewPortState = e => {
-    this.setState(state => ({
-      interface: {
-        ...state.interface,
-        isDesktopViewport: this.desktopMediaQuery.matches
-      }
-    }));
+    this.setState(state => {
+      return {
+        interface: {
+          ...state.interface,
+          isDesktopViewport: this.desktopMediaQuery.matches,
+        },
+      };
+    });
   };
 
   toggleContributorAreaStatus = () => {
-    if (this.state.interface.contributorAreaStatus === 'initial') {
-      return this.state.interface.isDesktopViewport ? 'closed' : 'open';
+    if (this.state.interface.contributorAreaStatus === `initial`) {
+      return this.state.interface.isDesktopViewport ? `closed` : `open`;
     } else {
-      return this.state.interface.contributorAreaStatus === 'closed'
-        ? 'open'
-        : 'closed';
+      return this.state.interface.contributorAreaStatus === `closed`
+        ? `open`
+        : `closed`;
     }
   };
 
@@ -386,7 +421,7 @@ export default class Layout extends React.Component {
                   currentProductImages,
                   featureProductImage,
                   productImageFeatured,
-                  toggleProductImagesBrowser
+                  toggleProductImagesBrowser,
                 }) => (
                   <>
                     <Header
@@ -441,3 +476,8 @@ export default class Layout extends React.Component {
     );
   }
 }
+
+Layout.propTypes = {
+  location: PropTypes.object,
+  pathname: PropTypes.string,
+};

@@ -3,7 +3,7 @@ import styled from 'react-emotion';
 
 import { breakpoints, colors, spacing } from '../../utils/styles';
 
-const FooterRoot = styled('footer')`
+const FooterRoot = styled(`footer`)`
   align-items: center;
   color: ${colors.textMild};
   display: flex;
@@ -30,7 +30,7 @@ const Row = styled(`span`)`
   display: inline-block;
   flex-shrink: 0;
   line-height: 1.3;
-  padding-bottom: ${spacing['2xs']}px;
+  padding-bottom: ${spacing[`2xs`]}px;
   text-align: center;
 
   @media (min-width: ${breakpoints.desktop}px) {
@@ -57,17 +57,17 @@ const Footer = () => (
       Talk to us on Twitter <a href="https://twitter.com/gatsbyjs">@gatsbyjs</a>
     </Row>
     <Row>
-      &nbsp;or send an email to{' '}
+      &nbsp;or send an email to{` `}
       <a href="mailto:team@gatsbyjs.com">team@gatsbyjs.com</a>
     </Row>
     <Spacer>•</Spacer>
     <Row>
-      Built with 💜 by the{' '}
+      Built with 💜 by the{` `}
       <a href="https://www.gatsbyjs.com/">Gatsby Inkteam</a>
     </Row>
     <Spacer>•</Spacer>
     <Row>
-      See the source code on{' '}
+      See the source code on{` `}
       <a href="https://github.com/gatsbyjs/store.gatsbyjs.org">GitHub</a>
     </Row>
   </FooterRoot>

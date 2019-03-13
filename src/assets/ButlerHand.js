@@ -1,7 +1,8 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import { colors } from '../utils/styles';
 
-export default ({ purple }) => {
+const ButlerHand = ({ purple }) => {
   const strokeColor = purple || colors.brand;
 
   return (
@@ -92,3 +93,9 @@ export default ({ purple }) => {
     </svg>
   );
 };
+
+ButlerHand.propTypes = {
+  purple: PropTypes.any,
+};
+
+export default ButlerHand;

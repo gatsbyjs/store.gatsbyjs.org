@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'react-emotion';
 import { colors, spacing } from '../../utils/styles';
 
-const EmptyCartRoot = styled('div')`
+const EmptyCartRoot = styled(`div`)`
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -10,7 +10,7 @@ const EmptyCartRoot = styled('div')`
   justify-content: center;
 `;
 
-const SadCartCopy = styled('div')`
+const SadCartCopy = styled(`div`)`
   color: ${colors.lilac};
   margin-top: ${spacing.lg}px;
   max-width: 200px;
@@ -100,7 +100,7 @@ const EmptyCart = () => (
     <SadCart />
     <SadCartCopy>
       <p>
-        Your Cart is sad{' '}
+        Your Cart is sad{` `}
         <span role="img" aria-label="sad face">
           😔
         </span>

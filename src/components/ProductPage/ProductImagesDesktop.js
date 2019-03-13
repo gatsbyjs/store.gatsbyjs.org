@@ -7,7 +7,7 @@ import ProductThumbnails, { Thumbnail } from './ProductThumbnails';
 
 import { spacing } from '../../utils/styles';
 
-const THUMBNAIL_SIZE = '54px';
+const THUMBNAIL_SIZE = `54px`;
 
 const ProductImagesDesktopRoot = styled(`div`)`
   margin-right: ${spacing.lg}px;
@@ -38,7 +38,7 @@ const ProductImagesDesktop = ({ images, imageFeatured, imageOnClick }) => {
 ProductImagesDesktop.propTypes = {
   images: PropTypes.array.isRequired,
   imageOnClick: PropTypes.func,
-  imageFeatured: PropTypes.object
+  imageFeatured: PropTypes.object,
 };
 
 export default ProductImagesDesktop;

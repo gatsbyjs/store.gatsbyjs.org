@@ -9,7 +9,7 @@ import UserContext from '../../context/UserContext';
 
 import {
   removeCareInstructions,
-  cutDescriptionShort
+  cutDescriptionShort,
 } from '../../utils/helpers';
 
 import {
@@ -18,11 +18,11 @@ import {
   fonts,
   radius,
   spacing,
-  animations
+  animations,
 } from '../../utils/styles';
 
 const DESCRIPTION_LIMIT = 90;
-const TRANSITION_DURATION = '250ms';
+const TRANSITION_DURATION = `250ms`;
 
 const ProductListingItemLink = styled(Link)`
   background: ${colors.lightest};
@@ -107,9 +107,9 @@ const CodeEligibility = styled(`div`)`
 
   span:last-child {
     background: ${props =>
-      props.freeWith === 'HOLYBUCKETS' ? colors.lemon : colors.brand};
+      props.freeWith === `HOLYBUCKETS` ? colors.lemon : colors.brand};
     color: ${props =>
-      props.freeWith === 'HOLYBUCKETS' ? colors.brand : colors.lemon};
+      props.freeWith === `HOLYBUCKETS` ? colors.brand : colors.lemon};
     flex-basis: 65%;
     font-family: ${fonts.heading};
     font-size: 1rem;
@@ -149,13 +149,13 @@ const Price = styled(`div`)`
   }
 `;
 
-const Incentive = styled('div')`
+const Incentive = styled(`div`)`
   align-items: center;
   color: ${colors.lilac};
   display: flex;
   font-size: 0.9rem;
   line-height: 1.3;
-  margin-bottom: ${spacing['2xs']}px;
+  margin-bottom: ${spacing[`2xs`]}px;
   margin-right: calc(-${spacing.lg}px - 40px);
   text-align: right;
   transition: all ${TRANSITION_DURATION};
@@ -169,7 +169,7 @@ const Incentive = styled('div')`
   > span {
     svg {
       display: inline;
-      margin-right: -${spacing['3xs']}px;
+      margin-right: -${spacing[`3xs`]}px;
       vertical-align: middle;
     }
   }
@@ -223,37 +223,36 @@ const ProductListingItem = props => {
       handle,
       description,
       variants: [firstVariant],
-      images: [firstImage]
-    }
+      images: [firstImage],
+    },
   } = props;
 
   const { price } = firstVariant;
   const {
     localFile: {
-      childImageSharp: { fluid }
-    }
+      childImageSharp: { fluid },
+    },
   } = firstImage;
 
   const freeWith =
-    price >= 20 ? 'HOLYBUCKETS' : price >= 10 ? 'BUILDWITHGATSBY' : null;
+    price >= 20 ? `HOLYBUCKETS` : price >= 10 ? `BUILDWITHGATSBY` : null;
 
   return (
     <UserContext.Consumer>
-      {({ contributor }) => {
-        return (
+      {({ contributor }) => (
           <ProductListingItemLink to={`/product/${handle}`}>
             <Item>
               <Preview>
                 <Image fluid={fluid} />
                 {checkEligibility({
                   freeWith,
-                  contributor
+                  contributor,
                 }) && (
                   <CodeEligibility freeWith={freeWith}>
                     <span>free with </span>
                     <span>
                       Code Swag Level
-                      {freeWith === 'HOLYBUCKETS' ? '2' : '1'}
+                      {freeWith === `HOLYBUCKETS` ? `2` : `1`}
                     </span>
                   </CodeEligibility>
                 )}
@@ -281,14 +280,13 @@ const ProductListingItem = props => {
               </PriceRow>
             </Item>
           </ProductListingItemLink>
-        );
-      }}
+        )}
     </UserContext.Consumer>
   );
 };
 
 ProductListingItem.propTypes = {
-  product: PropTypes.object.isRequired
+  product: PropTypes.object.isRequired,
 };
 
 export default ProductListingItem;

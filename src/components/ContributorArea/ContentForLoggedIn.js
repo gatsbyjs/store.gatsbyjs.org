@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 
 import ContentForNotContributor from './ContentForNotContributor';
@@ -31,7 +31,7 @@ const ContentForLoggedIn = ({
   error,
   handleLogout,
   loading,
-  profile
+  profile,
 }) => (
   <>
     <LogoutBar
@@ -55,7 +55,7 @@ ContentForLoggedIn.propTypes = {
   error: PropTypes.any,
   handleLogout: PropTypes.func,
   loading: PropTypes.bool,
-  profile: PropTypes.object
+  profile: PropTypes.object,
 };
 
 export default ContentForLoggedIn;

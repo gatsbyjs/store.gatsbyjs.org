@@ -7,7 +7,7 @@ import InterfaceContext from '../../context/InterfaceContext';
 
 import { breakpoints, colors, radius, spacing } from '../../utils/styles';
 
-const THUMBNAIL_SIZE = '44px';
+const THUMBNAIL_SIZE = `44px`;
 
 const ProductThumbnailsRoot = styled(`div`)`
   height: ${THUMBNAIL_SIZE};
@@ -54,7 +54,7 @@ class ProductThumbnails extends Component {
   };
 
   render() {
-    const { images, className = '' } = this.props;
+    const { images, className = `` } = this.props;
 
     return (
       <InterfaceContext.Consumer>
@@ -65,8 +65,8 @@ class ProductThumbnails extends Component {
                 const {
                   id,
                   localFile: {
-                    childImageSharp: { fluid }
-                  }
+                    childImageSharp: { fluid },
+                  },
                 } = image;
 
                 return (
@@ -89,7 +89,7 @@ class ProductThumbnails extends Component {
 
 ProductThumbnails.propTypes = {
   images: PropTypes.array.isRequired,
-  className: PropTypes.string
+  className: PropTypes.string,
 };
 
 export default ProductThumbnails;

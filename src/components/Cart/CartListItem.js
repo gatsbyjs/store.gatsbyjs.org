@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import styled from 'react-emotion';
-
+import PropTypes from 'prop-types';
 import { MdClose } from 'react-icons/md';
 
 import CartThumbail from './CartThumbail';
@@ -9,7 +9,7 @@ import { Button } from '../shared/Buttons';
 
 import { breakpoints, colors, spacing } from '../../utils/styles';
 
-const CartListItemRoot = styled('li')`
+const CartListItemRoot = styled(`li`)`
   align-items: center;
   border-bottom: 1px solid ${colors.brandLight};
   display: flex;
@@ -19,21 +19,21 @@ const CartListItemRoot = styled('li')`
 
 const Thumbail = styled(CartThumbail)`
   flex-grow: 0;
-  margin-left: ${spacing['2xs']}px;
+  margin-left: ${spacing[`2xs`]}px;
   margin-right: ${spacing.sm}px;
 `;
 
-const Info = styled('div')`
+const Info = styled(`div`)`
   flex-grow: 1;
 `;
 
-const Name = styled('span')`
+const Name = styled(`span`)`
   display: block;
   font-size: 1rem;
   line-height: 1.2;
 `;
 
-const Meta = styled('span')`
+const Meta = styled(`span`)`
   color: ${colors.textLight};
   display: block;
   font-size: 0.95rem;
@@ -58,7 +58,7 @@ const Remove = styled(Button)`
   display: flex;
   height: 44px;
   justify-content: center;
-  margin-right: ${spacing['2xs']}px;
+  margin-right: ${spacing[`2xs`]}px;
   padding: 0;
   width: 44px;
 
@@ -69,16 +69,16 @@ const Remove = styled(Button)`
   }
 `;
 
-export default ({
+const cartlistitem = ({
   item,
   setCartLoading,
   updateQuantity,
   handleRemove,
-  isCartLoading
+  isCartLoading,
 }) => {
   const [quantity, setQuantity] = useState(1);
 
-  if (item.quantity !== quantity && quantity !== '' && !isCartLoading) {
+  if (item.quantity !== quantity && quantity !== `` && !isCartLoading) {
     setQuantity(item.quantity);
   }
 
@@ -98,7 +98,7 @@ export default ({
     }
 
     // If the field is empty, update the state but don’t do anything else.
-    if (value === '') {
+    if (value === ``) {
       setQuantity(value);
       return;
     }
@@ -152,3 +152,13 @@ export default ({
     </CartListItemRoot>
   );
 };
+
+cartlistitem.propTypes = {
+  setCartLoading: PropTypes.func,
+  handleRemove: PropTypes.func,
+  isCartLoading: PropTypes.bool,
+  updateQuantity: PropTypes.func,
+  item: PropTypes.object,
+};
+
+export default cartlistitem;
