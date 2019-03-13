@@ -6,8 +6,7 @@ module.exports = {
   siteMetadata: {
     siteUrl: `https://store.gatsbyjs.org`,
     title: `Holy buckets! Get your Gatsby swag here!`,
-    description:
-      `Do you like spaced-out socks? All purple everything? Hitting #maximumcomf with JAMstack Jammies? Oh boy have we got the swag store for you!`,
+    description: `Do you like spaced-out socks? All purple everything? Hitting #maximumcomf with JAMstack Jammies? Oh boy have we got the swag store for you!`,
   },
   plugins: [
     {
