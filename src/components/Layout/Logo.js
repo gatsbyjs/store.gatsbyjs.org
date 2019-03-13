@@ -1,24 +1,10 @@
 import React from 'react';
-import { css } from 'emotion';
-
 import { colors } from '../../utils/styles';
-
-const svg = css`
-  display: inline-block;
-  height: 28px;
-`;
-
-const monogram = css`
-  margin-right: 10px;
-`;
 
 const Monogram = () => (
   <svg
     viewBox="0 0 28 28"
-    className={css`
-      ${svg};
-      ${monogram};
-    `}
+    style={{ display: `inline-block`, 'margin-right': `10px`, height: `28px` }}
   >
     <path
       fill="#FFF"
@@ -32,12 +18,7 @@ const Monogram = () => (
 );
 
 const Logotype = () => (
-  <svg
-    viewBox="0 0 70 28"
-    className={css`
-      ${svg};
-    `}
-  >
+  <svg viewBox="0 0 70 28" style={{ display: `inline-block`, height: `28px` }}>
     <g transform="translate(0 5)">
       <path d="M24.9,7 L27.7,7 L27.7,17 L24.9,17 L24.9,15.7 C23.9,17.2 22.6,17.3 21.8,17.3 C18.7,17.3 16.7,14.9 16.7,12 C16.7,9 18.7,6.7 21.6,6.7 C22.4,6.7 23.9,6.8 24.8,8.3 L24.8,7 L24.9,7 Z M19.7,12 C19.7,13.6 20.8,14.8 22.5,14.8 C24.1,14.8 25.3,13.6 25.3,12 C25.3,10.4 24.2,9.2 22.5,9.2 C20.9,9.2 19.7,10.4 19.7,12 Z" />
       <polygon points="33.2 9.4 33.2 17 30.4 17 30.4 9.4 29.3 9.4 29.3 7 30.4 7 30.4 3.6 33.2 3.6 33.2 7 35.1 7 35.1 9.4" />
@@ -49,7 +30,7 @@ const Logotype = () => (
 );
 
 const Product = () => (
-  <svg viewBox="0 0 50 28" className={svg}>
+  <svg viewBox="0 0 50 28" style={{ display: `inline-block`, height: `28px` }}>
     <path
       fill={colors.brand}
       fillRule="evenodd"
@@ -59,7 +40,7 @@ const Product = () => (
 );
 
 const Logo = () => (
-  <div className={svg}>
+  <div style={{ display: `inline-block`, height: `28px` }}>
     <Monogram />
     <Logotype />
     <Product />

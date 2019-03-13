@@ -1,6 +1,7 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { graphql, StaticQuery } from 'gatsby';
+// eslint-disable-next-line emotion/no-vanilla
 import { css } from 'emotion';
 import { colors } from '../../utils/styles';
 

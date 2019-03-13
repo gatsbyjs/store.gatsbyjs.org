@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
+// eslint-disable-next-line emotion/no-vanilla
 import { injectGlobal } from 'emotion';
 import { navigate } from 'gatsby';
 import PropTypes from 'prop-types';
