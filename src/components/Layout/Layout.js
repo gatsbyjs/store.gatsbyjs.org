@@ -1,5 +1,6 @@
 import React from 'react';
-import styled, { injectGlobal } from 'react-emotion';
+import styled from '@emotion/styled';
+import { injectGlobal } from 'emotion';
 import { navigate } from 'gatsby';
 import PropTypes from 'prop-types';
 import { client } from '../../context/ApolloContext';

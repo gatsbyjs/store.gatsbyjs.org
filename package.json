@@ -48,6 +48,7 @@
     "stylelint": "stylelint './src/**/*.js'"
   },
   "devDependencies": {
+    "babel-plugin-emotion": "10.0.9",
     "eslint": "5.15.1",
     "eslint-config-google": "0.12.0",
     "eslint-config-prettier": "^4.1.0",
