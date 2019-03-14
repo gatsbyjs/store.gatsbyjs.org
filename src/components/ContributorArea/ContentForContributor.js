@@ -64,14 +64,6 @@ const Used = styled(`span`)`
     margin-left: ${spacing.xs}px;
   }
 `;
-//reference line 177
-// const Tip = styled(`p`)`
-//   color: ${colors.brandBright};
-//   font-size: 0.85rem;
-//   line-height: 1.2;
-//   margin: 0;
-//   padding-top: ${spacing.xs}px;
-// `;
 
 const ProgressBarContainer = `
   border: 0;
@@ -175,12 +167,6 @@ const ContentForContributor = () => (
                   <Used>Claimed! 🎉</Used>
                 )}
               </CodeBadge>
-              {/* {!code.used && (
-                  <Tip>
-                    Click the badge to shop only items you can claim for free
-                    using this code.
-                  </Tip>
-                )} */}
             </CodeBadgeBox>
           ))}
           {/* Show progress bar when Level 1 is earned, but Level 2 is not */}
