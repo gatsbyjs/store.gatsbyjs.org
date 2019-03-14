@@ -134,14 +134,18 @@ class CloseBar extends Component {
       if (imageBrowserStatusChanged) {
         if (this.props.productImagesBrowserStatus === 'open') {
           setTimeout(() => {
-            this.setState(state => {return {
-              className: state.className + ' covered',
-            };});
+            this.setState(state => {
+              return {
+                className: state.className + ' covered',
+              };
+            });
           }, 500);
         } else {
-          this.setState(state => {return {
-            className: state.className.replace('covered', ''),
-          };});
+          this.setState(state => {
+            return {
+              className: state.className.replace('covered', ''),
+            };
+          });
         }
       }
     }

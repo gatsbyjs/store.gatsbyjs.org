@@ -89,44 +89,56 @@ class PageContent extends Component {
       if (imageBrowserStatusChanged) {
         if (this.props.productImagesBrowserStatus === 'open') {
           setTimeout(() => {
-            this.setState(state => {return {
-              className: state.className + ' covered',
-            };});
+            this.setState(state => {
+              return {
+                className: state.className + ' covered',
+              };
+            });
           }, 500);
         } else {
-          this.setState(state => {return {
-            className: state.className.replace(' covered', ''),
-          };});
+          this.setState(state => {
+            return {
+              className: state.className.replace(' covered', ''),
+            };
+          });
         }
       }
 
       if (contributorAreaStatusChanged) {
         if (this.props.contributorAreaStatus === 'closed') {
-          this.setState(state => {return {
-            className:
-              this.props.contributorAreaStatus !== 'open'
-                ? state.className + ' wide'
-                : state.className,
-          };});
+          this.setState(state => {
+            return {
+              className:
+                this.props.contributorAreaStatus !== 'open'
+                  ? state.className + ' wide'
+                  : state.className,
+            };
+          });
         } else {
-          this.setState(state => {return {
-            className:
-              state.className !== 'open'
-                ? state.className.replace('wide', '')
-                : state.className,
-          };});
+          this.setState(state => {
+            return {
+              className:
+                state.className !== 'open'
+                  ? state.className.replace('wide', '')
+                  : state.className,
+            };
+          });
         }
       }
 
       if (cartStatusChanged) {
         if (this.props.cartStatus === 'open') {
-          this.setState(state => {return {
-            className: state.className + ' moved',
-          };});
+          this.setState(state => {
+            return {
+              className: state.className + ' moved',
+            };
+          });
         } else {
-          this.setState(state => {return {
-            className: state.className.replace('moved', ''),
-          };});
+          this.setState(state => {
+            return {
+              className: state.className.replace('moved', ''),
+            };
+          });
         }
       }
     } else {
@@ -142,12 +154,16 @@ class PageContent extends Component {
     }
 
     if (prevProps.location.pathname !== this.props.location.pathname) {
-      this.setState(state => {return { className: state.className + ' entry' };});
+      this.setState(state => {
+        return { className: state.className + ' entry' };
+      });
 
       setTimeout(() => {
-        this.setState(state => {return {
-          className: state.className.replace('entry', ''),
-        };});
+        this.setState(state => {
+          return {
+            className: state.className.replace('entry', ''),
+          };
+        });
       }, 500);
     }
   }
