@@ -112,10 +112,12 @@ class CommunityCaption extends Component {
     e.preventDefault();
     e.stopPropagation();
 
-    this.setState(state => {return {
-      minimized: !state.minimized,
-      hintExpanded: false,
-    };});
+    this.setState(state => {
+      return {
+        minimized: !state.minimized,
+        hintExpanded: false,
+      };
+    });
   };
 
   toggleIncentive = e => {
@@ -123,7 +125,9 @@ class CommunityCaption extends Component {
       e.preventDefault();
       e.stopPropagation();
 
-      this.setState(state => {return { hintExpanded: !state.hintExpanded };});
+      this.setState(state => {
+        return { hintExpanded: !state.hintExpanded };
+      });
     }
   };
 
