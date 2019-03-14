@@ -7,7 +7,7 @@ import ProductListingItem from './ProductListingItem';
 
 import { breakpoints, spacing } from '../../utils/styles';
 
-const ProductListingContainer = styled(`div`)`
+const ProductListingContainer = styled('div')`
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -16,7 +16,7 @@ const ProductListingContainer = styled(`div`)`
   @media (min-width: ${breakpoints.desktop}px) {
     flex-direction: row;
     flex-wrap: wrap;
-    padding: ${spacing[`2xl`]}px;
+    padding: ${spacing['2xl']}px;
   }
 `;
 

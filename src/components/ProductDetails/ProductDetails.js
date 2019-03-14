@@ -13,17 +13,17 @@ const Heading = styled(BaseHeading)`
   margin-bottom: -${spacing.sm}px;
 `;
 
-const Section = styled(`section`)`
+const Section = styled('section')`
   padding-top: calc(${dimensions.headerHeight} + ${spacing.sm}px);
 `;
 
-const SectionHeading = styled(Heading.withComponent(`h2`))`
+const SectionHeading = styled(Heading.withComponent('h2'))`
   font-size: 1.8rem;
   letter-spacing: -0.01em;
   margin-bottom: ${spacing.sm}px;
 `;
 
-const SubHeading = styled(Heading.withComponent(`h3`))`
+const SubHeading = styled(Heading.withComponent('h3'))`
   color: ${colors.text};
   font-size: 1.2rem;
   margin: ${spacing.lg}px 0 ${spacing.xs}px;
@@ -34,7 +34,7 @@ const NestedUnorderedList = styled(UnorderedList)`
   margin-top: 0;
 `;
 
-const UnitWrapper = styled(`div`)`
+const UnitWrapper = styled('div')`
   align-items: center;
   display: flex;
   float: right;
@@ -42,7 +42,7 @@ const UnitWrapper = styled(`div`)`
   margin: ${-1 * spacing.lg}px 0 ${spacing.md}px 0;
 `;
 
-const UnitOption = styled(`div`)`
+const UnitOption = styled('div')`
   background: ${props => props.active && colors.brand};
   border-radius: 1em;
   color: ${props => props.active && colors.lightest};
@@ -55,22 +55,22 @@ const UnitOption = styled(`div`)`
   }
 `;
 
-const UnitsLabel = styled(`div`)`
+const UnitsLabel = styled('div')`
   margin-right: 1em;
 `;
 
 const UnitSelector = ({ setUnits, unit }) => {
   const handleClick = event => {
-    setUnits(event.target.getAttribute(`value`));
+    setUnits(event.target.getAttribute('value'));
   };
 
   return (
     <UnitWrapper>
       <UnitsLabel>Units:</UnitsLabel>
-      <UnitOption value="in" active={unit === `in`} onClick={handleClick}>
+      <UnitOption value="in" active={unit === 'in'} onClick={handleClick}>
         in
       </UnitOption>
-      <UnitOption value="cm" active={unit === `cm`} onClick={handleClick}>
+      <UnitOption value="cm" active={unit === 'cm'} onClick={handleClick}>
         cm
       </UnitOption>
     </UnitWrapper>
@@ -81,7 +81,7 @@ class ProductDetails extends React.Component {
   constructor() {
     super();
     this.state = {
-      units: `in`,
+      units: 'in',
     };
     this.changeUnits = this.changeUnits.bind(this);
   }
@@ -104,7 +104,7 @@ class ProductDetails extends React.Component {
             <strong style={{ color: colors.brand }}>
               Don’t see your size?
             </strong>
-            {` `}
+            {' '}
             Send us an email team@gatsbyjs.com and we’ll see if we can help!
           </p>
         </Section>

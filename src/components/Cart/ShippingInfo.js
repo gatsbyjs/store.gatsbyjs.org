@@ -5,14 +5,14 @@ import { MdKeyboardArrowDown, MdInfo } from 'react-icons/md';
 
 import { colors, radius, spacing, defaultFontStack } from '../../utils/styles';
 
-const ShippingInfoRoot = styled(`div`)`
+const ShippingInfoRoot = styled('div')`
   background: #f5f5f5;
   border-radius: ${radius.default}px;
   margin: ${spacing.sm}px 0;
   padding: ${spacing.sm}px ${spacing.md}px;
 `;
 
-const Intro = styled(`p`)`
+const Intro = styled('p')`
   color: ${colors.text};
   cursor: pointer;
   display: block;
@@ -63,7 +63,7 @@ const ArrowIcon = styled(MdKeyboardArrowDown)`
 
 const InfoIcon = styled(MdInfo)`
   color: ${colors.lilac};
-  margin-right: ${spacing[`2xs`]}px;
+  margin-right: ${spacing['2xs']}px;
   vertical-align: middle;
 `;
 
@@ -80,7 +80,7 @@ class ShippingInfo extends Component {
     const { detailsVisible } = this.state;
 
     return (
-      <ShippingInfoRoot className={detailsVisible ? `expanded` : ``}>
+      <ShippingInfoRoot className={detailsVisible ? 'expanded' : ''}>
         <Intro role="button" onClick={this.toggle}>
           <InfoIcon />
           International shipments can take <strong>6 weeks or more</strong> to
@@ -89,7 +89,7 @@ class ShippingInfo extends Component {
         <Details>
           Tracking updates may not always show up in real time on your tracking
           link. If you still have not received your order at the end of 6 weeks,
-          please let us know by sending an email to{` `}
+          please let us know by sending an email to{' '}
           <a href="mailto:team@gatsbyjs.com">team@gatsbyjs.com</a>
         </Details>
       </ShippingInfoRoot>

@@ -17,7 +17,7 @@ const {
   contributorAreaBarHeight: height,
 } = dimensions;
 
-const CloseBarRoot = styled(`button`)`
+const CloseBarRoot = styled('button')`
   align-items: center;
   background: ${colors.brand};
   border: 0;
@@ -98,7 +98,7 @@ const CloseBarRoot = styled(`button`)`
 
 class CloseBar extends Component {
   state = {
-    className: `closed`,
+    className: 'closed',
   };
 
   componentDidUpdate(prevProps) {
@@ -113,34 +113,34 @@ class CloseBar extends Component {
 
     if (isDesktopViewportChanged && prevProps.isDesktopViewport === null) {
       this.setState({
-        className: this.props.isDesktopViewport ? `open` : `closed`,
+        className: this.props.isDesktopViewport ? 'open' : 'closed',
       });
     }
 
     if (areaStatusChanged) {
-      if (this.props.areaStatus === `open`) {
+      if (this.props.areaStatus === 'open') {
         this.setState({ className: `${this.state.className} unhide` });
-        setTimeout(() => this.setState({ className: `opening` }), 0);
-        setTimeout(() => this.setState({ className: `open` }), 500);
+        setTimeout(() => this.setState({ className: 'opening' }), 0);
+        setTimeout(() => this.setState({ className: 'open' }), 500);
       }
 
-      if (this.props.areaStatus === `closed`) {
-        this.setState({ className: `closing` });
-        setTimeout(() => this.setState({ className: `closed` }), 500);
+      if (this.props.areaStatus === 'closed') {
+        this.setState({ className: 'closing' });
+        setTimeout(() => this.setState({ className: 'closed' }), 500);
       }
     }
 
     if (this.props.isDesktopViewport) {
       if (imageBrowserStatusChanged) {
-        if (this.props.productImagesBrowserStatus === `open`) {
+        if (this.props.productImagesBrowserStatus === 'open') {
           setTimeout(() => {
             this.setState(state => {return {
-              className: state.className + ` covered`,
+              className: state.className + ' covered',
             };});
           }, 500);
         } else {
           this.setState(state => {return {
-            className: state.className.replace(`covered`, ``),
+            className: state.className.replace('covered', ''),
           };});
         }
       }
@@ -153,7 +153,7 @@ class CloseBar extends Component {
 
     return (
       <CloseBarRoot className={className} onClick={onClick}>
-        {isDesktopViewport ? `Close sidebar` : `Continue shopping`}
+        {isDesktopViewport ? 'Close sidebar' : 'Continue shopping'}
         {isDesktopViewport ? <MdClose /> : <MdArrowForward />}
       </CloseBarRoot>
     );

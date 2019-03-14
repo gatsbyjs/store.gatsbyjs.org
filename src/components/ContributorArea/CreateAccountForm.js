@@ -9,7 +9,7 @@ import {
 } from '../shared/FormElements';
 import { breakpoints, colors, spacing, radius } from '../../utils/styles';
 
-const CreateAccountFormRoot = styled(`form`)`
+const CreateAccountFormRoot = styled('form')`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -69,7 +69,7 @@ const CheckboxLabel = styled(BaseLabel)`
   }
 `;
 
-const Checkbox = styled(`input`)`
+const Checkbox = styled('input')`
   display: inline-block;
   margin-right: 0.25rem;
   opacity: 0;
@@ -96,7 +96,7 @@ const Submit = styled(PrimaryButton)`
   width: 100%;
 `;
 
-const PrivacyNotice = styled(`p`)`
+const PrivacyNotice = styled('p')`
   color: ${colors.brandBright};
   font-size: 0.75rem;
 `;
@@ -109,7 +109,7 @@ class CreateAccountForm extends React.Component {
 
     this.state = {
       subscribe: true,
-      first_name: name.split(` `)[0],
+      first_name: name.split(' ')[0],
       username: nickname,
       email,
     };

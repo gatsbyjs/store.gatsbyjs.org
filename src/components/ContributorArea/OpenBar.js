@@ -7,7 +7,7 @@ import Butler from '../../assets/Butler';
 import ButlerHand from '../../assets/ButlerHand';
 import { breakpoints, colors, fonts, dimensions } from '../../utils/styles';
 
-const OpenBarRoot = styled(`button`)`
+const OpenBarRoot = styled('button')`
   align-items: center;
   border: 0;
   bottom: 0;
@@ -69,7 +69,7 @@ const OpenBarRoot = styled(`button`)`
   }
 `;
 
-const Content = styled(`div`)`
+const Content = styled('div')`
   align-items: flex-start;
   background: ${colors.brand};
   display: flex;
@@ -79,11 +79,11 @@ const Content = styled(`div`)`
   width: 100%;
 `;
 
-const Section = styled(`div`)`
+const Section = styled('div')`
   width: 100%;
 `;
 
-const ButlerBox = styled(`span`)`
+const ButlerBox = styled('span')`
   position: absolute;
   right: 0;
   top: 0;
@@ -111,7 +111,7 @@ const handHop = keyframes`
   }
 `;
 
-const ButlerHandBox = styled(`span`)`
+const ButlerHandBox = styled('span')`
   left: 20px;
   position: absolute;
   top: 5px;
@@ -143,7 +143,7 @@ const ButlerHandBox = styled(`span`)`
   }
 `;
 
-const Title = styled(`span`)`
+const Title = styled('span')`
   display: block;
   font-size: 1.2rem;
   margin-top: 0.75rem;
@@ -167,7 +167,7 @@ const Title = styled(`span`)`
   }
 `;
 
-const Label = styled(`span`)`
+const Label = styled('span')`
   @media (min-width: ${breakpoints.desktop}px) {
     display: block;
     height: 160px;
@@ -215,7 +215,7 @@ const ContentFor = ({ contributor }) => {
 
 class OpenBar extends Component {
   state = {
-    className: `closed`,
+    className: 'closed',
   };
 
   componentDidUpdate(prevProps) {
@@ -230,42 +230,42 @@ class OpenBar extends Component {
 
     if (isDesktopViewportChanged && prevProps.isDesktopViewport === null) {
       if (this.props.isDesktopViewport) {
-        this.setState({ className: `closed` });
+        this.setState({ className: 'closed' });
       } else {
         this.setState({
           className: /\/product\//.test(this.props.location.pathname)
-            ? `closed`
-            : `open`,
+            ? 'closed'
+            : 'open',
         });
       }
     }
 
     if (areaStatusChanged) {
-      if (this.revertStatus(this.props.areaStatus) === `open`) {
-        this.setState({ className: `opening` });
-        setTimeout(() => this.setState({ className: `open` }), 500);
+      if (this.revertStatus(this.props.areaStatus) === 'open') {
+        this.setState({ className: 'opening' });
+        setTimeout(() => this.setState({ className: 'open' }), 500);
       }
 
-      if (this.revertStatus(this.props.areaStatus) === `closed`) {
-        this.setState({ className: `closing` });
-        setTimeout(() => this.setState({ className: `closed` }), 500);
+      if (this.revertStatus(this.props.areaStatus) === 'closed') {
+        this.setState({ className: 'closing' });
+        setTimeout(() => this.setState({ className: 'closed' }), 500);
       }
     }
 
     if (this.props.isDesktopViewport) {
       if (imageBrowserStatusChanged) {
-        if (this.props.productImagesBrowserStatus === `open`) {
+        if (this.props.productImagesBrowserStatus === 'open') {
           setTimeout(() => {
             this.setState(state => {
               return {
-                className: state.className + ` covered`,
+                className: state.className + ' covered',
               };
             });
           }, 500);
         } else {
           this.setState(state => {
             return {
-              className: state.className.replace(`covered`, ``),
+              className: state.className.replace('covered', ''),
             };
           });
         }
@@ -278,13 +278,13 @@ class OpenBar extends Component {
         if (/\/product\//.test(this.props.location.pathname)) {
           this.setState(state => {
             return {
-              className: state.className + ` hidden`,
+              className: state.className + ' hidden',
             };
           });
         } else {
           this.setState(state => {
             return {
-              className: `open`,
+              className: 'open',
             };
           });
         }
@@ -293,10 +293,10 @@ class OpenBar extends Component {
   }
 
   revertStatus = status => {
-    if (status === `open`) {
-      return `closed`;
-    } else if (status === `closed`) {
-      return `open`;
+    if (status === 'open') {
+      return 'closed';
+    } else if (status === 'closed') {
+      return 'open';
     } else {
       return status;
     }

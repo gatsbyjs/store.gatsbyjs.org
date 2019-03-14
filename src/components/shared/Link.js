@@ -9,9 +9,9 @@ const LinkRoot = styled(GatsbyLink)`
   align-items: center;
   border-radius: ${radius.default}px;
   color: ${colors.brand};
-  display: ${props => (props.inline ? `inline-flex` : `flex`)};
-  margin: -${spacing[`3xs`]}px -${spacing[`2xs`]}px;
-  padding: ${spacing[`3xs`]}px ${spacing[`2xs`]}px;
+  display: ${props => (props.inline ? 'inline-flex' : 'flex')};
+  margin: -${spacing['3xs']}px -${spacing['2xs']}px;
+  padding: ${spacing['3xs']}px ${spacing['2xs']}px;
   text-decoration: none;
   transition: 0.5s;
 
@@ -29,7 +29,7 @@ const LinkRoot = styled(GatsbyLink)`
 
   svg {
     fill: ${colors.brandBright};
-    margin-right: ${spacing[`2xs`]}px;
+    margin-right: ${spacing['2xs']}px;
   }
 
   :hover {

@@ -3,7 +3,7 @@ import styled from 'react-emotion';
 
 import { breakpoints, colors, fonts, spacing } from '../../utils/styles';
 
-const ProductListingHeaderRoot = styled(`header`)`
+const ProductListingHeaderRoot = styled('header')`
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -12,7 +12,7 @@ const ProductListingHeaderRoot = styled(`header`)`
   text-align: center;
 `;
 
-const Title = styled(`h1`)`
+const Title = styled('h1')`
   color: ${colors.brandDark};
   font-family: ${fonts.heading};
   font-size: 2.4rem;
@@ -26,7 +26,7 @@ const Title = styled(`h1`)`
   }
 `;
 
-const Intro = styled(`p`)`
+const Intro = styled('p')`
   color: ${colors.text};
   font-size: 1rem;
   line-height: 1.4;

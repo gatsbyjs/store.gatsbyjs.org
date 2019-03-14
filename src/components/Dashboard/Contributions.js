@@ -10,7 +10,7 @@ const Contributions = () => (
       loading || contributions.count > 0 ? (
         <>
           <DiscountCode />
-          <Subheading className={loading && `loading`}>
+          <Subheading className={loading && 'loading'}>
             Your Most Recent Contribution
           </Subheading>
           <IssueList issues={contributions.issues.slice(0, 1)} />
@@ -23,13 +23,13 @@ const Contributions = () => (
           </Lede>
           <Text>
             This is your Gatsby Maintainer Dashboard. Once you’ve had your first
-            pull request merged into Gatsby, you can come back here to{` `}
+            pull request merged into Gatsby, you can come back here to{' '}
             <strong>claim free swag.</strong>
           </Text>
           <Text>
-            If you have questions, ask on any issue (you can tag{` `}
+            If you have questions, ask on any issue (you can tag{' '}
             <a href="https://github.com/jlengstorf">@jlengstorf</a> if you’d
-            like) or hit us up{` `}
+            like) or hit us up{' '}
             <a href="https://twitter.com/gatsbyjs">on Twitter at @gatsbyjs</a>.
           </Text>
           <Text>

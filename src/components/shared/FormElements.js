@@ -4,7 +4,7 @@ import { PrimaryButton } from './Buttons';
 
 import { colors, radius, spacing } from '../../utils/styles';
 
-export const Input = styled(`input`)`
+export const Input = styled('input')`
   background-color: ${colors.lightest};
   border: 1px solid ${colors.brandBright};
   border-radius: ${radius.default}px;
@@ -21,7 +21,7 @@ export const Input = styled(`input`)`
   }
 `;
 
-export const Select = styled(Input.withComponent(`select`))`
+export const Select = styled(Input.withComponent('select'))`
   appearance: none;
   /* stylelint-disable */
   background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23${colors.lilac.substr(
@@ -34,7 +34,7 @@ export const Select = styled(Input.withComponent(`select`))`
   padding-right: ${spacing.xl}px !important;
 `;
 
-export const Fieldset = styled(`fieldset`)`
+export const Fieldset = styled('fieldset')`
   border: none;
   display: flex;
   flex-direction: column;
@@ -43,7 +43,7 @@ export const Fieldset = styled(`fieldset`)`
   padding: 0;
 `;
 
-export const Label = styled(`label`)`
+export const Label = styled('label')`
   color: ${colors.textLight};
   display: flex;
   font-size: 1rem;

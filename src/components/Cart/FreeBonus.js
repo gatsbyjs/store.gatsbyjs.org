@@ -6,7 +6,7 @@ import { MdSentimentSatisfied } from 'react-icons/md';
 import { colors, radius, spacing } from '../../utils/styles';
 import gift from '../../assets/gift.png';
 
-const FreeBonusRoot = styled(`div`)`
+const FreeBonusRoot = styled('div')`
   align-items: center;
   background: ${colors.brandBright};
   border-radius: ${radius.default}px;
@@ -29,7 +29,7 @@ const FreeBonusRoot = styled(`div`)`
 
 const SmileIcon = styled(MdSentimentSatisfied)`
   color: ${colors.lilac};
-  margin-right: ${spacing[`2xs`]}px;
+  margin-right: ${spacing['2xs']}px;
   vertical-align: middle;
 `;
 

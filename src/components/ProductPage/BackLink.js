@@ -7,7 +7,7 @@ import { Button } from '../shared/Buttons';
 
 import { breakpoints, spacing } from '../../utils/styles';
 
-const BackLinkRoot = styled(`div`)`
+const BackLinkRoot = styled('div')`
   background: linear-gradient(
     to top,
     rgba(255, 255, 255, 1) 0%,

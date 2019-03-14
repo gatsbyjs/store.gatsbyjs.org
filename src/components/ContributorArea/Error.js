@@ -6,7 +6,7 @@ import { MdSentimentDissatisfied } from 'react-icons/md';
 
 import { animations, colors, spacing } from '../../utils/styles';
 
-const ErrorRoot = styled(`div`)`
+const ErrorRoot = styled('div')`
   animation: ${animations.simpleEntry};
 
   ${Heading} {
@@ -20,7 +20,7 @@ const ErrorRoot = styled(`div`)`
   }
 `;
 
-const ErrorText = styled(`pre`)`
+const ErrorText = styled('pre')`
   background: ${colors.lightest};
   border-radius: 3px;
   padding: ${spacing.sm}px ${spacing.md}px;
@@ -47,11 +47,11 @@ const Error = ({ error }) => (
     </ErrorText>
     <Text>
       Please reload the page and try again. If a page refresh doesn’t clear
-      things up, please{` `}
+      things up, please{' '}
       <a href="https://github.com/gatsbyjs/store.gatsbyjs.org/issues">
         open an issue
       </a>
-      {` `}
+      {' '}
       and we’ll figure out what’s going on.
     </Text>
   </ErrorRoot>

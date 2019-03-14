@@ -4,7 +4,7 @@ import styled from 'react-emotion';
 import { handleAuthentication } from '../utils/auth';
 import { colors, fonts } from '../utils/styles';
 
-const Container = styled.div`
+const Container = styled('div')`
   align-items: center;
   display: flex;
   flex-direction: column;
@@ -13,13 +13,13 @@ const Container = styled.div`
   overflow: none;
 `;
 
-const Message = styled.h1`
+const Message = styled('h1')`
   color: ${colors.darkest};
   font-family: ${fonts.heading};
 `;
 
 const callback = () => {
-  handleAuthentication(() => navigate(`/`));
+  handleAuthentication(() => navigate('/'));
 
   return (
     <Container>

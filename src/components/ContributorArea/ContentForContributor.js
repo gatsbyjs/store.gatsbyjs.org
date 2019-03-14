@@ -15,16 +15,16 @@ import {
   animations,
 } from '../../utils/styles';
 
-const ContentForContributorRoot = styled(`div`)`
+const ContentForContributorRoot = styled('div')`
   animation: ${animations.simpleEntry};
 `;
 
-const CodeBadgeBox = styled(`div`)`
+const CodeBadgeBox = styled('div')`
   margin: ${spacing.xl}px 0;
   text-align: center;
 `;
 
-const CodeBadge = styled(`div`)`
+const CodeBadge = styled('div')`
   border-radius: ${radius.large}px;
   display: flex;
   flex-direction: column;
@@ -32,7 +32,7 @@ const CodeBadge = styled(`div`)`
   overflow: hidden;
 `;
 
-const Name = styled(`span`)`
+const Name = styled('span')`
   background: ${props =>
     badgeThemes[props.code]
       ? badgeThemes[props.code].backgroundTheme
@@ -43,14 +43,14 @@ const Name = styled(`span`)`
   padding: ${spacing.xs}px;
 `;
 
-const Code = styled(`span`)`
+const Code = styled('span')`
   background: ${colors.lightest};
   color: ${colors.brand};
   font-size: 1.5rem;
-  padding: ${spacing[`2xs`]}px;
+  padding: ${spacing['2xs']}px;
 `;
 
-const Used = styled(`span`)`
+const Used = styled('span')`
   align-items: center;
   background: ${colors.brandDarker};
   color: ${colors.brandBright};
@@ -95,7 +95,7 @@ const ProgressIndicator = `
   );
 `;
 
-const ProgressBar = styled(`progress`)`
+const ProgressBar = styled('progress')`
   ${ProgressBarContainer}
 
   ::-webkit-progress-bar {
@@ -138,11 +138,11 @@ const ContentForContributor = () => (
       const numberOfCodes = codes.filter(code => code.used === false).length;
       let text;
       if (numberOfCodes > 1) {
-        text = `Use these discount codes during checkout to claim some free swag!`;
+        text = 'Use these discount codes during checkout to claim some free swag!';
       } else if (numberOfCodes == 1) {
-        text = `Enter this discount code during checkout to claim your free swag!`;
+        text = 'Enter this discount code during checkout to claim your free swag!';
       } else {
-        text = `Looks like you've claimed your swag! Thanks again, and keep being awesome.`;
+        text = 'Looks like you\'ve claimed your swag! Thanks again, and keep being awesome.';
       }
 
       return (
@@ -151,8 +151,8 @@ const ContentForContributor = () => (
           <Text>
             Thanks for going the extra mile to help build Gatsby! 💪 You have
             made <strong>{contributionCount}</strong>
-            {` `}
-            {`contribution${contributionCount > 1 ? `s` : ``}`}!
+            {' '}
+            {`contribution${contributionCount > 1 ? 's' : ''}`}!
           </Text>
           <Text>{text}</Text>
           {codes.map(code => (
@@ -172,9 +172,9 @@ const ContentForContributor = () => (
           {/* Show progress bar when Level 1 is earned, but Level 2 is not */}
           {showLevelTwoIncentive && (
             <>
-              <CodeBadgeBox key={`HOLYBUCKETS`}>
+              <CodeBadgeBox key={'HOLYBUCKETS'}>
                 <CodeBadge>
-                  <Name code={`HOLYBUCKETS`}>{`Level 2 Swag Code`}</Name>
+                  <Name code={'HOLYBUCKETS'}>{'Level 2 Swag Code'}</Name>
                   <Code>
                     <LockIcon />
                   </Code>
@@ -182,7 +182,7 @@ const ContentForContributor = () => (
               </CodeBadgeBox>
               <ProgressBar value={percentToGo} max="100" />
               <Text>{`Make ${contributionsToGo} more contribution${
-                contributionsToGo > 1 ? `s` : ``
+                contributionsToGo > 1 ? 's' : ''
               } to earn level 2 swag!`}</Text>
             </>
           )}

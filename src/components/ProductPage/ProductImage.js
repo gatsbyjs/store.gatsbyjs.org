@@ -17,7 +17,7 @@ const change = keyframes`
   }
 `;
 
-const ProductImageLink = styled(`a`)`
+const ProductImageLink = styled('a')`
   display: block;
   position: relative;
 
@@ -30,14 +30,14 @@ const ProductImageLink = styled(`a`)`
   }
 `;
 
-const ZoomHelper = styled(`span`)`
+const ZoomHelper = styled('span')`
   background: rgba(255, 255, 255, 0.5);
   border-radius: ${radius.large}px;
   display: flex;
-  left: ${spacing[`xs`]}px;
-  padding: ${spacing[`xs`]}px;
+  left: ${spacing['xs']}px;
+  padding: ${spacing['xs']}px;
   position: absolute;
-  top: ${spacing[`xs`]}px;
+  top: ${spacing['xs']}px;
 
   svg {
     fill: ${colors.brand};
@@ -60,10 +60,10 @@ class ProductImage extends Component {
 
   componentDidUpdate = prevProps => {
     if (prevProps.image.id !== this.props.image.id) {
-      this.imageLink.classList.add(`change`);
+      this.imageLink.classList.add('change');
 
       setTimeout(
-        () => this.imageLink.classList.remove(`change`),
+        () => this.imageLink.classList.remove('change'),
         IMAGE_CHANGE_ANIM_DURATION
       );
     }

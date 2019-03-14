@@ -2,14 +2,14 @@ import styled from 'react-emotion';
 
 import { colors, fonts, spacing } from '../../utils/styles';
 
-export const SectionHeading = styled(`h3`)`
+export const SectionHeading = styled('h3')`
   color: ${colors.lightest};
   font-family: ${fonts.heading};
   font-size: 1rem;
   margin: 0;
 `;
 
-export const Heading = styled(`h2`)`
+export const Heading = styled('h2')`
   color: ${colors.lemon};
   font-family: ${fonts.heading};
   font-size: 1.6rem;
@@ -27,7 +27,7 @@ export const Subheading = styled(Heading)`
   font-size: 1.4rem;
 `;
 
-export const Text = styled(`p`)`
+export const Text = styled('p')`
   color: ${colors.lightest};
   line-height: 1.6;
   margin-bottom: 0;

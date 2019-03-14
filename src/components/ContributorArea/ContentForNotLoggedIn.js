@@ -7,7 +7,7 @@ import { Button as BaseButton } from '../shared/Buttons';
 import { Heading, SectionHeading, Text } from './AreaTypography';
 import { spacing, animations } from '../../utils/styles';
 
-const ContentForGuestRoot = styled(`div`)`
+const ContentForGuestRoot = styled('div')`
   animation: ${animations.simpleEntry};
   position: relative;
 `;

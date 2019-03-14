@@ -13,7 +13,7 @@ import {
   spacing,
 } from '../../utils/styles';
 
-const ProductImagesMobileRoot = styled(`div`)`
+const ProductImagesMobileRoot = styled('div')`
   -webkit-overflow-scrolling: touch;
   overflow-x: scroll;
   padding: ${spacing.md}px;
@@ -26,7 +26,7 @@ const ProductImagesMobileRoot = styled(`div`)`
   }
 `;
 
-const ProductImagesMobileContent = styled(`div`)`
+const ProductImagesMobileContent = styled('div')`
   display: inline-flex;
 
   ${StyledImage} {
@@ -40,7 +40,7 @@ const ProductImagesMobileContent = styled(`div`)`
   }
 `;
 
-const Incentive = styled(`div`)`
+const Incentive = styled('div')`
   border-radius: ${radius.large}px;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
   display: flex;
@@ -59,7 +59,7 @@ const Incentive = styled(`div`)`
     svg {
       fill: ${colors.brand};
       height: 1.15em;
-      margin-right: ${spacing[`2xs`]}px;
+      margin-right: ${spacing['2xs']}px;
       vertical-align: top;
       width: 1.15em;
     }
@@ -85,10 +85,10 @@ const ProductImagesMobile = ({ images, imageOnClick }) => (
           We want to see your Gatsby swag photos!
         </h3>
         <p>
-          Upload your photos to{` `}
+          Upload your photos to{' '}
           <a href="https://github.com/gatsbyjs/store.gatsbyjs.org/issues/143">
             the official photo sharing issue
-          </a>{` `}
+          </a>{' '}
           and it may be featured in the store!
         </p>
       </Incentive>

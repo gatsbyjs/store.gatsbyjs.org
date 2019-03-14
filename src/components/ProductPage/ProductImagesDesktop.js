@@ -7,9 +7,9 @@ import ProductThumbnails, { Thumbnail } from './ProductThumbnails';
 
 import { spacing } from '../../utils/styles';
 
-const THUMBNAIL_SIZE = `54px`;
+const THUMBNAIL_SIZE = '54px';
 
-const ProductImagesDesktopRoot = styled(`div`)`
+const ProductImagesDesktopRoot = styled('div')`
   margin-right: ${spacing.lg}px;
   width: 440px;
 `;

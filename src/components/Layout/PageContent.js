@@ -13,7 +13,7 @@ const {
   },
 } = dimensions;
 
-const PageContentRoot = styled(`main`)`
+const PageContentRoot = styled('main')`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
@@ -54,11 +54,11 @@ const PageContentRoot = styled(`main`)`
 
   @media (min-width: ${breakpoints.hd}px) {
     padding-left: ${props =>
-      props.contributorAreaStatus === `closed` ? desktopMinWidth : hdMaxWidth};
+      props.contributorAreaStatus === 'closed' ? desktopMinWidth : hdMaxWidth};
   }
 `;
 
-const Overlay = styled(`div`)`
+const Overlay = styled('div')`
   display: none;
 
   @media (min-width: ${breakpoints.desktop}px) {
@@ -74,7 +74,7 @@ const Overlay = styled(`div`)`
 
 class PageContent extends Component {
   state = {
-    className: ``,
+    className: '',
   };
 
   componentDidUpdate(prevProps) {
@@ -87,45 +87,45 @@ class PageContent extends Component {
 
     if (this.props.isDesktopViewport) {
       if (imageBrowserStatusChanged) {
-        if (this.props.productImagesBrowserStatus === `open`) {
+        if (this.props.productImagesBrowserStatus === 'open') {
           setTimeout(() => {
             this.setState(state => {return {
-              className: state.className + ` covered`,
+              className: state.className + ' covered',
             };});
           }, 500);
         } else {
           this.setState(state => {return {
-            className: state.className.replace(` covered`, ``),
+            className: state.className.replace(' covered', ''),
           };});
         }
       }
 
       if (contributorAreaStatusChanged) {
-        if (this.props.contributorAreaStatus === `closed`) {
+        if (this.props.contributorAreaStatus === 'closed') {
           this.setState(state => {return {
             className:
-              this.props.contributorAreaStatus !== `open`
-                ? state.className + ` wide`
+              this.props.contributorAreaStatus !== 'open'
+                ? state.className + ' wide'
                 : state.className,
           };});
         } else {
           this.setState(state => {return {
             className:
-              state.className !== `open`
-                ? state.className.replace(`wide`, ``)
+              state.className !== 'open'
+                ? state.className.replace('wide', '')
                 : state.className,
           };});
         }
       }
 
       if (cartStatusChanged) {
-        if (this.props.cartStatus === `open`) {
+        if (this.props.cartStatus === 'open') {
           this.setState(state => {return {
-            className: state.className + ` moved`,
+            className: state.className + ' moved',
           };});
         } else {
           this.setState(state => {return {
-            className: state.className.replace(`moved`, ``),
+            className: state.className.replace('moved', ''),
           };});
         }
       }
@@ -133,20 +133,20 @@ class PageContent extends Component {
       if (contributorAreaStatusChanged || cartStatusChanged) {
         this.setState({
           className:
-            this.props.contributorAreaStatus === `open` ||
-            this.props.cartStatus === `open`
-              ? `covered`
-              : ``,
+            this.props.contributorAreaStatus === 'open' ||
+            this.props.cartStatus === 'open'
+              ? 'covered'
+              : '',
         });
       }
     }
 
     if (prevProps.location.pathname !== this.props.location.pathname) {
-      this.setState(state => {return { className: state.className + ` entry` };});
+      this.setState(state => {return { className: state.className + ' entry' };});
 
       setTimeout(() => {
         this.setState(state => {return {
-          className: state.className.replace(`entry`, ``),
+          className: state.className.replace('entry', ''),
         };});
       }, 500);
     }
@@ -159,7 +159,7 @@ class PageContent extends Component {
     return (
       <PageContentRoot className={className}>
         {children}
-        {cartStatus === `open` && <Overlay />}
+        {cartStatus === 'open' && <Overlay />}
         <Footer />
       </PageContentRoot>
     );

@@ -1,4 +1,4 @@
-const path = require(`path`);
+const path = require('path');
 
 exports.createPages = async ({
   graphql,
@@ -20,7 +20,7 @@ exports.createPages = async ({
   pages.data.allShopifyProduct.edges.forEach(edge => {
     createPage({
       path: `/product/${edge.node.handle}`,
-      component: path.resolve(`./src/templates/ProductPageTemplate.js`),
+      component: path.resolve('./src/templates/ProductPageTemplate.js'),
       context: {
         id: edge.node.id,
         handle: edge.node.handle,
@@ -31,22 +31,22 @@ exports.createPages = async ({
   // Redirects for old product slugs.
   [
     {
-      oldSlug: `purple-logo-tee-w-natural-process-print`,
-      newSlug: `vintage-purple-tee`,
+      oldSlug: 'purple-logo-tee-w-natural-process-print',
+      newSlug: 'vintage-purple-tee',
     },
     {
-      oldSlug: `copy-of-gatsby-full-zip-sweatshirt-horizontal-logo`,
-      newSlug: `all-purple-everything-hoodie`,
+      oldSlug: 'copy-of-gatsby-full-zip-sweatshirt-horizontal-logo',
+      newSlug: 'all-purple-everything-hoodie',
     },
     {
-      oldSlug: `gatsby-full-zip-sweatshirt`,
-      newSlug: `all-purple-everything-hoodie-vertical`,
+      oldSlug: 'gatsby-full-zip-sweatshirt',
+      newSlug: 'all-purple-everything-hoodie-vertical',
     },
-    { oldSlug: `black-socks`, newSlug: `space-socks` },
-    { oldSlug: `dark-deploy-t-shirt`, newSlug: `dark-deploy-tee` },
-    { oldSlug: `gatsby-trucker-hat`, newSlug: `monogram-trucker-hat` },
-    { oldSlug: `gatsby-water-bottle`, newSlug: `12oz-travel-mug` },
-    { oldSlug: `purple-gatsby-hat`, newSlug: `blazig-purple-hat` },
+    { oldSlug: 'black-socks', newSlug: 'space-socks' },
+    { oldSlug: 'dark-deploy-t-shirt', newSlug: 'dark-deploy-tee' },
+    { oldSlug: 'gatsby-trucker-hat', newSlug: 'monogram-trucker-hat' },
+    { oldSlug: 'gatsby-water-bottle', newSlug: '12oz-travel-mug' },
+    { oldSlug: 'purple-gatsby-hat', newSlug: 'blazig-purple-hat' },
   ].map(({ oldSlug, newSlug }) => {
     const config = {
       toPath: `/product/${newSlug}`,
@@ -69,14 +69,14 @@ exports.onCreatePage = async ({ page, actions: { createPage } }) => {
    * Take a look at `src/pages/account.js` for more details.
    */
   if (page.path.match(/^\/account/)) {
-    page.matchPath = `/account/*`;
+    page.matchPath = '/account/*';
 
     createPage(page);
   }
 };
 
 exports.onCreateWebpackConfig = ({ stage, loaders, actions }) => {
-  if (stage === `build-html`) {
+  if (stage === 'build-html') {
     /*
      * During the build step, `auth0-js` will break because it relies on
      * browser-specific APIs. Fortunately, we don’t need it during the build.

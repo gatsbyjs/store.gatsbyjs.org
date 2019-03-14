@@ -3,13 +3,11 @@
   "extends": [
     "google",
     "eslint:recommended",
-    "plugin:flowtype/recommended",
     "plugin:react/recommended",
     "prettier",
-    "prettier/flowtype",
     "prettier/react"
   ],
-  "plugins": ["flowtype", "react"],
+  "plugins": ["react"],
   "parserOptions": {
     "ecmaVersion": 2016,
     "sourceType": "module",
@@ -37,7 +35,7 @@
     "no-inner-declarations": "off",
     "valid-jsdoc": "off",
     "require-jsdoc": "off",
-    "quotes": ["error", "backtick"],
+    "quotes": ["error", "single"],
     "consistent-return": ["error"],
     "arrow-body-style": [
       "error",

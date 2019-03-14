@@ -51,7 +51,7 @@ const exit = keyframes`
   }
 `;
 
-const ProductImagesBrowserRoot = styled(`div`)`
+const ProductImagesBrowserRoot = styled('div')`
   background: white;
   bottom: 0;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
@@ -91,7 +91,7 @@ const change = keyframes`
   }
 `;
 
-const ZoomArea = styled(`div`)`
+const ZoomArea = styled('div')`
   border-bottom: 1px solid ${colors.brandLight};
   flex-grow: 1;
   flex-shrink: 0;
@@ -117,7 +117,7 @@ const ZoomArea = styled(`div`)`
   }
 `;
 
-const ImageBox = styled(`a`)`
+const ImageBox = styled('a')`
   display: block;
   height: 100%;
   position: relative;
@@ -130,28 +130,28 @@ const ImageBox = styled(`a`)`
 
   @media (orientation: landscape) {
     .gatsby-image-wrapper {
-      width: ${props => (props.superZoom ? `200` : `100`)}%;
+      width: ${props => (props.superZoom ? '200' : '100')}%;
     }
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
-    cursor: ${props => (props.superZoom ? `zoom-out` : `zoom-in`)};
-    width: ${props => (props.superZoom ? `100%` : `auto`)};
+    cursor: ${props => (props.superZoom ? 'zoom-out' : 'zoom-in')};
+    width: ${props => (props.superZoom ? '100%' : 'auto')};
 
     .gatsby-image-wrapper {
-      width: ${props => (props.superZoom ? `100%` : `100vh`)};
+      width: ${props => (props.superZoom ? '100%' : '100vh')};
     }
   }
 `;
 
-const ZoomHelper = styled(`span`)`
+const ZoomHelper = styled('span')`
   background: rgba(255, 255, 255, 0.5);
   border-radius: ${radius.large}px;
   display: flex;
-  left: ${spacing[`xs`]}px;
-  padding: ${spacing[`xs`]}px;
+  left: ${spacing['xs']}px;
+  padding: ${spacing['xs']}px;
   position: fixed;
-  top: ${spacing[`xs`]}px;
+  top: ${spacing['xs']}px;
 
   svg {
     fill: ${colors.brand};
@@ -164,7 +164,7 @@ const ZoomHelper = styled(`span`)`
   }
 `;
 
-const Actions = styled(`div`)`
+const Actions = styled('div')`
   align-items: center;
   display: flex;
   flex-grow: 0;
@@ -216,16 +216,16 @@ class ProductImagesBrowser extends Component {
     this.measureImage();
     this.centerImage();
 
-    window.addEventListener(`resize`, debounce(250, this.measureImage));
+    window.addEventListener('resize', debounce(250, this.measureImage));
   };
 
   componentWillUnmount = () => {
-    window.removeEventListener(`resize`, debounce(250, this.measureImage));
+    window.removeEventListener('resize', debounce(250, this.measureImage));
   };
 
   componentDidUpdate = prevProps => {
     if (prevProps.position !== this.props.position) {
-      if (this.props.position === `open`) {
+      if (this.props.position === 'open') {
         if (this.state.superZoom) {
           this.setState({
             superZoom: false,
@@ -240,9 +240,9 @@ class ProductImagesBrowser extends Component {
     ) {
       this.centerImage();
 
-      this.zoomArea.classList.add(`change`);
+      this.zoomArea.classList.add('change');
       setTimeout(
-        () => this.zoomArea.classList.remove(`change`),
+        () => this.zoomArea.classList.remove('change'),
         IMAGE_CHANGE_ANIM_DURATION
       );
     }

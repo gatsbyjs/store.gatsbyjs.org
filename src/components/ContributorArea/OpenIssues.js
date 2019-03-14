@@ -9,8 +9,8 @@ import OpenIssuesList from './OpenIssuesList';
 import { Button as BaseButton } from '../shared/Buttons';
 import { spacing } from '../../utils/styles';
 
-const OpenIssuesRoot = styled(`div`)`
-  margin-top: ${spacing[`2xl`]}px;
+const OpenIssuesRoot = styled('div')`
+  margin-top: ${spacing['2xl']}px;
 `;
 
 const Button = styled(BaseButton)`
@@ -30,7 +30,7 @@ const GitHubIssueFragment = gql`
   }
 `;
 
-const GITHUB_LABEL = `status: help wanted`;
+const GITHUB_LABEL = 'status: help wanted';
 
 const GET_OPEN_ISSUES = gql`
   query($label: String!) {
@@ -45,7 +45,7 @@ const GET_OPEN_ISSUES = gql`
 `;
 
 const filterClaimedIssues = issue =>
-  !issue.labels.map(label => label.name).includes(`Hacktoberfest - Claimed`);
+  !issue.labels.map(label => label.name).includes('Hacktoberfest - Claimed');
 
 const OpenIssues = () => (
   <Query query={GET_OPEN_ISSUES} variables={{ label: GITHUB_LABEL }}>

@@ -5,14 +5,14 @@ import { MdArrowForward } from 'react-icons/md';
 
 import { colors, radius, spacing } from '../../utils/styles';
 
-const OpenIssuesListRoot = styled(`ul`)`
+const OpenIssuesListRoot = styled('ul')`
   list-style: none;
   margin: 0;
   margin-top: ${spacing.lg}px;
   padding: 0;
 `;
 
-const Issue = styled(`li`)`
+const Issue = styled('li')`
   margin: 0;
 `;
 
@@ -25,7 +25,7 @@ const swing = keyframes`
   }
 `;
 
-const Link = styled(`a`)`
+const Link = styled('a')`
   border-radius: ${radius.large}px;
   color: ${colors.lightest};
   display: block;
@@ -40,7 +40,7 @@ const Link = styled(`a`)`
 
   svg {
     color: ${colors.lemon};
-    margin-right: ${spacing[`2xs`]}px;
+    margin-right: ${spacing['2xs']}px;
     vertical-align: middle;
   }
 
@@ -61,7 +61,7 @@ const OpenIssuesList = ({ issues }) => (
       <Issue key={issue.id}>
         <Link href={issue.url}>
           <MdArrowForward />
-          {issue.title} <span>#{issue.url.split(`/`).pop()}</span>
+          {issue.title} <span>#{issue.url.split('/').pop()}</span>
         </Link>
       </Issue>
     ))}

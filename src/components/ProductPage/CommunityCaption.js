@@ -12,14 +12,14 @@ import {
   spacing,
 } from '../../utils/styles';
 
-const CommunityCaptionRoot = styled(`div`)`
+const CommunityCaptionRoot = styled('div')`
   bottom: ${spacing.xl}px;
   bottom: calc(
     ${dimensions.pictureBrowserAction.heightMobile} + ${spacing.md}px
   );
   color: ${colors.lightest};
   cursor: default;
-  display: ${props => (props.superZoom ? `none` : `block`)};
+  display: ${props => (props.superZoom ? 'none' : 'block')};
   left: ${spacing.md}px;
   position: fixed;
   right: ${spacing.md}px;
@@ -33,7 +33,7 @@ const CommunityCaptionRoot = styled(`div`)`
   }
 `;
 
-const Toggle = styled(`button`)`
+const Toggle = styled('button')`
   align-items: center;
   background: transparent;
   border: 0;
@@ -54,7 +54,7 @@ const Toggle = styled(`button`)`
   }
 `;
 
-const Caption = styled(`div`)`
+const Caption = styled('div')`
   background: rgba(0, 0, 0, 0.7);
   border-radius: ${radius.large}px ${radius.large}px 0 0;
   font-size: 1.1rem;
@@ -71,7 +71,7 @@ const Caption = styled(`div`)`
   }
 `;
 
-const UserPhotoHint = styled(`div`)`
+const UserPhotoHint = styled('div')`
   background: rgba(68, 34, 102, 0.9);
   border-radius: 0 0 ${radius.large}px ${radius.large}px;
   cursor: pointer;
@@ -134,7 +134,7 @@ class CommunityCaption extends Component {
     return (
       <CommunityCaptionRoot
         superZoom={superZoom}
-        className={minimized ? `minimized` : ``}
+        className={minimized ? 'minimized' : ''}
       >
         <Caption>
           {minimized ? (
@@ -145,15 +145,15 @@ class CommunityCaption extends Component {
         </Caption>
         <UserPhotoHint
           onClick={this.toggleIncentive}
-          className={hintExpanded ? `expanded` : ``}
+          className={hintExpanded ? 'expanded' : ''}
         >
-          <span>We want to see your Gatsby swag photos!</span>{` `}
+          <span>We want to see your Gatsby swag photos!</span>{' '}
           <strong>Read more...</strong>
           <span>
-            Upload your photos to{` `}
+            Upload your photos to{' '}
             <a href="https://github.com/gatsbyjs/store.gatsbyjs.org/issues/143">
               the official photo sharing issue
-            </a>{` `}
+            </a>{' '}
             and it may be featured in the store!
           </span>
         </UserPhotoHint>

@@ -11,7 +11,7 @@ const {
   contributorAreaWidth: { openDesktop: desktopMaxWidth, openHd: hdMaxWidth },
 } = dimensions;
 
-const ContributorAreaRoot = styled(`aside`)`
+const ContributorAreaRoot = styled('aside')`
   background: ${colors.brandDark};
   color: ${colors.lightest};
   display: flex;
@@ -85,7 +85,7 @@ const ContributorAreaRoot = styled(`aside`)`
 
 class ContributorArea extends Component {
   state = {
-    className: `closed`,
+    className: 'closed',
     issuesVisible: false,
   };
 
@@ -100,13 +100,13 @@ class ContributorArea extends Component {
     // set inital status of the component after isDesktopViewport is set for the first time (value changes from null to true/false)
     if (isDesktopViewportChanged && prevProps.isDesktopViewport === null) {
       this.setState({
-        className: this.props.isDesktopViewport ? `open` : `closed`,
+        className: this.props.isDesktopViewport ? 'open' : 'closed',
       });
     }
 
     // apply transitions after changes of the component's status, trigerred by user (toggleContributorArea)
     if (componentStatusChanged) {
-      if (this.props.status === `open`) {
+      if (this.props.status === 'open') {
         // before we start opening the component we first have to unhide it
         this.setState({
           className: `${this.state.className} unhide`,
@@ -114,27 +114,27 @@ class ContributorArea extends Component {
         setTimeout(
           () =>
             this.setState({
-              className: `opening`,
+              className: 'opening',
             }),
           0
         );
         setTimeout(
           () =>
             this.setState({
-              className: `open`,
+              className: 'open',
             }),
           750
         );
       }
 
-      if (this.props.status === `closed`) {
+      if (this.props.status === 'closed') {
         this.setState({
-          className: `closing`,
+          className: 'closing',
         });
         setTimeout(
           () =>
             this.setState({
-              className: `closed`,
+              className: 'closed',
             }),
           750
         );
@@ -144,15 +144,15 @@ class ContributorArea extends Component {
     // for desktop viewport, hide all content when ProductImagesBrowser is open
     if (this.props.isDesktopViewport) {
       if (imageBrowserStatusChanged) {
-        if (this.props.productImagesBrowserStatus === `open`) {
+        if (this.props.productImagesBrowserStatus === 'open') {
           setTimeout(() => {
             this.setState(state => {return {
-              className: state.className + ` covered`,
+              className: state.className + ' covered',
             };});
           }, 500);
         } else {
           this.setState(state => {return {
-            className: state.className.replace(`covered`, ``),
+            className: state.className.replace('covered', ''),
           };});
         }
       }

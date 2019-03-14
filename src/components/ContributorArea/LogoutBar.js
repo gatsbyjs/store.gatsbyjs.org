@@ -6,7 +6,7 @@ import { Button } from '../shared/Buttons';
 
 import { colors, spacing, animations } from '../../utils/styles';
 
-const LogoutBarRoot = styled(`div`)`
+const LogoutBarRoot = styled('div')`
   align-items: flex-start;
   animation: ${animations.simpleEntry};
   display: flex;
@@ -14,7 +14,7 @@ const LogoutBarRoot = styled(`div`)`
   margin-bottom: ${spacing.lg}px;
 `;
 
-const Info = styled(`div`)`
+const Info = styled('div')`
   color: ${colors.brandBright};
   font-size: 0.9rem;
 

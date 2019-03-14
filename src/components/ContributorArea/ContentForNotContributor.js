@@ -6,7 +6,7 @@ import OpenIssues from './OpenIssues';
 import { Heading, Lede, Text } from './AreaTypography';
 import { spacing, animations } from '../../utils/styles';
 
-const ContentForNotContributorRoot = styled(`div`)`
+const ContentForNotContributorRoot = styled('div')`
   animation: ${animations.simpleEntry};
 `;
 
@@ -42,9 +42,9 @@ class ContentForNotContributor extends Component {
           come back here to claim free swag.
         </Text>
         <Text>
-          If you have questions, ask on any issue (you can tag{` `}
+          If you have questions, ask on any issue (you can tag{' '}
           <a href="https://github.com/jlengstorf">@jlengstorf</a> if you’d like)
-          or hit us up{` `}
+          or hit us up{' '}
           <a href="https://twitter.com/gatsbyjs">on Twitter at @gatsbyjs</a>.
         </Text>
 

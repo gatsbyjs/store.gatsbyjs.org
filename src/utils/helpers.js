@@ -17,7 +17,7 @@ export const removeCareInstructions = desc =>
   desc
     .split(/Care Instructions/)
     .slice(0, 1)
-    .join(``);
+    .join('');
 
 export const cutDescriptionShort = (desc, limit) => {
   if (desc.length > limit) {

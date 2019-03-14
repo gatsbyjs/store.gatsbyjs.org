@@ -7,9 +7,9 @@ import InterfaceContext from '../../context/InterfaceContext';
 
 import { breakpoints, colors, radius, spacing } from '../../utils/styles';
 
-const THUMBNAIL_SIZE = `44px`;
+const THUMBNAIL_SIZE = '44px';
 
-const ProductThumbnailsRoot = styled(`div`)`
+const ProductThumbnailsRoot = styled('div')`
   height: ${THUMBNAIL_SIZE};
   -webkit-overflow-scrolling: touch;
   overflow-x: scroll;
@@ -21,7 +21,7 @@ const ProductThumbnailsRoot = styled(`div`)`
   }
 `;
 
-export const ProductThumbnailsContent = styled(`div`)`
+export const ProductThumbnailsContent = styled('div')`
   display: inline-flex;
   height: 100%;
   padding-left: ${spacing.md}px;
@@ -33,7 +33,7 @@ export const ProductThumbnailsContent = styled(`div`)`
   }
 `;
 
-export const Thumbnail = styled(`a`)`
+export const Thumbnail = styled('a')`
   border: 1px solid ${colors.brandBright};
   border-radius: ${radius.default}px;
   height: ${THUMBNAIL_SIZE};
@@ -54,7 +54,7 @@ class ProductThumbnails extends Component {
   };
 
   render() {
-    const { images, className = `` } = this.props;
+    const { images, className = '' } = this.props;
 
     return (
       <InterfaceContext.Consumer>

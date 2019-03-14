@@ -4,13 +4,13 @@ import CartListItem from './CartListItem';
 import PropTypes from 'prop-types';
 import { colors, spacing } from '../../utils/styles';
 
-const CartListRoot = styled(`ul`)`
+const CartListRoot = styled('ul')`
   list-style: none;
   margin: 0;
   padding: 0;
 `;
 
-const Headers = styled(`div`)`
+const Headers = styled('div')`
   border-bottom: 1px solid ${colors.brandBright};
   display: flex;
   justify-content: space-between;

@@ -4,7 +4,7 @@ import styled, { keyframes } from 'react-emotion';
 import Butler from '../../assets/Butler';
 import { animations } from '../../utils/styles';
 
-const LoadingRoot = styled(`div`)`
+const LoadingRoot = styled('div')`
   align-items: center;
   animation: ${animations.simpleEntry};
   display: flex;
@@ -37,7 +37,7 @@ const bounce = keyframes`
   }
 `;
 
-const ButlerBox = styled(`span`)`
+const ButlerBox = styled('span')`
   animation: ${bounce} 1s ease-in-out infinite;
   margin: 0 0 15px;
 

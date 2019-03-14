@@ -25,7 +25,7 @@ import {
   dimensions,
 } from '../../utils/styles';
 
-const CartRoot = styled(`div`)`
+const CartRoot = styled('div')`
   background: ${colors.lightest};
   bottom: 0;
   position: fixed;
@@ -74,14 +74,14 @@ const CartRoot = styled(`div`)`
   }
 `;
 
-const Heading = styled(`header`)`
+const Heading = styled('header')`
   align-items: center;
   display: flex;
   height: ${dimensions.headerHeight};
   justify-content: flex-start;
 `;
 
-const Title = styled(`h2`)`
+const Title = styled('h2')`
   flex-grow: 1;
   font-family: ${fonts.heading};
   font-size: 1.8rem;
@@ -99,7 +99,7 @@ const Title = styled(`h2`)`
   }
 `;
 
-const Content = styled(`div`)`
+const Content = styled('div')`
   bottom: 0;
   overflow-y: auto;
   padding: ${spacing.lg}px;
@@ -124,7 +124,7 @@ const Content = styled(`div`)`
   }
 `;
 
-const ItemsNumber = styled(`span`)`
+const ItemsNumber = styled('span')`
   align-items: center;
   background: ${colors.lemon};
   border-radius: 50%;
@@ -137,7 +137,7 @@ const ItemsNumber = styled(`span`)`
   width: 36px;
 `;
 
-const ItemsInCart = styled(`div`)`
+const ItemsInCart = styled('div')`
   align-items: center;
   display: flex;
   font-size: 0.8rem;
@@ -150,15 +150,15 @@ const ItemsInCart = styled(`div`)`
   }
 `;
 
-const Costs = styled(`div`)`
+const Costs = styled('div')`
   display: flex;
   flex-direction: column;
   margin-top: ${spacing.sm}px;
 `;
 
-const Cost = styled(`div`)`
+const Cost = styled('div')`
   display: flex;
-  padding: 0 ${spacing.xs}px ${spacing[`2xs`]}px;
+  padding: 0 ${spacing.xs}px ${spacing['2xs']}px;
 
   :last-child {
     padding-bottom: 0;
@@ -260,8 +260,8 @@ const CartToggle = styled(Button)`
   ${ItemsNumber} {
     animation: ${numberEntry} 0.5s ease forwards;
     position: absolute;
-    right: ${spacing[`3xs`]}px;
-    top: ${spacing[`3xs`]}px;
+    right: ${spacing['3xs']}px;
+    top: ${spacing['3xs']}px;
     transform: scale(0.6);
   }
 `;
@@ -280,7 +280,7 @@ const BackLink = styled(Button)`
 
 class Cart extends Component {
   state = {
-    className: `closed`,
+    className: 'closed',
     isLoading: false,
   };
 
@@ -298,15 +298,15 @@ class Cart extends Component {
 
     if (this.props.isDesktopViewport) {
       if (imageBrowserStatusChanged) {
-        if (this.props.productImagesBrowserStatus === `open`) {
+        if (this.props.productImagesBrowserStatus === 'open') {
           setTimeout(() => {
             this.setState(state => {return {
-              className: state.className + ` covered`,
+              className: state.className + ' covered',
             };});
           }, 500);
         } else {
           this.setState(state => {return {
-            className: state.className.replace(`covered`, ``),
+            className: state.className.replace('covered', ''),
           };});
         }
       }
@@ -344,7 +344,7 @@ class Cart extends Component {
           return (
             <CartRoot
               className={`${className} ${
-                this.state.isLoading ? `loading` : ``
+                this.state.isLoading ? 'loading' : ''
               }`}
             >
               <Heading>
@@ -352,7 +352,7 @@ class Cart extends Component {
                   aria-label={`Shopping cart with ${itemsInCart} items`}
                   onClick={toggle}
                 >
-                  {status === `open` ? (
+                  {status === 'open' ? (
                     <MdClose />
                   ) : (
                     <>
@@ -384,7 +384,7 @@ class Cart extends Component {
 
                   <Costs>
                     <Cost>
-                      <span>Subtotal:</span>{` `}
+                      <span>Subtotal:</span>{' '}
                       <strong>USD ${checkout.subtotalPrice}</strong>
                     </Cost>
                     <Cost>

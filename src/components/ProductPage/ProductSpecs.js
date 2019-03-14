@@ -4,15 +4,15 @@ import styled from 'react-emotion';
 
 import { breakpoints, colors, fonts, spacing } from '../../utils/styles';
 
-const ProductSpecsRoot = styled(`div`)`
+const ProductSpecsRoot = styled('div')`
   padding: 0 ${spacing.md}px;
 
   @media (min-width: ${breakpoints.tablet}px) {
-    padding: ${spacing[`2xl`]}px ${spacing.xl}px 0;
+    padding: ${spacing['2xl']}px ${spacing.xl}px 0;
   }
 `;
 
-const Name = styled(`h1`)`
+const Name = styled('h1')`
   color: ${colors.brandDark};
   font-family: ${fonts.heading};
   font-size: 1.8rem;
@@ -20,13 +20,13 @@ const Name = styled(`h1`)`
   margin: 0;
 `;
 
-const Description = styled(`p`)`
+const Description = styled('p')`
   color: ${colors.text};
   font-size: 1rem;
   line-height: 1.5;
 `;
 
-const Price = styled(`div`)`
+const Price = styled('div')`
   color: ${colors.brand};
   font-size: 1.8rem;
   font-weight: 500;

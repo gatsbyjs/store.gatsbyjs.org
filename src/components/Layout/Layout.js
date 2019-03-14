@@ -37,7 +37,7 @@ injectGlobal`
     }
 `;
 
-const Viewport = styled(`div`)`
+const Viewport = styled('div')`
   overflow-x: hidden;
   width: 100%;
 `;
@@ -55,11 +55,11 @@ export default class Layout extends React.Component {
               ...state.interface,
               contributorAreaStatus:
                 state.interface.isDesktopViewport === false &&
-                state.interface.contributorAreaStatus === `open`
-                  ? `closed`
+                state.interface.contributorAreaStatus === 'open'
+                  ? 'closed'
                   : state.interface.contributorAreaStatus,
               cartStatus:
-                this.state.interface.cartStatus === `open` ? `closed` : `open`,
+                this.state.interface.cartStatus === 'open' ? 'closed' : 'open',
             },
           };
         });
@@ -69,7 +69,7 @@ export default class Layout extends React.Component {
           return {
             interface: {
               ...state.interface,
-              productImagesBrowserStatus: img ? `open` : `closed`,
+              productImagesBrowserStatus: img ? 'open' : 'closed',
               productImageFeatured: img
                 ? img
                 : state.interface.productImageFeatured,
@@ -118,7 +118,7 @@ export default class Layout extends React.Component {
             loading: false,
           },
         });
-        logout(() => navigate(`/`));
+        logout(() => navigate('/'));
       },
       updateContributor: data => {
         this.setState(state => {
@@ -135,8 +135,8 @@ export default class Layout extends React.Component {
     store: {
       ...defaultStoreContext,
       addVariantToCart: (variantId, quantity) => {
-        if (variantId === `` || !quantity) {
-          console.error(`Both a size and quantity are required.`);
+        if (variantId === '' || !quantity) {
+          console.error('Both a size and quantity are required.');
           return;
         }
 
@@ -204,14 +204,14 @@ export default class Layout extends React.Component {
 
   async initializeCheckout() {
     // Check for an existing cart.
-    const isBrowser = typeof window !== `undefined`;
+    const isBrowser = typeof window !== 'undefined';
     const existingCheckoutID = isBrowser
-      ? localStorage.getItem(`shopify_checkout_id`)
+      ? localStorage.getItem('shopify_checkout_id')
       : null;
 
     const setCheckoutInState = checkout => {
       if (isBrowser) {
-        localStorage.setItem(`shopify_checkout_id`, checkout.id);
+        localStorage.setItem('shopify_checkout_id', checkout.id);
       }
 
       this.setState(state => {
@@ -237,7 +237,7 @@ export default class Layout extends React.Component {
           return;
         }
       } catch (e) {
-        localStorage.setItem(`shopify_checkout_id`, null);
+        localStorage.setItem('shopify_checkout_id', null);
       }
     }
 
@@ -308,7 +308,7 @@ export default class Layout extends React.Component {
     this.initializeCheckout();
 
     // Mounting Layout on 'callback' page triggers user 'loading' flag
-    if (pathname === `/callback/`) {
+    if (pathname === '/callback/') {
       this.setState(state => {
         return {
           user: { ...state.user, loading: true },
@@ -317,7 +317,7 @@ export default class Layout extends React.Component {
     }
 
     // Make sure to set user.profile when a visitor reloads the app
-    if (pathname !== `/callback/`) {
+    if (pathname !== '/callback/') {
       this.setUserProfile();
     }
   }
@@ -326,13 +326,13 @@ export default class Layout extends React.Component {
     // Set user.profile after redirection from '/callback/' to '/'
     if (
       prevProps.location.pathname !== this.props.location.pathname &&
-      prevProps.location.pathname === `/callback/`
+      prevProps.location.pathname === '/callback/'
     ) {
       this.setState(state => {
         return {
           interface: {
             ...state.interface,
-            contributorAreaStatus: `open`,
+            contributorAreaStatus: 'open',
           },
         };
       });
@@ -392,12 +392,12 @@ export default class Layout extends React.Component {
   };
 
   toggleContributorAreaStatus = () => {
-    if (this.state.interface.contributorAreaStatus === `initial`) {
-      return this.state.interface.isDesktopViewport ? `closed` : `open`;
+    if (this.state.interface.contributorAreaStatus === 'initial') {
+      return this.state.interface.isDesktopViewport ? 'closed' : 'open';
     } else {
-      return this.state.interface.contributorAreaStatus === `closed`
-        ? `open`
-        : `closed`;
+      return this.state.interface.contributorAreaStatus === 'closed'
+        ? 'open'
+        : 'closed';
     }
   };
 

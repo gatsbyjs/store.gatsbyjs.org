@@ -22,7 +22,7 @@ import {
 } from '../../utils/styles';
 
 const DESCRIPTION_LIMIT = 90;
-const TRANSITION_DURATION = `250ms`;
+const TRANSITION_DURATION = '250ms';
 
 const ProductListingItemLink = styled(Link)`
   background: ${colors.lightest};
@@ -52,14 +52,14 @@ const ProductListingItemLink = styled(Link)`
   }
 `;
 
-const Item = styled(`article`)`
+const Item = styled('article')`
   display: flex;
   flex-direction: column;
   height: 100%;
   padding: ${spacing.lg}px;
 `;
 
-const Preview = styled(`div`)`
+const Preview = styled('div')`
   border-bottom: 1px solid ${colors.brandLight};
   border-radius: ${radius.large}px ${radius.large}px 0 0;
   margin: -${spacing.lg}px;
@@ -80,7 +80,7 @@ const Preview = styled(`div`)`
   }
 `;
 
-const CodeEligibility = styled(`div`)`
+const CodeEligibility = styled('div')`
   align-items: stretch;
   animation: ${animations.simpleEntry};
   border-radius: ${radius.default}px;
@@ -107,16 +107,16 @@ const CodeEligibility = styled(`div`)`
 
   span:last-child {
     background: ${props =>
-      props.freeWith === `HOLYBUCKETS` ? colors.lemon : colors.brand};
+      props.freeWith === 'HOLYBUCKETS' ? colors.lemon : colors.brand};
     color: ${props =>
-      props.freeWith === `HOLYBUCKETS` ? colors.brand : colors.lemon};
+      props.freeWith === 'HOLYBUCKETS' ? colors.brand : colors.lemon};
     flex-basis: 65%;
     font-family: ${fonts.heading};
     font-size: 1rem;
   }
 `;
 
-const Name = styled(`h1`)`
+const Name = styled('h1')`
   color: ${colors.brandDark};
   font-family: ${fonts.heading};
   font-size: 1.6rem;
@@ -124,21 +124,21 @@ const Name = styled(`h1`)`
   margin: 0;
 `;
 
-const Description = styled(`p`)`
+const Description = styled('p')`
   color: ${colors.text};
   flex-grow: 1;
   font-size: 1rem;
   line-height: 1.5;
 `;
 
-const PriceRow = styled(`div`)`
+const PriceRow = styled('div')`
   align-items: flex-end;
   display: flex;
   justify-content: space-between;
   margin-top: ${spacing.xs}px;
 `;
 
-const Price = styled(`div`)`
+const Price = styled('div')`
   color: ${colors.brand};
   font-size: 1.4rem;
   font-weight: 500;
@@ -149,13 +149,13 @@ const Price = styled(`div`)`
   }
 `;
 
-const Incentive = styled(`div`)`
+const Incentive = styled('div')`
   align-items: center;
   color: ${colors.lilac};
   display: flex;
   font-size: 0.9rem;
   line-height: 1.3;
-  margin-bottom: ${spacing[`2xs`]}px;
+  margin-bottom: ${spacing['2xs']}px;
   margin-right: calc(-${spacing.lg}px - 40px);
   text-align: right;
   transition: all ${TRANSITION_DURATION};
@@ -169,13 +169,13 @@ const Incentive = styled(`div`)`
   > span {
     svg {
       display: inline;
-      margin-right: -${spacing[`3xs`]}px;
+      margin-right: -${spacing['3xs']}px;
       vertical-align: middle;
     }
   }
 `;
 
-const CartIcon = styled(`span`)`
+const CartIcon = styled('span')`
   align-items: center;
   background: ${colors.lilac};
   border-radius: ${radius.default}px 0 0 ${radius.default}px;
@@ -235,7 +235,7 @@ const ProductListingItem = props => {
   } = firstImage;
 
   const freeWith =
-    price >= 20 ? `HOLYBUCKETS` : price >= 10 ? `BUILDWITHGATSBY` : null;
+    price >= 20 ? 'HOLYBUCKETS' : price >= 10 ? 'BUILDWITHGATSBY' : null;
 
   return (
     <UserContext.Consumer>
@@ -252,7 +252,7 @@ const ProductListingItem = props => {
                     <span>free with </span>
                     <span>
                       Code Swag Level
-                      {freeWith === `HOLYBUCKETS` ? `2` : `1`}
+                      {freeWith === 'HOLYBUCKETS' ? '2' : '1'}
                     </span>
                   </CodeEligibility>
                 )}

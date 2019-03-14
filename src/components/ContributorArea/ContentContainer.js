@@ -8,7 +8,7 @@ import ContentForLoggedIn from './ContentForLoggedIn';
 
 import { breakpoints, colors, spacing, dimensions } from '../../utils/styles';
 
-const ContentContainerRoot = styled(`div`)`
+const ContentContainerRoot = styled('div')`
   -webkit-overflow-scrolling: touch;
   overflow-y: auto;
   padding: ${spacing.lg}px;
@@ -48,7 +48,7 @@ const entry = keyframes`
    }
  `;
 
-const ButlerBox = styled(`div`)`
+const ButlerBox = styled('div')`
   animation: ${entry} 0.25s ease forwards;
   display: none;
   opacity: 0;

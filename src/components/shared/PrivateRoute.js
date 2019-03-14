@@ -6,7 +6,7 @@ import { isAuthenticated, isBrowser } from '../../utils/auth';
 const PrivateRoute = ({ component: Component, ...rest }) => {
   if (isBrowser && !isAuthenticated()) {
     // If we’re not logged in, redirect to the login page.
-    navigate(`/login`);
+    navigate('/login');
     return null;
   }
 

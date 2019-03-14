@@ -10,7 +10,7 @@ import BackLink from './BackLink';
 
 import { breakpoints, spacing } from '../../utils/styles';
 
-const ProductPageRoot = styled(`div`)`
+const ProductPageRoot = styled('div')`
   padding-bottom: ${spacing.md}px;
 
   @media (min-width: ${breakpoints.desktop}px) {
@@ -23,14 +23,14 @@ const ProductPageRoot = styled(`div`)`
   }
 `;
 
-const Container = styled(`div`)`
+const Container = styled('div')`
   @media (min-width: ${breakpoints.desktop}px) {
     align-items: flex-start;
     display: flex;
   }
 `;
 
-const Details = styled(`div`)`
+const Details = styled('div')`
   position: relative;
 
   @media (min-width: ${breakpoints.desktop}px) {
