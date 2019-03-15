@@ -26,16 +26,16 @@ const BackLinkRoot = styled(`div`)`
   left: 0;
   padding: ${spacing.xl}px ${spacing.md}px ${spacing.md}px 0;
   position: sticky;
-  top: 40px;
+  top: 38px;
   width: 100%;
 `;
 
 const BackToProduct = styled(Button)`
-  width: 100%;
+  width: auto;
 
-  @media (min-width: ${breakpoints.desktop}px) {
-    width: auto;
-  }
+  // @media (min-width: ${breakpoints.desktop}px) {
+  //   width: auto;
+  // }
 `;
 
 const goBack = () => {

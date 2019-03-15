@@ -14,6 +14,10 @@ const Heading = styled(BaseHeading)`
   margin-bottom: -${spacing.sm}px;
 `;
 
+const ProductTextContainer = styled(TextContainer)`
+  padding: ${spacing.xl}px;
+`;
+
 const Section = styled(`section`)`
   padding-top: calc(${dimensions.headerHeight} + ${spacing.sm}px);
 `;
@@ -95,7 +99,7 @@ class ProductDetails extends React.Component {
     const { units } = this.state;
 
     return (
-      <TextContainer>
+      <ProductTextContainer>
         <Heading>Product Details</Heading>
         <BackButton>Back to Product</BackButton>
         <Section id="size-chart">
@@ -149,7 +153,7 @@ class ProductDetails extends React.Component {
             but they require a little TLC.
           </p>
         </Section>
-      </TextContainer>
+      </ProductTextContainer>
     );
   }
 }
