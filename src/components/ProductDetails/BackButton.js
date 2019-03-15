@@ -32,10 +32,6 @@ const BackLinkRoot = styled(`div`)`
 
 const BackToProduct = styled(Button)`
   width: auto;
-
-  // @media (min-width: ${breakpoints.desktop}px) {
-  //   width: auto;
-  // }
 `;
 
 const goBack = () => {
