@@ -6,7 +6,7 @@ import { MdArrowBack } from 'react-icons/md';
 
 import { Button } from '../shared/Buttons';
 
-import { breakpoints, spacing } from '../../utils/styles';
+import { spacing } from '../../utils/styles';
 
 const BackLinkRoot = styled(`div`)`
   background: linear-gradient(
