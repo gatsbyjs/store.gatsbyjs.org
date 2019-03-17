@@ -1,15 +1,21 @@
 import React from 'react';
 import styled from 'react-emotion';
 import SizeChartTable from './SizeChartTable';
+import BackButton from './BackButton';
+
 import {
   Heading as BaseHeading,
   TextContainer,
   UnorderedList
 } from '../shared/Typography';
-import { colors, spacing, dimensions } from '../../utils/styles';
+import { colors, spacing, dimensions, breakpoints } from '../../utils/styles';
 
 const Heading = styled(BaseHeading)`
   margin-bottom: -${spacing.sm}px;
+`;
+
+const ProductTextContainer = styled(TextContainer)`
+  padding: ${spacing.xl}px;
 `;
 
 const Section = styled(`section`)`
@@ -93,8 +99,9 @@ class ProductDetails extends React.Component {
     const { units } = this.state;
 
     return (
-      <TextContainer>
+      <ProductTextContainer>
         <Heading>Product Details</Heading>
+        <BackButton>Back to Product</BackButton>
         <Section id="size-chart">
           <SectionHeading>Size Chart</SectionHeading>
           <UnitSelector unit={units} setUnits={this.changeUnits} />
@@ -107,7 +114,7 @@ class ProductDetails extends React.Component {
           </p>
         </Section>
         <Section id="materials-fit">
-          <SectionHeading>T-Shirt Materials & Fit</SectionHeading>
+          <SectionHeading>T-Shirt Materials &amp; Fit</SectionHeading>
           <p>
             To help you find the right size and fit, here are some additional
             details about our t-shirts.
@@ -146,7 +153,7 @@ class ProductDetails extends React.Component {
             but they require a little TLC.
           </p>
         </Section>
-      </TextContainer>
+      </ProductTextContainer>
     );
   }
 }

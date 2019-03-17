@@ -38,7 +38,6 @@ injectGlobal`
 `;
 
 const Viewport = styled(`div`)`
-  overflow-x: hidden;
   width: 100%;
 `;
 
