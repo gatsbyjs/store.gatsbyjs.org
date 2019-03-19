@@ -342,19 +342,6 @@ export default class Layout extends React.Component {
     }
   };
 
-  componentWillUnmount() {
-    this.desktopMediaQuery.removeListener(this.updateViewPortState);
-  }
-
-  updateViewPortState = e => {
-    this.setState(state => ({
-      interface: {
-        ...state.interface,
-        isDesktopViewport: this.desktopMediaQuery.matches
-      }
-    }));
-  };
-
   toggleContributorAreaStatus = () => {
     if (this.state.interface.contributorAreaStatus === 'initial') {
       return this.state.interface.isDesktopViewport ? 'closed' : 'open';
