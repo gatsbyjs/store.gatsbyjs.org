@@ -316,6 +316,7 @@ class Cart extends Component {
   render() {
     const { status, toggle } = this.props;
     const { className } = this.state;
+    let showFreeBonus = true;
 
     return (
       <StoreContext.Consumer>
@@ -340,6 +341,12 @@ class Cart extends Component {
             (total, item) => total + item.quantity,
             0
           );
+          
+          checkout.lineItems.forEach(({title}) => {
+            if(title === 'Gatsby Sticker Pack') {
+              showFreeBonus = false;
+            }
+          });
 
           return (
             <CartRoot
@@ -407,7 +414,8 @@ class Cart extends Component {
                     Back to shopping
                   </BackLink>
 
-                  <FreeBonus />
+                  { showFreeBonus && <FreeBonus /> }
+
                   <ShippingInfo />
                 </Content>
               ) : (
