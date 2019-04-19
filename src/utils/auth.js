@@ -6,6 +6,12 @@ export const isBrowser = typeof window !== 'undefined';
 // This prevents a flicker while the HTTP round-trip completes.
 let profile = false;
 
+const tokens = {
+  accessToken: false,
+  idToken: false,
+  expiresAt: false
+};
+
 // Only instantiate Auth0 if we’re in the browser.
 const auth0 = isBrowser
   ? new auth0js.WebAuth({
@@ -26,58 +32,61 @@ export const login = () => {
   auth0.authorize();
 };
 
-export const logout = callback => {
-  if (isBrowser) {
-    localStorage.removeItem('access_token');
-    localStorage.removeItem('id_token');
-    localStorage.removeItem('expires_at');
-  }
-
-  // Remove the locally cached profile to avoid confusing errors.
+export const logout = () => {
+  localStorage.setItem('isLoggedIn', false);
   profile = false;
 
-  callback();
+  const { protocol, host } = window.location;
+  const returnTo = `${protocol}//${host}`;
+
+  auth0.logout({ returnTo });
 };
 
-const setSession = authResult => {
+const setSession = callback => (err, authResult) => {
   if (!isBrowser) {
     return;
   }
 
-  const expiresAt = JSON.stringify(
-    authResult.expiresIn * 1000 + new Date().getTime()
-  );
+  if (err) {
+    console.error(err);
+    callback();
+    return;
+  }
 
-  localStorage.setItem('access_token', authResult.accessToken);
-  localStorage.setItem('id_token', authResult.idToken);
-  localStorage.setItem('expires_at', expiresAt);
-
-  return true;
+  if (authResult && authResult.accessToken && authResult.idToken) {
+    let expiresAt = authResult.expiresIn * 1000 + new Date().getTime();
+    tokens.accessToken = authResult.accessToken;
+    tokens.idToken = authResult.idToken;
+    tokens.expiresAt = expiresAt;
+    profile = authResult.idTokenPayload;
+    localStorage.setItem('isLoggedIn', true);
+    callback();
+  }
 };
 
-export const handleAuthentication = callback => {
+export const silentAuth = callback => {
   if (!isBrowser) {
     return;
   }
 
-  auth0.parseHash((err, authResult) => {
-    if (authResult && authResult.accessToken && authResult.idToken) {
-      setSession(authResult);
-      callback();
-    } else if (err) {
-      console.error(err);
-    }
-  });
+  if (!isAuthenticated()) return callback();
+  auth0.checkSession({}, setSession(callback));
+};
+
+export const handleAuthentication = (callback = () => {}) => {
+  if (!isBrowser) {
+    return;
+  }
+
+  auth0.parseHash(setSession(callback));
 };
 
 export const isAuthenticated = () => {
   if (!isBrowser) {
-    // For SSR, we’re never authenticated.
-    return false;
+    return;
   }
 
-  let expiresAt = JSON.parse(localStorage.getItem('expires_at'));
-  return new Date().getTime() < expiresAt;
+  return localStorage.getItem('isLoggedIn') === 'true';
 };
 
 export const getAccessToken = () => {
@@ -85,32 +94,11 @@ export const getAccessToken = () => {
     return '';
   }
 
-  return localStorage.getItem('access_token');
+  return tokens.accessToken;
 };
 
 export const getUserInfo = () => {
-  return new Promise((resolve, reject) => {
-    // If the user has already logged in, don’t bother fetching again.
-    if (profile) {
-      resolve(profile);
-      return;
-    }
-
-    const accessToken = getAccessToken();
-
-    if (!isAuthenticated()) {
-      resolve({});
-      return;
-    }
-
-    auth0.client.userInfo(accessToken, (err, userProfile) => {
-      if (err) {
-        reject(err);
-        return;
-      }
-
-      profile = userProfile;
-      resolve(profile);
-    });
-  });
+  if (profile) {
+    return profile;
+  }
 };

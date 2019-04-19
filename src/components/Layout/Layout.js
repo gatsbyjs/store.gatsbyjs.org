@@ -323,12 +323,12 @@ export default class Layout extends React.Component {
     }));
   };
 
-  setUserProfile = async () => {
+  setUserProfile = () => {
     // Load the user info from Auth0.
-    const profile = await getUserInfo();
+    const profile = getUserInfo();
 
     // If logged in set user.profile
-    if (profile.nickname) {
+    if (profile && profile.nickname) {
       this.setState(state => ({
         user: {
           ...state.user,
