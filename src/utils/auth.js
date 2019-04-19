@@ -35,16 +35,21 @@ export const login = () => {
 export const logout = () => {
   localStorage.setItem('isLoggedIn', false);
   profile = false;
-  auth0.logout();
+
+  const { protocol, host } = window.location;
+  const returnTo = `${protocol}//${host}`;
+
+  auth0.logout({ returnTo });
 };
 
-const setSession = (cb = () => {}) => (err, authResult) => {
+const setSession = callback => (err, authResult) => {
   if (!isBrowser) {
     return;
   }
 
   if (err) {
-    cb();
+    console.error(err);
+    callback();
     return;
   }
 
@@ -55,7 +60,7 @@ const setSession = (cb = () => {}) => (err, authResult) => {
     tokens.expiresAt = expiresAt;
     profile = authResult.idTokenPayload;
     localStorage.setItem('isLoggedIn', true);
-    cb();
+    callback();
   }
 };
 
@@ -68,12 +73,12 @@ export const silentAuth = callback => {
   auth0.checkSession({}, setSession(callback));
 };
 
-export const handleAuthentication = () => {
+export const handleAuthentication = (callback = () => {}) => {
   if (!isBrowser) {
     return;
   }
 
-  auth0.parseHash(setSession());
+  auth0.parseHash(setSession(callback));
 };
 
 export const isAuthenticated = () => {
