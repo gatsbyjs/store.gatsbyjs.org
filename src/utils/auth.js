@@ -82,6 +82,10 @@ export const handleAuthentication = (callback = () => {}) => {
 };
 
 export const isAuthenticated = () => {
+  if (!isBrowser) {
+    return;
+  }
+
   return localStorage.getItem('isLoggedIn') === 'true';
 };
 
