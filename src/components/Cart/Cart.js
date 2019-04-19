@@ -316,6 +316,8 @@ class Cart extends Component {
   render() {
     const { status, toggle } = this.props;
     const { className } = this.state;
+    let showFreeBonus = true;
+    const gatsbyStickerPackID = "Z2lkOi8vc2hvcGlmeS9DaGVja291dExpbmVJdGVtL2I1ZGY0NjRmMWQxYWQxM2MzMzJjYmQ0MjMyZDczZGE3P2NoZWNrb3V0PTY1NjU3NDMxMjk2MTRiMmRjZjc4MDIzYmRlYzA4MTM2";
 
     return (
       <StoreContext.Consumer>
@@ -340,6 +342,12 @@ class Cart extends Component {
             (total, item) => total + item.quantity,
             0
           );
+          
+          checkout.lineItems.forEach(({id}) => {
+            if(id === gatsbyStickerPackID) {
+              showFreeBonus = false;
+            }
+          });
 
           return (
             <CartRoot
@@ -407,7 +415,8 @@ class Cart extends Component {
                     Back to shopping
                   </BackLink>
 
-                  <FreeBonus />
+                  { showFreeBonus && <FreeBonus /> }
+
                   <ShippingInfo />
                 </Content>
               ) : (
