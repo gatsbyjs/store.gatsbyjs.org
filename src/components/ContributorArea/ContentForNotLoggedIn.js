@@ -31,7 +31,7 @@ const ContentForGuest = () => (
       free swag by logging in with your GitHub account!
     </Text>
     <Button inverse onClick={e => login()}>
-      Log in with Github <GoMarkGithub />
+      Log in with GitHub <GoMarkGithub />
     </Button>
     <SectionHeading>For Future Contributors</SectionHeading>
     <Heading>Never contributed to Gatsby?</Heading>
