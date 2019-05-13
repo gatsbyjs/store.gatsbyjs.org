@@ -26,23 +26,25 @@ import '../../fonts/futura-pt/Webfonts/futurapt_demi_macroman/stylesheet.css';
 import gql from 'graphql-tag';
 
 const globalStyles = css`
-    html {
-      box-sizing: border-box;
-    }
+  html {
+    box-sizing: border-box;
+  }
 
-    *, *:before, *:after {
-      box-sizing: inherit;
-    }
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+  }
 
-    body {
-      -webkit-tap-highlight-color: rgba(0,0,0,.05);
-      color: ${colors.text};
-      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-      font-size: 16px;
-      line-height: 1.375;
-      margin: 0 auto;
-    }
+  body {
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.05);
+    color: ${colors.text};
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-size: 16px;
+    line-height: 1.375;
+    margin: 0 auto;
+  }
 `;
 
 const Viewport = styled(`div`)`
@@ -61,7 +63,7 @@ export default class Layout extends React.Component {
             ...state.interface,
             contributorAreaStatus:
               state.interface.isDesktopViewport === false &&
-                state.interface.contributorAreaStatus === 'open'
+              state.interface.contributorAreaStatus === 'open'
                 ? 'closed'
                 : state.interface.contributorAreaStatus,
             cartStatus:
@@ -383,51 +385,51 @@ export default class Layout extends React.Component {
                   productImageFeatured,
                   toggleProductImagesBrowser
                 }) => (
-                    <>
-                      <Header
+                  <>
+                    <Header
+                      isDesktopViewport={isDesktopViewport}
+                      productImagesBrowserStatus={productImagesBrowserStatus}
+                    />
+                    <Viewport>
+                      <Cart
+                        isDesktopViewport={isDesktopViewport}
+                        status={cartStatus}
+                        toggle={toggleCart}
+                        contributorAreaStatus={contributorAreaStatus}
+                        productImagesBrowserStatus={productImagesBrowserStatus}
+                      />
+
+                      <ContributorArea
+                        location={location}
+                        status={contributorAreaStatus}
+                        toggle={toggleContributorArea}
                         isDesktopViewport={isDesktopViewport}
                         productImagesBrowserStatus={productImagesBrowserStatus}
                       />
-                      <Viewport>
-                        <Cart
+
+                      <PageContent
+                        cartStatus={cartStatus}
+                        contributorAreaStatus={contributorAreaStatus}
+                        isDesktopViewport={isDesktopViewport}
+                        productImagesBrowserStatus={productImagesBrowserStatus}
+                        location={location}
+                      >
+                        {children}
+                      </PageContent>
+
+                      {currentProductImages.length > 0 && (
+                        <ProductImagesBrowser
+                          featureProductImage={featureProductImage}
+                          images={currentProductImages}
+                          position={productImagesBrowserStatus}
+                          imageFeatured={productImageFeatured}
+                          toggle={toggleProductImagesBrowser}
                           isDesktopViewport={isDesktopViewport}
-                          status={cartStatus}
-                          toggle={toggleCart}
-                          contributorAreaStatus={contributorAreaStatus}
-                          productImagesBrowserStatus={productImagesBrowserStatus}
                         />
-
-                        <ContributorArea
-                          location={location}
-                          status={contributorAreaStatus}
-                          toggle={toggleContributorArea}
-                          isDesktopViewport={isDesktopViewport}
-                          productImagesBrowserStatus={productImagesBrowserStatus}
-                        />
-
-                        <PageContent
-                          cartStatus={cartStatus}
-                          contributorAreaStatus={contributorAreaStatus}
-                          isDesktopViewport={isDesktopViewport}
-                          productImagesBrowserStatus={productImagesBrowserStatus}
-                          location={location}
-                        >
-                          {children}
-                        </PageContent>
-
-                        {currentProductImages.length > 0 && (
-                          <ProductImagesBrowser
-                            featureProductImage={featureProductImage}
-                            images={currentProductImages}
-                            position={productImagesBrowserStatus}
-                            imageFeatured={productImageFeatured}
-                            toggle={toggleProductImagesBrowser}
-                            isDesktopViewport={isDesktopViewport}
-                          />
-                        )}
-                      </Viewport>
-                    </>
-                  )}
+                      )}
+                    </Viewport>
+                  </>
+                )}
               </InterfaceContext.Consumer>
             </InterfaceContext.Provider>
           </StoreContext.Provider>

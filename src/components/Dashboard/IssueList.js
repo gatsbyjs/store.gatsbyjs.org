@@ -104,11 +104,8 @@ export default ({ issues }) => (
           <IssueTitle>{issue.title}</IssueTitle>{' '}
           <IssueId>#{issue.url.split('/').pop()}</IssueId>
         </IssueLink>
-        {issue.labels.map(({url, name}) => (
-          <Label
-            href={formatLabelUrl(url)}
-            key={`${issue.id}-${url}`}
-          >
+        {issue.labels.map(({ url, name }) => (
+          <Label href={formatLabelUrl(url)} key={`${issue.id}-${url}`}>
             {name}
           </Label>
         ))}
