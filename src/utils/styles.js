@@ -1,4 +1,4 @@
-import { keyframes } from 'react-emotion';
+import { keyframes } from '@emotion/core';
 
 /*
  * NOTE: use a six-character hex code for all colors to allow alpha channel

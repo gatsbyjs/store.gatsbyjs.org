@@ -1,6 +1,6 @@
 import React from 'react';
 import { Heading, Text } from './AreaTypography';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
 import { MdSentimentDissatisfied } from 'react-icons/md';
 

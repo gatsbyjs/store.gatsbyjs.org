@@ -1,6 +1,6 @@
 import React from 'react';
 import { graphql, StaticQuery } from 'gatsby';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import Image from 'gatsby-image';
 
 import { colors, radius } from '../../utils/styles';

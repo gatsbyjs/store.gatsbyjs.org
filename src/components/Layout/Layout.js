@@ -1,5 +1,7 @@
 import React from 'react';
-import styled, { injectGlobal } from 'react-emotion';
+import { Global, css } from '@emotion/core';
+import styled from '@emotion/styled';
+
 import { navigate } from 'gatsby';
 
 import { client } from '../../context/ApolloContext';
@@ -17,13 +19,13 @@ import Cart from '../Cart';
 import SiteMetadata from '../shared/SiteMetadata';
 
 import { logout, getUserInfo } from '../../utils/auth';
-import { breakpoints, spacing } from '../../utils/styles';
+import { breakpoints, colors } from '../../utils/styles';
 
 // Import Futura PT typeface
 import '../../fonts/futura-pt/Webfonts/futurapt_demi_macroman/stylesheet.css';
 import gql from 'graphql-tag';
 
-injectGlobal`
+const globalStyles = css`
     html {
       box-sizing: border-box;
     }
@@ -33,7 +35,13 @@ injectGlobal`
     }
 
     body {
-      -webkit-tap-highlight-color: rgba(0,0,0,.05)
+      -webkit-tap-highlight-color: rgba(0,0,0,.05);
+      color: ${colors.text};
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
+        Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+      font-size: 16px;
+      line-height: 1.375;
+      margin: 0 auto;
     }
 `;
 
@@ -53,7 +61,7 @@ export default class Layout extends React.Component {
             ...state.interface,
             contributorAreaStatus:
               state.interface.isDesktopViewport === false &&
-              state.interface.contributorAreaStatus === 'open'
+                state.interface.contributorAreaStatus === 'open'
                 ? 'closed'
                 : state.interface.contributorAreaStatus,
             cartStatus:
@@ -357,6 +365,7 @@ export default class Layout extends React.Component {
 
     return (
       <>
+        <Global styles={globalStyles} />
         <SiteMetadata />
         <UserContext.Provider value={this.state.user}>
           <StoreContext.Provider value={this.state.store}>
@@ -374,51 +383,51 @@ export default class Layout extends React.Component {
                   productImageFeatured,
                   toggleProductImagesBrowser
                 }) => (
-                  <>
-                    <Header
-                      isDesktopViewport={isDesktopViewport}
-                      productImagesBrowserStatus={productImagesBrowserStatus}
-                    />
-                    <Viewport>
-                      <Cart
-                        isDesktopViewport={isDesktopViewport}
-                        status={cartStatus}
-                        toggle={toggleCart}
-                        contributorAreaStatus={contributorAreaStatus}
-                        productImagesBrowserStatus={productImagesBrowserStatus}
-                      />
-
-                      <ContributorArea
-                        location={location}
-                        status={contributorAreaStatus}
-                        toggle={toggleContributorArea}
+                    <>
+                      <Header
                         isDesktopViewport={isDesktopViewport}
                         productImagesBrowserStatus={productImagesBrowserStatus}
                       />
-
-                      <PageContent
-                        cartStatus={cartStatus}
-                        contributorAreaStatus={contributorAreaStatus}
-                        isDesktopViewport={isDesktopViewport}
-                        productImagesBrowserStatus={productImagesBrowserStatus}
-                        location={location}
-                      >
-                        {children}
-                      </PageContent>
-
-                      {currentProductImages.length > 0 && (
-                        <ProductImagesBrowser
-                          featureProductImage={featureProductImage}
-                          images={currentProductImages}
-                          position={productImagesBrowserStatus}
-                          imageFeatured={productImageFeatured}
-                          toggle={toggleProductImagesBrowser}
+                      <Viewport>
+                        <Cart
                           isDesktopViewport={isDesktopViewport}
+                          status={cartStatus}
+                          toggle={toggleCart}
+                          contributorAreaStatus={contributorAreaStatus}
+                          productImagesBrowserStatus={productImagesBrowserStatus}
                         />
-                      )}
-                    </Viewport>
-                  </>
-                )}
+
+                        <ContributorArea
+                          location={location}
+                          status={contributorAreaStatus}
+                          toggle={toggleContributorArea}
+                          isDesktopViewport={isDesktopViewport}
+                          productImagesBrowserStatus={productImagesBrowserStatus}
+                        />
+
+                        <PageContent
+                          cartStatus={cartStatus}
+                          contributorAreaStatus={contributorAreaStatus}
+                          isDesktopViewport={isDesktopViewport}
+                          productImagesBrowserStatus={productImagesBrowserStatus}
+                          location={location}
+                        >
+                          {children}
+                        </PageContent>
+
+                        {currentProductImages.length > 0 && (
+                          <ProductImagesBrowser
+                            featureProductImage={featureProductImage}
+                            images={currentProductImages}
+                            position={productImagesBrowserStatus}
+                            imageFeatured={productImageFeatured}
+                            toggle={toggleProductImagesBrowser}
+                            isDesktopViewport={isDesktopViewport}
+                          />
+                        )}
+                      </Viewport>
+                    </>
+                  )}
               </InterfaceContext.Consumer>
             </InterfaceContext.Provider>
           </StoreContext.Provider>

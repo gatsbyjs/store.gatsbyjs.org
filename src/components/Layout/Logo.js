@@ -1,5 +1,5 @@
 import React from 'react';
-import { css } from 'react-emotion';
+import { css } from '@emotion/core';
 
 import { colors } from '../../utils/styles';
 
@@ -15,10 +15,10 @@ const monogram = css`
 const Monogram = () => (
   <svg
     viewBox="0 0 28 28"
-    className={css`
-      ${svg};
-      ${monogram};
-    `}
+    css={[
+      svg,
+      monogram
+    ]}
   >
     <path
       fill="#FFF"
@@ -34,9 +34,7 @@ const Monogram = () => (
 const Logotype = () => (
   <svg
     viewBox="0 0 70 28"
-    className={css`
-      ${svg};
-    `}
+    css={svg}
   >
     <g transform="translate(0 5)">
       <path d="M24.9,7 L27.7,7 L27.7,17 L24.9,17 L24.9,15.7 C23.9,17.2 22.6,17.3 21.8,17.3 C18.7,17.3 16.7,14.9 16.7,12 C16.7,9 18.7,6.7 21.6,6.7 C22.4,6.7 23.9,6.8 24.8,8.3 L24.8,7 L24.9,7 Z M19.7,12 C19.7,13.6 20.8,14.8 22.5,14.8 C24.1,14.8 25.3,13.6 25.3,12 C25.3,10.4 24.2,9.2 22.5,9.2 C20.9,9.2 19.7,10.4 19.7,12 Z" />
@@ -49,7 +47,7 @@ const Logotype = () => (
 );
 
 const Product = () => (
-  <svg viewBox="0 0 50 28" className={svg}>
+  <svg viewBox="0 0 50 28" css={svg}>
     <path
       fill={colors.brand}
       fillRule="evenodd"
@@ -59,7 +57,7 @@ const Product = () => (
 );
 
 export default () => (
-  <div className={svg}>
+  <div css={svg}>
     <Monogram />
     <Logotype />
     <Product />

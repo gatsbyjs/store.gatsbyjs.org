@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { colors, radius, spacing } from '../../utils/styles';
 import gql from 'graphql-tag';
 

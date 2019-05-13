@@ -1,7 +1,7 @@
 import React from 'react';
 import { Mutation } from 'react-apollo';
 import gql from 'graphql-tag';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
 import UserContext from '../../context/UserContext';
 import Loading from './Loading';

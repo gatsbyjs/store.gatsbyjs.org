@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import styled, { keyframes } from 'react-emotion';
+import styled from '@emotion/styled';
+import { keyframes } from '@emotion/core';
 import PropTypes from 'prop-types';
 
 import {
@@ -342,7 +343,7 @@ class Cart extends Component {
             (total, item) => total + item.quantity,
             0
           );
-          
+
           checkout.lineItems.forEach(({id}) => {
             if(id === gatsbyStickerPackID) {
               showFreeBonus = false;
