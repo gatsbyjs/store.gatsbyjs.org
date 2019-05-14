@@ -1,5 +1,5 @@
 import React from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { colors, radius, spacing } from '../../utils/styles';
 import gql from 'graphql-tag';
 
@@ -104,11 +104,8 @@ export default ({ issues }) => (
           <IssueTitle>{issue.title}</IssueTitle>{' '}
           <IssueId>#{issue.url.split('/').pop()}</IssueId>
         </IssueLink>
-        {issue.labels.map(({url, name}) => (
-          <Label
-            href={formatLabelUrl(url)}
-            key={`${issue.id}-${url}`}
-          >
+        {issue.labels.map(({ url, name }) => (
+          <Label href={formatLabelUrl(url)} key={`${issue.id}-${url}`}>
             {name}
           </Label>
         ))}

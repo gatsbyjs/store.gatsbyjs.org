@@ -1,5 +1,5 @@
 import React from 'react';
-import { css } from 'react-emotion';
+import { css } from '@emotion/core';
 
 import { colors } from '../../utils/styles';
 
@@ -13,13 +13,7 @@ const monogram = css`
 `;
 
 const Monogram = () => (
-  <svg
-    viewBox="0 0 28 28"
-    className={css`
-      ${svg};
-      ${monogram};
-    `}
-  >
+  <svg viewBox="0 0 28 28" css={[svg, monogram]}>
     <path
       fill="#FFF"
       d="M25 14L18 14 18 16 22.8 16C22.1 19 19.9 21.5 17 22.5L5.5 11C6.7 7.5 10.1 5 14 5 17 5 19.7 6.5 21.4 8.8L22.9 7.5C20.9 4.8 17.7 3 14 3 8.8 3 4.4 6.7 3.3 11.6L16.5 24.8C21.3 23.6 25 19.2 25 14zM3 14.1C3 16.9 4.1 19.6 6.2 21.7 8.3 23.8 11.1 24.9 13.8 24.9L3 14.1z"
@@ -32,12 +26,7 @@ const Monogram = () => (
 );
 
 const Logotype = () => (
-  <svg
-    viewBox="0 0 70 28"
-    className={css`
-      ${svg};
-    `}
-  >
+  <svg viewBox="0 0 70 28" css={svg}>
     <g transform="translate(0 5)">
       <path d="M24.9,7 L27.7,7 L27.7,17 L24.9,17 L24.9,15.7 C23.9,17.2 22.6,17.3 21.8,17.3 C18.7,17.3 16.7,14.9 16.7,12 C16.7,9 18.7,6.7 21.6,6.7 C22.4,6.7 23.9,6.8 24.8,8.3 L24.8,7 L24.9,7 Z M19.7,12 C19.7,13.6 20.8,14.8 22.5,14.8 C24.1,14.8 25.3,13.6 25.3,12 C25.3,10.4 24.2,9.2 22.5,9.2 C20.9,9.2 19.7,10.4 19.7,12 Z" />
       <polygon points="33.2 9.4 33.2 17 30.4 17 30.4 9.4 29.3 9.4 29.3 7 30.4 7 30.4 3.6 33.2 3.6 33.2 7 35.1 7 35.1 9.4" />
@@ -49,7 +38,7 @@ const Logotype = () => (
 );
 
 const Product = () => (
-  <svg viewBox="0 0 50 28" className={svg}>
+  <svg viewBox="0 0 50 28" css={svg}>
     <path
       fill={colors.brand}
       fillRule="evenodd"
@@ -59,7 +48,7 @@ const Product = () => (
 );
 
 export default () => (
-  <div className={svg}>
+  <div css={svg}>
     <Monogram />
     <Logotype />
     <Product />

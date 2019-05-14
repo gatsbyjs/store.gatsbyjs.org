@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 
 import { MdClose } from 'react-icons/md';
 

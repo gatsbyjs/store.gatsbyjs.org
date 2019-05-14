@@ -1,17 +1,6 @@
 import React from 'react';
 import Helmet from 'react-helmet';
 import { graphql, StaticQuery } from 'gatsby';
-import { css } from 'react-emotion';
-import { colors } from '../../utils/styles';
-
-const bodyStyles = css`
-  color: ${colors.text};
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-    Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-  font-size: 16px;
-  line-height: 1.375;
-  margin: 0 auto;
-`;
 
 export default () => (
   <StaticQuery
@@ -33,7 +22,6 @@ export default () => (
     }) => (
       <Helmet defaultTitle={title} titleTemplate={`%s · ${title}`}>
         <html lang="en" />
-        <body className={bodyStyles} />
 
         <link rel="preconnect" href="https://gatsby-swag.myshopify.com" />
         <link rel="preconnect" href="https://api.gatsbyjs.org" />

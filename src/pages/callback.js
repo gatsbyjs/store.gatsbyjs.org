@@ -1,6 +1,6 @@
 import React from 'react';
 import { navigate } from 'gatsby';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { handleAuthentication } from '../utils/auth';
 import { colors, fonts } from '../utils/styles';
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import gql from 'graphql-tag';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { Query } from 'react-apollo';
 import { GoMarkGithub } from 'react-icons/go';
 

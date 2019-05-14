@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Image from 'gatsby-image';
-import styled, { keyframes } from 'react-emotion';
+import styled from '@emotion/styled';
+import { keyframes } from '@emotion/core';
 import { MdClose, MdZoomIn, MdZoomOut } from 'react-icons/md';
 
 import CommunityCaption from './CommunityCaption';

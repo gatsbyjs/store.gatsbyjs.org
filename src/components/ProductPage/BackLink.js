@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import styled from 'react-emotion';
+import styled from '@emotion/styled';
 import { MdArrowBack } from 'react-icons/md';
 
 import { Button } from '../shared/Buttons';

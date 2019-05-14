@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import styled, { keyframes } from 'react-emotion';
+import styled from '@emotion/styled';
+import { keyframes } from '@emotion/core';
 import PropTypes from 'prop-types';
 
 import {
@@ -317,7 +318,8 @@ class Cart extends Component {
     const { status, toggle } = this.props;
     const { className } = this.state;
     let showFreeBonus = true;
-    const gatsbyStickerPackID = "Z2lkOi8vc2hvcGlmeS9DaGVja291dExpbmVJdGVtL2I1ZGY0NjRmMWQxYWQxM2MzMzJjYmQ0MjMyZDczZGE3P2NoZWNrb3V0PTY1NjU3NDMxMjk2MTRiMmRjZjc4MDIzYmRlYzA4MTM2";
+    const gatsbyStickerPackID =
+      'Z2lkOi8vc2hvcGlmeS9DaGVja291dExpbmVJdGVtL2I1ZGY0NjRmMWQxYWQxM2MzMzJjYmQ0MjMyZDczZGE3P2NoZWNrb3V0PTY1NjU3NDMxMjk2MTRiMmRjZjc4MDIzYmRlYzA4MTM2';
 
     return (
       <StoreContext.Consumer>
@@ -342,9 +344,9 @@ class Cart extends Component {
             (total, item) => total + item.quantity,
             0
           );
-          
-          checkout.lineItems.forEach(({id}) => {
-            if(id === gatsbyStickerPackID) {
+
+          checkout.lineItems.forEach(({ id }) => {
+            if (id === gatsbyStickerPackID) {
               showFreeBonus = false;
             }
           });
@@ -415,7 +417,7 @@ class Cart extends Component {
                     Back to shopping
                   </BackLink>
 
-                  { showFreeBonus && <FreeBonus /> }
+                  {showFreeBonus && <FreeBonus />}
 
                   <ShippingInfo />
                 </Content>
