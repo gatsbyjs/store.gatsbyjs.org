@@ -14,7 +14,7 @@ const Issue = styled('li')`
   margin: 0;
   padding: 0.5rem 0;
 
-  :last-child:not(:first-child) {
+  :last-child:not(:first-of-type) {
     border-bottom: 0;
   }
 `;

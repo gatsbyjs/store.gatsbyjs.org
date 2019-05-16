@@ -99,7 +99,7 @@ const CodeEligibility = styled(`div`)`
     justify-content: center;
   }
 
-  span:first-child {
+  span:first-of-type {
     background: #999;
     flex-basis: 35%;
     font-size: 0.9rem;

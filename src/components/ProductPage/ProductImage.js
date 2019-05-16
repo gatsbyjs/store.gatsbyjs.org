@@ -89,7 +89,7 @@ class ProductImage extends Component {
 
     return (
       <ProductImageLink
-        innerRef={el => {
+        ref={el => {
           this.imageLink = el;
         }}
         href={fluid.src}
