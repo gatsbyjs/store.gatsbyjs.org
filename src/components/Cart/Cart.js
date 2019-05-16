@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/core';
 import PropTypes from 'prop-types';
@@ -26,6 +26,7 @@ import {
   dimensions
 } from '../../utils/styles';
 
+// #region 'styled components`
 const CartRoot = styled(`div`)`
   background: ${colors.lightest};
   bottom: 0;
@@ -278,164 +279,138 @@ const BackLink = styled(Button)`
   margin-bottom: ${spacing.sm}px;
   width: 100%;
 `;
+// #endregion 'styled components`
 
-class Cart extends Component {
-  state = {
-    className: 'closed',
-    isLoading: false
-  };
+export const Cart = ({ isDesktopViewport, productImagesBrowserStatus, status, toggle }) => {
+  const [className, setClassName] = useState('closed');
+  const [isLoading, setIsLoading] = useState(false);
+  const { client, checkout, removeLineItem, updateLineItem, adding } = useContext(StoreContext)
 
-  componentDidUpdate(prevProps) {
-    const componentStatusChanged = prevProps.status !== this.props.status;
-    const imageBrowserStatusChanged =
-      this.props.productImagesBrowserStatus !==
-      prevProps.productImagesBrowserStatus;
-
-    if (componentStatusChanged) {
-      this.setState({
-        className: this.props.status
-      });
-    }
-
-    if (this.props.isDesktopViewport) {
-      if (imageBrowserStatusChanged) {
-        if (this.props.productImagesBrowserStatus === 'open') {
-          setTimeout(() => {
-            this.setState(state => ({
-              className: state.className + ' covered'
-            }));
-          }, 500);
-        } else {
-          this.setState(state => ({
-            className: state.className.replace('covered', '')
-          }));
-        }
+  useEffect(() => {
+    if (isDesktopViewport) {
+      if (productImagesBrowserStatus === 'open') {
+        setTimeout(() => {
+          setClassName(`${className} covered`);
+        }, 500);
+      } else {
+        setClassName(className.replace('covered', '').trim());
       }
     }
-  }
+  }, [productImagesBrowserStatus]);
 
-  render() {
-    const { status, toggle } = this.props;
-    const { className } = this.state;
-    let showFreeBonus = true;
-    const gatsbyStickerPackID =
-      'Z2lkOi8vc2hvcGlmeS9DaGVja291dExpbmVJdGVtL2I1ZGY0NjRmMWQxYWQxM2MzMzJjYmQ0MjMyZDczZGE3P2NoZWNrb3V0PTY1NjU3NDMxMjk2MTRiMmRjZjc4MDIzYmRlYzA4MTM2';
+  useEffect(() => {
+    setClassName(status);
+  }, [status]);
 
-    return (
-      <StoreContext.Consumer>
-        {({ client, checkout, removeLineItem, updateLineItem, adding }) => {
-          const setCartLoading = bool => this.setState({ isLoading: bool });
+  let showFreeBonus = true;
+  const gatsbyStickerPackID =
+    'Z2lkOi8vc2hvcGlmeS9DaGVja291dExpbmVJdGVtL2I1ZGY0NjRmMWQxYWQxM2MzMzJjYmQ0MjMyZDczZGE3P2NoZWNrb3V0PTY1NjU3NDMxMjk2MTRiMmRjZjc4MDIzYmRlYzA4MTM2';
 
-          const handleRemove = itemID => async event => {
-            event.preventDefault();
-            await removeLineItem(client, checkout.id, itemID);
-            setCartLoading(false);
-          };
+  const handleRemove = itemID => async event => {
+    event.preventDefault();
+    await removeLineItem(client, checkout.id, itemID);
+    setIsLoading(false);
+  };
 
-          const handleQuantityChange = lineItemID => async quantity => {
-            if (!quantity) {
-              return;
-            }
-            await updateLineItem(client, checkout.id, lineItemID, quantity);
-            setCartLoading(false);
-          };
+  const handleQuantityChange = lineItemID => async quantity => {
+    if (!quantity) {
+      return;
+    }
+    await updateLineItem(client, checkout.id, lineItemID, quantity);
+    setIsLoading(false);
+  };
 
-          const itemsInCart = checkout.lineItems.reduce(
-            (total, item) => total + item.quantity,
-            0
-          );
+  const itemsInCart = checkout.lineItems.reduce(
+    (total, item) => total + item.quantity,
+    0
+  );
 
-          checkout.lineItems.forEach(({ id }) => {
-            if (id === gatsbyStickerPackID) {
-              showFreeBonus = false;
-            }
-          });
+  checkout.lineItems.forEach(({ id }) => {
+    if (id === gatsbyStickerPackID) {
+      showFreeBonus = false;
+    }
+  });
 
-          return (
-            <CartRoot
-              className={`${className} ${
-                this.state.isLoading ? 'loading' : ''
-              }`}
-            >
-              <Heading>
-                <CartToggle
-                  aria-label={`Shopping cart with ${itemsInCart} items`}
-                  onClick={toggle}
-                >
-                  {status === 'open' ? (
-                    <MdClose />
-                  ) : (
-                    <>
-                      <MdShoppingCart />
-                      {itemsInCart > 0 && (
-                        <ItemsNumber>{itemsInCart}</ItemsNumber>
-                      )}
-                    </>
-                  )}
-                </CartToggle>
-                <CartIndicator itemsInCart={itemsInCart} adding={adding} />
-                <Title>Your Cart</Title>
-                <ItemsInCart>
-                  items
-                  <br />
-                  in cart
+  return (
+    <CartRoot
+      className={`${className} ${
+        isLoading ? 'loading' : ''
+        }`}
+    >
+      <Heading>
+        <CartToggle
+          aria-label={`Shopping cart with ${itemsInCart} items`}
+          onClick={toggle}
+        >
+          {status === 'open' ? (
+            <MdClose />
+          ) : (
+              <>
+                <MdShoppingCart />
+                {itemsInCart > 0 && (
                   <ItemsNumber>{itemsInCart}</ItemsNumber>
-                </ItemsInCart>
-              </Heading>
-              {checkout.lineItems.length > 0 ? (
-                <Content>
-                  <CartList
-                    items={checkout.lineItems}
-                    handleRemove={handleRemove}
-                    updateQuantity={handleQuantityChange}
-                    setCartLoading={setCartLoading}
-                    isCartLoading={this.state.isLoading}
-                  />
+                )}
+              </>
+            )}
+        </CartToggle>
+        <CartIndicator itemsInCart={itemsInCart} adding={adding} />
+        <Title>Your Cart</Title>
+        <ItemsInCart>
+          items
+                  <br />
+          in cart
+                  <ItemsNumber>{itemsInCart}</ItemsNumber>
+        </ItemsInCart>
+      </Heading>
+      {checkout.lineItems.length > 0 ? (
+        <Content>
+          <CartList
+            items={checkout.lineItems}
+            handleRemove={handleRemove}
+            updateQuantity={handleQuantityChange}
+            setCartLoading={setIsLoading}
+            isCartLoading={isLoading}
+          />
 
-                  <Costs>
-                    <Cost>
-                      <span>Subtotal:</span>{' '}
-                      <strong>USD ${checkout.subtotalPrice}</strong>
-                    </Cost>
-                    <Cost>
-                      <span>Taxes:</span> <strong>{checkout.totalTax}</strong>
-                    </Cost>
-                    <Cost>
-                      <span>Shipping (worldwide):</span> <strong>FREE</strong>
-                    </Cost>
-                    <Total>
-                      <span>Total Price:</span>
-                      <strong>USD ${checkout.totalPrice}</strong>
-                    </Total>
-                  </Costs>
+          <Costs>
+            <Cost>
+              <span>Subtotal:</span>{' '}
+              <strong>USD ${checkout.subtotalPrice}</strong>
+            </Cost>
+            <Cost>
+              <span>Taxes:</span> <strong>{checkout.totalTax}</strong>
+            </Cost>
+            <Cost>
+              <span>Shipping (worldwide):</span> <strong>FREE</strong>
+            </Cost>
+            <Total>
+              <span>Total Price:</span>
+              <strong>USD ${checkout.totalPrice}</strong>
+            </Total>
+          </Costs>
 
-                  <CheckOut href={checkout.webUrl}>
-                    Check out <MdArrowForward />
-                  </CheckOut>
-                  <BackLink onClick={toggle}>
-                    <MdArrowBack />
-                    Back to shopping
+          <CheckOut href={checkout.webUrl}>
+            Check out <MdArrowForward />
+          </CheckOut>
+          <BackLink onClick={toggle}>
+            <MdArrowBack />
+            Back to shopping
                   </BackLink>
 
-                  {showFreeBonus && <FreeBonus />}
+          {showFreeBonus && <FreeBonus />}
 
-                  <ShippingInfo />
-                </Content>
-              ) : (
-                <EmptyCart />
-              )}
-            </CartRoot>
-          );
-        }}
-      </StoreContext.Consumer>
-    );
-  }
-}
+          <ShippingInfo />
+        </Content>
+      ) : (
+          <EmptyCart />
+        )}
+    </CartRoot>
+  );
+};
 
 Cart.propTypes = {
   status: PropTypes.string.isRequired,
   toggle: PropTypes.func.isRequired,
-  contributorAreaStatus: PropTypes.string.isRequired,
   isDesktopViewport: PropTypes.bool,
   productImagesBrowserStatus: PropTypes.string
 };
