@@ -7,7 +7,9 @@
   Gatsby <a href="https://store.gatsbyjs.org">Swag Store</a>
 </h1>
 
+<p align="center">
 This is the Gatsby store, where we make swag, stickers, and other Gatsby goodies available to contributors and Gatsby enthusiasts. 💪💜
+</p>
 
 <p align="center">
   <img alt="Gatsby socks with Dora for scale." src="https://store.gatsbyjs.org/instagram-doraforscale.jpg" />
