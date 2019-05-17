@@ -299,7 +299,7 @@ class ProductImagesBrowser extends Component {
         </Actions>
 
         <ZoomArea
-          innerRef={container => {
+          ref={container => {
             this.zoomArea = container;
           }}
         >
@@ -308,7 +308,7 @@ class ProductImagesBrowser extends Component {
             href={fluid.src}
             superZoom={superZoom}
             width={imageBoxHeight}
-            innerRef={image => {
+            ref={image => {
               this.imageBox = image;
             }}
           >

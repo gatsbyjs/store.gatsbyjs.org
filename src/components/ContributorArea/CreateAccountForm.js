@@ -22,7 +22,7 @@ const Fieldset = styled(BaseFieldset)`
   @media (min-width: ${breakpoints.hd}px) {
     flex-basis: 65%;
 
-    &:first-child {
+    &:first-of-type {
       flex-basis: 35%;
       padding-right: ${spacing.sm}px;
     }
