@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 
 import { MdClose } from 'react-icons/md';
 
-import CartThumbail from './CartThumbail';
+import CartThumbnail from './CartThumbnail';
 import { Input } from '../shared/FormElements';
 import { Button } from '../shared/Buttons';
 
@@ -17,7 +17,7 @@ const CartListItemRoot = styled('li')`
   padding: ${spacing.md}px 0;
 `;
 
-const Thumbail = styled(CartThumbail)`
+const Thumbnail = styled(CartThumbnail)`
   flex-grow: 0;
   margin-left: ${spacing['2xs']}px;
   margin-right: ${spacing.sm}px;
@@ -69,7 +69,7 @@ const Remove = styled(Button)`
   }
 `;
 
-export default ({
+export const CartListItem = ({
   item,
   setCartLoading,
   updateQuantity,
@@ -91,11 +91,6 @@ export default ({
 
     // Make sure the quantity is always at least 1.
     const safeValue = Math.max(Number(value), 0);
-
-    // No need to update if the value hasn’t updated.
-    if (value === quantity) {
-      return;
-    }
 
     // If the field is empty, update the state but don’t do anything else.
     if (value === '') {
@@ -124,7 +119,7 @@ export default ({
 
   return (
     <CartListItemRoot>
-      <Thumbail
+      <Thumbnail
         id={item.variant.image.id}
         fallback={item.variant.image.src}
         alt={item.variant.image.altText}
@@ -152,3 +147,5 @@ export default ({
     </CartListItemRoot>
   );
 };
+
+export default CartListItem;

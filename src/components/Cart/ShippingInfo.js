@@ -1,10 +1,11 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/core';
 
 import { MdKeyboardArrowDown, MdInfo } from 'react-icons/md';
 
 import { colors, radius, spacing, defaultFontStack } from '../../utils/styles';
+import { useToggle } from '../../utils/useToggle';
 
 const ShippingInfoRoot = styled(`div`)`
   background: #f5f5f5;
@@ -68,34 +69,24 @@ const InfoIcon = styled(MdInfo)`
   vertical-align: middle;
 `;
 
-class ShippingInfo extends Component {
-  state = {
-    detailsVisible: false
-  };
+export const ShippingInfo = () => {
+  const [detailsVisible, toggle] = useToggle();
 
-  toggle = () => {
-    this.setState({ detailsVisible: !this.state.detailsVisible });
-  };
-
-  render() {
-    const { detailsVisible } = this.state;
-
-    return (
-      <ShippingInfoRoot className={detailsVisible ? 'expanded' : ''}>
-        <Intro role="button" onClick={this.toggle}>
-          <InfoIcon />
-          International shipments can take <strong>6 weeks or more</strong> to
-          be delivered. <ArrowIcon />
-        </Intro>
-        <Details>
-          Tracking updates may not always show up in real time on your tracking
-          link. If you still have not received your order at the end of 6 weeks,
-          please let us know by sending an email to{' '}
-          <a href="mailto:team@gatsbyjs.com">team@gatsbyjs.com</a>
-        </Details>
-      </ShippingInfoRoot>
-    );
-  }
-}
+  return (
+    <ShippingInfoRoot className={detailsVisible ? 'expanded' : ''}>
+      <Intro role="button" onClick={toggle}>
+        <InfoIcon />
+        International shipments can take <strong>6 weeks or more</strong> to be
+        delivered. <ArrowIcon />
+      </Intro>
+      <Details>
+        Tracking updates may not always show up in real time on your tracking
+        link. If you still have not received your order at the end of 6 weeks,
+        please let us know by sending an email to{' '}
+        <a href="mailto:team@gatsbyjs.com">team@gatsbyjs.com</a>
+      </Details>
+    </ShippingInfoRoot>
+  );
+};
 
 export default ShippingInfo;

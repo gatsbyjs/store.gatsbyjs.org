@@ -1,8 +1,9 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
 import { colors, dimensions, radius, spacing } from '../../utils/styles';
+import { usePrevious } from '../../utils/usePrevious';
 
 const CartIndicatorRoot = styled(`div`)`
   background: ${colors.lemon};
@@ -17,44 +18,34 @@ const CartIndicatorRoot = styled(`div`)`
   transform: translateX(calc((100% + ${spacing.md}px) * -1));
 `;
 
-class CartIndicator extends Component {
-  state = {
-    visible: false,
-    message: ''
-  };
+export const CartIndicator = ({ adding, itemsInCart }) => {
+  const [visible, setVisible] = useState(false);
+  const [message, setMessage] = useState('');
+  const prevItemsInCart = usePrevious(itemsInCart);
 
-  componentDidUpdate(prevProps) {
-    if (prevProps.adding !== this.props.adding) {
-      if (this.props.adding) {
-        this.setState({
-          visible: true,
-          message: 'updating cart ...'
-        });
-      } else {
-        if (this.props.itemsInCart > prevProps.itemsInCart) {
-          const num = this.props.itemsInCart - prevProps.itemsInCart;
-          const message =
-            num > 1
-              ? `${num} new items have been added to the cart`
-              : `${num} new item has been added to the cart`;
+  useEffect(() => {
+    if (adding) {
+      setVisible(true);
+      setMessage('updating cart ...');
+    } else {
+      if (itemsInCart > prevItemsInCart) {
+        const num = itemsInCart - prevItemsInCart;
+        const message =
+          num > 1
+            ? `${num} new items have been added to the cart`
+            : `${num} new item has been added to the cart`;
 
-          this.setState({ message });
+        setMessage(message);
 
-          setTimeout(
-            () => this.setState({ visible: false, message: '' }),
-            3000
-          );
-        }
+        setTimeout(() => {
+          setVisible(false);
+          setMessage('');
+        }, 3000);
       }
     }
-  }
-
-  render() {
-    const { visible, message } = this.state;
-
-    return <CartIndicatorRoot visible={visible}>{message}</CartIndicatorRoot>;
-  }
-}
+  }, [adding, itemsInCart]);
+  return <CartIndicatorRoot visible={visible}>{message}</CartIndicatorRoot>;
+};
 
 CartIndicator.propTypes = {
   itemsInCart: PropTypes.number.isRequired,

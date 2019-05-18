@@ -5,19 +5,14 @@ import Image from 'gatsby-image';
 
 import { colors, radius } from '../../utils/styles';
 
-const CartThumbailRoot = styled(Image)`
+const CartThumbnailRoot = styled(Image)`
   border: 1px solid ${colors.brandLight};
   border-radius: ${radius.default}px;
   height: 36px;
   width: 36px;
 `;
 
-const CartThumbail = ({
-  shopifyImages,
-  id: imageId,
-  fallback,
-  ...imageProps
-}) => {
+const Thumbnail = ({ shopifyImages, id: imageId, fallback, ...imageProps }) => {
   const image = shopifyImages.find(({ id }) => id === imageId);
 
   if (image) {
@@ -26,10 +21,10 @@ const CartThumbail = ({
     imageProps.src = fallback;
   }
 
-  return <CartThumbailRoot {...imageProps} />;
+  return <CartThumbnailRoot {...imageProps} />;
 };
 
-export default props => (
+export const CartThumbnail = props => (
   <StaticQuery
     query={graphql`
       {
@@ -56,7 +51,9 @@ export default props => (
         .map(({ node }) => node.images)
         .reduce((acc, val) => acc.concat(val), []);
 
-      return <CartThumbail shopifyImages={images} {...props} />;
+      return <Thumbnail shopifyImages={images} {...props} />;
     }}
   />
 );
+
+export default CartThumbnail;
