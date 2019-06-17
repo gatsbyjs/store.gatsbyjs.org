@@ -317,7 +317,6 @@ class Cart extends Component {
   render() {
     const { status, toggle } = this.props;
     const { className } = this.state;
-    let showFreeBonus = true;
     const gatsbyStickerPackID =
       'Z2lkOi8vc2hvcGlmeS9DaGVja291dExpbmVJdGVtL2I1ZGY0NjRmMWQxYWQxM2MzMzJjYmQ0MjMyZDczZGE3P2NoZWNrb3V0PTY1NjU3NDMxMjk2MTRiMmRjZjc4MDIzYmRlYzA4MTM2';
 
@@ -345,11 +344,9 @@ class Cart extends Component {
             0
           );
 
-          checkout.lineItems.forEach(({ id }) => {
-            if (id === gatsbyStickerPackID) {
-              showFreeBonus = false;
-            }
-          });
+          const showFreeBonus = !checkout.lineItems.some(
+            ({ id }) => id === gatsbyStickerPackID
+          );
 
           return (
             <CartRoot
