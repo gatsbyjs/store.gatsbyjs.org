@@ -3,7 +3,7 @@ import styled from '@emotion/styled';
 
 import { MdClose } from 'react-icons/md';
 
-import CartThumbail from './CartThumbail';
+import CartThumbnail from './CartThumbnail';
 import { Input } from '../shared/FormElements';
 import { Button } from '../shared/Buttons';
 
@@ -17,7 +17,7 @@ const CartListItemRoot = styled('li')`
   padding: ${spacing.md}px 0;
 `;
 
-const Thumbail = styled(CartThumbail)`
+const Thumbnail = styled(CartThumbnail)`
   flex-grow: 0;
   margin-left: ${spacing['2xs']}px;
   margin-right: ${spacing.sm}px;
@@ -124,7 +124,7 @@ export default ({
 
   return (
     <CartListItemRoot>
-      <Thumbail
+      <Thumbnail
         id={item.variant.image.id}
         fallback={item.variant.image.src}
         alt={item.variant.image.altText}
