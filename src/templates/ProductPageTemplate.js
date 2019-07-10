@@ -10,13 +10,20 @@ const removeCareInstructions = desc =>
 
 const ProductPageTemplate = props => {
   const {
-    site,
-    shopifyProduct: product,
-    shopifyProduct: { title, description: fullDescription, handle }
-  } = props.data;
+    data: {
+      site,
+      shopifyProduct: product,
+      shopifyProduct: { title, description: fullDescription, handle }
+    },
+    location: { pathname }
+  } = props;
+  const {
+    siteMetadata: { siteUrl }
+  } = site;
 
   const description = removeCareInstructions(fullDescription);
   const image = product.images[0].localFile.childImageSharp.fluid.src;
+  const canonical = `${siteUrl}${pathname}`;
 
   return (
     <InterfaceContext.Consumer>
@@ -32,21 +39,16 @@ const ProductPageTemplate = props => {
             <title>{title}</title>
 
             <meta name="description" content={description} />
+            <link rel="canonical" href={canonical} />
 
-            <meta
-              property="og:url"
-              content={`${site.siteMetadata.siteUrl}/product/${handle}`}
-            />
+            <meta property="og:url" content={`${siteUrl}/product/${handle}`} />
             <meta property="og:locale" content="en" />
             <meta property="og:title" content={title} />
             <meta property="og:site_name" content="Gatsby Swag Store" />
             <meta property="og:description" content={description} />
 
             {/* TODO: add the image */}
-            <meta
-              property="og:image"
-              content={`${site.siteMetadata.siteUrl}${image}`}
-            />
+            <meta property="og:image" content={`${siteUrl}${image}`} />
             <meta property="og:image:alt" content={title} />
             <meta property="og:image:width" content="600" />
             <meta property="og:image:height" content="600" />
