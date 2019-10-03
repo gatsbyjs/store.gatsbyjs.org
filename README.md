@@ -2,26 +2,26 @@
   <a href="https://gatsbyjs.org">
     <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
   </a>
-</p>
+</p>Gatsby 
 <h1 align="center">
-  Gatsby <a href="https://store.gatsbyjs.org">Swag Store</a>
+  <a href="https://store.gatsbyjs.org">Gatsby Swag Store</a>
 </h1>
 
-This is the Gatsby store, where we make swag, stickers, and other Gatsby goodies available to contributors and Gatsby enthusiasts. 💪💜
+<p align="center">Welcome to the <strong>Gatsby</strong> store, where we make swag, stickers, and other Gatsby goodies available to contributors and Gatsby enthusiasts. 💪💜</p>
 
 <p align="center">
-  <img alt="Gatsby socks with Dora for scale." src="https://store.gatsbyjs.org/instagram-doraforscale.jpg" />
+  <img src="https://store.gatsbyjs.org/instagram-doraforscale.jpg" alt="Gatsby socks with Dora for scale." />
   Photo credit: <a href="https://instagram.com/doraforscale">doraforscale</a>
 </p>
 
-See it live: [store.gatsbyjs.org](https://store.gatsbyjs.org)
+Watch it live: [store.gatsbyjs.org](https://store.gatsbyjs.org)
 
 ## Technical Overview
 
 This store is built with data from:
 
 - [Shopify](https://shopify.com)
-- The [Shopify JavaScript Buy SDK](https://shopify.github.io/js-buy-sdk/)
+- [The Shopify JavaScript Buy SDK](https://shopify.github.io/js-buy-sdk/)
 - [Auth0](https://auth0.com/)
 
 We’re using [Gatsby V2](https://github.com/gatsbyjs/gatsby) and [Emotion](https://emotion.sh/) to get the data on screen.
@@ -32,7 +32,7 @@ The store is statically rendered using the Shopify source plugin, and the mainta
 
 If you're a contributor to Gatsby, that means you can get one free item from our store! Log in using your GitHub account and we'll give you a discount code good for a t-shirt or socks. With five or more contributions, You can claim your **level two** swag!
 
-See [the docs for claiming contributor swag](https://next.gatsbyjs.org/docs/contributor-swag/) for additional details.
+ For additional details, see [the docs for claiming contributor swag](https://next.gatsbyjs.org/docs/contributor-swag/).
 
 ## Cheap Swag for All
 
@@ -45,7 +45,7 @@ We sell our swag at pretty close to cost (we round for easy math) and we don’t
 
 &nbsp; <!-- leave this here to avoid smashing the text against the summary -->
 
-Try opening the store in an incognito window and then proceed to check out. When checking out, make sure you're using the same email that's listed on your GitHub account.
+Try opening the store in an incognito mode window and then proceed to check out. When checking out, make sure you're using the same email that's listed on your GitHub account.
 
 </details>
 
