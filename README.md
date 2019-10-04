@@ -18,6 +18,7 @@ See it live: [store.gatsbyjs.org](https://store.gatsbyjs.org)
 
 ## Technical Overview
 
+
 This store is built with data from:
 
 - [Shopify](https://shopify.com)
@@ -41,7 +42,7 @@ We sell our swag at pretty close to cost (we round for easy math) and we don’t
 ## Frequently Asked Questions
 
 <details>
-  <summary><strong>Why does it say I'm not eligible when I enter the discount code?</strong></summary>
+   <summary><strong>Why does it say I'm not eligible when I enter the discount code?</strong></summary>
 
 &nbsp; <!-- leave this here to avoid smashing the text against the summary -->
 
@@ -50,7 +51,7 @@ Try opening the store in an incognito window and then proceed to check out. When
 </details>
 
 <details>
-  <summary><strong>Why can't I get the store to authenticate?</strong></summary>
+   <summary><strong>Why can't I get the store to authenticate?</strong></summary>
 
 &nbsp; <!-- leave this here to avoid smashing the text against the summary -->
 
@@ -59,7 +60,7 @@ We _think_ this is a local storage issue, and it only seems to happen in Safari-
 </details>
 
 <details>
-  <summary><strong>Why won't my credit card work?</strong></summary>
+   <summary><strong>Why won't my credit card work?</strong></summary>
 
 &nbsp; <!-- leave this here to avoid smashing the text against the summary -->
 
@@ -68,7 +69,7 @@ Please make sure the card isn't frozen or otherwise blocked by your financial in
 </details>
 
 <details>
-  <summary><strong>I've been waiting for my package, but it hasn't arrived yet.</strong></summary>
+   <summary><strong>I've been waiting for my package, but it hasn't arrived yet.</strong></summary>
 
 &nbsp; <!-- leave this here to avoid smashing the text against the summary -->
 
@@ -77,7 +78,7 @@ International shipments can take up to 6 weeks to be delivered. 😱 Tracking up
 </details>
 
 <details>
-  <summary><strong>I wanted to order something but it's out. How long will it take before it's back in stock?</strong></summary>
+   <summary><strong>I wanted to order something but it's out. How long will it take before it's back in stock?</strong></summary>
 
 &nbsp; <!-- leave this here to avoid smashing the text against the summary -->
 
@@ -86,7 +87,7 @@ Some of the swag has been selling like hotcakes (only less tasty and a providing
 </details>
 
 <details>
-  <summary><strong>The delivery service is telling me I need to pay additional fees to get my order. I thought Gatsby covered shipping costs. What gives?</strong></summary>
+   <summary><strong>The delivery service is telling me I need to pay additional fees to get my order. I thought Gatsby covered shipping costs. What gives?</strong></summary>
 
 &nbsp; <!-- leave this here to avoid smashing the text against the summary -->
 
