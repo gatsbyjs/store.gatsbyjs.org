@@ -1,0 +1,20 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Pages: 404 renders a 404 page 1`] = `
+<Styled(div)>
+  <Styled(h1)>
+    Whoops - That Page Doesn’t Exist (404)
+  </Styled(h1)>
+  <Styled(p)>
+    Looks like the page you requested either doesn’t exist or has been moved. If you think this is an error or ended up at this page by following a link, please
+     
+    <a
+      href="https://github.com/gatsbyjs/gatsby/issues/new"
+    >
+      open an issue
+    </a>
+     
+    to let us know.
+  </Styled(p)>
+</Styled(div)>
+`;

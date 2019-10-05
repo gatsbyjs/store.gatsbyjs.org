@@ -15,7 +15,7 @@
     "serve": "gatsby serve",
     "start": "npm run develop",
     "stylelint": "stylelint './src/**/*.js'",
-    "test": "echo \"Error: no test specified\" && exit 0"
+    "test": "jest"
   },
   "dependencies": {
     "@emotion/core": "^10.0.10",
@@ -45,7 +45,14 @@
     "shopify-buy": "^2.2.4"
   },
   "devDependencies": {
+    "@babel/preset-env": "^7.6.2",
+    "@babel/preset-react": "^7.0.0",
+    "babel-jest": "^24.9.0",
+    "enzyme": "^3.10.0",
+    "enzyme-adapter-react-16": "^1.14.0",
+    "enzyme-to-json": "^3.4.2",
     "husky": "^2.3.0",
+    "jest": "^24.9.0",
     "lint-staged": "^8.1.7",
     "prettier": "^1.17.1",
     "stylelint-config-standard": "^18.3.0",
