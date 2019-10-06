@@ -38,7 +38,7 @@ See [the docs for claiming contributor swag](https://next.gatsbyjs.org/docs/cont
 
 We sell our swag at pretty close to cost (we round for easy math) and we don’t charge shipping fees. Grab a t-shirt or socks and show everyone your favorite blazing fast framework!
 
-## Frequently Asked Questions
+## <b>Frequently Asked Questions</b>
 
 <details>
   <summary><strong>Why does it say I'm not eligible when I enter the discount code?</strong></summary>
