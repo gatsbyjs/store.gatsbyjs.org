@@ -54,10 +54,14 @@ const ButlerBox = styled(`div`)`
   display: none;
   opacity: 0;
   position: absolute;
-  right: -10px;
+  right: 15px;
   top: 35px;
   transform: scale(0.5);
   transition: 0.2s;
+
+  @media (min-width: ${breakpoints.desktop}px) {
+    right: -10px;
+  }
 
   svg {
     transform: scale(-1.8, 1.8);
