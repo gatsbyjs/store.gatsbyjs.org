@@ -68,6 +68,24 @@ const SizeChartTable = ({ unit }) => {
             <ThBrand>2XL</ThBrand>
           </tr>
           <Tr>
+            <TdLeft>Unisex Pants</TdLeft>
+            <Td>
+              <Size>38</Size>L–<Size>26</Size>W
+            </Td>
+            <Td>
+              <Size>38</Size>L–<Size>28</Size>W
+            </Td>
+            <Td>
+              <Size>38</Size>L–<Size>28</Size>W
+            </Td>
+            <Td>
+              <Size>39</Size>L–<Size>30</Size>W
+            </Td>
+            <Td>
+              <Size>40</Size>L–<Size>24</Size>W
+            </Td>
+          </Tr>
+          <Tr>
             <TdLeft>Unisex Body Length</TdLeft>
             <Td>
               <Size>27.5</Size>–<Size>28</Size>
