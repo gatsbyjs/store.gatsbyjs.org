@@ -41,7 +41,7 @@ const FreeBonus = () => (
       your order!
     </p>
 
-    <img src={gift} alt="Gift Icon" />
+    <img src={gift} alt="Gift Icon">
   </FreeBonusRoot>
 );
 
