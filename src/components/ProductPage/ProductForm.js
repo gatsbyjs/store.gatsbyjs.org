@@ -192,6 +192,7 @@ class ProductForm extends Component {
               <Label htmlFor="quantity">Qty.</Label>
               <Input
                 type="number"
+                inputmode="numeric"
                 id="quantity"
                 name="quantity"
                 min="1"

@@ -140,6 +140,7 @@ export default ({
         id={`quantity_${item.id.substring(58, 64)}`}
         type="number"
         name="quantity"
+        inputmode="numeric"
         min="1"
         step="1"
         onChange={event => handleInputChange(event)}

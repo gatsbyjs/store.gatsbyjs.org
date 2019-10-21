@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://gatsbyjs.org">
-    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60">
+  <a href="https://www.gatsbyjs.org">
+    <img alt="Gatsby" src="https://www.gatsbyjs.org/monogram.svg" width="60" />
   </a>
 </p>
 <h1 align="center">
@@ -20,7 +20,7 @@ See it live: [store.gatsbyjs.org](https://store.gatsbyjs.org)
 
 This store is built with data from:
 
-- [Shopify](https://shopify.com)
+- [Shopify](https://www.shopify.com/)
 - The [Shopify JavaScript Buy SDK](https://shopify.github.io/js-buy-sdk/)
 - [Auth0](https://auth0.com/)
 
@@ -32,7 +32,7 @@ The store is statically rendered using the Shopify source plugin, and the mainta
 
 If you're a contributor to Gatsby, that means you can get one free item from our store! Log in using your GitHub account and we'll give you a discount code good for a t-shirt or socks. With five or more contributions, You can claim your **level two** swag!
 
-See [the docs for claiming contributor swag](https://next.gatsbyjs.org/docs/contributor-swag/) for additional details.
+See [the docs for claiming contributor swag](https://www.gatsbyjs.org/contributing/contributor-swag/) for additional details.
 
 ## Cheap Swag for All
 
@@ -81,7 +81,7 @@ International shipments can take up to 6 weeks to be delivered. 😱 Tracking up
 
 &nbsp; <!-- leave this here to avoid smashing the text against the summary -->
 
-Some of the swag has been selling like hotcakes (only less tasty and a providing a bit more coverage). Once an item is out, it takes us about 3 weeks for it to get back in stock.
+Some of the swag has been selling like hotcakes (only less tasty and providing a bit more coverage). Once an item is out, it takes us about 3 weeks for it to get back in stock.
 
 </details>
 
