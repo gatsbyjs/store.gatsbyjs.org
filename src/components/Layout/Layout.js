@@ -318,6 +318,19 @@ export default class Layout extends React.Component {
       }));
       this.setUserProfile();
     }
+
+    // Close product modal window after navigating "back"
+    if (
+      prevProps.location.pathname !== this.props.location.pathname &&
+      prevProps.location.pathname.startsWith('/product/')
+    ) {
+      this.setState(state => ({
+        interface: {
+          ...state.interface,
+          productImagesBrowserStatus: 'closed'
+        }
+      }));
+    }
   }
 
   componentWillUnmount = () => {
