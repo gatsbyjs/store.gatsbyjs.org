@@ -31,7 +31,6 @@ const CodeBadge = styled(`div`)`
   display: flex;
   flex-direction: column;
   font-family: ${fonts.heading};
-  overflow: hidden;
 `;
 
 const Name = styled(`span`)`
