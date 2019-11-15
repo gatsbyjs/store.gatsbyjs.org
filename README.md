@@ -32,6 +32,10 @@ The store is statically rendered using the Shopify source plugin, and the mainta
 
 If you're a contributor to Gatsby, that means you can get one free item from our store! Log in using your GitHub account and we'll give you a discount code good for a t-shirt or socks. With five or more contributions, You can claim your **level two** swag!
 
+We will send one item from our swag store per swag tier
+Tier 1 swag includes most items $10 and under
+Tier 2 swag includes most items $26 and under
+
 See [the docs for claiming contributor swag](https://www.gatsbyjs.org/contributing/contributor-swag/) for additional details.
 
 ## Cheap Swag for All
