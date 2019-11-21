@@ -4,7 +4,7 @@ import { Query } from 'react-apollo';
 import { Subheading, Text } from '../shared/Typography';
 import IssueList, { GitHubIssueFragment } from './IssueList';
 
-const GITHUB_LABEL = 'status: help wanted';
+const GITHUB_LABEL = 'help wanted';
 const GET_OPEN_ISSUES = gql`
   query($label: String!) {
     openIssues(label: $label) {
