@@ -85,7 +85,15 @@ class ShippingInfo extends Component {
         <Intro role="button" onClick={this.toggle}>
           <InfoIcon />
           International shipments can take <strong>6 weeks or more</strong> to
-          be delivered. <ArrowIcon />
+          be delivered and may be subject to{' '}
+          <a
+            href="https://github.com/gatsbyjs/store.gatsbyjs.org#frequently-asked-questions"
+            target="blank"
+            rel="nofollow"
+          >
+            local taxes and duties
+          </a>
+          . <ArrowIcon />
         </Intro>
         <Details>
           Tracking updates may not always show up in real time on your tracking
