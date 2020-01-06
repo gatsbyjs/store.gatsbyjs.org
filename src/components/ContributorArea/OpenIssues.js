@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import { Query } from 'react-apollo';
 import { GoMarkGithub } from 'react-icons/go';
 
-import { Subheading, Text } from './AreaTypography';
+import { Subheading } from './AreaTypography';
 import OpenIssuesList from './OpenIssuesList';
 import { Button as BaseButton } from '../shared/Buttons';
 import { spacing } from '../../utils/styles';
@@ -30,7 +30,7 @@ const GitHubIssueFragment = gql`
   }
 `;
 
-const GITHUB_LABEL = 'status: help wanted';
+const GITHUB_LABEL = 'help wanted';
 
 const GET_OPEN_ISSUES = gql`
   query($label: String!) {
@@ -63,7 +63,7 @@ const OpenIssues = () => (
           <OpenIssuesList issues={issues} />
           <Button
             inverse
-            href="https://github.com/search?o=desc&q=org%3Agatsbyjs+type%3Aissue+label%3A%22help%20wanted%22+is%3Aopen&s=updated&type=Issues"
+            href={`https://github.com/search?o=desc&q=org%3Agatsbyjs+type%3Aissue+label%3A%22${GITHUB_LABEL}%22+is%3Aopen&s=updated&type=Issues`}
           >
             See more issues on <GoMarkGithub />
           </Button>
