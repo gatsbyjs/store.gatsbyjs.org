@@ -43,7 +43,7 @@ class ContentForNotContributor extends Component {
         </Text>
         <Text>
           If you have questions, ask on any issue (you can tag{' '}
-          <a href="https://github.com/marcysutton">@marcysutton</a> if you’d
+          <a href="https://github.com/orgs/gatsbyjs/teams/learning">@gatsbyjs/learning</a> if you’d
           like) or hit us up{' '}
           <a href="https://twitter.com/gatsbyjs">on Twitter at @gatsbyjs</a>.
         </Text>
