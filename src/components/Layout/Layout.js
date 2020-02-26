@@ -216,7 +216,7 @@ export default class Layout extends React.Component {
     const createNewCheckout = () => this.state.store.client.checkout.create();
     const fetchCheckout = id => this.state.store.client.checkout.fetch(id);
 
-    if (existingCheckoutID) {
+    if (existingCheckoutID && existingCheckoutID !== 'null') {
       try {
         const checkout = await fetchCheckout(existingCheckoutID);
 
