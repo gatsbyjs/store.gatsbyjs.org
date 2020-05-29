@@ -3,9 +3,9 @@ import styled from '@emotion/styled';
 import { GoMarkGithub } from 'react-icons/go';
 
 import { login } from '../../utils/auth';
+import { spacing, animations } from '../../utils/styles';
 import { Button as BaseButton } from '../shared/Buttons';
 import { Heading, SectionHeading, Text } from './AreaTypography';
-import { spacing, animations } from '../../utils/styles';
 
 const ContentForGuestRoot = styled(`div`)`
   animation: ${animations.simpleEntry};
