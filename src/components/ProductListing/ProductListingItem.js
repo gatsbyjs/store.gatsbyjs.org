@@ -241,7 +241,7 @@ const ProductListingItem = props => {
     <UserContext.Consumer>
       {({ contributor }) => {
         return (
-          <ProductListingItemLink to={`/product/${handle}`}>
+          <ProductListingItemLink to={`/product/${handle}`} aria-label={title}>
             <Item>
               <Preview>
                 <Image fluid={fluid} />

@@ -14,6 +14,7 @@ const ContentForGuestRoot = styled(`div`)`
 
 const FirstHeading = styled(Heading)`
   padding-right: ${spacing.lg}px;
+  margin-right: 15px;
 `;
 
 const Button = styled(BaseButton)`

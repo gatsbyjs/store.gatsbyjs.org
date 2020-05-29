@@ -216,7 +216,7 @@ export default class Layout extends React.Component {
     const createNewCheckout = () => this.state.store.client.checkout.create();
     const fetchCheckout = id => this.state.store.client.checkout.fetch(id);
 
-    if (existingCheckoutID) {
+    if (existingCheckoutID && existingCheckoutID !== 'null') {
       try {
         const checkout = await fetchCheckout(existingCheckoutID);
 
@@ -317,6 +317,19 @@ export default class Layout extends React.Component {
         }
       }));
       this.setUserProfile();
+    }
+
+    // Close product modal window after navigating "back"
+    if (
+      prevProps.location.pathname !== this.props.location.pathname &&
+      prevProps.location.pathname.startsWith('/product/')
+    ) {
+      this.setState(state => ({
+        interface: {
+          ...state.interface,
+          productImagesBrowserStatus: 'closed'
+        }
+      }));
     }
   }
 

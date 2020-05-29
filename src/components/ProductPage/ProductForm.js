@@ -192,6 +192,7 @@ class ProductForm extends Component {
               <Label htmlFor="quantity">Qty.</Label>
               <Input
                 type="number"
+                inputmode="numeric"
                 id="quantity"
                 name="quantity"
                 min="1"
@@ -204,7 +205,7 @@ class ProductForm extends Component {
               <SizeFieldset>
                 <Label htmlFor="variant">
                   Size{' '}
-                  <Link to="/product-details">
+                  <Link to="/product-details?fromProduct#size-chart">
                     <MdInfoOutline />
                     <span>Size Chart</span>
                   </Link>

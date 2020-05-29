@@ -97,7 +97,7 @@ class ContributorArea extends Component {
       this.props.productImagesBrowserStatus !==
       prevProps.productImagesBrowserStatus;
 
-    // set inital status of the component after isDesktopViewport is set for the first time (value changes from null to true/false)
+    // set initial status of the component after isDesktopViewport is set for the first time (value changes from null to true/false)
     if (isDesktopViewportChanged && prevProps.isDesktopViewport === null) {
       this.setState({
         className: this.props.isDesktopViewport ? 'open' : 'closed'
