@@ -16,6 +16,7 @@ module.exports = {
         component: require.resolve(`./src/components/Layout/`)
       }
     },
+    'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
       resolve: 'gatsby-source-shopify',
