@@ -3,9 +3,9 @@ import styled from '@emotion/styled';
 import { GoMarkGithub } from 'react-icons/go';
 
 import { login } from '../../utils/auth';
+import { spacing, animations } from '../../utils/styles';
 import { Button as BaseButton } from '../shared/Buttons';
 import { Heading, SectionHeading, Text } from './AreaTypography';
-import { spacing, animations } from '../../utils/styles';
 
 const ContentForGuestRoot = styled(`div`)`
   animation: ${animations.simpleEntry};
@@ -41,13 +41,20 @@ const ContentForGuest = () => (
       had your first pull request merged into Gatsby, you can come back here to
       claim free swag.
     </Text>
-
     <Button
       inverse
       href="https://github.com/search?o=desc&q=org%3Agatsbyjs+type%3Aissue+label%3A%22help%20wanted%22+is%3Aopen&s=updated&type=Issues"
     >
       Explore Open Issues
     </Button>
+    <Text style={{ fontStyle: 'italic' }}>
+      Due to COVID-19 related international mail service disruptions, your order
+      may be delayed or suspended. Please view{' '}
+      <a href="https://about.usps.com/newsroom/service-alerts/international/welcome.htm">
+        the list of affected countries
+      </a>{' '}
+      to see if your order is affected.
+    </Text>
   </ContentForGuestRoot>
 );
 
