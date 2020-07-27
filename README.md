@@ -93,3 +93,12 @@ Some of the swag has been selling like hotcakes (only less tasty and providing a
 On some international orders, customs will add additional taxes, duties, and other fees. This is unpredictable, and we have no way of knowing if or when it will happen, or how much it will be. If this happens to you, there is, unfortunately, nothing else Gatsby can do. You are responsible for paying any additional fees imposed as part of the customs process. Thanks for your understanding!
 
 </details>
+
+<details>
+  <summary><strong>Help! I received the wrong swag clothing size. What do I do?</strong></summary>
+
+&nbsp; <!-- leave this here to avoid smashing the text against the summary -->
+
+If you ended up with the wrong t-shirt or other clothing size by mistake, contact us via email with your order number at <a href="mailto:team@gatsbyjs.com">team@gatsbyjs.com</a> and we'll work with you to fix it. You don't have to submit another PR to get the correct size!
+
+</details>
