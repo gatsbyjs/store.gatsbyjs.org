@@ -24,7 +24,7 @@ This store is built with data from:
 - The [Shopify JavaScript Buy SDK](https://shopify.github.io/js-buy-sdk/)
 - [Auth0](https://auth0.com/)
 
-We’re using [Gatsby V2](https://github.com/gatsbyjs/gatsby) and [Emotion](https://emotion.sh/) to get the data on screen.
+We’re using [Gatsby V2](https://github.com/gatsbyjs/gatsby) and [Emotion](https://emotion.sh/) to get the data on the screen.
 
 The store is statically rendered using the Shopify source plugin, and the maintainer dashboard is a dynamic app (e.g. client-only routes) protected by Auth0.
 
@@ -36,7 +36,7 @@ See [the docs for claiming contributor swag](https://www.gatsbyjs.org/contributi
 
 ## Cheap Swag for All
 
-We sell our swag at pretty close to cost (we round for easy math) and we don’t charge shipping fees. Grab a t-shirt or socks and show everyone your favorite blazing fast framework!
+We sell our swag at pretty close to cost (we round for easy math) and we don’t charge shipping fees. Grab a t-shirt or socks and show everyone your favorite blazing-fast framework!
 
 ## Frequently Asked Questions
 
@@ -72,7 +72,7 @@ Please make sure the card isn't frozen or otherwise blocked by your financial in
 
 &nbsp; <!-- leave this here to avoid smashing the text against the summary -->
 
-International shipments can take up to 6 weeks to be delivered. 😱 Tracking updates may not always show up in real time on your tracking link. If you still have not received your order at the end of 6 weeks, please let us know by sending an email to team@gatsbyjs.com, and we'll see how we can help!
+International shipments can take up to 6 weeks to be delivered. 😱 Tracking updates may not always show up in real-time on your tracking link. If you still have not received your order at the end of 6 weeks, please let us know by sending an email to team@gatsbyjs.com, and we'll see how we can help!
 
 </details>
 
@@ -99,6 +99,6 @@ On some international orders, customs will add additional taxes, duties, and oth
 
 &nbsp; <!-- leave this here to avoid smashing the text against the summary -->
 
-If you ended up with the wrong t-shirt or other clothing size by mistake, contact us via email with your order number at <a href="mailto:team@gatsbyjs.com">team@gatsbyjs.com</a> and we'll work with you to fix it. You don't have to submit another PR to get the correct size!
+If you ended up with the wrong t-shirt or another clothing size by mistake, contact us via email with your order number at <a href="mailto:team@gatsbyjs.com">team@gatsbyjs.com</a> and we'll work with you to fix it. You don't have to submit another PR to get the correct size!
 
 </details>
