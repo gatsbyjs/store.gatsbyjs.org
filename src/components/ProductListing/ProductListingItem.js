@@ -228,11 +228,7 @@ const ProductListingItem = props => {
   } = props;
 
   const { price } = firstVariant;
-  const {
-    localFile: {
-      childImageSharp: { fluid }
-    }
-  } = firstImage;
+  const fluid = firstImage?.localFile?.childImageSharp?.fluid;
 
   const freeWith =
     price >= 20 ? 'HOLYBUCKETS' : price >= 10 ? 'BUILDWITHGATSBY' : null;
@@ -243,21 +239,25 @@ const ProductListingItem = props => {
         return (
           <ProductListingItemLink to={`/product/${handle}`} aria-label={title}>
             <Item>
-              <Preview>
-                <Image fluid={fluid} />
-                {checkEligibility({
-                  freeWith,
-                  contributor
-                }) && (
-                  <CodeEligibility freeWith={freeWith}>
-                    <span>free with </span>
-                    <span>
-                      Code Swag Level
-                      {freeWith === 'HOLYBUCKETS' ? '2' : '1'}
-                    </span>
-                  </CodeEligibility>
-                )}
-              </Preview>
+              {fluid ? (
+                <Preview>
+                  <Image fluid={fluid} />
+                  {checkEligibility({
+                    freeWith,
+                    contributor
+                  }) && (
+                    <CodeEligibility freeWith={freeWith}>
+                      <span>free with </span>
+                      <span>
+                        Code Swag Level
+                        {freeWith === 'HOLYBUCKETS' ? '2' : '1'}
+                      </span>
+                    </CodeEligibility>
+                  )}
+                </Preview>
+              ) : (
+                'No preview image'
+              )}
               <Name>{title}</Name>
               <Description>
                 {cutDescriptionShort(

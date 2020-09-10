@@ -1,0 +1,14 @@
+name: Rebuild
+
+on:
+  schedule:
+    - cron: '0 0 * * *'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Call a webhook
+        run: |
+          curl -X POST -d {} ${{ secrets.WEBHOOK_URL }}
