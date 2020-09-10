@@ -204,7 +204,7 @@ class ProductForm extends Component {
             {hasVariants && (
               <SizeFieldset>
                 <Label htmlFor="variant">
-                  Size{' '}
+                  Size/Color{' '}
                   <Link to="/product-details?fromProduct#size-chart">
                     <MdInfoOutline />
                     <span>Size Chart</span>
@@ -217,7 +217,7 @@ class ProductForm extends Component {
                   onChange={this.handleChange}
                 >
                   <option disabled value="">
-                    Choose Size
+                    Choose Size/Color
                   </option>
                   {variants.map(variant => (
                     <option
