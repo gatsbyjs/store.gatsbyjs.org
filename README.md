@@ -34,7 +34,7 @@ If you're a contributor to Gatsby, that means you can get one free item from our
 
 See [the docs for claiming contributor swag](https://www.gatsbyjs.com/contributing/contributor-swag/) for additional details.
 
-## Cheap Swag for All
+## Cheap Swags for All
 
 We sell our swag at pretty close to cost (we round for easy math) and we don’t charge shipping fees. Grab a t-shirt or socks and show everyone your favorite blazing fast framework!
 
@@ -86,7 +86,7 @@ Some of the swag has been selling like hotcakes (only less tasty and providing a
 </details>
 
 <details>
-  <summary><strong>The delivery service is telling me I need to pay additional fees to get my order. I thought Gatsby covered shipping costs. What gives?</strong></summary>
+  <summary><strong>The delivery service is telling me I need to pay additional fees to get my order. I thought Gatsby covered shipping costs. What to do?</strong></summary>
 
 &nbsp; <!-- leave this here to avoid smashing the text against the summary -->
 
@@ -95,7 +95,7 @@ On some international orders, customs will add additional taxes, duties, and oth
 </details>
 
 <details>
-  <summary><strong>Help! I received the wrong swag clothing size. What do I do?</strong></summary>
+  <summary><strong>Help! I received the wrong swag clothing size. What can I do?</strong></summary>
 
 &nbsp; <!-- leave this here to avoid smashing the text against the summary -->
 
