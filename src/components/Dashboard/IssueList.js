@@ -1,4 +1,10 @@
 import React from 'react';
+import ReactDOM from 'react-dom';
+import { RestLink } from 'apollo-link-rest';
+import { ApolloClient } from 'apollo-client';
+import { InMemoryCache } from 'apollo-cache-inmemory';
+import { ApolloProvider } from 'react-apollo';
+import App from './components/App.jsx';
 import styled from '@emotion/styled';
 import { colors, radius, spacing } from '../../utils/styles';
 import gql from 'graphql-tag';
@@ -82,6 +88,23 @@ const formatLabelUrl = url => {
 
   return `https://github.com/${organization}/${repository}/issues?q=is%3Aissue+is%3Aopen+label%3A%22${label}%22`;
 };
+const restLink = new RestLink({
+  uri: 'https://github.com/${organization}/${repository}/issues?q=is%3Aissue+is%3Aopen+label%3A%22${label}%22';
+});
+
+const client = new ApolloClient({
+  link: restLink,
+  cache: new InMemoryCache()
+});
+
+const ApolloApp = () => (
+  <ApolloProvider client={client}>
+    <App />
+  </ApolloProvider>
+);
+
+const rootElement = document.getElementById('root');
+ReactDOM.render(<ApolloApp />, rootElement);
 
 export const GitHubIssueFragment = gql`
   fragment GitHubIssueFragment on GitHubIssue {
