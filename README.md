@@ -30,7 +30,7 @@ The store is statically rendered using the Shopify source plugin, and the mainta
 
 ## Free Swag for Contributors
 
-If you're a contributor to Gatsby, that means you can get one free item from our store! Log in using your GitHub account and we'll give you a discount code good for a t-shirt or socks. With five or more contributions, You can claim your **level two** swag!
+If you're a contributor to Gatsby, that means you can get one free item from our store! Log in using your GitHub account and we'll give you a discount code good for a t-shirt or socks. With five or more contributions, You can claim your **level two** swag! :-)
 
 See [the docs for claiming contributor swag](https://www.gatsbyjs.com/contributing/contributor-swag/) for additional details.
 
