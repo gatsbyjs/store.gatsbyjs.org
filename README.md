@@ -68,11 +68,11 @@ Please make sure the card isn't frozen or otherwise blocked by your financial in
 </details>
 
 <details>
-  <summary><strong>I've been waiting for my package, but it hasn't arrived yet.</strong></summary>
+  <summary><strong>I've been waiting for my package, but it hasn't arrived yet. What should i do?</strong></summary>
 
 &nbsp; <!-- leave this here to avoid smashing the text against the summary -->
 
-International shipments can take up to 6 weeks to be delivered. 😱 Tracking updates may not always show up in real time on your tracking link. If you still have not received your order at the end of 6 weeks, please let us know by sending an email to team@gatsbyjs.com, and we'll see how we can help!
+International shipments can take up to 6 weeks to be delivered. 😱 Tracking updates may not always show up in real time on your tracking link. If you still have not received your order at the end of 6 weeks, please let us know by sending an email to team@gatsbyjs.com, and we'll see how we can help you.
 
 </details>
 
