@@ -1,6 +1,6 @@
 <p align="center">
   <a href="https://www.gatsbyjs.com">
-    <img src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" alt="Gatsby" style="border-radius: 10px;"/>
+    <img src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" alt="Gatsby"/>
   </a>
 </p>
 <h1 align="center">
@@ -10,7 +10,7 @@
 This is the Gatsby store, where we make swag, stickers, and other Gatsby goodies available to contributors and Gatsby enthusiasts. 💪💜
 
 <p align="center">
-  <img alt="Gatsby socks with Dora for scale." src="https://store.gatsbyjs.org/instagram-doraforscale.jpg" />
+  <img alt="Gatsby socks with Dora for scale." src="https://store.gatsbyjs.org/instagram-doraforscale.jpg" style="border-radius: 10px;"/>
   Photo credit: <a href="https://instagram.com/doraforscale">doraforscale</a>
 </p>
 
