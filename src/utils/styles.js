@@ -91,7 +91,7 @@ const monospaceFontStack = [
 
 export const fonts = {
   body: defaultFontStack,
-  heading: `Futura PT, ${defaultFontStack}`,
+  heading: `${defaultFontStack}`,
   monospace: monospaceFontStack
 };
 
