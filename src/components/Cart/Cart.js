@@ -3,12 +3,9 @@ import styled from '@emotion/styled';
 import { keyframes } from '@emotion/core';
 import PropTypes from 'prop-types';
 
-import {
-  MdClose,
-  MdShoppingCart,
-  MdArrowBack,
-  MdArrowForward
-} from 'react-icons/md';
+import { MdClose, MdArrowBack, MdArrowForward } from 'react-icons/md';
+
+import { RiShoppingCartLine } from 'react-icons/ri';
 
 import StoreContext from '../../context/StoreContext';
 import CartList from './CartList';
@@ -360,7 +357,7 @@ class Cart extends Component {
                     <MdClose />
                   ) : (
                     <>
-                      <MdShoppingCart />
+                      <RiShoppingCartLine />
                       {itemsInCart > 0 && (
                         <ItemsNumber>{itemsInCart}</ItemsNumber>
                       )}

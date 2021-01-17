@@ -5,9 +5,9 @@ import styled from '@emotion/styled';
 import {
   MdInfoOutline,
   MdErrorOutline,
-  MdShoppingCart,
   MdSentimentDissatisfied
 } from 'react-icons/md';
+import { RiShoppingCartFill } from 'react-icons/ri';
 
 import { Fieldset, Input, Label, Select, Submit } from '../shared/FormElements';
 
@@ -237,7 +237,11 @@ class ProductForm extends Component {
               fullWidth={hasVariants}
             >
               {isOutOfStock ? 'Out of Stock' : 'Add to Cart'}
-              {isOutOfStock ? <MdSentimentDissatisfied /> : <MdShoppingCart />}
+              {isOutOfStock ? (
+                <MdSentimentDissatisfied />
+              ) : (
+                <RiShoppingCartFill />
+              )}
             </AddToCartButton>
             <InfoLinks>
               <Link to="/product-details?fromProduct#materials-fit">

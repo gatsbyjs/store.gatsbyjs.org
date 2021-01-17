@@ -4,7 +4,8 @@ import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import Image from 'gatsby-image';
 
-import { MdShoppingCart, MdArrowForward } from 'react-icons/md';
+import { MdArrowForward } from 'react-icons/md';
+import { RiShoppingCartLine } from 'react-icons/ri';
 import UserContext from '../../context/UserContext';
 
 import {
@@ -274,7 +275,7 @@ const ProductListingItem = props => {
                     <br />& buy <MdArrowForward />
                   </span>
                   <CartIcon>
-                    <MdShoppingCart />
+                    <RiShoppingCartLine />
                   </CartIcon>
                 </Incentive>
               </PriceRow>
