@@ -66,8 +66,8 @@ const Footer = () => (
     </Row>
     <Spacer>•</Spacer>
     <Row>
-      Built with 💜 by the{' '}
-      <a href="https://www.gatsbyjs.com/">Gatsby Inkteam</a>
+      Built with 💜 by the <a href="https://www.gatsbyjs.com/">Gatsby Team</a>{' '}
+      and the Gatsby community
     </Row>
     <Spacer>•</Spacer>
     <Row>
