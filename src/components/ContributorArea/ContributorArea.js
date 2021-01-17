@@ -5,7 +5,12 @@ import styled from '@emotion/styled';
 import CloseBar from './CloseBar';
 import OpenBar from './OpenBar';
 import ContentContainer from './ContentContainer';
-import { breakpoints, colors, dimensions } from '../../utils/styles';
+import {
+  breakpoints,
+  colors,
+  dimensions,
+  transitions
+} from '../../utils/styles';
 
 const {
   contributorAreaWidth: { openDesktop: desktopMaxWidth, openHd: hdMaxWidth }
@@ -22,7 +27,7 @@ const ContributorAreaRoot = styled(`aside`)`
   position: fixed;
   top: ${dimensions.headerHeight};
   transform: translateX(-100%);
-  transition: 0.75s ease;
+  transition: ${transitions.sidebar};
   width: 100%;
   will-change: all;
   z-index: 100;

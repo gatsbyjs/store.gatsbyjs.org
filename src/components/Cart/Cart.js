@@ -17,6 +17,7 @@ import EmptyCart from './EmptyCart';
 import FreeBonus from './FreeBonus';
 import ShippingInfo from './ShippingInfo';
 import { Button, PrimaryButton } from '../shared/Buttons';
+import { transitions } from '../../utils/styles';
 
 import {
   breakpoints,
@@ -33,7 +34,7 @@ const CartRoot = styled(`div`)`
   right: 0;
   top: -1px;
   transform: translateX(100%);
-  transition: transform 0.75s;
+  transition: transform ${transitions.sidebar};
   width: 100%;
   will-change: transform;
   z-index: 1000;

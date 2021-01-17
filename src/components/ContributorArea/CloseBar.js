@@ -9,7 +9,8 @@ import {
   colors,
   fonts,
   spacing,
-  dimensions
+  dimensions,
+  transitions
 } from '../../utils/styles';
 
 const {
@@ -34,7 +35,7 @@ const CloseBarRoot = styled(`button`)`
   text-align: right;
   text-transform: uppercase;
   transform: translateX(-100%);
-  transition: 0.75s ease;
+  transition: ${transitions.sidebar};
   width: 100%;
   z-index: 101;
 
