@@ -144,7 +144,9 @@ const deadSimpleEntry = keyframes`
   }
 `;
 
-export const sidebarTransformSpeed = 0.25;
+export const transitions = {
+  sidebar: '0.25s ease'
+};
 
 export const animations = {
   simpleEntry: `${simpleEntry} .75s ease forwards`,
