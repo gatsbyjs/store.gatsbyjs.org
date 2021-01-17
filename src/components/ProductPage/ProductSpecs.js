@@ -2,7 +2,13 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
-import { breakpoints, colors, fonts, spacing } from '../../utils/styles';
+import {
+  breakpoints,
+  colors,
+  fonts,
+  spacing,
+  fontSizes
+} from '../../utils/styles';
 
 const ProductSpecsRoot = styled(`div`)`
   padding: 0 ${spacing.md}px;
@@ -15,14 +21,15 @@ const ProductSpecsRoot = styled(`div`)`
 const Name = styled(`h1`)`
   color: ${colors.brandDark};
   font-family: ${fonts.heading};
-  font-size: 1.8rem;
-  font-weight: 500;
+  font-size: ${fontSizes['2xl']};
+  font-weight: 700;
+  line-height: 1.125;
   margin: 0;
 `;
 
 const Description = styled(`p`)`
   color: ${colors.text};
-  font-size: 1rem;
+  font-size: ${fontSizes.md};
   line-height: 1.5;
 `;
 

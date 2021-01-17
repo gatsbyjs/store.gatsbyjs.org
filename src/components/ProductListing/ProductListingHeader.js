@@ -1,7 +1,13 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-import { breakpoints, colors, fonts, spacing } from '../../utils/styles';
+import {
+  breakpoints,
+  colors,
+  fonts,
+  spacing,
+  fontSizes
+} from '../../utils/styles';
 
 const ProductListingHeaderRoot = styled(`header`)`
   display: flex;
@@ -28,14 +34,13 @@ const Title = styled(`h1`)`
 
 const Intro = styled(`p`)`
   color: ${colors.text};
-  font-size: 1rem;
-  line-height: 1.4;
+  font-size: ${fontSizes.md};
+  line-height: 1.5;
   margin: 0;
   margin-top: ${spacing.md}px;
 
   @media (min-width: ${breakpoints.desktop}px) {
     font-size: 1.1rem;
-    line-height: 1.6;
   }
 `;
 

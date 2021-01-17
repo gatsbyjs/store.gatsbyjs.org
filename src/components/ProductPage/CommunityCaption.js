@@ -9,7 +9,8 @@ import {
   dimensions,
   colors,
   radius,
-  spacing
+  spacing,
+  fontSizes
 } from '../../utils/styles';
 
 const CommunityCaptionRoot = styled(`div`)`
@@ -57,7 +58,7 @@ const Toggle = styled(`button`)`
 const Caption = styled(`div`)`
   background: rgba(0, 0, 0, 0.7);
   border-radius: ${radius.large}px ${radius.large}px 0 0;
-  font-size: 1.1rem;
+  font-size: ${fontSizes.md};
   padding: ${spacing.sm}px ${spacing.lg}px;
   padding-right: calc(${spacing.lg}px + 46px);
   width: 100%;
@@ -75,7 +76,7 @@ const UserPhotoHint = styled(`div`)`
   background: rgba(68, 34, 102, 0.9);
   border-radius: 0 0 ${radius.large}px ${radius.large}px;
   cursor: pointer;
-  font-size: 0.9rem;
+  font-size: ${fontSizes.sm};
   padding: ${spacing.sm}px ${spacing.lg}px;
   position: relative;
   width: 100%;

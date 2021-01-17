@@ -14,7 +14,8 @@ import {
   fonts,
   radius,
   spacing,
-  animations
+  animations,
+  fontSizes
 } from '../../utils/styles';
 
 const ContentForContributorRoot = styled(`div`)`
@@ -47,7 +48,7 @@ const Name = styled(`span`)`
 const Code = styled(`span`)`
   background: ${colors.lightest};
   color: ${colors.brand};
-  font-size: 1.5rem;
+  font-size: ${fontSizes.lg};
   padding: ${spacing['2xs']}px;
 `;
 
@@ -126,7 +127,7 @@ const ProgressBar = styled(`progress`)`
 `;
 
 const LockIcon = styled(MdLock)`
-  font-size: 2rem;
+  font-size: ${fontSizes.xl};
   padding-top: 0.4rem;
 `;
 

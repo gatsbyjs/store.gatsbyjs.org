@@ -129,8 +129,9 @@ const ButlerHandBox = styled(`span`)`
 
 const Title = styled(`span`)`
   display: block;
-  font-size: 1.2rem;
   margin-top: 0.75rem;
+  font-size: ${fontSizes.md};
+  font-weight: 500;
 
   strong {
     color: ${colors.lemon};

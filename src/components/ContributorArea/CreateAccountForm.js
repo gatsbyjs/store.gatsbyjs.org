@@ -7,7 +7,13 @@ import {
   Input as BaseInput,
   Label as BaseLabel
 } from '../shared/FormElements';
-import { breakpoints, colors, spacing, radius } from '../../utils/styles';
+import {
+  breakpoints,
+  colors,
+  spacing,
+  radius,
+  fontSizes
+} from '../../utils/styles';
 
 const CreateAccountFormRoot = styled('form')`
   display: flex;
@@ -98,7 +104,7 @@ const Submit = styled(PrimaryButton)`
 
 const PrivacyNotice = styled('p')`
   color: ${colors.brandBright};
-  font-size: 0.75rem;
+  font-size: ${fontSizes['2xs']};
 `;
 
 class CreateAccountForm extends React.Component {

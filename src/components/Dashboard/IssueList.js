@@ -1,6 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { colors, radius, spacing } from '../../utils/styles';
+import { colors, radius, spacing, fontSizes } from '../../utils/styles';
 import gql from 'graphql-tag';
 
 const IssueList = styled('ul')`
@@ -59,7 +59,7 @@ const Label = styled('a')`
   box-sizing: border-box;
   color: ${colors.textLight};
   display: inline-block;
-  font-size: 0.75rem;
+  font-size: ${fontSizes['2xs']};
   line-height: 1;
   margin: 0 ${spacing.xs}px ${spacing.xs}px 0;
   padding: ${spacing['2xs']}px ${spacing.xs}px;

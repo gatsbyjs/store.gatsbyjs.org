@@ -40,6 +40,16 @@ export const badgeThemes = {
   }
 };
 
+export const fontSizes = {
+  '2xs': '0.75rem',
+  sm: '0.875rem',
+  md: '1rem',
+  lg: '1.5rem',
+  xl: '2rem',
+  '2xl': '2.5rem',
+  '3xl': '3rem'
+};
+
 export const spacing = {
   '3xs': 2,
   '2xs': 4,

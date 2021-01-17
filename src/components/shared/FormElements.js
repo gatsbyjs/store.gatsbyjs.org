@@ -1,8 +1,7 @@
 import styled from '@emotion/styled';
 
 import { PrimaryButton } from './Buttons';
-
-import { colors, radius, spacing } from '../../utils/styles';
+import { colors, radius, spacing, fontSizes } from '../../utils/styles';
 
 export const Input = styled(`input`)`
   background-color: ${colors.lightest};
@@ -10,8 +9,8 @@ export const Input = styled(`input`)`
   border-radius: ${radius.default}px;
   color: ${colors.text};
   display: block;
-  font-size: 1.1rem;
   padding: ${spacing.sm}px ${spacing.md}px;
+  font-size: ${fontSizes.md};
   width: 100%;
 
   :focus {
@@ -46,8 +45,8 @@ export const Fieldset = styled(`fieldset`)`
 export const Label = styled(`label`)`
   color: ${colors.textLight};
   display: flex;
-  font-size: 1rem;
   padding: ${spacing.xs}px;
+  font-size: ${fontSizes.md};
 `;
 
 export const Submit = styled(PrimaryButton)`

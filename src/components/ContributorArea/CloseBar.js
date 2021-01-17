@@ -10,7 +10,8 @@ import {
   fonts,
   spacing,
   dimensions,
-  transitions
+  transitions,
+  fontSizes
 } from '../../utils/styles';
 
 const {
@@ -27,13 +28,12 @@ const CloseBarRoot = styled(`button`)`
   cursor: pointer;
   display: flex;
   font-family: ${fonts.heading};
-  font-size: 1.1rem;
+  font-size: ${fontSizes.md};
   height: ${height};
   justify-content: flex-end;
   padding-right: ${spacing.lg}px;
   position: fixed;
   text-align: right;
-  text-transform: uppercase;
   transform: translateX(-100%);
   transition: ${transitions.sidebar};
   width: 100%;

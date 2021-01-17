@@ -1,18 +1,18 @@
 import styled from '@emotion/styled';
 
-import { colors, fonts, spacing } from '../../utils/styles';
+import { colors, fonts, spacing, fontSizes } from '../../utils/styles';
 
 export const SectionHeading = styled(`h3`)`
   color: ${colors.lightest};
   font-family: ${fonts.heading};
-  font-size: 1rem;
+  font-size: ${fontSizes.md};
   margin: 0;
 `;
 
 export const Heading = styled(`h2`)`
   color: ${colors.lemon};
   font-family: ${fonts.heading};
-  font-size: 1.6rem;
+  font-size: ${fontSizes.lg};
   line-height: 1.2;
   margin: 0;
   margin-top: ${spacing.sm}px;

@@ -112,14 +112,14 @@ const CodeEligibility = styled(`div`)`
       props.freeWith === 'HOLYBUCKETS' ? colors.brand : colors.lemon};
     flex-basis: 65%;
     font-family: ${fonts.heading};
-    font-size: 1rem;
+    font-size: ${fontSizes.md};
   }
 `;
 
 const Name = styled(`h1`)`
   color: ${colors.brandDark};
   font-family: ${fonts.heading};
-  font-size: 1.6rem;
+  font-size: ${fontSizes.lg};
   line-height: 1.2;
   margin: 0;
 `;
@@ -127,7 +127,7 @@ const Name = styled(`h1`)`
 const Description = styled(`p`)`
   color: ${colors.text};
   flex-grow: 1;
-  font-size: 1rem;
+  font-size: ${fontSizes.sm};
   line-height: 1.5;
 `;
 
@@ -153,7 +153,7 @@ const Incentive = styled('div')`
   align-items: center;
   color: ${colors.lilac};
   display: flex;
-  font-size: 0.9rem;
+  font-size: ${fontSizes.sm};
   line-height: 1.3;
   margin-bottom: ${spacing['2xs']}px;
   margin-right: calc(-${spacing.lg}px - 40px);

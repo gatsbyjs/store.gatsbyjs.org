@@ -10,7 +10,8 @@ import {
   colors,
   fonts,
   radius,
-  spacing
+  spacing,
+  fontSizes
 } from '../../utils/styles';
 
 const ProductImagesMobileRoot = styled(`div`)`
@@ -66,7 +67,7 @@ const Incentive = styled(`div`)`
   }
 
   p {
-    font-size: 1rem;
+    font-size: ${fontSizes.md};
     line-height: 1.4;
     margin: 0;
   }

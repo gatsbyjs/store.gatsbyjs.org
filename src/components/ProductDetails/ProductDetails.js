@@ -8,7 +8,7 @@ import {
   TextContainer,
   UnorderedList
 } from '../shared/Typography';
-import { colors, spacing, dimensions, breakpoints } from '../../utils/styles';
+import { colors, spacing, dimensions, fontSizes } from '../../utils/styles';
 
 const Heading = styled(BaseHeading)`
   margin-bottom: -${spacing.sm}px;
@@ -43,7 +43,7 @@ const UnitWrapper = styled('div')`
   align-items: center;
   display: flex;
   float: right;
-  font-size: 0.75rem;
+  font-size: ${fontSizes['2xs']};
   margin: ${-1 * spacing.lg}px 0 ${spacing.md}px 0;
 `;
 

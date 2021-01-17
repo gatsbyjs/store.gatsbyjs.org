@@ -1,6 +1,6 @@
 import styled from '@emotion/styled';
 
-import { breakpoints, colors, spacing } from '../../utils/styles';
+import { breakpoints, colors, spacing, fontSizes } from '../../utils/styles';
 
 export const TextContainer = styled(`div`)`
   margin: 0;
@@ -17,7 +17,7 @@ export const TextContainer = styled(`div`)`
 
 export const Heading = styled('h1')`
   color: ${colors.brandDark};
-  font-size: 2.6rem;
+  font-size: ${fontSizes['2xl']};
   letter-spacing: -0.02em;
   margin: 0;
   margin-bottom: ${spacing.lg}px;
@@ -25,7 +25,7 @@ export const Heading = styled('h1')`
 
 export const Text = styled('p')`
   color: ${colors.text};
-  font-size: 1rem;
+  font-size: ${fontSizes.md};
   margin: 1rem 0 0;
 `;
 
