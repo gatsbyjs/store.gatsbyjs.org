@@ -3,7 +3,13 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 
-import { colors, fonts, radius } from '../../utils/styles';
+import {
+  colors,
+  fonts,
+  radius,
+  gradients,
+  fontSizes
+} from '../../utils/styles';
 
 export const ButtonBase = styled(`button`)`
   align-items: center;
@@ -15,7 +21,7 @@ export const ButtonBase = styled(`button`)`
   cursor: pointer;
   display: inline-flex;
   font-family: ${fonts.heading};
-  font-size: 1.1rem;
+  font-size: ${fontSizes.md};
   justify-content: center;
   padding: 0.5em 0.75rem;
   transition: 0.5s;

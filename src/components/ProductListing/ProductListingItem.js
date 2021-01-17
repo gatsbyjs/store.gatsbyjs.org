@@ -19,7 +19,8 @@ import {
   fonts,
   radius,
   spacing,
-  animations
+  animations,
+  fontSizes
 } from '../../utils/styles';
 
 const DESCRIPTION_LIMIT = 90;
@@ -141,8 +142,8 @@ const PriceRow = styled(`div`)`
 
 const Price = styled(`div`)`
   color: ${colors.brand};
-  font-size: 1.4rem;
-  font-weight: 500;
+  font-size: ${fontSizes.lg};
+  font-weight: 700;
   letter-spacing: -0.02em;
 
   span {

@@ -4,8 +4,14 @@ import styled from '@emotion/styled';
 import { keyframes } from '@emotion/core';
 
 import UserContext from '../../context/UserContext';
-import { breakpoints, colors, fonts, dimensions } from '../../utils/styles';
 import { RiArrowUpFill } from 'react-icons/ri';
+import {
+  breakpoints,
+  colors,
+  fonts,
+  dimensions,
+  fontSizes
+} from '../../utils/styles';
 
 const OpenBarRoot = styled(`button`)`
   align-items: center;
@@ -14,7 +20,7 @@ const OpenBarRoot = styled(`button`)`
   color: ${colors.lightest};
   cursor: pointer;
   font-family: ${fonts.heading};
-  font-size: 1.1rem;
+  font-size: ${fontSizes.md};
   height: ${dimensions.contributorAreaBarHeight};
   left: 0;
   padding: 0;
@@ -143,7 +149,6 @@ const Title = styled(`span`)`
 
     span {
       display: block;
-      font-size: 1.4rem;
       left: 50%;
       transform: rotate(-90deg) translate(calc(-95%), 55%);
       transform-origin: top left;

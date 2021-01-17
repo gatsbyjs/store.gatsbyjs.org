@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 
 import { Button } from '../shared/Buttons';
 
-import { colors, spacing, animations } from '../../utils/styles';
+import { colors, spacing, animations, fontSizes } from '../../utils/styles';
 
 const LogoutBarRoot = styled(`div`)`
   align-items: flex-start;
@@ -16,12 +16,12 @@ const LogoutBarRoot = styled(`div`)`
 
 const Info = styled(`div`)`
   color: ${colors.brandBright};
-  font-size: 0.9rem;
+  font-size: ${fontSizes.md};
 
   b {
     color: ${colors.lightest};
     display: block;
-    font-size: 1.05rem;
+    font-size: ${fontSizes.md};
   }
 `;
 

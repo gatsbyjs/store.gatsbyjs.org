@@ -21,14 +21,15 @@ const ProductListingHeaderRoot = styled(`header`)`
 const Title = styled(`h1`)`
   color: ${colors.brandDark};
   font-family: ${fonts.heading};
-  font-size: 2.4rem;
-  letter-spacing: -0.02em;
-  line-height: 1;
+  font-size: ${fontSizes['3xl']};
+  font-weight: 800;
+  letter-spacing: -0.025em;
+  line-height: 1.25;
   margin: 0;
   margin-top: ${spacing.md}px;
 
   @media (min-width: ${breakpoints.desktop}px) {
-    font-size: 3rem;
+    font-size: ${fontSizes['4xl']};
   }
 `;
 
@@ -38,10 +39,6 @@ const Intro = styled(`p`)`
   line-height: 1.5;
   margin: 0;
   margin-top: ${spacing.md}px;
-
-  @media (min-width: ${breakpoints.desktop}px) {
-    font-size: 1.1rem;
-  }
 `;
 
 const ProductListingHeader = () => (
