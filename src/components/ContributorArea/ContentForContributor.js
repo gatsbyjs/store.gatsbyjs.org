@@ -91,7 +91,7 @@ const ProgressIndicator = `
   border: 0;
   width: 100%;
   border-radius: 1rem 0 0 1rem;
-  background-color: ${colors.lemon};
+  background-color: ${colors.accent};
   transition: width 1s;
   background-image: linear-gradient(
     45deg,

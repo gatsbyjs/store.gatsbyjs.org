@@ -36,11 +36,11 @@ const Link = styled('a')`
   transition: 1s;
 
   span {
-    color: ${colors.lemon};
+    color: ${colors.accent};
   }
 
   svg {
-    color: ${colors.lemon};
+    color: ${colors.accent};
     margin-right: ${spacing['2xs']}px;
     vertical-align: middle;
   }

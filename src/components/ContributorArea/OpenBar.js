@@ -134,7 +134,7 @@ const Title = styled(`span`)`
   font-weight: 500;
 
   strong {
-    color: ${colors.lemon};
+    color: ${colors.accent};
   }
 
   @media (min-width: ${breakpoints.desktop}px) {

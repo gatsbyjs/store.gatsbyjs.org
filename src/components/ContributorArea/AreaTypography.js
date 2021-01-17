@@ -10,7 +10,7 @@ export const SectionHeading = styled(`h3`)`
 `;
 
 export const Heading = styled(`h2`)`
-  color: ${colors.lemon};
+  color: ${colors.accent};
   font-family: ${fonts.heading};
   font-size: ${fontSizes.lg};
   line-height: 1.2;
@@ -37,7 +37,7 @@ export const Text = styled(`p`)`
     font-weight: bold;
 
     :hover {
-      color: ${colors.lemon};
+      color: ${colors.accent};
     }
   }
 `;

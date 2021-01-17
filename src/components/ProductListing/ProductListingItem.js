@@ -107,9 +107,9 @@ const CodeEligibility = styled(`div`)`
 
   span:last-child {
     background: ${props =>
-      props.freeWith === 'HOLYBUCKETS' ? colors.lemon : colors.brand};
+      props.freeWith === 'HOLYBUCKETS' ? colors.accent : colors.brand};
     color: ${props =>
-      props.freeWith === 'HOLYBUCKETS' ? colors.brand : colors.lemon};
+      props.freeWith === 'HOLYBUCKETS' ? colors.brand : colors.accent};
     flex-basis: 65%;
     font-family: ${fonts.heading};
     font-size: ${fontSizes.md};
