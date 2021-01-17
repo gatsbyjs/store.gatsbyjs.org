@@ -7,7 +7,7 @@ import { colors, radius, spacing } from '../../utils/styles';
 
 const LinkRoot = styled(GatsbyLink)`
   align-items: center;
-  border-radius: ${radius.default}px;
+  border-radius: ${radius.md}px;
   color: ${colors.brand};
   display: ${props => (props.inline ? 'inline-flex' : 'flex')};
   margin: -${spacing['3xs']}px -${spacing['2xs']}px;

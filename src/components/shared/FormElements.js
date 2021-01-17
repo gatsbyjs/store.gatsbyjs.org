@@ -6,7 +6,7 @@ import { colors, radius, spacing, fontSizes } from '../../utils/styles';
 export const Input = styled(`input`)`
   background-color: ${colors.lightest};
   border: 1px solid ${colors.brandBright};
-  border-radius: ${radius.default}px;
+  border-radius: ${radius.lg}px;
   color: ${colors.text};
   display: block;
   padding: ${spacing.sm}px ${spacing.md}px;

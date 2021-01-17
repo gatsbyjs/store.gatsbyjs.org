@@ -61,7 +61,7 @@ const CheckboxLabel = styled(BaseLabel)`
     background-position: center center;
     background-repeat: no-repeat;
     background-size: 50% 50%;
-    border-radius: ${radius.default}px;
+    border-radius: ${radius.md}px;
     content: '';
     display: block;
     height: 1.3rem;

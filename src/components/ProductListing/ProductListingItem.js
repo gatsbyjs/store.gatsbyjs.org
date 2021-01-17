@@ -26,8 +26,8 @@ const TRANSITION_DURATION = '250ms';
 
 const ProductListingItemLink = styled(Link)`
   background: ${colors.lightest};
-  border-radius: ${radius.large}px;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
+  border-radius: ${radius.lg}px;
   margin-bottom: ${spacing.lg}px;
   overflow: hidden;
   text-decoration: none;
@@ -61,7 +61,7 @@ const Item = styled(`article`)`
 
 const Preview = styled(`div`)`
   border-bottom: 1px solid ${colors.brandLight};
-  border-radius: ${radius.large}px ${radius.large}px 0 0;
+  border-radius: ${radius.lg}px ${radius.lg}px 0 0;
   margin: -${spacing.lg}px;
   margin-bottom: ${spacing.lg}px;
   overflow: hidden;
@@ -83,7 +83,7 @@ const Preview = styled(`div`)`
 const CodeEligibility = styled(`div`)`
   align-items: stretch;
   animation: ${animations.simpleEntry};
-  border-radius: ${radius.default}px;
+  border-radius: ${radius.md}px;
   bottom: 0;
   color: ${colors.lightest};
   display: flex;
@@ -178,7 +178,7 @@ const Incentive = styled('div')`
 const CartIcon = styled(`span`)`
   align-items: center;
   background: ${colors.lilac};
-  border-radius: ${radius.default}px 0 0 ${radius.default}px;
+  border-radius: ${radius.md}px 0 0 ${radius.md}px;
   display: flex;
   height: 40px;
   justify-content: center;

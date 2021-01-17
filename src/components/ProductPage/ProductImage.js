@@ -33,7 +33,7 @@ const ProductImageLink = styled(`a`)`
 
 const ZoomHelper = styled(`span`)`
   background: rgba(255, 255, 255, 0.5);
-  border-radius: ${radius.large}px;
+  border-radius: ${radius.lg}px;
   display: flex;
   left: ${spacing['xs']}px;
   padding: ${spacing['xs']}px;
@@ -52,8 +52,8 @@ const ZoomHelper = styled(`span`)`
 `;
 
 export const StyledImage = styled(Image)`
-  border-radius: ${radius.large}px;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
+  border-radius: ${radius.lg}px;
 `;
 
 class ProductImage extends Component {

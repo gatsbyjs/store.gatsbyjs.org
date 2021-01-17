@@ -42,7 +42,7 @@ const ProductImagesMobileContent = styled(`div`)`
 `;
 
 const Incentive = styled(`div`)`
-  border-radius: ${radius.large}px;
+  border-radius: ${radius.lg}px;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
   display: flex;
   flex-direction: column;

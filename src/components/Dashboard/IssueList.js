@@ -55,7 +55,7 @@ const IssueLink = styled('a')`
 const Label = styled('a')`
   background-color: ${colors.brandLight};
   border: 1px solid ${colors.brandLight};
-  border-radius: ${radius.default}px;
+  border-radius: ${radius.md}px;
   box-sizing: border-box;
   color: ${colors.textLight};
   display: inline-block;

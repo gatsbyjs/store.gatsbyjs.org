@@ -28,7 +28,7 @@ const CodeBadgeBox = styled(`div`)`
 `;
 
 const CodeBadge = styled(`div`)`
-  border-radius: ${radius.large}px;
+  border-radius: ${radius.lg}px;
   display: flex;
   flex-direction: column;
   font-family: ${fonts.heading};

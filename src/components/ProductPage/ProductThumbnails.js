@@ -35,7 +35,7 @@ export const ProductThumbnailsContent = styled(`div`)`
 
 export const Thumbnail = styled(`a`)`
   border: 1px solid ${colors.brandBright};
-  border-radius: ${radius.default}px;
+  border-radius: ${radius.md}px;
   height: ${THUMBNAIL_SIZE};
   margin-right: ${spacing.md}px;
   width: ${THUMBNAIL_SIZE};

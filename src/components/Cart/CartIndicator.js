@@ -6,7 +6,7 @@ import { colors, dimensions, radius, spacing } from '../../utils/styles';
 
 const CartIndicatorRoot = styled(`div`)`
   background: ${colors.lemon};
-  border-radius: ${radius.default}px;
+  border-radius: ${radius.md}px;
   color: ${colors.brand};
   display: ${props => (props.visible ? 'flex' : 'none')};
   justify-content: center;

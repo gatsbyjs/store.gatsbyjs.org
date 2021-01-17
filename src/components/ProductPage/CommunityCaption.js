@@ -38,7 +38,7 @@ const Toggle = styled(`button`)`
   align-items: center;
   background: transparent;
   border: 0;
-  border-radius: ${radius.large}px ${radius.large}px 0 0;
+  border-radius: ${radius.lg}px ${radius.lg}px 0 0;
   cursor: pointer;
   display: flex;
   height: 46px;
@@ -57,7 +57,7 @@ const Toggle = styled(`button`)`
 
 const Caption = styled(`div`)`
   background: rgba(0, 0, 0, 0.7);
-  border-radius: ${radius.large}px ${radius.large}px 0 0;
+  border-radius: ${radius.lg}px ${radius.lg}px 0 0;
   font-size: ${fontSizes.md};
   padding: ${spacing.sm}px ${spacing.lg}px;
   padding-right: calc(${spacing.lg}px + 46px);
@@ -68,13 +68,13 @@ const Caption = styled(`div`)`
   }
 
   .minimized & {
-    border-radius: ${radius.large}px 0 0 ${radius.large}px;
+    border-radius: ${radius.lg}px 0 0 ${radius.lg}px;
   }
 `;
 
 const UserPhotoHint = styled(`div`)`
   background: rgba(68, 34, 102, 0.9);
-  border-radius: 0 0 ${radius.large}px ${radius.large}px;
+  border-radius: 0 0 ${radius.lg}px ${radius.lg}px;
   cursor: pointer;
   font-size: ${fontSizes.sm};
   padding: ${spacing.sm}px ${spacing.lg}px;

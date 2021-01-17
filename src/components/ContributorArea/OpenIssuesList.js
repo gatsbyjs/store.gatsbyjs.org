@@ -27,7 +27,7 @@ const swing = keyframes`
 `;
 
 const Link = styled('a')`
-  border-radius: ${radius.large}px;
+  border-radius: ${radius.lg}px;
   color: ${colors.lightest};
   display: block;
   margin: 0 -${spacing.sm}px ${spacing.xs}px;

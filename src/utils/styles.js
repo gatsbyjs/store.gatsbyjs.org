@@ -71,8 +71,10 @@ export const breakpoints = {
 };
 
 export const radius = {
-  default: 2,
-  large: 4
+  sm: 2,
+  md: 4,
+  lg: 8,
+  round: 9999
 };
 
 export const defaultFontStack = [

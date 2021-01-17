@@ -41,7 +41,7 @@ const Errors = styled(`div`)`
 const ErrorSign = styled(`div`)`
   align-items: center;
   background: ${colors.error};
-  border-radius: ${radius.default}px 0 0 ${radius.default}px;
+  border-radius: ${radius.md}px 0 0 ${radius.md}px;
   color: ${colors.lightest};
   display: flex;
   flex-basis: 40px;
@@ -56,7 +56,7 @@ const ErrorSign = styled(`div`)`
 const ErrorMsgs = styled(`ul`)`
   border: 1px dashed ${colors.error};
   border-left: none;
-  border-radius: 0 ${radius.default}px ${radius.default}px 0;
+  border-radius: 0 ${radius.md}px ${radius.md}px 0;
   color: ${colors.error};
   flex-grow: 1;
   margin: 0;

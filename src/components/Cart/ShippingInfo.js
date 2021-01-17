@@ -8,7 +8,7 @@ import { colors, radius, spacing, defaultFontStack } from '../../utils/styles';
 
 const ShippingInfoRoot = styled(`div`)`
   background: #f5f5f5;
-  border-radius: ${radius.default}px;
+  border-radius: ${radius.md}px;
   margin: ${spacing.sm}px 0;
   padding: ${spacing.sm}px ${spacing.md}px;
 `;

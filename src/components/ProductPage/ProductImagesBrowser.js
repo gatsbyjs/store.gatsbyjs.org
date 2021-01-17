@@ -147,7 +147,7 @@ const ImageBox = styled(`a`)`
 
 const ZoomHelper = styled(`span`)`
   background: rgba(255, 255, 255, 0.5);
-  border-radius: ${radius.large}px;
+  border-radius: ${radius.lg}px;
   display: flex;
   left: ${spacing['xs']}px;
   padding: ${spacing['xs']}px;

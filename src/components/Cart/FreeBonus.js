@@ -9,7 +9,7 @@ import gift from '../../assets/gift.png';
 const FreeBonusRoot = styled(`div`)`
   align-items: center;
   background: ${colors.brandBright};
-  border-radius: ${radius.default}px;
+  border-radius: ${radius.lg}px;
   display: flex;
   margin: ${spacing.sm}px 0;
   padding: ${spacing.sm}px ${spacing.md}px;

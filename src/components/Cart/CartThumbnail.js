@@ -7,7 +7,7 @@ import { colors, radius } from '../../utils/styles';
 
 const CartThumbnailRoot = styled(Image)`
   border: 1px solid ${colors.brandLight};
-  border-radius: ${radius.default}px;
+  border-radius: ${radius.md}px;
   height: 36px;
   width: 36px;
 `;
