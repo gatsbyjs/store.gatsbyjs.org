@@ -108,7 +108,7 @@ const ButlerHandBox = styled(`span`)`
   transform: rotate(90deg);
 
   svg {
-    animation: ${handHop} 3s ease infinite;
+    animation: ${handHop} 3.5s ease infinite;
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
@@ -122,12 +122,12 @@ const ButlerHandBox = styled(`span`)`
     transform: rotate(0);
 
     svg {
-      animation: ${handHop} 3s ease infinite;
+      animation: ${handHop} 3.5s ease infinite;
     }
 
     ${OpenBarRoot}:hover & {
       svg {
-        animation: ${handHop} 0.5s ease infinite;
+        animation: ${handHop} 1s ease infinite;
       }
     }
   }
