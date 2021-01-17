@@ -8,7 +8,8 @@ import ProductSpecs from './ProductSpecs';
 import ProductForm from './ProductForm';
 import BackLink from './BackLink';
 
-import { breakpoints, spacing } from '../../utils/styles';
+import { breakpoints, spacing, dimensions } from '../../utils/styles';
+import { minHeight } from '../Layout/Footer';
 
 const ProductPageRoot = styled('div')`
   padding-bottom: ${spacing.md}px;
@@ -17,7 +18,7 @@ const ProductPageRoot = styled('div')`
     align-items: center;
     display: flex;
     justify-content: center;
-    min-height: calc(100vh - 110px);
+    min-height: calc(100vh - ${dimensions.headerHeight} - ${minHeight});
     padding: ${spacing.xl}px;
     width: 100%;
   }
