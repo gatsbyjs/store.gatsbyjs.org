@@ -20,20 +20,6 @@ const ContentContainerRoot = styled(`div`)`
     padding-bottom: calc(
       ${spacing.xl}px + ${dimensions.contributorAreaBarHeight}
     );
-
-    ::-webkit-scrollbar {
-      height: 6px;
-      width: 6px;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: ${colors.brandDarker};
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: ${colors.lilac};
-    }
-    ::-webkit-scrollbar-track {
-      background: ${colors.brand};
-    }
   }
 `;
 

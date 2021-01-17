@@ -108,22 +108,6 @@ const Content = styled(`div`)`
   position: absolute;
   top: ${dimensions.headerHeight};
   width: 100%;
-
-  @media (min-width: ${breakpoints.desktop}px) {
-    ::-webkit-scrollbar {
-      height: 6px;
-      width: 6px;
-    }
-    ::-webkit-scrollbar-thumb {
-      background: ${colors.brandBright};
-    }
-    ::-webkit-scrollbar-thumb:hover {
-      background: ${colors.lilac};
-    }
-    ::-webkit-scrollbar-track {
-      background: ${colors.brandLight};
-    }
-  }
 `;
 
 const ItemsNumber = styled(`span`)`
