@@ -17,7 +17,7 @@ import EmptyCart from './EmptyCart';
 import FreeBonus from './FreeBonus';
 import ShippingInfo from './ShippingInfo';
 import { Button, PrimaryButton } from '../shared/Buttons';
-import { transitions } from '../../utils/styles';
+import { transitions, visuallyHidden } from '../../utils/styles';
 
 import {
   breakpoints,
@@ -376,17 +376,27 @@ class Cart extends Component {
 
                   <Costs>
                     <Cost>
-                      <span>Subtotal:</span>{' '}
+                      <span>
+                        Subtotal<span css={visuallyHidden}>:</span>
+                      </span>{' '}
                       <strong>USD ${checkout.subtotalPrice}</strong>
                     </Cost>
                     <Cost>
-                      <span>Taxes:</span> <strong>{checkout.totalTax}</strong>
+                      <span>
+                        Taxes<span css={visuallyHidden}>:</span>
+                      </span>{' '}
+                      <strong>{checkout.totalTax}</strong>
                     </Cost>
                     <Cost>
-                      <span>Shipping (worldwide):</span> <strong>FREE</strong>
+                      <span>
+                        Shipping (worldwide)<span css={visuallyHidden}>:</span>
+                      </span>{' '}
+                      <strong>FREE</strong>
                     </Cost>
                     <Total>
-                      <span>Total Price:</span>
+                      <span>
+                        Total Price<span css={visuallyHidden}>:</span>
+                      </span>
                       <strong>USD ${checkout.totalPrice}</strong>
                     </Total>
                   </Costs>
