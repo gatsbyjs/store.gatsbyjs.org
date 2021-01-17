@@ -42,7 +42,7 @@ const PageContentRoot = styled(`main`)`
     }
 
     &.moved {
-      filter: blur(1px);
+      opacity: 0.25;
       position: fixed;
       transform: translateX(-${dimensions.cartWidthDesktop});
     }
