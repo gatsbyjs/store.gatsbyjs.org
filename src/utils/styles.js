@@ -123,14 +123,6 @@ export const dimensions = {
   }
 };
 
-export const scrollbarStyles = {
-  WebkitOverflowScrolling: `touch`,
-  '&::-webkit-scrollbar': { width: `6px`, height: `6px` },
-  '&::-webkit-scrollbar-thumb': { background: colors.brandBright },
-  '&::-webkit-scrollbar-thumb:hover': { background: colors.lilac },
-  '&::-webkit-scrollbar-track': { background: colors.brandLight }
-};
-
 const simpleEntry = keyframes`
   from {
     opacity: 0;
