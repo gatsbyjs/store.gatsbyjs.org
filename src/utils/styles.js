@@ -144,6 +144,12 @@ const deadSimpleEntry = keyframes`
   }
 `;
 
+export const gradients = {
+  default: 'linear-gradient(0deg, #0C0717, #442266)',
+  button: 'linear-gradient(90deg, #BC027F, #7026B9)',
+  buttonHover: 'linear-gradient(90deg, #940159, #7026B9)'
+};
+
 export const transitions = {
   sidebar: '0.25s ease'
 };

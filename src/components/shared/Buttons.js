@@ -96,15 +96,17 @@ Button.propTypes = {
 };
 
 export const PrimaryButton = styled(Button)`
-  background: ${colors.brand};
+  background: ${gradients.button};
+  border: 0;
   color: ${colors.lightest};
   display: flex;
   font-size: 1.25rem;
+  font-weight: 700;
   justify-content: center;
 
   @media (hover: hover) {
     &:hover {
-      background: ${colors.brandDark};
+      background: ${gradients.buttonHover};
     }
   }
 `;
