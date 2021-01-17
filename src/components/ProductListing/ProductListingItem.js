@@ -197,10 +197,10 @@ const CartIcon = styled(`span`)`
   }
 
   svg {
-    color: ${colors.accent};
-    height: 22px;
+    color: ${colors.lightest};
+    height: 24px;
     position: relative;
-    width: 22px;
+    width: 24px;
   }
 `;
 
