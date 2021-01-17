@@ -3,26 +3,35 @@ import styled from '@emotion/styled';
 
 import { breakpoints, colors, spacing, fontSizes } from '../../utils/styles';
 
+export const minHeight = '90px';
+
 const FooterRoot = styled('footer')`
   align-items: center;
-  color: ${colors.textMild};
+  color: ${colors.textLight};
   display: flex;
   flex-direction: column;
-  padding: ${spacing.md}px;
-  padding-bottom: calc(${spacing.xl}px + 50px);
   font-size: ${fontSizes.sm};
+  padding: ${spacing.xl}px;
+  max-width: 1080px;
+  margin: 0 auto;
 
   a {
-    color: ${colors.brand};
+    border-bottom: 1px solid ${colors.border};
+    color: ${colors.textLight};
+    text-decoration: none;
+
+    :hover {
+      color: ${colors.brand};
+    }
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
-    align-items: center;
+    align-content: flex-start;
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    min-height: 50px;
-    padding: 0 ${spacing.xl}px 10px;
+    padding: 0 ${spacing.xl}px 0;
+    min-height: ${minHeight};
   }
 `;
 
@@ -34,7 +43,7 @@ const Row = styled(`span`)`
   text-align: center;
 
   @media (min-width: ${breakpoints.desktop}px) {
-    padding-bottom: 0;
+    /* padding-bottom: 0; */
   }
 `;
 

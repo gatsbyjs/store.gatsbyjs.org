@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
-import Footer from './Footer';
+import Footer, { minHeight } from './Footer';
 import { breakpoints, dimensions, animations } from '../../utils/styles';
 
 const {
@@ -17,7 +17,7 @@ const PageContentRoot = styled(`main`)`
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-  min-height: calc(100vh - 60px);
+  min-height: calc(100vh - ${minHeight});
   opacity: 1;
   padding-left: 0;
   transition: 0.75s;
