@@ -5,7 +5,7 @@ import { colors } from '../../utils/styles';
 
 const svg = css`
   display: inline-block;
-  height: 28px;
+  height: 24px;
 `;
 
 const monogram = css`
