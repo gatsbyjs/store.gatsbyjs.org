@@ -9,7 +9,7 @@ import { breakpoints, colors, dimensions, spacing } from '../../utils/styles';
 const HeaderRoot = styled('header')`
   align-items: center;
   background-color: ${colors.lightest};
-  border-bottom: 1px solid ${colors.brandLight};
+  border-bottom: 1px solid ${colors.border};
   box-sizing: border-box;
   display: ${props => (props.isCovered ? 'none' : 'flex')};
   height: ${dimensions.headerHeight};
@@ -23,6 +23,7 @@ const HeaderRoot = styled('header')`
   z-index: 1000;
 
   @media (min-width: ${breakpoints.desktop}px) {
+    padding-left: calc(${spacing.md}px + ${spacing['2xs']}px);
     &.covered {
       display: none;
     }
