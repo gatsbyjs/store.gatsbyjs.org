@@ -76,7 +76,7 @@ const Tip = styled(`p`)`
 `;
 
 const CopyButton = styled(Button)`
-  margin-top: 0.85rem;
+  margin-top: ${spacing.md}px;
 `;
 
 const ProgressBarContainer = `
