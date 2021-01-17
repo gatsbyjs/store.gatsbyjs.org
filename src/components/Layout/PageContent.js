@@ -44,7 +44,7 @@ const PageContentRoot = styled(`main`)`
     &.moved {
       filter: blur(1px);
       position: fixed;
-      transform: translateX(-400px);
+      transform: translateX(-${dimensions.cartWidthDesktop});
     }
 
     &.covered {
