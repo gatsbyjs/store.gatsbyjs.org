@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 import { keyframes } from '@emotion/core';
 
 import UserContext from '../../context/UserContext';
-import Butler from '../../assets/Butler';
 import ButlerHand from '../../assets/ButlerHand';
 import { breakpoints, colors, fonts, dimensions } from '../../utils/styles';
 
@@ -82,22 +81,6 @@ const Content = styled(`div`)`
 
 const Section = styled(`div`)`
   width: 100%;
-`;
-
-const ButlerBox = styled(`span`)`
-  position: absolute;
-  right: 0;
-  top: 0;
-  transform: translate(-50%, -20%) scale(-1.2, 1.2);
-
-  @media (min-width: ${breakpoints.desktop}px) {
-    align-items: center;
-    display: flex;
-    height: 80px;
-    justify-content: center;
-    position: relative;
-    transform: none;
-  }
 `;
 
 const handHop = keyframes`
@@ -306,9 +289,6 @@ class OpenBar extends Component {
             <OpenBarRoot onClick={onClick} className={className}>
               <Content>
                 <Section>
-                  <ButlerBox>
-                    <Butler />
-                  </ButlerBox>
                   <Title>
                     <ContentFor contributor={contributor} />
                   </Title>

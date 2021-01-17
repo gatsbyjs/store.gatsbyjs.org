@@ -1,9 +1,7 @@
 import React from 'react';
 import styled from '@emotion/styled';
-import { keyframes } from '@emotion/core';
 
 import UserContext from '../../context/UserContext';
-import Butler from '../../assets/Butler';
 import ContentForNotLoggedIn from './ContentForNotLoggedIn';
 import ContentForLoggedIn from './ContentForLoggedIn';
 
@@ -38,39 +36,6 @@ const ContentContainerRoot = styled(`div`)`
     }
   }
 `;
-const entry = keyframes`
-   from {
-     opacity: 0;
-     transform: scale(0.5);
-   }
-   to {
-     opacity: 1;
-     transform:  scale(1);
-   }
- `;
-
-const ButlerBox = styled(`div`)`
-  animation: ${entry} 0.25s ease forwards;
-  display: none;
-  opacity: 0;
-  position: absolute;
-  right: 15px;
-  top: 35px;
-  transform: scale(0.5);
-  transition: 0.2s;
-
-  @media (min-width: ${breakpoints.desktop}px) {
-    right: -10px;
-  }
-
-  svg {
-    transform: scale(-1.8, 1.8);
-  }
-
-  .open & {
-    display: block;
-  }
-`;
 
 const ContentContainer = () => (
   <ContentContainerRoot>
@@ -94,9 +59,6 @@ const ContentContainer = () => (
         ) : (
           <>
             <ContentForNotLoggedIn />
-            <ButlerBox>
-              <Butler />
-            </ButlerBox>
           </>
         )
       }
