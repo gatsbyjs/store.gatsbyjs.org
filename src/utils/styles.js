@@ -92,7 +92,6 @@ export const defaultFontStack = [
 ].join();
 
 const monospaceFontStack = [
-  `Space Mono`,
   `SFMono-Regular`,
   `Menlo`,
   `Monaco`,
