@@ -101,7 +101,7 @@ const handHop = keyframes`
   }
 `;
 
-const ButlerHandBox = styled(`span`)`
+const PointerBox = styled(`span`)`
   left: 20px;
   position: absolute;
   top: 5px;
@@ -298,9 +298,9 @@ class OpenBar extends Component {
                   <Title>
                     <ContentFor contributor={contributor} />
                   </Title>
-                  <ButlerHandBox>
+                  <PointerBox>
                     <RiArrowUpFill />
-                  </ButlerHandBox>
+                  </PointerBox>
                 </Section>
                 <Section>
                   <Label>
