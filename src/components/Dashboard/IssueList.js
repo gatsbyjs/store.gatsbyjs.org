@@ -47,7 +47,7 @@ const IssueLink = styled('a')`
     }
 
     ${IssueId} {
-      color: ${colors.lilac};
+      color: ${colors.brand};
     }
   }
 `;
@@ -69,7 +69,7 @@ const Label = styled('a')`
   :active,
   :focus,
   :hover {
-    border-color: ${colors.lilac};
+    border-color: ${colors.brand};
     color: ${colors.brand};
   }
 `;
