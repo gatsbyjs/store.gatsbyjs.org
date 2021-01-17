@@ -14,7 +14,7 @@ const Spinner = styled(`span`)`
   height: 1em;
   border: 0.125em solid
     ${props =>
-      props.light ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)'};
+      props.light ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'};
   border-radius: 50%;
   border-top-color: ${props =>
     props.light ? 'rgba(255, 255, 255, 0.75)' : 'rgba(0, 0, 0, 0.5)'};
