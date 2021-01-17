@@ -4,8 +4,8 @@ import styled from '@emotion/styled';
 import { keyframes } from '@emotion/core';
 
 import UserContext from '../../context/UserContext';
-import ButlerHand from '../../assets/ButlerHand';
 import { breakpoints, colors, fonts, dimensions } from '../../utils/styles';
+import { RiArrowUpFill } from 'react-icons/ri';
 
 const OpenBarRoot = styled(`button`)`
   align-items: center;
@@ -294,7 +294,7 @@ class OpenBar extends Component {
                     <ContentFor contributor={contributor} />
                   </Title>
                   <ButlerHandBox>
-                    <ButlerHand />
+                    <RiArrowUpFill />
                   </ButlerHandBox>
                 </Section>
                 <Section>
