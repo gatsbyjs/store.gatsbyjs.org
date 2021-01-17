@@ -41,7 +41,7 @@ const OpenBarRoot = styled(`button`)`
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
-    height: calc(100vh - 60px);
+    height: calc(100vh - ${dimensions.headerHeight});
     top: ${dimensions.headerHeight};
     width: ${dimensions.contributorAreaWidth.closedDesktop};
 
@@ -74,7 +74,7 @@ const Content = styled(`div`)`
   background: ${colors.brand};
   display: flex;
   flex-direction: column;
-  height: calc(100vh - 60px);
+  height: calc(100vh - ${dimensions.headerHeight});
   justify-content: space-between;
   width: 100%;
 `;
@@ -108,7 +108,7 @@ const ButlerHandBox = styled(`span`)`
   @media (min-width: ${breakpoints.desktop}px) {
     align-items: center;
     display: flex;
-    height: 60px;
+    height: ${dimensions.headerHeight};
     justify-content: center;
     left: auto;
     position: relative;

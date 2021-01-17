@@ -108,14 +108,14 @@ export const fonts = {
 };
 
 export const dimensions = {
-  headerHeight: '60px',
+  headerHeight: '64px',
   cartWidthDesktop: '420px',
   contributorAreaWidth: {
-    closedDesktop: '60px',
+    closedDesktop: '64px',
     openDesktop: '340px',
     openHd: '420px'
   },
-  contributorAreaBarHeight: '50px',
+  contributorAreaBarHeight: '64px',
   pictureBrowserAction: {
     widthDesktop: '200px',
     heightMobile: '80px'
