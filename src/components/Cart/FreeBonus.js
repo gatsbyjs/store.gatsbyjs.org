@@ -1,8 +1,6 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-import { MdSentimentSatisfied } from 'react-icons/md';
-
 import { colors, radius, spacing, fontSizes } from '../../utils/styles';
 import gift from '../../assets/gift.png';
 
@@ -27,17 +25,11 @@ const FreeBonusRoot = styled(`div`)`
   }
 `;
 
-const SmileIcon = styled(MdSentimentSatisfied)`
-  color: ${colors.lilac};
-  margin-right: ${spacing['2xs']}px;
-  vertical-align: middle;
-`;
-
 const FreeBonus = () => (
   <FreeBonusRoot>
     <p>
       We will add the <strong>Gatsby Sticker Pack</strong> as a FREE bonus to
-      your order! <SmileIcon />
+      your order!
     </p>
 
     <img src={gift} alt="Gift Icon" />
