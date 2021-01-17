@@ -21,6 +21,7 @@ export const colors = {
   textMild: '#555555',
   textLight: '#7e718a',
   textLighter: '#aaaaaa',
+  border: '#ddd',
   lilac: `#8c65b3`,
   accent: `#ffb238`,
   error: `#ec1818`,
@@ -109,7 +110,7 @@ export const fonts = {
 
 export const dimensions = {
   headerHeight: '60px',
-  cartWidthDesktop: '400px',
+  cartWidthDesktop: '420px',
   contributorAreaWidth: {
     closedDesktop: '60px',
     openDesktop: '340px',

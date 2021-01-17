@@ -3,12 +3,12 @@ import styled from '@emotion/styled';
 
 import { MdSentimentSatisfied } from 'react-icons/md';
 
-import { colors, radius, spacing } from '../../utils/styles';
+import { colors, radius, spacing, fontSizes } from '../../utils/styles';
 import gift from '../../assets/gift.png';
 
 const FreeBonusRoot = styled(`div`)`
   align-items: center;
-  background: ${colors.brandBright};
+  background: ${colors.brandLight};
   border-radius: ${radius.lg}px;
   display: flex;
   margin: ${spacing.sm}px 0;
@@ -16,7 +16,7 @@ const FreeBonusRoot = styled(`div`)`
 
   p {
     color: ${colors.brandDark};
-    font-size: 0.95rem;
+    font-size: ${fontSizes.sm};
     margin: 0;
   }
 
@@ -36,9 +36,8 @@ const SmileIcon = styled(MdSentimentSatisfied)`
 const FreeBonus = () => (
   <FreeBonusRoot>
     <p>
-      <SmileIcon />
       We will add the <strong>Gatsby Sticker Pack</strong> as a FREE bonus to
-      your order!
+      your order! <SmileIcon />
     </p>
 
     <img src={gift} alt="Gift Icon" />

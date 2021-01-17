@@ -24,7 +24,8 @@ import {
   colors,
   fonts,
   spacing,
-  dimensions
+  dimensions,
+  fontSizes
 } from '../../utils/styles';
 
 const CartRoot = styled(`div`)`
@@ -86,17 +87,17 @@ const Heading = styled(`header`)`
 const Title = styled(`h2`)`
   flex-grow: 1;
   font-family: ${fonts.heading};
-  font-size: 1.8rem;
+  font-size: ${fontSizes.lg};
   left: -${dimensions.headerHeight};
   margin: 0;
-  margin-left: ${spacing.md}px;
+  margin-left: ${spacing.lg}px;
   position: relative;
 
   .open & {
     margin-left: calc(${dimensions.headerHeight} + ${spacing.md}px);
 
     @media (min-width: ${breakpoints.desktop}px) {
-      margin-left: ${spacing.md}px;
+      margin-left: ${spacing.xl}px;
     }
   }
 `;
@@ -108,13 +109,17 @@ const Content = styled(`div`)`
   position: absolute;
   top: ${dimensions.headerHeight};
   width: 100%;
+
+  @media (min-width: ${breakpoints.desktop}px) {
+    padding: ${spacing.xl}px;
+  }
 `;
 
 const ItemsNumber = styled(`span`)`
   align-items: center;
-  background: ${colors.lemon};
+  background: ${colors.accent};
   border-radius: 50%;
-  color: ${colors.brandDark};
+  color: ${colors.lightest};
   display: flex;
   font-size: 1.3rem;
   font-weight: bold;
@@ -139,11 +144,14 @@ const ItemsInCart = styled(`div`)`
 const Costs = styled('div')`
   display: flex;
   flex-direction: column;
-  margin-top: ${spacing.sm}px;
+  margin-bottom: ${spacing.sm}px;
+  padding-top: ${spacing.lg}px;
+  padding-bottom: ${spacing.lg}px;
 `;
 
 const Cost = styled(`div`)`
   display: flex;
+  font-size: ${fontSizes.sm};
   padding: 0 ${spacing.xs}px ${spacing['2xs']}px;
 
   :last-child {
@@ -151,28 +159,26 @@ const Cost = styled(`div`)`
   }
 
   span {
-    color: ${colors.textMild};
+    color: ${colors.textLight};
     flex-basis: 60%;
-    font-size: 0.9rem;
     text-align: right;
   }
 
   strong {
-    color: ${colors.lilac};
     flex-basis: 40%;
     text-align: right;
   }
 `;
 
 const Total = styled(Cost)`
-  border-top: 1px solid ${colors.brandBright};
+  border-top: 1px solid ${colors.border};
   color: ${colors.brandDark};
-  margin-top: ${spacing.xs}px;
-  padding-top: ${spacing.sm}px;
+  font-size: ${fontSizes.md};
+  margin-top: ${spacing.sm}px;
+  padding-top: ${spacing.md}px;
 
   span {
     font-weight: bold;
-    text-transform: uppercase;
   }
 
   strong,
@@ -201,7 +207,7 @@ const numberEntry = keyframes`
     transform: scale(0.7);
   }
   100% {
-    transform: scale(0.6);
+    transform: scale(0.555555);
   }
 `;
 
@@ -209,6 +215,7 @@ const CartToggle = styled(Button)`
   background: ${colors.lightest};
   border: none;
   border-radius: 0;
+  color: ${colors.text};
   display: flex;
   height: ${dimensions.headerHeight};
   justify-content: center;
@@ -225,8 +232,6 @@ const CartToggle = styled(Button)`
   }
 
   .open & {
-    background: ${colors.lilac};
-    color: ${colors.lightest};
     transform: translateX(0);
   }
 
@@ -246,9 +251,9 @@ const CartToggle = styled(Button)`
   ${ItemsNumber} {
     animation: ${numberEntry} 0.5s ease forwards;
     position: absolute;
-    right: ${spacing['3xs']}px;
-    top: ${spacing['3xs']}px;
-    transform: scale(0.6);
+    right: 0;
+    top: 0;
+    transform: scale(0.555555);
   }
 `;
 
@@ -262,6 +267,10 @@ const BackLink = styled(Button)`
   font-size: 1.25rem;
   margin-bottom: ${spacing.sm}px;
   width: 100%;
+`;
+
+const Small = styled('small')`
+  font-weight: normal;
 `;
 
 class Cart extends Component {
@@ -343,6 +352,9 @@ class Cart extends Component {
                 <CartToggle
                   aria-label={`Shopping cart with ${itemsInCart} items`}
                   onClick={toggle}
+                  css={{
+                    color: itemsInCart > 0 ? colors.accent : null
+                  }}
                 >
                   {status === 'open' ? (
                     <MdClose />
@@ -358,7 +370,7 @@ class Cart extends Component {
                 <CartIndicator itemsInCart={itemsInCart} adding={adding} />
                 <Title>Your Cart</Title>
                 <ItemsInCart>
-                  items
+                  Items
                   <br />
                   in cart
                   <ItemsNumber>{itemsInCart}</ItemsNumber>
@@ -379,13 +391,17 @@ class Cart extends Component {
                       <span>
                         Subtotal<span css={visuallyHidden}>:</span>
                       </span>{' '}
-                      <strong>USD ${checkout.subtotalPrice}</strong>
+                      <strong css={{ fontWeight: 'normal' }}>
+                        <Small>USD</Small> ${checkout.subtotalPrice}
+                      </strong>
                     </Cost>
                     <Cost>
                       <span>
                         Taxes<span css={visuallyHidden}>:</span>
                       </span>{' '}
-                      <strong>{checkout.totalTax}</strong>
+                      <strong css={{ fontWeight: 'normal' }}>
+                        {checkout.totalTax}
+                      </strong>
                     </Cost>
                     <Cost>
                       <span>
@@ -397,7 +413,9 @@ class Cart extends Component {
                       <span>
                         Total Price<span css={visuallyHidden}>:</span>
                       </span>
-                      <strong>USD ${checkout.totalPrice}</strong>
+                      <strong>
+                        <Small>USD</Small> ${checkout.totalPrice}
+                      </strong>
                     </Total>
                   </Costs>
 

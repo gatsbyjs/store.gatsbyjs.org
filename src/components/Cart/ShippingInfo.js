@@ -4,7 +4,13 @@ import { keyframes } from '@emotion/core';
 
 import { MdKeyboardArrowDown, MdInfo } from 'react-icons/md';
 
-import { colors, radius, spacing, defaultFontStack } from '../../utils/styles';
+import {
+  colors,
+  radius,
+  spacing,
+  defaultFontStack,
+  fontSizes
+} from '../../utils/styles';
 
 const ShippingInfoRoot = styled(`div`)`
   background: #f5f5f5;
@@ -18,7 +24,7 @@ const Intro = styled(`p`)`
   cursor: pointer;
   display: block;
   font-family: ${defaultFontStack};
-  font-size: 0.95rem;
+  font-size: ${fontSizes.sm};
   margin: 0;
   position: relative;
   text-align: left;

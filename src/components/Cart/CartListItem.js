@@ -11,7 +11,6 @@ import { breakpoints, colors, spacing, fontSizes } from '../../utils/styles';
 
 const CartListItemRoot = styled('li')`
   align-items: center;
-  border-bottom: 1px solid ${colors.brandLight};
   display: flex;
   justify-content: space-between;
   padding: ${spacing.md}px 0;
@@ -30,14 +29,16 @@ const Info = styled('div')`
 const Name = styled('span')`
   display: block;
   font-size: ${fontSizes.md};
-  line-height: 1.2;
+  font-weight: 600;
+  line-height: 1.25;
 `;
 
 const Meta = styled('span')`
   color: ${colors.textLight};
   display: block;
-  font-size: 0.95rem;
+  font-size: ${fontSizes.sm};
   font-style: normal;
+  line-height: 1.25;
 `;
 
 const Quantity = styled(Input)`
@@ -46,10 +47,10 @@ const Quantity = styled(Input)`
   margin-right: ${spacing.xs}px;
   padding: 0 ${spacing.xs}px 0;
   text-align: center;
-  width: 50px;
+  width: 48px;
 
   @media (min-width: ${breakpoints.desktop}px) {
-    width: 70px;
+    width: 64px;
   }
 `;
 
