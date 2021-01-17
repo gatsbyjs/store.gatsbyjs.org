@@ -270,7 +270,7 @@ const ProductListingItem = props => {
                 </Price>
                 <Incentive>
                   <span>
-                    view details
+                    View details
                     <br />& buy <MdArrowForward />
                   </span>
                   <CartIcon>
