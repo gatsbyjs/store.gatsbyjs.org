@@ -41,7 +41,7 @@ const Name = styled(`span`)`
       : colors.brand};
   color: ${props =>
     badgeThemes[props.code] ? badgeThemes[props.code].textTheme : colors.brand};
-  font-size: 1.1rem;
+  font-size: ${fontSizes.md};
   padding: ${spacing.xs}px;
 `;
 
@@ -57,7 +57,7 @@ const Used = styled(`span`)`
   background: ${colors.brandDarker};
   color: ${colors.brandBright};
   display: flex;
-  font-size: 1.1rem;
+  font-size: ${fontSizes.md};
   justify-content: center;
   padding: ${spacing.xs}px;
 
@@ -69,7 +69,7 @@ const Used = styled(`span`)`
 
 const Tip = styled(`p`)`
   color: ${colors.brandBright};
-  font-size: 0.85rem;
+  font-size: ${fontSizes.sm};
   line-height: 1.2;
   margin: 0;
   padding-top: ${spacing.xs}px;
