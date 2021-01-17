@@ -107,10 +107,8 @@ class ProductDetails extends React.Component {
           <UnitSelector unit={units} setUnits={this.changeUnits} />
           <SizeChartTable unit={units} />
           <p>
-            <strong style={{ color: colors.brand }}>
-              Don’t see your size?
-            </strong>{' '}
-            Send us an email team@gatsbyjs.com and we’ll see if we can help!
+            <strong>Don’t see your size?</strong> Send us an email
+            team@gatsbyjs.com and we’ll see if we can help!
           </p>
         </Section>
         <Section id="materials-fit">
