@@ -50,7 +50,7 @@ const Details = styled(Intro)`
 `;
 
 const ArrowIcon = styled(MdKeyboardArrowDown)`
-  color: ${colors.lilac};
+  color: ${colors.brand};
   height: 26px;
   position: relative;
   stroke-width: 1px;
@@ -69,7 +69,7 @@ const ArrowIcon = styled(MdKeyboardArrowDown)`
 `;
 
 const InfoIcon = styled(MdInfo)`
-  color: ${colors.lilac};
+  color: ${colors.text};
   margin-right: ${spacing['2xs']}px;
   vertical-align: middle;
 `;

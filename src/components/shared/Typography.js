@@ -16,7 +16,7 @@ export const TextContainer = styled(`div`)`
 `;
 
 export const Heading = styled('h1')`
-  color: ${colors.brandDark};
+  color: ${colors.text};
   font-size: ${fontSizes['2xl']};
   letter-spacing: -0.02em;
   margin: 0;

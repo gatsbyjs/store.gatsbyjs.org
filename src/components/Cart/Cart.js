@@ -169,7 +169,7 @@ const Cost = styled(`div`)`
 
 const Total = styled(Cost)`
   border-top: 1px solid ${colors.border};
-  color: ${colors.brandDark};
+  color: ${colors.text};
   font-size: ${fontSizes.md};
   margin-top: ${spacing.sm}px;
   padding-top: ${spacing.md}px;

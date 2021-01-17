@@ -13,7 +13,7 @@ const FreeBonusRoot = styled(`div`)`
   padding: ${spacing.sm}px ${spacing.md}px;
 
   p {
-    color: ${colors.brandDark};
+    color: ${colors.brand};
     font-size: ${fontSizes.sm};
     margin: 0;
   }

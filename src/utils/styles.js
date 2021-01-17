@@ -36,7 +36,7 @@ export const badgeThemes = {
   HOLYBUCKETS: {
     level: 2,
     backgroundTheme: colors.accent,
-    textTheme: colors.brandDark
+    textTheme: colors.brand
   }
 };
 

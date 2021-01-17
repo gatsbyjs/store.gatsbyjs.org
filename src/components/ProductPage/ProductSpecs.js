@@ -19,7 +19,7 @@ const ProductSpecsRoot = styled(`div`)`
 `;
 
 const Name = styled(`h1`)`
-  color: ${colors.brandDark};
+  color: ${colors.text};
   font-family: ${fonts.heading};
   font-size: ${fontSizes['2xl']};
   font-weight: 700;

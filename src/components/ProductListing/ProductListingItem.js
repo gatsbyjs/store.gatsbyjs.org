@@ -119,7 +119,7 @@ const CodeEligibility = styled(`div`)`
 `;
 
 const Name = styled(`h1`)`
-  color: ${colors.brandDark};
+  color: ${colors.text};
   font-family: ${fonts.heading};
   font-size: ${fontSizes.lg};
   line-height: 1.2;
@@ -141,7 +141,7 @@ const PriceRow = styled(`div`)`
 `;
 
 const Price = styled(`div`)`
-  color: ${colors.brand};
+  color: ${colors.text};
   font-size: ${fontSizes.lg};
   font-weight: 700;
   letter-spacing: -0.02em;
@@ -153,7 +153,7 @@ const Price = styled(`div`)`
 
 const Incentive = styled('div')`
   align-items: center;
-  color: ${colors.lilac};
+  color: ${colors.textLight};
   display: flex;
   font-size: ${fontSizes.sm};
   line-height: 1.3;
@@ -179,7 +179,7 @@ const Incentive = styled('div')`
 
 const CartIcon = styled(`span`)`
   align-items: center;
-  background: ${colors.lilac};
+  background: ${colors.brand};
   border-radius: ${radius.md}px 0 0 ${radius.md}px;
   display: flex;
   height: 40px;
