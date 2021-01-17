@@ -118,11 +118,11 @@ const ItemsNumber = styled(`span`)`
   border-radius: 50%;
   color: ${colors.lightest};
   display: flex;
-  font-size: 1.3rem;
+  font-size: ${fontSizes.md};
   font-weight: bold;
-  height: 36px;
+  height: 28px;
   justify-content: center;
-  width: 36px;
+  width: 28px;
 `;
 
 const ItemsInCart = styled(`div`)`
@@ -201,10 +201,10 @@ const numberEntry = keyframes`
     transform: scale(0)
   }
   90% {
-    transform: scale(0.7);
+    transform: scale(0.8);
   }
   100% {
-    transform: scale(0.555555);
+    transform: scale(0.7142);
   }
 `;
 
@@ -240,16 +240,16 @@ const CartToggle = styled(Button)`
 
   svg {
     animation: ${iconEntry} 0.75s ease forwards;
-    height: 28px;
+    height: 24px;
     margin: 0;
-    width: 28px;
+    width: 24px;
   }
 
   ${ItemsNumber} {
     animation: ${numberEntry} 0.5s ease forwards;
     position: absolute;
-    right: 0;
-    top: 0;
+    right: ${spacing['2xs']}px;
+    top: ${spacing['2xs']}px;
     transform: scale(0.555555);
   }
 `;
