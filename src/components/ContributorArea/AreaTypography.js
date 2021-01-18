@@ -10,9 +10,10 @@ import {
 } from '../../utils/styles';
 
 export const SectionHeading = styled(`h3`)`
-  color: ${colors.lightest};
+  color: ${colors.textLight};
   font-family: ${fonts.heading};
-  font-size: ${fontSizes.md};
+  font-size: ${fontSizes.sm};
+  font-weight: 400;
   margin: 0;
 `;
 
