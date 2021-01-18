@@ -5,6 +5,7 @@ import { GoMarkGithub } from 'react-icons/go';
 import { login } from '../../utils/auth';
 import { spacing, animations } from '../../utils/styles';
 import { Button as BaseButton } from '../shared/Buttons';
+import Notice from '../shared/Notice';
 import { Heading, SectionHeading, Text } from './AreaTypography';
 
 const ContentForGuestRoot = styled(`div`)`
@@ -47,14 +48,7 @@ const ContentForGuest = () => (
     >
       Explore Open Issues
     </Button>
-    <Text style={{ fontStyle: 'italic' }}>
-      Due to COVID-19 related international mail service disruptions, your order
-      may be delayed or suspended. Please view{' '}
-      <a href="https://about.usps.com/newsroom/service-alerts/international/welcome.htm">
-        the list of affected countries
-      </a>{' '}
-      to see if your order is affected.
-    </Text>
+    <Notice />
   </ContentForGuestRoot>
 );
 

@@ -7,6 +7,7 @@ import UserContext from '../../context/UserContext';
 import { Heading, Text } from './AreaTypography';
 
 import { Button } from '../shared/Buttons';
+import Notice from '../shared/Notice';
 
 import {
   colors,
@@ -235,14 +236,7 @@ const ContentForContributor = () => {
                 } to earn level 2 swag!`}</Text>
               </>
             )}
-            <Text style={{ fontStyle: 'italic' }}>
-              Due to COVID-19 related international mail service disruptions,
-              your order may be delayed or suspended. Please view{' '}
-              <a href="https://about.usps.com/newsroom/service-alerts/international/welcome.htm">
-                the list of affected countries
-              </a>{' '}
-              to see if your order is affected.
-            </Text>
+            <Notice />
           </ContentForContributorRoot>
         );
       }}
