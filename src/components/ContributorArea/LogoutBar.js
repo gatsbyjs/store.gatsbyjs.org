@@ -24,12 +24,13 @@ const User = styled(`div`)`
   align-items: flex-start;
   display: flex;
 `;
+
 const Info = styled(`div`)`
-  color: ${colors.brandBright};
+  color: ${colors.textLight};
   font-size: ${fontSizes.md};
 
   b {
-    color: ${colors.lightest};
+    color: ${colors.text};
     display: block;
     font-size: ${fontSizes.md};
   }

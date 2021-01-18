@@ -59,6 +59,9 @@ const CloseBarRoot = styled(`button`)`
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
+    background: ${colors.lightest};
+    border-right: 1px solid ${colors.border};
+    color: ${colors.text};
     transform: translateX(0);
     width: ${desktopMaxWidth};
 

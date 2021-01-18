@@ -10,14 +10,15 @@ import {
   colors,
   fonts,
   dimensions,
-  fontSizes
+  fontSizes,
+  spacing
 } from '../../utils/styles';
 
 const OpenBarRoot = styled(`button`)`
   align-items: center;
   border: 0;
   bottom: 0;
-  color: ${colors.lightest};
+  color: ${colors.brand};
   cursor: pointer;
   font-family: ${fonts.heading};
   font-size: ${fontSizes.md};
@@ -77,7 +78,8 @@ const OpenBarRoot = styled(`button`)`
 
 const Content = styled(`div`)`
   align-items: flex-start;
-  background: ${colors.brand};
+  background: ${colors.lightest};
+  border-right: 1px solid ${colors.border};
   display: flex;
   flex-direction: column;
   height: calc(100vh - ${dimensions.headerHeight});
@@ -135,24 +137,25 @@ const PointerBox = styled(`span`)`
 
 const Title = styled(`span`)`
   display: block;
-  margin-top: 0.75rem;
   font-size: ${fontSizes.md};
   font-weight: 500;
+  margin-top: ${spacing.lg}px;
 
   strong {
     color: ${colors.accent};
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
-    height: 280px;
+    height: 240px;
     position: relative;
 
     span {
       display: block;
       left: 50%;
-      transform: rotate(-90deg) translate(calc(-95%), 55%);
+      text-align: right;
+      transform: rotate(-90deg) translate(calc(-100%), 105%);
       transform-origin: top left;
-      width: 280px;
+      width: 240px;
     }
   }
 `;
@@ -164,12 +167,11 @@ const Label = styled(`span`)`
     position: relative;
 
     span {
-      color: ${colors.lightest};
+      color: ${colors.textLight};
       display: block;
       left: 50%;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      transform: rotate(-90deg) translate(-100%, 85%);
+      text-align: left;
+      transform: rotate(-90deg) translate(-100%, 105%);
       transform-origin: top left;
       transition: 0.5s;
       width: 130px;

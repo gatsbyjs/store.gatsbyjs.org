@@ -28,7 +28,7 @@ const swing = keyframes`
 
 const Link = styled('a')`
   border-radius: ${radius.lg}px;
-  color: ${colors.lightest};
+  color: ${colors.text};
   display: block;
   margin: 0 -${spacing.sm}px ${spacing.xs}px;
   padding: ${spacing.xs}px ${spacing.sm}px;
@@ -47,10 +47,12 @@ const Link = styled('a')`
 
   @media (hover: hover) {
     :hover {
-      background: ${colors.brandDarker};
+      background: ${colors.accent};
+      color: ${colors.lightest};
 
       svg {
         animation: ${swing} 0.5s ease infinite;
+        color: ${colors.lightest};
       }
     }
   }

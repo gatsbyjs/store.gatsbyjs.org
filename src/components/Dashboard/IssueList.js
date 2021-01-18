@@ -25,7 +25,7 @@ const IssueTitle = styled('span')`
 `;
 
 const IssueId = styled('span')`
-  color: ${colors.textLighter};
+  color: ${colors.textLight};
   transition: 200ms color linear;
 `;
 

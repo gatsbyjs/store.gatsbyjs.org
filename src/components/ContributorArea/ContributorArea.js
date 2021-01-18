@@ -17,8 +17,9 @@ const {
 } = dimensions;
 
 const ContributorAreaRoot = styled(`aside`)`
-  background: ${colors.brandDark};
-  color: ${colors.lightest};
+  background: ${colors.lightest};
+  border-right: 1px solid ${colors.border};
+  color: ${colors.text};
   display: flex;
   flex-direction: column;
   justify-content: space-between;

@@ -54,8 +54,8 @@ const Code = styled(`span`)`
 
 const Used = styled(`span`)`
   align-items: center;
-  background: ${colors.brandDarker};
-  color: ${colors.brandBright};
+  background: ${colors.textLight};
+  color: ${colors.lightest};
   display: flex;
   font-size: ${fontSizes.md};
   justify-content: center;
@@ -83,7 +83,7 @@ const ProgressBarContainer = `
   border: 0;
   width: 100%;
   border-radius: 1rem;
-  background-color: ${colors.brandDarker};
+  background-color: ${colors.brand};
   height: 1.6rem;
 `;
 
