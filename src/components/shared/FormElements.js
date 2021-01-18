@@ -5,7 +5,7 @@ import { colors, radius, spacing, fontSizes } from '../../utils/styles';
 
 export const Input = styled(`input`)`
   background-color: ${colors.lightest};
-  border: 1px solid ${colors.brandBright};
+  border: 1px solid ${colors.border};
   border-radius: ${radius.lg}px;
   color: ${colors.text};
   display: block;
@@ -23,7 +23,7 @@ export const Input = styled(`input`)`
 export const Select = styled(Input.withComponent('select'))`
   appearance: none;
   /* stylelint-disable */
-  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23${colors.lilac.substr(
+  background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 4 5'%3E%3Cpath fill='%23${colors.text.substr(
     1
   )}' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E");
   /* stylelint-enable */
