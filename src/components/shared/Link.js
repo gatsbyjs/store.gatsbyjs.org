@@ -8,7 +8,7 @@ import { colors, radius, spacing } from '../../utils/styles';
 const LinkRoot = styled(GatsbyLink)`
   align-items: center;
   border-radius: ${radius.md}px;
-  color: ${colors.brand};
+  color: ${colors.text};
   display: ${props => (props.inline ? 'inline-flex' : 'flex')};
   margin: -${spacing['3xs']}px -${spacing['2xs']}px;
   padding: ${spacing['3xs']}px ${spacing['2xs']}px;
@@ -22,13 +22,13 @@ const LinkRoot = styled(GatsbyLink)`
   }
 
   span {
-    border-bottom: 1px solid ${colors.brandBright};
+    border-bottom: 1px solid ${colors.border};
     display: block;
     transition: inherit;
   }
 
   svg {
-    fill: ${colors.brandBright};
+    fill: ${colors.textLight};
     margin-right: ${spacing['2xs']}px;
   }
 

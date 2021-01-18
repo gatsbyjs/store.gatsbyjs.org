@@ -2,12 +2,8 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
-import {
-  MdInfoOutline,
-  MdErrorOutline,
-  MdSentimentDissatisfied
-} from 'react-icons/md';
-import { RiShoppingCartFill } from 'react-icons/ri';
+import { MdErrorOutline, MdSentimentDissatisfied } from 'react-icons/md';
+import { RiShoppingCartFill, RiRulerLine } from 'react-icons/ri';
 
 import { Fieldset, Input, Label, Select, Submit } from '../shared/FormElements';
 
@@ -225,7 +221,7 @@ class ProductForm extends Component {
                 <Label htmlFor="variant">
                   Size/Color{' '}
                   <Link to="/product-details?fromProduct#size-chart">
-                    <MdInfoOutline />
+                    <RiRulerLine />
                     <span>Size Chart</span>
                   </Link>
                 </Label>
