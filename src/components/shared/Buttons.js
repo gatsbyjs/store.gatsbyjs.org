@@ -13,7 +13,7 @@ import {
 
 export const ButtonBase = styled(`button`)`
   align-items: center;
-  background: ${props => (props.inverse ? colors.brandDark : colors.lightest)};
+  background: ${props => (props.inverse ? colors.brand : colors.lightest)};
   border: 1px solid
     ${props => (props.inverse ? colors.brandLight : colors.brand)};
   border-radius: ${radius.lg}px;
