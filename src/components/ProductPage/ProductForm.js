@@ -199,6 +199,7 @@ class ProductForm extends Component {
                 step="1"
                 onChange={this.handleChange}
                 value={this.state.quantity}
+                disabled={isOutOfStock}
               />
             </QtyFieldset>
             {hasVariants && (
