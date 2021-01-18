@@ -24,13 +24,13 @@ export const colors = {
 export const badgeThemes = {
   BUILDWITHGATSBY: {
     level: 1,
-    backgroundTheme: colors.brand,
-    textTheme: colors.accent
+    backgroundTheme: '#F67300',
+    textTheme: colors.lightest
   },
   HOLYBUCKETS: {
     level: 2,
-    backgroundTheme: colors.accent,
-    textTheme: colors.brand
+    backgroundTheme: '#FEC21E',
+    textTheme: colors.text
   }
 };
 
