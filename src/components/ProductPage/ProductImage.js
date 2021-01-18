@@ -54,6 +54,10 @@ const ZoomHelper = styled(`span`)`
 export const StyledImage = styled(Image)`
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
   border-radius: ${radius.lg}px;
+
+  @media (min-width: ${breakpoints.desktop}px) {
+    box-shadow: none;
+  }
 `;
 
 class ProductImage extends Component {
