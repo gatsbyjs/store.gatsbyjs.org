@@ -30,7 +30,7 @@ const TRANSITION_DURATION = '250ms';
 
 const ProductListingItemLink = styled(Link)`
   background: ${colors.lightest};
-  box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
+  border: 1px solid transparent;
   border-radius: ${radius.lg}px;
   margin-bottom: ${spacing.lg}px;
   overflow: hidden;
@@ -46,12 +46,13 @@ const ProductListingItemLink = styled(Link)`
   @media (min-width: ${breakpoints.desktop}px) {
     flex-basis: 300px;
     justify-content: center;
-    margin: ${spacing.md * 1.25}px;
+    margin: ${spacing.lg}px;
   }
 
   @media (hover: hover) {
     :hover {
-      background: ${colors.brandLighter};
+      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
+      z-index: 1;
     }
   }
 `;
@@ -64,7 +65,6 @@ const Item = styled(`article`)`
 `;
 
 const Preview = styled(`div`)`
-  border-bottom: 1px solid ${colors.brandLight};
   border-radius: ${radius.lg}px ${radius.lg}px 0 0;
   margin: -${spacing.lg}px;
   margin-bottom: ${spacing.lg}px;
@@ -112,30 +112,31 @@ const CodeEligibility = styled(`div`)`
 const Name = styled(`h1`)`
   color: ${colors.text};
   font-family: ${fonts.heading};
-  font-size: ${fontSizes.lg};
+  font-size: 20px;
   line-height: ${lineHeights.dense};
   margin: 0;
 `;
 
 const Description = styled(`p`)`
-  color: ${colors.text};
+  color: ${colors.textLight};
+  display: none;
   flex-grow: 1;
   font-size: ${fontSizes.sm};
   line-height: ${lineHeights.default};
 `;
 
 const PriceRow = styled(`div`)`
-  align-items: flex-end;
+  align-items: flex-start;
   display: flex;
   justify-content: space-between;
-  margin-top: ${spacing.xs}px;
+  margin-top: ${spacing['2xs']}px;
 `;
 
 const Price = styled(`div`)`
   color: ${colors.text};
-  font-size: ${fontSizes.lg};
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: ${lineHeights.solid};
 
   span {
     color: ${colors.textLight};
