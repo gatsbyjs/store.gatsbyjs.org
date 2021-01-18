@@ -1,0 +1,17 @@
+Let’s get you started with your first contribution to Gatsby!
+
+Once you’ve had your first pull request merged into Gatsby, you can come back here to claim free swag.
+
+If you have questions, ask on any issue (you can tag @gatsbyjs/learning if you’d like) or hit us up on Twitter at @gatsbyjs.
+
+Click the button below for issues that we could use help with.
+
+start to solve more issue
+
+
+then you can
+
+Get Gatsby Swag!
+The money we charge for swag helps to cover production and shipping costs. In the unlikely event that Gatsby swag ends up turning a profit, we’ll reinvest that money into the open source community.
+
+https://store.gatsbyjs.org/static/a3a6c096c4ab226d2c24cce771e5463a/08e5b/dark-deploy-mockup.jpg
