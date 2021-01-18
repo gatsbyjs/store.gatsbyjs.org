@@ -138,7 +138,7 @@ const PointerBox = styled(`span`)`
 const Title = styled(`span`)`
   display: block;
   font-size: ${fontSizes.md};
-  font-weight: 500;
+  font-weight: 600;
   margin-top: ${spacing.lg}px;
 
   strong {
