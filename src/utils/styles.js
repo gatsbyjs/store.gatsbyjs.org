@@ -9,21 +9,15 @@ import { keyframes, css } from '@emotion/core';
  *    border-color: ${colors.brand}40;
  */
 export const colors = {
-  brandDarker: '#221133',
-  brandDark: '#442266',
-  brand: '#663399',
+  brand: '#7026B9',
   brandBright: '#F1DEFA',
   brandLight: '#F6EDFA',
-  brandLighter: '#FCFAFF',
   lightest: '#ffffff',
   darkest: '#4d4058',
   text: '#333333',
-  textMild: '#555555',
-  textLight: '#7e718a',
-  textLighter: '#aaaaaa',
-  border: '#ddd',
-  lilac: `#8c65b3`,
-  accent: `#ffb238`,
+  textLight: '#777777',
+  border: '#dddddd',
+  accent: `#BC027F`,
   error: `#ec1818`
 };
 
