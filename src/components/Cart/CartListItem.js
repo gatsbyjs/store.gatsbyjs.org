@@ -55,7 +55,7 @@ const Quantity = styled(Input)`
 `;
 
 const Remove = styled(Button)`
-  border: 1px dotted ${colors.textLighter};
+  border: 1px solid ${colors.border};
   display: flex;
   height: 44px;
   justify-content: center;
