@@ -19,7 +19,7 @@ import Cart from '../Cart';
 import SiteMetadata from '../shared/SiteMetadata';
 
 import { logout, getUserInfo } from '../../utils/auth';
-import { breakpoints, colors } from '../../utils/styles';
+import { breakpoints, colors, lineHeights } from '../../utils/styles';
 
 import gql from 'graphql-tag';
 
@@ -40,7 +40,7 @@ const globalStyles = css`
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
       Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 16px;
-    line-height: 1.375;
+    line-height: ${lineHeights.default};
     margin: 0 auto;
   }
 `;

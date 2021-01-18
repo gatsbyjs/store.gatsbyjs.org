@@ -11,7 +11,8 @@ import {
   fonts,
   radius,
   spacing,
-  fontSizes
+  fontSizes,
+  lineHeights
 } from '../../utils/styles';
 
 const ProductImagesMobileRoot = styled(`div`)`
@@ -54,7 +55,7 @@ const Incentive = styled(`div`)`
   h3 {
     font-family: ${fonts.heading};
     font-size: 1.2rem;
-    line-height: 1.2;
+    line-height: ${lineHeights.dense};
     margin: 0 0 0.5em;
 
     svg {

@@ -14,7 +14,7 @@ const CartIndicatorRoot = styled(`div`)`
   justify-content: center;
   align-items: center;
   left: 0;
-  line-height: 1;
+  line-height: ${lineHeights.solid};
   padding: ${spacing['xs']}px ${spacing.md}px ${spacing['xs']}px ${spacing.sm}px;
   position: absolute;
   top: calc(${dimensions.headerHeight} + ${spacing.md}px);

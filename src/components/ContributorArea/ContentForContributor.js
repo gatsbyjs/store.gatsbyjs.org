@@ -15,7 +15,8 @@ import {
   radius,
   spacing,
   animations,
-  fontSizes
+  fontSizes,
+  lineHeights
 } from '../../utils/styles';
 
 const ContentForContributorRoot = styled(`div`)`
@@ -70,7 +71,7 @@ const Used = styled(`span`)`
 const Tip = styled(`p`)`
   color: ${colors.brandBright};
   font-size: ${fontSizes.sm};
-  line-height: 1.2;
+  line-height: ${lineHeights.dense};
   margin: 0;
   padding-top: ${spacing.xs}px;
 `;

@@ -20,7 +20,8 @@ import {
   radius,
   spacing,
   animations,
-  fontSizes
+  fontSizes,
+  lineHeights
 } from '../../utils/styles';
 
 const DESCRIPTION_LIMIT = 90;
@@ -122,7 +123,7 @@ const Name = styled(`h1`)`
   color: ${colors.text};
   font-family: ${fonts.heading};
   font-size: ${fontSizes.lg};
-  line-height: 1.2;
+  line-height: ${lineHeights.dense};
   margin: 0;
 `;
 
@@ -130,7 +131,7 @@ const Description = styled(`p`)`
   color: ${colors.text};
   flex-grow: 1;
   font-size: ${fontSizes.sm};
-  line-height: 1.5;
+  line-height: ${lineHeights.default};
 `;
 
 const PriceRow = styled(`div`)`

@@ -7,7 +7,8 @@ import {
   colors,
   fonts,
   spacing,
-  fontSizes
+  fontSizes,
+  lineHeights
 } from '../../utils/styles';
 
 const ProductSpecsRoot = styled(`div`)`
@@ -30,7 +31,7 @@ const Name = styled(`h1`)`
 const Description = styled(`p`)`
   color: ${colors.text};
   font-size: ${fontSizes.md};
-  line-height: 1.5;
+  line-height: ${lineHeights.default};
 `;
 
 const Price = styled(`div`)`

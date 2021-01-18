@@ -1,7 +1,13 @@
 import styled from '@emotion/styled';
 
 import { PrimaryButton } from './Buttons';
-import { colors, radius, spacing, fontSizes } from '../../utils/styles';
+import {
+  colors,
+  radius,
+  spacing,
+  fontSizes,
+  lineHeights
+} from '../../utils/styles';
 
 export const Input = styled(`input`)`
   background-color: ${colors.lightest};
@@ -11,6 +17,7 @@ export const Input = styled(`input`)`
   display: block;
   padding: ${spacing.sm}px ${spacing.md}px;
   font-size: ${fontSizes.md};
+  line-height: ${lineHeights.solid};
   width: 100%;
 
   :focus {

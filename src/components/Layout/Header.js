@@ -4,7 +4,13 @@ import styled from '@emotion/styled';
 import { Link } from 'gatsby';
 import Logo from './Logo';
 
-import { breakpoints, colors, dimensions, spacing } from '../../utils/styles';
+import {
+  breakpoints,
+  colors,
+  dimensions,
+  spacing,
+  lineHeights
+} from '../../utils/styles';
 
 const HeaderRoot = styled('header')`
   align-items: center;
@@ -33,7 +39,7 @@ const HeaderRoot = styled('header')`
 const HomeLink = styled(Link)`
   display: block;
   flex-shrink: 0;
-  line-height: 1;
+  line-height: ${lineHeights.solid};
   margin-right: auto;
 `;
 

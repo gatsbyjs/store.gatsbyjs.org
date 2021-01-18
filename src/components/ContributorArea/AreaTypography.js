@@ -5,7 +5,8 @@ import {
   fonts,
   spacing,
   fontSizes,
-  breakpoints
+  breakpoints,
+  lineHeights
 } from '../../utils/styles';
 
 export const SectionHeading = styled(`h3`)`
@@ -19,7 +20,7 @@ export const Heading = styled(`h2`)`
   color: ${colors.text};
   font-family: ${fonts.heading};
   font-size: ${fontSizes.lg};
-  line-height: 1.25;
+  line-height: ${lineHeights.dense};
   margin: 0;
   margin-top: ${spacing.sm}px;
 
@@ -36,7 +37,7 @@ export const Subheading = styled(Heading)`
 export const Text = styled(`p`)`
   color: ${colors.text};
   font-size: ${fontSizes.md};
-  line-height: 1.5;
+  line-height: ${lineHeights.default};
   margin-bottom: 0;
 
   @media (min-width: ${breakpoints.desktop}px) {

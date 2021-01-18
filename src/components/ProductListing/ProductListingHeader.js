@@ -6,7 +6,8 @@ import {
   colors,
   fonts,
   spacing,
-  fontSizes
+  fontSizes,
+  lineHeights
 } from '../../utils/styles';
 
 const ProductListingHeaderRoot = styled(`header`)`
@@ -24,7 +25,7 @@ const Title = styled(`h1`)`
   font-size: ${fontSizes['3xl']};
   font-weight: 800;
   letter-spacing: -0.025em;
-  line-height: 1.25;
+  line-height: ${lineHeights.dense};
   margin: 0;
   margin-top: ${spacing.md}px;
 
@@ -36,7 +37,7 @@ const Title = styled(`h1`)`
 const Intro = styled(`p`)`
   color: ${colors.text};
   font-size: ${fontSizes.md};
-  line-height: 1.5;
+  line-height: ${lineHeights.default};
   margin: 0;
   margin-top: ${spacing.md}px;
 `;

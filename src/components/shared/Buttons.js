@@ -8,7 +8,8 @@ import {
   fonts,
   radius,
   gradients,
-  fontSizes
+  fontSizes,
+  lineHeights
 } from '../../utils/styles';
 
 export const ButtonBase = styled(`button`)`
@@ -22,6 +23,7 @@ export const ButtonBase = styled(`button`)`
   display: inline-flex;
   font-family: ${fonts.heading};
   font-size: ${fontSizes.md};
+  line-height: ${lineHeights.solid};
   justify-content: center;
   padding: 0.5em 0.75rem;
   transition: 0.5s;

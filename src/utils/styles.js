@@ -57,6 +57,12 @@ export const spacing = {
   '3xl': 48
 };
 
+export const lineHeights = {
+  solid: 1,
+  dense: 1.25,
+  default: 1.5
+};
+
 export const breakpoints = {
   mobile: 400,
   phablet: 550,

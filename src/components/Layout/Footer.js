@@ -1,7 +1,13 @@
 import React from 'react';
 import styled from '@emotion/styled';
 
-import { breakpoints, colors, spacing, fontSizes } from '../../utils/styles';
+import {
+  breakpoints,
+  colors,
+  spacing,
+  fontSizes,
+  lineHeights
+} from '../../utils/styles';
 
 export const minHeight = '90px';
 
@@ -38,7 +44,7 @@ const FooterRoot = styled('footer')`
 const Row = styled(`span`)`
   display: inline-block;
   flex-shrink: 0;
-  line-height: 1.25;
+  line-height: ${lineHeights.dense};
   padding-bottom: ${spacing['2xs']}px;
   text-align: center;
 

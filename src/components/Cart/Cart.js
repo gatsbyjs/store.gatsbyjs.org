@@ -22,7 +22,8 @@ import {
   fonts,
   spacing,
   dimensions,
-  fontSizes
+  fontSizes,
+  lineHeights
 } from '../../utils/styles';
 
 const CartRoot = styled(`div`)`
@@ -130,7 +131,7 @@ const ItemsInCart = styled(`div`)`
   align-items: center;
   display: flex;
   font-size: 0.8rem;
-  line-height: 1.2;
+  line-height: ${lineHeights.dense};
   text-align: right;
 
   ${ItemsNumber} {

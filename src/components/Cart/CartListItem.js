@@ -7,7 +7,13 @@ import CartThumbnail from './CartThumbnail';
 import { Input } from '../shared/FormElements';
 import { Button } from '../shared/Buttons';
 
-import { breakpoints, colors, spacing, fontSizes } from '../../utils/styles';
+import {
+  breakpoints,
+  colors,
+  spacing,
+  fontSizes,
+  lineHeights
+} from '../../utils/styles';
 
 const CartListItemRoot = styled('li')`
   align-items: center;
@@ -30,7 +36,7 @@ const Name = styled('span')`
   display: block;
   font-size: ${fontSizes.md};
   font-weight: 600;
-  line-height: 1.25;
+  line-height: ${lineHeights.dense};
 `;
 
 const Meta = styled('span')`
@@ -38,7 +44,7 @@ const Meta = styled('span')`
   display: block;
   font-size: ${fontSizes.sm};
   font-style: normal;
-  line-height: 1.25;
+  line-height: ${lineHeights.dense};
 `;
 
 const Quantity = styled(Input)`
