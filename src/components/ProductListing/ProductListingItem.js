@@ -21,7 +21,8 @@ import {
   spacing,
   animations,
   fontSizes,
-  lineHeights
+  lineHeights,
+  badgeThemes
 } from '../../utils/styles';
 
 const DESCRIPTION_LIMIT = 90;
@@ -84,38 +85,27 @@ const Preview = styled(`div`)`
 `;
 
 const CodeEligibility = styled(`div`)`
-  align-items: stretch;
   animation: ${animations.simpleEntry};
-  border-radius: ${radius.md}px;
-  bottom: 0;
-  color: ${colors.lightest};
-  display: flex;
-  left: ${spacing.lg}px;
-  overflow: hidden;
-  position: absolute;
-  right: ${spacing.lg}px;
+  color: ${props =>
+    badgeThemes[props.freeWith]
+      ? badgeThemes[props.freeWith].textTheme
+      : colors.lightest};
+  text-align: center;
 
-  span {
-    align-items: center;
-    display: flex;
-    height: 30px;
+  > span {
+    background: ${props =>
+      badgeThemes[props.freeWith]
+        ? badgeThemes[props.freeWith].backgroundTheme
+        : colors.brand};
+    padding: ${spacing['3xs']}px ${spacing.xs}px;
+    border-radius: ${radius.md}px;
+    display: inline-flex;
+    font-size: ${fontSizes.sm};
     justify-content: center;
   }
 
-  span:first-of-type {
-    background: #999;
-    flex-basis: 35%;
-    font-size: 0.9rem;
-  }
-
-  span:last-child {
-    background: ${props =>
-      props.freeWith === 'HOLYBUCKETS' ? colors.accent : colors.brand};
-    color: ${props =>
-      props.freeWith === 'HOLYBUCKETS' ? colors.brand : colors.accent};
-    flex-basis: 65%;
-    font-family: ${fonts.heading};
-    font-size: ${fontSizes.md};
+  > span > span:last-child {
+    font-weight: 600;
   }
 `;
 
@@ -250,9 +240,12 @@ const ProductListingItem = props => {
                     contributor
                   }) && (
                     <CodeEligibility freeWith={freeWith}>
-                      <span>free with </span>
                       <span>
-                        Code Swag Level {freeWith === 'HOLYBUCKETS' ? '2' : '1'}
+                        <span>Free with&nbsp;</span>
+                        <span>
+                          Code Swag Level{' '}
+                          {freeWith === 'HOLYBUCKETS' ? '2' : '1'}
+                        </span>
                       </span>
                     </CodeEligibility>
                   )}

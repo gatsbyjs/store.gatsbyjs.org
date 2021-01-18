@@ -25,48 +25,46 @@ const ContentForContributorRoot = styled(`div`)`
 `;
 
 const CodeBadgeBox = styled(`div`)`
-  margin: ${spacing.xl}px 0;
-  text-align: center;
-`;
-
-const CodeBadge = styled(`div`)`
-  border-radius: ${radius.lg}px;
-  display: flex;
-  flex-direction: column;
-  font-family: ${fonts.heading};
-`;
-
-const Name = styled(`span`)`
   background: ${props =>
     badgeThemes[props.code]
       ? badgeThemes[props.code].backgroundTheme
       : colors.brand};
+  border-radius: ${radius.lg}px;
   color: ${props =>
-    badgeThemes[props.code] ? badgeThemes[props.code].textTheme : colors.brand};
-  font-size: ${fontSizes.md};
-  padding: ${spacing.xs}px;
+    badgeThemes[props.code]
+      ? badgeThemes[props.code].textTheme
+      : colors.lightest};
+  margin: ${spacing.md}px 0;
+  text-align: center;
+  padding: ${spacing.sm}px 0;
+`;
+
+const CodeBadge = styled(`div`)`
+  display: flex;
+  flex-direction: column;
+  font-family: ${fonts.heading};
+  overflow: hidden;
+`;
+
+const Name = styled(`span`)`
+  font-size: ${fontSizes.sm};
+  font-weight: 600;
 `;
 
 const Code = styled(`span`)`
-  background: ${colors.lightest};
-  color: ${colors.brand};
-  font-size: ${fontSizes.lg};
+  font-size: ${fontSizes.md};
   padding: ${spacing['2xs']}px;
+  font-family: ${fonts.monospace};
+  font-weight: 700;
+  letter-spacing: 1px;
 `;
 
 const Used = styled(`span`)`
   align-items: center;
-  background: ${colors.textLight};
-  color: ${colors.lightest};
   display: flex;
   font-size: ${fontSizes.md};
   justify-content: center;
   padding: ${spacing.xs}px;
-
-  svg {
-    color: red;
-    margin-left: ${spacing.xs}px;
-  }
 `;
 
 const Tip = styled(`p`)`
@@ -78,34 +76,45 @@ const Tip = styled(`p`)`
 `;
 
 const CopyButton = styled(Button)`
-  margin-top: ${spacing.md}px;
+  margin-bottom: ${spacing.sm}px;
+  width: auto;
+  flex-grow: 0;
+  flex-shrink: 1;
+  background: transparent;
+  padding: 0;
+  border: 0;
+  color: inherit;
+  font-size: ${fontSizes.sm};
+
+  :hover {
+    box-shadow: none;
+  }
 `;
 
 const ProgressBarContainer = `
   border: 0;
-  width: 100%;
-  border-radius: 1rem;
-  background-color: ${colors.brand};
-  height: 1.6rem;
+  border-radius: ${radius.lg}px;
+  background: ${colors.lightest}33;
+  height: ${spacing.xs}px;
 `;
 
 const ProgressIndicator = `
   border: 0;
   width: 100%;
-  border-radius: 1rem 0 0 1rem;
-  background-color: ${colors.accent};
+  border-radius: ${radius.lg}px 0 0 ${radius.lg}px;
+  background-color: ${colors.lightest}99;
   transition: width 1s;
   background-image: linear-gradient(
-    45deg,
-    rgba(0, 0, 0, 0.1) 25%,
+    135deg,
+    currentColor 25%,
     transparent 25%,
     transparent 50%,
-    rgba(0, 0, 0, 0.1) 50%,
-    rgba(0, 0, 0, 0.1) 75%,
+    currentColor 50%,
+    currentColor 75%,
     transparent 75%,
     transparent,
-    rgba(0, 0, 0, 0.1) 50%,
-    rgba(0, 0, 0, 0.1) 75%,
+    currentColor 50%,
+    currentColor 75%,
     transparent 75%,
     transparent
   );
@@ -113,24 +122,28 @@ const ProgressIndicator = `
 
 const ProgressBar = styled(`progress`)`
   ${ProgressBarContainer} ::-webkit-progress-bar {
-    ${ProgressBarContainer}
+    ${ProgressBarContainer};
+    background: ${props => (props.theme ? `${props.theme}33` : null)};
   }
 
   ::-webkit-progress-value {
-    ${ProgressIndicator}
+    ${ProgressIndicator};
+    background-color: ${props => (props.theme ? `${props.theme}99` : null)};
   }
 
   ::-ms-fill {
-    ${ProgressIndicator}
+    ${ProgressIndicator};
+    background-color: ${props => (props.theme ? `${props.theme}99` : null)};
   }
   ::-moz-progress-bar {
-    ${ProgressIndicator}
+    ${ProgressIndicator};
+    background-color: ${props => (props.theme ? `${props.theme}99` : null)};
   }
 `;
 
 const LockIcon = styled(MdLock)`
   font-size: ${fontSizes.xl};
-  padding-top: 0.4rem;
+  padding-top: ${spacing.sm}px;
 `;
 
 const Copy = ({ code }) => {
@@ -145,15 +158,17 @@ const Copy = ({ code }) => {
   };
 
   let input = document.createElement('input');
+
   input.setAttribute('type', 'text');
   input.value = code;
   document.body.appendChild(input);
   input.select();
   document.execCommand('copy');
   document.body.removeChild(input);
+
   return (
     <CopyButton inverse={!copied} onClick={() => copyClick()}>
-      {copied ? 'Copied! 🎉' : 'Copy'}
+      {copied ? 'Copied! 🎉' : 'Copy Code'}
     </CopyButton>
   );
 };
@@ -195,7 +210,7 @@ const ContentForContributor = () => {
             </Text>
             <Text>{text}</Text>
             {codes.map(code => (
-              <CodeBadgeBox key={code.code}>
+              <CodeBadgeBox key={code.code} code={code.code}>
                 <CodeBadge>
                   <Name code={code.code}>
                     {`Level ${badgeThemes[code.code].level} Swag Code`}
@@ -228,8 +243,14 @@ const ContentForContributor = () => {
                     <LockIcon />
                   </Code>
                 </CodeBadge>
-                <ProgressBar value={percentToGo} max="100" />
-                <Text>{`Make ${contributionsToGo} more contribution${
+                <ProgressBar
+                  value={percentToGo}
+                  max="100"
+                  theme={badgeThemes['HOLYBUCKETS'].textTheme}
+                />
+                <Text
+                  css={{ color: colors.lightest }}
+                >{`Make ${contributionsToGo} more contribution${
                   contributionsToGo > 1 ? `s` : ``
                 } to earn level 2 swag!`}</Text>
               </CodeBadgeBox>
