@@ -27,7 +27,7 @@ const User = styled(`div`)`
 
 const Info = styled(`div`)`
   color: ${colors.textLight};
-  font-size: ${fontSizes.md};
+  font-size: ${fontSizes.sm};
 
   b {
     color: ${colors.text};

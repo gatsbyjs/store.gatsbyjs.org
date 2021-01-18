@@ -53,15 +53,15 @@ const CloseBarRoot = styled(`button`)`
   }
 
   svg {
-    height: calc(${height} / 2);
+    height: 24px;
     margin-left: ${spacing.xs}px;
-    width: calc(${height} / 2);
+    width: 24px;
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
     background: ${colors.lightest};
     border-right: 1px solid ${colors.border};
-    color: ${colors.text};
+    color: ${colors.textLight};
     transform: translateX(0);
     width: ${desktopMaxWidth};
 
