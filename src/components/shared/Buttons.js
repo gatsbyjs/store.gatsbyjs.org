@@ -25,7 +25,7 @@ export const ButtonBase = styled(`button`)`
   font-size: ${fontSizes.md};
   line-height: ${lineHeights.solid};
   justify-content: center;
-  padding: 0.5em 0.75rem;
+  padding: 0.75em 1rem;
   transition: 0.5s;
 
   :focus {

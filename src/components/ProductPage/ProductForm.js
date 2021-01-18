@@ -77,7 +77,6 @@ const QtyFieldset = styled(Fieldset)`
   }
 
   ${Input} {
-    padding: ${spacing.sm}px ${spacing.sm}px;
     text-align: center;
   }
 `;

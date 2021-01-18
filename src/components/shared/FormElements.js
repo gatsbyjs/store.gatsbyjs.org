@@ -15,10 +15,11 @@ export const Input = styled(`input`)`
   border-radius: ${radius.lg}px;
   color: ${colors.text};
   display: block;
-  padding: ${spacing.sm}px ${spacing.md}px;
   font-size: ${fontSizes.md};
   line-height: ${lineHeights.solid};
+  padding: ${spacing.md}px ${spacing.md}px;
   width: 100%;
+  height: 52px; // hacky
 
   :focus {
     box-shadow: 0 0 0 3px ${colors.accent};
@@ -37,7 +38,7 @@ export const Select = styled(Input.withComponent('select'))`
   background-position: right 0.5rem center;
   background-repeat: no-repeat;
   background-size: 8px 10px;
-  padding-right: ${spacing.xl}px !important;
+  padding-right: ${spacing['2xl']}px !important;
 `;
 
 export const Fieldset = styled(`fieldset`)`
@@ -52,8 +53,8 @@ export const Fieldset = styled(`fieldset`)`
 export const Label = styled(`label`)`
   color: ${colors.textLight};
   display: flex;
-  padding: ${spacing.xs}px;
   font-size: ${fontSizes.md};
+  padding: ${spacing.xs}px 0;
 `;
 
 export const Submit = styled(PrimaryButton)`
