@@ -11,7 +11,13 @@ import { RiShoppingCartFill } from 'react-icons/ri';
 
 import { Fieldset, Input, Label, Select, Submit } from '../shared/FormElements';
 
-import { breakpoints, colors, spacing, radius } from '../../utils/styles';
+import {
+  breakpoints,
+  colors,
+  spacing,
+  radius,
+  fontSizes
+} from '../../utils/styles';
 
 import StoreContext from '../../context/StoreContext';
 import Link from '../shared/Link';
@@ -90,10 +96,23 @@ const SizeFieldset = styled(Fieldset)`
 
 const InfoLinks = styled(`div`)`
   align-items: center;
+  color: ${colors.textLight};
   display: flex;
   justify-content: center;
   margin-top: ${spacing.lg}px;
   width: 100%;
+
+  @media (min-width: ${breakpoints.desktop}px) {
+    font-size: ${fontSizes.sm};
+  }
+
+  a {
+    color: ${colors.textLight};
+
+    :hover {
+      color: ${colors.brand};
+    }
+  }
 `;
 
 const AddToCartButton = styled(Submit)`
