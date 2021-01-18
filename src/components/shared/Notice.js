@@ -6,7 +6,7 @@ import { colors, radius, spacing } from '../../utils/styles';
 
 const NoticeRoot = styled(`div`)`
   background: ${colors.brandLight};
-  border-radius: ${radius.lg};
+  border-radius: ${radius.lg}px;
   padding: ${spacing.sm}px ${spacing.md}px;
 `;
 
