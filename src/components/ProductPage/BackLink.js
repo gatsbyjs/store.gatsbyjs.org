@@ -39,6 +39,12 @@ const BackToListing = styled(Button)`
 
   @media (min-width: ${breakpoints.desktop}px) {
     width: auto;
+    padding: 0;
+    border: 0;
+
+    :hover {
+      box-shadow: none;
+    }
   }
 `;
 
