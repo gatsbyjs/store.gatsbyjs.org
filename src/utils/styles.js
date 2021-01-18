@@ -7,6 +7,8 @@ import { keyframes, css } from '@emotion/core';
  * Example:
  *    // use the brand color at 25% opacity
  *    border-color: ${colors.brand}40;
+ *
+ * Also ref. https://css-tricks.com/8-digit-hex-codes/
  */
 export const colors = {
   brand: '#7026B9',
