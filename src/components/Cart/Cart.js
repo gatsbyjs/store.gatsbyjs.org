@@ -67,6 +67,7 @@ const CartRoot = styled(`div`)`
 
   @media (min-width: ${breakpoints.desktop}px) {
     width: ${dimensions.cartWidthDesktop};
+    border-left: 1px solid ${colors.border};
 
     &.covered {
       display: none;
