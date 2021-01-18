@@ -5,21 +5,15 @@ import UserContext from '../../context/UserContext';
 import ContentForNotLoggedIn from './ContentForNotLoggedIn';
 import ContentForLoggedIn from './ContentForLoggedIn';
 
-import { breakpoints, colors, spacing, dimensions } from '../../utils/styles';
+import { breakpoints, spacing, dimensions } from '../../utils/styles';
 
 const ContentContainerRoot = styled(`div`)`
   -webkit-overflow-scrolling: touch;
   overflow-y: auto;
   padding: ${spacing.lg}px;
-  padding-bottom: calc(
-    ${spacing.lg}px + ${dimensions.contributorAreaBarHeight}
-  );
 
   @media (min-width: ${breakpoints.desktop}px) {
     padding: ${spacing.xl}px;
-    padding-bottom: calc(
-      ${spacing.xl}px + ${dimensions.contributorAreaBarHeight}
-    );
   }
 `;
 

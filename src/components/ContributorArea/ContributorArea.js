@@ -24,7 +24,10 @@ const ContributorAreaRoot = styled(`aside`)`
   flex-direction: column;
   justify-content: space-between;
   left: 0;
-  min-height: calc(100vh - ${dimensions.headerHeight});
+  min-height: calc(
+    100vh - ${dimensions.headerHeight} - ${dimensions.contributorAreaBarHeight}
+  );
+  bottom: ${dimensions.contributorAreaBarHeight};
   position: fixed;
   top: ${dimensions.headerHeight};
   transform: translateX(-100%);
@@ -50,7 +53,10 @@ const ContributorAreaRoot = styled(`aside`)`
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
-    height: calc(100vh - ${dimensions.headerHeight});
+    height: calc(
+      100vh - ${dimensions.headerHeight} -
+        ${dimensions.contributorAreaBarHeight}
+    );
     width: ${desktopMaxWidth};
 
     &.opening {
