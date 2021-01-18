@@ -9,7 +9,7 @@ import {
   lineHeights
 } from '../../utils/styles';
 
-export const minHeight = '90px';
+export const minHeight = '96px';
 
 const FooterRoot = styled('footer')`
   align-items: center;
@@ -27,6 +27,7 @@ const FooterRoot = styled('footer')`
     text-decoration: none;
 
     :hover {
+      border-color: ${colors.brand};
       color: ${colors.brand};
     }
   }
