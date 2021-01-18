@@ -10,17 +10,22 @@ const LoadingRoot = styled(`div`)`
   color: ${colors.textLight};
   display: flex;
   flex-direction: column;
-  font-size: ${fontSizes.lg};
+  font-size: ${fontSizes.sm};
   height: 70vh;
   justify-content: center;
 `;
 
+const SpinnerContainer = styled(`span`)`
+  margin-bottom: ${spacing.lg};
+  font-size: ${fontSizes.lg};
+`;
+
 const Loading = () => (
   <LoadingRoot>
-    <span css={{ marginBottom: spacing.lg }}>
+    <SpinnerContainer>
       <Spinner />
-    </span>
-    Loading…
+    </SpinnerContainer>
+    Loading
   </LoadingRoot>
 );
 
