@@ -61,13 +61,14 @@ const Quantity = styled(Input)`
 `;
 
 const Remove = styled(Button)`
-  border: 1px solid ${colors.border};
+  border: 1px solid transparent;
   display: flex;
   height: 44px;
   justify-content: center;
   margin-right: ${spacing['2xs']}px;
   padding: 0;
   width: 44px;
+  color: ${colors.text};
 
   svg {
     height: 24px;
