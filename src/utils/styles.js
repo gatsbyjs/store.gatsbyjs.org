@@ -14,8 +14,8 @@ export const colors = {
   brandLight: '#F6EDFA',
   lightest: '#ffffff',
   darkest: '#4d4058',
-  text: '#333333',
-  textLight: '#777777',
+  text: '#36313D',
+  textLight: '#78757A',
   border: '#dddddd',
   accent: `#BC027F`,
   error: `#ec1818`
