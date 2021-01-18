@@ -221,20 +221,18 @@ const ContentForContributor = () => {
             ))}
             {/* Show progress bar when Level 1 is earned, but Level 2 is not */}
             {showLevelTwoIncentive && (
-              <>
-                <CodeBadgeBox key={`HOLYBUCKETS`}>
-                  <CodeBadge>
-                    <Name code={`HOLYBUCKETS`}>{`Level 2 Swag Code`}</Name>
-                    <Code>
-                      <LockIcon />
-                    </Code>
-                  </CodeBadge>
-                </CodeBadgeBox>
+              <CodeBadgeBox key={`HOLYBUCKETS`}>
+                <CodeBadge>
+                  <Name code={`HOLYBUCKETS`}>{`Level 2 Swag Code`}</Name>
+                  <Code>
+                    <LockIcon />
+                  </Code>
+                </CodeBadge>
                 <ProgressBar value={percentToGo} max="100" />
                 <Text>{`Make ${contributionsToGo} more contribution${
                   contributionsToGo > 1 ? `s` : ``
                 } to earn level 2 swag!`}</Text>
-              </>
+              </CodeBadgeBox>
             )}
             <Notice />
           </ContentForContributorRoot>
