@@ -20,7 +20,7 @@ const ProductListingHeaderRoot = styled(`header`)`
 `;
 
 const Title = styled(`h1`)`
-  color: ${colors.brandDark};
+  color: ${colors.text};
   font-family: ${fonts.heading};
   font-size: ${fontSizes['3xl']};
   font-weight: 800;
