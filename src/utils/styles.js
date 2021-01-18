@@ -139,8 +139,8 @@ const deadSimpleEntry = keyframes`
 
 export const gradients = {
   default: 'linear-gradient(0deg, #0C0717, #442266)',
-  button: 'linear-gradient(90deg, #BC027F, #7026B9)',
-  buttonHover: 'linear-gradient(90deg, #940159, #7026B9)'
+  button: `linear-gradient(90deg, #BC027F, ${colors.brand})`,
+  buttonHover: `linear-gradient(90deg, #A6026A, #4a197b)`
 };
 
 export const transitions = {
