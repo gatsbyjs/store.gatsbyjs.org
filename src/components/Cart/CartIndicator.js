@@ -3,7 +3,13 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { MdCheck } from 'react-icons/md';
 
-import { colors, dimensions, radius, spacing } from '../../utils/styles';
+import {
+  colors,
+  dimensions,
+  radius,
+  spacing,
+  lineHeights
+} from '../../utils/styles';
 import Spinner from '../shared/Spinner';
 
 const CartIndicatorRoot = styled(`div`)`
