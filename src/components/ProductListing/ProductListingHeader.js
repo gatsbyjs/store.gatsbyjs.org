@@ -7,7 +7,8 @@ import {
   fonts,
   spacing,
   fontSizes,
-  lineHeights
+  lineHeights,
+  gradients
 } from '../../utils/styles';
 
 const ProductListingHeaderRoot = styled(`header`)`
@@ -28,6 +29,10 @@ const Title = styled(`h1`)`
   line-height: ${lineHeights.dense};
   margin: 0;
   margin-top: ${spacing.md}px;
+  background: ${gradients.default};
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 
   @media (min-width: ${breakpoints.desktop}px) {
     font-size: ${fontSizes['4xl']};
