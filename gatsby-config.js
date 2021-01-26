@@ -18,13 +18,7 @@ module.exports = {
     },
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
-    {
-      resolve: 'gatsby-source-shopify',
-      options: {
-        shopName: 'gatsby-swag',
-        accessToken: process.env.SHOPIFY_ACCESS_TOKEN
-      }
-    },
+    'gatsby-source-shopify-experimental',
     'gatsby-plugin-react-helmet',
     'gatsby-plugin-emotion',
     {
