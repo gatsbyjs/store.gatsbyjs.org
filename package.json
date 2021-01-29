@@ -33,7 +33,7 @@
     "gatsby-plugin-react-helmet": "^3.0.12",
     "gatsby-plugin-sharp": "^2.6.9",
     "gatsby-source-shopify": "^3.2.8",
-    "gatsby-source-shopify-experimental": "^1.1.0",
+    "gatsby-source-shopify-experimental": "^1.2.0",
     "gatsby-transformer-sharp": "^2.1.19",
     "react": "^16.8.6",
     "react-apollo": "^2.5.5",
