@@ -19,10 +19,11 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
-      resolve: 'gatsby-source-shopify',
+      resolve: 'gatsby-source-shopify-experimental',
       options: {
-        shopName: 'gatsby-swag',
-        accessToken: process.env.SHOPIFY_ACCESS_TOKEN
+        apiKey: process.env.SHOPIFY_ADMIN_API_KEY,
+        password: process.env.SHOPIFY_ADMIN_PASSWORD,
+        storeUrl: 'gatsby-swag.myshopify.com'
       }
     },
     'gatsby-plugin-react-helmet',
