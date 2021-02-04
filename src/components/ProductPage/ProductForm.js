@@ -164,7 +164,6 @@ class ProductForm extends Component {
     const { variants } = this.props;
     const { errors } = this.state;
 
-    debugger;
     const hasVariants = variants.length > 1;
 
     /*
