@@ -87,7 +87,9 @@ export const query = graphql`
       handle
       description
       productType
+      storefrontId
       variants {
+        storefrontId
         shopifyId
         title
         price

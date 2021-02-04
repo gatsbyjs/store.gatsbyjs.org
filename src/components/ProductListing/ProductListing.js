@@ -30,11 +30,13 @@ const ProductListing = () => (
           edges {
             node {
               id
+              storefrontId
               handle
               title
               description
               productType
               variants {
+                storefrontId
                 shopifyId
                 title
                 price

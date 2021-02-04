@@ -106,7 +106,9 @@ const AddToCartButton = styled(Submit)`
 class ProductForm extends Component {
   state = {
     variant:
-      this.props.variants.length === 1 ? this.props.variants[0].shopifyId : '',
+      this.props.variants.length === 1
+        ? this.props.variants[0].storefrontId
+        : '',
     quantity: 1,
     errors: []
   };
@@ -162,6 +164,7 @@ class ProductForm extends Component {
     const { variants } = this.props;
     const { errors } = this.state;
 
+    debugger;
     const hasVariants = variants.length > 1;
 
     /*
@@ -222,8 +225,8 @@ class ProductForm extends Component {
                   {variants.map(variant => (
                     <option
                       disabled={!variant.availableForSale}
-                      value={variant.shopifyId}
-                      key={variant.shopifyId}
+                      value={variant.storefrontId}
+                      key={variant.storefrontId}
                     >
                       {variant.title}
                     </option>
