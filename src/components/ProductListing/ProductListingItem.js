@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
-import Image from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 import { MdShoppingCart, MdArrowForward } from 'react-icons/md';
 import UserContext from '../../context/UserContext';
@@ -223,12 +223,11 @@ const ProductListingItem = props => {
       handle,
       description,
       variants: [firstVariant],
-      images: [firstImage]
+      featuredImage
     }
   } = props;
 
   const { price } = firstVariant;
-  const fluid = firstImage?.localFile?.childImageSharp?.fluid;
 
   const freeWith =
     price >= 20 ? 'HOLYBUCKETS' : price >= 10 ? 'BUILDWITHGATSBY' : null;
@@ -239,24 +238,23 @@ const ProductListingItem = props => {
         return (
           <ProductListingItemLink to={`/product/${handle}`} aria-label={title}>
             <Item>
-              {fluid ? (
-                <Preview>
-                  <Image fluid={fluid} />
-                  {checkEligibility({
-                    freeWith,
-                    contributor
-                  }) && (
-                    <CodeEligibility freeWith={freeWith}>
-                      <span>free with </span>
-                      <span>
-                        Code Swag Level {freeWith === 'HOLYBUCKETS' ? '2' : '1'}
-                      </span>
-                    </CodeEligibility>
-                  )}
-                </Preview>
-              ) : (
-                'No preview image'
-              )}
+              <Preview>
+                <GatsbyImage
+                  image={featuredImage.gatsbyImageData}
+                  alt={featuredImage.altText}
+                />
+                {checkEligibility({
+                  freeWith,
+                  contributor
+                }) && (
+                  <CodeEligibility freeWith={freeWith}>
+                    <span>free with </span>
+                    <span>
+                      Code Swag Level {freeWith === 'HOLYBUCKETS' ? '2' : '1'}
+                    </span>
+                  </CodeEligibility>
+                )}
+              </Preview>
               <Name>{title}</Name>
               <Description>
                 {cutDescriptionShort(

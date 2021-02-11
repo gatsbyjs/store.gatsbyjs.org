@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Image from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/core';
 import { MdZoomIn } from 'react-icons/md';
@@ -51,7 +52,7 @@ const ZoomHelper = styled(`span`)`
   }
 `;
 
-export const StyledImage = styled(Image)`
+export const StyledImage = styled(GatsbyImage)`
   border-radius: ${radius.large}px;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
 `;
@@ -78,11 +79,7 @@ class ProductImage extends Component {
 
   render() {
     const {
-      image: {
-        localFile: {
-          childImageSharp: { fluid }
-        }
-      },
+      image: { gatsbyImageData, altText },
       onClick,
       imageFeatured = null
     } = this.props;
@@ -95,7 +92,7 @@ class ProductImage extends Component {
         href={fluid.src}
         onClick={this.handleClick(onClick)}
       >
-        <StyledImage fluid={imageFeatured ? featuredFluid : fluid} alt="" />
+        <StyledImage image={gatsbyImageData} alt={altText} />
         <ZoomHelper>
           <MdZoomIn />
         </ZoomHelper>

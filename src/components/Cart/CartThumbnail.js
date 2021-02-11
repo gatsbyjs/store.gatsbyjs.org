@@ -1,11 +1,12 @@
 import React from 'react';
 import { graphql, StaticQuery } from 'gatsby';
 import styled from '@emotion/styled';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import Image from 'gatsby-image';
 
 import { colors, radius } from '../../utils/styles';
 
-const CartThumbnailRoot = styled(Image)`
+const CartThumbnailRoot = styled(GatsbyImage)`
   border: 1px solid ${colors.brandLight};
   border-radius: ${radius.default}px;
   height: 36px;
@@ -20,13 +21,9 @@ const CartThumbnail = ({
 }) => {
   const image = shopifyImages.find(({ id }) => id === imageId);
 
-  if (image) {
-    imageProps.fluid = image.localFile.childImageSharp.fluid;
-  } else {
-    imageProps.src = fallback;
-  }
-
-  return <CartThumbnailRoot {...imageProps} />;
+  return (
+    <CartThumbnailRoot image={image.gatsbyImageData} alt={image.altText} />
+  );
 };
 
 export default props => (
@@ -38,13 +35,7 @@ export default props => (
             node {
               images {
                 id
-                localFile {
-                  childImageSharp {
-                    fluid {
-                      ...GatsbyImageSharpFluid_withWebp
-                    }
-                  }
-                }
+                gatsbyImageData(width: 910, height: 910)
               }
             }
           }

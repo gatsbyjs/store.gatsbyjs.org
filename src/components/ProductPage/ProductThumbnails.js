@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import Image from 'gatsby-image';
 
 import InterfaceContext from '../../context/InterfaceContext';
@@ -62,12 +63,7 @@ class ProductThumbnails extends Component {
           <ProductThumbnailsRoot className={className}>
             <ProductThumbnailsContent>
               {images.map((image, idx) => {
-                const {
-                  id,
-                  localFile: {
-                    childImageSharp: { fluid }
-                  }
-                } = image;
+                const { id, gatsbyImageData, altText } = image;
 
                 return (
                   <Thumbnail
@@ -75,7 +71,7 @@ class ProductThumbnails extends Component {
                     onClick={this.handleClick(image, featureProductImage)}
                     href={fluid.src}
                   >
-                    <Image fluid={fluid} />
+                    <GatsbyImage image={gatsbyImageData} alt={altText} />
                   </Thumbnail>
                 );
               })}

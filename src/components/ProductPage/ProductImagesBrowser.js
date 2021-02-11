@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import Image from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/core';
 import { MdClose, MdZoomIn, MdZoomOut } from 'react-icons/md';
@@ -279,12 +280,7 @@ class ProductImagesBrowser extends Component {
     const { images, position, imageFeatured, toggle } = this.props;
     const image = imageFeatured ? imageFeatured : images[0];
 
-    const {
-      altText,
-      localFile: {
-        childImageSharp: { fluid }
-      }
-    } = image;
+    const { altText, gatsbyImageData } = image;
 
     const { imageBoxHeight, superZoom } = this.state;
 
@@ -312,7 +308,7 @@ class ProductImagesBrowser extends Component {
               this.imageBox = image;
             }}
           >
-            <Image fluid={fluid} />
+            <GatsbyImage image={gatsbyImageData} alt={altText} />
           </ImageBox>
           {altText && (
             <CommunityCaption caption={altText} superZoom={superZoom} />

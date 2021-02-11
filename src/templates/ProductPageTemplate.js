@@ -22,7 +22,7 @@ const ProductPageTemplate = props => {
   } = site;
 
   const description = removeCareInstructions(fullDescription);
-  const image = product.images[0].localFile.childImageSharp.fluid.src;
+  const image = product.images[0].src;
   const canonical = `${siteUrl}${pathname}`;
 
   return (
@@ -98,13 +98,7 @@ export const query = graphql`
       images {
         id
         altText
-        localFile {
-          childImageSharp {
-            fluid(maxWidth: 910, maxHeight: 910) {
-              ...GatsbyImageSharpFluid_withWebp
-            }
-          }
-        }
+        gatsbyImageData(width: 910, height: 910)
       }
     }
   }

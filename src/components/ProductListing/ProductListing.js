@@ -42,15 +42,10 @@ const ProductListing = () => (
                 price
                 availableForSale
               }
-              images {
+              featuredImage {
                 id
-                localFile {
-                  childImageSharp {
-                    fluid(maxWidth: 910, maxHeight: 910) {
-                      ...GatsbyImageSharpFluid_withWebp
-                    }
-                  }
-                }
+                altText
+                gatsbyImageData(width: 910, height: 910)
               }
             }
           }
