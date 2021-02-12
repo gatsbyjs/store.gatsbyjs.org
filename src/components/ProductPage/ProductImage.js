@@ -79,7 +79,7 @@ class ProductImage extends Component {
 
   render() {
     const {
-      image: { gatsbyImageData, altText },
+      image: { gatsbyImageData, altText, src },
       onClick,
       imageFeatured = null
     } = this.props;
@@ -89,7 +89,7 @@ class ProductImage extends Component {
         ref={el => {
           this.imageLink = el;
         }}
-        href={fluid.src}
+        href={src}
         onClick={this.handleClick(onClick)}
       >
         <StyledImage image={gatsbyImageData} alt={altText} />

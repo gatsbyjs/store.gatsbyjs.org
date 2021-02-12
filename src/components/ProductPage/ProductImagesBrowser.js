@@ -280,7 +280,7 @@ class ProductImagesBrowser extends Component {
     const { images, position, imageFeatured, toggle } = this.props;
     const image = imageFeatured ? imageFeatured : images[0];
 
-    const { altText, gatsbyImageData } = image;
+    const { altText, gatsbyImageData, src } = image;
 
     const { imageBoxHeight, superZoom } = this.state;
 
@@ -301,7 +301,7 @@ class ProductImagesBrowser extends Component {
         >
           <ImageBox
             onClick={this.toggleZoomRatio}
-            href={fluid.src}
+            href={src}
             superZoom={superZoom}
             width={imageBoxHeight}
             ref={image => {

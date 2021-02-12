@@ -13,17 +13,23 @@ const CartThumbnailRoot = styled(GatsbyImage)`
   width: 36px;
 `;
 
-const CartThumbnail = ({
-  shopifyImages,
-  id: imageId,
-  fallback,
-  ...imageProps
-}) => {
-  const image = shopifyImages.find(({ id }) => id === imageId);
+const CartThumbnailRootFallback = styled(Image)`
+  border: 1px solid ${colors.brandLight};
+  border-radius: ${radius.default}px;
+  height: 36px;
+  width: 36px;
+`;
 
-  return (
-    <CartThumbnailRoot image={image.gatsbyImageData} alt={image.altText} />
-  );
+const CartThumbnail = ({ shopifyImages, fallback, ...imageProps }) => {
+  const image = shopifyImages.find(({ src }) => src === fallback);
+
+  if (image) {
+    return (
+      <CartThumbnailRoot image={image.gatsbyImageData} alt={image.altText} />
+    );
+  }
+
+  return <CartThumbnailRootFallback {...imageProps} src={fallback} />;
 };
 
 export default props => (
@@ -35,6 +41,8 @@ export default props => (
             node {
               images {
                 id
+                src
+                originalSrc
                 gatsbyImageData(width: 910, height: 910)
               }
             }
