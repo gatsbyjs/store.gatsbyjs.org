@@ -90,7 +90,7 @@ Some of the swag has been selling like hotcakes (only less tasty and providing a
 
 &nbsp; <!-- leave this here to avoid smashing the text against the summary -->
 
-On some international orders, customs will add additional taxes, duties, and other fees. This is unpredictable, and we have no way of knowing if or when it will happen, or how much it will be. If this happens to you, there is, unfortunately, nothing else Gatsby can do. You are responsible for paying any additional fees imposed as part of the customs process. Thanks for your understanding!
+On some international orders, customs will add additional taxes, duties, and other fees. This is unpredictable, and we have no way of knowing if or when it will happen, or how much it will be. If this happens to you, there is, unfortunately, nothing else Gatsby can do. You are responsible for paying any additional fees imposed as part of the customs process. Thanks for your understanding the problem!
 
 </details>
 
