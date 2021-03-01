@@ -82,7 +82,7 @@ const SizeChartTable = ({ unit }) => {
               <Size>39</Size>L–<Size>30</Size>W
             </Td>
             <Td>
-              <Size>40</Size>L–<Size>24</Size>W
+              <Size>40</Size>L–<Size>34</Size>W
             </Td>
           </Tr>
           <Tr>
