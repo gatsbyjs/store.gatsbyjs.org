@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
-import Image from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 import { MdShoppingCart, MdArrowForward } from 'react-icons/md';
 import UserContext from '../../context/UserContext';
@@ -32,19 +32,16 @@ const ProductListingItemLink = styled(Link)`
   overflow: hidden;
   text-decoration: none;
   transition: all ${TRANSITION_DURATION};
-
   @media (min-width: ${breakpoints.tablet}px) {
     margin-left: auto;
     margin-right: auto;
     max-width: 500px;
   }
-
   @media (min-width: ${breakpoints.desktop}px) {
     flex-basis: 300px;
     justify-content: center;
     margin: ${spacing.md * 1.25}px;
   }
-
   @media (hover: hover) {
     :hover {
       background: ${colors.brandLighter};
@@ -66,11 +63,9 @@ const Preview = styled(`div`)`
   margin-bottom: ${spacing.lg}px;
   overflow: hidden;
   position: relative;
-
   .gatsby-image-wrapper {
     transition: all ${TRANSITION_DURATION};
   }
-
   @media (hover: hover) {
     ${ProductListingItemLink}:hover & {
       .gatsby-image-wrapper {
@@ -91,20 +86,17 @@ const CodeEligibility = styled(`div`)`
   overflow: hidden;
   position: absolute;
   right: ${spacing.lg}px;
-
   span {
     align-items: center;
     display: flex;
     height: 30px;
     justify-content: center;
   }
-
   span:first-of-type {
     background: #999;
     flex-basis: 35%;
     font-size: 0.9rem;
   }
-
   span:last-child {
     background: ${props =>
       props.freeWith === 'HOLYBUCKETS' ? colors.lemon : colors.brand};
@@ -143,7 +135,6 @@ const Price = styled(`div`)`
   font-size: 1.4rem;
   font-weight: 500;
   letter-spacing: -0.02em;
-
   span {
     color: ${colors.textLight};
   }
@@ -159,13 +150,11 @@ const Incentive = styled('div')`
   margin-right: calc(-${spacing.lg}px - 40px);
   text-align: right;
   transition: all ${TRANSITION_DURATION};
-
   @media (hover: hover) {
     ${ProductListingItemLink}:hover & {
       transform: translateX(-40px);
     }
   }
-
   > span {
     svg {
       display: inline;
@@ -187,13 +176,11 @@ const CartIcon = styled(`span`)`
   transition: all ${TRANSITION_DURATION};
   vertical-align: middle;
   width: 40px;
-
   @media (hover: hover) {
     ${ProductListingItemLink}:hover & {
       margin-left: ${spacing.xs}px;
     }
   }
-
   svg {
     color: ${colors.accent};
     height: 22px;
@@ -223,12 +210,11 @@ const ProductListingItem = props => {
       handle,
       description,
       variants: [firstVariant],
-      images: [firstImage]
+      featuredImage
     }
   } = props;
 
   const { price } = firstVariant;
-  const fluid = firstImage?.localFile?.childImageSharp?.fluid;
 
   const freeWith =
     price >= 20 ? 'HOLYBUCKETS' : price >= 10 ? 'BUILDWITHGATSBY' : null;
@@ -239,24 +225,24 @@ const ProductListingItem = props => {
         return (
           <ProductListingItemLink to={`/product/${handle}`} aria-label={title}>
             <Item>
-              {fluid ? (
-                <Preview>
-                  <Image fluid={fluid} />
-                  {checkEligibility({
-                    freeWith,
-                    contributor
-                  }) && (
-                    <CodeEligibility freeWith={freeWith}>
-                      <span>free with </span>
-                      <span>
-                        Code Swag Level {freeWith === 'HOLYBUCKETS' ? '2' : '1'}
-                      </span>
-                    </CodeEligibility>
-                  )}
-                </Preview>
-              ) : (
-                'No preview image'
-              )}
+              <Preview>
+                <GatsbyImage
+                  image={featuredImage.gatsbyImageData}
+                  alt={featuredImage.altText}
+                  placeholder="blurred"
+                />
+                {checkEligibility({
+                  freeWith,
+                  contributor
+                }) && (
+                  <CodeEligibility freeWith={freeWith}>
+                    <span>free with </span>
+                    <span>
+                      Code Swag Level {freeWith === 'HOLYBUCKETS' ? '2' : '1'}
+                    </span>
+                  </CodeEligibility>
+                )}
+              </Preview>
               <Name>{title}</Name>
               <Description>
                 {cutDescriptionShort(
