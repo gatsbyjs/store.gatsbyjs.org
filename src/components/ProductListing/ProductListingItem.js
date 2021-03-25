@@ -242,6 +242,7 @@ const ProductListingItem = props => {
                 <GatsbyImage
                   image={featuredImage.gatsbyImageData}
                   alt={featuredImage.altText}
+                  placeholder="blurred"
                 />
                 {checkEligibility({
                   freeWith,
