@@ -21,11 +21,9 @@ const Form = styled(`form`)`
   flex-wrap: wrap;
   justify-content: center;
   padding: ${spacing['2xl']}px ${spacing.md}px 0;
-
   @media (min-width: ${breakpoints.tablet}px) {
     padding: ${spacing['2xl']}px ${spacing.xl}px 0;
   }
-
   @media (min-width: ${breakpoints.desktop}px) {
     justify-content: flex-start;
   }
@@ -46,7 +44,6 @@ const ErrorSign = styled(`div`)`
   display: flex;
   flex-basis: 40px;
   justify-content: center;
-
   svg {
     height: 20px;
     width: 20px;
@@ -69,11 +66,9 @@ const QtyFieldset = styled(Fieldset)`
   flex-grow: 0;
   flex-shrink: 0;
   margin-right: ${spacing.md}px;
-
   ${Label} {
     text-align: center;
   }
-
   ${Input} {
     padding: ${spacing.sm}px ${spacing.sm}px;
     text-align: center;
@@ -82,7 +77,6 @@ const QtyFieldset = styled(Fieldset)`
 
 const SizeFieldset = styled(Fieldset)`
   flex-basis: calc(100% - ${spacing.md}px - 70px);
-
   ${Label} {
     justify-content: space-between;
   }
@@ -106,7 +100,9 @@ const AddToCartButton = styled(Submit)`
 class ProductForm extends Component {
   state = {
     variant:
-      this.props.variants.length === 1 ? this.props.variants[0].shopifyId : '',
+      this.props.variants.length === 1
+        ? this.props.variants[0].storefrontId
+        : '',
     quantity: 1,
     errors: []
   };
@@ -222,8 +218,8 @@ class ProductForm extends Component {
                   {variants.map(variant => (
                     <option
                       disabled={!variant.availableForSale}
-                      value={variant.shopifyId}
-                      key={variant.shopifyId}
+                      value={variant.storefrontId}
+                      key={variant.storefrontId}
                     >
                       {variant.title}
                     </option>
