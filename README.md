@@ -1,7 +1,9 @@
 <p align="center">
+  
   <a href="https://www.gatsbyjs.com">
     <img src="https://www.gatsbyjs.com/Gatsby-Monogram.svg" width="60" alt="Gatsby"/>
   </a>
+  
 </p>
 <h1 align="center">
   Gatsby <a href="https://store.gatsbyjs.org">Swag Store</a>
@@ -10,8 +12,10 @@
 This is the Gatsby store, where we make swag, stickers, and other Gatsby goodies available to contributors and Gatsby enthusiasts. 💪💜
 
 <p align="center">
+  
   <img alt="Gatsby socks with Dora for scale." src="https://store.gatsbyjs.org/instagram-doraforscale.jpg" />
   Photo credit: <a href="https://instagram.com/doraforscale">doraforscale</a>
+  
 </p>
 
 See it live: [store.gatsbyjs.org](https://store.gatsbyjs.org)
@@ -46,7 +50,6 @@ We sell our swag at pretty close to cost (we round for easy math) and we don’t
 &nbsp; <!-- leave this here to avoid smashing the text against the summary -->
 
 Try opening the store in an incognito window and then proceed to check out. When checking out, make sure you're using the same email that's listed on your GitHub account.
-
 </details>
 
 <details>
@@ -55,7 +58,6 @@ Try opening the store in an incognito window and then proceed to check out. When
 &nbsp; <!-- leave this here to avoid smashing the text against the summary -->
 
 We _think_ this is a local storage issue, and it only seems to happen in Safari-based browsers. This includes all iOS browsers. Please see [this issue](https://github.com/gatsbyjs/store.gatsbyjs.org/issues/106) for details (or to help us fix it).
-
 </details>
 
 <details>
@@ -64,7 +66,6 @@ We _think_ this is a local storage issue, and it only seems to happen in Safari-
 &nbsp; <!-- leave this here to avoid smashing the text against the summary -->
 
 Please make sure the card isn't frozen or otherwise blocked by your financial institution. If it's not that, please send us an email to team@gatsbyjs.com if you're unable to pay with your credit card.
-
 </details>
 
 <details>
@@ -73,7 +74,6 @@ Please make sure the card isn't frozen or otherwise blocked by your financial in
 &nbsp; <!-- leave this here to avoid smashing the text against the summary -->
 
 International shipments can take up to 6 weeks to be delivered. 😱 Tracking updates may not always show up in real time on your tracking link. If you still have not received your order at the end of 6 weeks, please let us know by sending an email to team@gatsbyjs.com, and we'll see how we can help!
-
 </details>
 
 <details>
@@ -82,7 +82,6 @@ International shipments can take up to 6 weeks to be delivered. 😱 Tracking up
 &nbsp; <!-- leave this here to avoid smashing the text against the summary -->
 
 Some of the swag has been selling like hotcakes (only less tasty and providing a bit more coverage). Once an item is out, it takes us about 3 weeks for it to get back in stock.
-
 </details>
 
 <details>
@@ -91,7 +90,6 @@ Some of the swag has been selling like hotcakes (only less tasty and providing a
 &nbsp; <!-- leave this here to avoid smashing the text against the summary -->
 
 On some international orders, customs will add additional taxes, duties, and other fees. This is unpredictable, and we have no way of knowing if or when it will happen, or how much it will be. If this happens to you, there is, unfortunately, nothing else Gatsby can do. You are responsible for paying any additional fees imposed as part of the customs process. Thanks for your understanding!
-
 </details>
 
 <details>
@@ -100,5 +98,4 @@ On some international orders, customs will add additional taxes, duties, and oth
 &nbsp; <!-- leave this here to avoid smashing the text against the summary -->
 
 If you ended up with the wrong t-shirt or other clothing size by mistake, contact us via email with your order number at <a href="mailto:team@gatsbyjs.com">team@gatsbyjs.com</a> and we'll work with you to fix it. You don't have to submit another PR to get the correct size!
-
 </details>
