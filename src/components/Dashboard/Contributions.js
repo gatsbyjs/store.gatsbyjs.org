@@ -24,7 +24,7 @@ export default () => (
           <Text>
             This is your Gatsby Maintainer Dashboard. Once you’ve had your first
             pull request merged into Gatsby, you can come back here to{' '}
-            <strong>claim free swag.</strong>
+            <strong>claim free swag 🎉.</strong>
           </Text>
           <Text>
             If you have questions, ask on any issue (you can tag @gatsbyjs/learning
