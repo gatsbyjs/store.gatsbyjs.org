@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
-import Image from 'gatsby-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/core';
 import { MdZoomIn } from 'react-icons/md';
@@ -21,11 +21,9 @@ const change = keyframes`
 const ProductImageLink = styled(`a`)`
   display: block;
   position: relative;
-
   &.change {
     animation: ${change} ${IMAGE_CHANGE_ANIM_DURATION}ms ease-out forwards;
   }
-
   @media (min-width: ${breakpoints.desktop}px) {
     cursor: zoom-in;
   }
@@ -39,19 +37,18 @@ const ZoomHelper = styled(`span`)`
   padding: ${spacing['xs']}px;
   position: absolute;
   top: ${spacing['xs']}px;
-
   svg {
     fill: ${colors.brand};
     height: 24px;
     width: 24px;
   }
-
   @media (min-width: ${breakpoints.desktop}px) {
     display: none;
   }
 `;
 
-export const StyledImage = styled(Image)`
+export const StyledImage = styled(GatsbyImage)`
+  border-radius: ${radius.large}px;
   box-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
   border-radius: ${radius.lg}px;
 
@@ -82,11 +79,7 @@ class ProductImage extends Component {
 
   render() {
     const {
-      image: {
-        localFile: {
-          childImageSharp: { fluid }
-        }
-      },
+      image: { gatsbyImageData, altText, src },
       onClick,
       imageFeatured = null
     } = this.props;
@@ -96,10 +89,10 @@ class ProductImage extends Component {
         ref={el => {
           this.imageLink = el;
         }}
-        href={fluid.src}
+        href={src}
         onClick={this.handleClick(onClick)}
       >
-        <StyledImage fluid={imageFeatured ? featuredFluid : fluid} alt="" />
+        <StyledImage image={gatsbyImageData} alt={altText} />
         <ZoomHelper>
           <MdZoomIn />
         </ZoomHelper>

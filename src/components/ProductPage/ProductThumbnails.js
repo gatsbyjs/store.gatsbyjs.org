@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
+import { GatsbyImage } from 'gatsby-plugin-image';
 import Image from 'gatsby-image';
 
 import InterfaceContext from '../../context/InterfaceContext';
@@ -14,7 +15,6 @@ const ProductThumbnailsRoot = styled(`div`)`
   -webkit-overflow-scrolling: touch;
   overflow-x: scroll;
   width: 100%;
-
   @media (min-width: ${breakpoints.desktop}px) {
     height: auto;
     overflow-x: hidden;
@@ -25,7 +25,6 @@ export const ProductThumbnailsContent = styled(`div`)`
   display: inline-flex;
   height: 100%;
   padding-left: ${spacing.md}px;
-
   @media (min-width: ${breakpoints.desktop}px) {
     justify-content: center;
     min-width: 100%;
@@ -39,7 +38,6 @@ export const Thumbnail = styled(`a`)`
   height: ${THUMBNAIL_SIZE};
   margin-right: ${spacing.md}px;
   width: ${THUMBNAIL_SIZE};
-
   @media (min-width: ${breakpoints.desktop}px) {
     cursor: pointer;
     margin-right: ${spacing.md}px;
@@ -62,20 +60,15 @@ class ProductThumbnails extends Component {
           <ProductThumbnailsRoot className={className}>
             <ProductThumbnailsContent>
               {images.map((image, idx) => {
-                const {
-                  id,
-                  localFile: {
-                    childImageSharp: { fluid }
-                  }
-                } = image;
+                const { id, gatsbyImageData, altText, src } = image;
 
                 return (
                   <Thumbnail
                     key={id}
                     onClick={this.handleClick(image, featureProductImage)}
-                    href={fluid.src}
+                    href={src}
                   >
-                    <Image fluid={fluid} />
+                    <GatsbyImage image={gatsbyImageData} alt={altText} />
                   </Thumbnail>
                 );
               })}

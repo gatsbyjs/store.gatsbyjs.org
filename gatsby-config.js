@@ -16,14 +16,15 @@ module.exports = {
         component: require.resolve(`./src/components/Layout/`)
       }
     },
+    'gatsby-plugin-image',
     'gatsby-plugin-sharp',
     'gatsby-transformer-sharp',
     {
-      resolve: 'gatsby-source-shopify-experimental',
+      resolve: 'gatsby-source-shopify',
       options: {
         apiKey: process.env.SHOPIFY_ADMIN_API_KEY,
         password: process.env.SHOPIFY_ADMIN_PASSWORD,
-        storeUrl: 'gatsby-swag.myshopify.com'
+        storeUrl: process.env.SHOPIFY_SHOP_ADDRESS
       }
     },
     'gatsby-plugin-react-helmet',

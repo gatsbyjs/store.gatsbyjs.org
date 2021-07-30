@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
-import Image from 'gatsby-image';
+import { GatsbyImage, getImage } from 'gatsby-plugin-image';
 
 import { MdArrowForward } from 'react-icons/md';
 import { RiShoppingCartLine } from 'react-icons/ri';
@@ -36,19 +36,16 @@ const ProductListingItemLink = styled(Link)`
   overflow: hidden;
   text-decoration: none;
   transition: all ${TRANSITION_DURATION};
-
   @media (min-width: ${breakpoints.tablet}px) {
     margin-left: auto;
     margin-right: auto;
     max-width: 500px;
   }
-
   @media (min-width: ${breakpoints.desktop}px) {
     flex-basis: 300px;
     justify-content: center;
     margin: ${spacing.lg}px;
   }
-
   @media (hover: hover) {
     :hover {
       box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
@@ -70,11 +67,9 @@ const Preview = styled(`div`)`
   margin-bottom: ${spacing.lg}px;
   overflow: hidden;
   position: relative;
-
   .gatsby-image-wrapper {
     transition: all ${TRANSITION_DURATION};
   }
-
   @media (hover: hover) {
     ${ProductListingItemLink}:hover & {
       .gatsby-image-wrapper {
@@ -153,13 +148,11 @@ const Incentive = styled('div')`
   margin-right: calc(-${spacing.lg}px - 40px);
   text-align: right;
   transition: all ${TRANSITION_DURATION};
-
   @media (hover: hover) {
     ${ProductListingItemLink}:hover & {
       transform: translateX(-40px);
     }
   }
-
   > span {
     svg {
       display: inline;
@@ -181,13 +174,11 @@ const CartIcon = styled(`span`)`
   transition: all ${TRANSITION_DURATION};
   vertical-align: middle;
   width: 40px;
-
   @media (hover: hover) {
     ${ProductListingItemLink}:hover & {
       margin-left: ${spacing.xs}px;
     }
   }
-
   svg {
     color: ${colors.lightest};
     height: 24px;
@@ -217,12 +208,11 @@ const ProductListingItem = props => {
       handle,
       description,
       variants: [firstVariant],
-      images: [firstImage]
+      featuredImage
     }
   } = props;
 
   const { price } = firstVariant;
-  const fluid = firstImage?.localFile?.childImageSharp?.fluid;
 
   const freeWith =
     price >= 20 ? 'HOLYBUCKETS' : price >= 10 ? 'BUILDWITHGATSBY' : null;
@@ -233,27 +223,24 @@ const ProductListingItem = props => {
         return (
           <ProductListingItemLink to={`/product/${handle}`} aria-label={title}>
             <Item>
-              {fluid ? (
-                <Preview>
-                  <Image fluid={fluid} />
-                  {checkEligibility({
-                    freeWith,
-                    contributor
-                  }) && (
-                    <CodeEligibility freeWith={freeWith}>
-                      <span>
-                        <span>Free with&nbsp;</span>
-                        <span>
-                          Code Swag Level{' '}
-                          {freeWith === 'HOLYBUCKETS' ? '2' : '1'}
-                        </span>
-                      </span>
-                    </CodeEligibility>
-                  )}
-                </Preview>
-              ) : (
-                'No preview image'
-              )}
+              <Preview>
+                <GatsbyImage
+                  image={featuredImage.gatsbyImageData}
+                  alt={featuredImage.altText}
+                  placeholder="blurred"
+                />
+                {checkEligibility({
+                  freeWith,
+                  contributor
+                }) && (
+                  <CodeEligibility freeWith={freeWith}>
+                    <span>free with </span>
+                    <span>
+                      Code Swag Level {freeWith === 'HOLYBUCKETS' ? '2' : '1'}
+                    </span>
+                  </CodeEligibility>
+                )}
+              </Preview>
               <Name>{title}</Name>
               <Description>
                 {cutDescriptionShort(
