@@ -193,9 +193,9 @@ const ContentForContributor = () => {
         const numberOfCodes = codes.filter(code => code.used === false).length;
         let text;
         if (numberOfCodes > 1) {
-          text = `Use these discount codes during checkout to claim some free swag!`;
+          text = `Use these discount codes during checkout to claim some free swag:`;
         } else if (numberOfCodes == 1) {
-          text = `Enter this discount code during checkout to claim your free swag!`;
+          text = `Enter this discount code during checkout to claim your free swag:`;
         } else {
           text = `Looks like you've claimed your swag! Thanks again, and keep being awesome.`;
         }
@@ -204,7 +204,7 @@ const ContentForContributor = () => {
           <ContentForContributorRoot>
             <Heading>Here you go!</Heading>
             <Text>
-              Thanks for going the extra mile to help build Gatsby! 💪 You have
+              Thanks for going the extra mile to help build Gatsby. You have
               made <strong>{contributionCount}</strong>{' '}
               {`contribution${contributionCount > 1 ? `s` : ``}`}!
             </Text>
