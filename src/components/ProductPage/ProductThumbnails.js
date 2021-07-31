@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import Image from 'gatsby-image';
 
 import InterfaceContext from '../../context/InterfaceContext';
 
