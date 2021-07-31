@@ -81,6 +81,7 @@ export const radius = {
 };
 
 export const defaultFontStack = [
+  'Inter var',
   '-apple-system',
   'BlinkMacSystemFont',
   'Segoe UI',
