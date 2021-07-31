@@ -24,6 +24,24 @@ import { breakpoints, colors, lineHeights } from '../../utils/styles';
 import gql from 'graphql-tag';
 
 const globalStyles = css`
+  @font-face {
+    font-family: 'Inter var';
+    font-weight: 100 900;
+    font-display: swap;
+    font-style: normal;
+    font-named-instance: 'Regular';
+    src: url('/fonts/Inter-roman.var.woff2?v=3.19') format('woff2');
+  }
+
+  @font-face {
+    font-family: 'Inter var';
+    font-weight: 100 900;
+    font-display: swap;
+    font-style: italic;
+    font-named-instance: 'Italic';
+    src: url('/fonts/Inter-italic.var.woff2?v=3.19') format('woff2');
+  }
+
   html {
     box-sizing: border-box;
   }
@@ -42,6 +60,8 @@ const globalStyles = css`
     font-size: 16px;
     line-height: ${lineHeights.default};
     margin: 0 auto;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
   }
 `;
 
