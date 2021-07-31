@@ -11,7 +11,7 @@ const Text = styled(BaseText)`
   text-align: center;
 `;
 
-export default () => {
+const login = () => {
   if (!isAuthenticated()) {
     return (
       <TextContainer>
@@ -20,3 +20,5 @@ export default () => {
     );
   }
 };
+
+export default login;
