@@ -58,7 +58,7 @@ class ProductThumbnails extends Component {
         {({ featureProductImage }) => (
           <ProductThumbnailsRoot className={className}>
             <ProductThumbnailsContent>
-              {images.map((image, idx) => {
+              {images.map(image => {
                 const { id, gatsbyImageData, altText, src } = image;
 
                 return (
