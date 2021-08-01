@@ -112,10 +112,13 @@ const monospaceFontStack = [
   `monospace`
 ].join();
 
+const serifFontStack = [`Times New Roman`, `Times`, `serif`].join();
+
 export const fonts = {
   body: defaultFontStack,
   heading: `${defaultFontStack}`,
-  monospace: monospaceFontStack
+  monospace: monospaceFontStack,
+  serif: serifFontStack
 };
 
 export const dimensions = {
