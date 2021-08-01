@@ -1,4 +1,4 @@
-import { keyframes, css } from '@emotion/core';
+import { keyframes, css } from '@emotion/react';
 
 /*
  * NOTE: use a six-character hex code for all colors to allow alpha channel

@@ -2,7 +2,6 @@ import React from 'react';
 import { graphql, StaticQuery } from 'gatsby';
 import styled from '@emotion/styled';
 import { GatsbyImage } from 'gatsby-plugin-image';
-import Image from 'gatsby-image';
 
 import { colors, radius } from '../../utils/styles';
 
@@ -13,7 +12,7 @@ const CartThumbnailRoot = styled(GatsbyImage)`
   width: 36px;
 `;
 
-const CartThumbnailRootFallback = styled(Image)`
+const CartThumbnailRootFallback = styled(GatsbyImage)`
   border: 1px solid ${colors.brandLight};
   border-radius: ${radius.default}px;
   height: 36px;
