@@ -6331,7 +6331,7 @@ gatsby-plugin-google-analytics@^3.10.0:
     minimatch "3.0.4"
     web-vitals "^1.1.2"
 
-gatsby-plugin-image@^1.2.0-next.0:
+gatsby-plugin-image@^1.10.1:
   version "1.10.1"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-image/-/gatsby-plugin-image-1.10.1.tgz#27a5eb2031f16d5b7320c2399266decdf295618a"
   integrity sha512-0gbp3XqQFOAUnyN1GJOho1Eng+rQEMy1aPhRlb1s2xdWW3zx2Uqt9N7ZRsBMo1PIxBSFeqBKzU9GDux2RVyUCA==
@@ -6591,7 +6591,7 @@ gatsby-worker@^0.1.0:
   dependencies:
     "@babel/core" "^7.14.6"
 
-gatsby@^3.1.2:
+gatsby@^3.10.2:
   version "3.10.2"
   resolved "https://registry.yarnpkg.com/gatsby/-/gatsby-3.10.2.tgz#596916c3f29b23ce999115b52f23e18d0f87af30"
   integrity sha512-O4Pp1wA20Opkv4OxFkc7asjh9FB/yZxkQcI1FIeDZSUxjPV6PN9smgAy13aVM3dFNp6fMSZkN8pyWQoKc2q1sg==
