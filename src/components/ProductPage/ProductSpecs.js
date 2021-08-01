@@ -6,9 +6,10 @@ import {
   breakpoints,
   colors,
   fonts,
-  spacing,
   fontSizes,
-  lineHeights
+  fontWeights,
+  lineHeights,
+  spacing
 } from '../../utils/styles';
 
 const ProductSpecsRoot = styled(`div`)`
@@ -23,7 +24,7 @@ const Name = styled(`h1`)`
   color: ${colors.text};
   font-family: ${fonts.heading};
   font-size: ${fontSizes['2xl']};
-  font-weight: 700;
+  font-weight: ${fontWeights.bold};
   line-height: 1.125;
   margin: 0;
 `;
@@ -36,8 +37,8 @@ const Description = styled(`p`)`
 
 const Price = styled(`div`)`
   color: ${colors.brand};
-  font-size: 1.8rem;
-  font-weight: 500;
+  font-size: ${fontSizes['xl']};
+  font-weight: ${fontWeights.semibold};
   letter-spacing: -0.02em;
 
   span {

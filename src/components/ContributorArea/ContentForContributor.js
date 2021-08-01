@@ -10,14 +10,15 @@ import { Button } from '../shared/Buttons';
 import Notice from '../shared/Notice';
 
 import {
-  colors,
-  badgeThemes,
-  fonts,
-  radius,
-  spacing,
   animations,
+  badgeThemes,
+  colors,
+  fonts,
   fontSizes,
-  lineHeights
+  fontWeights,
+  lineHeights,
+  radius,
+  spacing
 } from '../../utils/styles';
 
 const ContentForContributorRoot = styled(`div`)`
@@ -48,14 +49,14 @@ const CodeBadge = styled(`div`)`
 
 const Name = styled(`span`)`
   font-size: ${fontSizes.sm};
-  font-weight: 600;
+  font-weight: ${fontWeights.semibold};
 `;
 
 const Code = styled(`span`)`
   font-size: ${fontSizes.md};
   padding: ${spacing['2xs']}px;
   font-family: ${fonts.monospace};
-  font-weight: 700;
+  font-weight: ${fontWeights.bold};
   letter-spacing: 1px;
 `;
 

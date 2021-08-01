@@ -19,11 +19,12 @@ import { transitions, visuallyHidden } from '../../utils/styles';
 import {
   breakpoints,
   colors,
-  fonts,
-  spacing,
   dimensions,
+  fonts,
   fontSizes,
-  lineHeights
+  fontWeights,
+  lineHeights,
+  spacing
 } from '../../utils/styles';
 
 const CartRoot = styled(`div`)`
@@ -121,7 +122,7 @@ const ItemsNumber = styled(`span`)`
   color: ${colors.lightest};
   display: flex;
   font-size: ${fontSizes.md};
-  font-weight: bold;
+  font-weight: ${fontWeights.bold};
   height: 28px;
   justify-content: center;
   width: 28px;
@@ -177,7 +178,7 @@ const Total = styled(Cost)`
   padding-top: ${spacing.md}px;
 
   span {
-    font-weight: bold;
+    font-weight: ${fontWeights.bold};
   }
 
   strong,

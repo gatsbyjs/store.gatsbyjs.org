@@ -1,19 +1,20 @@
 import styled from '@emotion/styled';
 
 import {
+  breakpoints,
   colors,
   fonts,
-  spacing,
   fontSizes,
-  breakpoints,
-  lineHeights
+  fontWeights,
+  lineHeights,
+  spacing
 } from '../../utils/styles';
 
 export const SectionHeading = styled(`h3`)`
   color: ${colors.textLight};
   font-family: ${fonts.heading};
   font-size: ${fontSizes.sm};
-  font-weight: 400;
+  font-weight: ${fontWeights.semibold};
   margin: 0;
 `;
 
@@ -48,7 +49,7 @@ export const Text = styled(`p`)`
   a {
     color: ${colors.brand};
     border-bottom: 1px solid ${colors.brand};
-    font-weight: bold;
+    font-weight: ${fontWeights.bold};
     text-decoration: none;
 
     :hover {
@@ -60,5 +61,5 @@ export const Text = styled(`p`)`
 
 export const Lede = styled(Text)`
   font-size: ${fontSizes.md};
-  font-weight: 700;
+  font-weight: ${fontWeights.bold};
 `;

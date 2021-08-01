@@ -8,17 +8,19 @@ import {
   dimensions,
   radius,
   spacing,
-  lineHeights
+  lineHeights,
+  fontSizes
 } from '../../utils/styles';
 import Spinner from '../shared/Spinner';
 
 const CartIndicatorRoot = styled(`div`)`
+  align-items: center;
   background: ${colors.accent};
   border-radius: ${radius.md}px;
   color: ${colors.lightest};
   display: ${props => (props.visible ? 'flex' : 'none')};
+  font-size: ${fontSizes.sm};
   justify-content: center;
-  align-items: center;
   left: 0;
   line-height: ${lineHeights.solid};
   padding: ${spacing['xs']}px ${spacing.md}px ${spacing['xs']}px ${spacing.sm}px;

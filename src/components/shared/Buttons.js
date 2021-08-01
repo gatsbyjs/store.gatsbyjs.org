@@ -9,6 +9,7 @@ import {
   radius,
   gradients,
   fontSizes,
+  fontWeights,
   lineHeights
 } from '../../utils/styles';
 
@@ -108,8 +109,8 @@ export const PrimaryButton = styled(Button)`
   border: 0;
   color: ${colors.lightest};
   display: flex;
-  font-size: 1.25rem;
-  font-weight: 700;
+  font-size: ${fontSizes.md};
+  font-weight: ${fontWeights.bold};
   justify-content: center;
 
   @media (hover: hover) {

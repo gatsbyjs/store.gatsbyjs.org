@@ -10,9 +10,10 @@ import { Button } from '../shared/Buttons';
 import {
   breakpoints,
   colors,
-  spacing,
   fontSizes,
-  lineHeights
+  fontWeights,
+  lineHeights,
+  spacing
 } from '../../utils/styles';
 
 const CartListItemRoot = styled('li')`
@@ -35,7 +36,7 @@ const Info = styled('div')`
 const Name = styled('span')`
   display: block;
   font-size: ${fontSizes.md};
-  font-weight: 600;
+  font-weight: ${fontWeights.semibold};
   line-height: ${lineHeights.dense};
 `;
 

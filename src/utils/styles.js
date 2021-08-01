@@ -47,6 +47,14 @@ export const fontSizes = {
   '4xl': '4rem'
 };
 
+export const fontWeights = {
+  normal: 400,
+  medium: 500,
+  semibold: 600,
+  bold: 700
+};
+// ;)
+
 export const spacing = {
   '3xs': 2,
   '2xs': 4,
