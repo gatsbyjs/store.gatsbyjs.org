@@ -24,9 +24,7 @@ const ThLeft = styled('th')`
 `;
 
 const ThBrand = styled('th')`
-  background: ${colors.brand};
-  border-left: 1px solid #9d7cbf;
-  color: ${colors.lightest};
+  border-left: 1px solid #f5f3f7;
   -webkit-font-smoothing: antialiased;
   padding: 8px 0;
 `;
