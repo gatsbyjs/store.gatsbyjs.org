@@ -5,7 +5,7 @@ import { MdArrowBack } from 'react-icons/md';
 
 import { Button } from '../shared/Buttons';
 
-import { breakpoints, colors, fonts, spacing } from '../../utils/styles';
+import { breakpoints, colors, spacing } from '../../utils/styles';
 
 const BackLinkRoot = styled(`div`)`
   background: linear-gradient(
@@ -35,15 +35,21 @@ const BackLinkRoot = styled(`div`)`
 `;
 
 const BackToListing = styled(Button)`
+  border-radius: 0;
+  color: ${colors.text};
   width: 100%;
 
   @media (min-width: ${breakpoints.desktop}px) {
-    width: auto;
-    padding: 0;
     border: 0;
+    border-bottom: 1px solid currentColor;
+    padding: 0;
+    width: auto;
+  }
 
+  @media (hover: hover) {
     :hover {
       box-shadow: none;
+      color: ${colors.brand};
     }
   }
 `;
