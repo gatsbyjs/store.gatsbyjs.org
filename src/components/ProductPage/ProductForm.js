@@ -6,7 +6,6 @@ import { MdErrorOutline, MdSentimentDissatisfied } from 'react-icons/md';
 import { RiShoppingCartFill, RiRulerLine } from 'react-icons/ri';
 
 import { Fieldset, Input, Label, Select, Submit } from '../shared/FormElements';
-
 import {
   breakpoints,
   colors,
@@ -14,7 +13,6 @@ import {
   radius,
   fontSizes
 } from '../../utils/styles';
-
 import StoreContext from '../../context/StoreContext';
 import Link from '../shared/Link';
 
@@ -23,9 +21,11 @@ const Form = styled(`form`)`
   flex-wrap: wrap;
   justify-content: center;
   padding: ${spacing['2xl']}px ${spacing.md}px 0;
+
   @media (min-width: ${breakpoints.tablet}px) {
     padding: ${spacing['2xl']}px ${spacing.xl}px 0;
   }
+
   @media (min-width: ${breakpoints.desktop}px) {
     justify-content: flex-start;
   }
@@ -46,6 +46,7 @@ const ErrorSign = styled(`div`)`
   display: flex;
   flex-basis: 40px;
   justify-content: center;
+
   svg {
     height: 20px;
     width: 20px;
