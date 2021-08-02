@@ -168,6 +168,10 @@ export const animations = {
   `
 };
 
+export const borders = {
+  grid: `1px solid ${colors.border}`
+};
+
 export const visuallyHidden = {
   // be explicit and include a unit (`px`)
   // so we can use it with e. g. `sx`
