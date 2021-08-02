@@ -68,12 +68,15 @@ const ProductImagesBrowserRoot = styled(`div`)`
   width: 100vw;
   will-change: opacity, transform, left;
   z-index: 10000;
+
   &.open {
     animation: ${entry} 300ms ease-out forwards;
   }
+
   &.closed {
     animation: ${exit} 200ms ease-out forwards;
   }
+
   @media (min-width: ${breakpoints.desktop}px) {
     flex-direction: row;
     height: 100vh;
@@ -98,9 +101,11 @@ const ZoomArea = styled(`div`)`
   overflow-x: scroll;
   overflow-y: scroll;
   width: 100%;
+
   &.change {
     animation: ${change} ${IMAGE_CHANGE_ANIM_DURATION}ms ease-out forwards;
   }
+
   @media (min-width: ${breakpoints.desktop}px) {
     border-bottom: none;
     border-left: 1px solid ${colors.brandLight};
@@ -118,15 +123,18 @@ const ImageBox = styled(`a`)`
   height: 100%;
   position: relative;
   width: 100%;
+
   .gatsby-image-wrapper {
     height: auto;
     width: ${props => (props.superZoom ? props.width * 2 : props.width)}px;
   }
+
   @media (orientation: landscape) {
     .gatsby-image-wrapper {
       width: ${props => (props.superZoom ? '200' : '100')}%;
     }
   }
+
   @media (min-width: ${breakpoints.desktop}px) {
     cursor: ${props => (props.superZoom ? 'zoom-out' : 'zoom-in')};
     width: ${props => (props.superZoom ? '100%' : 'auto')};
@@ -144,11 +152,13 @@ const ZoomHelper = styled(`span`)`
   padding: ${spacing['xs']}px;
   position: fixed;
   top: ${spacing['xs']}px;
+
   svg {
     fill: ${colors.brand};
     height: 34px;
     width: 34px;
   }
+
   @media (min-width: ${breakpoints.desktop}px) {
     display: none;
   }
@@ -160,6 +170,7 @@ const Actions = styled(`div`)`
   flex-grow: 0;
   height: ${dimensions.pictureBrowserAction.heightMobile};
   padding-left: ${spacing.md}px;
+
   @media (min-width: ${breakpoints.desktop}px) {
     align-items: center;
     flex-direction: column;
@@ -180,6 +191,7 @@ const ActionsThumbnails = styled(ProductThumbnails)`
       align-items: center;
       flex-direction: column;
     }
+
     ${Thumbnail} {
       height: 70px;
       margin-bottom: ${spacing.md}px;
