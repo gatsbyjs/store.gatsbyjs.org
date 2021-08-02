@@ -23,14 +23,14 @@ const Section = styled(`section`)`
 `;
 
 const SectionHeading = styled(Heading.withComponent(`h2`))`
-  font-size: 1.8rem;
+  font-size: ${fontSizes['2xl']};
   letter-spacing: -0.01em;
   margin-bottom: ${spacing.sm}px;
 `;
 
 const SubHeading = styled(Heading.withComponent(`h3`))`
   color: ${colors.text};
-  font-size: 1.2rem;
+  font-size: ${fontSizes['xl']};
   margin: ${spacing.lg}px 0 ${spacing.xs}px;
 `;
 
