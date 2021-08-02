@@ -19,7 +19,13 @@ import Cart from '../Cart';
 import SiteMetadata from '../shared/SiteMetadata';
 
 import { logout, getUserInfo } from '../../utils/auth';
-import { breakpoints, colors, lineHeights } from '../../utils/styles';
+import {
+  breakpoints,
+  colors,
+  fonts,
+  fontWeights,
+  lineHeights
+} from '../../utils/styles';
 
 import gql from 'graphql-tag';
 
@@ -55,13 +61,16 @@ const globalStyles = css`
   body {
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0.05);
     color: ${colors.text};
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
-      Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: ${fonts.body};
     font-size: 16px;
     line-height: ${lineHeights.default};
     margin: 0 auto;
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-weight: ${fontWeights.medium};
+    font-feature-settings: 'cv01', 'cv02', 'cv03', 'cv04', 'cv06', 'cv07',
+      'cv08', 'cv09', 'calt', 'ccmp', 'kern';
   }
 `;
 
