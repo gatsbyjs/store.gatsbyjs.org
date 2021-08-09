@@ -12,39 +12,36 @@ import { keyframes, css } from '@emotion/react';
  */
 export const colors = {
   brand: '#7026B9',
-  brandBright: '#F1DEFA',
-  brandLight: '#F6EDFA',
+  brandLight: '#f6f0ff',
   lightest: '#ffffff',
-  darkest: '#4d4058',
-  text: '#36313D',
-  textLight: '#78757A',
-  border: '#dddddd',
-  accent: `#BC027F`,
+  text: '#7026B9',
+  textLight: '#7026B9',
+  border: '#7026B9',
+  accent: '#7026B9',
   error: `#ec1818`
 };
 
 export const badgeThemes = {
   BUILDWITHGATSBY: {
     level: 1,
-    backgroundTheme: '#F67300',
-    textTheme: colors.lightest
+    backgroundTheme: '#fff',
+    textTheme: '#7026B9'
   },
   HOLYBUCKETS: {
     level: 2,
-    backgroundTheme: '#FEC21E',
-    textTheme: colors.text
+    backgroundTheme: '#fff',
+    textTheme: '#7026B9'
   }
 };
 
 export const fontSizes = {
-  '2xs': '0.75rem',
+  xs: '0.75rem',
   sm: '0.875rem',
   md: '1rem',
-  lg: '1.5rem',
-  xl: '2rem',
-  '2xl': '2.5rem',
-  '3xl': '3rem',
-  '4xl': '4rem'
+  lg: '1.25rem',
+  xl: '1.5rem',
+  '2xl': '2rem',
+  '3xl': '2.5rem'
 };
 
 export const fontWeights = {
@@ -56,15 +53,15 @@ export const fontWeights = {
 // ;)
 
 export const spacing = {
-  '3xs': 2,
-  '2xs': 4,
-  xs: 8,
-  sm: 12,
-  md: 16,
-  lg: 24,
-  xl: 32,
-  '2xl': 40,
-  '3xl': 48
+  '3xs': '2px',
+  '2xs': '4px',
+  xs: '8px',
+  sm: '12px',
+  md: '16px',
+  lg: '24px',
+  xl: '32px',
+  '2xl': '40px',
+  '3xl': '48px'
 };
 
 export const lineHeights = {
@@ -116,24 +113,29 @@ const serifFontStack = [`Times New Roman`, `Times`, `serif`].join();
 
 export const fonts = {
   body: defaultFontStack,
-  heading: `${defaultFontStack}`,
+  heading: defaultFontStack,
   monospace: monospaceFontStack,
   serif: serifFontStack
 };
 
 export const dimensions = {
   headerHeight: '64px',
-  cartWidthDesktop: '420px',
+  cartWidthDesktop: '560px',
   contributorAreaWidth: {
     closedDesktop: '64px',
     openDesktop: '340px',
-    openHd: '420px'
+    openHd: '360px'
   },
   contributorAreaBarHeight: '64px',
   pictureBrowserAction: {
     widthDesktop: '200px',
     heightMobile: '80px'
-  }
+  },
+  gutter: {
+    default: '24px',
+    desktop: '32px'
+  },
+  interactiveMinHeight: '48px'
 };
 
 const simpleEntry = keyframes`
@@ -150,31 +152,42 @@ const deadSimpleEntry = keyframes`
 `;
 
 export const gradients = {
-  default: `linear-gradient(45deg, #BC027F, ${colors.brand})`,
-  button: `linear-gradient(90deg, #BC027F, ${colors.brand})`,
-  buttonHover: `linear-gradient(90deg, #A6026A, #4a197b)`
+  button: `repeating-linear-gradient(75deg, ${colors.brand}, ${colors.brand}, #BC027F, ${colors.brand}, ${colors.brand})`,
+  overlay: `repeating-linear-gradient(75deg, ${colors.brand}, #BC027F, #BC027F, #F67300, #FED038, #37B635, #00BDB6, #0D96F2)`
 };
 
 export const transitions = {
-  sidebar: '0.25s ease'
+  sidebar: '0.25s ease',
+  speed: {
+    faster: '50ms',
+    fast: '100ms',
+    default: '250ms',
+    slow: '500ms',
+    slower: '1000ms'
+  }
 };
 
 export const animations = {
+  /* stylelint-disable */
   simpleEntry: css`
     ${simpleEntry} .75s ease forwards
   `,
   deadSimpleEntry: css`
     ${deadSimpleEntry} .5s ease forwards
   `
+  /* stylelint-enable */
+};
+
+export const shadows = {
+  card:
+    '0 0 192px rgba(112, 38, 185, 0.1), 0 0 96px rgba(112, 38, 185, 0.2), 0 0 8px rgba(112, 38, 185, 0.05)'
 };
 
 export const borders = {
-  grid: `1px solid ${colors.border}`
+  grid: `0px solid ${colors.border}`
 };
 
 export const visuallyHidden = {
-  // be explicit and include a unit (`px`)
-  // so we can use it with e. g. `sx`
   border: 0,
   clip: `rect(0, 0, 0, 0)`,
   height: `1px`,
@@ -184,4 +197,13 @@ export const visuallyHidden = {
   position: `absolute`,
   whiteSpace: `nowrap`,
   width: `1px`
+};
+
+export const zIndices = {
+  contributorArea: 100,
+  closeBar: 101,
+  header: 1000,
+  overlay: 1001,
+  cart: 1002,
+  imageBrowser: 10000
 };

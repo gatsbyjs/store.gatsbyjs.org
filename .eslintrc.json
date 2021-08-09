@@ -3,14 +3,14 @@
   "extends": [
     "google",
     "eslint:recommended",
-    "plugin:flowtype/recommended",
+    "plugin:jsx-a11y/recommended",
     "plugin:react/recommended",
     "prettier",
-    "prettier/flowtype",
     "prettier/react"
   ],
-  "plugins": ["flowtype", "react"],
+  "plugins": ["react", "jsx-a11y"],
   "parserOptions": {
+    "experimentalObjectRestSpread": true,
     "ecmaVersion": 2016,
     "sourceType": "module",
     "ecmaFeatures": {
@@ -21,10 +21,9 @@
     "browser": true,
     "es6": true,
     "node": true,
-    "jest": true
   },
   "globals": {
-    "spyOn": true
+    "graphql": true
   },
   "rules": {
     "no-console": "off",
@@ -59,11 +58,6 @@
     ]
   },
   "overrides": [
-    {
-      "files": [
-        "packages/**/gatsby-browser.js",
-        "packages/gatsby/cache-dir/**/*"
-      ],
       "env": {
         "browser": true
       },

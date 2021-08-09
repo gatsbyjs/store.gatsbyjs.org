@@ -10,11 +10,11 @@ import { Button as BaseButton } from '../shared/Buttons';
 import { spacing } from '../../utils/styles';
 
 const OpenIssuesRoot = styled(`div`)`
-  margin-top: ${spacing['2xl']}px;
+  margin-top: ${spacing['2xl']};
 `;
 
 const Button = styled(BaseButton)`
-  margin: ${spacing.lg}px 0 ${spacing.xl}px 0;
+  margin: ${spacing.lg} 0 ${spacing.xl} 0;
 `;
 
 const GitHubIssueFragment = gql`

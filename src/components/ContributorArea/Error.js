@@ -11,11 +11,11 @@ const ErrorRoot = styled('div')`
 
   ${Heading} {
     svg {
-      color: red;
-      height: 30px;
-      margin-right: ${spacing.xs}px;
-      vertical-align: top;
       width: 30px;
+      height: 30px;
+      margin-right: ${spacing.xs};
+      color: red;
+      vertical-align: top;
     }
   }
 `;
@@ -23,13 +23,13 @@ const ErrorRoot = styled('div')`
 const ErrorText = styled('pre')`
   background: ${colors.lightest};
   border-radius: 3px;
-  padding: ${spacing.sm}px ${spacing.md}px;
+  padding: ${spacing.sm} ${spacing.md};
 
   pre {
-    color: ${colors.text};
-    font-size: 0.9rem;
     margin: 0;
     padding: 0;
+    color: ${colors.text};
+    font-size: 0.9rem;
     white-space: pre-wrap;
     word-wrap: break-word;
   }

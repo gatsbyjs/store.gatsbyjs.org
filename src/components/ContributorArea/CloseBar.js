@@ -5,13 +5,15 @@ import styled from '@emotion/styled';
 import { MdArrowForward, MdClose } from 'react-icons/md';
 
 import {
+  borders,
   breakpoints,
   colors,
   fonts,
   spacing,
   dimensions,
   transitions,
-  fontSizes
+  fontSizes,
+  zIndices
 } from '../../utils/styles';
 
 const {
@@ -23,47 +25,51 @@ const CloseBarRoot = styled(`button`)`
   align-items: center;
   background: ${colors.brand};
   border: 0;
+  border-top: ${borders.grid};
   bottom: 0;
-  color: ${colors.lightest};
+  color: ${colors.text};
   cursor: pointer;
   display: flex;
   font-family: ${fonts.heading};
-  font-size: ${fontSizes.md};
+  font-size: ${fontSizes.sm};
+  font-weight: inherit;
   height: ${height};
   justify-content: flex-end;
-  padding-right: ${spacing.lg}px;
+  padding-right: ${spacing.lg};
   position: fixed;
   text-align: right;
   transform: translateX(-100%);
   transition: ${transitions.sidebar};
   width: 100%;
-  z-index: 101;
+  z-index: ${zIndices.closeBar};
 
   &.opening {
     transform: translateX(0%);
   }
+
   &.open {
     transform: translateX(0%);
   }
+
   &.closing {
     transform: translateX(-100%);
   }
+
   &.closed {
     transform: translateX(-100%);
   }
 
   svg {
-    height: 24px;
-    margin-left: ${spacing.xs}px;
     width: 24px;
+    height: 24px;
+    margin-left: ${spacing.xs};
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
-    background: ${colors.lightest};
-    border-right: 1px solid ${colors.border};
-    color: ${colors.textLight};
-    transform: translateX(0);
     width: ${desktopMaxWidth};
+    background: ${colors.lightest};
+    border-right: ${borders.grid};
+    transform: translateX(0);
 
     &.opening {
       transform: translateX(0%);

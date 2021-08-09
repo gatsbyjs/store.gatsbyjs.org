@@ -4,12 +4,12 @@ import { keyframes } from '@emotion/react';
 import PropTypes from 'prop-types';
 import { MdArrowForward } from 'react-icons/md';
 
-import { colors, radius, spacing } from '../../utils/styles';
+import { colors, radius, spacing, transitions } from '../../utils/styles';
 
 const OpenIssuesListRoot = styled('ul')`
   list-style: none;
   margin: 0;
-  margin-top: ${spacing.lg}px;
+  margin-top: ${spacing.lg};
   padding: 0;
 `;
 
@@ -30,29 +30,29 @@ const Link = styled('a')`
   border-radius: ${radius.lg}px;
   color: ${colors.text};
   display: block;
-  margin: 0 -${spacing.sm}px ${spacing.xs}px;
-  padding: ${spacing.xs}px ${spacing.sm}px;
+  margin: 0 -${spacing.sm} ${spacing.xs};
+  padding: ${spacing.xs} ${spacing.sm};
   text-decoration: none;
-  transition: 1s;
+  transition: ${transitions.speed.slow};
 
   span {
     color: ${colors.accent};
   }
 
   svg {
+    margin-right: ${spacing['2xs']};
     color: ${colors.accent};
-    margin-right: ${spacing['2xs']}px;
     vertical-align: middle;
   }
 
   @media (hover: hover) {
     :hover {
-      background: ${colors.accent};
       color: ${colors.lightest};
+      background: ${colors.accent};
 
       svg {
-        animation: ${swing} 0.5s ease infinite;
         color: ${colors.lightest};
+        animation: ${swing} ${transitions.speed.slow} ease infinite;
       }
     }
   }

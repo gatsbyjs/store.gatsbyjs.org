@@ -14,7 +14,7 @@ const Container = styled.div`
 `;
 
 const Message = styled.h1`
-  color: ${colors.darkest};
+  color: ${colors.text};
   font-family: ${fonts.heading};
 `;
 

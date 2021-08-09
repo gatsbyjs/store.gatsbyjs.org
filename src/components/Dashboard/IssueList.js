@@ -37,9 +37,9 @@ const IssueId = styled('span')`
 
 const IssueLink = styled('a')`
   background-color: ${colors.lightest};
-  color: ${colors.darkest};
+  color: ${colors.text};
   display: block;
-  padding: ${spacing.xs}px 0 ${spacing.sm}px;
+  padding: ${spacing.xs} 0 ${spacing.sm};
   text-decoration: none;
   transition: 200ms color linear;
 
@@ -65,18 +65,18 @@ const Label = styled('a')`
   box-sizing: border-box;
   color: ${colors.textLight};
   display: inline-block;
-  font-size: ${fontSizes['2xs']};
+  font-size: ${fontSizes.xs};
   line-height: ${lineHeights.solid};
-  margin: 0 ${spacing.xs}px ${spacing.xs}px 0;
-  padding: ${spacing['2xs']}px ${spacing.xs}px;
+  margin: 0 ${spacing.xs} ${spacing.xs} 0;
+  padding: ${spacing['2xs']} ${spacing.xs};
   text-decoration: none;
   transition: 200ms all linear;
 
   :active,
   :focus,
   :hover {
-    border-color: ${colors.brand};
     color: ${colors.brand};
+    border-color: ${colors.brand};
   }
 `;
 

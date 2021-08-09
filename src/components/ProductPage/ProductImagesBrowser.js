@@ -3,7 +3,8 @@ import PropTypes from 'prop-types';
 import { GatsbyImage } from 'gatsby-plugin-image';
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
-import { MdClose, MdZoomIn, MdZoomOut } from 'react-icons/md';
+import { MdClose } from 'react-icons/md';
+import { RiZoomInLine, RiZoomOutLine } from 'react-icons/ri';
 
 import CommunityCaption from './CommunityCaption';
 import ProductThumbnails, {
@@ -18,7 +19,8 @@ import {
   colors,
   radius,
   spacing,
-  dimensions
+  dimensions,
+  zIndices
 } from '../../utils/styles';
 
 const IMAGE_CHANGE_ANIM_DURATION = 250;
@@ -67,7 +69,7 @@ const ProductImagesBrowserRoot = styled(`div`)`
   transform-origin: center center;
   width: 100vw;
   will-change: opacity, transform, left;
-  z-index: 10000;
+  z-index: ${zIndices.imageBrowser};
 
   &.open {
     animation: ${entry} 300ms ease-out forwards;
@@ -107,14 +109,14 @@ const ZoomArea = styled(`div`)`
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
-    border-bottom: none;
-    border-left: 1px solid ${colors.brandLight};
     display: flex;
-    height: 100vh;
     justify-content: center;
+    width: calc(100% - ${dimensions.pictureBrowserAction.widthDesktop});
+    height: 100vh;
     overflow-x: hidden;
     overflow-y: auto;
-    width: calc(100% - ${dimensions.pictureBrowserAction.widthDesktop});
+    border-bottom: none;
+    border-left: 1px solid ${colors.brandLight};
   }
 `;
 
@@ -125,8 +127,8 @@ const ImageBox = styled(`a`)`
   width: 100%;
 
   .gatsby-image-wrapper {
-    height: auto;
     width: ${props => (props.superZoom ? props.width * 2 : props.width)}px;
+    height: auto;
   }
 
   @media (orientation: landscape) {
@@ -136,8 +138,8 @@ const ImageBox = styled(`a`)`
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
-    cursor: ${props => (props.superZoom ? 'zoom-out' : 'zoom-in')};
     width: ${props => (props.superZoom ? '100%' : 'auto')};
+    cursor: ${props => (props.superZoom ? 'zoom-out' : 'zoom-in')};
     .gatsby-image-wrapper {
       width: ${props => (props.superZoom ? '100%' : '100vh')};
     }
@@ -148,15 +150,15 @@ const ZoomHelper = styled(`span`)`
   background: rgba(255, 255, 255, 0.5);
   border-radius: ${radius.lg}px;
   display: flex;
-  left: ${spacing['xs']}px;
-  padding: ${spacing['xs']}px;
+  left: ${spacing.xs};
+  padding: ${spacing.xs};
   position: fixed;
-  top: ${spacing['xs']}px;
+  top: ${spacing.xs};
 
   svg {
-    fill: ${colors.brand};
-    height: 34px;
     width: 34px;
+    height: 34px;
+    fill: ${colors.brand};
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
@@ -169,15 +171,15 @@ const Actions = styled(`div`)`
   display: flex;
   flex-grow: 0;
   height: ${dimensions.pictureBrowserAction.heightMobile};
-  padding-left: ${spacing.md}px;
+  padding-left: ${spacing.md};
 
   @media (min-width: ${breakpoints.desktop}px) {
-    align-items: center;
     flex-direction: column;
-    height: 100vh;
-    padding-left: 0;
-    padding-top: ${spacing.xl}px;
+    align-items: center;
     width: ${dimensions.pictureBrowserAction.widthDesktop};
+    height: 100vh;
+    padding-top: ${spacing.xl};
+    padding-left: 0;
   }
 `;
 
@@ -188,15 +190,15 @@ const CloseButton = styled(Button)`
 const ActionsThumbnails = styled(ProductThumbnails)`
   @media (min-width: ${breakpoints.desktop}px) {
     ${ProductThumbnailsContent} {
-      align-items: center;
       flex-direction: column;
+      align-items: center;
     }
 
     ${Thumbnail} {
-      height: 70px;
-      margin-bottom: ${spacing.md}px;
-      margin-right: 0;
       width: 70px;
+      height: 70px;
+      margin-right: 0;
+      margin-bottom: ${spacing.md};
     }
   }
 `;
@@ -312,7 +314,9 @@ class ProductImagesBrowser extends Component {
             <CommunityCaption caption={altText} superZoom={superZoom} />
           )}
         </ZoomArea>
-        <ZoomHelper>{superZoom ? <MdZoomOut /> : <MdZoomIn />}</ZoomHelper>
+        <ZoomHelper>
+          {superZoom ? <RiZoomOutLine /> : <RiZoomInLine />}
+        </ZoomHelper>
       </ProductImagesBrowserRoot>
     );
   }

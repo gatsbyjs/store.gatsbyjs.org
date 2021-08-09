@@ -2,16 +2,21 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
-import { MdErrorOutline, MdSentimentDissatisfied } from 'react-icons/md';
-import { RiShoppingCartFill, RiRulerLine } from 'react-icons/ri';
+import { MdSentimentDissatisfied } from 'react-icons/md';
+import {
+  RiErrorWarningLine,
+  RiShoppingCartFill,
+  RiRulerLine
+} from 'react-icons/ri';
 
 import { Fieldset, Input, Label, Select, Submit } from '../shared/FormElements';
 import {
   breakpoints,
   colors,
-  spacing,
+  dimensions,
+  fontSizes,
   radius,
-  fontSizes
+  spacing
 } from '../../utils/styles';
 import StoreContext from '../../context/StoreContext';
 import Link from '../shared/Link';
@@ -20,65 +25,70 @@ const Form = styled(`form`)`
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  padding: ${spacing['2xl']}px ${spacing.md}px 0;
+  padding: ${spacing['2xl']} ${dimensions.gutter.default} 0;
 
   @media (min-width: ${breakpoints.tablet}px) {
-    padding: ${spacing['2xl']}px ${spacing.xl}px 0;
+    padding: 0 ${dimensions.gutter.desktop} ${spacing['2xl']};
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
     justify-content: flex-start;
+    padding-right: 0;
+    padding-left: 0;
   }
 `;
 
 const Errors = styled(`div`)`
   display: ${props => (props.show ? 'flex' : 'none')};
   flex-direction: row;
-  margin-bottom: ${spacing.xs}px;
+  margin-bottom: ${spacing.xs};
   width: 100%;
 `;
 
 const ErrorSign = styled(`div`)`
   align-items: center;
   background: ${colors.error};
-  border-radius: ${radius.md}px 0 0 ${radius.md}px;
+  border-radius: ${radius.lg}px 0 0 ${radius.lg}px;
   color: ${colors.lightest};
   display: flex;
   flex-basis: 40px;
   justify-content: center;
 
   svg {
-    height: 20px;
     width: 20px;
+    height: 20px;
   }
 `;
 
 const ErrorMsgs = styled(`ul`)`
-  border: 1px dashed ${colors.error};
+  border: 1px solid ${colors.error};
   border-left: none;
-  border-radius: 0 ${radius.md}px ${radius.md}px 0;
+  border-radius: 0 ${radius.lg}px ${radius.lg}px 0;
   color: ${colors.error};
   flex-grow: 1;
   margin: 0;
-  padding: ${spacing.xs}px;
-  padding-left: ${spacing.xl}px;
+  padding: ${spacing.xs};
+  padding-left: ${spacing.xl};
 `;
 
 const QtyFieldset = styled(Fieldset)`
-  flex-basis: 65px;
+  flex-basis: 64px;
   flex-grow: 0;
   flex-shrink: 0;
-  margin-right: ${spacing.md}px;
+  margin-right: ${spacing.md};
+
   ${Label} {
     text-align: center;
   }
+
   ${Input} {
     text-align: center;
   }
 `;
 
 const SizeFieldset = styled(Fieldset)`
-  flex-basis: calc(100% - ${spacing.md}px - 70px);
+  flex-basis: calc(100% - ${spacing.md} - 70px);
+
   ${Label} {
     justify-content: space-between;
   }
@@ -88,28 +98,15 @@ const InfoLinks = styled(`div`)`
   align-items: center;
   color: ${colors.textLight};
   display: flex;
-  justify-content: center;
-  margin-top: ${spacing.lg}px;
+  margin-top: ${spacing.lg};
   width: 100%;
-
-  @media (min-width: ${breakpoints.desktop}px) {
-    font-size: ${fontSizes.sm};
-  }
-
-  a {
-    color: ${colors.textLight};
-
-    :hover {
-      color: ${colors.brand};
-    }
-  }
+  font-size: ${fontSizes.sm};
 `;
 
 const AddToCartButton = styled(Submit)`
   align-self: flex-end;
   flex-grow: 1;
-  height: ${props => (props.fullWidth ? 'auto' : '')};
-  width: ${props => (props.fullWidth ? '100%' : 'auto')};
+  width: auto;
 `;
 
 class ProductForm extends Component {
@@ -188,7 +185,7 @@ class ProductForm extends Component {
           <Form onSubmit={this.handleSubmit(addVariantToCart)} noValidate>
             <Errors show={errors.length}>
               <ErrorSign>
-                <MdErrorOutline />
+                <RiErrorWarningLine />
               </ErrorSign>
               <ErrorMsgs>
                 {errors.map(error => (
@@ -218,7 +215,7 @@ class ProductForm extends Component {
                   Size/Color{' '}
                   <Link to="/product-details?fromProduct#size-chart">
                     <RiRulerLine />
-                    <span>Size Chart</span>
+                    <span>Size chart</span>
                   </Link>
                 </Label>
                 <Select

@@ -11,7 +11,7 @@ const ContentForNotContributorRoot = styled(`div`)`
 `;
 
 const Button = styled(BaseButton)`
-  margin: ${spacing.lg}px 0 ${spacing.xl}px 0;
+  margin: ${spacing.lg} 0 ${spacing.xl} 0;
 `;
 
 class ContentForNotContributor extends Component {
@@ -42,8 +42,8 @@ class ContentForNotContributor extends Component {
           come back here to claim free swag.
         </Text>
         <Text>
-          If you have questions, ask on any issue (you can tag @gatsbyjs/learning
-          if you’d like) or hit us up{' '}
+          If you have questions, ask on any issue (you can tag{' '}
+          <code>@gatsbyjs/learning</code> if you’d like) or hit us up{' '}
           <a href="https://twitter.com/gatsbyjs">on Twitter at @gatsbyjs</a>.
         </Text>
 
@@ -52,9 +52,7 @@ class ContentForNotContributor extends Component {
             <Text>
               Click the button below for issues that we could use help with.
             </Text>
-            <Button onClick={this.showIssuesList} inverse>
-              Explore Open Issues
-            </Button>
+            <Button onClick={this.showIssuesList}>Explore open issues</Button>
           </>
         ) : (
           <OpenIssues />

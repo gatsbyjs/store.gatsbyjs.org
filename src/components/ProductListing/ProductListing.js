@@ -5,18 +5,18 @@ import styled from '@emotion/styled';
 import ProductListingHeader from './ProductListingHeader';
 import ProductListingItem from './ProductListingItem';
 
-import { breakpoints, spacing } from '../../utils/styles';
+import { breakpoints, borders } from '../../utils/styles';
 
 const ProductListingContainer = styled(`div`)`
   display: flex;
   flex-direction: column;
-  justify-content: center;
-  padding: ${spacing.lg}px;
+  overflow: hidden;
 
-  @media (min-width: ${breakpoints.desktop}px) {
+  @media (min-width: ${breakpoints.phablet}px) {
     flex-direction: row;
     flex-wrap: wrap;
-    padding: ${spacing['2xl']}px;
+    margin-left: -1px;
+    border-top: ${borders.grid};
   }
 `;
 
@@ -45,7 +45,11 @@ const ProductListing = () => (
               featuredImage {
                 id
                 altText
-                gatsbyImageData(width: 910, height: 910, placeholder: "blurred")
+                gatsbyImageData(
+                  width: 800
+                  height: 800
+                  placeholder: "DOMINANT_COLOR"
+                )
               }
             }
           }

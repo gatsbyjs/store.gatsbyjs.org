@@ -16,17 +16,17 @@ import Spinner from '../shared/Spinner';
 const CartIndicatorRoot = styled(`div`)`
   align-items: center;
   background: ${colors.accent};
-  border-radius: ${radius.md}px;
+  border-radius: ${radius.round}px;
   color: ${colors.lightest};
   display: ${props => (props.visible ? 'flex' : 'none')};
   font-size: ${fontSizes.sm};
   justify-content: center;
   left: 0;
   line-height: ${lineHeights.solid};
-  padding: ${spacing['xs']}px ${spacing.md}px ${spacing['xs']}px ${spacing.sm}px;
+  padding: ${spacing.xs} ${spacing.md} ${spacing.xs} ${spacing.sm};
   position: absolute;
-  top: calc(${dimensions.headerHeight} + ${spacing.md}px);
-  transform: translateX(calc((100% + ${spacing.md}px) * -1));
+  top: calc(${dimensions.headerHeight} + ${spacing.md});
+  transform: translateX(calc((100% + ${spacing.md}) * -1));
 `;
 
 class CartIndicator extends Component {

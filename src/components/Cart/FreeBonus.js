@@ -9,19 +9,19 @@ const FreeBonusRoot = styled(`div`)`
   background: ${colors.brandLight};
   border-radius: ${radius.lg}px;
   display: flex;
-  margin: ${spacing.sm}px 0;
-  padding: ${spacing.sm}px ${spacing.md}px;
+  margin: ${spacing.sm} 0;
+  padding: ${spacing.sm} ${spacing.md};
 
   p {
+    margin: 0;
     color: ${colors.brand};
     font-size: ${fontSizes.sm};
-    margin: 0;
   }
 
   img {
-    height: auto;
-    margin-left: ${spacing.xs}px;
     width: 90px;
+    height: auto;
+    margin-left: ${spacing.xs};
   }
 `;
 

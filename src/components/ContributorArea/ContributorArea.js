@@ -6,10 +6,12 @@ import CloseBar from './CloseBar';
 import OpenBar from './OpenBar';
 import ContentContainer from './ContentContainer';
 import {
+  borders,
   breakpoints,
   colors,
   dimensions,
-  transitions
+  transitions,
+  zIndices
 } from '../../utils/styles';
 
 const {
@@ -18,7 +20,8 @@ const {
 
 const ContributorAreaRoot = styled(`aside`)`
   background: ${colors.lightest};
-  border-right: 1px solid ${colors.border};
+  border-right: ${borders.grid};
+  bottom: ${dimensions.contributorAreaBarHeight};
   color: ${colors.text};
   display: flex;
   flex-direction: column;
@@ -27,14 +30,13 @@ const ContributorAreaRoot = styled(`aside`)`
   min-height: calc(
     100vh - ${dimensions.headerHeight} - ${dimensions.contributorAreaBarHeight}
   );
-  bottom: ${dimensions.contributorAreaBarHeight};
   position: fixed;
   top: ${dimensions.headerHeight};
   transform: translateX(-100%);
   transition: ${transitions.sidebar};
   width: 100%;
   will-change: all;
-  z-index: 100;
+  z-index: ${zIndices.contributorArea};
 
   &.opening {
     transform: translateX(0%);
@@ -53,11 +55,11 @@ const ContributorAreaRoot = styled(`aside`)`
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
+    width: ${desktopMaxWidth};
     height: calc(
       100vh - ${dimensions.headerHeight} -
         ${dimensions.contributorAreaBarHeight}
     );
-    width: ${desktopMaxWidth};
 
     &.opening {
       transform: translateX(0%);

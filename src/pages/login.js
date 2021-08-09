@@ -4,7 +4,7 @@ import styled from '@emotion/styled';
 import { isAuthenticated } from '../utils/auth';
 import {
   TextContainer,
-  Text as BaseText
+  Text as BaseText,
 } from '../components/shared/Typography';
 
 const Text = styled(BaseText)`

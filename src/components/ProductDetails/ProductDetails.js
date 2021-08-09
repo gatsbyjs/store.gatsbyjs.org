@@ -11,27 +11,28 @@ import {
 import { colors, spacing, dimensions, fontSizes } from '../../utils/styles';
 
 const Heading = styled(BaseHeading)`
-  margin-bottom: -${spacing.sm}px;
+  margin-bottom: -${spacing.xl};
 `;
 
 const ProductTextContainer = styled(TextContainer)`
-  padding: ${spacing.xl}px;
+  padding: ${spacing.xl};
 `;
 
 const Section = styled(`section`)`
-  padding-top: calc(${dimensions.headerHeight} + ${spacing.sm}px);
+  clear: left;
+  padding-top: calc(${dimensions.headerHeight} + ${spacing.sm});
 `;
 
 const SectionHeading = styled(Heading.withComponent(`h2`))`
   font-size: ${fontSizes['2xl']};
   letter-spacing: -0.01em;
-  margin-bottom: ${spacing.sm}px;
+  margin-bottom: ${spacing.sm};
 `;
 
 const SubHeading = styled(Heading.withComponent(`h3`))`
   color: ${colors.text};
   font-size: ${fontSizes['xl']};
-  margin: ${spacing.lg}px 0 ${spacing.xs}px;
+  margin: ${spacing.lg} 0 ${spacing.xs};
 `;
 
 const NestedUnorderedList = styled(UnorderedList)`
@@ -43,8 +44,8 @@ const UnitWrapper = styled('div')`
   align-items: center;
   display: flex;
   float: right;
-  font-size: ${fontSizes['2xs']};
-  margin: ${-1 * spacing.lg}px 0 ${spacing.md}px 0;
+  font-size: ${fontSizes.xs};
+  margin: ${-1 * spacing.lg} 0 ${spacing.md} 0;
 `;
 
 const UnitOption = styled('div')`

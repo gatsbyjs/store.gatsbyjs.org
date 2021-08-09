@@ -14,39 +14,40 @@ const ContentForGuestRoot = styled(`div`)`
 `;
 
 const FirstHeading = styled(Heading)`
-  padding-right: ${spacing.lg}px;
   margin-right: 15px;
+  padding-right: ${spacing.lg};
 `;
 
-const Button = styled(BaseButton)`
-  margin: ${spacing.lg}px 0 ${spacing.xl}px 0;
+const Button = styled('a')`
+  margin: ${spacing.lg} 0 ${spacing.xl} 0;
+`;
+
+const LoginButton = styled(BaseButton)`
+  margin: ${spacing.lg} 0 ${spacing.xl} 0;
 `;
 
 const ContentForGuest = () => (
   <ContentForGuestRoot>
-    <SectionHeading>For Existing Contributors</SectionHeading>
+    <SectionHeading>For existing contributors</SectionHeading>
     <FirstHeading>
-      Get Gatsby Swag for <strong>FREE!</strong>
+      Get Gatsby swag for <strong>free!</strong>
     </FirstHeading>
     <Text>
       Already contributed to Gatsby? Claim your personal coupon code and get
       free swag by logging in with your GitHub account!
     </Text>
-    <Button inverse onClick={e => login()}>
+    <LoginButton onClick={e => login()}>
       Log in with GitHub <GoMarkGithub />
-    </Button>
-    <SectionHeading>For Future Contributors</SectionHeading>
+    </LoginButton>
+    <SectionHeading>For future contributors</SectionHeading>
     <Heading>Never contributed to Gatsby?</Heading>
     <Text>
       Let’s get you started with your first contribution to Gatsby! Once you’ve
       had your first pull request merged into Gatsby, you can come back here to
       claim free swag.
     </Text>
-    <Button
-      inverse
-      href="https://github.com/search?o=desc&q=org%3Agatsbyjs+type%3Aissue+label%3A%22help%20wanted%22+is%3Aopen&s=updated&type=Issues"
-    >
-      Explore Open Issues
+    <Button href="https://github.com/search?o=desc&q=org%3Agatsbyjs+type%3Aissue+label%3A%22help%20wanted%22+is%3Aopen&s=updated&type=Issues">
+      Explore open issues
     </Button>
     <Notice />
   </ContentForGuestRoot>

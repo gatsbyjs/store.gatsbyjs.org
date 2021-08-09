@@ -19,18 +19,18 @@ const CreateAccountFormRoot = styled('form')`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  margin: ${spacing.lg}px 0;
+  margin: ${spacing.lg} 0;
 `;
 
 const Fieldset = styled(BaseFieldset)`
-  margin-bottom: ${spacing.sm}px;
+  margin-bottom: ${spacing.sm};
 
   @media (min-width: ${breakpoints.hd}px) {
     flex-basis: 65%;
 
     &:first-of-type {
       flex-basis: 35%;
-      padding-right: ${spacing.sm}px;
+      padding-right: ${spacing.sm};
     }
   }
 `;
@@ -40,13 +40,13 @@ const Label = styled(BaseLabel)`
 `;
 
 const Input = styled(BaseInput)`
-  padding: ${spacing.xs}px ${spacing.sm}px;
+  padding: ${spacing.xs} ${spacing.sm};
 `;
 
 const CheckboxContainer = styled(Fieldset)`
   flex-basis: 100%;
   padding-left: 2rem;
-  padding-top: ${spacing.sm}px;
+  padding-top: ${spacing.sm};
 `;
 
 const CheckboxLabel = styled(BaseLabel)`
@@ -57,21 +57,21 @@ const CheckboxLabel = styled(BaseLabel)`
 
   :before,
   :after {
-    background-color: ${colors.lightest};
-    background-position: center center;
-    background-repeat: no-repeat;
-    background-size: 50% 50%;
-    border-radius: ${radius.md}px;
-    content: '';
-    display: block;
-    height: 1.3rem;
-    left: -2rem;
-    pointer-events: none;
     position: absolute;
     top: 0;
-    transition: box-shadow 0.15s ease-in-out;
-    user-select: none;
+    left: -2rem;
+    display: block;
     width: 1.3rem;
+    height: 1.3rem;
+    background-color: ${colors.lightest};
+    background-repeat: no-repeat;
+    background-position: center center;
+    background-size: 50% 50%;
+    border-radius: ${radius.md}px;
+    transition: box-shadow 0.15s ease-in-out;
+    content: '';
+    user-select: none;
+    pointer-events: none;
   }
 `;
 
@@ -83,9 +83,9 @@ const Checkbox = styled('input')`
   z-index: -1;
 
   &:focus ~ ${CheckboxLabel}:before {
-    box-shadow: 0 0 0 3px ${colors.accent};
     outline: 0;
     outline-offset: 0px;
+    box-shadow: 0 0 0 3px ${colors.accent};
   }
 
   &:active ~ ${CheckboxLabel}:before {
@@ -98,13 +98,13 @@ const Checkbox = styled('input')`
 `;
 
 const Submit = styled(PrimaryButton)`
-  margin-top: ${spacing.sm}px;
+  margin-top: ${spacing.sm};
   width: 100%;
 `;
 
 const PrivacyNotice = styled('p')`
-  color: ${colors.brandBright};
-  font-size: ${fontSizes['2xs']};
+  color: ${colors.textLight};
+  font-size: ${fontSizes.xs};
 `;
 
 class CreateAccountForm extends React.Component {

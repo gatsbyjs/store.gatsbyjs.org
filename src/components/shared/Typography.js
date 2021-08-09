@@ -7,11 +7,11 @@ export const TextContainer = styled(`div`)`
   margin-left: auto;
   margin-right: auto;
   max-width: 800px;
-  padding: ${spacing.md}px;
+  padding: ${spacing.md};
   width: 100%;
 
   @media (min-width: ${breakpoints.desktop}px) {
-    padding-bottom: 100px;
+    padding: ${spacing['3xl']};
   }
 `;
 
@@ -20,7 +20,7 @@ export const Heading = styled('h1')`
   font-size: ${fontSizes['2xl']};
   letter-spacing: -0.02em;
   margin: 0;
-  margin-bottom: ${spacing.lg}px;
+  margin-bottom: ${spacing.lg};
 `;
 
 export const Text = styled('p')`

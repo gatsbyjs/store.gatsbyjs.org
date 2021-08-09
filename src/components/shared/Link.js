@@ -3,43 +3,41 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { Link as GatsbyLink } from 'gatsby';
 
-import { colors, radius, spacing } from '../../utils/styles';
+import { colors, radius, spacing, transitions } from '../../utils/styles';
 
 const LinkRoot = styled(GatsbyLink)`
   align-items: center;
   border-radius: ${radius.md}px;
   color: ${colors.text};
   display: ${props => (props.inline ? 'inline-flex' : 'flex')};
-  margin: -${spacing['3xs']}px -${spacing['2xs']}px;
-  padding: ${spacing['3xs']}px ${spacing['2xs']}px;
+  margin: -${spacing['3xs']} -${spacing['2xs']};
+  padding: ${spacing['3xs']} ${spacing['2xs']};
   text-decoration: none;
-  transition: 0.5s;
+  transition: ${transitions.speed.default};
 
   :focus {
-    box-shadow: 0 0 0 2px ${colors.accent};
-    outline: 0;
     transition: box-shadow 0.15s ease-in-out;
   }
 
   span {
-    border-bottom: 1px solid ${colors.border};
     display: block;
+    border-bottom: 1px solid ${colors.border};
     transition: inherit;
   }
 
   svg {
+    margin-right: ${spacing['2xs']};
     fill: ${colors.textLight};
-    margin-right: ${spacing['2xs']}px;
   }
 
   :hover {
     span {
-      border-bottom: 1px solid ${colors.brand};
+      border-bottom: 1px solid transparent;
     }
 
     svg {
-      fill: ${colors.brand};
       transition: inherit;
+      fill: ${colors.brand};
     }
   }
 `;

@@ -4,7 +4,6 @@ import styled from '@emotion/styled';
 import { GatsbyImage } from 'gatsby-plugin-image';
 
 import InterfaceContext from '../../context/InterfaceContext';
-
 import { breakpoints, colors, radius, spacing } from '../../utils/styles';
 
 const THUMBNAIL_SIZE = '44px';
@@ -14,6 +13,7 @@ const ProductThumbnailsRoot = styled(`div`)`
   -webkit-overflow-scrolling: touch;
   overflow-x: scroll;
   width: 100%;
+
   @media (min-width: ${breakpoints.desktop}px) {
     height: auto;
     overflow-x: hidden;
@@ -22,24 +22,27 @@ const ProductThumbnailsRoot = styled(`div`)`
 
 export const ProductThumbnailsContent = styled(`div`)`
   display: inline-flex;
+  gap: ${spacing.md};
   height: 100%;
-  padding-left: ${spacing.md}px;
+  padding-left: ${spacing.md};
+
   @media (min-width: ${breakpoints.desktop}px) {
+    gap: ${spacing.lg};
     justify-content: center;
     min-width: 100%;
-    padding: ${spacing.lg}px 0 0;
+    padding: ${spacing.lg} 0;
   }
 `;
 
 export const Thumbnail = styled(`a`)`
-  border: 1px solid ${colors.brandBright};
-  border-radius: ${radius.md}px;
+  border-radius: ${radius.lg}px;
+  background: ${colors.brandLight};
   height: ${THUMBNAIL_SIZE};
-  margin-right: ${spacing.md}px;
   width: ${THUMBNAIL_SIZE};
+  overflow: hidden;
+
   @media (min-width: ${breakpoints.desktop}px) {
     cursor: pointer;
-    margin-right: ${spacing.md}px;
   }
 `;
 

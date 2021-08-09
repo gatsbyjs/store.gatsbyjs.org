@@ -10,7 +10,8 @@ import {
   colors,
   dimensions,
   spacing,
-  lineHeights
+  lineHeights,
+  zIndices
 } from '../../utils/styles';
 
 const HeaderRoot = styled('header')`
@@ -22,15 +23,15 @@ const HeaderRoot = styled('header')`
   height: ${dimensions.headerHeight};
   justify-content: space-between;
   left: 0;
-  padding-left: ${spacing.md}px;
-  padding-right: ${spacing['3xl']}px;
+  padding-left: ${spacing.md};
+  padding-right: ${spacing['3xl']};
   position: sticky;
   right: 0;
   top: 0;
-  z-index: 1000;
+  z-index: ${zIndices.header};
 
   @media (min-width: ${breakpoints.desktop}px) {
-    padding-left: calc(${spacing.md}px + ${spacing['2xs']}px);
+    padding-left: calc(${spacing.md} + ${spacing['2xs']});
 
     &.covered {
       display: none;

@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { Link } from 'gatsby';
-import { GatsbyImage, getImage } from 'gatsby-plugin-image';
+import { GatsbyImage } from 'gatsby-plugin-image';
 
 import { MdArrowForward } from 'react-icons/md';
 import { RiShoppingCartLine } from 'react-icons/ri';
@@ -14,42 +14,46 @@ import {
 } from '../../utils/helpers';
 
 import {
+  animations,
+  badgeThemes,
+  borders,
   breakpoints,
   colors,
   fonts,
+  fontSizes,
+  fontWeights,
+  lineHeights,
   radius,
   spacing,
-  animations,
-  fontSizes,
-  lineHeights,
-  badgeThemes
+  transitions
 } from '../../utils/styles';
 
 const DESCRIPTION_LIMIT = 90;
-const TRANSITION_DURATION = '250ms';
+const TRANSITION_DURATION = transitions.speed.default;
 
 const ProductListingItemLink = styled(Link)`
   background: ${colors.lightest};
-  border: 1px solid transparent;
-  border-radius: ${radius.lg}px;
-  margin-bottom: ${spacing.lg}px;
-  overflow: hidden;
+  border: ${borders.grid};
+  color: ${colors.text};
+  flex-grow: 1;
+
+  margin-top: -1px;
   text-decoration: none;
   transition: all ${TRANSITION_DURATION};
-  @media (min-width: ${breakpoints.tablet}px) {
-    margin-left: auto;
-    margin-right: auto;
-    max-width: 500px;
-  }
-  @media (min-width: ${breakpoints.desktop}px) {
-    flex-basis: 300px;
+
+  @media (min-width: ${breakpoints.phablet}px) {
+    flex-basis: 20rem;
     justify-content: center;
-    margin: ${spacing.lg}px;
+    border-right: 0;
   }
+
+  @media (min-width: ${breakpoints.desktop}px) {
+    flex-basis: 23rem;
+  }
+
   @media (hover: hover) {
     :hover {
-      box-shadow: 0 16px 48px rgba(0, 0, 0, 0.15);
-      z-index: 1;
+      color: ${colors.brand};
     }
   }
 `;
@@ -58,22 +62,25 @@ const Item = styled(`article`)`
   display: flex;
   flex-direction: column;
   height: 100%;
-  padding: ${spacing.lg}px;
+  // padding: ${spacing.lg};
 `;
 
 const Preview = styled(`div`)`
   border-radius: ${radius.lg}px ${radius.lg}px 0 0;
-  margin: -${spacing.lg}px;
-  margin-bottom: ${spacing.lg}px;
-  overflow: hidden;
+  // margin: -${spacing.lg};
+  // margin-bottom: ${spacing.lg};
+  padding: ${spacing['2xl']};
   position: relative;
+
   .gatsby-image-wrapper {
+    transform: scale(0.75);
     transition: all ${TRANSITION_DURATION};
   }
+
   @media (hover: hover) {
     ${ProductListingItemLink}:hover & {
       .gatsby-image-wrapper {
-        transform: scale(1.1);
+        transform: scale(0.9);
       }
     }
   }
@@ -81,82 +88,82 @@ const Preview = styled(`div`)`
 
 const CodeEligibility = styled(`div`)`
   animation: ${animations.simpleEntry};
+  background: ${props =>
+    badgeThemes[props.freeWith]
+      ? badgeThemes[props.freeWith].backgroundTheme
+      : colors.brand};
+  border-radius: ${radius.round}px;
   color: ${props =>
     badgeThemes[props.freeWith]
       ? badgeThemes[props.freeWith].textTheme
       : colors.lightest};
+  background: ${colors.brand};
+  color: ${colors.lightest};
   text-align: center;
-
-  > span {
-    background: ${props =>
-      badgeThemes[props.freeWith]
-        ? badgeThemes[props.freeWith].backgroundTheme
-        : colors.brand};
-    padding: ${spacing['3xs']}px ${spacing.xs}px;
-    border-radius: ${radius.md}px;
-    display: inline-flex;
-    font-size: ${fontSizes.sm};
-    justify-content: center;
-  }
-
-  > span > span:last-child {
-    font-weight: 600;
-  }
+  position: absolute;
+  bottom: 0;
+  top: auto;
+  transform: translate3d(0, 50%, 0);
+  z-index: 1;
+  white-space: nowrap;
+  padding: ${spacing['2xs']} ${spacing.md};
+  font-size: ${fontSizes.sm};
 `;
 
 const Name = styled(`h1`)`
-  color: ${colors.text};
   font-family: ${fonts.heading};
-  font-size: 20px;
+  font-size: ${fontSizes.lg};
   line-height: ${lineHeights.dense};
   margin: 0;
+  border-top: ${borders.grid};
+  padding: ${spacing.xl} ${spacing['2xl']} 0;
+  font-weight: ${fontWeights.semibold};
 `;
 
 const Description = styled(`p`)`
-  color: ${colors.textLight};
   display: none;
   flex-grow: 1;
   font-size: ${fontSizes.sm};
   line-height: ${lineHeights.default};
+  padding: 0 ${spacing.lg} 0;
 `;
 
 const PriceRow = styled(`div`)`
   align-items: flex-start;
   display: flex;
   justify-content: space-between;
-  margin-top: ${spacing['2xs']}px;
+  margin-top: ${spacing['2xs']};
+  padding: 0 ${spacing['2xl']} ${spacing.xl};
 `;
 
 const Price = styled(`div`)`
-  color: ${colors.text};
-  font-size: 18px;
-  font-weight: 400;
+  font-family: ${fonts.serif};
+  font-size: ${fontSizes.lg};
   line-height: ${lineHeights.solid};
-
-  span {
-    color: ${colors.textLight};
-  }
 `;
 
 const Incentive = styled('div')`
   align-items: center;
-  color: ${colors.textLight};
   display: flex;
+  display: none;
   font-size: ${fontSizes.sm};
   line-height: 1.3;
-  margin-bottom: ${spacing['2xs']}px;
-  margin-right: calc(-${spacing.lg}px - 40px);
+  margin-bottom: ${spacing['2xs']};
+  margin-right: calc(-${spacing.lg} - 40px);
   text-align: right;
   transition: all ${TRANSITION_DURATION};
+
   @media (hover: hover) {
     ${ProductListingItemLink}:hover & {
+      color: ${colors.brand};
       transform: translateX(-40px);
     }
   }
+
   > span {
     svg {
       display: inline;
-      margin-right: -${spacing['3xs']}px;
+      margin-right: -${spacing['3xs']};
       vertical-align: middle;
     }
   }
@@ -169,21 +176,23 @@ const CartIcon = styled(`span`)`
   display: flex;
   height: 40px;
   justify-content: center;
-  margin-left: ${spacing.lg}px;
+  margin-left: ${spacing.lg};
   position: relative;
   transition: all ${TRANSITION_DURATION};
   vertical-align: middle;
   width: 40px;
+
   @media (hover: hover) {
     ${ProductListingItemLink}:hover & {
-      margin-left: ${spacing.xs}px;
+      margin-left: ${spacing.xs};
     }
   }
+
   svg {
-    color: ${colors.lightest};
-    height: 24px;
     position: relative;
     width: 24px;
+    height: 24px;
+    color: ${colors.lightest};
   }
 `;
 
@@ -227,16 +236,18 @@ const ProductListingItem = props => {
                 <GatsbyImage
                   image={featuredImage.gatsbyImageData}
                   alt={featuredImage.altText}
-                  placeholder="blurred"
                 />
                 {checkEligibility({
                   freeWith,
                   contributor
                 }) && (
                   <CodeEligibility freeWith={freeWith}>
-                    <span>free with </span>
+                    <span>Free with </span>
                     <span>
-                      Code Swag Level {freeWith === 'HOLYBUCKETS' ? '2' : '1'}
+                      Code{' '}
+                      <strong>
+                        Swag Level {freeWith === 'HOLYBUCKETS' ? '2' : '1'}
+                      </strong>
                     </span>
                   </CodeEligibility>
                 )}

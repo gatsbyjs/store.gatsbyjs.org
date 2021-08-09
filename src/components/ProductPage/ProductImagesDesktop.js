@@ -7,17 +7,20 @@ import ProductThumbnails, { Thumbnail } from './ProductThumbnails';
 
 import { spacing } from '../../utils/styles';
 
-const THUMBNAIL_SIZE = '54px';
+const THUMBNAIL_SIZE = '64px';
 
 const ProductImagesDesktopRoot = styled(`div`)`
-  margin-right: ${spacing.lg}px;
-  width: 440px;
+  align-self: center;
+  display: flex;
+  flex-direction: column;
+  max-width: 560px;
+  padding: ${spacing['2xl']};
 `;
 
 const Thumbnails = styled(ProductThumbnails)`
   ${Thumbnail} {
-    height: ${THUMBNAIL_SIZE};
     width: ${THUMBNAIL_SIZE};
+    height: ${THUMBNAIL_SIZE};
   }
 `;
 

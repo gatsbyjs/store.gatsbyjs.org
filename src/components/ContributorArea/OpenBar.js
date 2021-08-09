@@ -2,23 +2,27 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
+import { RiArrowUpLine } from 'react-icons/ri';
 
 import UserContext from '../../context/UserContext';
-import { RiArrowUpFill } from 'react-icons/ri';
 import {
+  borders,
   breakpoints,
   colors,
-  fonts,
   dimensions,
+  fonts,
   fontSizes,
-  spacing
+  fontWeights,
+  spacing,
+  transitions
 } from '../../utils/styles';
 
 const OpenBarRoot = styled(`button`)`
   align-items: center;
+  background: ${colors.lightest};
   border: 0;
   bottom: 0;
-  color: ${colors.brand};
+  color: ${colors.text};
   cursor: pointer;
   font-family: ${fonts.heading};
   font-size: ${fontSizes.md};
@@ -26,7 +30,7 @@ const OpenBarRoot = styled(`button`)`
   left: 0;
   padding: 0;
   position: fixed;
-  transition: 0.4s;
+  transition: ${transitions.speed.slow};
   width: 100%;
   z-index: 1;
 
@@ -48,9 +52,9 @@ const OpenBarRoot = styled(`button`)`
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
-    height: calc(100vh - ${dimensions.headerHeight});
     top: ${dimensions.headerHeight};
     width: ${dimensions.contributorAreaWidth.closedDesktop};
+    height: calc(100vh - ${dimensions.headerHeight});
 
     &.opening {
       display: block;
@@ -77,21 +81,50 @@ const OpenBarRoot = styled(`button`)`
 `;
 
 const Content = styled(`div`)`
-  align-items: flex-start;
-  background: ${colors.lightest};
-  border-right: 1px solid ${colors.border};
+  align-items: center;
+  border-top: ${borders.grid};
   display: flex;
-  flex-direction: column;
+  flex-flow: column nowrap;
   height: calc(100vh - ${dimensions.headerHeight});
   justify-content: space-between;
   width: 100%;
+
+  @media (min-width: ${breakpoints.desktop}px) {
+    padding: ${spacing.lg};
+    border-top: 0;
+    border-right: ${borders.grid};
+  }
+`;
+
+const Line = styled(`div`)`
+  display: none;
+
+  @media (min-width: ${breakpoints.desktop}px) {
+    display: block;
+    flex-grow: 1;
+    margin: ${spacing.lg} 0;
+    border-left: 0.5px solid ${colors.border};
+  }
 `;
 
 const Section = styled(`div`)`
   width: 100%;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: ${dimensions.headerHeight};
+
+  @media (min-width: ${breakpoints.desktop}px) {
+    width: auto;
+    height: auto;
+    white-space: nowrap;
+    transform: scale(-1, -1);
+    writing-mode: vertical-lr;
+  }
 `;
 
-const handHop = keyframes`
+const bounce = keyframes`
   0% {
     transform: translateY(0) scale(1.2);
   }
@@ -104,32 +137,33 @@ const handHop = keyframes`
 `;
 
 const PointerBox = styled(`span`)`
-  left: 20px;
-  position: absolute;
-  top: 5px;
   transform: rotate(90deg);
+  order: -1;
+  width: ${dimensions.headerHeight};
 
   svg {
-    animation: ${handHop} 3.5s ease infinite;
+    animation: ${bounce} 3.5s ease infinite;
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
-    align-items: center;
-    display: flex;
-    height: ${dimensions.headerHeight};
-    justify-content: center;
-    left: auto;
     position: relative;
     top: auto;
-    transform: rotate(0);
+    left: auto;
+    display: none;
+    display: flex;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    transform: rotate(180deg);
 
     svg {
-      animation: ${handHop} 3.5s ease infinite;
+      animation: ${bounce} 3.5s ease infinite;
     }
 
     ${OpenBarRoot}:hover & {
       svg {
-        animation: ${handHop} 1s ease infinite;
+        animation-duration: 1s;
       }
     }
   }
@@ -137,44 +171,25 @@ const PointerBox = styled(`span`)`
 
 const Title = styled(`span`)`
   display: block;
-  font-size: ${fontSizes.md};
-  font-weight: 600;
-  margin-top: ${spacing.lg}px;
+  font-size: ${fontSizes.sm};
 
   strong {
-    color: ${colors.accent};
-  }
-
-  @media (min-width: ${breakpoints.desktop}px) {
-    height: 240px;
-    position: relative;
-
-    span {
-      display: block;
-      left: 50%;
-      text-align: right;
-      transform: rotate(-90deg) translate(calc(-100%), 105%);
-      transform-origin: top left;
-      width: 240px;
-    }
+    text-style: normal;
+    text-decoration: underline;
+    font-weight: ${fontWeights.semibold};
+    text-decoration-style: wavy;
   }
 `;
 
 const Label = styled(`span`)`
   @media (min-width: ${breakpoints.desktop}px) {
     display: block;
-    height: 160px;
-    position: relative;
+    font-size: ${fontSizes.sm};
 
     span {
-      color: ${colors.textLight};
       display: block;
-      left: 50%;
       text-align: left;
-      transform: rotate(-90deg) translate(-100%, 105%);
-      transform-origin: top left;
-      transition: 0.5s;
-      width: 130px;
+      transition: ${transitions.speed.slow};
     }
   }
 `;
@@ -193,13 +208,17 @@ const ContentFor = ({ contributor }) => {
   }
 
   if (numberOfValidCodes) {
-    return <span>Remember your swag code!</span>;
+    return (
+      <span>
+        Remember your <em>swag code!</em>
+      </span>
+    );
   } else if (numberOfUsedCodes === 2) {
     return <span>Thank you!</span>;
   } else {
     return (
       <span>
-        Get Gatsby Swag for <strong>FREE</strong>
+        Get Gatsby swag <strong>for free</strong>
       </span>
     );
   }
@@ -287,7 +306,7 @@ class OpenBar extends Component {
   };
 
   render() {
-    const { onClick, areaStatus } = this.props;
+    const { onClick } = this.props;
     const { className } = this.state;
 
     return (
@@ -301,12 +320,13 @@ class OpenBar extends Component {
                     <ContentFor contributor={contributor} />
                   </Title>
                   <PointerBox>
-                    <RiArrowUpFill />
+                    <RiArrowUpLine />
                   </PointerBox>
                 </Section>
+                <Line />
                 <Section>
                   <Label>
-                    <span>Open Sidebar</span>
+                    <span>Open sidebar</span>
                   </Label>
                 </Section>
               </Content>

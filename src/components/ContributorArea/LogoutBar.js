@@ -17,7 +17,7 @@ const LogoutBarRoot = styled(`div`)`
   animation: ${animations.simpleEntry};
   display: flex;
   justify-content: space-between;
-  margin-bottom: ${spacing.lg}px;
+  margin-bottom: ${spacing.lg};
 `;
 
 const User = styled(`div`)`
@@ -26,38 +26,36 @@ const User = styled(`div`)`
 `;
 
 const Info = styled(`div`)`
-  color: ${colors.textLight};
   font-size: ${fontSizes.sm};
 
   b {
-    color: ${colors.text};
     display: block;
     font-size: ${fontSizes.md};
   }
 `;
 
 const Logout = styled(Button)`
-  flex-grow: 0;
-  padding: ${spacing.xs}px ${spacing.sm}px;
   background: ${colors.lightest};
   color: ${colors.text};
+  flex-grow: 0;
+  padding: ${spacing.xs} ${spacing.sm};
 `;
 
 const AvatarContainer = styled('span')`
   display: block;
+  margin-right: ${spacing.md};
   position: relative;
-  margin-right: ${spacing.md}px;
 
   :before {
-    border-radius: ${radius.md}px;
-    content: ' ';
-    display: block;
     position: absolute;
     top: 0;
-    left: 0;
-    bottom: 0;
     right: 0;
+    bottom: 0;
+    left: 0;
+    display: block;
     border: 1px solid rgba(0, 0, 0, 0.1);
+    border-radius: ${radius.md}px;
+    content: ' ';
   }
 `;
 
@@ -77,9 +75,7 @@ const LogoutBar = ({ error, loading, profile, handleLogout }) =>
           Logged in as <b>@{profile.nickname}</b>
         </Info>
       </User>
-      <Logout onClick={handleLogout} inverse>
-        Log out
-      </Logout>
+      <Logout onClick={handleLogout}>Log out</Logout>
     </LogoutBarRoot>
   ) : null;
 

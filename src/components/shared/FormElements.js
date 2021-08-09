@@ -3,10 +3,11 @@ import styled from '@emotion/styled';
 import { PrimaryButton } from './Buttons';
 import {
   colors,
-  radius,
-  spacing,
+  dimensions,
   fontSizes,
-  lineHeights
+  lineHeights,
+  radius,
+  spacing
 } from '../../utils/styles';
 
 export const Input = styled(`input`)`
@@ -17,13 +18,11 @@ export const Input = styled(`input`)`
   display: block;
   font-size: ${fontSizes.md};
   line-height: ${lineHeights.solid};
-  padding: ${spacing.md}px ${spacing.md}px;
+  padding: ${spacing.sm} ${spacing.md};
+  min-height: ${dimensions.interactiveMinHeight};
   width: 100%;
-  height: 52px; // hacky
 
   :focus {
-    box-shadow: 0 0 0 3px ${colors.accent};
-    outline: 0;
     transition: box-shadow 0.15s ease-in-out;
   }
 `;
@@ -35,10 +34,10 @@ export const Select = styled(Input.withComponent('select'))`
     1
   )}' d='M2 0L0 2h4zm0 5L0 3h4z'/%3E%3C/svg%3E");
   /* stylelint-enable */
-  background-position: right 0.5rem center;
+  background-position: right ${spacing['md']} center;
   background-repeat: no-repeat;
   background-size: 8px 10px;
-  padding-right: ${spacing['2xl']}px !important;
+  padding-right: ${spacing['2xl']};
 `;
 
 export const Fieldset = styled(`fieldset`)`
@@ -48,17 +47,16 @@ export const Fieldset = styled(`fieldset`)`
   flex-grow: 1;
   margin: 0;
   padding: 0;
+  justify-content: space-between;
 `;
 
 export const Label = styled(`label`)`
-  color: ${colors.textLight};
   display: flex;
-  font-size: ${fontSizes.md};
-  padding: ${spacing.xs}px 0;
+  font-size: ${fontSizes.sm};
+  padding: ${spacing.xs} 0;
 `;
 
 export const Submit = styled(PrimaryButton)`
-  font-size: 1.25rem;
-  margin-top: ${spacing.md}px;
+  margin-top: ${spacing.md};
   width: 100%;
 `;

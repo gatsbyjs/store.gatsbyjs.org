@@ -5,15 +5,15 @@ import UserContext from '../../context/UserContext';
 import ContentForNotLoggedIn from './ContentForNotLoggedIn';
 import ContentForLoggedIn from './ContentForLoggedIn';
 
-import { breakpoints, spacing, dimensions } from '../../utils/styles';
+import { breakpoints, spacing } from '../../utils/styles';
 
 const ContentContainerRoot = styled(`div`)`
   -webkit-overflow-scrolling: touch;
   overflow-y: auto;
-  padding: ${spacing.lg}px;
+  padding: ${spacing.lg};
 
   @media (min-width: ${breakpoints.desktop}px) {
-    padding: ${spacing.xl}px;
+    padding: ${spacing.xl};
   }
 `;
 

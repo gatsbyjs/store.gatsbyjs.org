@@ -3,12 +3,12 @@ import { Heading, Text, TextContainer } from '../components/shared/Typography';
 
 const NotFoundPage = () => (
   <TextContainer
-    style={{
+    css={{
       flex: 1,
       display: 'flex',
       flexDirection: 'column',
       alignItems: 'center',
-      justifyContent: 'center'
+      justifyContent: 'center',
     }}
   >
     <Heading>Whoops - That Page Doesn’t Exist (404)</Heading>
@@ -20,12 +20,11 @@ const NotFoundPage = () => (
       to let us know.
     </Text>
     <Text>
-      {' '}
       <a href="https://store.gatsbyjs.org/">Gatsby Store Home page</a>{' '}
-      <a href="https://www.gatsbyjs.org/">Gatsby Home</a>{' '}
+      <a href="https://www.gatsbyjs.com/">Gatsby Home</a>{' '}
       <a href="https://github.com/gatsbyjs/store.gatsbyjs.org">
         Gatsby Github Page
-      </a>{' '}
+      </a>
     </Text>
   </TextContainer>
 );

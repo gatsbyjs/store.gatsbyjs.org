@@ -31,7 +31,7 @@ const CartThumbnail = ({ shopifyImages, fallback, ...imageProps }) => {
   return <CartThumbnailRootFallback {...imageProps} src={fallback} />;
 };
 
-export default props => (
+export default (props) => (
   <StaticQuery
     query={graphql`
       {
@@ -42,7 +42,7 @@ export default props => (
                 id
                 src
                 originalSrc
-                gatsbyImageData(width: 910, height: 910)
+                gatsbyImageData(width: 800, height: 800)
               }
             }
           }

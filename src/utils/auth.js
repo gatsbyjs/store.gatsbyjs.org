@@ -9,7 +9,7 @@ let profile = false;
 const tokens = {
   accessToken: false,
   idToken: false,
-  expiresAt: false
+  expiresAt: false,
 };
 
 // Only instantiate Auth0 if we’re in the browser.
@@ -20,7 +20,7 @@ const auth0 = isBrowser
       redirectUri: process.env.AUTH0_CALLBACK,
       audience: process.env.AUTH0_AUDIENCE,
       responseType: 'token id_token',
-      scope: 'openid profile email'
+      scope: 'openid profile email',
     })
   : {};
 
@@ -42,7 +42,7 @@ export const logout = () => {
   auth0.logout({ returnTo });
 };
 
-const setSession = callback => (err, authResult) => {
+const setSession = (callback) => (err, authResult) => {
   if (!isBrowser) {
     return;
   }
@@ -64,7 +64,7 @@ const setSession = callback => (err, authResult) => {
   }
 };
 
-export const silentAuth = callback => {
+export const silentAuth = (callback) => {
   if (!isBrowser) {
     return;
   }

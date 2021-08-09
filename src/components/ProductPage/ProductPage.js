@@ -12,35 +12,39 @@ import { breakpoints, spacing, dimensions } from '../../utils/styles';
 import { minHeight } from '../Layout/Footer';
 
 const ProductPageRoot = styled('div')`
-  padding-bottom: ${spacing.md}px;
+  // padding-bottom: ${spacing.md};
 
   @media (min-width: ${breakpoints.desktop}px) {
-    align-items: center;
     display: flex;
-    justify-content: center;
-    min-height: calc(100vh - ${dimensions.headerHeight} - ${minHeight});
-    padding: ${spacing.xl}px;
+    align-items: stretch;
+    justify-content: space-evenly;
     width: 100%;
+    min-height: calc(100vh - ${dimensions.headerHeight} - ${minHeight});
   }
 `;
 
 const Container = styled(`div`)`
   @media (min-width: ${breakpoints.desktop}px) {
-    align-items: flex-start;
     display: flex;
+    align-items: stretch;
+    justify-content: space-evenly;
+    width: 100%;
   }
 `;
 
 const Details = styled(`div`)`
   position: relative;
+  max-width: 40rem;
+  margin: 0 auto ${spacing['3xl']};
+  display: flex;
+  flex-direction: column;
 
   @media (min-width: ${breakpoints.desktop}px) {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    margin-right: -${spacing.xl}px;
-    max-width: 400px;
+    justify-content: center;
+    max-width: 480px;
     min-height: 490px;
+    margin: 0;
+    padding: ${spacing['2xl']} ${dimensions.headerHeight} ${spacing['2xl']} 0;
   }
 `;
 
@@ -78,7 +82,7 @@ class ProductPage extends Component {
             />
           )}
           <Details>
-            <BackLink>All Products</BackLink>
+            <BackLink>Back to all products</BackLink>
             <ProductSpecs product={product} />
             <ProductForm id={id} variants={variants} />
           </Details>

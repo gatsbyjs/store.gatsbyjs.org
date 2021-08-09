@@ -98,7 +98,7 @@ export const query = graphql`
       images {
         id
         altText
-        gatsbyImageData(width: 910, height: 910, placeholder: "blurred")
+        gatsbyImageData(width: 800, height: 800, placeholder: "DOMINANT_COLOR")
       }
     }
   }

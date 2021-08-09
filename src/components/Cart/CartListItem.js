@@ -19,14 +19,14 @@ import {
 const CartListItemRoot = styled('li')`
   align-items: center;
   display: flex;
+  gap: ${spacing.md};
   justify-content: space-between;
-  padding: ${spacing.md}px 0;
 `;
 
 const Thumbnail = styled(CartThumbnail)`
   flex-grow: 0;
-  margin-left: ${spacing['2xs']}px;
-  margin-right: ${spacing.sm}px;
+  margin-left: ${spacing['2xs']};
+  margin-right: ${spacing.sm};
 `;
 
 const Info = styled('div')`
@@ -38,6 +38,10 @@ const Name = styled('span')`
   font-size: ${fontSizes.md};
   font-weight: ${fontWeights.semibold};
   line-height: ${lineHeights.dense};
+
+  @media (min-width: ${breakpoints.mobile}px) {
+    font-size: ${fontSizes.lg};
+  }
 `;
 
 const Meta = styled('span')`
@@ -51,8 +55,8 @@ const Meta = styled('span')`
 const Quantity = styled(Input)`
   flex-grow: 0;
   height: 44px;
-  margin-right: ${spacing.xs}px;
-  padding: 0 ${spacing.xs}px 0;
+  margin-right: ${spacing.xs};
+  padding: 0 ${spacing.xs} 0;
   text-align: center;
   width: 48px;
 
@@ -63,18 +67,18 @@ const Quantity = styled(Input)`
 
 const Remove = styled(Button)`
   border: 1px solid transparent;
+  color: ${colors.text};
   display: flex;
   height: 44px;
   justify-content: center;
-  margin-right: ${spacing['2xs']}px;
+  margin-right: ${spacing['2xs']};
   padding: 0;
   width: 44px;
-  color: ${colors.text};
 
   svg {
+    width: 24px;
     height: 24px;
     margin: 0;
-    width: 24px;
   }
 `;
 

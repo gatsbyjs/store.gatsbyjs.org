@@ -4,11 +4,7 @@ import { Text } from '../ContributorArea/AreaTypography';
 
 import { colors, radius, spacing } from '../../utils/styles';
 
-const NoticeRoot = styled(`div`)`
-  background: ${colors.brandLight};
-  border-radius: ${radius.lg}px;
-  padding: ${spacing.sm}px ${spacing.md}px;
-`;
+const NoticeRoot = styled(`div`)``;
 
 const Notice = () => (
   <NoticeRoot>

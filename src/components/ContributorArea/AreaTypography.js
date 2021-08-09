@@ -11,11 +11,13 @@ import {
 } from '../../utils/styles';
 
 export const SectionHeading = styled(`h3`)`
-  color: ${colors.textLight};
-  font-family: ${fonts.heading};
+  color: ${colors.text};
+  font-family: ${fonts.body};
   font-size: ${fontSizes.sm};
   font-weight: ${fontWeights.semibold};
+  // letter-spacing: 0.025em;
   margin: 0;
+  // text-transform: uppercase;
 `;
 
 export const Heading = styled(`h2`)`
@@ -24,7 +26,7 @@ export const Heading = styled(`h2`)`
   font-size: ${fontSizes.lg};
   line-height: ${lineHeights.dense};
   margin: 0;
-  margin-top: ${spacing.sm}px;
+  margin-top: ${spacing['2xs']};
 
   strong {
     color: ${colors.accent};
@@ -48,9 +50,9 @@ export const Text = styled(`p`)`
 
   a {
     color: ${colors.brand};
-    border-bottom: 1px solid ${colors.brand};
     font-weight: ${fontWeights.bold};
     text-decoration: none;
+    border-bottom: 1px solid ${colors.brand};
 
     :hover {
       color: ${colors.accent};

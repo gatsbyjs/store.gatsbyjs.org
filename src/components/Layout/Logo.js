@@ -1,15 +1,20 @@
 import React from 'react';
 import { css } from '@emotion/react';
 
-import { colors } from '../../utils/styles';
+import { breakpoints, colors, spacing } from '../../utils/styles';
 
 const svg = css`
   display: inline-block;
   height: 24px;
+  // mix-blend-mode: difference;
 `;
 
 const monogram = css`
-  margin-right: 10px;
+  margin-right: ${spacing['sm']};
+
+  @media (min-width: ${breakpoints.desktop}px) {
+    margin-right: calc(${spacing.md} + ${spacing['2xs']});
+  }
 `;
 
 const Monogram = () => (

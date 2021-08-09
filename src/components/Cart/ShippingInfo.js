@@ -2,21 +2,21 @@ import React, { Component } from 'react';
 import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
 
-import { MdKeyboardArrowDown, MdInfo } from 'react-icons/md';
+import { MdInfo } from 'react-icons/md';
+import { RiArrowRightDownLine } from 'react-icons/ri';
 
 import {
   colors,
   radius,
   spacing,
   defaultFontStack,
-  fontSizes
+  fontSizes,
+  transitions
 } from '../../utils/styles';
 
 const ShippingInfoRoot = styled(`div`)`
-  background: #f5f5f5;
   border-radius: ${radius.md}px;
-  margin: ${spacing.sm}px 0;
-  padding: ${spacing.sm}px ${spacing.md}px;
+  margin: ${spacing.sm} 0;
 `;
 
 const Intro = styled(`p`)`
@@ -28,6 +28,16 @@ const Intro = styled(`p`)`
   margin: 0;
   position: relative;
   text-align: left;
+
+  a {
+    color: inherit;
+    text-decoration: none;
+    border-bottom: 1px solid currentColor;
+  }
+
+  a:hover {
+    border-bottom-color: transparent;
+  }
 `;
 
 const on = keyframes`
@@ -40,24 +50,23 @@ const Details = styled(Intro)`
   animation: ${on} 1s ease forwards;
   cursor: default;
   display: none;
-  margin-top: ${spacing.xs}px;
+  margin-top: ${spacing.xs};
   opacity: 0;
-  transition: 0.5s;
+  transition: ${transitions.speed.slow};
 
   .expanded & {
     display: block;
   }
 `;
 
-const ArrowIcon = styled(MdKeyboardArrowDown)`
+const ArrowIcon = styled(RiArrowRightDownLine)`
   color: ${colors.brand};
-  height: 26px;
+  height: 24px;
   position: relative;
-  stroke-width: 1px;
   transform: translateY(-10%) rotate(0);
-  transition: 0.5s;
+  transition: ${transitions.speed.slow};
   vertical-align: top;
-  width: 26px;
+  width: 24px;
 
   .expanded & {
     transform: translateY(-10%) rotate(180deg);
@@ -70,7 +79,7 @@ const ArrowIcon = styled(MdKeyboardArrowDown)`
 
 const InfoIcon = styled(MdInfo)`
   color: ${colors.text};
-  margin-right: ${spacing['2xs']}px;
+  margin-right: ${spacing['2xs']};
   vertical-align: middle;
 `;
 
@@ -89,7 +98,6 @@ class ShippingInfo extends Component {
     return (
       <ShippingInfoRoot className={detailsVisible ? 'expanded' : ''}>
         <Intro role="button" onClick={this.toggle}>
-          <InfoIcon />
           International shipments can take <strong>6 weeks or more</strong> to
           be delivered and may be subject to{' '}
           <a

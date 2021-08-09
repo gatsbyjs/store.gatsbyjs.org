@@ -5,51 +5,43 @@ import {
   breakpoints,
   colors,
   fonts,
-  spacing,
   fontSizes,
   lineHeights,
-  gradients
+  spacing
 } from '../../utils/styles';
 
 const ProductListingHeaderRoot = styled(`header`)`
   display: flex;
   flex-direction: column;
-  margin: 0 auto;
-  max-width: 40em;
-  padding: ${spacing.lg}px;
-  text-align: center;
+  max-width: 52em;
+  padding: ${spacing['2xl']};
 `;
 
 const Title = styled(`h1`)`
   color: ${colors.text};
   font-family: ${fonts.heading};
-  font-size: ${fontSizes['3xl']};
-  font-weight: 800;
+  font-size: ${fontSizes['lg']};
+  font-weight: 700;
   letter-spacing: -0.025em;
   line-height: ${lineHeights.dense};
   margin: 0;
-  margin-top: ${spacing.md}px;
-  background: ${gradients.default};
-  background-clip: text;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 
   @media (min-width: ${breakpoints.desktop}px) {
-    font-size: ${fontSizes['4xl']};
+    font-size: ${fontSizes['3xl']};
   }
 `;
 
 const Intro = styled(`p`)`
   color: ${colors.text};
-  font-size: ${fontSizes.md};
+  font-size: ${fontSizes.lg};
   line-height: ${lineHeights.default};
-  margin: 0;
-  margin-top: ${spacing.md}px;
+  margin: ${spacing.md} 0 0;
+  font-weight: 500;
 `;
 
 const ProductListingHeader = () => (
   <ProductListingHeaderRoot>
-    <Title>Get Gatsby Swag!</Title>
+    <Title>Get Gatsby Swag</Title>
     <Intro>
       The money we charge for swag helps to cover production and shipping costs.
       In the unlikely event that Gatsby swag ends up turning a profit, we’ll

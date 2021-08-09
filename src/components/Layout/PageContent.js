@@ -3,7 +3,12 @@ import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
 
 import Footer, { minHeight } from './Footer';
-import { breakpoints, dimensions, animations } from '../../utils/styles';
+import {
+  breakpoints,
+  dimensions,
+  animations,
+  transitions
+} from '../../utils/styles';
 
 const {
   contributorAreaWidth: {
@@ -20,13 +25,13 @@ const PageContentRoot = styled(`main`)`
   min-height: calc(100vh - ${minHeight});
   opacity: 1;
   padding-left: 0;
-  transition: 0.75s;
+  transition: ${transitions.speed.default};
   width: 100%;
   will-change: transform;
 
   &.covered {
-    opacity: 0;
     position: fixed;
+    // opacity: 0;
   }
 
   &.entry {
@@ -42,9 +47,9 @@ const PageContentRoot = styled(`main`)`
     }
 
     &.moved {
-      opacity: 0.25;
       position: fixed;
       transform: translateX(-${dimensions.cartWidthDesktop});
+      opacity: 1;
     }
 
     &.covered {
@@ -55,20 +60,6 @@ const PageContentRoot = styled(`main`)`
   @media (min-width: ${breakpoints.hd}px) {
     padding-left: ${props =>
       props.contributorAreaStatus === 'closed' ? desktopMinWidth : hdMaxWidth};
-  }
-`;
-
-const Overlay = styled(`div`)`
-  display: none;
-
-  @media (min-width: ${breakpoints.desktop}px) {
-    background: rgba(0, 0, 0, 0.1);
-    bottom: 0;
-    display: block;
-    left: 0;
-    position: fixed;
-    right: 0;
-    top: 0;
   }
 `;
 
@@ -153,13 +144,12 @@ class PageContent extends Component {
   }
 
   render() {
-    const { children, cartStatus } = this.props;
+    const { children, cartStatus, toggle } = this.props;
     const { className } = this.state;
 
     return (
       <PageContentRoot className={className}>
         {children}
-        {cartStatus === 'open' && <Overlay />}
         <Footer />
       </PageContentRoot>
     );

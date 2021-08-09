@@ -12,13 +12,15 @@ import Notice from '../shared/Notice';
 import {
   animations,
   badgeThemes,
+  borders,
   colors,
   fonts,
   fontSizes,
   fontWeights,
   lineHeights,
   radius,
-  spacing
+  spacing,
+  transitions
 } from '../../utils/styles';
 
 const ContentForContributorRoot = styled(`div`)`
@@ -30,14 +32,35 @@ const CodeBadgeBox = styled(`div`)`
     badgeThemes[props.code]
       ? badgeThemes[props.code].backgroundTheme
       : colors.brand};
+  /* stylelint-disable */
+  // background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" transform="rotate(25)" opacity="0.8" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g fill="%23d68810"><circle cx="25" cy="25" r="12.5"/><circle cx="75" cy="75" r="12.5"/><circle cx="75" cy="25" r="12.5"/><circle cx="25" cy="75" r="12.5"/></g></svg>');
+  /* stylelint-enable */
+  background-size: auto, auto;
+  background-size: 13px, 100%;
+  border: 1px solid ${colors.border};
   border-radius: ${radius.lg}px;
   color: ${props =>
     badgeThemes[props.code]
       ? badgeThemes[props.code].textTheme
       : colors.lightest};
-  margin: ${spacing.md}px 0;
+  margin: ${spacing.md} 0;
+  padding: ${spacing.sm} 0;
+  position: relative;
   text-align: center;
-  padding: ${spacing.sm}px 0;
+
+  :before {
+    position: absolute;
+    top: 0.25rem;
+    left: -0.25rem;
+    z-index: -5;
+    width: 100%;
+    height: 100%;
+    background-size: 12px, 100%;
+    background-size: auto, auto;
+    border: 0.4rem solid ${colors.brand};
+    border-radius: ${radius.lg}px;
+    content: '';
+  }
 `;
 
 const CodeBadge = styled(`div`)`
@@ -54,7 +77,7 @@ const Name = styled(`span`)`
 
 const Code = styled(`span`)`
   font-size: ${fontSizes.md};
-  padding: ${spacing['2xs']}px;
+  padding: ${spacing['2xs']};
   font-family: ${fonts.monospace};
   font-weight: ${fontWeights.bold};
   letter-spacing: 1px;
@@ -65,19 +88,19 @@ const Used = styled(`span`)`
   display: flex;
   font-size: ${fontSizes.md};
   justify-content: center;
-  padding: ${spacing.xs}px;
+  padding: ${spacing.xs};
 `;
 
 const Tip = styled(`p`)`
-  color: ${colors.brandBright};
+  color: ${colors.textLight};
   font-size: ${fontSizes.sm};
   line-height: ${lineHeights.dense};
   margin: 0;
-  padding-top: ${spacing.xs}px;
+  padding-top: ${spacing.xs};
 `;
 
 const CopyButton = styled(Button)`
-  margin-bottom: ${spacing.sm}px;
+  margin-bottom: ${spacing.sm};
   width: auto;
   flex-grow: 0;
   flex-shrink: 1;
@@ -96,7 +119,7 @@ const ProgressBarContainer = `
   border: 0;
   border-radius: ${radius.lg}px;
   background: ${colors.lightest}33;
-  height: ${spacing.xs}px;
+  height: ${spacing.xs};
 `;
 
 const ProgressIndicator = `
@@ -104,7 +127,7 @@ const ProgressIndicator = `
   width: 100%;
   border-radius: ${radius.lg}px 0 0 ${radius.lg}px;
   background-color: ${colors.lightest}99;
-  transition: width 1s;
+  transition: width ${transitions.speed.slow};
   background-image: linear-gradient(
     135deg,
     currentColor 25%,
@@ -123,28 +146,29 @@ const ProgressIndicator = `
 
 const ProgressBar = styled(`progress`)`
   ${ProgressBarContainer} ::-webkit-progress-bar {
-    ${ProgressBarContainer};
+    ${ProgressBarContainer}
     background: ${props => (props.theme ? `${props.theme}33` : null)};
   }
 
   ::-webkit-progress-value {
-    ${ProgressIndicator};
+    ${ProgressIndicator}
     background-color: ${props => (props.theme ? `${props.theme}99` : null)};
   }
 
   ::-ms-fill {
-    ${ProgressIndicator};
+    ${ProgressIndicator}
     background-color: ${props => (props.theme ? `${props.theme}99` : null)};
   }
+
   ::-moz-progress-bar {
-    ${ProgressIndicator};
+    ${ProgressIndicator}
     background-color: ${props => (props.theme ? `${props.theme}99` : null)};
   }
 `;
 
 const LockIcon = styled(MdLock)`
   font-size: ${fontSizes.xl};
-  padding-top: ${spacing.sm}px;
+  padding-top: ${spacing.sm};
 `;
 
 const Copy = ({ code }) => {

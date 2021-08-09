@@ -14,22 +14,20 @@ import {
 } from '../../utils/styles';
 
 const CommunityCaptionRoot = styled(`div`)`
-  bottom: ${spacing.xl}px;
-  bottom: calc(
-    ${dimensions.pictureBrowserAction.heightMobile} + ${spacing.md}px
-  );
+  bottom: ${spacing.xl};
+  bottom: calc(${dimensions.pictureBrowserAction.heightMobile} + ${spacing.md});
   color: ${colors.lightest};
   cursor: default;
   display: ${props => (props.superZoom ? 'none' : 'block')};
-  left: ${spacing.md}px;
+  left: ${spacing.md};
   position: fixed;
-  right: ${spacing.md}px;
+  right: ${spacing.md};
 
   @media (min-width: ${breakpoints.desktop}px) {
-    bottom: ${spacing.lg}px;
+    right: auto;
+    bottom: ${spacing.lg};
     left: calc(50% + (${dimensions.pictureBrowserAction.widthDesktop} / 2));
     max-width: 500px;
-    right: auto;
     transform: translateX(-50%);
   }
 `;
@@ -49,9 +47,9 @@ const Toggle = styled(`button`)`
   width: 46px;
 
   svg {
-    color: ${colors.lightest};
-    height: 36px;
     width: 36px;
+    height: 36px;
+    color: ${colors.lightest};
   }
 `;
 
@@ -59,8 +57,8 @@ const Caption = styled(`div`)`
   background: rgba(0, 0, 0, 0.7);
   border-radius: ${radius.lg}px ${radius.lg}px 0 0;
   font-size: ${fontSizes.md};
-  padding: ${spacing.sm}px ${spacing.lg}px;
-  padding-right: calc(${spacing.lg}px + 46px);
+  padding: ${spacing.sm} ${spacing.lg};
+  padding-right: calc(${spacing.lg} + 46px);
   width: 100%;
 
   p {
@@ -77,7 +75,7 @@ const UserPhotoHint = styled(`div`)`
   border-radius: 0 0 ${radius.lg}px ${radius.lg}px;
   cursor: pointer;
   font-size: ${fontSizes.sm};
-  padding: ${spacing.sm}px ${spacing.lg}px;
+  padding: ${spacing.sm} ${spacing.lg};
   position: relative;
   width: 100%;
 

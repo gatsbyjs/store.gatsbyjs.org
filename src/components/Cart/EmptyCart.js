@@ -12,7 +12,7 @@ const EmptyCartRoot = styled('div')`
 
 const SadCartCopy = styled('div')`
   color: ${colors.text};
-  margin-top: ${spacing.lg}px;
+  margin-top: ${spacing.lg};
   max-width: 200px;
   text-align: center;
 

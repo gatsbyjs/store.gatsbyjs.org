@@ -16,8 +16,8 @@ const LoadingRoot = styled(`div`)`
 `;
 
 const SpinnerContainer = styled(`span`)`
-  margin-bottom: ${spacing.lg};
   font-size: ${fontSizes.lg};
+  margin-bottom: ${spacing.lg};
 `;
 
 const Loading = () => (

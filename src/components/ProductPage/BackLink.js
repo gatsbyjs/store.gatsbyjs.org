@@ -1,55 +1,60 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import styled from '@emotion/styled';
-import { MdArrowBack } from 'react-icons/md';
+import { RiArrowGoBackLine } from 'react-icons/ri';
 
 import { Button } from '../shared/Buttons';
 
-import { breakpoints, colors, spacing } from '../../utils/styles';
+import {
+  breakpoints,
+  colors,
+  dimensions,
+  fontSizes,
+  lineHeights,
+  spacing
+} from '../../utils/styles';
 
 const BackLinkRoot = styled(`div`)`
-  background: linear-gradient(
-    to top,
-    rgba(255, 255, 255, 1) 0%,
-    rgba(255, 255, 255, 1) 76%,
-    rgba(255, 255, 255, 0.75) 76%,
-    rgba(255, 255, 255, 0.75) 82%,
-    rgba(255, 255, 255, 0.5) 82%,
-    rgba(255, 255, 255, 0.5) 88%,
-    rgba(255, 255, 255, 0.25) 88%,
-    rgba(255, 255, 255, 0.25) 94%,
-    rgba(255, 255, 255, 0) 94%,
-    rgba(255, 255, 255, 0) 100%
-  );
-  bottom: 0;
-  left: 0;
-  padding: ${spacing.md}px;
-  padding-top: ${spacing.lg}px;
-  position: fixed;
+  padding: ${spacing.lg} ${dimensions.gutter.default}
+    ${dimensions.gutter.default};
   width: 100%;
+  order: 1;
+
+  @media (min-width: ${breakpoints.tablet}px) {
+    padding: ${spacing['2xl']} ${dimensions.gutter.desktop};
+  }
 
   @media (min-width: ${breakpoints.desktop}px) {
-    padding: 0 ${spacing.xl}px;
-    position: relative;
+    order: -1;
+    padding: 0;
   }
 `;
 
 const BackToListing = styled(Button)`
-  border-radius: 0;
+  border: 0;
   color: ${colors.text};
+  font-size: ${fontSizes.sm};
+  line-height: ${lineHeights.default};
   width: 100%;
 
   @media (min-width: ${breakpoints.desktop}px) {
-    border: 0;
-    border-bottom: 1px solid currentColor;
-    padding: 0;
     width: auto;
+    padding: 0;
+    background: transparent;
+    border: 0;
+
+    span {
+      border-bottom: 1px solid transparent;
+    }
   }
 
   @media (hover: hover) {
     :hover {
-      box-shadow: none;
       color: ${colors.brand};
+
+      span {
+        border-bottom-color: currentColor;
+      }
     }
   }
 `;
@@ -57,7 +62,7 @@ const BackToListing = styled(Button)`
 const BackLink = ({ children, className }) => (
   <BackLinkRoot className={className}>
     <BackToListing to="/">
-      <MdArrowBack /> {children}
+      <RiArrowGoBackLine /> <span>{children}</span>
     </BackToListing>
   </BackLinkRoot>
 );

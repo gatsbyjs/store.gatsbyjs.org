@@ -1,5 +1,5 @@
 import React from 'react';
-import { Global, css } from '@emotion/react';
+import { Global, css, keyframes } from '@emotion/react';
 import styled from '@emotion/styled';
 
 import { navigate } from 'gatsby';
@@ -24,28 +24,30 @@ import {
   colors,
   fonts,
   fontWeights,
-  lineHeights
+  gradients,
+  lineHeights,
+  zIndices
 } from '../../utils/styles';
 
 import gql from 'graphql-tag';
 
 const globalStyles = css`
   @font-face {
-    font-family: 'Inter var';
     font-weight: 100 900;
-    font-display: swap;
+    font-family: 'Inter var';
     font-style: normal;
-    font-named-instance: 'Regular';
     src: url('/fonts/Inter-roman.var.woff2?v=3.19') format('woff2');
+    font-display: swap;
+    font-named-instance: 'Regular';
   }
 
   @font-face {
-    font-family: 'Inter var';
     font-weight: 100 900;
-    font-display: swap;
+    font-family: 'Inter var';
     font-style: italic;
-    font-named-instance: 'Italic';
     src: url('/fonts/Inter-italic.var.woff2?v=3.19') format('woff2');
+    font-display: swap;
+    font-named-instance: 'Italic';
   }
 
   html {
@@ -59,23 +61,51 @@ const globalStyles = css`
   }
 
   body {
-    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.05);
-    color: ${colors.text};
-    font-family: ${fonts.body};
-    font-size: 16px;
-    line-height: ${lineHeights.default};
     margin: 0 auto;
-    text-rendering: optimizeLegibility;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
+    color: ${colors.text};
     font-weight: ${fontWeights.medium};
+    font-size: 16px;
+    font-family: ${fonts.body};
+    line-height: ${lineHeights.default};
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0.05);
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    -moz-osx-font-smoothing: grayscale;
     font-feature-settings: 'cv01', 'cv02', 'cv03', 'cv04', 'cv06', 'cv07',
       'cv08', 'cv09', 'calt', 'ccmp', 'kern';
+    scroll-behavior: smooth;
   }
 `;
 
 const Viewport = styled(`div`)`
   width: 100%;
+`;
+
+const rainbow = keyframes`
+  0% {
+    background-position: 1% 80%
+  }
+  50% {
+    background-position: 99% 20%
+  }
+  100% {
+    background-position: 1% 80%
+  }
+`;
+
+const Overlay = styled(`div`)`
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: block;
+  background: ${gradients.overlay};
+  opacity: 0.8;
+  cursor: pointer;
+  z-index: ${zIndices.overlay};
+  animation: ${rainbow} 20s ease-in-out infinite;
+  background-size: 1000% 1000%;
 `;
 
 export default class Layout extends React.Component {
@@ -426,10 +456,13 @@ export default class Layout extends React.Component {
                   toggleProductImagesBrowser
                 }) => (
                   <>
+                    {cartStatus === 'open' && <Overlay onClick={toggleCart} />}
+
                     <Header
                       isDesktopViewport={isDesktopViewport}
                       productImagesBrowserStatus={productImagesBrowserStatus}
                     />
+
                     <Viewport>
                       <Cart
                         isDesktopViewport={isDesktopViewport}
@@ -449,6 +482,7 @@ export default class Layout extends React.Component {
 
                       <PageContent
                         cartStatus={cartStatus}
+                        toggle={toggleCart}
                         contributorAreaStatus={contributorAreaStatus}
                         isDesktopViewport={isDesktopViewport}
                         productImagesBrowserStatus={productImagesBrowserStatus}

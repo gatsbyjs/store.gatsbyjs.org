@@ -3,7 +3,8 @@ import styled from '@emotion/styled';
 import { keyframes } from '@emotion/react';
 import PropTypes from 'prop-types';
 
-import { MdClose, MdArrowBack, MdArrowForward } from 'react-icons/md';
+import { MdArrowBack, MdArrowForward } from 'react-icons/md';
+import { RiCloseLine } from 'react-icons/ri';
 
 import { RiShoppingCartLine } from 'react-icons/ri';
 
@@ -17,6 +18,7 @@ import { Button, PrimaryButton } from '../shared/Buttons';
 import { transitions, visuallyHidden } from '../../utils/styles';
 
 import {
+  borders,
   breakpoints,
   colors,
   dimensions,
@@ -24,12 +26,15 @@ import {
   fontSizes,
   fontWeights,
   lineHeights,
-  spacing
+  spacing,
+  shadows,
+  zIndices
 } from '../../utils/styles';
 
 const CartRoot = styled(`div`)`
   background: ${colors.lightest};
   bottom: 0;
+  max-width: ${dimensions.cartWidthDesktop};
   position: fixed;
   right: 0;
   top: -1px;
@@ -37,9 +42,11 @@ const CartRoot = styled(`div`)`
   transition: transform ${transitions.sidebar};
   width: 100%;
   will-change: transform;
-  z-index: 1000;
+  z-index: ${zIndices.cart};
 
   &.open {
+    border-left: ${borders.grid};
+    box-shadow: ${shadows.card};
     transform: translateX(0%);
   }
 
@@ -48,16 +55,16 @@ const CartRoot = styled(`div`)`
   }
 
   ::after {
-    background-color: ${colors.lightest};
-    bottom: 0;
-    content: '';
-    left: 0;
-    opacity: 0;
-    pointer-events: none;
     position: absolute;
-    right: 0;
     top: 0;
-    transition: all 250ms;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background-color: ${colors.lightest};
+    opacity: 0;
+    transition: all ${transitions.speed.default};
+    content: '';
+    pointer-events: none;
   }
 
   &.loading {
@@ -68,9 +75,6 @@ const CartRoot = styled(`div`)`
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
-    width: ${dimensions.cartWidthDesktop};
-    border-left: 1px solid ${colors.border};
-
     &.covered {
       display: none;
     }
@@ -90,14 +94,14 @@ const Title = styled(`h2`)`
   font-size: ${fontSizes.lg};
   left: -${dimensions.headerHeight};
   margin: 0;
-  margin-left: ${spacing.lg}px;
+  margin-left: ${dimensions.gutter.desktop};
   position: relative;
 
   .open & {
-    margin-left: calc(${dimensions.headerHeight} + ${spacing.md}px);
+    margin-left: calc(${dimensions.gutter.desktop} + ${spacing.lg});
 
-    @media (min-width: ${breakpoints.desktop}px) {
-      margin-left: ${spacing.xl}px;
+    @media (min-width: ${breakpoints.tablet}px) {
+      margin-left: ${dimensions.gutter.desktop};
     }
   }
 `;
@@ -105,13 +109,13 @@ const Title = styled(`h2`)`
 const Content = styled(`div`)`
   bottom: 0;
   overflow-y: auto;
-  padding: ${spacing.lg}px;
+  padding: ${dimensions.gutter.desktop};
   position: absolute;
   top: ${dimensions.headerHeight};
   width: 100%;
 
   @media (min-width: ${breakpoints.desktop}px) {
-    padding: ${spacing.xl}px;
+    padding: ${spacing.xl};
   }
 `;
 
@@ -131,36 +135,36 @@ const ItemsNumber = styled(`span`)`
 const ItemsInCart = styled(`div`)`
   align-items: center;
   display: flex;
-  font-size: 0.8rem;
+  font-size: ${fontSizes.xs};
   line-height: ${lineHeights.dense};
   text-align: right;
 
   ${ItemsNumber} {
-    margin-left: ${spacing.xs}px;
-    margin-right: ${spacing.md}px;
+    margin-right: ${dimensions.gutter.desktop};
+    margin-left: ${spacing.xs};
   }
 `;
 
 const Costs = styled('div')`
   display: flex;
   flex-direction: column;
-  margin-bottom: ${spacing.sm}px;
-  padding-top: ${spacing.lg}px;
-  padding-bottom: ${spacing.lg}px;
+  margin-bottom: ${spacing.sm};
+  padding-bottom: ${spacing.lg};
+  padding-top: ${spacing.lg};
 `;
 
 const Cost = styled(`div`)`
   display: flex;
-  font-size: ${fontSizes.sm};
-  padding: 0 ${spacing.xs}px ${spacing['2xs']}px;
+  font-size: ${fontSizes.md};
+  padding: 0 0 ${spacing['2xs']};
 
   :last-child {
     padding-bottom: 0;
   }
 
   span {
-    color: ${colors.textLight};
     flex-basis: 60%;
+    color: ${colors.text};
     text-align: right;
   }
 
@@ -171,11 +175,10 @@ const Cost = styled(`div`)`
 `;
 
 const Total = styled(Cost)`
-  border-top: 1px solid ${colors.border};
   color: ${colors.text};
   font-size: ${fontSizes.md};
-  margin-top: ${spacing.sm}px;
-  padding-top: ${spacing.md}px;
+  margin-top: ${spacing.sm};
+  padding-top: ${spacing.md};
 
   span {
     font-weight: ${fontWeights.bold};
@@ -212,8 +215,9 @@ const numberEntry = keyframes`
 `;
 
 const CartToggle = styled(Button)`
-  background: ${colors.lightest};
+  background: transparent;
   border: none;
+  border-left: ${borders.grid};
   border-radius: 0;
   color: ${colors.text};
   display: flex;
@@ -224,53 +228,48 @@ const CartToggle = styled(Button)`
   position: relative;
   top: 0;
   transform: translateX(-100%);
-  transition: all 0.5s ease;
+  transition: all ${transitions.speed.slow} ease;
   width: ${dimensions.headerHeight};
-
-  :focus {
-    box-shadow: 0 0 0 1px ${colors.accent} inset;
-  }
 
   .open & {
     transform: translateX(0);
   }
 
-  @media (min-width: ${breakpoints.desktop}px) {
+  @media (min-width: ${breakpoints.tablet}px) {
     .open & {
-      transform: translateX(-100%);
+      border-left-color: transparent;
+      transform: translateX(calc((100% + 1px) * -1));
     }
   }
 
   svg {
-    animation: ${iconEntry} 0.75s ease forwards;
+    width: 24px;
     height: 24px;
     margin: 0;
-    width: 24px;
+    animation: ${iconEntry} 0.75s ease forwards;
   }
 
   ${ItemsNumber} {
-    animation: ${numberEntry} 0.5s ease forwards;
     position: absolute;
-    right: ${spacing['2xs']}px;
-    top: ${spacing['2xs']}px;
+    top: ${spacing['2xs']};
+    right: ${spacing['2xs']};
     transform: scale(0.555555);
+    animation: ${numberEntry} ${transitions.speed.slow} ease forwards;
   }
 `;
 
 const CheckOut = styled(PrimaryButton)`
-  font-size: 1.25rem;
-  margin: ${spacing.lg}px 0 ${spacing.md}px;
+  margin: ${spacing.lg} 0 ${spacing.md};
   width: 100%;
 `;
 
 const BackLink = styled(Button)`
-  font-size: 1.25rem;
-  margin-bottom: ${spacing.sm}px;
+  margin-bottom: ${spacing.sm};
   width: 100%;
 `;
 
 const Small = styled('small')`
-  font-weight: normal;
+  font-weight: ${fontWeights.medium};
 `;
 
 class Cart extends Component {
@@ -352,12 +351,17 @@ class Cart extends Component {
                 <CartToggle
                   aria-label={`Shopping cart with ${itemsInCart} items`}
                   onClick={toggle}
-                  css={{
-                    color: itemsInCart > 0 ? colors.accent : null
-                  }}
                 >
                   {status === 'open' ? (
-                    <MdClose />
+                    <RiCloseLine
+                      css={{
+                        color: colors.brand,
+
+                        [`@media (min-width: ${breakpoints.tablet}px)`]: {
+                          color: colors.lightest
+                        }
+                      }}
+                    />
                   ) : (
                     <>
                       <RiShoppingCartLine />
@@ -391,7 +395,7 @@ class Cart extends Component {
                       <span>
                         Subtotal<span css={visuallyHidden}>:</span>
                       </span>{' '}
-                      <strong css={{ fontWeight: 'normal' }}>
+                      <strong>
                         <Small>USD</Small> ${checkout.subtotalPrice}
                       </strong>
                     </Cost>
@@ -399,9 +403,7 @@ class Cart extends Component {
                       <span>
                         Taxes<span css={visuallyHidden}>:</span>
                       </span>{' '}
-                      <strong css={{ fontWeight: 'normal' }}>
-                        {checkout.totalTax}
-                      </strong>
+                      <strong>{checkout.totalTax}</strong>
                     </Cost>
                     <Cost>
                       <span>

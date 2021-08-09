@@ -1,7 +1,7 @@
 export const debounce = (delay, fn) => {
   let timeout;
 
-  return function(...args) {
+  return function (...args) {
     if (timeout) {
       clearTimeout(timeout);
     }
@@ -13,7 +13,7 @@ export const debounce = (delay, fn) => {
   };
 };
 
-export const removeCareInstructions = desc =>
+export const removeCareInstructions = (desc) =>
   desc
     .split(/Care Instructions/)
     .slice(0, 1)

@@ -5,46 +5,44 @@ import { Link } from 'gatsby';
 
 import {
   colors,
+  dimensions,
   fonts,
   radius,
   gradients,
   fontSizes,
   fontWeights,
-  lineHeights
+  lineHeights,
+  transitions
 } from '../../utils/styles';
 
 export const ButtonBase = styled(`button`)`
   align-items: center;
-  background: ${props => (props.inverse ? colors.brand : colors.lightest)};
+  background-color: ${props =>
+    props.inverse ? colors.brand : colors.brandLight};
   border: 1px solid
-    ${props => (props.inverse ? colors.brandLight : colors.brand)};
+    ${props => (props.inverse ? colors.brand : colors.brandLight)};
   border-radius: ${radius.lg}px;
   color: ${props => (props.inverse ? colors.brandLight : colors.brand)};
   cursor: pointer;
   display: inline-flex;
-  font-family: ${fonts.heading};
+  font-family: ${fonts.body};
   font-size: ${fontSizes.md};
-  line-height: ${lineHeights.solid};
   justify-content: center;
-  padding: 0.75em 1rem;
-  transition: 0.5s;
-
-  :focus {
-    box-shadow: 0 0 0 3px ${colors.accent};
-    outline: 0;
-    transition: box-shadow 0.15s ease-in-out;
-  }
+  line-height: ${lineHeights.solid};
+  padding: 0.5rem 1.5rem;
+  min-height: ${dimensions.interactiveMinHeight};
+  transition: ${transitions.speed.default};
 
   svg {
-    height: 1.1em;
-    margin-left: ${props => (props.iconOnLeft ? 0 : '0.5em')};
-    margin-right: ${props => (props.iconOnLeft ? '0.5em' : 0)};
     width: 1.1em;
+    height: 1.1em;
+    margin: 0;
+    margin-right: ${props => (props.iconOnLeft ? '0.5em' : 0)};
+    margin-left: ${props => (props.iconOnLeft ? 0 : '0.5em')};
   }
 
   @media (hover: hover) {
     &:hover {
-      box-shadow: 0 0 0 1px ${colors.accent};
     }
   }
 `;
@@ -106,16 +104,49 @@ Button.propTypes = {
 
 export const PrimaryButton = styled(Button)`
   background: ${gradients.button};
+  background-color: ${colors.brand};
+  background-position: 100% 0;
+  background-size: 600% 100%;
+  animation: rainbow 2s ease-in-out infinite;
   border: 0;
   color: ${colors.lightest};
   display: flex;
+  // font-family: ${fonts.monospace};
   font-size: ${fontSizes.md};
   font-weight: ${fontWeights.bold};
+  height: ${props => (props.fullWidth ? 'auto' : '')};
   justify-content: center;
+  letter-spacing: 0.025em;
+  position: relative;
+  // text-transform: uppercase;
+  transition: 8s;
+  width: ${props => (props.fullWidth ? '100%' : 'auto')};
+
+  &::after {
+    border-radius: inherit;
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
+    // transition: background 8s, transform 0.25s;
+    background: inherit;
+    background-color: inherit;
+    background-position: inherit
+    background-size: inherit;
+    animation: inherit;  
+  }
 
   @media (hover: hover) {
     &:hover {
-      background: ${gradients.buttonHover};
+      background-position: 0 0;
+
+      &::after {
+        // background-position: inherit;
+        // transform: scale(1.05);
+      }
     }
   }
 `;

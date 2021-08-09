@@ -9,15 +9,15 @@ const spin = keyframes`
 
 const Spinner = styled(`span`)`
   animation: ${spin} 1s ease infinite;
-  display: inline-block;
-  width: 1em;
-  height: 1em;
   border: 0.125em solid
     ${props =>
-      props.light ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'};
+      props.light ? 'rgba(255, 255, 255, 0.25)' : 'rgba(0, 0, 0, 0.125)'};
   border-radius: 50%;
   border-top-color: ${props =>
-    props.light ? 'rgba(255, 255, 255, 0.75)' : 'rgba(0, 0, 0, 0.5)'};
+    props.light ? 'rgba(255, 255, 255, 1)' : 'rgba(0, 0, 0, 0.5)'};
+  display: inline-block;
+  height: 1em;
+  width: 1em;
 `;
 
 export default Spinner;
