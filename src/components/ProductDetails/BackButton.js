@@ -6,6 +6,8 @@ import { MdClose } from 'react-icons/md';
 import { Button } from '../shared/Buttons';
 import { visuallyHidden, dimensions } from '../../utils/styles';
 
+const isBrowser = typeof window !== 'undefined';
+
 const BackLinkRoot = styled(`div`)`
   padding: 0;
   position: sticky;
@@ -22,8 +24,12 @@ const BackToProduct = styled(Button)`
 `;
 
 const BackButton = ({ children, className }) => {
-  const urlParams = new URLSearchParams(window.location.search);
-  const fromProduct = urlParams.has('fromProduct');
+  let fromProduct = false;
+
+  if (isBrowser) {
+    const urlParams = new URLSearchParams(window.location.search);
+    fromProduct = urlParams.has('fromProduct');
+  }
 
   if (!fromProduct) return null;
 
