@@ -174,7 +174,7 @@ const Title = styled(`span`)`
   font-size: ${fontSizes.sm};
 
   strong, em {
-    text-style: normal;
+    font-style: normal;
     text-decoration: underline;
     font-weight: ${fontWeights.semibold};
     text-decoration-style: wavy;

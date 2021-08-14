@@ -27,7 +27,7 @@ export const Heading = styled(`h2`)`
   margin-top: ${spacing[`2xs`]};
 
   strong {
-    color: ${colors.accent};
+    color: ${colors.brand};
   }
 `
 

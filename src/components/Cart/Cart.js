@@ -123,7 +123,7 @@ const Content = styled(`div`)`
 
 const ItemsNumber = styled(`span`)`
   align-items: center;
-  background: ${colors.accent};
+  background: ${colors.brand};
   border-radius: 50%;
   color: ${colors.lightest};
   display: flex;

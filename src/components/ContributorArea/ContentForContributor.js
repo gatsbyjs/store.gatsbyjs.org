@@ -1,14 +1,11 @@
 import React, { useState } from "react"
 import styled from "@emotion/styled"
-
 import { MdLock } from "react-icons/md"
 
 import UserContext from "../../context/UserContext"
 import { Heading, Text } from "./AreaTypography"
-
 import { Button } from "../shared/Buttons"
 import Notice from "../shared/Notice"
-
 import {
   animations,
   badgeThemes,
