@@ -111,14 +111,14 @@ export const PrimaryButton = styled(Button)`
   border: 0;
   color: ${colors.lightest};
   display: flex;
-  // font-family: ${fonts.monospace};
+  font-family: ${fonts.monospace};
   font-size: ${fontSizes.md};
   font-weight: ${fontWeights.bold};
   height: ${(props) => (props.fullWidth ? `auto` : ``)};
   justify-content: center;
   letter-spacing: 0.025em;
   position: relative;
-  // text-transform: uppercase;
+  text-transform: uppercase;
   transition: 8s;
   width: ${(props) => (props.fullWidth ? `100%` : `auto`)};
 

@@ -90,17 +90,14 @@ const Row = styled(`span`)`
   }
 
   a:nth-of-type(1) {
-    // background: #fffafd;
     background: #ffe6f6;
   }
 
   a:nth-of-type(2) {
-    // background: #fffafa;
     background: #fde7e7;
   }
 
   a:nth-of-type(3) {
-    // background: #fffcf7;
     background: #fff4db;
   }
 `

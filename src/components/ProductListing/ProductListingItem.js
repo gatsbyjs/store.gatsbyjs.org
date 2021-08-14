@@ -62,13 +62,10 @@ const Item = styled(`article`)`
   display: flex;
   flex-direction: column;
   height: 100%;
-  // padding: ${spacing.lg};
 `
 
 const Preview = styled(`div`)`
   border-radius: ${radius.lg}px ${radius.lg}px 0 0;
-  // margin: -${spacing.lg};
-  // margin-bottom: ${spacing.lg};
   padding: ${spacing[`2xl`]};
   position: relative;
 

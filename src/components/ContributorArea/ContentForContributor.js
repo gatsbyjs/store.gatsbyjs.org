@@ -30,11 +30,6 @@ const CodeBadgeBox = styled(`div`)`
     badgeThemes[props.code]
       ? badgeThemes[props.code].backgroundTheme
       : colors.brand};
-  /* stylelint-disable */
-  // background-image: url('data:image/svg+xml;utf8,<svg width="100" height="100" transform="rotate(25)" opacity="0.8" version="1.1" viewBox="0 0 100 100" xmlns="http://www.w3.org/2000/svg"><g fill="%23d68810"><circle cx="25" cy="25" r="12.5"/><circle cx="75" cy="75" r="12.5"/><circle cx="75" cy="25" r="12.5"/><circle cx="25" cy="75" r="12.5"/></g></svg>');
-  /* stylelint-enable */
-  background-size: auto, auto;
-  background-size: 13px, 100%;
   border: 1px solid ${colors.border};
   border-radius: ${radius.lg}px;
   color: ${(props) =>
@@ -243,12 +238,6 @@ const ContentForContributor = () => (
                   <Used>Claimed! <span role="img" aria-label="Tada!">🎉</span></Used>
                 )}
               </CodeBadge>
-              {/* {!code.used && (
-                <Tip>
-                Click the badge to shop only items you can claim for free
-                using this code.
-                </Tip>
-              )} */}
             </CodeBadgeBox>
           ))}
           {/* Show progress bar when Level 1 is earned, but Level 2 is not */}

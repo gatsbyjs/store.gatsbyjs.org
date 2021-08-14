@@ -31,7 +31,6 @@ const PageContentRoot = styled(`main`)`
 
   &.covered {
     position: fixed;
-    // opacity: 0;
   }
 
   &.entry {

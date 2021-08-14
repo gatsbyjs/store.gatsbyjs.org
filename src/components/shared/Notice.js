@@ -7,7 +7,7 @@ const NoticeRoot = styled(`div`)``
 
 const Notice = () => (
   <NoticeRoot>
-    <Text css={{ marginTop: 0 }}>
+    <Text>
       Due to COVID-19 related international mail service disruptions, your order
       may be delayed or suspended. Please view{` `}
       <a href="https://about.usps.com/newsroom/service-alerts/international/welcome.htm">
