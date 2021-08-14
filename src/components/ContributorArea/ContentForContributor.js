@@ -240,7 +240,7 @@ const ContentForContributor = () => (
                     <Copy code={code.code} />
                   </>
                 ) : (
-                  <Used>Claimed! 🎉</Used>
+                  <Used>Claimed! <span role="img" aria-label="Tada!">🎉</span></Used>
                 )}
               </CodeBadge>
               {/* {!code.used && (
