@@ -232,7 +232,12 @@ const ContentForContributor = () => (
                     <Copy code={code.code} />
                   </>
                 ) : (
-                  <Used>Claimed! <span role="img" aria-label="Tada!">🎉</span></Used>
+                  <Used>
+                    Claimed!{` `}
+                    <span role="img" aria-label="Tada!">
+                      🎉
+                    </span>
+                  </Used>
                 )}
               </CodeBadge>
             </CodeBadgeBox>

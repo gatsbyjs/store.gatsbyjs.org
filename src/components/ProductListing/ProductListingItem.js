@@ -231,7 +231,11 @@ const ProductListingItem = (props) => {
             <Preview>
               <GatsbyImage
                 image={featuredImage.gatsbyImageData}
-                alt={featuredImage.altText ? featuredImage.altText : `"${title}" image`}
+                alt={
+                  featuredImage.altText
+                    ? featuredImage.altText
+                    : `"${title}" image`
+                }
               />
               {checkEligibility({
                 freeWith,

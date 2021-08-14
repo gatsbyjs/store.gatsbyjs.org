@@ -24,7 +24,10 @@ const CartThumbnail = ({ shopifyImages, fallback, ...imageProps }) => {
 
   if (image) {
     return (
-      <CartThumbnailRoot image={image.gatsbyImageData} alt={image.altText ? image.altText : ``} />
+      <CartThumbnailRoot
+        image={image.gatsbyImageData}
+        alt={image.altText ? image.altText : ``}
+      />
     )
   }
 
