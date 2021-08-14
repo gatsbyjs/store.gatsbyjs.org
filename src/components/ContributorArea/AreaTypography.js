@@ -15,9 +15,7 @@ export const SectionHeading = styled(`h3`)`
   font-family: ${fonts.body};
   font-size: ${fontSizes.sm};
   font-weight: ${fontWeights.semibold};
-  // letter-spacing: 0.025em;
   margin: 0;
-  // text-transform: uppercase;
 `
 
 export const Heading = styled(`h2`)`
@@ -50,13 +48,11 @@ export const Text = styled(`p`)`
 
   a {
     color: ${colors.brand};
-    font-weight: ${fontWeights.bold};
     text-decoration: none;
     border-bottom: 1px solid ${colors.brand};
 
     :hover {
-      color: ${colors.accent};
-      border-bottom: 1px solid ${colors.accent};
+      border-bottom-color: transparent;
     }
   }
 `
