@@ -1,19 +1,20 @@
 import React from "react"
 import styled from "@emotion/styled"
+
 import { colors, spacing } from "../../utils/styles"
 
 const EmptyCartRoot = styled(`div`)`
   align-items: center;
   display: flex;
   flex-direction: column;
-  height: 350px;
   justify-content: center;
+  flex-grow: 1;
 `
 
 const SadCartCopy = styled(`div`)`
   color: ${colors.text};
-  margin-top: ${spacing.lg};
-  max-width: 200px;
+  padding: ${spacing.lg};
+  max-width: 16rem;
   text-align: center;
 
   p {

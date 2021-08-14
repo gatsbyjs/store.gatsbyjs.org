@@ -43,6 +43,8 @@ const CartRoot = styled(`div`)`
   width: 100%;
   will-change: transform;
   z-index: ${zIndices.cart};
+  display: flex;
+  flex-direction: column;
 
   &.open {
     border-left: ${borders.grid};
