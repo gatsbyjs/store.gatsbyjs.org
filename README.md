@@ -6,6 +6,20 @@
 <h1 align="center">
   Gatsby <a href="https://store.gatsbyjs.org">Swag Store</a>
 </h1>
+<p align="center">
+  <a href="https://github.com/gatsbyjs/store.gatsbyjs.org/blob/master/LICENSE">
+    <img src="https://img.shields.io/badge/license-MIT-blue.svg" alt="Gatsby is released under the MIT license." />
+  </a>
+  <a href="https://circleci.com/gh/gatsbyjs/store.gatsbyjs.org">
+    <img src="https://circleci.com/gh/gatsbyjs/store.gatsbyjs.org.svg?style=shield" alt="Current CircleCI build status." />
+  </a>
+  <a href="https://gatsbyjs.com/contributing/how-to-contribute/">
+    <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg" alt="PRs welcome!" />
+  </a>
+  <a href="https://twitter.com/intent/follow?screen_name=gatsbyjs">
+    <img src="https://img.shields.io/twitter/follow/gatsbyjs.svg?label=Follow%20@gatsbyjs" alt="Follow @GatsbyJS" />
+  </a>
+</p>
 
 This is the Gatsby store, where we make swag, stickers, and other Gatsby goodies available to contributors and Gatsby enthusiasts. 💪💜
 
