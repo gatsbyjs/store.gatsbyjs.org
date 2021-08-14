@@ -52,10 +52,12 @@ const Product = () => (
   </svg>
 )
 
-export default () => (
+const Logo = () => (
   <div css={svg}>
     <Monogram />
     <Logotype />
     <Product />
   </div>
 )
+
+export default Logo
