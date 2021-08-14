@@ -1,4 +1,4 @@
-import React from 'react';
+import React from "react"
 
 export const defaultUserContext = {
   loading: false,
@@ -8,6 +8,6 @@ export const defaultUserContext = {
   contributor: {},
   handleLogout: () => {},
   updateContributor: () => {},
-};
+}
 
-export default React.createContext(defaultUserContext);
+export default React.createContext(defaultUserContext)

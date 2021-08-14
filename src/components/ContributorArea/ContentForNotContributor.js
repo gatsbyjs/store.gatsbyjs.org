@@ -1,35 +1,35 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
-import { Button as BaseButton } from '../shared/Buttons';
-import OpenIssues from './OpenIssues';
-import { Heading, Lede, Text } from './AreaTypography';
-import { spacing, animations } from '../../utils/styles';
+import React, { Component } from "react"
+import PropTypes from "prop-types"
+import styled from "@emotion/styled"
+import { Button as BaseButton } from "../shared/Buttons"
+import OpenIssues from "./OpenIssues"
+import { Heading, Lede, Text } from "./AreaTypography"
+import { spacing, animations } from "../../utils/styles"
 
 const ContentForNotContributorRoot = styled(`div`)`
   animation: ${animations.simpleEntry};
-`;
+`
 
 const Button = styled(BaseButton)`
   margin: ${spacing.lg} 0 ${spacing.xl} 0;
-`;
+`
 
 class ContentForNotContributor extends Component {
   state = {
-    issuesVisible: false
-  };
+    issuesVisible: false,
+  }
 
   showIssuesList = () => {
     this.setState({
-      issuesVisible: true
-    });
-  };
+      issuesVisible: true,
+    })
+  }
 
   render() {
-    const { issuesVisible } = this.state;
+    const { issuesVisible } = this.state
     const {
-      profile: { nickname }
-    } = this.props;
+      profile: { nickname },
+    } = this.props
 
     return (
       <ContentForNotContributorRoot>
@@ -42,8 +42,8 @@ class ContentForNotContributor extends Component {
           come back here to claim free swag.
         </Text>
         <Text>
-          If you have questions, ask on any issue (you can tag{' '}
-          <code>@gatsbyjs/learning</code> if you’d like) or hit us up{' '}
+          If you have questions, ask on any issue (you can tag{` `}
+          <code>@gatsbyjs/learning</code> if you’d like) or hit us up{` `}
           <a href="https://twitter.com/gatsbyjs">on Twitter at @gatsbyjs</a>.
         </Text>
 
@@ -58,12 +58,12 @@ class ContentForNotContributor extends Component {
           <OpenIssues />
         )}
       </ContentForNotContributorRoot>
-    );
+    )
   }
 }
 
 ContentForNotContributor.propTypes = {
-  profile: PropTypes.object.isRequired
-};
+  profile: PropTypes.object.isRequired,
+}
 
-export default ContentForNotContributor;
+export default ContentForNotContributor

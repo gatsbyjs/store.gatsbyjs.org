@@ -1,30 +1,30 @@
-import React from 'react';
-import styled from '@emotion/styled';
-import { GoMarkGithub } from 'react-icons/go';
+import React from "react"
+import styled from "@emotion/styled"
+import { GoMarkGithub } from "react-icons/go"
 
-import { login } from '../../utils/auth';
-import { spacing, animations } from '../../utils/styles';
-import { Button as BaseButton } from '../shared/Buttons';
-import Notice from '../shared/Notice';
-import { Heading, SectionHeading, Text } from './AreaTypography';
+import { login } from "../../utils/auth"
+import { spacing, animations } from "../../utils/styles"
+import { Button as BaseButton } from "../shared/Buttons"
+import Notice from "../shared/Notice"
+import { Heading, SectionHeading, Text } from "./AreaTypography"
 
 const ContentForGuestRoot = styled(`div`)`
   animation: ${animations.simpleEntry};
   position: relative;
-`;
+`
 
 const FirstHeading = styled(Heading)`
   margin-right: 15px;
   padding-right: ${spacing.lg};
-`;
+`
 
-const Button = styled('a')`
+const Button = styled(`a`)`
   margin: ${spacing.lg} 0 ${spacing.xl} 0;
-`;
+`
 
 const LoginButton = styled(BaseButton)`
   margin: ${spacing.lg} 0 ${spacing.xl} 0;
-`;
+`
 
 const ContentForGuest = () => (
   <ContentForGuestRoot>
@@ -36,7 +36,7 @@ const ContentForGuest = () => (
       Already contributed to Gatsby? Claim your personal coupon code and get
       free swag by logging in with your GitHub account!
     </Text>
-    <LoginButton onClick={e => login()}>
+    <LoginButton onClick={(e) => login()}>
       Log in with GitHub <GoMarkGithub />
     </LoginButton>
     <SectionHeading>For future contributors</SectionHeading>
@@ -51,6 +51,6 @@ const ContentForGuest = () => (
     </Button>
     <Notice />
   </ContentForGuestRoot>
-);
+)
 
-export default ContentForGuest;
+export default ContentForGuest

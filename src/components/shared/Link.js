@@ -1,17 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
-import { Link as GatsbyLink } from 'gatsby';
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "@emotion/styled"
+import { Link as GatsbyLink } from "gatsby"
 
-import { colors, radius, spacing, transitions } from '../../utils/styles';
+import { colors, radius, spacing, transitions } from "../../utils/styles"
 
 const LinkRoot = styled(GatsbyLink)`
   align-items: center;
   border-radius: ${radius.md}px;
   color: ${colors.text};
-  display: ${props => (props.inline ? 'inline-flex' : 'flex')};
-  margin: -${spacing['3xs']} -${spacing['2xs']};
-  padding: ${spacing['3xs']} ${spacing['2xs']};
+  display: ${(props) => (props.inline ? `inline-flex` : `flex`)};
+  margin: -${spacing[`3xs`]} -${spacing[`2xs`]};
+  padding: ${spacing[`3xs`]} ${spacing[`2xs`]};
   text-decoration: none;
   transition: ${transitions.speed.default};
 
@@ -26,7 +26,7 @@ const LinkRoot = styled(GatsbyLink)`
   }
 
   svg {
-    margin-right: ${spacing['2xs']};
+    margin-right: ${spacing[`2xs`]};
     fill: ${colors.textLight};
   }
 
@@ -40,18 +40,18 @@ const LinkRoot = styled(GatsbyLink)`
       fill: ${colors.brand};
     }
   }
-`;
+`
 
-const Link = props => {
-  const { children } = props;
+const Link = (props) => {
+  const { children } = props
 
-  return <LinkRoot {...props}>{children}</LinkRoot>;
-};
+  return <LinkRoot {...props}>{children}</LinkRoot>
+}
 
 Link.propTypes = {
   children: PropTypes.node.isRequired,
   className: PropTypes.string,
-  inline: PropTypes.bool
-};
+  inline: PropTypes.bool,
+}
 
-export default Link;
+export default Link

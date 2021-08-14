@@ -1,8 +1,8 @@
-import React from 'react';
-import styled from '@emotion/styled';
+import React from "react"
+import styled from "@emotion/styled"
 
-import { colors, radius, spacing, fontSizes } from '../../utils/styles';
-import gift from '../../assets/gift.png';
+import { colors, radius, spacing, fontSizes } from "../../utils/styles"
+import gift from "../../assets/gift.png"
 
 const FreeBonusRoot = styled(`div`)`
   align-items: center;
@@ -23,7 +23,7 @@ const FreeBonusRoot = styled(`div`)`
     height: auto;
     margin-left: ${spacing.xs};
   }
-`;
+`
 
 const FreeBonus = () => (
   <FreeBonusRoot>
@@ -34,6 +34,6 @@ const FreeBonus = () => (
 
     <img src={gift} alt="Gift Icon" />
   </FreeBonusRoot>
-);
+)
 
-export default FreeBonus;
+export default FreeBonus

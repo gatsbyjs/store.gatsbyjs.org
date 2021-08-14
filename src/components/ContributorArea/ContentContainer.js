@@ -1,11 +1,11 @@
-import React from 'react';
-import styled from '@emotion/styled';
+import React from "react"
+import styled from "@emotion/styled"
 
-import UserContext from '../../context/UserContext';
-import ContentForNotLoggedIn from './ContentForNotLoggedIn';
-import ContentForLoggedIn from './ContentForLoggedIn';
+import UserContext from "../../context/UserContext"
+import ContentForNotLoggedIn from "./ContentForNotLoggedIn"
+import ContentForLoggedIn from "./ContentForLoggedIn"
 
-import { breakpoints, spacing } from '../../utils/styles';
+import { breakpoints, spacing } from "../../utils/styles"
 
 const ContentContainerRoot = styled(`div`)`
   -webkit-overflow-scrolling: touch;
@@ -15,7 +15,7 @@ const ContentContainerRoot = styled(`div`)`
   @media (min-width: ${breakpoints.desktop}px) {
     padding: ${spacing.xl};
   }
-`;
+`
 
 const ContentContainer = () => (
   <ContentContainerRoot>
@@ -26,7 +26,7 @@ const ContentContainer = () => (
         handleLogout,
         loading,
         profile,
-        profile: { nickname }
+        profile: { nickname },
       }) =>
         nickname || loading ? (
           <ContentForLoggedIn
@@ -44,6 +44,6 @@ const ContentContainer = () => (
       }
     </UserContext.Consumer>
   </ContentContainerRoot>
-);
+)
 
-export default ContentContainer;
+export default ContentContainer

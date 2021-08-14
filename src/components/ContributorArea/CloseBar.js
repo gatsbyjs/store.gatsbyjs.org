@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
+import React, { Component } from "react"
+import PropTypes from "prop-types"
+import styled from "@emotion/styled"
 
-import { MdArrowForward, MdClose } from 'react-icons/md';
+import { MdArrowForward, MdClose } from "react-icons/md"
 
 import {
   borders,
@@ -13,13 +13,13 @@ import {
   dimensions,
   transitions,
   fontSizes,
-  zIndices
-} from '../../utils/styles';
+  zIndices,
+} from "../../utils/styles"
 
 const {
   contributorAreaWidth: { openDesktop: desktopMaxWidth, openHd: hdMaxWidth },
-  contributorAreaBarHeight: height
-} = dimensions;
+  contributorAreaBarHeight: height,
+} = dimensions
 
 const CloseBarRoot = styled(`button`)`
   align-items: center;
@@ -104,69 +104,73 @@ const CloseBarRoot = styled(`button`)`
       transform: translateX(-${hdMaxWidth});
     }
   }
-`;
+`
 
 class CloseBar extends Component {
   state = {
-    className: 'closed'
-  };
+    className: `closed`,
+  }
 
   componentDidUpdate(prevProps) {
     // most of code below is similar to ContributorArea, take a look for comments
 
     const isDesktopViewportChanged =
-      this.props.isDesktopViewport !== prevProps.isDesktopViewport;
-    const areaStatusChanged = prevProps.areaStatus !== this.props.areaStatus;
+      this.props.isDesktopViewport !== prevProps.isDesktopViewport
+    const areaStatusChanged = prevProps.areaStatus !== this.props.areaStatus
     const imageBrowserStatusChanged =
       this.props.productImagesBrowserStatus !==
-      prevProps.productImagesBrowserStatus;
+      prevProps.productImagesBrowserStatus
 
     if (isDesktopViewportChanged && prevProps.isDesktopViewport === null) {
       this.setState({
-        className: this.props.isDesktopViewport ? 'open' : 'closed'
-      });
+        className: this.props.isDesktopViewport ? `open` : `closed`,
+      })
     }
 
     if (areaStatusChanged) {
-      if (this.props.areaStatus === 'open') {
-        this.setState({ className: `${this.state.className} unhide` });
-        setTimeout(() => this.setState({ className: 'opening' }), 0);
-        setTimeout(() => this.setState({ className: 'open' }), 500);
+      if (this.props.areaStatus === `open`) {
+        this.setState({ className: `${this.state.className} unhide` })
+        setTimeout(() => this.setState({ className: `opening` }), 0)
+        setTimeout(() => this.setState({ className: `open` }), 500)
       }
 
-      if (this.props.areaStatus === 'closed') {
-        this.setState({ className: 'closing' });
-        setTimeout(() => this.setState({ className: 'closed' }), 500);
+      if (this.props.areaStatus === `closed`) {
+        this.setState({ className: `closing` })
+        setTimeout(() => this.setState({ className: `closed` }), 500)
       }
     }
 
     if (this.props.isDesktopViewport) {
       if (imageBrowserStatusChanged) {
-        if (this.props.productImagesBrowserStatus === 'open') {
+        if (this.props.productImagesBrowserStatus === `open`) {
           setTimeout(() => {
-            this.setState(state => ({
-              className: state.className + ' covered'
-            }));
-          }, 500);
+            this.setState((state) => {
+              return {
+                className: state.className + ` covered`,
+              }
+            })
+          }, 500)
         } else {
-          this.setState(state => ({
-            className: state.className.replace('covered', '')
-          }));
+          this.setState((state) => {
+            return {
+              className: state.className.replace(`covered`, ``),
+            }
+          })
         }
       }
     }
   }
 
   render() {
-    const { onClick, isDesktopViewport } = this.props;
-    const { className } = this.state;
+    const { onClick, isDesktopViewport } = this.props
+    const { className } = this.state
 
     return (
       <CloseBarRoot className={className} onClick={onClick}>
         {isDesktopViewport ? `Close sidebar` : `Continue shopping`}
         {isDesktopViewport ? <MdClose /> : <MdArrowForward />}
       </CloseBarRoot>
-    );
+    )
   }
 }
 
@@ -174,7 +178,7 @@ CloseBar.propTypes = {
   onClick: PropTypes.func.isRequired,
   areaStatus: PropTypes.string.isRequired,
   isDesktopViewport: PropTypes.bool,
-  productImagesBrowserStatus: PropTypes.string
-};
+  productImagesBrowserStatus: PropTypes.string,
+}
 
-export default CloseBar;
+export default CloseBar

@@ -1,16 +1,16 @@
-import auth0js from 'auth0-js';
+import auth0js from "auth0-js"
 
-export const isBrowser = typeof window !== 'undefined';
+export const isBrowser = typeof window !== `undefined`
 
 // To speed things up, we’ll keep the profile stored unless the user logs out.
 // This prevents a flicker while the HTTP round-trip completes.
-let profile = false;
+let profile = false
 
 const tokens = {
   accessToken: false,
   idToken: false,
   expiresAt: false,
-};
+}
 
 // Only instantiate Auth0 if we’re in the browser.
 const auth0 = isBrowser
@@ -19,86 +19,86 @@ const auth0 = isBrowser
       clientID: process.env.AUTH0_CLIENTID,
       redirectUri: process.env.AUTH0_CALLBACK,
       audience: process.env.AUTH0_AUDIENCE,
-      responseType: 'token id_token',
-      scope: 'openid profile email',
+      responseType: `token id_token`,
+      scope: `openid profile email`,
     })
-  : {};
+  : {}
 
 export const login = () => {
   if (!isBrowser) {
-    return;
+    return
   }
 
-  auth0.authorize();
-};
+  auth0.authorize()
+}
 
 export const logout = () => {
-  localStorage.setItem('isLoggedIn', false);
-  profile = false;
+  localStorage.setItem(`isLoggedIn`, false)
+  profile = false
 
-  const { protocol, host } = window.location;
-  const returnTo = `${protocol}//${host}`;
+  const { protocol, host } = window.location
+  const returnTo = `${protocol}//${host}`
 
-  auth0.logout({ returnTo });
-};
+  auth0.logout({ returnTo })
+}
 
 const setSession = (callback) => (err, authResult) => {
   if (!isBrowser) {
-    return;
+    return
   }
 
   if (err) {
-    console.error(err);
-    callback();
-    return;
+    console.error(err)
+    callback()
+    return
   }
 
   if (authResult && authResult.accessToken && authResult.idToken) {
-    let expiresAt = authResult.expiresIn * 1000 + new Date().getTime();
-    tokens.accessToken = authResult.accessToken;
-    tokens.idToken = authResult.idToken;
-    tokens.expiresAt = expiresAt;
-    profile = authResult.idTokenPayload;
-    localStorage.setItem('isLoggedIn', true);
-    callback();
+    const expiresAt = authResult.expiresIn * 1000 + new Date().getTime()
+    tokens.accessToken = authResult.accessToken
+    tokens.idToken = authResult.idToken
+    tokens.expiresAt = expiresAt
+    profile = authResult.idTokenPayload
+    localStorage.setItem(`isLoggedIn`, true)
+    callback()
   }
-};
+}
 
 export const silentAuth = (callback) => {
   if (!isBrowser) {
-    return;
+    return
   }
 
-  if (!isAuthenticated()) return callback();
-  auth0.checkSession({}, setSession(callback));
-};
+  if (!isAuthenticated()) return callback()
+  auth0.checkSession({}, setSession(callback))
+}
 
 export const handleAuthentication = (callback = () => {}) => {
   if (!isBrowser) {
-    return;
+    return
   }
 
-  auth0.parseHash(setSession(callback));
-};
+  auth0.parseHash(setSession(callback))
+}
 
 export const isAuthenticated = () => {
   if (!isBrowser) {
-    return;
+    return
   }
 
-  return localStorage.getItem('isLoggedIn') === 'true';
-};
+  return localStorage.getItem(`isLoggedIn`) === `true`
+}
 
 export const getAccessToken = () => {
   if (!isBrowser) {
-    return '';
+    return ``
   }
 
-  return tokens.accessToken;
-};
+  return tokens.accessToken
+}
 
 export const getUserInfo = () => {
   if (profile) {
-    return profile;
+    return profile
   }
-};
+}

@@ -1,17 +1,17 @@
-import React from 'react';
+import React from "react"
 
 export const defaultInterfaceContext = {
   isDesktopViewport: null,
-  cartStatus: 'initial',
+  cartStatus: `initial`,
   toggleCart: () => {},
   productImageFeatured: null,
   featureProductImage: () => {},
   currentProductImages: [],
   setCurrentProductImages: () => {},
-  productImagesBrowserStatus: 'initial',
+  productImagesBrowserStatus: `initial`,
   toggleProductImagesBrowser: () => {},
-  contributorAreaStatus: 'initial',
+  contributorAreaStatus: `initial`,
   toggleContributorArea: () => {},
-};
+}
 
-export default React.createContext(defaultInterfaceContext);
+export default React.createContext(defaultInterfaceContext)

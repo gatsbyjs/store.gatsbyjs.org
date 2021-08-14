@@ -1,10 +1,10 @@
-import React from 'react';
-import styled from '@emotion/styled';
-import CartListItem from './CartListItem';
+import React from "react"
+import styled from "@emotion/styled"
+import CartListItem from "./CartListItem"
 
-import { colors, spacing } from '../../utils/styles';
+import { colors, spacing } from "../../utils/styles"
 
-const CartListRoot = styled('ul')`
+const CartListRoot = styled(`ul`)`
   border-bottom: 1px solid ${colors.border};
   list-style: none;
   margin: 0;
@@ -13,7 +13,7 @@ const CartListRoot = styled('ul')`
   gap: ${spacing.lg};
   flex-direction: column;
   padding: ${spacing.lg} 0;
-`;
+`
 
 const Headers = styled(`div`)`
   border-bottom: 1px solid ${colors.border};
@@ -33,14 +33,14 @@ const Headers = styled(`div`)`
       text-align: left;
     }
   }
-`;
+`
 
 const CartList = ({
   items,
   handleRemove,
   updateQuantity,
   setCartLoading,
-  isCartLoading
+  isCartLoading,
 }) => (
   <>
     <Headers>
@@ -49,7 +49,7 @@ const CartList = ({
       <span>Remove</span>
     </Headers>
     <CartListRoot>
-      {items.map(item => (
+      {items.map((item) => (
         <CartListItem
           key={item.id}
           item={item}
@@ -61,6 +61,6 @@ const CartList = ({
       ))}
     </CartListRoot>
   </>
-);
+)
 
-export default CartList;
+export default CartList

@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
+import React, { Component } from "react"
+import PropTypes from "prop-types"
+import styled from "@emotion/styled"
 
-import { MdClose, MdKeyboardArrowUp } from 'react-icons/md';
+import { MdClose, MdKeyboardArrowUp } from "react-icons/md"
 
 import {
   breakpoints,
@@ -10,15 +10,15 @@ import {
   colors,
   radius,
   spacing,
-  fontSizes
-} from '../../utils/styles';
+  fontSizes,
+} from "../../utils/styles"
 
 const CommunityCaptionRoot = styled(`div`)`
   bottom: ${spacing.xl};
   bottom: calc(${dimensions.pictureBrowserAction.heightMobile} + ${spacing.md});
   color: ${colors.lightest};
   cursor: default;
-  display: ${props => (props.superZoom ? 'none' : 'block')};
+  display: ${(props) => (props.superZoom ? `none` : `block`)};
   left: ${spacing.md};
   position: fixed;
   right: ${spacing.md};
@@ -30,7 +30,7 @@ const CommunityCaptionRoot = styled(`div`)`
     max-width: 500px;
     transform: translateX(-50%);
   }
-`;
+`
 
 const Toggle = styled(`button`)`
   align-items: center;
@@ -51,7 +51,7 @@ const Toggle = styled(`button`)`
     height: 36px;
     color: ${colors.lightest};
   }
-`;
+`
 
 const Caption = styled(`div`)`
   background: rgba(0, 0, 0, 0.7);
@@ -68,7 +68,7 @@ const Caption = styled(`div`)`
   .minimized & {
     border-radius: ${radius.lg}px 0 0 ${radius.lg}px;
   }
-`;
+`
 
 const UserPhotoHint = styled(`div`)`
   background: rgba(68, 34, 102, 0.9);
@@ -99,41 +99,45 @@ const UserPhotoHint = styled(`div`)`
   a {
     color: inherit;
   }
-`;
+`
 
 class CommunityCaption extends Component {
   state = {
     minimized: false,
-    incentiveExpanded: false
-  };
+    incentiveExpanded: false,
+  }
 
-  toggle = e => {
-    e.preventDefault();
-    e.stopPropagation();
+  toggle = (e) => {
+    e.preventDefault()
+    e.stopPropagation()
 
-    this.setState(state => ({
-      minimized: !state.minimized,
-      hintExpanded: false
-    }));
-  };
+    this.setState((state) => {
+      return {
+        minimized: !state.minimized,
+        hintExpanded: false,
+      }
+    })
+  }
 
-  toggleIncentive = e => {
+  toggleIncentive = (e) => {
     if (!e.target.href) {
-      e.preventDefault();
-      e.stopPropagation();
+      e.preventDefault()
+      e.stopPropagation()
 
-      this.setState(state => ({ hintExpanded: !state.hintExpanded }));
+      this.setState((state) => {
+        return { hintExpanded: !state.hintExpanded }
+      })
     }
-  };
+  }
 
   render() {
-    const { caption, superZoom } = this.props;
-    const { minimized, hintExpanded } = this.state;
+    const { caption, superZoom } = this.props
+    const { minimized, hintExpanded } = this.state
 
     return (
       <CommunityCaptionRoot
         superZoom={superZoom}
-        className={minimized ? 'minimized' : ''}
+        className={minimized ? `minimized` : ``}
       >
         <Caption>
           {minimized ? (
@@ -144,15 +148,17 @@ class CommunityCaption extends Component {
         </Caption>
         <UserPhotoHint
           onClick={this.toggleIncentive}
-          className={hintExpanded ? 'expanded' : ''}
+          className={hintExpanded ? `expanded` : ``}
         >
-          <span>We want to see your Gatsby swag photos!</span>{' '}
+          <span>We want to see your Gatsby swag photos!</span>
+          {` `}
           <strong>Read more...</strong>
           <span>
-            Upload your photos to{' '}
+            Upload your photos to{` `}
             <a href="https://github.com/gatsbyjs/store.gatsbyjs.org/issues/143">
               the official photo sharing issue
-            </a>{' '}
+            </a>
+            {` `}
             and it may be featured in the store!
           </span>
         </UserPhotoHint>
@@ -160,13 +166,13 @@ class CommunityCaption extends Component {
           {minimized ? <MdKeyboardArrowUp /> : <MdClose />}
         </Toggle>
       </CommunityCaptionRoot>
-    );
+    )
   }
 }
 
 CommunityCaption.propTypes = {
   caption: PropTypes.string.isRequired,
-  superZoom: PropTypes.bool.isRequired
-};
+  superZoom: PropTypes.bool.isRequired,
+}
 
-export default CommunityCaption;
+export default CommunityCaption

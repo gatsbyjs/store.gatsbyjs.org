@@ -1,15 +1,15 @@
-import React from 'react';
-import styled from '@emotion/styled';
+import React from "react"
+import styled from "@emotion/styled"
 
-import { isAuthenticated } from '../utils/auth';
+import { isAuthenticated } from "../utils/auth"
 import {
   TextContainer,
   Text as BaseText,
-} from '../components/shared/Typography';
+} from "../components/shared/Typography"
 
 const Text = styled(BaseText)`
   text-align: center;
-`;
+`
 
 const login = () => {
   if (!isAuthenticated()) {
@@ -17,8 +17,8 @@ const login = () => {
       <TextContainer>
         <Text>Redirecting you to the login screen...</Text>
       </TextContainer>
-    );
+    )
   }
-};
+}
 
-export default login;
+export default login

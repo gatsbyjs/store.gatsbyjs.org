@@ -1,11 +1,11 @@
-import React, { useState } from 'react';
-import styled from '@emotion/styled';
+import React, { useState } from "react"
+import styled from "@emotion/styled"
 
-import { MdClose } from 'react-icons/md';
+import { MdClose } from "react-icons/md"
 
-import CartThumbnail from './CartThumbnail';
-import { Input } from '../shared/FormElements';
-import { Button } from '../shared/Buttons';
+import CartThumbnail from "./CartThumbnail"
+import { Input } from "../shared/FormElements"
+import { Button } from "../shared/Buttons"
 
 import {
   breakpoints,
@@ -13,27 +13,27 @@ import {
   fontSizes,
   fontWeights,
   lineHeights,
-  spacing
-} from '../../utils/styles';
+  spacing,
+} from "../../utils/styles"
 
-const CartListItemRoot = styled('li')`
+const CartListItemRoot = styled(`li`)`
   align-items: center;
   display: flex;
   gap: ${spacing.md};
   justify-content: space-between;
-`;
+`
 
 const Thumbnail = styled(CartThumbnail)`
   flex-grow: 0;
-  margin-left: ${spacing['2xs']};
+  margin-left: ${spacing[`2xs`]};
   margin-right: ${spacing.sm};
-`;
+`
 
-const Info = styled('div')`
+const Info = styled(`div`)`
   flex-grow: 1;
-`;
+`
 
-const Name = styled('span')`
+const Name = styled(`span`)`
   display: block;
   font-size: ${fontSizes.md};
   font-weight: ${fontWeights.semibold};
@@ -42,15 +42,15 @@ const Name = styled('span')`
   @media (min-width: ${breakpoints.mobile}px) {
     font-size: ${fontSizes.lg};
   }
-`;
+`
 
-const Meta = styled('span')`
+const Meta = styled(`span`)`
   color: ${colors.textLight};
   display: block;
   font-size: ${fontSizes.sm};
   font-style: normal;
   line-height: ${lineHeights.dense};
-`;
+`
 
 const Quantity = styled(Input)`
   flex-grow: 0;
@@ -63,7 +63,7 @@ const Quantity = styled(Input)`
   @media (min-width: ${breakpoints.desktop}px) {
     width: 64px;
   }
-`;
+`
 
 const Remove = styled(Button)`
   border: 1px solid transparent;
@@ -71,7 +71,7 @@ const Remove = styled(Button)`
   display: flex;
   height: 44px;
   justify-content: center;
-  margin-right: ${spacing['2xs']};
+  margin-right: ${spacing[`2xs`]};
   padding: 0;
   width: 44px;
 
@@ -80,60 +80,60 @@ const Remove = styled(Button)`
     height: 24px;
     margin: 0;
   }
-`;
+`
 
-export default ({
+const CartListItem = ({
   item,
   setCartLoading,
   updateQuantity,
   handleRemove,
-  isCartLoading
+  isCartLoading,
 }) => {
-  const [quantity, setQuantity] = useState(1);
+  const [quantity, setQuantity] = useState(1)
 
-  if (item.quantity !== quantity && quantity !== '' && !isCartLoading) {
-    setQuantity(item.quantity);
+  if (item.quantity !== quantity && quantity !== `` && !isCartLoading) {
+    setQuantity(item.quantity)
   }
 
-  const handleInputChange = event => {
+  const handleInputChange = (event) => {
     if (isCartLoading) {
-      return;
+      return
     }
 
-    const value = event.target.value;
+    const value = event.target.value
 
     // Make sure the quantity is always at least 1.
-    const safeValue = Math.max(Number(value), 0);
+    const safeValue = Math.max(Number(value), 0)
 
     // No need to update if the value hasn’t updated.
     if (value === quantity) {
-      return;
+      return
     }
 
     // If the field is empty, update the state but don’t do anything else.
-    if (value === '') {
-      setQuantity(value);
-      return;
+    if (value === ``) {
+      setQuantity(value)
+      return
     }
 
     // Otherwise, trigger the loading state and set the quantity in state.
-    setCartLoading(true);
-    setQuantity(safeValue);
+    setCartLoading(true)
+    setQuantity(safeValue)
 
     // If the quantity is set to 0, remove the item.
     if (safeValue === 0) {
-      handleRemove(event);
-      return;
+      handleRemove(event)
+      return
     }
 
     // If we get here, update the quantity.
-    updateQuantity(safeValue);
-  };
+    updateQuantity(safeValue)
+  }
 
-  const handleRemoveItem = event => {
-    setCartLoading(true);
-    handleRemove(event);
-  };
+  const handleRemoveItem = (event) => {
+    setCartLoading(true)
+    handleRemove(event)
+  }
 
   return (
     <CartListItemRoot>
@@ -156,7 +156,7 @@ export default ({
         inputmode="numeric"
         min="1"
         step="1"
-        onChange={event => handleInputChange(event)}
+        onChange={(event) => handleInputChange(event)}
         onBlur={() => setQuantity(item.quantity)}
         value={quantity}
       />
@@ -164,5 +164,7 @@ export default ({
         <MdClose />
       </Remove>
     </CartListItemRoot>
-  );
-};
+  )
+}
+
+export default CartListItem

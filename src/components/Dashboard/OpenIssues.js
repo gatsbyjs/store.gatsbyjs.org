@@ -1,12 +1,12 @@
-import React from 'react';
-import gql from 'graphql-tag';
-import { Query } from 'react-apollo';
-import { Subheading, Text } from '../shared/Typography';
-import IssueList, { GitHubIssueFragment } from './IssueList';
+import React from "react"
+import gql from "graphql-tag"
+import { Query } from "react-apollo"
+import { Subheading, Text } from "../shared/Typography"
+import IssueList, { GitHubIssueFragment } from "./IssueList"
 
-const GITHUB_LABEL = 'help wanted';
+const GITHUB_LABEL = `help wanted`
 const GET_OPEN_ISSUES = gql`
-  query($label: String!) {
+  query ($label: String!) {
     openIssues(label: $label) {
       totalIssues
       issues {
@@ -15,20 +15,20 @@ const GET_OPEN_ISSUES = gql`
     }
   }
   ${GitHubIssueFragment}
-`;
+`
 
-const filterClaimedIssues = issue =>
-  !issue.labels.map(label => label.name).includes('Hacktoberfest - Claimed');
+const filterClaimedIssues = (issue) =>
+  !issue.labels.map((label) => label.name).includes(`Hacktoberfest - Claimed`)
 
-export default () => (
+const OpenIssues = () => (
   <Query query={GET_OPEN_ISSUES} variables={{ label: GITHUB_LABEL }}>
     {({ data, loading, error }) => {
-      if (loading) return <p>Loading...</p>;
-      if (error) return <p>Error: {error.message}</p>;
+      if (loading) return <p>Loading...</p>
+      if (error) return <p>Error: {error.message}</p>
 
       const issues = data.openIssues.issues
         .filter(filterClaimedIssues)
-        .slice(0, 5);
+        .slice(0, 5)
 
       return (
         <React.Fragment>
@@ -42,7 +42,9 @@ export default () => (
             </a>
           </Text>
         </React.Fragment>
-      );
+      )
     }}
   </Query>
-);
+)
+
+export default OpenIssues

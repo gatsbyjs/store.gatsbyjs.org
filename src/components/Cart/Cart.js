@@ -1,21 +1,21 @@
-import React, { Component } from 'react';
-import styled from '@emotion/styled';
-import { keyframes } from '@emotion/react';
-import PropTypes from 'prop-types';
+import React, { Component } from "react"
+import styled from "@emotion/styled"
+import { keyframes } from "@emotion/react"
+import PropTypes from "prop-types"
 
-import { MdArrowBack, MdArrowForward } from 'react-icons/md';
-import { RiCloseLine } from 'react-icons/ri';
+import { MdArrowBack, MdArrowForward } from "react-icons/md"
+import { RiCloseLine } from "react-icons/ri"
 
-import { RiShoppingCartLine } from 'react-icons/ri';
+import { RiShoppingCartLine } from "react-icons/ri"
 
-import StoreContext from '../../context/StoreContext';
-import CartList from './CartList';
-import CartIndicator from './CartIndicator';
-import EmptyCart from './EmptyCart';
-import FreeBonus from './FreeBonus';
-import ShippingInfo from './ShippingInfo';
-import { Button, PrimaryButton } from '../shared/Buttons';
-import { transitions, visuallyHidden } from '../../utils/styles';
+import StoreContext from "../../context/StoreContext"
+import CartList from "./CartList"
+import CartIndicator from "./CartIndicator"
+import EmptyCart from "./EmptyCart"
+import FreeBonus from "./FreeBonus"
+import ShippingInfo from "./ShippingInfo"
+import { Button, PrimaryButton } from "../shared/Buttons"
+import { transitions, visuallyHidden } from "../../utils/styles"
 
 import {
   borders,
@@ -28,8 +28,8 @@ import {
   lineHeights,
   spacing,
   shadows,
-  zIndices
-} from '../../utils/styles';
+  zIndices,
+} from "../../utils/styles"
 
 const CartRoot = styled(`div`)`
   background: ${colors.lightest};
@@ -63,7 +63,7 @@ const CartRoot = styled(`div`)`
     background-color: ${colors.lightest};
     opacity: 0;
     transition: all ${transitions.speed.default};
-    content: '';
+    content: "";
     pointer-events: none;
   }
 
@@ -79,14 +79,14 @@ const CartRoot = styled(`div`)`
       display: none;
     }
   }
-`;
+`
 
 const Heading = styled(`header`)`
   align-items: center;
   display: flex;
   height: ${dimensions.headerHeight};
   justify-content: flex-start;
-`;
+`
 
 const Title = styled(`h2`)`
   flex-grow: 1;
@@ -104,7 +104,7 @@ const Title = styled(`h2`)`
       margin-left: ${dimensions.gutter.desktop};
     }
   }
-`;
+`
 
 const Content = styled(`div`)`
   bottom: 0;
@@ -117,7 +117,7 @@ const Content = styled(`div`)`
   @media (min-width: ${breakpoints.desktop}px) {
     padding: ${spacing.xl};
   }
-`;
+`
 
 const ItemsNumber = styled(`span`)`
   align-items: center;
@@ -130,7 +130,7 @@ const ItemsNumber = styled(`span`)`
   height: 28px;
   justify-content: center;
   width: 28px;
-`;
+`
 
 const ItemsInCart = styled(`div`)`
   align-items: center;
@@ -143,20 +143,20 @@ const ItemsInCart = styled(`div`)`
     margin-right: ${dimensions.gutter.desktop};
     margin-left: ${spacing.xs};
   }
-`;
+`
 
-const Costs = styled('div')`
+const Costs = styled(`div`)`
   display: flex;
   flex-direction: column;
   margin-bottom: ${spacing.sm};
   padding-bottom: ${spacing.lg};
   padding-top: ${spacing.lg};
-`;
+`
 
 const Cost = styled(`div`)`
   display: flex;
   font-size: ${fontSizes.md};
-  padding: 0 0 ${spacing['2xs']};
+  padding: 0 0 ${spacing[`2xs`]};
 
   :last-child {
     padding-bottom: 0;
@@ -172,7 +172,7 @@ const Cost = styled(`div`)`
     flex-basis: 40%;
     text-align: right;
   }
-`;
+`
 
 const Total = styled(Cost)`
   color: ${colors.text};
@@ -188,7 +188,7 @@ const Total = styled(Cost)`
   span {
     color: inherit;
   }
-`;
+`
 
 const iconEntry = keyframes`
   0%, 50% {
@@ -200,7 +200,7 @@ const iconEntry = keyframes`
   100% {
     transform: scale(1);
   }
-`;
+`
 
 const numberEntry = keyframes`
   0%{
@@ -212,7 +212,7 @@ const numberEntry = keyframes`
   100% {
     transform: scale(0.7142);
   }
-`;
+`
 
 const CartToggle = styled(Button)`
   background: transparent;
@@ -251,100 +251,103 @@ const CartToggle = styled(Button)`
 
   ${ItemsNumber} {
     position: absolute;
-    top: ${spacing['2xs']};
-    right: ${spacing['2xs']};
+    top: ${spacing[`2xs`]};
+    right: ${spacing[`2xs`]};
     transform: scale(0.555555);
     animation: ${numberEntry} ${transitions.speed.slow} ease forwards;
   }
-`;
+`
 
 const CheckOut = styled(PrimaryButton)`
   margin: ${spacing.lg} 0 ${spacing.md};
   width: 100%;
-`;
+`
 
 const BackLink = styled(Button)`
   margin-bottom: ${spacing.sm};
   width: 100%;
-`;
+`
 
-const Small = styled('small')`
+const Small = styled(`small`)`
   font-weight: ${fontWeights.medium};
-`;
+`
 
 class Cart extends Component {
   state = {
-    className: 'closed',
-    isLoading: false
-  };
+    className: `closed`,
+    isLoading: false,
+  }
 
   componentDidUpdate(prevProps) {
-    const componentStatusChanged = prevProps.status !== this.props.status;
+    const componentStatusChanged = prevProps.status !== this.props.status
     const imageBrowserStatusChanged =
       this.props.productImagesBrowserStatus !==
-      prevProps.productImagesBrowserStatus;
+      prevProps.productImagesBrowserStatus
 
     if (componentStatusChanged) {
       this.setState({
-        className: this.props.status
-      });
+        className: this.props.status,
+      })
     }
 
     if (this.props.isDesktopViewport) {
       if (imageBrowserStatusChanged) {
-        if (this.props.productImagesBrowserStatus === 'open') {
+        if (this.props.productImagesBrowserStatus === `open`) {
           setTimeout(() => {
-            this.setState(state => ({
-              className: state.className + ' covered'
-            }));
-          }, 500);
+            this.setState((state) => {
+              return {
+                className: state.className + ` covered`,
+              }
+            })
+          }, 500)
         } else {
-          this.setState(state => ({
-            className: state.className.replace('covered', '')
-          }));
+          this.setState((state) => {
+            return {
+              className: state.className.replace(`covered`, ``),
+            }
+          })
         }
       }
     }
   }
 
   render() {
-    const { status, toggle } = this.props;
-    const { className } = this.state;
-    const gatsbyStickerPackID =
-      'Z2lkOi8vc2hvcGlmeS9DaGVja291dExpbmVJdGVtLzEyMjM5NzcyODc2ODg4MD9jaGVja291dD02N2I5MjkzZTMzZjQ2YWFhMWExMzZmNjc3NzQxYTMzNg==';
+    const { status, toggle } = this.props
+    const { className } = this.state
+    const gatsbyStickerPackID = `Z2lkOi8vc2hvcGlmeS9DaGVja291dExpbmVJdGVtLzEyMjM5NzcyODc2ODg4MD9jaGVja291dD02N2I5MjkzZTMzZjQ2YWFhMWExMzZmNjc3NzQxYTMzNg==`
 
     return (
       <StoreContext.Consumer>
         {({ client, checkout, removeLineItem, updateLineItem, adding }) => {
-          const setCartLoading = bool => this.setState({ isLoading: bool });
+          const setCartLoading = (bool) => this.setState({ isLoading: bool })
 
-          const handleRemove = itemID => async event => {
-            event.preventDefault();
-            await removeLineItem(client, checkout.id, itemID);
-            setCartLoading(false);
-          };
+          const handleRemove = (itemID) => async (event) => {
+            event.preventDefault()
+            await removeLineItem(client, checkout.id, itemID)
+            setCartLoading(false)
+          }
 
-          const handleQuantityChange = lineItemID => async quantity => {
+          const handleQuantityChange = (lineItemID) => async (quantity) => {
             if (!quantity) {
-              return;
+              return
             }
-            await updateLineItem(client, checkout.id, lineItemID, quantity);
-            setCartLoading(false);
-          };
+            await updateLineItem(client, checkout.id, lineItemID, quantity)
+            setCartLoading(false)
+          }
 
           const itemsInCart = checkout.lineItems.reduce(
             (total, item) => total + item.quantity,
-            0
-          );
+            0,
+          )
 
           const showFreeBonus = !checkout.lineItems.some(
-            ({ id }) => id === gatsbyStickerPackID
-          );
+            ({ id }) => id === gatsbyStickerPackID,
+          )
 
           return (
             <CartRoot
               className={`${className} ${
-                this.state.isLoading ? 'loading' : ''
+                this.state.isLoading ? `loading` : ``
               }`}
             >
               <Heading>
@@ -352,14 +355,14 @@ class Cart extends Component {
                   aria-label={`Shopping cart with ${itemsInCart} items`}
                   onClick={toggle}
                 >
-                  {status === 'open' ? (
+                  {status === `open` ? (
                     <RiCloseLine
                       css={{
                         color: colors.brand,
 
                         [`@media (min-width: ${breakpoints.tablet}px)`]: {
-                          color: colors.lightest
-                        }
+                          color: colors.lightest,
+                        },
                       }}
                     />
                   ) : (
@@ -394,7 +397,8 @@ class Cart extends Component {
                     <Cost>
                       <span>
                         Subtotal<span css={visuallyHidden}>:</span>
-                      </span>{' '}
+                      </span>
+                      {` `}
                       <strong>
                         <Small>USD</Small> ${checkout.subtotalPrice}
                       </strong>
@@ -402,13 +406,15 @@ class Cart extends Component {
                     <Cost>
                       <span>
                         Taxes<span css={visuallyHidden}>:</span>
-                      </span>{' '}
+                      </span>
+                      {` `}
                       <strong>{checkout.totalTax}</strong>
                     </Cost>
                     <Cost>
                       <span>
                         Shipping (worldwide)<span css={visuallyHidden}>:</span>
-                      </span>{' '}
+                      </span>
+                      {` `}
                       <strong>FREE</strong>
                     </Cost>
                     <Total>
@@ -437,10 +443,10 @@ class Cart extends Component {
                 <EmptyCart />
               )}
             </CartRoot>
-          );
+          )
         }}
       </StoreContext.Consumer>
-    );
+    )
   }
 }
 
@@ -449,7 +455,7 @@ Cart.propTypes = {
   toggle: PropTypes.func.isRequired,
   contributorAreaStatus: PropTypes.string.isRequired,
   isDesktopViewport: PropTypes.bool,
-  productImagesBrowserStatus: PropTypes.string
-};
+  productImagesBrowserStatus: PropTypes.string,
+}
 
-export default Cart;
+export default Cart

@@ -1,13 +1,13 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import styled from '@emotion/styled';
-import { keyframes } from '@emotion/react';
-import { RiZoomInLine } from 'react-icons/ri';
+import React, { Component } from "react"
+import PropTypes from "prop-types"
+import { GatsbyImage } from "gatsby-plugin-image"
+import styled from "@emotion/styled"
+import { keyframes } from "@emotion/react"
+import { RiZoomInLine } from "react-icons/ri"
 
-import { breakpoints, colors, radius, spacing } from '../../utils/styles';
+import { breakpoints, colors, radius, spacing } from "../../utils/styles"
 
-export const IMAGE_CHANGE_ANIM_DURATION = 250;
+export const IMAGE_CHANGE_ANIM_DURATION = 250
 
 const change = keyframes`
   0% {
@@ -16,7 +16,7 @@ const change = keyframes`
   100% {
     opacity: 1;
   }
-`;
+`
 
 const ProductImageLink = styled(`a`)`
   display: block;
@@ -29,7 +29,7 @@ const ProductImageLink = styled(`a`)`
   @media (min-width: ${breakpoints.desktop}px) {
     cursor: zoom-in;
   }
-`;
+`
 
 const ZoomHelper = styled(`span`)`
   background: rgba(255, 255, 255, 0.5);
@@ -49,7 +49,7 @@ const ZoomHelper = styled(`span`)`
   @media (min-width: ${breakpoints.desktop}px) {
     display: none;
   }
-`;
+`
 
 export const StyledImage = styled(GatsbyImage)`
   border-radius: ${radius.lg}px;
@@ -57,39 +57,38 @@ export const StyledImage = styled(GatsbyImage)`
   @media (min-width: ${breakpoints.desktop}px) {
     box-shadow: none;
   }
-`;
+`
 
 class ProductImage extends Component {
-  imageLink;
+  imageLink
 
-  componentDidUpdate = prevProps => {
+  componentDidUpdate = (prevProps) => {
     if (prevProps.image.id !== this.props.image.id) {
-      this.imageLink.classList.add('change');
+      this.imageLink.classList.add(`change`)
 
       setTimeout(
-        () => this.imageLink.classList.remove('change'),
-        IMAGE_CHANGE_ANIM_DURATION
-      );
+        () => this.imageLink.classList.remove(`change`),
+        IMAGE_CHANGE_ANIM_DURATION,
+      )
     }
-  };
+  }
 
-  handleClick = callback => event => {
-    event.preventDefault();
+  handleClick = (callback) => (event) => {
+    event.preventDefault()
 
-    callback(this.props.image);
-  };
+    callback(this.props.image)
+  }
 
   render() {
     const {
       image: { gatsbyImageData, altText, src },
       onClick,
-      imageFeatured = null
-    } = this.props;
+    } = this.props
 
     return (
       <ProductImageLink
-        ref={el => {
-          this.imageLink = el;
+        ref={(el) => {
+          this.imageLink = el
         }}
         href={src}
         onClick={this.handleClick(onClick)}
@@ -99,14 +98,14 @@ class ProductImage extends Component {
           <RiZoomInLine />
         </ZoomHelper>
       </ProductImageLink>
-    );
+    )
   }
 }
 
 ProductImage.propTypes = {
   image: PropTypes.object.isRequired,
   onClick: PropTypes.func,
-  imageFeatured: PropTypes.object
-};
+  imageFeatured: PropTypes.object,
+}
 
-export default ProductImage;
+export default ProductImage

@@ -1,29 +1,29 @@
-import React from 'react';
-import { graphql } from 'gatsby';
-import Helmet from 'react-helmet';
+import React from "react"
+import { graphql } from "gatsby"
+import Helmet from "react-helmet"
 
-import InterfaceContext from '../context/InterfaceContext';
-import ProductPage from '../components/ProductPage';
+import InterfaceContext from "../context/InterfaceContext"
+import ProductPage from "../components/ProductPage"
 
-const removeCareInstructions = desc =>
-  desc.split(/Care Instructions/).slice(0, 1);
+const removeCareInstructions = (desc) =>
+  desc.split(/Care Instructions/).slice(0, 1)
 
-const ProductPageTemplate = props => {
+const ProductPageTemplate = (props) => {
   const {
     data: {
       site,
       shopifyProduct: product,
-      shopifyProduct: { title, description: fullDescription, handle }
+      shopifyProduct: { title, description: fullDescription, handle },
     },
-    location: { pathname }
-  } = props;
+    location: { pathname },
+  } = props
   const {
-    siteMetadata: { siteUrl }
-  } = site;
+    siteMetadata: { siteUrl },
+  } = site
 
-  const description = removeCareInstructions(fullDescription);
-  const image = product.images[0].src;
-  const canonical = `${siteUrl}${pathname}`;
+  const description = removeCareInstructions(fullDescription)
+  const image = product.images[0].src
+  const canonical = `${siteUrl}${pathname}`
 
   return (
     <InterfaceContext.Consumer>
@@ -32,7 +32,7 @@ const ProductPageTemplate = props => {
         productImagesBrowserStatus,
         productImageFeatured,
         toggleProductImagesBrowser,
-        setCurrentProductImages
+        setCurrentProductImages,
       }) => (
         <>
           <Helmet>
@@ -67,13 +67,13 @@ const ProductPageTemplate = props => {
         </>
       )}
     </InterfaceContext.Consumer>
-  );
-};
+  )
+}
 
-export default ProductPageTemplate;
+export default ProductPageTemplate
 
 export const query = graphql`
-  query($handle: String!) {
+  query ($handle: String!) {
     site {
       siteMetadata {
         siteUrl
@@ -102,4 +102,4 @@ export const query = graphql`
       }
     }
   }
-`;
+`

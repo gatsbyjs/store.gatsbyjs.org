@@ -1,4 +1,4 @@
-import styled from '@emotion/styled';
+import styled from "@emotion/styled"
 
 import {
   breakpoints,
@@ -7,8 +7,8 @@ import {
   fontSizes,
   fontWeights,
   lineHeights,
-  spacing
-} from '../../utils/styles';
+  spacing,
+} from "../../utils/styles"
 
 export const SectionHeading = styled(`h3`)`
   color: ${colors.text};
@@ -18,7 +18,7 @@ export const SectionHeading = styled(`h3`)`
   // letter-spacing: 0.025em;
   margin: 0;
   // text-transform: uppercase;
-`;
+`
 
 export const Heading = styled(`h2`)`
   color: ${colors.text};
@@ -26,17 +26,17 @@ export const Heading = styled(`h2`)`
   font-size: ${fontSizes.lg};
   line-height: ${lineHeights.dense};
   margin: 0;
-  margin-top: ${spacing['2xs']};
+  margin-top: ${spacing[`2xs`]};
 
   strong {
     color: ${colors.accent};
   }
-`;
+`
 
 export const Subheading = styled(Heading)`
   color: ${colors.text};
   font-size: ${fontSizes.lg};
-`;
+`
 
 export const Text = styled(`p`)`
   color: ${colors.text};
@@ -59,9 +59,9 @@ export const Text = styled(`p`)`
       border-bottom: 1px solid ${colors.accent};
     }
   }
-`;
+`
 
 export const Lede = styled(Text)`
   font-size: ${fontSizes.md};
   font-weight: ${fontWeights.bold};
-`;
+`

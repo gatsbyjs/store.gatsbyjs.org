@@ -1,21 +1,21 @@
-import React from 'react';
-import gql from 'graphql-tag';
-import styled from '@emotion/styled';
-import { Query } from 'react-apollo';
-import { GoMarkGithub } from 'react-icons/go';
+import React from "react"
+import gql from "graphql-tag"
+import styled from "@emotion/styled"
+import { Query } from "react-apollo"
+import { GoMarkGithub } from "react-icons/go"
 
-import { Subheading } from './AreaTypography';
-import OpenIssuesList from './OpenIssuesList';
-import { Button as BaseButton } from '../shared/Buttons';
-import { spacing } from '../../utils/styles';
+import { Subheading } from "./AreaTypography"
+import OpenIssuesList from "./OpenIssuesList"
+import { Button as BaseButton } from "../shared/Buttons"
+import { spacing } from "../../utils/styles"
 
 const OpenIssuesRoot = styled(`div`)`
-  margin-top: ${spacing['2xl']};
-`;
+  margin-top: ${spacing[`2xl`]};
+`
 
 const Button = styled(BaseButton)`
   margin: ${spacing.lg} 0 ${spacing.xl} 0;
-`;
+`
 
 const GitHubIssueFragment = gql`
   fragment GitHubIssueFragment on GitHubIssue {
@@ -28,12 +28,12 @@ const GitHubIssueFragment = gql`
       url
     }
   }
-`;
+`
 
-const GITHUB_LABEL = 'help wanted';
+const GITHUB_LABEL = `help wanted`
 
 const GET_OPEN_ISSUES = gql`
-  query($label: String!) {
+  query ($label: String!) {
     openIssues(label: $label) {
       totalIssues
       issues {
@@ -42,20 +42,20 @@ const GET_OPEN_ISSUES = gql`
     }
   }
   ${GitHubIssueFragment}
-`;
+`
 
-const filterClaimedIssues = issue =>
-  !issue.labels.map(label => label.name).includes('Hacktoberfest - Claimed');
+const filterClaimedIssues = (issue) =>
+  !issue.labels.map((label) => label.name).includes(`Hacktoberfest - Claimed`)
 
 const OpenIssues = () => (
   <Query query={GET_OPEN_ISSUES} variables={{ label: GITHUB_LABEL }}>
     {({ data, loading, error }) => {
-      if (loading) return <p>Loading...</p>;
-      if (error) return <p>Error: {error.message}</p>;
+      if (loading) return <p>Loading...</p>
+      if (error) return <p>Error: {error.message}</p>
 
       const issues = data.openIssues.issues
         .filter(filterClaimedIssues)
-        .slice(0, 5);
+        .slice(0, 5)
 
       return (
         <OpenIssuesRoot>
@@ -68,9 +68,9 @@ const OpenIssues = () => (
             See more issues on <GoMarkGithub />
           </Button>
         </OpenIssuesRoot>
-      );
+      )
     }}
   </Query>
-);
+)
 
-export default OpenIssues;
+export default OpenIssues

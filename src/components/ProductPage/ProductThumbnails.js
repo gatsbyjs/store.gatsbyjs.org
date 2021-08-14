@@ -1,12 +1,12 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
-import { GatsbyImage } from 'gatsby-plugin-image';
+import React, { Component } from "react"
+import PropTypes from "prop-types"
+import styled from "@emotion/styled"
+import { GatsbyImage } from "gatsby-plugin-image"
 
-import InterfaceContext from '../../context/InterfaceContext';
-import { breakpoints, colors, radius, spacing } from '../../utils/styles';
+import InterfaceContext from "../../context/InterfaceContext"
+import { breakpoints, colors, radius, spacing } from "../../utils/styles"
 
-const THUMBNAIL_SIZE = '44px';
+const THUMBNAIL_SIZE = `44px`
 
 const ProductThumbnailsRoot = styled(`div`)`
   height: ${THUMBNAIL_SIZE};
@@ -18,7 +18,7 @@ const ProductThumbnailsRoot = styled(`div`)`
     height: auto;
     overflow-x: hidden;
   }
-`;
+`
 
 export const ProductThumbnailsContent = styled(`div`)`
   display: inline-flex;
@@ -32,7 +32,7 @@ export const ProductThumbnailsContent = styled(`div`)`
     min-width: 100%;
     padding: ${spacing.lg} 0;
   }
-`;
+`
 
 export const Thumbnail = styled(`a`)`
   border-radius: ${radius.lg}px;
@@ -44,25 +44,25 @@ export const Thumbnail = styled(`a`)`
   @media (min-width: ${breakpoints.desktop}px) {
     cursor: pointer;
   }
-`;
+`
 
 class ProductThumbnails extends Component {
-  handleClick = (image, callback) => event => {
-    event.preventDefault();
+  handleClick = (image, callback) => (event) => {
+    event.preventDefault()
 
-    callback(image);
-  };
+    callback(image)
+  }
 
   render() {
-    const { images, className = '' } = this.props;
+    const { images, className = `` } = this.props
 
     return (
       <InterfaceContext.Consumer>
         {({ featureProductImage }) => (
           <ProductThumbnailsRoot className={className}>
             <ProductThumbnailsContent>
-              {images.map(image => {
-                const { id, gatsbyImageData, altText, src } = image;
+              {images.map((image) => {
+                const { id, gatsbyImageData, altText, src } = image
 
                 return (
                   <Thumbnail
@@ -72,19 +72,19 @@ class ProductThumbnails extends Component {
                   >
                     <GatsbyImage image={gatsbyImageData} alt={altText} />
                   </Thumbnail>
-                );
+                )
               })}
             </ProductThumbnailsContent>
           </ProductThumbnailsRoot>
         )}
       </InterfaceContext.Consumer>
-    );
+    )
   }
 }
 
 ProductThumbnails.propTypes = {
   images: PropTypes.array.isRequired,
-  className: PropTypes.string
-};
+  className: PropTypes.string,
+}
 
-export default ProductThumbnails;
+export default ProductThumbnails

@@ -1,6 +1,6 @@
-import React from 'react';
-import ProductDetails from '../components/ProductDetails/ProductDetails';
+import React from "react"
+import ProductDetails from "../components/ProductDetails/ProductDetails"
 
-const ProductPage = () => <ProductDetails />;
+const ProductPage = () => <ProductDetails />
 
-export default ProductPage;
+export default ProductPage

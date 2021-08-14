@@ -5,8 +5,7 @@
     "eslint:recommended",
     "plugin:jsx-a11y/recommended",
     "plugin:react/recommended",
-    "prettier",
-    "prettier/react"
+    "prettier"
   ],
   "plugins": ["react", "jsx-a11y"],
   "parserOptions": {
@@ -20,7 +19,7 @@
   "env": {
     "browser": true,
     "es6": true,
-    "node": true,
+    "node": true
   },
   "globals": {
     "graphql": true
@@ -50,21 +49,13 @@
         "functions": "ignore"
       }
     ],
-    "react/prop-types": [
-      "error",
-      {
-        "ignore": ["children"]
-      }
-    ]
+    "react/prop-types": 0,
+    "react/displayName": 0,
+    "no-invalid-this": 0
   },
-  "overrides": [
-      "env": {
-        "browser": true
-      },
-      "globals": {
-        "___loader": false,
-        "___emitter": false
-      }
+  "settings": {
+    "react": {
+      "version": "detect"
     }
-  ]
+  }
 }

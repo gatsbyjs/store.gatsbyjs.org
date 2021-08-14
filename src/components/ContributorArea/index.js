@@ -1,1 +1,1 @@
-export { default } from './ContributorArea';
+export { default } from "./ContributorArea"

@@ -1,16 +1,16 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "@emotion/styled"
 
-import { Button } from '../shared/Buttons';
+import { Button } from "../shared/Buttons"
 
 import {
   colors,
   spacing,
   animations,
   fontSizes,
-  radius
-} from '../../utils/styles';
+  radius,
+} from "../../utils/styles"
 
 const LogoutBarRoot = styled(`div`)`
   align-items: flex-start;
@@ -18,12 +18,12 @@ const LogoutBarRoot = styled(`div`)`
   display: flex;
   justify-content: space-between;
   margin-bottom: ${spacing.lg};
-`;
+`
 
 const User = styled(`div`)`
   align-items: flex-start;
   display: flex;
-`;
+`
 
 const Info = styled(`div`)`
   font-size: ${fontSizes.sm};
@@ -32,16 +32,16 @@ const Info = styled(`div`)`
     display: block;
     font-size: ${fontSizes.md};
   }
-`;
+`
 
 const Logout = styled(Button)`
   background: ${colors.lightest};
   color: ${colors.text};
   flex-grow: 0;
   padding: ${spacing.xs} ${spacing.sm};
-`;
+`
 
-const AvatarContainer = styled('span')`
+const AvatarContainer = styled(`span`)`
   display: block;
   margin-right: ${spacing.md};
   position: relative;
@@ -55,9 +55,9 @@ const AvatarContainer = styled('span')`
     display: block;
     border: 1px solid rgba(0, 0, 0, 0.1);
     border-radius: ${radius.md}px;
-    content: ' ';
+    content: " ";
   }
-`;
+`
 
 const LogoutBar = ({ error, loading, profile, handleLogout }) =>
   !loading && !error ? (
@@ -65,10 +65,11 @@ const LogoutBar = ({ error, loading, profile, handleLogout }) =>
       <User>
         <AvatarContainer>
           <img
-            css={{ display: 'block' }}
+            css={{ display: `block` }}
             src={profile.picture}
-            height={spacing['3xl']}
-            width={spacing['3xl']}
+            height={spacing[`3xl`]}
+            width={spacing[`3xl`]}
+            alt=""
           />
         </AvatarContainer>
         <Info>
@@ -77,13 +78,13 @@ const LogoutBar = ({ error, loading, profile, handleLogout }) =>
       </User>
       <Logout onClick={handleLogout}>Log out</Logout>
     </LogoutBarRoot>
-  ) : null;
+  ) : null
 
 LogoutBar.propTypes = {
   error: PropTypes.any.isRequired,
   handleLogout: PropTypes.func.isRequired,
   loading: PropTypes.bool.isRequired,
-  profile: PropTypes.object.isRequired
-};
+  profile: PropTypes.object.isRequired,
+}
 
-export default LogoutBar;
+export default LogoutBar

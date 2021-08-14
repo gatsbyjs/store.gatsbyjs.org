@@ -1,16 +1,16 @@
-import React from 'react';
-import UserContext from '../../context/UserContext';
-import DiscountCode from '../DiscountCode/DiscountCode';
-import IssueList from './IssueList';
-import { Heading, Subheading, Lede, Text } from '../shared/Typography';
+import React from "react"
+import UserContext from "../../context/UserContext"
+import DiscountCode from "../DiscountCode/DiscountCode"
+import IssueList from "./IssueList"
+import { Heading, Subheading, Lede, Text } from "../shared/Typography"
 
-export default () => (
+const Contributions = () => (
   <UserContext.Consumer>
     {({ contributions, loading, profile }) =>
       loading || contributions.count > 0 ? (
         <>
           <DiscountCode />
-          <Subheading className={loading && 'loading'}>
+          <Subheading className={loading && `loading`}>
             Your Most Recent Contribution
           </Subheading>
           <IssueList issues={contributions.issues.slice(0, 1)} />
@@ -23,12 +23,12 @@ export default () => (
           </Lede>
           <Text>
             This is your Gatsby Maintainer Dashboard. Once you’ve had your first
-            pull request merged into Gatsby, you can come back here to{' '}
+            pull request merged into Gatsby, you can come back here to{` `}
             <strong>claim free swag.</strong>
           </Text>
           <Text>
-            If you have questions, ask on any issue (you can tag @gatsbyjs/learning
-            if you’d like) or hit us up{' '}
+            If you have questions, ask on any issue (you can tag
+            @gatsbyjs/learning if you’d like) or hit us up{` `}
             <a href="https://twitter.com/gatsbyjs">on Twitter at @gatsbyjs</a>.
           </Text>
           <Text>
@@ -38,4 +38,6 @@ export default () => (
       )
     }
   </UserContext.Consumer>
-);
+)
+
+export default Contributions

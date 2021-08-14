@@ -1,7 +1,7 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
-import { Link } from 'gatsby';
+import React, { Component } from "react"
+import PropTypes from "prop-types"
+import styled from "@emotion/styled"
+import { Link } from "gatsby"
 
 import {
   colors,
@@ -12,17 +12,17 @@ import {
   fontSizes,
   fontWeights,
   lineHeights,
-  transitions
-} from '../../utils/styles';
+  transitions,
+} from "../../utils/styles"
 
 export const ButtonBase = styled(`button`)`
   align-items: center;
-  background-color: ${props =>
+  background-color: ${(props) =>
     props.inverse ? colors.brand : colors.brandLight};
   border: 1px solid
-    ${props => (props.inverse ? colors.brand : colors.brandLight)};
+    ${(props) => (props.inverse ? colors.brand : colors.brandLight)};
   border-radius: ${radius.lg}px;
-  color: ${props => (props.inverse ? colors.brandLight : colors.brand)};
+  color: ${(props) => (props.inverse ? colors.brandLight : colors.brand)};
   cursor: pointer;
   display: inline-flex;
   font-family: ${fonts.body};
@@ -37,31 +37,31 @@ export const ButtonBase = styled(`button`)`
     width: 1.1em;
     height: 1.1em;
     margin: 0;
-    margin-right: ${props => (props.iconOnLeft ? '0.5em' : 0)};
-    margin-left: ${props => (props.iconOnLeft ? 0 : '0.5em')};
+    margin-right: ${(props) => (props.iconOnLeft ? `0.5em` : 0)};
+    margin-left: ${(props) => (props.iconOnLeft ? 0 : `0.5em`)};
   }
 
   @media (hover: hover) {
     &:hover {
     }
   }
-`;
+`
 
 const ButtonAsExternalLink = styled(ButtonBase.withComponent(`a`))`
   display: inline-flex;
   text-decoration: none;
-`;
+`
 
 const ButtonAsInternalLink = ButtonAsExternalLink.withComponent(
-  ({ iconOnLeft, inverse, ...rest }) => <Link {...rest} />
-);
+  ({ iconOnLeft, inverse, ...rest }) => <Link {...rest} />,
+)
 
 export class Button extends Component {
   render() {
-    const { children, to, href, ref, inverse = false, ...rest } = this.props;
+    const { children, to, href, inverse = false, ...rest } = this.props
 
     // automtic recognition of icon placement, works properly only for [text + <Icon>] childrens
-    const iconOnLeft = typeof children[0] !== 'string';
+    const iconOnLeft = typeof children[0] !== `string`
 
     if (to) {
       return (
@@ -73,7 +73,7 @@ export class Button extends Component {
         >
           {children}
         </ButtonAsInternalLink>
-      );
+      )
     } else if (href) {
       return (
         <ButtonAsExternalLink
@@ -84,13 +84,13 @@ export class Button extends Component {
         >
           {children}
         </ButtonAsExternalLink>
-      );
+      )
     } else {
       return (
         <ButtonBase inverse={inverse} iconOnLeft={iconOnLeft} {...rest}>
           {children}
         </ButtonBase>
-      );
+      )
     }
   }
 }
@@ -99,8 +99,8 @@ Button.propTypes = {
   children: PropTypes.node.isRequired,
   inverse: PropTypes.bool,
   to: PropTypes.string,
-  href: PropTypes.string
-};
+  href: PropTypes.string,
+}
 
 export const PrimaryButton = styled(Button)`
   background: ${gradients.button};
@@ -114,13 +114,13 @@ export const PrimaryButton = styled(Button)`
   // font-family: ${fonts.monospace};
   font-size: ${fontSizes.md};
   font-weight: ${fontWeights.bold};
-  height: ${props => (props.fullWidth ? 'auto' : '')};
+  height: ${(props) => (props.fullWidth ? `auto` : ``)};
   justify-content: center;
   letter-spacing: 0.025em;
   position: relative;
   // text-transform: uppercase;
   transition: 8s;
-  width: ${props => (props.fullWidth ? '100%' : 'auto')};
+  width: ${(props) => (props.fullWidth ? `100%` : `auto`)};
 
   &::after {
     border-radius: inherit;
@@ -149,4 +149,4 @@ export const PrimaryButton = styled(Button)`
       }
     }
   }
-`;
+`

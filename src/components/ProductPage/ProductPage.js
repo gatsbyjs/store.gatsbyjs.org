@@ -1,17 +1,17 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
+import React, { Component } from "react"
+import PropTypes from "prop-types"
+import styled from "@emotion/styled"
 
-import ProductImagesMobile from './ProductImagesMobile';
-import ProductImagesDesktop from './ProductImagesDesktop';
-import ProductSpecs from './ProductSpecs';
-import ProductForm from './ProductForm';
-import BackLink from './BackLink';
+import ProductImagesMobile from "./ProductImagesMobile"
+import ProductImagesDesktop from "./ProductImagesDesktop"
+import ProductSpecs from "./ProductSpecs"
+import ProductForm from "./ProductForm"
+import BackLink from "./BackLink"
 
-import { breakpoints, spacing, dimensions } from '../../utils/styles';
-import { minHeight } from '../Layout/Footer';
+import { breakpoints, spacing, dimensions } from "../../utils/styles"
+import { minHeight } from "../Layout/Footer"
 
-const ProductPageRoot = styled('div')`
+const ProductPageRoot = styled(`div`)`
   // padding-bottom: ${spacing.md};
 
   @media (min-width: ${breakpoints.desktop}px) {
@@ -21,7 +21,7 @@ const ProductPageRoot = styled('div')`
     width: 100%;
     min-height: calc(100vh - ${dimensions.headerHeight} - ${minHeight});
   }
-`;
+`
 
 const Container = styled(`div`)`
   @media (min-width: ${breakpoints.desktop}px) {
@@ -30,12 +30,12 @@ const Container = styled(`div`)`
     justify-content: space-evenly;
     width: 100%;
   }
-`;
+`
 
 const Details = styled(`div`)`
   position: relative;
   max-width: 40rem;
-  margin: 0 auto ${spacing['3xl']};
+  margin: 0 auto ${spacing[`3xl`]};
   display: flex;
   flex-direction: column;
 
@@ -44,27 +44,27 @@ const Details = styled(`div`)`
     max-width: 480px;
     min-height: 490px;
     margin: 0;
-    padding: ${spacing['2xl']} ${dimensions.headerHeight} ${spacing['2xl']} 0;
+    padding: ${spacing[`2xl`]} ${dimensions.headerHeight} ${spacing[`2xl`]} 0;
   }
-`;
+`
 
 class ProductPage extends Component {
   componentDidMount() {
-    const images = this.props.product.images;
-    this.props.setCurrentProductImages(images);
+    const images = this.props.product.images
+    this.props.setCurrentProductImages(images)
   }
 
   render() {
     const {
       product,
-      product: { id, images, variants }
-    } = this.props;
+      product: { id, images, variants },
+    } = this.props
 
     const {
       isDesktopViewport,
       productImageFeatured,
-      toggleProductImagesBrowser
-    } = this.props;
+      toggleProductImagesBrowser,
+    } = this.props
 
     return (
       <ProductPageRoot>
@@ -88,7 +88,7 @@ class ProductPage extends Component {
           </Details>
         </Container>
       </ProductPageRoot>
-    );
+    )
   }
 }
 
@@ -98,7 +98,7 @@ ProductPage.propTypes = {
   toggleProductImagesBrowser: PropTypes.func.isRequired,
   setCurrentProductImages: PropTypes.func.isRequired,
   productImageFeatured: PropTypes.object,
-  isDesktopViewport: PropTypes.bool
-};
+  isDesktopViewport: PropTypes.bool,
+}
 
-export default ProductPage;
+export default ProductPage

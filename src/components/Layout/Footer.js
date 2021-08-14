@@ -1,7 +1,7 @@
-import React from 'react';
-import styled from '@emotion/styled';
-import { keyframes } from '@emotion/react';
-import { RiArrowRightUpLine } from 'react-icons/ri';
+import React from "react"
+import styled from "@emotion/styled"
+import { keyframes } from "@emotion/react"
+import { RiArrowRightUpLine } from "react-icons/ri"
 
 import {
   borders,
@@ -12,12 +12,12 @@ import {
   fontSizes,
   fontWeights,
   lineHeights,
-  spacing
-} from '../../utils/styles';
+  spacing,
+} from "../../utils/styles"
 
-export const minHeight = '64px';
+export const minHeight = `64px`
 
-const FooterRoot = styled('footer')`
+const FooterRoot = styled(`footer`)`
   align-items: center;
   border-top: ${borders.grid};
   display: flex;
@@ -49,7 +49,7 @@ const FooterRoot = styled('footer')`
     justify-content: stretch;
     padding-bottom: 0;
   }
-`;
+`
 
 const Row = styled(`span`)`
   display: flex;
@@ -103,12 +103,12 @@ const Row = styled(`span`)`
     // background: #fffcf7;
     background: #fff4db;
   }
-`;
+`
 
 const iconEntry = keyframes`
   0% { transform: translate3d(0%, 0, 0); }
   100% { transform: translate3d(-100%, 0, 0); }
-`;
+`
 
 const Marquee = styled(`span`)`
   align-items: center;
@@ -138,7 +138,7 @@ const Marquee = styled(`span`)`
   &:hover > span {
     animation-play-state: paused;
   }
-`;
+`
 
 const MarqueeSpan = styled(`span`)`
   animation: ${iconEntry} 30s linear infinite;
@@ -146,17 +146,18 @@ const MarqueeSpan = styled(`span`)`
   padding: 0 12px 0 0;
 
   &::after {
-    content: ' · ';
+    content: " · ";
   }
-`;
+`
 
 const MarqueeContent = ({ props }) => (
   <MarqueeSpan {...props}>
-    Built with love by the <a href="https://www.gatsbyjs.com/">Gatsby Team</a>{' '}
-    and the Gatsby community &middot; Source code on{' '}
+    Built with love by the <a href="https://www.gatsbyjs.com/">Gatsby Team</a>
+    {` `}
+    and the Gatsby community &middot; Source code on{` `}
     <a href="https://github.com/gatsbyjs/store.gatsbyjs.org">GitHub</a>
   </MarqueeSpan>
-);
+)
 
 const Footer = () => (
   <FooterRoot>
@@ -178,6 +179,6 @@ const Footer = () => (
       </a>
     </Row>
   </FooterRoot>
-);
+)
 
-export default Footer;
+export default Footer

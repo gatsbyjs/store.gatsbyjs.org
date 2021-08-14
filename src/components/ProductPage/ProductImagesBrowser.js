@@ -1,18 +1,18 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { GatsbyImage } from 'gatsby-plugin-image';
-import styled from '@emotion/styled';
-import { keyframes } from '@emotion/react';
-import { MdClose } from 'react-icons/md';
-import { RiZoomInLine, RiZoomOutLine } from 'react-icons/ri';
+import React, { Component } from "react"
+import PropTypes from "prop-types"
+import { GatsbyImage } from "gatsby-plugin-image"
+import styled from "@emotion/styled"
+import { keyframes } from "@emotion/react"
+import { MdClose } from "react-icons/md"
+import { RiZoomInLine, RiZoomOutLine } from "react-icons/ri"
 
-import CommunityCaption from './CommunityCaption';
+import CommunityCaption from "./CommunityCaption"
 import ProductThumbnails, {
   ProductThumbnailsContent,
-  Thumbnail
-} from './ProductThumbnails';
-import { Button } from '../shared/Buttons';
-import { debounce } from '../../utils/helpers';
+  Thumbnail,
+} from "./ProductThumbnails"
+import { Button } from "../shared/Buttons"
+import { debounce } from "../../utils/helpers"
 
 import {
   breakpoints,
@@ -20,10 +20,10 @@ import {
   radius,
   spacing,
   dimensions,
-  zIndices
-} from '../../utils/styles';
+  zIndices,
+} from "../../utils/styles"
 
-const IMAGE_CHANGE_ANIM_DURATION = 250;
+const IMAGE_CHANGE_ANIM_DURATION = 250
 
 const entry = keyframes`
   0% {
@@ -34,7 +34,7 @@ const entry = keyframes`
     left: 0;
     transform: scale(1);
   }
-`;
+`
 
 const exit = keyframes`
   0% {
@@ -52,7 +52,7 @@ const exit = keyframes`
     opacity: 0;
     transform:scale(0.8);
   }
-`;
+`
 
 const ProductImagesBrowserRoot = styled(`div`)`
   background: white;
@@ -83,7 +83,7 @@ const ProductImagesBrowserRoot = styled(`div`)`
     flex-direction: row;
     height: 100vh;
   }
-`;
+`
 
 const change = keyframes`
   0% {
@@ -92,7 +92,7 @@ const change = keyframes`
   100% {
     opacity: 1;
   }
-`;
+`
 
 const ZoomArea = styled(`div`)`
   border-bottom: 1px solid ${colors.brandLight};
@@ -118,7 +118,7 @@ const ZoomArea = styled(`div`)`
     border-bottom: none;
     border-left: 1px solid ${colors.brandLight};
   }
-`;
+`
 
 const ImageBox = styled(`a`)`
   display: block;
@@ -127,24 +127,24 @@ const ImageBox = styled(`a`)`
   width: 100%;
 
   .gatsby-image-wrapper {
-    width: ${props => (props.superZoom ? props.width * 2 : props.width)}px;
+    width: ${(props) => (props.superZoom ? props.width * 2 : props.width)}px;
     height: auto;
   }
 
   @media (orientation: landscape) {
     .gatsby-image-wrapper {
-      width: ${props => (props.superZoom ? '200' : '100')}%;
+      width: ${(props) => (props.superZoom ? `200` : `100`)}%;
     }
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
-    width: ${props => (props.superZoom ? '100%' : 'auto')};
-    cursor: ${props => (props.superZoom ? 'zoom-out' : 'zoom-in')};
+    width: ${(props) => (props.superZoom ? `100%` : `auto`)};
+    cursor: ${(props) => (props.superZoom ? `zoom-out` : `zoom-in`)};
     .gatsby-image-wrapper {
-      width: ${props => (props.superZoom ? '100%' : '100vh')};
+      width: ${(props) => (props.superZoom ? `100%` : `100vh`)};
     }
   }
-`;
+`
 
 const ZoomHelper = styled(`span`)`
   background: rgba(255, 255, 255, 0.5);
@@ -164,7 +164,7 @@ const ZoomHelper = styled(`span`)`
   @media (min-width: ${breakpoints.desktop}px) {
     display: none;
   }
-`;
+`
 
 const Actions = styled(`div`)`
   align-items: center;
@@ -181,11 +181,11 @@ const Actions = styled(`div`)`
     padding-top: ${spacing.xl};
     padding-left: 0;
   }
-`;
+`
 
 const CloseButton = styled(Button)`
   position: relative;
-`;
+`
 
 const ActionsThumbnails = styled(ProductThumbnails)`
   @media (min-width: ${breakpoints.desktop}px) {
@@ -201,37 +201,37 @@ const ActionsThumbnails = styled(ProductThumbnails)`
       margin-bottom: ${spacing.md};
     }
   }
-`;
+`
 
 class ProductImagesBrowser extends Component {
-  zoomArea;
-  imageBox;
-  closeButton;
+  zoomArea
+  imageBox
+  closeButton
 
   state = {
     zoomAreaWidth: null,
     imageBoxHeight: null,
-    superZoom: false
-  };
+    superZoom: false,
+  }
 
   componentDidMount = () => {
-    this.measureImage();
-    this.centerImage();
+    this.measureImage()
+    this.centerImage()
 
-    window.addEventListener('resize', debounce(250, this.measureImage));
-  };
+    window.addEventListener(`resize`, debounce(250, this.measureImage))
+  }
 
   componentWillUnmount = () => {
-    window.removeEventListener('resize', debounce(250, this.measureImage));
-  };
+    window.removeEventListener(`resize`, debounce(250, this.measureImage))
+  }
 
-  componentDidUpdate = prevProps => {
+  componentDidUpdate = (prevProps) => {
     if (prevProps.position !== this.props.position) {
-      if (this.props.position === 'open') {
+      if (this.props.position === `open`) {
         if (this.state.superZoom) {
           this.setState({
-            superZoom: false
-          });
+            superZoom: false,
+          })
         }
       }
     }
@@ -240,49 +240,51 @@ class ProductImagesBrowser extends Component {
       prevProps.imageFeatured !== this.props.imageFeatured ||
       prevProps.position !== this.props.position
     ) {
-      this.centerImage();
+      this.centerImage()
 
-      this.zoomArea.classList.add('change');
+      this.zoomArea.classList.add(`change`)
       setTimeout(
-        () => this.zoomArea.classList.remove('change'),
-        IMAGE_CHANGE_ANIM_DURATION
-      );
+        () => this.zoomArea.classList.remove(`change`),
+        IMAGE_CHANGE_ANIM_DURATION,
+      )
     }
-  };
+  }
 
   measureImage = () => {
     if (this.zoomArea && this.imageBox) {
       this.setState({
         zoomAreaWidth: this.zoomArea.offsetWidth,
-        imageBoxHeight: this.imageBox.offsetHeight
-      });
+        imageBoxHeight: this.imageBox.offsetHeight,
+      })
     }
-  };
+  }
 
   centerImage = () => {
     const offsetToScroll =
-      (this.state.imageBoxHeight - this.state.zoomAreaWidth) / 2;
+      (this.state.imageBoxHeight - this.state.zoomAreaWidth) / 2
 
-    this.zoomArea.scrollLeft = offsetToScroll;
-  };
+    this.zoomArea.scrollLeft = offsetToScroll
+  }
 
-  close = callback => event => {
-    callback();
-  };
+  close = (callback) => (event) => {
+    callback()
+  }
 
-  toggleZoomRatio = event => {
-    event.preventDefault();
+  toggleZoomRatio = (event) => {
+    event.preventDefault()
 
-    this.setState(state => ({ superZoom: !state.superZoom }));
-  };
+    this.setState((state) => {
+      return { superZoom: !state.superZoom }
+    })
+  }
 
   render() {
-    const { images, position, imageFeatured, toggle } = this.props;
-    const image = imageFeatured ? imageFeatured : images[0];
+    const { images, position, imageFeatured, toggle } = this.props
+    const image = imageFeatured ? imageFeatured : images[0]
 
-    const { altText, gatsbyImageData, src } = image;
+    const { altText, gatsbyImageData, src } = image
 
-    const { imageBoxHeight, superZoom } = this.state;
+    const { imageBoxHeight, superZoom } = this.state
 
     return (
       <ProductImagesBrowserRoot role="dialog" className={position}>
@@ -295,8 +297,8 @@ class ProductImagesBrowser extends Component {
         </Actions>
 
         <ZoomArea
-          ref={container => {
-            this.zoomArea = container;
+          ref={(container) => {
+            this.zoomArea = container
           }}
         >
           <ImageBox
@@ -304,8 +306,8 @@ class ProductImagesBrowser extends Component {
             href={src}
             superZoom={superZoom}
             width={imageBoxHeight}
-            ref={image => {
-              this.imageBox = image;
+            ref={(image) => {
+              this.imageBox = image
             }}
           >
             <GatsbyImage image={gatsbyImageData} alt={altText} />
@@ -318,7 +320,7 @@ class ProductImagesBrowser extends Component {
           {superZoom ? <RiZoomOutLine /> : <RiZoomInLine />}
         </ZoomHelper>
       </ProductImagesBrowserRoot>
-    );
+    )
   }
 }
 
@@ -327,7 +329,7 @@ ProductImagesBrowser.propTypes = {
   position: PropTypes.string.isRequired,
   toggle: PropTypes.func.isRequired,
   imageFeatured: PropTypes.object,
-  isDesktopViewport: PropTypes.bool
-};
+  isDesktopViewport: PropTypes.bool,
+}
 
-export default ProductImagesBrowser;
+export default ProductImagesBrowser

@@ -1,26 +1,26 @@
-import React from 'react';
-import styled from '@emotion/styled';
+import React from "react"
+import styled from "@emotion/styled"
 
-import { PrimaryButton } from '../shared/Buttons';
+import { PrimaryButton } from "../shared/Buttons"
 import {
   Fieldset as BaseFieldset,
   Input as BaseInput,
-  Label as BaseLabel
-} from '../shared/FormElements';
+  Label as BaseLabel,
+} from "../shared/FormElements"
 import {
   breakpoints,
   colors,
   spacing,
   radius,
-  fontSizes
-} from '../../utils/styles';
+  fontSizes,
+} from "../../utils/styles"
 
-const CreateAccountFormRoot = styled('form')`
+const CreateAccountFormRoot = styled(`form`)`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   margin: ${spacing.lg} 0;
-`;
+`
 
 const Fieldset = styled(BaseFieldset)`
   margin-bottom: ${spacing.sm};
@@ -33,21 +33,21 @@ const Fieldset = styled(BaseFieldset)`
       padding-right: ${spacing.sm};
     }
   }
-`;
+`
 
 const Label = styled(BaseLabel)`
   color: ${colors.lightest};
-`;
+`
 
 const Input = styled(BaseInput)`
   padding: ${spacing.xs} ${spacing.sm};
-`;
+`
 
 const CheckboxContainer = styled(Fieldset)`
   flex-basis: 100%;
   padding-left: 2rem;
   padding-top: ${spacing.sm};
-`;
+`
 
 const CheckboxLabel = styled(BaseLabel)`
   color: ${colors.lightest};
@@ -69,13 +69,13 @@ const CheckboxLabel = styled(BaseLabel)`
     background-size: 50% 50%;
     border-radius: ${radius.md}px;
     transition: box-shadow 0.15s ease-in-out;
-    content: '';
+    content: "";
     user-select: none;
     pointer-events: none;
   }
-`;
+`
 
-const Checkbox = styled('input')`
+const Checkbox = styled(`input`)`
   display: inline-block;
   margin-right: 0.25rem;
   opacity: 0;
@@ -95,48 +95,50 @@ const Checkbox = styled('input')`
   &:checked ~ ${CheckboxLabel}:after {
     background-image: url("data:image/svg+xml;charset=utf8,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 8 8'%3E%3Cpath fill='%23000' d='M6.564.75l-3.59 3.612-1.538-1.55L0 4.26 2.974 7.25 8 2.193z'/%3E%3C/svg%3E");
   }
-`;
+`
 
 const Submit = styled(PrimaryButton)`
   margin-top: ${spacing.sm};
   width: 100%;
-`;
+`
 
-const PrivacyNotice = styled('p')`
+const PrivacyNotice = styled(`p`)`
   color: ${colors.textLight};
   font-size: ${fontSizes.xs};
-`;
+`
 
 class CreateAccountForm extends React.Component {
   constructor(props) {
-    super(props);
+    super(props)
 
-    const { name, email, nickname } = props.profile;
+    const { name, email, nickname } = props.profile
 
     this.state = {
       subscribe: true,
-      first_name: name.split(' ')[0],
+      first_name: name.split(` `)[0],
       username: nickname,
-      email
-    };
+      email,
+    }
   }
 
-  onChange = event => {
-    event.preventDefault();
+  onChange = (event) => {
+    event.preventDefault()
 
     this.setState({
-      [event.target.name]: event.target.value
-    });
-  };
+      [event.target.name]: event.target.value,
+    })
+  }
 
   onToggle = () => {
-    this.setState(state => ({
-      subscribe: !state.subscribe
-    }));
-  };
+    this.setState((state) => {
+      return {
+        subscribe: !state.subscribe,
+      }
+    })
+  }
 
   render() {
-    const { onSubmit } = this.props;
+    const { onSubmit } = this.props
 
     return (
       <CreateAccountFormRoot method="post" onSubmit={onSubmit(this.state)}>
@@ -181,8 +183,8 @@ class CreateAccountForm extends React.Component {
           parties, because that would make us jerks.
         </PrivacyNotice>
       </CreateAccountFormRoot>
-    );
+    )
   }
 }
 
-export default CreateAccountForm;
+export default CreateAccountForm

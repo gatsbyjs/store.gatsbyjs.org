@@ -1,6 +1,5 @@
-import React from 'react';
-
-export default () => (
+import React from "react"
+const Gift = () => (
   <svg
     width="86"
     height="69"
@@ -25,4 +24,6 @@ export default () => (
       fill="white"
     />
   </svg>
-);
+)
+
+export default Gift

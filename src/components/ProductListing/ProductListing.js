@@ -1,11 +1,11 @@
-import React from 'react';
-import { graphql, StaticQuery } from 'gatsby';
-import styled from '@emotion/styled';
+import React from "react"
+import { graphql, StaticQuery } from "gatsby"
+import styled from "@emotion/styled"
 
-import ProductListingHeader from './ProductListingHeader';
-import ProductListingItem from './ProductListingItem';
+import ProductListingHeader from "./ProductListingHeader"
+import ProductListingItem from "./ProductListingItem"
 
-import { breakpoints, borders } from '../../utils/styles';
+import { breakpoints, borders } from "../../utils/styles"
 
 const ProductListingContainer = styled(`div`)`
   display: flex;
@@ -18,7 +18,7 @@ const ProductListingContainer = styled(`div`)`
     margin-left: -1px;
     border-top: ${borders.grid};
   }
-`;
+`
 
 const ProductListing = () => (
   <StaticQuery
@@ -67,6 +67,6 @@ const ProductListing = () => (
       </>
     )}
   />
-);
+)
 
-export default ProductListing;
+export default ProductListing

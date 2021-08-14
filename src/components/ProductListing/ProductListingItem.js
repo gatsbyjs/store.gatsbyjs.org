@@ -1,17 +1,17 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
-import { Link } from 'gatsby';
-import { GatsbyImage } from 'gatsby-plugin-image';
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "@emotion/styled"
+import { Link } from "gatsby"
+import { GatsbyImage } from "gatsby-plugin-image"
 
-import { MdArrowForward } from 'react-icons/md';
-import { RiShoppingCartLine } from 'react-icons/ri';
-import UserContext from '../../context/UserContext';
+import { MdArrowForward } from "react-icons/md"
+import { RiShoppingCartLine } from "react-icons/ri"
+import UserContext from "../../context/UserContext"
 
 import {
   removeCareInstructions,
-  cutDescriptionShort
-} from '../../utils/helpers';
+  cutDescriptionShort,
+} from "../../utils/helpers"
 
 import {
   animations,
@@ -25,11 +25,11 @@ import {
   lineHeights,
   radius,
   spacing,
-  transitions
-} from '../../utils/styles';
+  transitions,
+} from "../../utils/styles"
 
-const DESCRIPTION_LIMIT = 90;
-const TRANSITION_DURATION = transitions.speed.default;
+const DESCRIPTION_LIMIT = 90
+const TRANSITION_DURATION = transitions.speed.default
 
 const ProductListingItemLink = styled(Link)`
   background: ${colors.lightest};
@@ -56,20 +56,20 @@ const ProductListingItemLink = styled(Link)`
       color: ${colors.brand};
     }
   }
-`;
+`
 
 const Item = styled(`article`)`
   display: flex;
   flex-direction: column;
   height: 100%;
   // padding: ${spacing.lg};
-`;
+`
 
 const Preview = styled(`div`)`
   border-radius: ${radius.lg}px ${radius.lg}px 0 0;
   // margin: -${spacing.lg};
   // margin-bottom: ${spacing.lg};
-  padding: ${spacing['2xl']};
+  padding: ${spacing[`2xl`]};
   position: relative;
 
   .gatsby-image-wrapper {
@@ -84,16 +84,16 @@ const Preview = styled(`div`)`
       }
     }
   }
-`;
+`
 
 const CodeEligibility = styled(`div`)`
   animation: ${animations.simpleEntry};
-  background: ${props =>
+  background: ${(props) =>
     badgeThemes[props.freeWith]
       ? badgeThemes[props.freeWith].backgroundTheme
       : colors.brand};
   border-radius: ${radius.round}px;
-  color: ${props =>
+  color: ${(props) =>
     badgeThemes[props.freeWith]
       ? badgeThemes[props.freeWith].textTheme
       : colors.lightest};
@@ -106,9 +106,9 @@ const CodeEligibility = styled(`div`)`
   transform: translate3d(0, 50%, 0);
   z-index: 1;
   white-space: nowrap;
-  padding: ${spacing['2xs']} ${spacing.md};
+  padding: ${spacing[`2xs`]} ${spacing.md};
   font-size: ${fontSizes.sm};
-`;
+`
 
 const Name = styled(`h1`)`
   font-family: ${fonts.heading};
@@ -116,9 +116,9 @@ const Name = styled(`h1`)`
   line-height: ${lineHeights.dense};
   margin: 0;
   border-top: ${borders.grid};
-  padding: ${spacing.xl} ${spacing['2xl']} 0;
+  padding: ${spacing.xl} ${spacing[`2xl`]} 0;
   font-weight: ${fontWeights.semibold};
-`;
+`
 
 const Description = styled(`p`)`
   display: none;
@@ -126,29 +126,29 @@ const Description = styled(`p`)`
   font-size: ${fontSizes.sm};
   line-height: ${lineHeights.default};
   padding: 0 ${spacing.lg} 0;
-`;
+`
 
 const PriceRow = styled(`div`)`
   align-items: flex-start;
   display: flex;
   justify-content: space-between;
-  margin-top: ${spacing['2xs']};
-  padding: 0 ${spacing['2xl']} ${spacing.xl};
-`;
+  margin-top: ${spacing[`2xs`]};
+  padding: 0 ${spacing[`2xl`]} ${spacing.xl};
+`
 
 const Price = styled(`div`)`
   font-family: ${fonts.serif};
   font-size: ${fontSizes.lg};
   line-height: ${lineHeights.solid};
-`;
+`
 
-const Incentive = styled('div')`
+const Incentive = styled(`div`)`
   align-items: center;
   display: flex;
   display: none;
   font-size: ${fontSizes.sm};
   line-height: 1.3;
-  margin-bottom: ${spacing['2xs']};
+  margin-bottom: ${spacing[`2xs`]};
   margin-right: calc(-${spacing.lg} - 40px);
   text-align: right;
   transition: all ${TRANSITION_DURATION};
@@ -163,11 +163,11 @@ const Incentive = styled('div')`
   > span {
     svg {
       display: inline;
-      margin-right: -${spacing['3xs']};
+      margin-right: -${spacing[`3xs`]};
       vertical-align: middle;
     }
   }
-`;
+`
 
 const CartIcon = styled(`span`)`
   align-items: center;
@@ -194,95 +194,93 @@ const CartIcon = styled(`span`)`
     height: 24px;
     color: ${colors.lightest};
   }
-`;
+`
 
 const checkEligibility = ({ contributor, freeWith }) => {
-  const { shopify } = contributor;
+  const { shopify } = contributor
 
-  let eligibleCodes = [];
+  let eligibleCodes = []
 
   if (shopify && shopify.codes) {
     eligibleCodes = shopify.codes.filter(
-      code => code.code === freeWith && code.used === false
-    );
+      (code) => code.code === freeWith && code.used === false,
+    )
   }
 
-  return eligibleCodes.length ? true : false;
-};
+  return eligibleCodes.length ? true : false
+}
 
-const ProductListingItem = props => {
+const ProductListingItem = (props) => {
   const {
     product: {
       title,
       handle,
       description,
       variants: [firstVariant],
-      featuredImage
-    }
-  } = props;
+      featuredImage,
+    },
+  } = props
 
-  const { price } = firstVariant;
+  const { price } = firstVariant
 
   const freeWith =
-    price >= 20 ? 'HOLYBUCKETS' : price >= 10 ? 'BUILDWITHGATSBY' : null;
+    price >= 20 ? `HOLYBUCKETS` : price >= 10 ? `BUILDWITHGATSBY` : null
 
   return (
     <UserContext.Consumer>
-      {({ contributor }) => {
-        return (
-          <ProductListingItemLink to={`/product/${handle}`} aria-label={title}>
-            <Item>
-              <Preview>
-                <GatsbyImage
-                  image={featuredImage.gatsbyImageData}
-                  alt={featuredImage.altText}
-                />
-                {checkEligibility({
-                  freeWith,
-                  contributor
-                }) && (
-                  <CodeEligibility freeWith={freeWith}>
-                    <span>Free with </span>
-                    <span>
-                      Code{' '}
-                      <strong>
-                        Swag Level {freeWith === 'HOLYBUCKETS' ? '2' : '1'}
-                      </strong>
-                    </span>
-                  </CodeEligibility>
-                )}
-              </Preview>
-              <Name>{title}</Name>
-              <Description>
-                {cutDescriptionShort(
-                  removeCareInstructions(description),
-                  DESCRIPTION_LIMIT
-                )}
-              </Description>
-              <PriceRow>
-                <Price>
-                  <span>USD</span> ${price}
-                </Price>
-                <Incentive>
+      {({ contributor }) => (
+        <ProductListingItemLink to={`/product/${handle}`} aria-label={title}>
+          <Item>
+            <Preview>
+              <GatsbyImage
+                image={featuredImage.gatsbyImageData}
+                alt={featuredImage.altText}
+              />
+              {checkEligibility({
+                freeWith,
+                contributor,
+              }) && (
+                <CodeEligibility freeWith={freeWith}>
+                  <span>Free with </span>
                   <span>
-                    View details
-                    <br />& buy <MdArrowForward />
+                    Code{` `}
+                    <strong>
+                      Swag Level {freeWith === `HOLYBUCKETS` ? `2` : `1`}
+                    </strong>
                   </span>
-                  <CartIcon>
-                    <RiShoppingCartLine />
-                  </CartIcon>
-                </Incentive>
-              </PriceRow>
-            </Item>
-          </ProductListingItemLink>
-        );
-      }}
+                </CodeEligibility>
+              )}
+            </Preview>
+            <Name>{title}</Name>
+            <Description>
+              {cutDescriptionShort(
+                removeCareInstructions(description),
+                DESCRIPTION_LIMIT,
+              )}
+            </Description>
+            <PriceRow>
+              <Price>
+                <span>USD</span> ${price}
+              </Price>
+              <Incentive>
+                <span>
+                  View details
+                  <br />& buy <MdArrowForward />
+                </span>
+                <CartIcon>
+                  <RiShoppingCartLine />
+                </CartIcon>
+              </Incentive>
+            </PriceRow>
+          </Item>
+        </ProductListingItemLink>
+      )}
     </UserContext.Consumer>
-  );
-};
+  )
+}
 
 ProductListingItem.propTypes = {
-  product: PropTypes.object.isRequired
-};
+  product: PropTypes.object.isRequired,
+}
 
-export default ProductListingItem;
+export default ProductListingItem

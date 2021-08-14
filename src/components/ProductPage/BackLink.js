@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
-import { RiArrowGoBackLine } from 'react-icons/ri';
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "@emotion/styled"
+import { RiArrowGoBackLine } from "react-icons/ri"
 
-import { Button } from '../shared/Buttons';
+import { Button } from "../shared/Buttons"
 
 import {
   breakpoints,
@@ -11,8 +11,8 @@ import {
   dimensions,
   fontSizes,
   lineHeights,
-  spacing
-} from '../../utils/styles';
+  spacing,
+} from "../../utils/styles"
 
 const BackLinkRoot = styled(`div`)`
   padding: ${spacing.lg} ${dimensions.gutter.default}
@@ -21,14 +21,14 @@ const BackLinkRoot = styled(`div`)`
   order: 1;
 
   @media (min-width: ${breakpoints.tablet}px) {
-    padding: ${spacing['2xl']} ${dimensions.gutter.desktop};
+    padding: ${spacing[`2xl`]} ${dimensions.gutter.desktop};
   }
 
   @media (min-width: ${breakpoints.desktop}px) {
     order: -1;
     padding: 0;
   }
-`;
+`
 
 const BackToListing = styled(Button)`
   border: 0;
@@ -57,7 +57,7 @@ const BackToListing = styled(Button)`
       }
     }
   }
-`;
+`
 
 const BackLink = ({ children, className }) => (
   <BackLinkRoot className={className}>
@@ -65,11 +65,11 @@ const BackLink = ({ children, className }) => (
       <RiArrowGoBackLine /> <span>{children}</span>
     </BackToListing>
   </BackLinkRoot>
-);
+)
 
 BackLink.propTypes = {
   children: PropTypes.node.isRequired,
-  className: PropTypes.string
-};
+  className: PropTypes.string,
+}
 
-export default BackLink;
+export default BackLink

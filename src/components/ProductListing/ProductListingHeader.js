@@ -1,5 +1,5 @@
-import React from 'react';
-import styled from '@emotion/styled';
+import React from "react"
+import styled from "@emotion/styled"
 
 import {
   breakpoints,
@@ -7,29 +7,29 @@ import {
   fonts,
   fontSizes,
   lineHeights,
-  spacing
-} from '../../utils/styles';
+  spacing,
+} from "../../utils/styles"
 
 const ProductListingHeaderRoot = styled(`header`)`
   display: flex;
   flex-direction: column;
   max-width: 52em;
-  padding: ${spacing['2xl']};
-`;
+  padding: ${spacing[`2xl`]};
+`
 
 const Title = styled(`h1`)`
   color: ${colors.text};
   font-family: ${fonts.heading};
-  font-size: ${fontSizes['lg']};
+  font-size: ${fontSizes[`lg`]};
   font-weight: 700;
   letter-spacing: -0.025em;
   line-height: ${lineHeights.dense};
   margin: 0;
 
   @media (min-width: ${breakpoints.desktop}px) {
-    font-size: ${fontSizes['3xl']};
+    font-size: ${fontSizes[`3xl`]};
   }
-`;
+`
 
 const Intro = styled(`p`)`
   color: ${colors.text};
@@ -37,7 +37,7 @@ const Intro = styled(`p`)`
   line-height: ${lineHeights.default};
   margin: ${spacing.md} 0 0;
   font-weight: 500;
-`;
+`
 
 const ProductListingHeader = () => (
   <ProductListingHeaderRoot>
@@ -48,6 +48,6 @@ const ProductListingHeader = () => (
       reinvest that money into the open source community.
     </Intro>
   </ProductListingHeaderRoot>
-);
+)
 
-export default ProductListingHeader;
+export default ProductListingHeader

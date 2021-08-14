@@ -10,10 +10,10 @@
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
-    "format": "prettier --write src/**/*.js",
-    "lint": "echo \"Error: no linter specified\" && exit 0",
     "serve": "gatsby serve",
     "start": "npm run develop",
+    "format": "prettier --write '**/*.{md,json,js}'",
+    "lint": "eslint --fix './src/**/*.js'",
     "stylelint": "stylelint './src/**/*.js'",
     "test": "echo \"Error: no test specified\" && exit 0"
   },
@@ -43,6 +43,7 @@
     "shopify-buy": "^2.2.4"
   },
   "devDependencies": {
+    "babel-eslint": "^10.1.0",
     "eslint-config-google": "^0.14.0",
     "eslint-config-prettier": "^8.3.0",
     "husky": "^7.0.1",
@@ -60,13 +61,12 @@
     }
   },
   "lint-staged": {
-    "*.js": [
-      "prettier --write",
-      "git add"
+    "**/*.js": [
+      "eslint --fix",
+      "prettier --write"
     ],
-    "*.css": [
-      "stylelint --fix",
-      "git add"
+    "**/*.css": [
+      "stylelint --fix"
     ]
   }
 }

@@ -1,16 +1,16 @@
-import React from 'react';
-import styled from '@emotion/styled';
-import { colors, spacing } from '../../utils/styles';
+import React from "react"
+import styled from "@emotion/styled"
+import { colors, spacing } from "../../utils/styles"
 
-const EmptyCartRoot = styled('div')`
+const EmptyCartRoot = styled(`div`)`
   align-items: center;
   display: flex;
   flex-direction: column;
   height: 350px;
   justify-content: center;
-`;
+`
 
-const SadCartCopy = styled('div')`
+const SadCartCopy = styled(`div`)`
   color: ${colors.text};
   margin-top: ${spacing.lg};
   max-width: 200px;
@@ -19,13 +19,13 @@ const SadCartCopy = styled('div')`
   p {
     margin: 0;
   }
-`;
+`
 
 const EmptyCart = () => (
   <EmptyCartRoot>
     <SadCartCopy>
       <p>
-        Your Cart is sad{' '}
+        Your Cart is sad{` `}
         <span role="img" aria-label="sad face">
           😔
         </span>
@@ -33,6 +33,6 @@ const EmptyCart = () => (
       <p>Turn that frown upside down with swag!</p>
     </SadCartCopy>
   </EmptyCartRoot>
-);
+)
 
-export default EmptyCart;
+export default EmptyCart

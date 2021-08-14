@@ -1,9 +1,9 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import styled from '@emotion/styled';
-import { RiCamera2Line } from 'react-icons/ri';
+import React from "react"
+import PropTypes from "prop-types"
+import styled from "@emotion/styled"
+import { RiCamera2Line } from "react-icons/ri"
 
-import ProductImage, { StyledImage } from './ProductImage';
+import ProductImage, { StyledImage } from "./ProductImage"
 
 import {
   breakpoints,
@@ -13,8 +13,8 @@ import {
   lineHeights,
   radius,
   shadows,
-  spacing
-} from '../../utils/styles';
+  spacing,
+} from "../../utils/styles"
 
 const ProductImagesMobileRoot = styled(`div`)`
   -webkit-overflow-scrolling: touch;
@@ -25,7 +25,7 @@ const ProductImagesMobileRoot = styled(`div`)`
   @media (min-width: ${breakpoints.tablet}px) {
     padding: ${dimensions.gutter.desktop};
   }
-`;
+`
 
 const ProductImagesMobileContent = styled(`div`)`
   display: inline-flex;
@@ -39,7 +39,7 @@ const ProductImagesMobileContent = styled(`div`)`
       margin-right: ${spacing.xl};
     }
   }
-`;
+`
 
 const Incentive = styled(`div`)`
   border-radius: ${radius.lg}px;
@@ -68,7 +68,7 @@ const Incentive = styled(`div`)`
     margin: 0;
     font-size: ${fontSizes.md};
   }
-`;
+`
 
 const ProductImagesMobile = ({ images, imageOnClick }) => (
   <ProductImagesMobileRoot>
@@ -83,20 +83,21 @@ const ProductImagesMobile = ({ images, imageOnClick }) => (
           We want to see your Gatsby swag photos!
         </h3>
         <p>
-          Share your photos in{' '}
+          Share your photos in{` `}
           <a href="https://github.com/gatsbyjs/store.gatsbyjs.org/issues/143">
             the official photo sharing issue
-          </a>{' '}
+          </a>
+          {` `}
           and they may be featured in the store!
         </p>
       </Incentive>
     </ProductImagesMobileContent>
   </ProductImagesMobileRoot>
-);
+)
 
 ProductImagesMobile.propTypes = {
   images: PropTypes.array.isRequired,
-  imageOnClick: PropTypes.func
-};
+  imageOnClick: PropTypes.func,
+}
 
-export default ProductImagesMobile;
+export default ProductImagesMobile

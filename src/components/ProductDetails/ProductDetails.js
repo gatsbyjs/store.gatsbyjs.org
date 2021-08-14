@@ -1,103 +1,103 @@
-import React from 'react';
-import styled from '@emotion/styled';
-import SizeChartTable from './SizeChartTable';
-import BackButton from './BackButton';
+import React from "react"
+import styled from "@emotion/styled"
+import SizeChartTable from "./SizeChartTable"
+import BackButton from "./BackButton"
 
 import {
   Heading as BaseHeading,
   TextContainer,
-  UnorderedList
-} from '../shared/Typography';
-import { colors, spacing, dimensions, fontSizes } from '../../utils/styles';
+  UnorderedList,
+} from "../shared/Typography"
+import { colors, spacing, dimensions, fontSizes } from "../../utils/styles"
 
 const Heading = styled(BaseHeading)`
   margin-bottom: -${spacing.xl};
-`;
+`
 
 const ProductTextContainer = styled(TextContainer)`
   padding: ${spacing.xl};
-`;
+`
 
 const Section = styled(`section`)`
   clear: left;
   padding-top: calc(${dimensions.headerHeight} + ${spacing.sm});
-`;
+`
 
 const SectionHeading = styled(Heading.withComponent(`h2`))`
-  font-size: ${fontSizes['2xl']};
+  font-size: ${fontSizes[`2xl`]};
   letter-spacing: -0.01em;
   margin-bottom: ${spacing.sm};
-`;
+`
 
 const SubHeading = styled(Heading.withComponent(`h3`))`
   color: ${colors.text};
-  font-size: ${fontSizes['xl']};
+  font-size: ${fontSizes[`xl`]};
   margin: ${spacing.lg} 0 ${spacing.xs};
-`;
+`
 
 const NestedUnorderedList = styled(UnorderedList)`
   list-style-type: disc;
   margin-top: 0;
-`;
+`
 
-const UnitWrapper = styled('div')`
+const UnitWrapper = styled(`div`)`
   align-items: center;
   display: flex;
   float: right;
   font-size: ${fontSizes.xs};
   margin: ${-1 * spacing.lg} 0 ${spacing.md} 0;
-`;
+`
 
-const UnitOption = styled('div')`
-  background: ${props => props.active && colors.brand};
+const UnitOption = styled(`div`)`
+  background: ${(props) => props.active && colors.brand};
   border-radius: 1em;
-  color: ${props => props.active && colors.lightest};
+  color: ${(props) => props.active && colors.lightest};
   cursor: pointer;
   margin-right: 0.5em;
   padding: 0.2em 0.5em;
 
   &:hover {
-    background: ${props => !props.active && colors.brandLight};
+    background: ${(props) => !props.active && colors.brandLight};
   }
-`;
+`
 
-const UnitsLabel = styled('div')`
+const UnitsLabel = styled(`div`)`
   margin-right: 1em;
-`;
+`
 
 const UnitSelector = ({ setUnits, unit }) => {
-  const handleClick = event => {
-    setUnits(event.target.getAttribute('value'));
-  };
+  const handleClick = (event) => {
+    setUnits(event.target.getAttribute(`value`))
+  }
 
   return (
     <UnitWrapper>
       <UnitsLabel>Units:</UnitsLabel>
-      <UnitOption value="in" active={unit === 'in'} onClick={handleClick}>
+      <UnitOption value="in" active={unit === `in`} onClick={handleClick}>
         in
       </UnitOption>
-      <UnitOption value="cm" active={unit === 'cm'} onClick={handleClick}>
+      <UnitOption value="cm" active={unit === `cm`} onClick={handleClick}>
         cm
       </UnitOption>
     </UnitWrapper>
-  );
-};
+  )
+}
 
 class ProductDetails extends React.Component {
   constructor() {
-    super();
+    super()
     this.state = {
-      units: 'in'
-    };
-    this.changeUnits = this.changeUnits.bind(this);
+      units: `in`,
+    }
+    this.changeUnits = this.changeUnits.bind(this)
   }
 
   changeUnits(units) {
-    this.setState({ units });
+    this.setState({ units })
   }
 
   render() {
-    const { units } = this.state;
+    const { units } = this.state
 
     return (
       <ProductTextContainer>
@@ -153,8 +153,8 @@ class ProductDetails extends React.Component {
           </p>
         </Section>
       </ProductTextContainer>
-    );
+    )
   }
 }
 
-export default ProductDetails;
+export default ProductDetails

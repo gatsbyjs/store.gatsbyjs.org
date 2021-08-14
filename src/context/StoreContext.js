@@ -1,10 +1,10 @@
-import React from 'react';
-import Client from 'shopify-buy';
+import React from "react"
+import Client from "shopify-buy"
 
 const client = Client.buildClient({
-  domain: 'gatsby-swag.myshopify.com',
+  domain: `gatsby-swag.myshopify.com`,
   storefrontAccessToken: process.env.SHOPIFY_ACCESS_TOKEN,
-});
+})
 
 export const defaultStoreContext = {
   client,
@@ -16,16 +16,15 @@ export const defaultStoreContext = {
   addVariantToCart: () => {},
   removeLineItem: () => {},
   updateLineItem: () => {},
-};
+}
 
-const StoreContext = React.createContext(defaultStoreContext);
+const StoreContext = React.createContext(defaultStoreContext)
 
-export const withStoreContext = (Component) => {
-  return (props) => (
+export const withStoreContext = (Component) => (props) =>
+  (
     <StoreContext.Consumer>
       {(context) => <Component {...props} storeContext={context} />}
     </StoreContext.Consumer>
-  );
-};
+  )
 
-export default StoreContext;
+export default StoreContext
