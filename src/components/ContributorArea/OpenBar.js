@@ -173,7 +173,7 @@ const Title = styled(`span`)`
   display: block;
   font-size: ${fontSizes.sm};
 
-  strong {
+  strong, em {
     text-style: normal;
     text-decoration: underline;
     font-weight: ${fontWeights.semibold};
