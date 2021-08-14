@@ -240,7 +240,7 @@ const ProductListingItem = (props) => {
                 <CodeEligibility freeWith={freeWith}>
                   <span>Free with </span>
                   <span>
-                    Code{` `}
+                    code{` `}
                     <strong>
                       Swag Level {freeWith === `HOLYBUCKETS` ? `2` : `1`}
                     </strong>
