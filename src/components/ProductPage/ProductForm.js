@@ -184,6 +184,7 @@ class ProductForm extends Component {
                 ))}
               </ErrorMsgs>
             </Errors>
+            {isOutOfStock && (
             <QtyFieldset>
               <Label htmlFor="quantity">Qty.</Label>
               <Input
@@ -197,6 +198,7 @@ class ProductForm extends Component {
                 value={this.state.quantity}
               />
             </QtyFieldset>
+            )}
             {hasVariants && (
               <SizeFieldset>
                 <Label htmlFor="variant">
