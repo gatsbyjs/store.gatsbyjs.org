@@ -184,7 +184,7 @@ class ProductForm extends Component {
                 ))}
               </ErrorMsgs>
             </Errors>
-            {isOutOfStock && (
+            {!isOutOfStock && (
             <QtyFieldset>
               <Label htmlFor="quantity">Qty.</Label>
               <Input
