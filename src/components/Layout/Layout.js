@@ -37,6 +37,7 @@ const globalStyles = css`
   }
 
   body {
+    background: ${colors.lightest};
     -webkit-tap-highlight-color: rgba(0, 0, 0, 0.05);
     color: ${colors.text};
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen,
