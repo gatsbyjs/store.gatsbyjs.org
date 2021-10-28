@@ -22,7 +22,7 @@
  *
  */
 
-@font-face {
+@font-display: swap {
   font-family: 'Futura PT';
   font-display: swap;
   src: url('ftn65-webfont.eot');
