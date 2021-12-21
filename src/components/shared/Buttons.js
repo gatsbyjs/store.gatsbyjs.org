@@ -53,7 +53,7 @@ export class Button extends Component {
   render() {
     const { children, to, href, ref, inverse = false, ...rest } = this.props;
 
-    // automtic recognition of icon placement, works properly only for [text + <Icon>] childrens
+    // automatic recognition of icon placement, works properly only for [text + <Icon>] childrens
     const iconOnLeft = typeof children[0] !== 'string';
 
     if (to) {
