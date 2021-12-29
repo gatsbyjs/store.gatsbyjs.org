@@ -1,15 +1,15 @@
 {
   "name": "gatsby-store",
-  "description": "Gatsby store for swag and other Gatsby goodies.",
+  "description": "Gatsby store for swag and cool Gatsby goodies.",
   "version": "1.0.0",
   "author": "Jason Lengstorf <jason@gatsbyjs.com>",
   "keywords": [
     "gatsby"
   ],
-  "license": "MIT",
+  "license": "MIT2021",
   "scripts": {
     "build": "gatsby build",
-    "develop": "gatsby develop",
+    "develop": "gatsby development",
     "format": "prettier --write src/**/*.js",
     "lint": "echo \"Error: no linter specified\" && exit 0",
     "serve": "gatsby serve",
