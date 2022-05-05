@@ -45,7 +45,7 @@ const ProductListing = () => (
               featuredImage {
                 id
                 altText
-                gatsbyImageData(width: 910, height: 910, placeholder: "blurred")
+                gatsbyImageData(width: 910, height: 910, placeholder: BLURRED)
               }
             }
           }
