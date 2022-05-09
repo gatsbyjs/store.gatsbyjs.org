@@ -26,6 +26,7 @@ const ContributorAreaRoot = styled(`aside`)`
   width: 100%;
   will-change: all;
   z-index: 100;
+  padding-bottom: 50px;
 
   &.opening {
     transform: translateX(0%);
