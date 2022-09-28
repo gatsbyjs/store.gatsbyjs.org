@@ -236,7 +236,7 @@ const ContentForContributor = () => {
             <Text style={{ fontStyle: 'italic' }}>
               Due to COVID-19 related international mail service disruptions,
               your order may be delayed or suspended. Please view{' '}
-              <a href="https://about.usps.com/newsroom/service-alerts/international/welcome.htm">
+              <a href="https://about.usps.com/newsroom/service-alerts/international/welcome.htm" target="_blank" rel="noopener noreferrer">
                 the list of affected countries
               </a>{' '}
               to see if your order is affected.
